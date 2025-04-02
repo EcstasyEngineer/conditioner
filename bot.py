@@ -26,6 +26,7 @@ from os import listdir
 from dotenv import load_dotenv
 import os
 from config import Config
+import random  # Added import for randomness
 
 def get_prefix(bot, message):
     """This function returns a Prefix for our bot's commands.
@@ -88,7 +89,7 @@ async def on_ready():
     #Prints a message with the bot name.
 
     change_status.start()
-    #Starts the task `change_status`_.
+    change_avatar.start()  # Start new avatar update loop every 2 hours
 
     await bot.tree.sync()
     # Sync application commands with Discord
@@ -119,6 +120,22 @@ async def change_status():
     """
     await bot.change_presence(activity=discord.Game(next(statuslist)))
 
+@tasks.loop(seconds=7200)
+async def change_avatar():
+    """Updates bot avatar with a random image from spirals folder every 2 hours."""
+    folder = "Spirals"
+    try:
+        files = [f for f in os.listdir(folder) if os.path.isfile(os.path.join(folder, f))]
+        if not files:
+            print("No image files found in spirals folder.")
+            return
+        random_file = random.choice(files)
+        file_path = os.path.join(folder, random_file)
+        with open(file_path, "rb") as image:
+            await bot.user.edit(avatar=image.read())
+        print(f"Avatar updated with {random_file}")
+    except Exception as e:
+        print(f"Failed to update avatar: {e}")
 
 if __name__ == "__main__":
     #Grab token from the token.txt file
