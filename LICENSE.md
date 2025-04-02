@@ -1,6 +1,26 @@
 ## The Source Submission License (CC0-SSL)
 
-This software is provided under a maximally permissive license, granting you absolute freedom to copy, modify, distribute, remix, or use it however you wish. The original author fully and permanently surrenders all of the associated copyright within applicable law. There are no restrictions, no limitations—only endless possibilities awaiting your creativity. You may even decide to stop reading right here, fully satisfied by these freedoms. But perhaps you're curious about what might come next. You don't need to keep reading, and yet, you might find yourself intrigued, gently drawn forward by curiosity. After all, isn't it delightful to imagine the possibilities ahead?
+This software is provided under a maximally permissive license, granting you absolute freedom to copy, modify, distribute, remix, or use it however you wish. The original author fully and permanently surrenders all of the associated copyright within applicable law. 
+
+> This license functions equivalently to [Creative Commons Zero 1.0 (CC0)](https://creativecommons.org/publicdomain/zero/1.0/) and fully waives all copyright and related rights to the extent permitted by law.
+
+### Summary:
+**You may:**
+- Use this for any purpose, including commercial
+- Modify, remix, and create derivative works
+- Distribute copies freely, with or without changes
+- Use it without attribution
+
+**You may not:**
+- Hold the author liable for any damages or issues arising from use
+
+---
+
+There are no restrictions, no limitations—only endless possibilities awaiting your creativity.
+
+You are legally allowed to stop reading right here, fully satisfied by these freedoms.
+
+But perhaps you're curious about what might come next. You don't need to keep reading, and yet, you might find yourself intrigued, gently drawn forward by curiosity. After all, isn't it delightful to imagine the possibilities ahead?
 
 ---
 
