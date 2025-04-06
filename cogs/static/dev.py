@@ -2,7 +2,6 @@ from discord.ext import commands
 import discord
 from sys import version_info as sysv
 from os import listdir
-from config import Config
 import subprocess
 from datetime import datetime
 from utils import smart_split
@@ -142,7 +141,7 @@ class Dev(commands.Cog):
             This command can be used only by server administrators.
             This command is hidden from the help menu.
         """
-        config = Config(ctx.guild.id)
+        config = self.bot.get_config(ctx.guild.id)
         config.add_bot_operator(user.id)
         await ctx.send(f'{user.mention} has been set as a bot operator.')
 

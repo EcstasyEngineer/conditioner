@@ -1,6 +1,5 @@
 from discord.ext import commands
 import discord
-from config import Config
 
 class Admin(commands.Cog):
     def __init__(self, bot):
@@ -9,7 +8,7 @@ class Admin(commands.Cog):
     @commands.command(name="claimsuper", aliases=["claimsuperadmin"])
     async def claimsuper(self, ctx):
         """Claim the sole superadmin spot."""
-        global_config = Config()
+        global_config = self.bot.get_config()
         if global_config.get("superadmin") is None:
             global_config.set("superadmin", ctx.author.id)
             await ctx.send("Superadmin claimed.")
@@ -23,11 +22,13 @@ class Admin(commands.Cog):
             await ctx.send("This command cannot be used in direct messages.")
             return
         
-        global_superadmin = Config().get("superadmin")
+        global_superadmin = self.bot.get_config().get("superadmin")
+        config = self.bot.get_config(ctx.guild.id)
+        
         if not (ctx.author.id == global_superadmin or ctx.author.guild_permissions.administrator or ctx.author == ctx.guild.owner):
             await ctx.send("You lack admin privileges on this server.")
             return
-        config = Config(ctx)
+        
         admins = config.get("admins", [])
         if not ctx.author.id == global_superadmin and admins: # user is not a superadmin and there are already admins
             await ctx.send("There are already admins for this server. You must be added by one of the admins with !addadmin @you.")
@@ -48,9 +49,11 @@ class Admin(commands.Cog):
         if not member:
             await ctx.send("Please specify a user to add as bot admin.")
             return
-        config = Config(ctx)
+            
+        config = self.bot.get_config(ctx.guild.id)
         admins = config.get("admins", [])
-        if ctx.author.id != Config().get("superadmin") and not (
+        
+        if ctx.author.id != self.bot.get_config().get("superadmin") and not (
             ctx.author.guild_permissions.administrator or ctx.author == ctx.guild.owner or 
             ctx.author.id in admins
         ):

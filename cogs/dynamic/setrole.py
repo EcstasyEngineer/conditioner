@@ -1,6 +1,5 @@
 from discord.ext import commands
 import discord
-from config import Config
 
 class SetRole(commands.Cog):
     """This is a cog with role commands."""
@@ -10,7 +9,7 @@ class SetRole(commands.Cog):
     @commands.command(name='setrole')
     async def setrole(self, ctx, role: str, member: discord.Member = None):
         """Adds or removes available roles. Optionally apply to a specified user."""
-        config = Config(ctx)
+        config = self.bot.get_config(ctx.guild.id)
         whitelist_roles = config.get("whitelist_roles", [])
         # Determine target; default to invoking user if no member provided.
         target = member if member else ctx.author
@@ -49,7 +48,7 @@ class SetRole(commands.Cog):
         if not ctx.author.guild_permissions.manage_roles:
             await ctx.send("You need the manage roles permission to use this command.")
             return
-        config = Config(ctx)
+        config = self.bot.get_config(ctx.guild.id)
         whitelist_roles = config.get("whitelist_roles", [])
         if role.lower() in [r.lower() for r in whitelist_roles]:
             await ctx.send(f"Role '{role}' is already whitelisted.")
@@ -102,7 +101,7 @@ class SetRole(commands.Cog):
 
         # Store the emoji-role mapping; use emoji.id (as string) for custom emoji, else emoji.name.
         key = str(partial_emoji.id) if partial_emoji.id else partial_emoji.name
-        config = Config(interaction)
+        config = self.bot.get_config(guild.id)
         toggles = config.get("emoji_role_toggles", {})
         msg_key = str(msg_id_int)
         if msg_key not in toggles:
@@ -126,7 +125,8 @@ class SetRole(commands.Cog):
             await interaction.response.send_message(f"Invalid emoji provided: {e}", ephemeral=True)
             return
         key = str(partial_emoji.id) if partial_emoji.id else partial_emoji.name
-        config = Config(interaction)
+        guild = interaction.guild
+        config = self.bot.get_config(guild.id)
         toggles = config.get("emoji_role_toggles", {})
         msg_key = str(msg_id_int)
         if msg_key in toggles and key in toggles[msg_key]:
@@ -145,10 +145,8 @@ class SetRole(commands.Cog):
         guild = self.bot.get_guild(payload.guild_id)
         if not guild:
             return
-        Dummy = type("Dummy", (), {})
-        dummy = Dummy()
-        dummy.guild = guild
-        config = Config(dummy)
+            
+        config = self.bot.get_config(guild.id)
         toggles = config.get("emoji_role_toggles", {})
         msg_key = str(payload.message_id)
         if msg_key not in toggles:

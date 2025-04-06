@@ -1,0 +1,145 @@
+import discord
+from discord.ext import commands
+import random
+import os
+from pathlib import Path
+
+# Configuration
+TIER_PROBABILITIES = {
+    "common": 1/7,
+    "uncommon": 1/15,
+    "rare": 1/40,
+    "legendary": 1/80,
+}
+
+TIER_EMOJIS = {
+    "common": "<:common:123456789012345678>",      # Replace with actual emoji IDs
+    "uncommon": "<:uncommon:123456789012345679>",
+    "rare": "<:rare:123456789012345680>",
+    "legendary": "<:legendary:123456789012345681>",
+}
+
+TIER_MEDIA_PATHS = {
+    "common": "media/common/",
+    "uncommon": "media/uncommon/",
+    "rare": "media/rare/",
+    "legendary": "media/legendary/",
+}
+
+class GachaRewards(commands.Cog):
+    """Cog for managing gacha-style rewards in counting channel."""
+    
+    def __init__(self, bot):
+        self.bot = bot
+        # In-memory tracking of active reward listeners
+        self.listeners = {}  # {message_id: {"user_id": user_id, "tier": tier_name}}
+        
+    def get_reward_tier(self):
+        """Stateless probability check to determine if a reward should be given and which tier.
+        Rarer tiers are checked first to ensure they take priority."""
+        roll = random.random()
+        cumulative_prob = 0
+        
+        # Process tiers from rarest to most common
+        for tier in ["legendary", "rare", "uncommon", "common"]:
+            cumulative_prob += TIER_PROBABILITIES[tier]
+            if roll < cumulative_prob:
+                return tier
+        
+        return None  # No reward
+
+    def get_random_media_file(self, tier):
+        """Select a random media file from the tier's directory."""
+        path = Path(TIER_MEDIA_PATHS[tier])
+        
+        # Get all image/gif files in the directory
+        valid_extensions = ('.png', '.jpg', '.jpeg', '.gif')
+        media_files = [f for f in path.glob('*') if f.suffix.lower() in valid_extensions]
+        
+        if not media_files:
+            return None
+            
+        return random.choice(media_files)
+    
+    @commands.Cog.listener()
+    async def on_message(self, message):
+        # Ignore bot messages and messages not in "counting" channel
+        if message.author.bot or message.channel.name != "counting":
+            return
+        
+        # Try to parse the message as a number
+        try:
+            int(message.content.strip())
+        except ValueError:
+            return
+            
+        # This is only processed for valid count messages that weren't deleted
+        # Do the gacha roll for rewards
+        reward_tier = self.get_reward_tier()
+        
+        if reward_tier:
+            # Add appropriate reaction based on tier
+            emoji = discord.PartialEmoji.from_str(TIER_EMOJIS[reward_tier])
+            await message.add_reaction(emoji)
+            
+            # Store message in listeners
+            self.listeners[message.id] = {
+                "user_id": message.author.id,
+                "tier": reward_tier
+            }
+    
+    @commands.Cog.listener()
+    async def on_raw_reaction_add(self, payload):
+        # Ignore bot reactions
+        if payload.user_id == self.bot.user.id:
+            return
+            
+        message_id = payload.message_id
+        
+        # Check if this is a message we're tracking
+        if message_id not in self.listeners:
+            return
+            
+        # Get the reward info
+        reward_info = self.listeners[message_id]
+        
+        # Check if the emoji matches the reward tier
+        expected_emoji = TIER_EMOJIS[reward_info["tier"]]
+        if str(payload.emoji) != expected_emoji:
+            return
+            
+        # Get channel to send responses
+        channel = await self.bot.fetch_channel(payload.channel_id)
+        
+        # Check if the user who reacted is the one who earned the reward
+        if payload.user_id == reward_info["user_id"]:
+            # User claimed their own reward
+            media_file = self.get_random_media_file(reward_info["tier"])
+            
+            if media_file:
+                await channel.send(
+                    f"<@{payload.user_id}> claimed their **{reward_info['tier']}** reward!", 
+                    file=discord.File(media_file)
+                )
+            else:
+                await channel.send(
+                    f"<@{payload.user_id}> claimed their **{reward_info['tier']}** reward, but no media files were found."
+                )
+                
+            # Remove this message from listeners
+            del self.listeners[message_id]
+        else:
+            # Someone else tried to claim the reward
+            try:
+                # Get the message to reply to
+                message = await channel.fetch_message(payload.message_id)
+                await channel.send(
+                    f"Only the winner can redeem this reward. Try your luck by counting!",
+                    reference=message
+                )
+            except discord.NotFound:
+                # Message was deleted
+                pass
+
+async def setup(bot):
+    await bot.add_cog(GachaRewards(bot))

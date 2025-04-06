@@ -53,6 +53,28 @@ def get_prefix(bot, message):
 
 bot = commands.Bot(command_prefix=get_prefix, intents=discord.Intents.all())
 
+# Initialize a config cache dictionary to store configs by guild ID
+bot.config_cache = {}
+
+# Function to get a config for a specific guild
+def get_config(guild_id=None):
+    """Get a config instance for the specified guild, or the global config if None.
+    Caches the config instances to prevent multiple file reads/writes.
+    """
+    if guild_id is None:
+        # Global config
+        if 'global' not in bot.config_cache:
+            bot.config_cache['global'] = Config()
+        return bot.config_cache['global']
+    
+    # Guild-specific config
+    if str(guild_id) not in bot.config_cache:
+        bot.config_cache[str(guild_id)] = Config(guild_id)
+    return bot.config_cache[str(guild_id)]
+
+# Add the get_config method to the bot object for easy access
+bot.get_config = get_config
+
 # Function to load all cogs in the './cogs_static' and './cogs_dynamic' directories
 async def load_cogs():
     for filename in listdir('./cogs/static'):
