@@ -122,9 +122,21 @@ class GachaRewards(commands.Cog):
             media_file = self.get_random_media_file(reward_info["tier"])
             
             if media_file:
+                # Determine message and deletion timing based on tier
+                tier = reward_info["tier"]
+                delete_after = 30.0 if tier == "common" else (7200.0 if tier == "uncommon" else None)
+                
+                # Create increasingly festive messages based on tier
+                messages = {
+                    "common": f"You claimed a common reward!",
+                    "uncommon": f"✨ You claimed an uncommon reward! ✨",
+                    "rare": f"🎉✨ You claimed a RARE reward! ✨🎉",
+                    "epic": f"🌟🎊 You claimed an EPIC reward!!! 🎊🌟"
+                }
+                
                 await channel.send(
-                    f"Reward claimed!",
-                    delete_after=10.0, 
+                    messages[tier],
+                    delete_after=delete_after,
                 )
                 # Send the media file as dm
                 user = self.bot.get_user(payload.user_id)
@@ -132,8 +144,8 @@ class GachaRewards(commands.Cog):
                     await user.send(file=discord.File(media_file))
                 
             # Remove emoji reactions
-            message = await channel.fetch_message(message_id)
-            await message.clear_reactions()
+            # message = await channel.fetch_message(message_id)
+            # await message.clear_reactions()
                 
             # Remove this message from listeners
             del self.listeners[message_id]
