@@ -6,24 +6,24 @@ from pathlib import Path
 
 # Configuration
 TIER_PROBABILITIES = {
-    "common": 1/7,
-    "uncommon": 1/15,
+    "common": 1/10,
+    "uncommon": 1/20,
     "rare": 1/40,
-    "legendary": 1/80,
+    "epic": 1/80,
 }
 
 TIER_EMOJIS = {
-    "common": "<:common:123456789012345678>",      # Replace with actual emoji IDs
-    "uncommon": "<:uncommon:123456789012345679>",
-    "rare": "<:rare:123456789012345680>",
-    "legendary": "<:legendary:123456789012345681>",
+    "common": "<:whitespiral:1358827227243872486>",
+    "uncommon": "<:bluespiral:1358827225847435355>",
+    "rare": "<:greenspiral:1358827224349802609>",
+    "epic": "<:purplespiral:1358827222437200048>",
 }
 
 TIER_MEDIA_PATHS = {
     "common": "media/common/",
     "uncommon": "media/uncommon/",
     "rare": "media/rare/",
-    "legendary": "media/legendary/",
+    "epic": "media/epic/",
 }
 
 class GachaRewards(commands.Cog):
@@ -41,7 +41,7 @@ class GachaRewards(commands.Cog):
         cumulative_prob = 0
         
         # Process tiers from rarest to most common
-        for tier in ["legendary", "rare", "uncommon", "common"]:
+        for tier in ["epic", "rare", "uncommon", "common"]:
             cumulative_prob += TIER_PROBABILITIES[tier]
             if roll < cumulative_prob:
                 return tier
@@ -53,8 +53,13 @@ class GachaRewards(commands.Cog):
         path = Path(TIER_MEDIA_PATHS[tier])
         
         # Get all image/gif files in the directory
-        valid_extensions = ('.png', '.jpg', '.jpeg', '.gif')
+        valid_extensions = ('.png', '.jpg', '.jpeg', '.gif', ".mp3", ".mp4")
+        # Get all valid media files
         media_files = [f for f in path.glob('*') if f.suffix.lower() in valid_extensions]
+        
+        # If there are multiple files, filter out sample.gif
+        if len(media_files) > 1:
+            media_files = [f for f in media_files if f.name.lower() != 'sample.gif']
         
         if not media_files:
             return None
@@ -105,7 +110,7 @@ class GachaRewards(commands.Cog):
         
         # Check if the emoji matches the reward tier
         expected_emoji = TIER_EMOJIS[reward_info["tier"]]
-        if str(payload.emoji) != expected_emoji:
+        if str(payload.emoji.id) not in expected_emoji:
             return
             
         # Get channel to send responses
@@ -118,13 +123,17 @@ class GachaRewards(commands.Cog):
             
             if media_file:
                 await channel.send(
-                    f"<@{payload.user_id}> claimed their **{reward_info['tier']}** reward!", 
-                    file=discord.File(media_file)
+                    f"Reward claimed!",
+                    delete_after=10.0, 
                 )
-            else:
-                await channel.send(
-                    f"<@{payload.user_id}> claimed their **{reward_info['tier']}** reward, but no media files were found."
-                )
+                # Send the media file as dm
+                user = self.bot.get_user(payload.user_id)
+                if user:
+                    await user.send(file=discord.File(media_file))
+                
+            # Remove emoji reactions
+            message = await channel.fetch_message(message_id)
+            await message.clear_reactions()
                 
             # Remove this message from listeners
             del self.listeners[message_id]
@@ -133,10 +142,10 @@ class GachaRewards(commands.Cog):
             try:
                 # Get the message to reply to
                 message = await channel.fetch_message(payload.message_id)
-                await channel.send(
-                    f"Only the winner can redeem this reward. Try your luck by counting!",
-                    reference=message
-                )
+                # Get the user who tried to claim and send them a DM
+                user = self.bot.get_user(payload.user_id)
+                if user:
+                    await user.send("Only the winner can redeem this reward. Try your luck by counting!")
             except discord.NotFound:
                 # Message was deleted
                 pass

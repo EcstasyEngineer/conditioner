@@ -27,6 +27,7 @@ from dotenv import load_dotenv
 import os
 from config import Config
 import random  # Added import for randomness
+from datetime import datetime, timedelta  # Added import for scheduling
 
 def get_prefix(bot, message):
     """This function returns a Prefix for our bot's commands.
@@ -111,7 +112,7 @@ async def on_ready():
     #Prints a message with the bot name.
 
     change_status.start()
-    change_avatar.start()  # Start new avatar update loop every 2 hours
+    await schedule_change_avatar()  # Schedule the avatar change task
 
     await bot.tree.sync()
     # Sync application commands with Discord
@@ -142,10 +143,22 @@ async def change_status():
     """
     await bot.change_presence(activity=discord.Game(next(statuslist)))
 
-@tasks.loop(seconds=7200)
+async def schedule_change_avatar():
+    """Schedules the avatar change task to run at a specific time of the day."""
+    target_time = datetime.now().replace(hour=2, minute=0, second=0, microsecond=0)  # Set to 2:00 AM
+    now = datetime.now()
+    if now >= target_time:
+        # If the target time has already passed today, schedule for tomorrow
+        target_time += timedelta(days=1)
+    delay = (target_time - now).total_seconds()
+    await discord.utils.sleep_until(target_time)  # Wait until the target time
+    await change_avatar()  # Run the avatar change once
+    change_avatar.start()  # Start the loop to run daily at the same time
+
+@tasks.loop(hours=24)
 async def change_avatar():
-    """Updates bot avatar with a random image from spirals folder every 2 hours."""
-    folder = "Spirals"
+    """Updates bot avatar with a random image from spirals folder every day at the scheduled time."""
+    folder = "media/spirals"
     try:
         files = [f for f in os.listdir(folder) if os.path.isfile(os.path.join(folder, f))]
         if not files:

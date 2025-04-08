@@ -3,3 +3,11 @@
 __pycache__
 .env
 configs/*.json
+/media/common/*
+!/media/common/sample.*
+/media/uncommon/*
+!/media/uncommon/sample.*
+/media/rare/*
+!/media/rare/sample.*
+/media/epic/*
+!/media/epic/sample.*
