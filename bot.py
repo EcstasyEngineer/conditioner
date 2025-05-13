@@ -1,7 +1,7 @@
 """
 This example bot is structured in multiple files and is made with the goal of showcasing commands, events and cogs.
 Although this example is not intended as a complete bot, but as a reference aimed to give you a basic understanding for 
-creating your bot, feel free to use these examples and point out any issue.
+creating your bot, feel free to use these examples and point out any issue. 
 + These examples are made with educational purpose and there are plenty of docstrings and explanation about most of the code.
 + This example is made with Python 3.8.5 and Discord.py 1.4.0a (rewrite).
 Documentation:
