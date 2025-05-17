@@ -1,7 +1,7 @@
 """
 This example bot is structured in multiple files and is made with the goal of showcasing commands, events and cogs.
 Although this example is not intended as a complete bot, but as a reference aimed to give you a basic understanding for 
-creating your bot, feel free to use these examples and point out any issue. 
+creating your bot, feel free to use these examples and point out any issue.
 + These examples are made with educational purpose and there are plenty of docstrings and explanation about most of the code.
 + This example is made with Python 3.8.5 and Discord.py 1.4.0a (rewrite).
 Documentation:
@@ -26,8 +26,21 @@ from os import listdir
 from dotenv import load_dotenv
 import os
 from config import Config
-import random  # Added import for randomness
-from datetime import datetime, timedelta  # Added import for scheduling
+import random
+from datetime import datetime, timedelta
+# Logging setup
+import logging
+from logging.handlers import RotatingFileHandler
+# Ensure logs directory exists
+os.makedirs('logs', exist_ok=True)
+# Configure logging
+logging.basicConfig(level=logging.INFO,
+    format='%(asctime)s %(levelname)s:%(name)s: %(message)s',
+    handlers=[
+        RotatingFileHandler('logs/bot.log', maxBytes=5*1024*1024, backupCount=5),
+        logging.StreamHandler()
+    ])
+logger = logging.getLogger(__name__)
 
 def get_prefix(bot, message):
     """This function returns a Prefix for our bot's commands.
@@ -53,28 +66,9 @@ def get_prefix(bot, message):
     return ['!']
 
 bot = commands.Bot(command_prefix=get_prefix, intents=discord.Intents.all())
-
-# Initialize a config cache dictionary to store configs by guild ID
-bot.config_cache = {}
-
-# Function to get a config for a specific guild
-def get_config(guild_id=None):
-    """Get a config instance for the specified guild, or the global config if None.
-    Caches the config instances to prevent multiple file reads/writes.
-    """
-    if guild_id is None:
-        # Global config
-        if 'global' not in bot.config_cache:
-            bot.config_cache['global'] = Config()
-        return bot.config_cache['global']
-    
-    # Guild-specific config
-    if str(guild_id) not in bot.config_cache:
-        bot.config_cache[str(guild_id)] = Config(guild_id)
-    return bot.config_cache[str(guild_id)]
-
-# Add the get_config method to the bot object for easy access
-bot.get_config = get_config
+# Attach central logger to bot for use in cogs
+bot.logger = logger
+bot.config = Config()
 
 # Function to load all cogs in the './cogs_static' and './cogs_dynamic' directories
 async def load_cogs():
@@ -83,17 +77,17 @@ async def load_cogs():
             cog_name = f'cogs.static.{filename[:-3]}'
             try:
                 await bot.load_extension(cog_name)
-                print(f'Successfully loaded {cog_name}')
+                logger.info(f'Successfully loaded {cog_name}')
             except Exception as e:
-                print(f'Failed to load {cog_name}: {e}')
+                logger.error(f'Failed to load {cog_name}: {e}', exc_info=True)
     for filename in listdir('./cogs/dynamic'):
         if filename.endswith('.py'):
             cog_name = f'cogs.dynamic.{filename[:-3]}'
             try:
                 await bot.load_extension(cog_name)
-                print(f'Successfully loaded {cog_name}')
+                logger.info(f'Successfully loaded {cog_name}')
             except Exception as e:
-                print(f'Failed to load {cog_name}: {e}')
+                logger.error(f'Failed to load {cog_name}: {e}', exc_info=True)
 
 @bot.event
 #This is the decorator for events (outside of cogs).
@@ -108,15 +102,39 @@ async def on_ready():
 
     await load_cogs()
     
-    print(f'{bot.user.name} is online and ready!')
+    logger.info(f'{bot.user.name} is online and ready!')
     #Prints a message with the bot name.
 
-    change_status.start()
-    await schedule_change_avatar()  # Schedule the avatar change task
+    if not change_status.is_running():
+        change_status.start()
+    #Starts the task `change_status`_.
 
     await bot.tree.sync()
     # Sync application commands with Discord
 
+@bot.event
+async def on_message(message):
+    if message.author == bot.user:
+        return
+    if isinstance(message.channel, discord.DMChannel):
+        logger.info(f'Received DM from {message.author} (ID: {message.author.id}): {message.content}')
+    await bot.process_commands(message)
+
+@bot.event
+async def on_command_error(ctx, error):
+    logger.error(f'Error in command {ctx.command}: {error}', exc_info=True)
+
+@bot.event
+async def on_command(ctx):
+    logger.info(f'Command {ctx.command} invoked by {ctx.author} (ID: {ctx.author.id}) args={ctx.args} kwargs={ctx.kwargs}')
+
+@bot.event
+async def on_command_completion(ctx):
+    logger.info(f'Command {ctx.command} completed by {ctx.author} in {ctx.channel}')
+
+@bot.event
+async def on_error(event, *args, **kwargs):
+    logger.exception(f'Unhandled exception in event {event}', exc_info=True)
 
 # Teasy Hypnotic Statuses
 statuslist = cycle([
@@ -162,19 +180,23 @@ async def change_avatar():
     try:
         files = [f for f in os.listdir(folder) if os.path.isfile(os.path.join(folder, f))]
         if not files:
-            print("No image files found in spirals folder.")
+            logger.warning("No image files found in spirals folder.")
             return
         random_file = random.choice(files)
         file_path = os.path.join(folder, random_file)
         with open(file_path, "rb") as image:
             await bot.user.edit(avatar=image.read())
-        print(f"Avatar updated with {random_file}")
+        logger.info(f"Avatar updated with {random_file}")
     except Exception as e:
-        print(f"Failed to update avatar: {e}")
+        logger.error(f"Failed to update avatar: {e}")
 
 if __name__ == "__main__":
     #Grab token from the token.txt file
     load_dotenv()
     TOKEN = os.getenv('DISCORD_TOKEN')
 
-    bot.run(TOKEN) #Runs the bot with its token. Don't put code below this command.
+    try:
+        bot.run(TOKEN)
+    except Exception:
+        logger.critical('Bot terminated unexpectedly', exc_info=True)
+    #Runs the bot with its token. Don't put code below this command.

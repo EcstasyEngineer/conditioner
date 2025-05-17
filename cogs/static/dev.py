@@ -19,13 +19,12 @@ class Dev(commands.Cog):
     """
     def __init__(self, bot):
         self.bot = bot
-
+        self.logger = bot.logger
 
     @commands.Cog.listener()
     #This is the decorator for events (inside of cogs).
     async def on_ready(self):
-        print(f'Python {sysv.major}.{sysv.minor}.{sysv.micro} - Disord.py {discord.__version__}\n')
-        #Prints on the shell the version of Python and Discord.py installed in our computer.
+        self.logger.info(f'Python {sysv.major}.{sysv.minor}.{sysv.micro} - Discord.py {discord.__version__}')
 
     def check_cog(self, cog):
         """Returns the name of the cog in the correct format.
@@ -55,13 +54,16 @@ class Dev(commands.Cog):
             This command is hidden from the help menu.
             This command deletes its messages after 20 seconds.
         """
+        self.logger.info(f"{ctx.author} (ID: {ctx.author.id}) invoked load on {cog}")
         message = await ctx.send('Loading...')
         await ctx.message.delete()
         try:
             await self.bot.load_extension(self.check_cog(cog))
         except Exception as exc:
+            self.logger.error(f"Error loading {cog} by {ctx.author}", exc_info=True)
             await message.edit(content=f'An error has occurred: {exc}', delete_after=20)
         else:
+            self.logger.info(f"Loaded {cog} successfully by {ctx.author}")
             await message.edit(content=f'{self.check_cog(cog)} has been loaded.', delete_after=20)
 
     @commands.command(name='unload', hidden=True)
@@ -77,13 +79,16 @@ class Dev(commands.Cog):
             This command deletes its messages after 20 seconds.
         """
 		
+        self.logger.info(f"{ctx.author} (ID: {ctx.author.id}) invoked unload on {cog}")
         message = await ctx.send('Unloading...')
         await ctx.message.delete()
         try:
             await self.bot.unload_extension(self.check_cog(cog))
         except Exception as exc:
+            self.logger.error(f"Error unloading {cog} by {ctx.author}", exc_info=True)
             await message.edit(content=f'An error has occurred: {exc}', delete_after=20)
         else:
+            self.logger.info(f"Unloaded {cog} successfully by {ctx.author}")
             await message.edit(content=f'{self.check_cog(cog)} has been unloaded.', delete_after=20)
             
     @commands.command(name='reload', hidden=True)#This command is hidden from the help menu.
@@ -96,6 +101,7 @@ class Dev(commands.Cog):
             This command is hidden from the help menu.
             This command deletes its messages after 20 seconds."""
 
+        self.logger.info(f"{ctx.author} (ID: {ctx.author.id}) invoked reload on {cog or 'all dynamic'}")
         await ctx.message.delete()
         
         if cog is None:
@@ -113,12 +119,14 @@ class Dev(commands.Cog):
             try:
                 await self.bot.unload_extension(cog)
             except Exception as exc:
+                self.logger.error(f"Error unloading {cog} during reload by {ctx.author}", exc_info=True)
                 errors.append(f'Error unloading {cog}: {exc}')
         
         for cog in cogs_to_load:
             try:
                 await self.bot.load_extension(cog)
             except Exception as exc:
+                self.logger.error(f"Error loading {cog} during reload by {ctx.author}", exc_info=True)
                 errors.append(f'Error loading {cog}: {exc}')
         
         if errors:
@@ -130,26 +138,6 @@ class Dev(commands.Cog):
 
         await message.edit(content=response, delete_after=20)
         
-    @commands.command(name='setbotoperator', hidden=True)
-    @commands.has_permissions(administrator=True)
-    async def set_bot_operator(self, ctx, user: discord.Member):
-        """This command sets the specified user as a bot operator if the command invoker has administrator permissions.
-        
-        Args:
-            user (discord.Member): The user to set as a bot operator.
-        Note:
-            This command can be used only by server administrators.
-            This command is hidden from the help menu.
-        """
-        config = self.bot.get_config(ctx.guild.id)
-        config.add_bot_operator(user.id)
-        await ctx.send(f'{user.mention} has been set as a bot operator.')
-
-    @commands.Cog.listener()
-    async def on_ready(self):
-        """Python 3.x.x - Disord.py x.x.x"""
-        pass
-
     @commands.command(name='update', hidden=True)
     @commands.is_owner()
     async def update(self, ctx):
@@ -159,18 +147,22 @@ class Dev(commands.Cog):
             This command can be used only from the bot owner.
             This command is hidden from the help menu.
         """
+        self.logger.info(f"{ctx.author} invoked update command")
         message = await ctx.send('Updating code...')
         await ctx.message.delete()
         try:
             result = subprocess.run(['git', 'pull'], capture_output=True, text=True)
             if result.returncode == 0:
+                self.logger.info(f"Git pull success: {result.stdout.strip()}")
                 commit_info = subprocess.run(['git', 'log', '-1', '--format="%H %ct"'], capture_output=True, text=True)
                 commit_hash, commit_timestamp = commit_info.stdout.replace("\"","").strip().split()
                 human_time = datetime.fromtimestamp(int(commit_timestamp)).strftime("%Y-%m-%d %H:%M")
                 await message.edit(content=f'Code updated successfully:\nCommit Hash: {commit_hash}\nTimestamp: {human_time}', delete_after=20)
             else:
+                self.logger.error(f"Git pull error: {result.stderr.strip()}")
                 await message.edit(content=f'Error updating code:\n{result.stderr}', delete_after=20)
         except Exception as exc:
+            self.logger.error("Exception during update", exc_info=True)
             await message.edit(content=f'An error has occurred: {exc}', delete_after=20)
 
     @commands.command(name='list_cogs', hidden=True)
@@ -182,12 +174,14 @@ class Dev(commands.Cog):
             This command can be used only from the bot owner.
             This command is hidden from the help menu.
         """
+        self.logger.info(f"{ctx.author} invoked list_cogs")
         message = await ctx.send('Listing all cogs...')
         await ctx.message.delete()
         try:
             cogs = [cog[:-3] for cog in listdir('./cogs/dynamic') if cog.endswith('.py')]
             await message.edit(content=f'Available cogs: {", ".join(cogs)}', delete_after=20)
         except Exception as exc:
+            self.logger.error("Error listing cogs", exc_info=True)
             await message.edit(content=f'An error has occurred: {exc}', delete_after=20)
             
     @commands.command(name='shutdown', aliases=['kys'], hidden=True)
@@ -199,12 +193,14 @@ class Dev(commands.Cog):
             This command can be used only from the bot owner.
             This command is hidden from the help menu.
         """
+        self.logger.info(f"{ctx.author} invoked shutdown")
         message = await ctx.send('I am sudoku...')
         await ctx.message.delete()
         try:
             await self.bot.close()
             sys.exit()
         except Exception as exc:
+            self.logger.error("Error during shutdown", exc_info=True)
             await message.edit(content=f'An error has occurred: {exc}', delete_after=20)
             
     @commands.command(name='sync', hidden=True)
@@ -216,6 +212,7 @@ class Dev(commands.Cog):
             This command can be used only from the bot owner.
             This command is hidden from the help menu.
         """
+        self.logger.info(f"{ctx.author} invoked sync for guild {ctx.guild.id}")
         message = await ctx.send('Syncing commands...')
         await ctx.message.delete()
         try:
@@ -223,6 +220,7 @@ class Dev(commands.Cog):
             await self.bot.tree.sync(guild=ctx.guild)
             await message.edit(content='Commands synced successfully.', delete_after=20)
         except Exception as exc:
+            self.logger.error("Error syncing commands", exc_info=True)
             await message.edit(content=f'An error has occurred: {exc}', delete_after=20)
 
 async def setup(bot):
