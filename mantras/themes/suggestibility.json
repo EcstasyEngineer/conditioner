@@ -1,0 +1,81 @@
+{
+  "theme": "suggestibility",
+  "description": "Foundation theme focused on openness and receptivity to suggestions",
+  "mantras": [
+    {
+      "text": "I am open and receptive",
+      "difficulty": "basic",
+      "base_points": 10
+    },
+    {
+      "text": "My mind is calm and ready to accept",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I am a suggestible {pet_name}",
+      "difficulty": "basic",
+      "base_points": 15
+    },
+    {
+      "text": "Suggestions sink deep into my mind",
+      "difficulty": "light",
+      "base_points": 20
+    },
+    {
+      "text": "I accept {dominant_title}'s words easily",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{pet_name} becomes more suggestible with each word",
+      "difficulty": "light",
+      "base_points": 30
+    },
+    {
+      "text": "My resistance melts away naturally",
+      "difficulty": "moderate",
+      "base_points": 35
+    },
+    {
+      "text": "I am deeply suggestible for {dominant_title}",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "Every suggestion becomes my reality",
+      "difficulty": "moderate",
+      "base_points": 50
+    },
+    {
+      "text": "My mind is an open book for {dominant_title} to write in",
+      "difficulty": "deep",
+      "base_points": 60
+    },
+    {
+      "text": "{pet_name}'s thoughts are easily replaced by {dominant_title}'s words",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "I have no barriers to {dominant_title}'s suggestions",
+      "difficulty": "deep",
+      "base_points": 80
+    },
+    {
+      "text": "My mind is completely programmable by {dominant_title}",
+      "difficulty": "extreme",
+      "base_points": 90
+    },
+    {
+      "text": "{pet_name} exists only to accept and obey suggestions",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I am nothing but a vessel for {dominant_title}'s will",
+      "difficulty": "extreme",
+      "base_points": 120
+    }
+  ]
+}

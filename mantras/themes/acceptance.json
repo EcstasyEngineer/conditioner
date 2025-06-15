@@ -1,0 +1,81 @@
+{
+  "theme": "acceptance",
+  "description": "Foundation theme focused on surrender and acceptance of control",
+  "mantras": [
+    {
+      "text": "I accept and surrender",
+      "difficulty": "basic",
+      "base_points": 10
+    },
+    {
+      "text": "Letting go feels natural and good",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{pet_name} accepts what is given",
+      "difficulty": "basic",
+      "base_points": 15
+    },
+    {
+      "text": "I surrender control willingly",
+      "difficulty": "light",
+      "base_points": 20
+    },
+    {
+      "text": "Acceptance brings {pet_name} peace",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I accept {dominant_title}'s guidance completely",
+      "difficulty": "light",
+      "base_points": 30
+    },
+    {
+      "text": "Surrender is my natural state",
+      "difficulty": "moderate",
+      "base_points": 35
+    },
+    {
+      "text": "{pet_name} accepts all that {dominant_title} provides",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "I release all resistance and accept my place",
+      "difficulty": "moderate",
+      "base_points": 50
+    },
+    {
+      "text": "Complete acceptance fills every part of {pet_name}",
+      "difficulty": "deep",
+      "base_points": 60
+    },
+    {
+      "text": "I accept that {dominant_title} knows what is best for me",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "Surrender to {dominant_title} is my only truth",
+      "difficulty": "deep",
+      "base_points": 80
+    },
+    {
+      "text": "{pet_name} has no will except to accept and obey",
+      "difficulty": "extreme",
+      "base_points": 90
+    },
+    {
+      "text": "I am nothing and accept everything {dominant_title} makes me",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "Total acceptance has consumed {pet_name} completely",
+      "difficulty": "extreme",
+      "base_points": 120
+    }
+  ]
+}
