@@ -184,17 +184,18 @@ class Dev(commands.Cog):
             self.logger.error("Error listing cogs", exc_info=True)
             await message.edit(content=f'An error has occurred: {exc}', delete_after=20)
             
-    @commands.command(name='shutdown', aliases=['kys'], hidden=True)
+    @commands.command(name='shutdown', aliases=['restart'], hidden=True)
     @commands.is_owner()
     async def shutdown(self, ctx):
-        """This command shuts down the bot.
+        """This command shuts down the bot (expects systemctl auto-restart).
         
         Note:
             This command can be used only from the bot owner.
             This command is hidden from the help menu.
+            Use 'restart' alias for cleaner command.
         """
         self.logger.info(f"{ctx.author} invoked shutdown")
-        message = await ctx.send('I am sudoku...')
+        message = await ctx.send('Restarting...')
         await ctx.message.delete()
         try:
             await self.bot.close()
