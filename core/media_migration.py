@@ -91,6 +91,34 @@ def generate_temp_hash(file_path):
     hasher.update(str(time.time()).encode())
     return f"temp_{hasher.hexdigest()[:8]}"
 
+def normalize_padding_in_tier(tier_name, tier_dir):
+    """Convert any unpadded numbered files to 3-digit zero-padded format."""
+    if not tier_dir.exists():
+        return 0
+    
+    normalized_count = 0
+    
+    for file_path in tier_dir.iterdir():
+        if (file_path.is_file() and 
+            file_path.suffix.lower() in VALID_EXTENSIONS and
+            file_path.name.lower() not in SAMPLE_FILES and
+            file_path.stem.isdigit()):
+            
+            number = int(file_path.stem)
+            # Check if it's already 3-digit padded
+            if file_path.stem != f"{number:03d}":
+                new_name = f"{number:03d}{file_path.suffix}"
+                new_path = tier_dir / new_name
+                
+                if not new_path.exists():
+                    logger.info(f"Normalizing padding: {file_path.name} -> {new_name}")
+                    file_path.rename(new_path)
+                    normalized_count += 1
+                else:
+                    logger.warning(f"Cannot normalize {file_path.name}: {new_name} already exists")
+    
+    return normalized_count
+
 def resolve_duplicates_in_tier(tier_name, tier_dir):
     """Handle duplicate numbered files - keep newest, rename older to temp hash."""
     if not tier_dir.exists():
@@ -217,18 +245,26 @@ def run_migration():
     
     total_renamed = 0
     total_duplicates_resolved = 0
+    total_normalized = 0
     
     # Process each tier directory
     for tier_name, tier_dir in TIER_DIRS.items():
         tier_dir.mkdir(exist_ok=True)  # Ensure directory exists
         
-        # Step 1: Resolve duplicates (keep newest, temp rename older)
+        # Step 1: Normalize padding (convert 10.gif -> 010.gif)
+        normalized_count = normalize_padding_in_tier(tier_name, tier_dir)
+        total_normalized += normalized_count
+        
+        # Step 2: Resolve duplicates (keep newest, temp rename older)
         duplicates_count = resolve_duplicates_in_tier(tier_name, tier_dir)
         total_duplicates_resolved += duplicates_count
         
-        # Step 2: Sequential numbering for new files and gap-filling for temp files
+        # Step 3: Sequential numbering for new files and gap-filling for temp files
         renamed_count = rename_new_files_in_tier(tier_name, tier_dir)
         total_renamed += renamed_count
+    
+    if total_normalized > 0:
+        logger.info(f"Normalized padding on {total_normalized} files")
     
     if total_duplicates_resolved > 0:
         logger.info(f"Resolved {total_duplicates_resolved} duplicate files")
