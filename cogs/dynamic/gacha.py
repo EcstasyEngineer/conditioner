@@ -3,6 +3,7 @@ from discord.ext import commands
 import random
 import os
 import json
+import re
 from pathlib import Path
 
 # Configuration
@@ -134,6 +135,62 @@ class GachaRewards(commands.Cog):
         
         return selected_file, file_number
     
+    def has_auto_claim(self, user):
+        """Check if a user has auto-claim enabled via user config."""
+        return self.bot.config.get_user(user, 'auto_claim_gacha', False)
+    
+    async def send_reward(self, user, tier, channel, is_auto_claim=False):
+        """Send reward to user, either instantly or after manual claim."""
+        result = self.get_random_media_file(tier)
+        
+        if result:
+            media_file, file_number = result
+            
+            # Get total count for this tier
+            total_count = self.file_counts.get(tier, 0)
+            
+            # Create "X out of Y" message part for DM
+            count_info = ""
+            if file_number and total_count > 0:
+                count_info = f" ({file_number}/{total_count})"
+            
+            # Determine deletion timing based on tier
+            delete_after = 30.0 if tier == "common" else (7200.0 if tier == "uncommon" else None)
+            
+            # Create mysterious/alluring public messages based on tier and claim type
+            if is_auto_claim:
+                messages = {
+                    "common": f"*{user.mention} has been... instantly rewarded*",
+                    "uncommon": f"✨ *Something special manifests for {user.mention}* ✨", 
+                    "rare": f"🌙 *The depths instantly respond to {user.mention}* 🌙",
+                    "epic": f"🌟 *{user.mention} has been blessed with something... extraordinary* 🌟"
+                }
+            else:
+                messages = {
+                    "common": f"*{user.mention} has been... rewarded*",
+                    "uncommon": f"✨ *Something special awaits {user.mention}* ✨", 
+                    "rare": f"🌙 *The depths call to {user.mention}* 🌙",
+                    "epic": f"🌟 *{user.mention} has earned something... extraordinary* 🌟"
+                }
+            
+            await channel.send(
+                messages[tier],
+                delete_after=delete_after,
+            )
+            
+            # Send the media file or link content as DM with collection info
+            if media_file.suffix.lower() == '.txt':
+                # Read and send link content
+                try:
+                    with open(media_file, 'r') as f:
+                        link_content = f.read().strip()
+                    await user.send(f"Your {tier} reward{count_info}:\n{link_content}")
+                except Exception as e:
+                    await user.send(f"Error reading {tier} reward: {e}")
+            else:
+                # Send media file with collection info
+                await user.send(f"Your {tier} reward{count_info}:", file=discord.File(media_file))
+    
     @commands.Cog.listener()
     async def on_message(self, message):
         # Ignore bot messages and messages not in "counting" channel
@@ -150,16 +207,29 @@ class GachaRewards(commands.Cog):
         # Do the gacha roll for rewards (pass number for special guarantees)
         reward_tier = self.get_reward_tier(count_number)
         
+        # Check for auto-claim trigger phrase
+        trigger_pattern = r'\bi\s+am\s+an?\s+addicted\s+count[-\s]?slut\b'
+        if re.search(trigger_pattern, message.content, re.IGNORECASE):
+            self.bot.config.set_user(message.author, 'auto_claim_gacha', True)
+            await message.add_reaction('💫')  # Subtle confirmation
+            # Continue processing for potential reward
+        
         if reward_tier:
-            # Add appropriate reaction based on tier
-            emoji = discord.PartialEmoji.from_str(TIER_EMOJIS[reward_tier])
-            await message.add_reaction(emoji)
-            
-            # Store message in listeners
-            self.listeners[message.id] = {
-                "user_id": message.author.id,
-                "tier": reward_tier
-            }
+            # Check if user has auto-claim enabled
+            if self.has_auto_claim(message.author):
+                # Send instant reward without emoji interaction
+                await self.send_reward(message.author, reward_tier, message.channel, is_auto_claim=True)
+            else:
+                # Normal emoji-based interaction
+                # Add appropriate reaction based on tier
+                emoji = discord.PartialEmoji.from_str(TIER_EMOJIS[reward_tier])
+                await message.add_reaction(emoji)
+                
+                # Store message in listeners
+                self.listeners[message.id] = {
+                    "user_id": message.author.id,
+                    "tier": reward_tier
+                }
     
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload):
@@ -187,58 +257,10 @@ class GachaRewards(commands.Cog):
         # Check if the user who reacted is the one who earned the reward
         if payload.user_id == reward_info["user_id"]:
             # User claimed their own reward
-            result = self.get_random_media_file(reward_info["tier"])
+            user = self.bot.get_user(payload.user_id)
+            if user:
+                await self.send_reward(user, reward_info["tier"], channel, is_auto_claim=False)
             
-            if result:
-                media_file, file_number = result
-                tier = reward_info["tier"]
-                
-                # Get total count for this tier
-                total_count = self.file_counts.get(tier, 0)
-                
-                # Create "X out of Y" message part for DM
-                count_info = ""
-                if file_number and total_count > 0:
-                    count_info = f" ({file_number}/{total_count})"
-                
-                # Determine message and deletion timing based on tier
-                delete_after = 30.0 if tier == "common" else (7200.0 if tier == "uncommon" else None)
-                
-                # Get user for mention in public message
-                user = self.bot.get_user(payload.user_id)
-                user_mention = user.mention if user else "Someone"
-                
-                # Create mysterious/alluring public messages based on tier
-                messages = {
-                    "common": f"*{user_mention} has been... rewarded*",
-                    "uncommon": f"✨ *Something special awaits {user_mention}* ✨", 
-                    "rare": f"🌙 *The depths call to {user_mention}* 🌙",
-                    "epic": f"🌟 *{user_mention} has earned something... extraordinary* 🌟"
-                }
-                
-                await channel.send(
-                    messages[tier],
-                    delete_after=delete_after,
-                )
-                
-                # Send the media file or link content as DM with collection info
-                if user:
-                    if media_file.suffix.lower() == '.txt':
-                        # Read and send link content
-                        try:
-                            with open(media_file, 'r') as f:
-                                link_content = f.read().strip()
-                            await user.send(f"Your {tier} reward{count_info}:\n{link_content}")
-                        except Exception as e:
-                            await user.send(f"Error reading {tier} reward: {e}")
-                    else:
-                        # Send media file with collection info
-                        await user.send(f"Your {tier} reward{count_info}:", file=discord.File(media_file))
-                
-            # Remove emoji reactions
-            # message = await channel.fetch_message(message_id)
-            # await message.clear_reactions()
-                
             # Remove this message from listeners
             del self.listeners[message_id]
         else:
@@ -253,6 +275,47 @@ class GachaRewards(commands.Cog):
             except discord.NotFound:
                 # Message was deleted
                 pass
+    
+    @commands.command(name='disable_auto_gacha', aliases=['stop_auto_gacha', 'gacha_normal'])
+    async def disable_auto_gacha(self, ctx):
+        """Disable auto-claim for gacha rewards (return to normal emoji claiming)."""
+        self.bot.config.set_user(ctx.author, 'auto_claim_gacha', False)
+        await ctx.send("Auto-claim disabled. You'll need to react to claim rewards again.")
+    
+    @commands.command(name='gacha_status')
+    async def gacha_status(self, ctx):
+        """Check your current gacha auto-claim status."""
+        is_auto = self.bot.config.get_user(ctx.author, 'auto_claim_gacha', False)
+        if is_auto:
+            await ctx.send("🌀 Auto-claim is **enabled** - you receive rewards instantly!")
+        else:
+            await ctx.send("⭐ Auto-claim is **disabled** - react to emojis to claim rewards.")
+    
+    @commands.command(name='gacha_help')
+    async def gacha_help(self, ctx):
+        """Show help for gacha system including secret trigger."""
+        help_text = """
+**🎰 Gacha Reward System 🎰**
+
+**How it works:**
+• 20% chance of reward when counting
+• React to the spiral emoji to claim your reward
+• Special guarantees for numbers ending in 69 or 420
+
+**Reward Tiers:**
+• <:whitespiral:1358827227243872486> Common (30s auto-delete)
+• <:bluespiral:1358827225847435355> Uncommon (2h auto-delete)  
+• <:greenspiral:1358827224349802609> Rare (permanent)
+• <:purplespiral:1358827222437200048> Epic (permanent)
+
+**Auto-Claim Mode:**
+• Type "I am an addicted countslut" to enable instant rewards
+• Use `!disable_auto_gacha` to return to normal mode
+• Use `!gacha_status` to check your current mode
+
+*In auto-claim mode, Discord notifications become your conditioning trigger* 💫
+        """
+        await ctx.send(help_text)
 
 async def setup(bot):
     await bot.add_cog(GachaRewards(bot))
