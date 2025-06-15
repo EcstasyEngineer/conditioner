@@ -2,15 +2,24 @@ import discord
 from discord.ext import commands
 import random
 import os
+import json
 from pathlib import Path
 
 # Configuration
-TIER_PROBABILITIES = {
-    "common": 1/10,
-    "uncommon": 1/20,
-    "rare": 1/40,
-    "epic": 1/80,
+# Overall chance of getting any reward
+OVERALL_REWARD_CHANCE = 1/5  # 20% chance of any reward
+
+# Relative weights for tier distribution when a reward is earned
+# Higher numbers = more common within rewards
+TIER_WEIGHTS = {
+    "common": 8,     # Most common tier
+    "uncommon": 4,   # Half as common as common
+    "rare": 2,       # Half as common as uncommon  
+    "epic": 1,       # Rarest tier
 }
+
+# Calculate total weight for normalization
+TOTAL_WEIGHT = sum(TIER_WEIGHTS.values())
 
 TIER_EMOJIS = {
     "common": "<:whitespiral:1358827227243872486>",
@@ -33,27 +42,79 @@ class GachaRewards(commands.Cog):
         self.bot = bot
         # In-memory tracking of active reward listeners
         self.listeners = {}  # {message_id: {"user_id": user_id, "tier": tier_name}}
+        # Load file counts for "X out of Y" display
+        self.file_counts = self.load_file_counts()
         
-    def get_reward_tier(self):
-        """Stateless probability check to determine if a reward should be given and which tier.
-        Rarer tiers are checked first to ensure they take priority."""
+    def load_file_counts(self):
+        """Load file counts from JSON for 'X out of Y' display."""
+        try:
+            with open('media_file_counts.json', 'r') as f:
+                return json.load(f)
+        except (FileNotFoundError, json.JSONDecodeError):
+            # Fallback: count files directly
+            counts = {}
+            for tier in TIER_MEDIA_PATHS:
+                path = Path(TIER_MEDIA_PATHS[tier])
+                if path.exists():
+                    valid_extensions = ('.png', '.jpg', '.jpeg', '.gif', '.mp3', '.mp4', '.txt')
+                    files = [f for f in path.glob('*') if f.suffix.lower() in valid_extensions and f.name.lower() != 'sample.gif']
+                    counts[tier] = len(files)
+                else:
+                    counts[tier] = 0
+            return counts
+
+    def calculate_tier_probabilities(self, exclude_common=False):
+        """Calculate normalized probabilities for each tier."""
+        weights = TIER_WEIGHTS.copy()
+        if exclude_common:
+            weights.pop('common', None)
+        
+        total = sum(weights.values())
+        if total == 0:
+            return {}
+        
+        return {tier: weight / total for tier, weight in weights.items()}
+    
+    def select_tier_by_weight(self, exclude_common=False):
+        """Select a tier based on relative weights."""
+        probabilities = self.calculate_tier_probabilities(exclude_common)
+        if not probabilities:
+            return None
+            
         roll = random.random()
-        cumulative_prob = 0
+        cumulative = 0
         
-        # Process tiers from rarest to most common
-        for tier in ["epic", "rare", "uncommon", "common"]:
-            cumulative_prob += TIER_PROBABILITIES[tier]
-            if roll < cumulative_prob:
+        for tier, prob in probabilities.items():
+            cumulative += prob
+            if roll < cumulative:
                 return tier
         
-        return None  # No reward
+        # Fallback to last tier
+        return list(probabilities.keys())[-1]
+
+    def get_reward_tier(self, count_number=None):
+        """Two-stage probability check: first check if any reward, then which tier.
+        Special guarantees for 69 and 420 endings."""
+        
+        # Check for special number guarantees (69, 420 endings)
+        if count_number is not None:
+            if str(count_number).endswith('69') or str(count_number).endswith('420'):
+                # 100% chance of reward, 1/3 epic, 2/3 rare
+                return "epic" if random.random() < 1/3 else "rare"
+        
+        # Stage 1: Check if we get any reward at all
+        if random.random() >= OVERALL_REWARD_CHANCE:
+            return None  # No reward
+        
+        # Stage 2: Select which tier based on relative weights
+        return self.select_tier_by_weight()
 
     def get_random_media_file(self, tier):
         """Select a random media file from the tier's directory."""
         path = Path(TIER_MEDIA_PATHS[tier])
         
-        # Get all image/gif files in the directory
-        valid_extensions = ('.png', '.jpg', '.jpeg', '.gif', ".mp3", ".mp4")
+        # Get all media files including .txt files
+        valid_extensions = ('.png', '.jpg', '.jpeg', '.gif', '.mp3', '.mp4', '.txt')
         # Get all valid media files
         media_files = [f for f in path.glob('*') if f.suffix.lower() in valid_extensions]
         
@@ -64,7 +125,14 @@ class GachaRewards(commands.Cog):
         if not media_files:
             return None
             
-        return random.choice(media_files)
+        selected_file = random.choice(media_files)
+        
+        # For numbered files, extract the number for "X out of Y" display
+        file_number = None
+        if selected_file.stem.isdigit():
+            file_number = int(selected_file.stem)
+        
+        return selected_file, file_number
     
     @commands.Cog.listener()
     async def on_message(self, message):
@@ -74,13 +142,13 @@ class GachaRewards(commands.Cog):
         
         # Try to parse the message as a number
         try:
-            int(message.content.strip())
+            count_number = int(message.content.strip())
         except ValueError:
             return
             
         # This is only processed for valid count messages that weren't deleted
-        # Do the gacha roll for rewards
-        reward_tier = self.get_reward_tier()
+        # Do the gacha roll for rewards (pass number for special guarantees)
+        reward_tier = self.get_reward_tier(count_number)
         
         if reward_tier:
             # Add appropriate reaction based on tier
@@ -119,29 +187,53 @@ class GachaRewards(commands.Cog):
         # Check if the user who reacted is the one who earned the reward
         if payload.user_id == reward_info["user_id"]:
             # User claimed their own reward
-            media_file = self.get_random_media_file(reward_info["tier"])
+            result = self.get_random_media_file(reward_info["tier"])
             
-            if media_file:
-                # Determine message and deletion timing based on tier
+            if result:
+                media_file, file_number = result
                 tier = reward_info["tier"]
+                
+                # Get total count for this tier
+                total_count = self.file_counts.get(tier, 0)
+                
+                # Create "X out of Y" message part for DM
+                count_info = ""
+                if file_number and total_count > 0:
+                    count_info = f" ({file_number}/{total_count})"
+                
+                # Determine message and deletion timing based on tier
                 delete_after = 30.0 if tier == "common" else (7200.0 if tier == "uncommon" else None)
                 
-                # Create increasingly festive messages based on tier
+                # Get user for mention in public message
+                user = self.bot.get_user(payload.user_id)
+                user_mention = user.mention if user else "Someone"
+                
+                # Create mysterious/alluring public messages based on tier
                 messages = {
-                    "common": f"You claimed a common reward!",
-                    "uncommon": f"✨ You claimed an uncommon reward! ✨",
-                    "rare": f"🎉✨ You claimed a RARE reward! ✨🎉",
-                    "epic": f"🌟🎊 You claimed an EPIC reward!!! 🎊🌟"
+                    "common": f"*{user_mention} has been... rewarded*",
+                    "uncommon": f"✨ *Something special awaits {user_mention}* ✨", 
+                    "rare": f"🌙 *The depths call to {user_mention}* 🌙",
+                    "epic": f"🌟 *{user_mention} has earned something... extraordinary* 🌟"
                 }
                 
                 await channel.send(
                     messages[tier],
                     delete_after=delete_after,
                 )
-                # Send the media file as dm
-                user = self.bot.get_user(payload.user_id)
+                
+                # Send the media file or link content as DM with collection info
                 if user:
-                    await user.send(file=discord.File(media_file))
+                    if media_file.suffix.lower() == '.txt':
+                        # Read and send link content
+                        try:
+                            with open(media_file, 'r') as f:
+                                link_content = f.read().strip()
+                            await user.send(f"Your {tier} reward{count_info}:\n{link_content}")
+                        except Exception as e:
+                            await user.send(f"Error reading {tier} reward: {e}")
+                    else:
+                        # Send media file with collection info
+                        await user.send(f"Your {tier} reward{count_info}:", file=discord.File(media_file))
                 
             # Remove emoji reactions
             # message = await channel.fetch_message(message_id)

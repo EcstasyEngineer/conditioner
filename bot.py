@@ -26,6 +26,7 @@ from os import listdir
 from dotenv import load_dotenv
 import os
 from core.config import Config
+from core.media_migration import run_migration
 import random
 from datetime import datetime, timedelta
 # Logging setup
@@ -99,6 +100,14 @@ async def on_ready():
     Documentation:
     https://discordpy.readthedocs.io/en/latest/api.html#discord.on_ready
     """
+
+    # Run media file migration before loading cogs
+    try:
+        renamed_count, file_counts = run_migration()
+        if renamed_count > 0:
+            logger.info(f'Media migration: renamed {renamed_count} files')
+    except Exception as e:
+        logger.error(f'Media migration failed: {e}', exc_info=True)
 
     await load_cogs()
     
