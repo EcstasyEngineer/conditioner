@@ -103,7 +103,7 @@ async def on_ready():
 
     # Run media file migration before loading cogs
     try:
-        renamed_count, file_counts = run_migration()
+        renamed_count = run_migration()
         if renamed_count > 0:
             logger.info(f'Media migration: renamed {renamed_count} files')
     except Exception as e:
