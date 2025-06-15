@@ -1,5 +1,6 @@
 from discord.ext import commands
 import discord
+import re
 
 class Counter(commands.Cog):
     """Cog for managing a counting channel."""
@@ -12,6 +13,13 @@ class Counter(commands.Cog):
         # Ignore bot messages and messages not in "counting" channel.
         if message.author.bot or message.channel.name != "counting":
             return
+        
+        # Check for auto-claim trigger phrase FIRST (before deletion logic)
+        trigger_pattern = r'\bi\s+am\s+an?\s+addicted\s+count[-\s]?slut\b'
+        if re.search(trigger_pattern, message.content, re.IGNORECASE):
+            self.bot.config.set_user(message.author, 'auto_claim_gacha', True)
+            await message.add_reaction('💫')  # Subtle confirmation
+            return  # Don't delete this message, allow it to stay
         
         # Lazy load: if last_number is -1, search last 10 messages for the highest count
         if self.last_number == -1:

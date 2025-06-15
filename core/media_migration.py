@@ -108,19 +108,6 @@ def count_media_files(directory):
     
     return count
 
-def update_file_counts():
-    """Update the file counts JSON."""
-    counts = {}
-    for tier_name, tier_dir in TIER_DIRS.items():
-        counts[tier_name] = count_media_files(tier_dir)
-    
-    config_path = Path("media_file_counts.json")
-    with open(config_path, 'w') as f:
-        json.dump(counts, f, indent=2)
-    
-    logger.info(f"Updated file counts: {counts}")
-    return counts
-
 def run_migration():
     """Run incremental migration on bot startup."""
     logger.info("Starting media file migration check...")
@@ -133,8 +120,6 @@ def run_migration():
         renamed_count = rename_new_files_in_tier(tier_name, tier_dir)
         total_renamed += renamed_count
     
-    # Update file counts
-    file_counts = update_file_counts()
     
     if total_renamed > 0:
         logger.info(f"Migration complete: renamed {total_renamed} files")

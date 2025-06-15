@@ -207,13 +207,6 @@ class GachaRewards(commands.Cog):
         # Do the gacha roll for rewards (pass number for special guarantees)
         reward_tier = self.get_reward_tier(count_number)
         
-        # Check for auto-claim trigger phrase
-        trigger_pattern = r'\bi\s+am\s+an?\s+addicted\s+count[-\s]?slut\b'
-        if re.search(trigger_pattern, message.content, re.IGNORECASE):
-            self.bot.config.set_user(message.author, 'auto_claim_gacha', True)
-            await message.add_reaction('💫')  # Subtle confirmation
-            # Continue processing for potential reward
-        
         if reward_tier:
             # Check if user has auto-claim enabled
             if self.has_auto_claim(message.author):
