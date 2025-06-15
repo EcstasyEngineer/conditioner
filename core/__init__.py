@@ -1,0 +1,1 @@
+# Core module for ai-conditioner-discord bot

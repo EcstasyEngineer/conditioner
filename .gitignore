@@ -11,4 +11,5 @@ configs/*.json
 !/media/rare/sample.*
 /media/epic/*
 !/media/epic/sample.*
-/logs/*
+/logs/
+.claude/*

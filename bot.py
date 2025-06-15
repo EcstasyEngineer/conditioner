@@ -25,7 +25,7 @@ import discord
 from os import listdir
 from dotenv import load_dotenv
 import os
-from config import Config
+from core.config import Config
 import random
 from datetime import datetime, timedelta
 # Logging setup
@@ -199,4 +199,7 @@ if __name__ == "__main__":
         bot.run(TOKEN)
     except Exception:
         logger.critical('Bot terminated unexpectedly', exc_info=True)
+    finally:
+        # Clean shutdown - flush all pending config writes
+        bot.config.shutdown()
     #Runs the bot with its token. Don't put code below this command.
