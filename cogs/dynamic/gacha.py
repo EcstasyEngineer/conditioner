@@ -114,7 +114,7 @@ class GachaRewards(commands.Cog):
         path = Path(TIER_MEDIA_PATHS[tier])
         
         # Get all media files including .txt files
-        valid_extensions = ('.png', '.jpg', '.jpeg', '.gif', '.mp3', '.mp4', '.txt')
+        valid_extensions = ('.png', '.jpg', '.jpeg', '.gif', '.mp3', '.mp4', '.mov', '.webm', '.txt')
         # Get all valid media files
         media_files = [f for f in path.glob('*') if f.suffix.lower() in valid_extensions]
         

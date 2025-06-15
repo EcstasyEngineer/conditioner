@@ -22,8 +22,8 @@ TIER_DIRS = {
     "epic": MEDIA_BASE / "epic"
 }
 
-VALID_EXTENSIONS = {'.png', '.jpg', '.jpeg', '.gif', '.mp3', '.mp4', '.txt'}
-SAMPLE_FILES = {'sample.gif', 'sample.png', 'sample.jpg', 'sample.jpeg', 'sample.mp3', 'sample.mp4', 'sample.txt'}
+VALID_EXTENSIONS = {'.png', '.jpg', '.jpeg', '.gif', '.mp3', '.mp4', '.mov', '.webm', '.txt'}
+SAMPLE_FILES = {'sample.gif', 'sample.png', 'sample.jpg', 'sample.jpeg', 'sample.mp3', 'sample.mp4', 'sample.mov', 'sample.webm', 'sample.txt'}
 
 def get_unnumbered_files(directory):
     """Get files that need renaming (not numbered and not samples)."""
