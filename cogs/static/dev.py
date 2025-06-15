@@ -165,7 +165,7 @@ class Dev(commands.Cog):
             self.logger.error("Exception during update", exc_info=True)
             await message.edit(content=f'An error has occurred: {exc}', delete_after=20)
 
-    @commands.command(name='list_cogs', hidden=True)
+    @commands.command(name='list_cogs', aliases=['listcogs'], hidden=True)
     @commands.is_owner()
     async def list_cogs(self, ctx):
         """This command lists all the cogs in the `cogs/dynamic` directory.

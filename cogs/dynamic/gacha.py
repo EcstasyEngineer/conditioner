@@ -256,13 +256,13 @@ class GachaRewards(commands.Cog):
                 # Message was deleted
                 pass
     
-    @commands.command(name='disable_auto_gacha', aliases=['stop_auto_gacha', 'gacha_normal'])
+    @commands.command(name='disable_auto_gacha', aliases=['disableautogacha', 'stop_auto_gacha', 'gacha_normal'])
     async def disable_auto_gacha(self, ctx):
         """Disable auto-claim for gacha rewards (return to normal emoji claiming)."""
         self.bot.config.set_user(ctx.author, 'auto_claim_gacha', False)
         await ctx.send("Auto-claim disabled. You'll need to react to claim rewards again.")
     
-    @commands.command(name='gacha_status')
+    @commands.command(name='gacha_status', aliases=['gachastatus'])
     async def gacha_status(self, ctx):
         """Check your current gacha auto-claim status."""
         is_auto = self.bot.config.get_user(ctx.author, 'auto_claim_gacha', False)
@@ -271,7 +271,7 @@ class GachaRewards(commands.Cog):
         else:
             await ctx.send("⭐ Auto-claim is **disabled** - react to emojis to claim rewards.")
     
-    @commands.command(name='gacha_help')
+    @commands.command(name='gacha_help', aliases=['gachahelp'])
     async def gacha_help(self, ctx):
         """Show help for gacha system including secret trigger."""
         help_text = """

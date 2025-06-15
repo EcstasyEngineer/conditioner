@@ -120,7 +120,7 @@ class Points(commands.Cog):
     # ADMIN COMMANDS
     # ===================
     
-    @commands.command(name='add_points')
+    @commands.command(name='add_points', aliases=['addpoints'])
     @commands.has_permissions(administrator=True)
     async def admin_add_points(self, ctx, member: discord.Member, amount: int):
         """Add points to a user (Admin only). Amount can be negative to subtract."""
@@ -131,7 +131,7 @@ class Points(commands.Cog):
         else:
             await ctx.send(f"✅ Removed {abs(amount):,} points from {member.mention}. New balance: {new_total:,}")
     
-    @commands.command(name='set_points')
+    @commands.command(name='set_points', aliases=['setpoints'])
     @commands.has_permissions(administrator=True)
     async def admin_set_points(self, ctx, member: discord.Member, amount: int):
         """Set a user's points to a specific amount (Admin only)."""
@@ -143,141 +143,5 @@ class Points(commands.Cog):
         self.bot.config.set_user(member, 'points', amount)
         
         await ctx.send(f"✅ Set {member.mention}'s points to {amount:,} (was {old_balance:,})")
-    
-    # ===================
-    # TEMPORARY BACKFILL COMMANDS
-    # ===================
-    
-    @commands.command(name='backfill_counting_history')
-    @commands.has_permissions(administrator=True)
-    async def backfill_counting_history(self, ctx, limit: int = 10000):
-        """Analyze counting channel history and automatically backfill points (Admin only, one-time use)."""
-        counting_channel = discord.utils.get(ctx.guild.channels, name="counting")
-        if not counting_channel:
-            await ctx.send("❌ No #counting channel found!")
-            return
-        
-        await ctx.send(f"🔍 Analyzing up to {limit:,} messages in #counting and applying backfill...")
-        
-        user_counts = {}
-        total_messages = 0
-        valid_counts = 0
-        
-        # Analyze message history
-        async for message in counting_channel.history(limit=limit):
-            if message.author.bot:
-                continue
-                
-            total_messages += 1
-            
-            # Try to parse as number
-            try:
-                num = int(message.content.strip())
-                if message.author.id not in user_counts:
-                    user_counts[message.author.id] = {
-                        'user': message.author,
-                        'valid_counts': 0,
-                        'estimated_rewards': 0
-                    }
-                
-                user_counts[message.author.id]['valid_counts'] += 1
-                valid_counts += 1
-                
-            except ValueError:
-                # Not a valid number
-                continue
-        
-        if not user_counts:
-            await ctx.send("❌ No valid counting messages found!")
-            return
-        
-        # Calculate estimated rewards (20% chance, weighted by tier)
-        REWARD_CHANCE = 0.20
-        tier_points = {"common": 2, "uncommon": 3, "rare": 4, "epic": 5}
-        tier_weights = {"common": 8, "uncommon": 4, "rare": 2, "epic": 1}
-        total_weight = sum(tier_weights.values())  # 15
-        
-        # Calculate weighted average reward points
-        avg_reward_points = sum(
-            (tier_weights[tier] / total_weight) * tier_points[tier] 
-            for tier in tier_points
-        )  # ≈ 2.67 points per reward
-        
-        # Apply backfill points
-        backfill_results = []
-        total_points_awarded = 0
-        
-        for user_id, data in user_counts.items():
-            user = data['user']
-            counts = data['valid_counts']
-            estimated_reward_points = counts * REWARD_CHANCE * avg_reward_points
-            total_backfill = counts + round(estimated_reward_points)
-            
-            # Apply the points
-            new_balance = self.add_points(user, total_backfill)
-            total_points_awarded += total_backfill
-            
-            backfill_results.append({
-                'user': user,
-                'counts': counts,
-                'rewards': round(estimated_reward_points),
-                'total': total_backfill,
-                'new_balance': new_balance
-            })
-        
-        # Sort by total points awarded
-        backfill_results.sort(key=lambda x: x['total'], reverse=True)
-        
-        # Build result message
-        result_lines = [
-            f"✅ **Counting History Backfill Complete!**",
-            f"Analyzed {total_messages:,} messages, found {valid_counts:,} valid counts",
-            f"Total points awarded: {total_points_awarded:,}",
-            "",
-            "**Points Awarded:**"
-        ]
-        
-        mentions = []
-        for i, data in enumerate(backfill_results, 1):
-            user = data['user']
-            counts = data['counts']
-            rewards = data['rewards']
-            total = data['total']
-            new_balance = data['new_balance']
-            
-            result_lines.append(
-                f"{i}. {user.mention}: {counts:,} + {rewards:,} = **{total:,}** pts (Balance: {new_balance:,})"
-            )
-            mentions.append(user.mention)
-        
-        # Split into multiple messages if too long
-        current_message = ""
-        for line in result_lines:
-            if len(current_message + line + "\n") > 1900:
-                await ctx.send(current_message)
-                current_message = line + "\n"
-            else:
-                current_message += line + "\n"
-        
-        if current_message:
-            await ctx.send(current_message)
-        
-        # Ping everyone involved
-        if mentions:
-            chunks = []
-            current_chunk = ""
-            for mention in mentions:
-                if len(current_chunk + mention + " ") > 1900:
-                    chunks.append(current_chunk.strip())
-                    current_chunk = mention + " "
-                else:
-                    current_chunk += mention + " "
-            
-            if current_chunk:
-                chunks.append(current_chunk.strip())
-            
-            for chunk in chunks:
-                await ctx.send(f"🎉 **Backfill complete for:** {chunk}")
-
 async def setup(bot):
     await bot.add_cog(Points(bot))
