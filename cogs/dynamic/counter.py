@@ -46,6 +46,11 @@ class Counter(commands.Cog):
             await message.delete()
         else:
             self.last_number = num
+            
+            # Award 1 point for valid counting
+            points_cog = self.bot.get_cog("Points")
+            if points_cog:
+                points_cog.add_points(message.author, 1)
 
 async def setup(bot):
     await bot.add_cog(Counter(bot))

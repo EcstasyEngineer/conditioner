@@ -154,6 +154,18 @@ class GachaRewards(commands.Cog):
             if file_number and total_count > 0:
                 count_info = f" ({file_number}/{total_count})"
             
+            # Award bonus points for gacha rewards
+            tier_points = {
+                "common": 2,
+                "uncommon": 3, 
+                "rare": 4,
+                "epic": 5
+            }
+            
+            points_cog = self.bot.get_cog("Points")
+            if points_cog:
+                points_cog.add_points(user, tier_points.get(tier, 2))
+            
             # Send the media file or link content as DM with collection info
             if media_file.suffix.lower() == '.txt':
                 # Read and send link content
@@ -267,19 +279,24 @@ class GachaRewards(commands.Cog):
 
 **How it works:**
 • 20% chance of reward when counting
+• Earn points: 1 per count + 2-5 bonus for gacha rewards
 • React to the spiral emoji to claim your reward
 • Special guarantees for numbers ending in 69 or 420
 
-**Reward Tiers:**
-• <:whitespiral:1358827227243872486> Common (30s auto-delete)
-• <:bluespiral:1358827225847435355> Uncommon (2h auto-delete)  
-• <:greenspiral:1358827224349802609> Rare (permanent)
-• <:purplespiral:1358827222437200048> Epic (permanent)
+**Reward Tiers & Points:**
+• <:whitespiral:1358827227243872486> Common (30s auto-delete) - 2 bonus points
+• <:bluespiral:1358827225847435355> Uncommon (2h auto-delete) - 3 bonus points
+• <:greenspiral:1358827224349802609> Rare (permanent) - 4 bonus points
+• <:purplespiral:1358827222437200048> Epic (permanent) - 5 bonus points
 
 **Auto-Claim Mode:**
 • Type "I am an addicted countslut" to enable instant rewards
 • Use `!disable_auto_gacha` to return to normal mode
 • Use `!gacha_status` to check your current mode
+
+**Point Commands:**
+• `!points` - Check your point balance
+• `!leaderboard` - See top point earners
 
 *In auto-claim mode, Discord notifications become your conditioning trigger* 💫
         """
