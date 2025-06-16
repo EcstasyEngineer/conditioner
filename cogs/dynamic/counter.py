@@ -10,8 +10,12 @@ class Counter(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self, message):
-        # Ignore bot messages and messages not in "counting" channel.
-        if message.author.bot or message.channel.name != "counting":
+        # Ignore bot messages
+        if message.author.bot:
+            return
+            
+        # Only process messages in guild channels named "counting"
+        if not hasattr(message.channel, 'name') or message.channel.name != "counting":
             return
         
         # Check for auto-claim trigger phrase FIRST (before deletion logic)

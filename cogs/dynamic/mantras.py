@@ -272,12 +272,12 @@ class MantraSystem(commands.Cog):
                     try:
                         if auto_disabled:
                             await user.send(
-                                "The mantra escaped... Due to multiple timeouts, mantras have been disabled.\n"
+                                "Mantra expired. Due to multiple timeouts, mantras have been disabled.\n"
                                 "Use `/mantra enroll` to re-enable when you're ready!"
                             )
                         else:
                             await user.send(
-                                "The mantra escaped... Better luck next time!\n"
+                                "Mantra expired.\n"
                                 f"You missed: '{challenge['mantra']}'"
                             )
                     except discord.Forbidden:
@@ -312,16 +312,11 @@ class MantraSystem(commands.Cog):
                 # Send the challenge
                 try:
                     embed = discord.Embed(
-                        title="🌀 A wild mantra appears!",
+                        title="🌀 Mantra Challenge",
                         description=f"Repeat this for **{mantra_data['base_points']} points**:\n\n**{formatted_mantra}**",
                         color=discord.Color.purple()
                     )
-                    embed.add_field(
-                        name="Speed Bonuses",
-                        value="🏃 0-30s: +20pts\n⚡ 31-60s: +15pts\n🚶 61-120s: +10pts\n🐌 121-300s: +5pts",
-                        inline=True
-                    )
-                    embed.set_footer(text="You have 20 minutes to capture this mantra!")
+                    embed.set_footer(text="You have 20 minutes to respond")
                     
                     await user.send(embed=embed)
                     
@@ -417,7 +412,7 @@ class MantraSystem(commands.Cog):
             
             # Send success message
             embed = discord.Embed(
-                title="✨ Mantra Captured!",
+                title="✨ Success!",
                 description=f"You earned **{total_points} points**!",
                 color=discord.Color.green()
             )
@@ -436,8 +431,8 @@ class MantraSystem(commands.Cog):
                     inline=False
                 )
             
-            # Add tip about public channel if configured
-            if self.public_channel_id:
+            # Add tip about public channel if configured and this was a DM response
+            if self.public_channel_id and is_dm and random.random() < 0.33:  # Show 1/3 of the time
                 embed.add_field(
                     name="💡 Tip",
                     value=f"Say mantras in <#{self.public_channel_id}> for {self.public_bonus_multiplier}x points!",
