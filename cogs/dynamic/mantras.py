@@ -410,10 +410,20 @@ class MantraSystem(commands.Cog):
             self.adjust_frequency(config, success=True, response_time=int(response_time))
             self.save_user_mantra_config(message.author, config)
             
-            # Send success message
+            # Send success message with positive reinforcement
+            # Vary praise based on response time
+            if response_time <= 30:
+                praise = f"Excellent {config['pet_name']}! Such quick obedience!"
+            elif response_time <= 60:
+                praise = f"Very good {config['pet_name']}!"
+            elif response_time <= 120:
+                praise = f"Good {config['pet_name']}!"
+            else:
+                praise = f"Good {config['pet_name']}."
+                
             embed = discord.Embed(
                 title="✨ Success!",
-                description=f"You earned **{total_points} points**!",
+                description=f"{praise} You earned **{total_points} points**!",
                 color=discord.Color.green()
             )
             

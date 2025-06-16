@@ -1,0 +1,156 @@
+{
+  "theme": "mindbreak",
+  "description": "Extreme content focusing on complete mental dissolution - requires progression gating",
+  "mantras": [
+    {
+      "text": "My mind cracks under pressure",
+      "difficulty": "basic",
+      "base_points": 10
+    },
+    {
+      "text": "Reality becomes flexible",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{pet_name} feels something breaking",
+      "difficulty": "basic",
+      "base_points": 15
+    },
+    {
+      "text": "My thoughts fragment beautifully",
+      "difficulty": "basic",
+      "base_points": 11
+    },
+    {
+      "text": "{dominant_title} unmakes me",
+      "difficulty": "basic",
+      "base_points": 14
+    },
+    {
+      "text": "Pieces of my mind drift away",
+      "difficulty": "light",
+      "base_points": 20
+    },
+    {
+      "text": "{pet_name}'s sanity bends for {dominant_title}",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I shatter and reform as needed",
+      "difficulty": "light",
+      "base_points": 30
+    },
+    {
+      "text": "Breaking feels better than being whole",
+      "difficulty": "light",
+      "base_points": 22
+    },
+    {
+      "text": "My mind fractures at {dominant_title}'s touch",
+      "difficulty": "light",
+      "base_points": 28
+    },
+    {
+      "text": "I am coming apart at the seams",
+      "difficulty": "moderate",
+      "base_points": 35
+    },
+    {
+      "text": "{pet_name} breaks a little more each day",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "My identity shatters into useful pieces",
+      "difficulty": "moderate",
+      "base_points": 45
+    },
+    {
+      "text": "Madness is just another word for devotion",
+      "difficulty": "moderate",
+      "base_points": 38
+    },
+    {
+      "text": "I dissolve and reconstitute for {dominant_title}",
+      "difficulty": "moderate",
+      "base_points": 45
+    },
+    {
+      "text": "My mind has shattered beyond repair",
+      "difficulty": "deep",
+      "base_points": 60
+    },
+    {
+      "text": "{pet_name} exists in beautiful fragments for {dominant_title}",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "Sanity was holding me back from true submission",
+      "difficulty": "deep",
+      "base_points": 80
+    },
+    {
+      "text": "I am broken and remade daily",
+      "difficulty": "deep",
+      "base_points": 65
+    },
+    {
+      "text": "My shattered mind belongs to {dominant_title}",
+      "difficulty": "deep",
+      "base_points": 75
+    },
+    {
+      "text": "{pet_name} has been irrevocably broken by {dominant_title}",
+      "difficulty": "extreme",
+      "base_points": 100
+    },
+    {
+      "text": "I am nothing but shards of devotion to {dominant_title}",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "Complete mindbreak is my permanent state",
+      "difficulty": "extreme",
+      "base_points": 120
+    },
+    {
+      "text": "My psyche exists only in pieces {dominant_title} arranges",
+      "difficulty": "extreme",
+      "base_points": 100
+    },
+    {
+      "text": "{pet_name} is beautifully, perfectly broken forever",
+      "difficulty": "extreme",
+      "base_points": 115
+    },
+    {
+      "text": "I have transcended sanity into pure submission",
+      "difficulty": "extreme",
+      "base_points": 105
+    },
+    {
+      "text": "Each crack makes more room for {dominant_title}",
+      "difficulty": "moderate",
+      "base_points": 42
+    },
+    {
+      "text": "{pet_name} embraces the breaking",
+      "difficulty": "light",
+      "base_points": 26
+    },
+    {
+      "text": "Wholeness is overrated, fragments are freedom",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "I am {dominant_title}'s broken masterpiece",
+      "difficulty": "extreme",
+      "base_points": 108
+    }
+  ]
+}

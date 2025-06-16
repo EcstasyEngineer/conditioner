@@ -45,7 +45,7 @@
     {
       "text": "I release all resistance and accept my place",
       "difficulty": "moderate",
-      "base_points": 50
+      "base_points": 45
     },
     {
       "text": "Complete acceptance fills every part of {pet_name}",
@@ -65,7 +65,7 @@
     {
       "text": "{pet_name} has no will except to accept and obey",
       "difficulty": "extreme",
-      "base_points": 90
+      "base_points": 100
     },
     {
       "text": "I am nothing and accept everything {dominant_title} makes me",
@@ -76,6 +76,86 @@
       "text": "Total acceptance has consumed {pet_name} completely",
       "difficulty": "extreme",
       "base_points": 120
+    },
+    {
+      "text": "Saying yes feels so natural",
+      "difficulty": "basic",
+      "base_points": 11
+    },
+    {
+      "text": "{pet_name} embraces surrender",
+      "difficulty": "basic",
+      "base_points": 14
+    },
+    {
+      "text": "I accept my role as {dominant_title}'s {pet_name}",
+      "difficulty": "light",
+      "base_points": 22
+    },
+    {
+      "text": "Resistance fades, acceptance grows",
+      "difficulty": "light",
+      "base_points": 28
+    },
+    {
+      "text": "I surrender my thoughts to {dominant_title}",
+      "difficulty": "moderate",
+      "base_points": 38
+    },
+    {
+      "text": "{pet_name} accepts being owned by {dominant_title}",
+      "difficulty": "moderate",
+      "base_points": 45
+    },
+    {
+      "text": "My will dissolves into {dominant_title}'s desires",
+      "difficulty": "deep",
+      "base_points": 65
+    },
+    {
+      "text": "I accept that I am nothing without {dominant_title}",
+      "difficulty": "deep",
+      "base_points": 75
+    },
+    {
+      "text": "{pet_name} has surrendered all control forever",
+      "difficulty": "extreme",
+      "base_points": 100
+    },
+    {
+      "text": "Acceptance is my only reality, resistance is impossible",
+      "difficulty": "extreme",
+      "base_points": 115
+    },
+    {
+      "text": "I accept complete erasure of who I was before {dominant_title}",
+      "difficulty": "extreme",
+      "base_points": 105
+    },
+    {
+      "text": "Letting go brings such relief",
+      "difficulty": "moderate",
+      "base_points": 42
+    },
+    {
+      "text": "{pet_name} yields to {dominant_title}'s wisdom",
+      "difficulty": "light",
+      "base_points": 26
+    },
+    {
+      "text": "I accept my mind belongs to {dominant_title}",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "I want to accept more each day",
+      "difficulty": "basic",
+      "base_points": 13
+    },
+    {
+      "text": "Acceptance grows stronger with practice",
+      "difficulty": "light",
+      "base_points": 24
     }
   ]
 }

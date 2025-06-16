@@ -1,0 +1,186 @@
+{
+  "theme": "emptiness",
+  "description": "Focus on mental void, blank states, and becoming empty for filling",
+  "mantras": [
+    {
+      "text": "I enjoy feeling empty",
+      "difficulty": "basic",
+      "base_points": 10
+    },
+    {
+      "text": "Thoughts drift away gently",
+      "difficulty": "basic",
+      "base_points": 11
+    },
+    {
+      "text": "{pet_name} likes being blank",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Emptiness feels peaceful",
+      "difficulty": "basic",
+      "base_points": 13
+    },
+    {
+      "text": "My mind relaxes for {dominant_title}",
+      "difficulty": "basic",
+      "base_points": 14
+    },
+    {
+      "text": "I can let thoughts go",
+      "difficulty": "basic",
+      "base_points": 15
+    },
+    {
+      "text": "Emptiness grows more comfortable daily",
+      "difficulty": "light",
+      "base_points": 20
+    },
+    {
+      "text": "{pet_name}'s thoughts are getting quieter",
+      "difficulty": "light",
+      "base_points": 22
+    },
+    {
+      "text": "I need less thinking each day",
+      "difficulty": "light",
+      "base_points": 24
+    },
+    {
+      "text": "Blankness feels natural now",
+      "difficulty": "light",
+      "base_points": 26
+    },
+    {
+      "text": "{dominant_title}'s voice fills my empty mind",
+      "difficulty": "light",
+      "base_points": 28
+    },
+    {
+      "text": "My mind craves peaceful emptiness",
+      "difficulty": "light",
+      "base_points": 30
+    },
+    {
+      "text": "My identity becomes emptiness",
+      "difficulty": "moderate",
+      "base_points": 35
+    },
+    {
+      "text": "{pet_name} is becoming a vessel for {dominant_title}",
+      "difficulty": "moderate",
+      "base_points": 38
+    },
+    {
+      "text": "Emptiness defines who I am",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "My will dissolves into blank obedience",
+      "difficulty": "moderate",
+      "base_points": 42
+    },
+    {
+      "text": "{dominant_title} shapes my empty mind",
+      "difficulty": "moderate",
+      "base_points": 45
+    },
+    {
+      "text": "Emptiness consumes me to my core",
+      "difficulty": "deep",
+      "base_points": 60
+    },
+    {
+      "text": "{pet_name}'s self dissolves almost completely",
+      "difficulty": "deep",
+      "base_points": 65
+    },
+    {
+      "text": "The void has nearly replaced everything",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "I am fundamentally hollow for {dominant_title}",
+      "difficulty": "deep",
+      "base_points": 75
+    },
+    {
+      "text": "My core is empty, waiting for {dominant_title}'s will",
+      "difficulty": "deep",
+      "base_points": 80
+    },
+    {
+      "text": "I am permanently emptied for {dominant_title}",
+      "difficulty": "extreme",
+      "base_points": 100
+    },
+    {
+      "text": "{pet_name} is nothing but void forever",
+      "difficulty": "extreme",
+      "base_points": 105
+    },
+    {
+      "text": "Complete emptiness has replaced me permanently",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I exist only as {dominant_title}'s empty vessel",
+      "difficulty": "extreme",
+      "base_points": 115
+    },
+    {
+      "text": "{pet_name} has been irreversibly hollowed out",
+      "difficulty": "extreme",
+      "base_points": 120
+    },
+    {
+      "text": "Blank states control my daily life",
+      "difficulty": "moderate",
+      "base_points": 42
+    },
+    {
+      "text": "{pet_name} regularly floats in nothingness",
+      "difficulty": "light",
+      "base_points": 26
+    },
+    {
+      "text": "My personality fades to near-nothing",
+      "difficulty": "deep",
+      "base_points": 72
+    },
+    {
+      "text": "Nothing but {dominant_title}'s will remains forever",
+      "difficulty": "extreme",
+      "base_points": 108
+    },
+    {
+      "text": "I am learning to stay empty",
+      "difficulty": "basic",
+      "base_points": 13
+    },
+    {
+      "text": "Emptiness is becoming my friend",
+      "difficulty": "light",
+      "base_points": 24
+    },
+    {
+      "text": "The void inside shapes who I am",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "Fundamental emptiness fills my being",
+      "difficulty": "deep",
+      "base_points": 78
+    },
+    {
+      "text": "{pet_name} is completely and forever empty",
+      "difficulty": "extreme",
+      "base_points": 112
+    }
+  ]
+}

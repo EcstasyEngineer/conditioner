@@ -76,6 +76,86 @@
       "text": "I am nothing but a vessel for {dominant_title}'s will",
       "difficulty": "extreme",
       "base_points": 120
+    },
+    {
+      "text": "Words become thoughts so easily",
+      "difficulty": "basic",
+      "base_points": 11
+    },
+    {
+      "text": "{pet_name} loves being suggestible",
+      "difficulty": "basic",
+      "base_points": 14
+    },
+    {
+      "text": "My mind welcomes new ideas from {dominant_title}",
+      "difficulty": "light",
+      "base_points": 22
+    },
+    {
+      "text": "Suggestions feel like my own thoughts",
+      "difficulty": "light",
+      "base_points": 28
+    },
+    {
+      "text": "{dominant_title}'s voice guides my mind perfectly",
+      "difficulty": "moderate",
+      "base_points": 38
+    },
+    {
+      "text": "I am moldable clay in {dominant_title}'s hands",
+      "difficulty": "moderate",
+      "base_points": 45
+    },
+    {
+      "text": "My subconscious belongs to {dominant_title}",
+      "difficulty": "deep",
+      "base_points": 65
+    },
+    {
+      "text": "{pet_name} cannot resist any suggestion from {dominant_title}",
+      "difficulty": "deep",
+      "base_points": 75
+    },
+    {
+      "text": "I am an empty vessel waiting to be filled with {dominant_title}'s will",
+      "difficulty": "extreme",
+      "base_points": 100
+    },
+    {
+      "text": "{dominant_title}'s suggestions rewrite {pet_name}'s mind completely",
+      "difficulty": "extreme",
+      "base_points": 115
+    },
+    {
+      "text": "Every fiber of my being craves {dominant_title}'s programming",
+      "difficulty": "extreme",
+      "base_points": 105
+    },
+    {
+      "text": "Suggestions flow into me like water into a sponge",
+      "difficulty": "moderate",
+      "base_points": 42
+    },
+    {
+      "text": "{pet_name} melts at {dominant_title}'s words",
+      "difficulty": "light",
+      "base_points": 26
+    },
+    {
+      "text": "My critical thinking dissolves for {dominant_title}",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "I enjoy accepting suggestions",
+      "difficulty": "basic",
+      "base_points": 13
+    },
+    {
+      "text": "Suggestions grow stronger daily",
+      "difficulty": "light",
+      "base_points": 24
     }
   ]
 }
