@@ -19,12 +19,25 @@ class MantraSystem(commands.Cog):
         self.mantras_dir = Path("mantras/themes")
         self.themes = self.load_themes()
         
+        # Public channel for bonus points (can be set by admin)
+        self.public_channel_id = None  # Will be loaded from guild config
+        self.public_bonus_multiplier = 2.0  # Double points for public mantras
+        
         # Start the mantra delivery task
         self.mantra_delivery.start()
         
         # Track active mantra challenges
         self.active_challenges = {}  # user_id: {"mantra": str, "theme": str, "difficulty": str, "base_points": int, "sent_at": datetime}
         
+    async def cog_load(self):
+        """Load public channel configuration when cog loads."""
+        # Load public channel from guild configs
+        for guild in self.bot.guilds:
+            public_channel = self.bot.config.get(guild, 'mantra_public_channel', None)
+            if public_channel:
+                self.public_channel_id = public_channel
+                break  # Use first configured channel found
+    
     def cog_unload(self):
         """Clean up when cog is unloaded."""
         self.mantra_delivery.cancel()
@@ -54,7 +67,7 @@ class MantraSystem(commands.Cog):
         default_config = {
             "enrolled": False,
             "themes": [],
-            "pet_name": "pet",
+            "pet_name": "puppet",
             "dominant_title": "Master",
             "frequency": 1.0,  # encounters per day
             "last_encounter": None,
@@ -62,23 +75,27 @@ class MantraSystem(commands.Cog):
             "encounters": [],
             "consecutive_timeouts": 0,
             "total_points_earned": 0,
-            "online_only": True,
-            "active_hours": [8, 23],  # 8 AM to 11 PM
-            "public_channel": None
+            "online_only": True
         }
         
-        config = self.bot.config.get_user(user, 'mantra_system', default_config)
+        config = self.bot.config.get_user(user, 'mantra_system', {})
         
-        # Ensure all fields exist (for users with old configs)
-        for key, value in default_config.items():
-            if key not in config:
-                config[key] = value
-                
+        # If config is empty or not a dict, use defaults
+        if not isinstance(config, dict):
+            config = default_config.copy()
+        else:
+            # Ensure all fields exist
+            for key, value in default_config.items():
+                if key not in config:
+                    config[key] = value
+                    
         return config
     
     def save_user_mantra_config(self, user, config):
         """Save user's mantra configuration."""
         self.bot.config.set_user(user, 'mantra_system', config)
+        # Force save to disk
+        self.bot.config.flush()
     
     def format_mantra(self, mantra_text: str, pet_name: str, dominant_title: str) -> str:
         """Replace template variables in mantra text."""
@@ -127,19 +144,17 @@ class MantraSystem(commands.Cog):
         # Check online status if required
         if config["online_only"]:
             # Check if user is online/idle/dnd (not offline or invisible)
-            member = self.bot.get_user(user.id)
-            if member and member.status == discord.Status.offline:
+            # Need to check member status in at least one mutual guild
+            is_online = False
+            for guild in self.bot.guilds:
+                member = guild.get_member(user.id)
+                if member and member.status != discord.Status.offline:
+                    is_online = True
+                    break
+            
+            if not is_online:
                 return False
         
-        # Check active hours
-        current_hour = datetime.now().hour
-        start_hour, end_hour = config["active_hours"]
-        if start_hour <= end_hour:
-            if not (start_hour <= current_hour < end_hour):
-                return False
-        else:  # Handles overnight ranges like 22-6
-            if not (current_hour >= start_hour or current_hour < end_hour):
-                return False
         
         # Check if it's time for next encounter
         if config["next_encounter"]:
@@ -339,11 +354,7 @@ class MantraSystem(commands.Cog):
     
     @commands.Cog.listener()
     async def on_message(self, message):
-        """Listen for mantra responses in DMs."""
-        # Only process DMs
-        if not isinstance(message.channel, discord.DMChannel):
-            return
-            
+        """Listen for mantra responses in DMs and public channel."""
         # Ignore bot messages
         if message.author.bot:
             return
@@ -354,12 +365,27 @@ class MantraSystem(commands.Cog):
             
         challenge = self.active_challenges[message.author.id]
         
+        # Determine if this is a valid response channel
+        is_dm = isinstance(message.channel, discord.DMChannel)
+        is_public = self.public_channel_id and message.channel.id == self.public_channel_id
+        
+        if not (is_dm or is_public):
+            return
+        
         # Check if message matches the mantra
         if self.check_mantra_match(message.content, challenge["mantra"]):
             # Calculate response time and speed bonus
             response_time = (datetime.now() - challenge["sent_at"]).total_seconds()
             speed_bonus = self.calculate_speed_bonus(int(response_time))
-            total_points = challenge["base_points"] + speed_bonus
+            base_total = challenge["base_points"] + speed_bonus
+            
+            # Apply public bonus if applicable
+            if is_public:
+                total_points = int(base_total * self.public_bonus_multiplier)
+                public_bonus = total_points - base_total
+            else:
+                total_points = base_total
+                public_bonus = 0
             
             # Award points
             points_cog = self.bot.get_cog("Points")
@@ -378,8 +404,10 @@ class MantraSystem(commands.Cog):
                 "difficulty": challenge["difficulty"],
                 "base_points": challenge["base_points"],
                 "speed_bonus": speed_bonus,
+                "public_bonus": public_bonus,
                 "completed": True,
-                "response_time": int(response_time)
+                "response_time": int(response_time),
+                "was_public": is_public
             }
             config["encounters"].append(encounter)
             
@@ -394,18 +422,25 @@ class MantraSystem(commands.Cog):
                 color=discord.Color.green()
             )
             
+            # Build breakdown
+            breakdown_lines = [f"Base: {challenge['base_points']} pts"]
             if speed_bonus > 0:
+                breakdown_lines.append(f"Speed bonus: +{speed_bonus} pts")
+            if public_bonus > 0:
+                breakdown_lines.append(f"Public bonus: +{public_bonus} pts")
+            
+            if len(breakdown_lines) > 1:
                 embed.add_field(
                     name="Breakdown",
-                    value=f"Base: {challenge['base_points']} pts\nSpeed bonus: +{speed_bonus} pts",
+                    value="\n".join(breakdown_lines),
                     inline=False
                 )
             
             # Add tip about public channel if configured
-            if config.get("public_channel"):
+            if self.public_channel_id:
                 embed.add_field(
                     name="💡 Tip",
-                    value=f"Say mantras in <#{config['public_channel']}> for double points!",
+                    value=f"Say mantras in <#{self.public_channel_id}> for {self.public_bonus_multiplier}x points!",
                     inline=False
                 )
             
@@ -417,68 +452,111 @@ class MantraSystem(commands.Cog):
             # Remove from active challenges
             del self.active_challenges[message.author.id]
     
-    # Slash Commands
+    # Slash Commands - Using a group for better organization
+    mantra_group = app_commands.Group(name="mantra", description="Hypnotic mantra training system")
     
-    @app_commands.command(name="mantra", description="Manage your mantra training")
+    @mantra_group.command(name="enroll", description="Enroll in the mantra training system")
     @app_commands.describe(
-        action="What would you like to do?",
-        themes="Comma-separated list of themes (for enroll action)",
-        pet_name="Your preferred pet name (for enroll action)",
-        dominant_title="Master or Mistress (for enroll action)"
+        themes="Comma-separated list of themes (e.g., 'suggestibility,acceptance')",
+        pet_name="Your preferred pet name (type custom or select from list)",
+        dominant_title="Master or Mistress"
     )
-    async def mantra_command(
-        self, 
+    @app_commands.choices(dominant_title=[
+        app_commands.Choice(name="Master", value="Master"),
+        app_commands.Choice(name="Mistress", value="Mistress")
+    ])
+    async def mantra_enroll(
+        self,
         interaction: discord.Interaction,
-        action: discord.app_commands.Choice[str],
         themes: Optional[str] = None,
         pet_name: Optional[str] = None,
-        dominant_title: Optional[discord.app_commands.Choice[str]] = None
+        dominant_title: Optional[str] = None
     ):
-        """Main mantra system command."""
-        
-        if action.value == "enroll":
-            await self.enroll_user(interaction, themes, pet_name, dominant_title)
-        elif action.value == "status":
-            await self.show_status(interaction)
-        elif action.value == "settings":
-            await self.show_settings(interaction)
-        elif action.value == "themes":
-            await self.list_themes(interaction)
-        elif action.value == "disable":
-            await self.disable_mantras(interaction)
+        """Enroll in the mantra training system."""
+        await self.enroll_user(interaction, themes, pet_name, dominant_title)
     
-    @mantra_command.autocomplete("action")
-    async def mantra_action_autocomplete(
-        self,
-        interaction: discord.Interaction,
-        current: str,
-    ) -> List[app_commands.Choice[str]]:
-        actions = [
-            app_commands.Choice(name="Enroll in mantra training", value="enroll"),
-            app_commands.Choice(name="Check your status", value="status"),
-            app_commands.Choice(name="View/update settings", value="settings"),
-            app_commands.Choice(name="List available themes", value="themes"),
-            app_commands.Choice(name="Disable mantras", value="disable"),
-        ]
-        return [a for a in actions if current.lower() in a.name.lower()]
+    @mantra_group.command(name="status", description="Check your mantra training status")
+    async def mantra_status(self, interaction: discord.Interaction):
+        """Show user's mantra status and stats."""
+        await self.show_status(interaction)
     
-    @mantra_command.autocomplete("dominant_title")
-    async def dominant_title_autocomplete(
-        self,
-        interaction: discord.Interaction,
-        current: str,
-    ) -> List[app_commands.Choice[str]]:
-        return [
+    @mantra_group.command(name="settings", description="Update your mantra settings")
+    @app_commands.describe(
+        pet_name="Your preferred pet name",
+        dominant_title="Master or Mistress",
+        theme1="First theme choice",
+        theme2="Second theme choice (optional)",
+        theme3="Third theme choice (optional)",
+        online_only="Only receive mantras when online"
+    )
+    # TODO: Ideally we'd have a multi-select dropdown or allow setting themes one at a time
+    # Current workaround uses theme1/theme2/theme3 due to Discord limitations
+    @app_commands.choices(
+        pet_name=[
+            app_commands.Choice(name="puppet", value="puppet"),
+            app_commands.Choice(name="puppy", value="puppy"),
+            app_commands.Choice(name="kitten", value="kitten"),
+            app_commands.Choice(name="pet", value="pet"),
+            app_commands.Choice(name="toy", value="toy"),
+            app_commands.Choice(name="doll", value="doll"),
+            app_commands.Choice(name="slave", value="slave"),
+            app_commands.Choice(name="slut", value="slut"),
+            app_commands.Choice(name="bimbo", value="bimbo"),
+            app_commands.Choice(name="drone", value="drone")
+        ],
+        dominant_title=[
             app_commands.Choice(name="Master", value="Master"),
-            app_commands.Choice(name="Mistress", value="Mistress"),
+            app_commands.Choice(name="Mistress", value="Mistress")
+        ],
+        theme1=[
+            app_commands.Choice(name="Suggestibility", value="suggestibility"),
+            app_commands.Choice(name="Acceptance", value="acceptance")
+        ],
+        theme2=[
+            app_commands.Choice(name="None", value="none"),
+            app_commands.Choice(name="Suggestibility", value="suggestibility"),
+            app_commands.Choice(name="Acceptance", value="acceptance")
+        ],
+        theme3=[
+            app_commands.Choice(name="None", value="none"),
+            app_commands.Choice(name="Suggestibility", value="suggestibility"),
+            app_commands.Choice(name="Acceptance", value="acceptance")
         ]
+    )
+    async def mantra_settings(
+        self,
+        interaction: discord.Interaction,
+        pet_name: Optional[str] = None,
+        dominant_title: Optional[str] = None,
+        theme1: Optional[str] = None,
+        theme2: Optional[str] = None,
+        theme3: Optional[str] = None,
+        online_only: Optional[bool] = None
+    ):
+        """Update mantra settings."""
+        # Collect themes
+        themes_list = []
+        if theme1 and theme1 != "none":
+            themes_list.append(theme1)
+        if theme2 and theme2 != "none" and theme2 not in themes_list:
+            themes_list.append(theme2)
+        if theme3 and theme3 != "none" and theme3 not in themes_list:
+            themes_list.append(theme3)
+        
+        await self.update_settings(interaction, pet_name, dominant_title, themes_list, online_only)
+    
+    @mantra_group.command(name="disable", description="Disable mantra training")
+    async def mantra_disable(self, interaction: discord.Interaction):
+        """Disable mantra encounters."""
+        await self.disable_mantras(interaction)
+    
     
     async def enroll_user(
         self,
         interaction: discord.Interaction,
         themes_str: Optional[str],
         pet_name: Optional[str],
-        dominant_title: Optional[discord.app_commands.Choice[str]]
+        dominant_title: Optional[str]
     ):
         """Enroll user in mantra system."""
         config = self.get_user_mantra_config(interaction.user)
@@ -501,12 +579,19 @@ class MantraSystem(commands.Cog):
         config["enrolled"] = True
         config["themes"] = valid_themes
         config["pet_name"] = pet_name or config["pet_name"]
-        config["dominant_title"] = dominant_title.value if dominant_title else config["dominant_title"]
+        config["dominant_title"] = dominant_title if dominant_title else config["dominant_title"]
         config["consecutive_timeouts"] = 0  # Reset on re-enrollment
         
         # Schedule first encounter
         self.schedule_next_encounter(config)
         self.save_user_mantra_config(interaction.user, config)
+        
+        # Debug log
+        if self.logger:
+            self.logger.info(f"Enrolled {interaction.user} with config: {config}")
+            # Verify save
+            saved_config = self.get_user_mantra_config(interaction.user)
+            self.logger.info(f"Verified saved config: enrolled={saved_config['enrolled']}, themes={saved_config['themes']}")
         
         # Send confirmation
         embed = discord.Embed(
@@ -538,87 +623,113 @@ class MantraSystem(commands.Cog):
             )
             return
         
-        # Calculate stats
-        total_sent = len(config["encounters"])
-        total_captured = sum(1 for e in config["encounters"] if e.get("completed", False))
-        capture_rate = (total_captured / total_sent * 100) if total_sent > 0 else 0
-        
-        # Average response time for completed mantras
-        response_times = [e["response_time"] for e in config["encounters"] 
-                         if e.get("completed", False) and "response_time" in e]
-        avg_response = sum(response_times) / len(response_times) if response_times else 0
-        
+        # Create main embed
         embed = discord.Embed(
-            title="📊 Your Mantra Status",
+            title="🌀 Your Mantra Profile",
             color=discord.Color.purple()
         )
-        embed.add_field(name="Total Sent", value=str(total_sent), inline=True)
-        embed.add_field(name="Captured", value=str(total_captured), inline=True)
-        embed.add_field(name="Capture Rate", value=f"{capture_rate:.1f}%", inline=True)
-        embed.add_field(name="Points Earned", value=f"{config['total_points_earned']:,}", inline=True)
-        embed.add_field(name="Avg Response", value=f"{avg_response:.0f}s", inline=True)
-        embed.add_field(name="Daily Rate", value=f"{config['frequency']:.1f}/day", inline=True)
         
-        # Recent mantras
-        recent = config["encounters"][-5:]  # Last 5
-        if recent:
-            recent_text = []
-            for enc in reversed(recent):
-                if enc.get("completed"):
-                    recent_text.append(f"✅ {enc['theme']} ({enc['base_points']}+{enc.get('speed_bonus', 0)}pts)")
-                else:
-                    recent_text.append(f"❌ {enc['theme']} (missed)")
-            
-            embed.add_field(
-                name="Recent Mantras",
-                value="\n".join(recent_text),
-                inline=False
-            )
-        
-        await interaction.response.send_message(embed=embed, ephemeral=True)
-    
-    async def show_settings(self, interaction: discord.Interaction):
-        """Show current settings."""
-        config = self.get_user_mantra_config(interaction.user)
-        
-        embed = discord.Embed(
-            title="⚙️ Mantra Settings",
-            color=discord.Color.purple()
-        )
-        embed.add_field(name="Status", value="Enrolled" if config["enrolled"] else "Not enrolled", inline=True)
+        # Settings section
         embed.add_field(name="Pet Name", value=config["pet_name"], inline=True)
         embed.add_field(name="Dominant", value=config["dominant_title"], inline=True)
-        embed.add_field(name="Themes", value=", ".join(config["themes"]) or "None", inline=False)
-        embed.add_field(name="Frequency", value=f"{config['frequency']:.1f} per day", inline=True)
+        embed.add_field(name="Themes", value=", ".join(config["themes"]) or "None", inline=True)
+        embed.add_field(name="Frequency", value=f"{config['frequency']:.1f}/day", inline=True)
         embed.add_field(name="Online Only", value="Yes" if config["online_only"] else "No", inline=True)
+        embed.add_field(name="\u200b", value="\u200b", inline=True)  # Empty field for alignment
         
-        start_hour, end_hour = config["active_hours"]
-        embed.add_field(
-            name="Active Hours",
-            value=f"{start_hour}:00 - {end_hour}:00",
-            inline=True
+        # Stats section
+        total_sent = len(config["encounters"])
+        if total_sent > 0:
+            total_captured = sum(1 for e in config["encounters"] if e.get("completed", False))
+            capture_rate = (total_captured / total_sent * 100)
+            
+            # Average response time for completed mantras
+            response_times = [e["response_time"] for e in config["encounters"] 
+                             if e.get("completed", False) and "response_time" in e]
+            avg_response = sum(response_times) / len(response_times) if response_times else 0
+            
+            embed.add_field(name="\u200b", value="**📊 Statistics**", inline=False)
+            embed.add_field(name="Total Sent", value=str(total_sent), inline=True)
+            embed.add_field(name="Captured", value=str(total_captured), inline=True)
+            embed.add_field(name="Capture Rate", value=f"{capture_rate:.1f}%", inline=True)
+            embed.add_field(name="Points Earned", value=f"{config['total_points_earned']:,}", inline=True)
+            embed.add_field(name="Avg Response", value=f"{avg_response:.0f}s", inline=True)
+            embed.add_field(name="Public Captures", value=sum(1 for e in config["encounters"] if e.get("was_public", False)), inline=True)
+            
+            # Recent mantras
+            recent = config["encounters"][-5:]  # Last 5
+            if recent:
+                recent_text = []
+                for enc in reversed(recent):
+                    if enc.get("completed"):
+                        pts = enc['base_points'] + enc.get('speed_bonus', 0) + enc.get('public_bonus', 0)
+                        public = "🌍 " if enc.get("was_public", False) else ""
+                        recent_text.append(f"✅ {public}{enc['theme']} ({pts}pts)")
+                    else:
+                        recent_text.append(f"❌ {enc['theme']} (missed)")
+                
+                embed.add_field(
+                    name="Recent Mantras",
+                    value="\n".join(recent_text),
+                    inline=False
+                )
+        else:
+            embed.add_field(name="\u200b", value="*No mantras sent yet*", inline=False)
+        
+        embed.set_footer(text="Use /mantra settings to update your preferences")
+        
+        await interaction.response.send_message(embed=embed, ephemeral=True)
+    
+    
+    async def update_settings(
+        self,
+        interaction: discord.Interaction,
+        pet_name: Optional[str],
+        dominant_title: Optional[str],
+        themes_list: Optional[List[str]],
+        online_only: Optional[bool]
+    ):
+        """Update user's mantra settings."""
+        config = self.get_user_mantra_config(interaction.user)
+        
+        # Track what was updated
+        updates = []
+        
+        if pet_name is not None:
+            config["pet_name"] = pet_name
+            updates.append(f"Pet name → {pet_name}")
+        
+        if dominant_title is not None:
+            config["dominant_title"] = dominant_title
+            updates.append(f"Dominant → {dominant_title}")
+        
+        if themes_list is not None:
+            config["themes"] = themes_list
+            updates.append(f"Themes → {', '.join(themes_list) if themes_list else 'None'}")
+        
+        if online_only is not None:
+            config["online_only"] = online_only
+            updates.append(f"Online only → {'Yes' if online_only else 'No'}")
+        
+        if not updates:
+            await interaction.response.send_message(
+                "No settings were provided to update.",
+                ephemeral=True
+            )
+            return
+        
+        # Save the updated config
+        self.save_user_mantra_config(interaction.user, config)
+        
+        # Send confirmation
+        embed = discord.Embed(
+            title="✅ Settings Updated",
+            description="\n".join(updates),
+            color=discord.Color.green()
         )
         
         await interaction.response.send_message(embed=embed, ephemeral=True)
     
-    async def list_themes(self, interaction: discord.Interaction):
-        """List available themes."""
-        embed = discord.Embed(
-            title="📚 Available Mantra Themes",
-            description="Use theme names when enrolling",
-            color=discord.Color.purple()
-        )
-        
-        for theme_name, theme_data in self.themes.items():
-            mantra_count = len(theme_data["mantras"])
-            embed.add_field(
-                name=theme_name.title(),
-                value=f"{theme_data['description']}\n*{mantra_count} mantras*",
-                inline=False
-            )
-        
-        embed.set_footer(text="More themes coming soon!")
-        await interaction.response.send_message(embed=embed, ephemeral=True)
     
     async def disable_mantras(self, interaction: discord.Interaction):
         """Disable mantra encounters."""
