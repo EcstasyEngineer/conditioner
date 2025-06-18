@@ -6,7 +6,6 @@ After=network.target
 Type=simple
 User=your-username
 WorkingDirectory=/path/to/ai-conditioner-discord
-Environment="BOT_ENV=production"
 ExecStart=/usr/bin/python3 /path/to/ai-conditioner-discord/bot.py
 Restart=always
 RestartSec=10
