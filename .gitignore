@@ -2,6 +2,7 @@
 /venv/
 __pycache__
 .env
+.env.dev
 configs/*.json
 /media/common/*
 !/media/common/sample.*

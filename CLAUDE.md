@@ -116,3 +116,79 @@ When modifying the mantra system:
 - The mantra system is the primary engagement feature
 - All user data is stored in JSON configs, not a database
 - Media files follow a specific naming convention for the gacha system
+
+## Development Workflow on Host Machine
+
+When developing on the host machine (WSL/local), follow this process:
+
+### Setting Up Dev Environment
+
+1. **First Time Setup**:
+   ```bash
+   # Copy the dev environment template
+   cp .env.dev.example .env.dev
+   # Edit .env.dev and add your development bot token
+   ```
+
+2. **Testing New Features**:
+   When implementing features that require user interaction testing:
+   ```bash
+   # Start the dev bot
+   ./start_dev.sh
+   # OR
+   python bot.py --dev
+   ```
+   
+   The dev bot will:
+   - Load from `.env.dev` instead of `.env`
+   - Show `[DEV]` prefix in status messages
+   - Run alongside the production bot without conflicts
+
+3. **Development Process**:
+   - Make code changes
+   - Run dev bot with `./start_dev.sh`
+   - Test in Discord (dev bot can be in same server as prod)
+   - Stop dev bot with Ctrl+C
+   - Commit and push changes
+   - Use `!update` and `!restart` in Discord to update production
+
+### AI Coder Instructions
+
+When you (Claude Code) are working on the host machine:
+
+1. **For Discord-Interactive Features** (commands, events, cogs):
+   ```bash
+   # After implementing the feature, automatically start the dev bot
+   ./start_dev.sh
+   ```
+   - Tell the user: "Dev bot is starting. Test your feature in Discord now!"
+   - The dev bot will show `[DEV]` prefix in status
+   - After user confirms testing is complete, remind them to stop with Ctrl+C
+
+2. **For Non-Interactive Changes** (config updates, refactoring):
+   - Test with standard Python syntax checks
+   - No need to run the full bot
+
+3. **Automated Testing Workflow**:
+   When implementing a new Discord command or feature:
+   - Complete the implementation
+   - Start dev bot with `./start_dev.sh`
+   - Provide clear testing instructions (e.g., "Try the new !command in Discord")
+   - Wait for user feedback
+   - After successful test, commit and push
+   - Instruct user: "Run `!update` then `!restart` in Discord to deploy"
+
+4. **Future Self-Modification Goals**:
+   - The bot architecture supports dynamic cog loading/unloading
+   - Commands like `!reload` already exist for hot-reloading cogs
+   - Consider implementing:
+     - `!edit <file> <content>` - Edit bot files from Discord
+     - `!commit <message>` - Commit changes from Discord
+     - `!deploy` - Combined update + restart
+   - Security consideration: Limit self-modification to superadmin only
+
+### Quick Reference
+- **Dev Bot**: `./start_dev.sh` (uses `.env.dev`)
+- **Stop Dev**: `Ctrl+C`
+- **Deploy**: `!update` → `!restart` (in Discord)
+- **Check Prod Logs**: `tail -f logs/bot.log`
