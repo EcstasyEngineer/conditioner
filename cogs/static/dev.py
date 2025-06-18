@@ -7,6 +7,29 @@ from datetime import datetime
 from utils import smart_split
 import sys
 
+def is_server_admin(ctx):
+    """Check if user is server admin (bot admin, Discord admin, or server owner)."""
+    if ctx.guild is None:
+        return False
+    
+    # Check if user is in bot's admin list for this guild
+    bot = ctx.bot
+    admins = bot.config.get(ctx, "admins", [])
+    if ctx.author.id in admins:
+        return True
+    
+    # Check Discord server permissions
+    if ctx.author.guild_permissions.administrator or ctx.author == ctx.guild.owner:
+        return True
+    
+    return False
+
+def is_superadmin(ctx):
+    """Check if user is global superadmin."""
+    bot = ctx.bot
+    global_superadmin = bot.config.get(None, "superadmin")
+    return ctx.author.id == global_superadmin
+
 class Dev(commands.Cog):
     """This is a cog with owner-only commands.
     Note:
@@ -139,12 +162,12 @@ class Dev(commands.Cog):
         await message.edit(content=response, delete_after=20)
         
     @commands.command(name='update', hidden=True)
-    @commands.is_owner()
+    @commands.check(is_server_admin)
     async def update(self, ctx):
         """This command executes a git pull command in the current environment to update the code.
         
         Note:
-            This command can be used only from the bot owner.
+            This command can be used by server admins.
             This command is hidden from the help menu.
         """
         self.logger.info(f"{ctx.author} invoked update command")
@@ -185,12 +208,12 @@ class Dev(commands.Cog):
             await message.edit(content=f'An error has occurred: {exc}', delete_after=20)
             
     @commands.command(name='shutdown', aliases=['restart'], hidden=True)
-    @commands.is_owner()
+    @commands.check(is_server_admin)
     async def shutdown(self, ctx):
         """This command shuts down the bot (expects systemctl auto-restart).
         
         Note:
-            This command can be used only from the bot owner.
+            This command can be used by server admins.
             This command is hidden from the help menu.
             Use 'restart' alias for cleaner command.
         """
