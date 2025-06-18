@@ -21,13 +21,25 @@ class MantraSystem(commands.Cog):
         
         # Public channel for bonus points (can be set by admin)
         self.public_channel_id = None  # Will be loaded from guild config
-        self.public_bonus_multiplier = 2.0  # Double points for public mantras
+        self.public_bonus_multiplier = 2.5  # 2.5x points for public mantras
+        
+        # Parameterized expiration settings based on difficulty
+        self.expiration_settings = {
+            "easy": {"timeout_minutes": 30, "points_multiplier": 1.5},
+            "moderate": {"timeout_minutes": 45, "points_multiplier": 1.0},
+            "hard": {"timeout_minutes": 60, "points_multiplier": 1.0},
+            "extreme": {"timeout_minutes": 60, "points_multiplier": 0.8}
+        }
+        
+        # Combo streak tracking
+        self.user_streaks = {}  # user_id: {"count": int, "last_response": datetime}
+        self.rapid_fire_active = {}  # user_id: bool
         
         # Start the mantra delivery task
         self.mantra_delivery.start()
         
         # Track active mantra challenges
-        self.active_challenges = {}  # user_id: {"mantra": str, "theme": str, "difficulty": str, "base_points": int, "sent_at": datetime}
+        self.active_challenges = {}  # user_id: {"mantra": str, "theme": str, "difficulty": str, "base_points": int, "sent_at": datetime, "timeout_minutes": int}
         
     async def cog_load(self):
         """Load public channel configuration when cog loads."""
@@ -99,14 +111,20 @@ class MantraSystem(commands.Cog):
     
     def format_mantra(self, mantra_text: str, pet_name: str, dominant_title: str) -> str:
         """Replace template variables in mantra text."""
-        return mantra_text.format(
+        formatted = mantra_text.format(
             pet_name=pet_name,
             dominant_title=dominant_title
         )
+        # Capitalize first letter
+        if formatted and formatted[0].islower():
+            formatted = formatted[0].upper() + formatted[1:]
+        return formatted
     
     def calculate_speed_bonus(self, response_time_seconds: int) -> int:
         """Calculate speed bonus based on response time."""
-        if response_time_seconds <= 30:
+        if response_time_seconds <= 15:
+            return 30  # Ultra fast bonus
+        elif response_time_seconds <= 30:
             return 20
         elif response_time_seconds <= 60:
             return 15
@@ -116,6 +134,168 @@ class MantraSystem(commands.Cog):
             return 5
         else:
             return 0
+    
+    def get_streak_bonus(self, user_id: int) -> tuple[int, str]:
+        """Get streak bonus points and title."""
+        if user_id not in self.user_streaks:
+            return 0, ""
+        
+        streak = self.user_streaks[user_id]["count"]
+        if streak >= 20:
+            return 100, "🌀 Deep Trance"
+        elif streak >= 10:
+            return 50, "💫 Hypno Flow"
+        elif streak >= 5:
+            return 25, "🔥 In the Zone"
+        elif streak >= 3:
+            return 10, "✨ Warming Up"
+        else:
+            return 0, ""
+    
+    def update_streak(self, user_id: int, success: bool = True):
+        """Update user's streak status."""
+        now = datetime.now()
+        
+        if success:
+            if user_id in self.user_streaks:
+                # Check if streak is still active (within 2 hours)
+                last_response = self.user_streaks[user_id]["last_response"]
+                if (now - last_response).total_seconds() < 7200:  # 2 hours
+                    self.user_streaks[user_id]["count"] += 1
+                else:
+                    # Streak broken due to time
+                    self.user_streaks[user_id] = {"count": 1, "last_response": now}
+            else:
+                # Start new streak
+                self.user_streaks[user_id] = {"count": 1, "last_response": now}
+        else:
+            # Break streak
+            if user_id in self.user_streaks:
+                del self.user_streaks[user_id]
+    
+    async def check_rapid_fire_trigger(self, user_id: int, response_time: int) -> bool:
+        """Check if rapid fire mode should be triggered."""
+        # Conditions for rapid fire:
+        # 1. Response under 15 seconds
+        # 2. Current streak of 3+
+        # 3. Not already in rapid fire mode
+        
+        if user_id in self.rapid_fire_active and self.rapid_fire_active[user_id]:
+            return False
+            
+        if response_time > 15:
+            return False
+            
+        if user_id not in self.user_streaks or self.user_streaks[user_id]["count"] < 3:
+            return False
+            
+        return True
+    
+    async def start_rapid_fire_mode(self, user: discord.User, public_channel: Optional[discord.TextChannel] = None):
+        """Start rapid fire mode for a user."""
+        self.rapid_fire_active[user.id] = True
+        
+        try:
+            # Send announcement
+            embed = discord.Embed(
+                title="🔥⚡ RAPID FIRE MODE ACTIVATED! ⚡🔥",
+                description=f"Get ready, {user.mention}! Complete 3-5 mantras quickly for massive bonus points!",
+                color=discord.Color.gold()
+            )
+            embed.add_field(
+                name="Multipliers",
+                value="2x → 3x → 5x → 10x",
+                inline=False
+            )
+            
+            if public_channel:
+                await public_channel.send(embed=embed)
+            else:
+                await user.send(embed=embed)
+            
+            await asyncio.sleep(3)  # Give them a moment to prepare
+            
+            config = self.get_user_mantra_config(user)
+            
+            # Send 3-5 rapid mantras
+            num_mantras = random.randint(3, 5)
+            multipliers = [2, 3, 5, 10]
+            
+            for i in range(num_mantras):
+                # Select mantra
+                mantra_data = self.select_mantra_for_user(config)
+                if not mantra_data:
+                    break
+                
+                # Format mantra
+                formatted_mantra = self.format_mantra(
+                    mantra_data["text"],
+                    config["pet_name"],
+                    config["dominant_title"]
+                )
+                
+                # Calculate points with escalating multiplier
+                multiplier = multipliers[min(i, len(multipliers)-1)]
+                rapid_points = mantra_data["base_points"] * multiplier
+                
+                # Send rapid mantra
+                embed = discord.Embed(
+                    title=f"⚡ Rapid Mantra #{i+1} ({multiplier}x points!)",
+                    description=f"**{rapid_points} points**: {formatted_mantra}",
+                    color=discord.Color.orange()
+                )
+                embed.set_footer(text="30 seconds to respond!")
+                
+                if public_channel:
+                    await public_channel.send(embed=embed)
+                else:
+                    await user.send(embed=embed)
+                
+                # Track challenge with shorter timeout
+                self.active_challenges[user.id] = {
+                    "mantra": formatted_mantra,
+                    "theme": mantra_data["theme"],
+                    "difficulty": mantra_data["difficulty"],
+                    "base_points": rapid_points,
+                    "sent_at": datetime.now(),
+                    "timeout_minutes": 0.5,  # 30 second timeout
+                    "is_rapid_fire": True,
+                    "rapid_number": i + 1
+                }
+                
+                # Wait up to 30 seconds for response
+                await asyncio.sleep(30)
+                
+                # If they didn't respond, break the chain
+                if user.id in self.active_challenges:
+                    # They failed this one
+                    del self.active_challenges[user.id]
+                    await user.send("❌ Rapid fire chain broken!")
+                    break
+                    
+                # Small pause between mantras if they succeeded
+                if i < num_mantras - 1:
+                    await asyncio.sleep(2)
+            
+            # End rapid fire mode
+            self.rapid_fire_active[user.id] = False
+            
+            # Completion message
+            if user.id not in self.active_challenges:  # They completed all
+                embed = discord.Embed(
+                    title="🎉 Rapid Fire Complete!",
+                    description=f"Amazing performance, {config['pet_name']}! You're in deep trance!",
+                    color=discord.Color.gold()
+                )
+                if public_channel:
+                    await public_channel.send(embed=embed)
+                else:
+                    await user.send(embed=embed)
+                    
+        except Exception as e:
+            if self.logger:
+                self.logger.error(f"Error in rapid fire mode for {user.id}: {e}")
+            self.rapid_fire_active[user.id] = False
     
     def check_mantra_match(self, user_response: str, expected_mantra: str) -> bool:
         """Check if user response matches mantra with typo tolerance."""
@@ -245,9 +425,10 @@ class MantraSystem(commands.Cog):
         """Main task loop for delivering mantras."""
         # Get all user configs
         for user_id in list(self.active_challenges.keys()):
-            # Check for expired challenges (20 minute timeout)
+            # Check for expired challenges
             challenge = self.active_challenges[user_id]
-            if datetime.now() > challenge["sent_at"] + timedelta(minutes=20):
+            timeout_minutes = challenge.get("timeout_minutes", 45)  # Default to 45 if not set
+            if datetime.now() > challenge["sent_at"] + timedelta(minutes=timeout_minutes):
                 # Challenge expired
                 user = self.bot.get_user(user_id)
                 if user:
@@ -264,6 +445,9 @@ class MantraSystem(commands.Cog):
                         "expired": True
                     }
                     config["encounters"].append(encounter)
+                    
+                    # Break streak on timeout
+                    self.update_streak(user_id, success=False)
                     
                     # Adjust frequency and check for auto-disable
                     auto_disabled = self.adjust_frequency(config, success=False)
@@ -309,14 +493,23 @@ class MantraSystem(commands.Cog):
                     config["dominant_title"]
                 )
                 
+                # Get timeout and multiplier based on difficulty
+                difficulty = mantra_data["difficulty"]
+                settings = self.expiration_settings.get(difficulty, self.expiration_settings["moderate"])
+                timeout_minutes = settings["timeout_minutes"]
+                points_multiplier = settings["points_multiplier"]
+                
+                # Apply points multiplier
+                adjusted_points = int(mantra_data["base_points"] * points_multiplier)
+                
                 # Send the challenge
                 try:
                     embed = discord.Embed(
                         title="🌀 Mantra Challenge",
-                        description=f"Repeat this for **{mantra_data['base_points']} points**:\n\n**{formatted_mantra}**",
+                        description=f"Repeat this for **{adjusted_points} points**:\n\n**{formatted_mantra}**",
                         color=discord.Color.purple()
                     )
-                    embed.set_footer(text="You have 20 minutes to respond")
+                    embed.set_footer(text=f"You have {timeout_minutes} minutes to respond")
                     
                     await user.send(embed=embed)
                     
@@ -325,8 +518,9 @@ class MantraSystem(commands.Cog):
                         "mantra": formatted_mantra,
                         "theme": mantra_data["theme"],
                         "difficulty": mantra_data["difficulty"],
-                        "base_points": mantra_data["base_points"],
-                        "sent_at": datetime.now()
+                        "base_points": adjusted_points,
+                        "sent_at": datetime.now(),
+                        "timeout_minutes": timeout_minutes
                     }
                     
                     # Update last encounter time and schedule next
@@ -374,6 +568,13 @@ class MantraSystem(commands.Cog):
             speed_bonus = self.calculate_speed_bonus(int(response_time))
             base_total = challenge["base_points"] + speed_bonus
             
+            # Update streak
+            self.update_streak(message.author.id, success=True)
+            streak_bonus, streak_title = self.get_streak_bonus(message.author.id)
+            
+            # Apply bonuses
+            base_total += streak_bonus
+            
             # Apply public bonus if applicable
             if is_public:
                 total_points = int(base_total * self.public_bonus_multiplier)
@@ -399,6 +600,7 @@ class MantraSystem(commands.Cog):
                 "difficulty": challenge["difficulty"],
                 "base_points": challenge["base_points"],
                 "speed_bonus": speed_bonus,
+                "streak_bonus": streak_bonus,
                 "public_bonus": public_bonus,
                 "completed": True,
                 "response_time": int(response_time),
@@ -421,8 +623,13 @@ class MantraSystem(commands.Cog):
             else:
                 praise = f"Good {config['pet_name']}."
                 
+            # Add streak title to description if applicable
+            title_text = "✨ Success!"
+            if streak_title:
+                title_text = f"{streak_title} Success!"
+            
             embed = discord.Embed(
-                title="✨ Success!",
+                title=title_text,
                 description=f"{praise} You earned **{total_points} points**!",
                 color=discord.Color.green()
             )
@@ -431,6 +638,8 @@ class MantraSystem(commands.Cog):
             breakdown_lines = [f"Base: {challenge['base_points']} pts"]
             if speed_bonus > 0:
                 breakdown_lines.append(f"Speed bonus: +{speed_bonus} pts")
+            if streak_bonus > 0:
+                breakdown_lines.append(f"Streak bonus: +{streak_bonus} pts")
             if public_bonus > 0:
                 breakdown_lines.append(f"Public bonus: +{public_bonus} pts")
             
@@ -452,10 +661,28 @@ class MantraSystem(commands.Cog):
             current_points = points_cog.get_points(message.author) if points_cog else 0
             embed.set_footer(text=f"Total points: {current_points:,}")
             
-            await message.reply(embed=embed)
+            # Show streak count if present
+            if message.author.id in self.user_streaks:
+                current_streak = self.user_streaks[message.author.id]["count"]
+                embed.add_field(
+                    name="🔥 Current Streak",
+                    value=f"{current_streak} mantras",
+                    inline=True
+                )
+            
+            # Send reward message publicly if response was public
+            if is_public:
+                await message.reply(embed=embed)
+            else:
+                await message.author.send(embed=embed)
             
             # Remove from active challenges
             del self.active_challenges[message.author.id]
+            
+            # Check for rapid fire mode trigger
+            if await self.check_rapid_fire_trigger(message.author.id, int(response_time)):
+                # Trigger rapid fire mode!
+                await self.start_rapid_fire_mode(message.author, message.channel if is_public else None)
     
     # Slash Commands - Using a group for better organization
     mantra_group = app_commands.Group(name="mantra", description="Hypnotic mantra training system")
@@ -468,7 +695,8 @@ class MantraSystem(commands.Cog):
     )
     @app_commands.choices(dominant_title=[
         app_commands.Choice(name="Master", value="Master"),
-        app_commands.Choice(name="Mistress", value="Mistress")
+        app_commands.Choice(name="Mistress", value="Mistress"),
+        app_commands.Choice(name="Goddess", value="Goddess")
     ])
     async def mantra_enroll(
         self,
@@ -511,7 +739,8 @@ class MantraSystem(commands.Cog):
         ],
         dominant_title=[
             app_commands.Choice(name="Master", value="Master"),
-            app_commands.Choice(name="Mistress", value="Mistress")
+            app_commands.Choice(name="Mistress", value="Mistress"),
+            app_commands.Choice(name="Goddess", value="Goddess")
         ],
         theme1=[
             app_commands.Choice(name="Suggestibility", value="suggestibility"),
