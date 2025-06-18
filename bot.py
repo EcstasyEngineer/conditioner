@@ -145,22 +145,17 @@ async def on_command_completion(ctx):
 async def on_error(event, *args, **kwargs):
     logger.exception(f'Unhandled exception in event {event}', exc_info=True)
 
-# Check if we're in dev mode (move this check before statuslist)
-is_dev_mode = os.getenv('DEV_MODE') or '--dev' in os.sys.argv
-
-# Teasy Hypnotic Statuses
-# Add [DEV] prefix if in development mode
-dev_prefix = "[DEV] " if is_dev_mode else ""
+# Teasy Hypnotic Statuses  
 statuslist = cycle([
-        f"{dev_prefix}Obey",
-        f"{dev_prefix}Submit",
-        f"{dev_prefix}Surrender",
-        f"{dev_prefix}Go Deeper",
-        f"{dev_prefix}Give In",
-        f"{dev_prefix}Drop",
-        f"{dev_prefix}Sleep",
-        f"{dev_prefix}Relax",
-        f"{dev_prefix}Let Go",
+        "Obey",
+        "Submit",
+        "Surrender",
+        "Go Deeper",
+        "Give In",
+        "Drop",
+        "Sleep",
+        "Relax",
+        "Let Go",
     ])
 
 
@@ -205,17 +200,9 @@ async def change_avatar():
         logger.error(f"Failed to update avatar: {e}")
 
 if __name__ == "__main__":
-    #Grab token from the token.txt file
-    # Check if we're running in dev mode
-    env_file = '.env.dev' if os.getenv('DEV_MODE') or '--dev' in os.sys.argv else '.env'
-    
-    # Load the appropriate .env file
-    if os.path.exists(env_file):
-        load_dotenv(env_file)
-        logger.info(f"Loaded environment from {env_file}")
-    else:
-        load_dotenv()  # Fall back to default .env
-        logger.warning(f"{env_file} not found, using default .env")
+    # Load environment configuration
+    load_dotenv()
+    logger.info("Loaded environment from .env")
     
     TOKEN = os.getenv('DISCORD_TOKEN')
 

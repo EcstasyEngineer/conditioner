@@ -13,4 +13,5 @@ configs/*.json
 /media/epic/*
 !/media/epic/sample.*
 /logs/
-.claude/*
+.claude/*.env
+media-backup/

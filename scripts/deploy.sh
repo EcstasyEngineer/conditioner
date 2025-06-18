@@ -15,7 +15,7 @@ pip install -r requirements.txt
 
 # Restart the bot
 echo "🔄 Restarting bot..."
-sudo systemctl restart discord-bot
+sudo systemctl restart conditioner
 
 echo "✅ Deployment complete!"
-echo "Check status with: sudo systemctl status discord-bot"
+echo "Check status with: sudo systemctl status conditioner"

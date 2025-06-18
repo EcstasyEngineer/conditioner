@@ -8,16 +8,25 @@ This is a Discord bot designed for hypnosis audio session automation and server 
 
 ## Key Commands
 
-### Running the Bot
+### Getting Started (First Time)
 ```bash
-# Install dependencies
-pip install -r requirements.txt
-
-# Set up environment variable
+# 1. Set up environment variable
 echo "DISCORD_TOKEN=your_bot_token_here" > .env
 
-# Run the bot
+# 2. Run the bot (auto-installs dependencies)
+./start.sh        # Linux/Mac
+# OR
+start.bat         # Windows
+```
+
+### Development/Testing
+```bash
+# Manual approach
+pip install -r requirements.txt
 python bot.py
+
+# Script approach  
+./start.sh        # Auto-checks dependencies
 ```
 
 ### Development Commands
@@ -121,74 +130,72 @@ When modifying the mantra system:
 
 When developing on the host machine (WSL/local), follow this process:
 
+### Repository Structure
+
+- **Production**: `~/ai-conditioner-discord/` (systemctl: `conditioner`)
+- **Development**: `~/ai-conditioner-discord-dev/` (manual run only)
+
 ### Setting Up Dev Environment
 
-1. **First Time Setup**:
+1. **Development repository is already cloned** at `~/ai-conditioner-discord-dev/`
+2. **Development token is configured** in `.env`
+
+### Development Process
+
+1. **Make code changes** in the development repository:
    ```bash
-   # Copy the dev environment template
-   cp .env.dev.example .env.dev
-   # Edit .env.dev and add your development bot token
+   cd ~/ai-conditioner-discord-dev/
+   # Edit files as needed
    ```
 
-2. **Testing New Features**:
-   When implementing features that require user interaction testing:
+2. **Test new features**:
    ```bash
-   # Start the dev bot
-   ./start_dev.sh
+   cd ~/ai-conditioner-discord-dev/
+   ./start.sh
    # OR
-   python bot.py --dev
+   python3 bot.py
    ```
    
    The dev bot will:
-   - Load from `.env.dev` instead of `.env`
+   - Load from `.env` (separate token)
    - Show `[DEV]` prefix in status messages
-   - Run alongside the production bot without conflicts
+   - Run alongside production bot without conflicts
+   - Use separate configs/, logs/, and media/ directories
 
-3. **Development Process**:
-   - Make code changes
-   - Run dev bot with `./start_dev.sh`
-   - Test in Discord (dev bot can be in same server as prod)
-   - Stop dev bot with Ctrl+C
-   - Commit and push changes
-   - Use `!update` and `!restart` in Discord to update production
+3. **Deploy to production** (choose based on changes):
+   
+   **For code-only changes:**
+   - Commit and push changes from dev repo
+   - Use `!update` and `!restart` in Discord (safe, no pip install)
+   
+   **For dependency changes or major updates:**
+   - Commit and push changes from dev repo  
+   - Run `./scripts/deploy.sh` (handles git pull + pip install + systemctl restart)
 
 ### AI Coder Instructions
 
 When you (Claude Code) are working on the host machine:
 
 1. **For Discord-Interactive Features** (commands, events, cogs):
-   ```bash
-   # After implementing the feature, automatically start the dev bot
-   ./start_dev.sh
-   ```
-   - Tell the user: "Dev bot is starting. Test your feature in Discord now!"
-   - The dev bot will show `[DEV]` prefix in status
-   - After user confirms testing is complete, remind them to stop with Ctrl+C
+   - Work in the development repository at `~/ai-conditioner-discord-dev/`
+   - After implementing, start dev bot: `cd ~/ai-conditioner-discord-dev && ./start.sh`
+   - Tell user: "Dev bot is starting. Test your feature in Discord now!"
+   - After successful test, commit and push changes
+   - Instruct user: "Use `!update` then `!restart` in Discord for code-only changes, or `./scripts/deploy.sh` if dependencies changed"
 
 2. **For Non-Interactive Changes** (config updates, refactoring):
    - Test with standard Python syntax checks
    - No need to run the full bot
 
-3. **Automated Testing Workflow**:
-   When implementing a new Discord command or feature:
-   - Complete the implementation
-   - Start dev bot with `./start_dev.sh`
-   - Provide clear testing instructions (e.g., "Try the new !command in Discord")
-   - Wait for user feedback
-   - After successful test, commit and push
-   - Instruct user: "Run `!update` then `!restart` in Discord to deploy"
-
-4. **Future Self-Modification Goals**:
-   - The bot architecture supports dynamic cog loading/unloading
-   - Commands like `!reload` already exist for hot-reloading cogs
-   - Consider implementing:
-     - `!edit <file> <content>` - Edit bot files from Discord
-     - `!commit <message>` - Commit changes from Discord
-     - `!deploy` - Combined update + restart
-   - Security consideration: Limit self-modification to superadmin only
+3. **Repository Management**:
+   - Development work: `~/ai-conditioner-discord-dev/`
+   - Production updates: Discord commands `!update` and `!restart`
+   - Complete isolation prevents production conflicts
 
 ### Quick Reference
-- **Dev Bot**: `./start_dev.sh` (uses `.env.dev`)
+- **Getting Started**: `./start.sh` or `start.bat`
+- **Dev Bot**: `cd ~/ai-conditioner-discord-dev && ./start.sh`
 - **Stop Dev**: `Ctrl+C`
-- **Deploy**: `!update` → `!restart` (in Discord)
-- **Check Prod Logs**: `tail -f logs/bot.log`
+- **Deploy (Code Only)**: `!update` → `!restart` (in Discord)
+- **Deploy (Full)**: `./scripts/deploy.sh` (for dependency changes)
+- **Check Prod Logs**: `tail -f ~/ai-conditioner-discord/logs/bot.log`
