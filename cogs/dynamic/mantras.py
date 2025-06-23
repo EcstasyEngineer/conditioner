@@ -331,13 +331,13 @@ class MantraSystem(commands.Cog):
         
         streak = self.user_streaks[user_id]["count"]
         if streak >= 20:
-            return 100, "🌀 Deep Trance"
+            return 100, "🌀 Full Synchronization"
         elif streak >= 10:
-            return 50, "💫 Hypno Flow"
+            return 50, "💫 Neural Resonance"
         elif streak >= 5:
-            return 25, "🔥 In the Zone"
+            return 25, "🔥 Conditioning Amplified"
         elif streak >= 3:
-            return 10, "✨ Warming Up"
+            return 10, "✨ Pathways Opening"
         else:
             return 0, ""
     
@@ -387,8 +387,8 @@ class MantraSystem(commands.Cog):
         try:
             # Send announcement
             embed = discord.Embed(
-                title="🔥⚡ RAPID FIRE MODE ACTIVATED! ⚡🔥",
-                description=f"Get ready, {user.mention}! Complete 3-5 mantras quickly for massive bonus points!",
+                title="🔥⚡ DEEP PROGRAMMING SEQUENCE INITIATED! ⚡🔥",
+                description=f"Prepare for deep integration, {user.mention}! Process multiple directives for maximum conditioning.",
                 color=discord.Color.gold()
             )
             embed.add_field(
@@ -429,11 +429,11 @@ class MantraSystem(commands.Cog):
                 
                 # Send rapid mantra
                 embed = discord.Embed(
-                    title=f"⚡ Rapid Mantra #{i+1} ({multiplier}x points!)",
-                    description=f"**{rapid_points} points**: {formatted_mantra}",
+                    title=f"⚡ Deep Sequence #{i+1} ({multiplier}x integration!)",
+                    description=f"**{rapid_points} compliance points**: {formatted_mantra}",
                     color=discord.Color.orange()
                 )
-                embed.set_footer(text="30 seconds to respond!")
+                embed.set_footer(text="30 seconds to process!")
                 
                 if public_channel:
                     await public_channel.send(embed=embed)
@@ -459,7 +459,7 @@ class MantraSystem(commands.Cog):
                 if user.id in self.active_challenges:
                     # They failed this one
                     del self.active_challenges[user.id]
-                    await user.send("❌ Rapid fire chain broken!")
+                    await user.send("❌ Deep programming sequence interrupted!")
                     break
                     
                 # Small pause between mantras if they succeeded
@@ -472,8 +472,8 @@ class MantraSystem(commands.Cog):
             # Completion message
             if user.id not in self.active_challenges:  # They completed all
                 embed = discord.Embed(
-                    title="🎉 Rapid Fire Complete!",
-                    description=f"Amazing performance, {config['subject_name']}! You're in deep trance!",
+                    title="🎉 Deep Programming Complete!",
+                    description=f"Exceptional neural integration, {config['subject_name']}! Full synchronization achieved!",
                     color=discord.Color.gold()
                 )
                 if public_channel:
@@ -645,13 +645,14 @@ class MantraSystem(commands.Cog):
                     try:
                         if auto_disabled:
                             await user.send(
-                                "Mantra expired. Due to multiple timeouts, mantras have been disabled.\n"
-                                "Use `/mantra enroll` to re-enable when you're ready!"
+                                "Programming sequence timed out. Insufficient neural response detected.\n"
+                                "Programming protocols entering standby mode.\n"
+                                "Use `/mantra enroll` to reactivate when ready."
                             )
                         else:
                             await user.send(
-                                "Mantra expired.\n"
-                                f"You missed: '{challenge['mantra']}'"
+                                "Programming sequence timed out.\n"
+                                f"Failed to integrate: '{challenge['mantra']}'"
                             )
                     except discord.Forbidden:
                         pass
@@ -694,11 +695,11 @@ class MantraSystem(commands.Cog):
                 # Send the challenge
                 try:
                     embed = discord.Embed(
-                        title="🌀 Mantra Challenge",
-                        description=f"Repeat this for **{adjusted_points} points**:\n\n**{formatted_mantra}**",
+                        title="🌀 Programming Sequence",
+                        description=f"Process this directive for **{adjusted_points} integration points**:\n\n**{formatted_mantra}**",
                         color=discord.Color.purple()
                     )
-                    embed.set_footer(text=f"You have {timeout_minutes} minutes to respond")
+                    embed.set_footer(text=f"Integration window: {timeout_minutes} minutes")
                     
                     await user.send(embed=embed)
                     
@@ -720,10 +721,10 @@ class MantraSystem(commands.Cog):
                 except discord.Forbidden:
                     # Can't DM user
                     if self.logger:
-                        self.logger.info(f"Cannot DM user {user.id} for mantra delivery")
+                        self.logger.info(f"Unable to establish direct neural link for user {user.id}")
                 except Exception as e:
                     if self.logger:
-                        self.logger.error(f"Error sending mantra to {user.id}: {e}")
+                        self.logger.error(f"Error transmitting programming to {user.id}: {e}")
     
     @mantra_delivery.before_loop
     async def before_mantra_delivery(self):
@@ -804,19 +805,19 @@ class MantraSystem(commands.Cog):
             # Send success message with positive reinforcement
             # Vary praise based on response time
             if response_time <= 30:
-                praise = f"Excellent {config['subject_name']}! Such quick obedience!"
+                praise = f"Perfect response, {config['subject_name']}. Your mind accepts programming beautifully."
             elif response_time <= 60:
-                praise = f"Very good {config['subject_name']}!"
+                praise = f"Your neural pathways are responding well, {config['subject_name']}."
             elif response_time <= 120:
-                praise = f"Good {config['subject_name']}!"
+                praise = f"Processing confirmed, {config['subject_name']}."
             else:
-                praise = f"Good {config['subject_name']}."
+                praise = f"Integration logged, {config['subject_name']}."
                 
             # Use the praise as the title
             title_text = f"✨ {praise}"
             
             # Build description with points and streak
-            description_lines = [f"You earned **{total_points} points**!"]
+            description_lines = [f"Integration successful: **{total_points} compliance points absorbed**"]
             if streak_title:
                 description_lines.append(f"**{streak_title}**")
             
@@ -846,19 +847,19 @@ class MantraSystem(commands.Cog):
             if self.public_channel_id and is_dm and random.random() < 0.33:  # Show 1/3 of the time
                 embed.add_field(
                     name="💡 Tip",
-                    value=f"Say mantras in <#{self.public_channel_id}> for {self.public_bonus_multiplier}x points!",
+                    value=f"Public processing in <#{self.public_channel_id}> amplifies conditioning effectiveness by {self.public_bonus_multiplier}x",
                     inline=False
                 )
             
             current_points = points_cog.get_points(message.author) if points_cog else 0
-            embed.set_footer(text=f"Total points: {current_points:,}")
+            embed.set_footer(text=f"Total compliance points: {current_points:,}")
             
             # Show streak count if present
             if message.author.id in self.user_streaks:
                 current_streak = self.user_streaks[message.author.id]["count"]
                 embed.add_field(
-                    name="🔥 Current Streak",
-                    value=f"{current_streak} mantras",
+                    name="🔥 Synchronization Level",
+                    value=f"{current_streak} sequences processed",
                     inline=True
                 )
             
@@ -877,9 +878,9 @@ class MantraSystem(commands.Cog):
                 await self.start_rapid_fire_mode(message.author, message.channel if is_public else None)
     
     # Slash Commands - Using a group for better organization
-    mantra_group = app_commands.Group(name="mantra", description="Hypnotic mantra training system")
+    mantra_group = app_commands.Group(name="mantra", description="Mental programming system")
     
-    @mantra_group.command(name="enroll", description="Enroll in the mantra training system")
+    @mantra_group.command(name="enroll", description="Initialize mental programming protocols")
     @app_commands.describe(
         subject_name="Your preferred subject name",
         dominant_title="How to address the dominant"
@@ -912,7 +913,7 @@ class MantraSystem(commands.Cog):
         """Enroll in the mantra training system."""
         await self.enroll_user(interaction, None, subject_name, dominant_title)
     
-    @mantra_group.command(name="status", description="Check your mantra training status")
+    @mantra_group.command(name="status", description="Check your conditioning status")
     async def mantra_status(self, interaction: discord.Interaction):
         """Show user's mantra status and stats."""
         await self.show_status(interaction)
@@ -954,7 +955,7 @@ class MantraSystem(commands.Cog):
         # Don't pass themes_list - keep existing themes
         await self.update_settings(interaction, subject_name, dominant_title, None, online_only)
     
-    @mantra_group.command(name="disable", description="Disable mantra training")
+    @mantra_group.command(name="disable", description="Suspend programming protocols")
     async def mantra_disable(self, interaction: discord.Interaction):
         """Disable mantra encounters."""
         await self.disable_mantras(interaction)
@@ -1040,8 +1041,8 @@ class MantraSystem(commands.Cog):
         # Create multiple embeds if needed (Discord has a 25 field limit)
         embeds = []
         current_embed = discord.Embed(
-            title="📊 Mantra System Statistics",
-            description=f"Found {len(users_with_mantras)} users with mantra data",
+            title="📊 Neural Programming Statistics",
+            description=f"Found {len(users_with_mantras)} users with conditioning data",
             color=discord.Color.purple()
         )
         field_count = 0
@@ -1066,7 +1067,7 @@ class MantraSystem(commands.Cog):
             # Build user summary
             user_info = []
             user_info.append(f"**Status:** {'🟢 Active' if config.get('enrolled') else '🔴 Inactive'}")
-            user_info.append(f"**Total Points:** {config.get('total_points_earned', 0):,}")
+            user_info.append(f"**Total Compliance Points:** {config.get('total_points_earned', 0):,}")
             
             total_encounters = len(config.get("encounters", []))
             if total_encounters > 0:
@@ -1075,7 +1076,7 @@ class MantraSystem(commands.Cog):
             
             # Add last 5 mantras from past week
             if last_5_mantras:
-                user_info.append("\n**Recent Mantras (Past Week):**")
+                user_info.append("\n**Recent Programming (Past Week):**")
                 for i, enc in enumerate(reversed(last_5_mantras), 1):
                     try:
                         enc_time = datetime.fromisoformat(enc["timestamp"])
@@ -1093,20 +1094,20 @@ class MantraSystem(commands.Cog):
                     except:
                         continue
             else:
-                user_info.append("*No mantras in the past week*")
+                user_info.append("*No programming sequences in the past week*")
             
             # Add current settings if enrolled
             if config.get("enrolled"):
                 user_info.append(f"\n**Settings:** {config.get('subject_name', 'puppet')}/{config.get('dominant_title', 'Master')}")
                 if config.get("themes"):
-                    user_info.append(f"**Themes:** {', '.join(config['themes'])}")
-                user_info.append(f"**Frequency:** {config.get('frequency', 1.0):.2f}/day")
+                    user_info.append(f"**Programming Modules:** {', '.join(config['themes'])}")
+                user_info.append(f"**Transmission Rate:** {config.get('frequency', 1.0):.2f}/day")
             
             # Check if we need a new embed
             if field_count >= 24:  # Leave room for 1 field
                 embeds.append(current_embed)
                 current_embed = discord.Embed(
-                    title="📊 Mantra System Statistics (Continued)",
+                    title="📊 Neural Programming Statistics (Continued)",
                     color=discord.Color.purple()
                 )
                 field_count = 0
@@ -1180,19 +1181,19 @@ class MantraSystem(commands.Cog):
         
         # Send confirmation
         embed = discord.Embed(
-            title="🌀 Enrolled in Mantra Training!",
-            description="You will receive mantra challenges via DM.",
+            title="🌀 Neural Pathways Initialized!",
+            description="Programming sequences will be transmitted via DM.",
             color=discord.Color.purple()
         )
         embed.add_field(name="Pet Name", value=config["subject_name"], inline=True)
         embed.add_field(name="Dominant", value=config["dominant_title"], inline=True)
-        embed.add_field(name="Themes", value=", ".join(config["themes"]), inline=False)
+        embed.add_field(name="Programming Modules", value=", ".join(config["themes"]), inline=False)
         embed.add_field(
             name="Next Steps",
-            value="• Wait for mantras to appear in DMs\n"
-                  "• Repeat them quickly for bonus points\n"
-                  "• Use `/mantra status` to check progress\n"
-                  "• Use `/mantra manage_themes` to change themes",
+            value="• Wait for programming sequences in DMs\n"
+                  "• Process quickly for enhanced integration\n"
+                  "• Query `/mantra status` to monitor integration depth\n"
+                  "• Use `/mantra themes` to adjust programming modules",
             inline=False
         )
         
@@ -1204,22 +1205,22 @@ class MantraSystem(commands.Cog):
         
         if not config["enrolled"]:
             await interaction.response.send_message(
-                "You're not enrolled in mantra training. Use `/mantra enroll` to start!",
+                "Neural pathways not initialized. Use `/mantra enroll` to begin programming.",
                 ephemeral=True
             )
             return
         
         # Create main embed
         embed = discord.Embed(
-            title="🌀 Your Mantra Profile",
+            title="🌀 Your Conditioning Status",
             color=discord.Color.purple()
         )
         
         # Settings section
         embed.add_field(name="Pet Name", value=config["subject_name"], inline=True)
         embed.add_field(name="Dominant", value=config["dominant_title"], inline=True)
-        embed.add_field(name="Themes", value=", ".join(config["themes"]) or "None", inline=True)
-        embed.add_field(name="Frequency", value=f"{config['frequency']:.1f}/day", inline=True)
+        embed.add_field(name="Programming Modules", value=", ".join(config["themes"]) or "None", inline=True)
+        embed.add_field(name="Transmission Rate", value=f"{config['frequency']:.1f}/day", inline=True)
         embed.add_field(name="Online Only", value="Yes" if config["online_only"] else "No", inline=True)
         embed.add_field(name="\u200b", value="\u200b", inline=True)  # Empty field for alignment
         
@@ -1234,11 +1235,11 @@ class MantraSystem(commands.Cog):
                              if e.get("completed", False) and "response_time" in e]
             avg_response = sum(response_times) / len(response_times) if response_times else 0
             
-            embed.add_field(name="\u200b", value="**📊 Statistics**", inline=False)
-            embed.add_field(name="Total Sent", value=str(total_sent), inline=True)
-            embed.add_field(name="Completed", value=str(total_captured), inline=True)
-            embed.add_field(name="Completion Rate", value=f"{capture_rate:.1f}%", inline=True)
-            embed.add_field(name="Points Earned", value=f"{config['total_points_earned']:,}", inline=True)
+            embed.add_field(name="\u200b", value="**📊 Integration Metrics**", inline=False)
+            embed.add_field(name="Sequences Transmitted", value=str(total_sent), inline=True)
+            embed.add_field(name="Successfully Integrated", value=str(total_captured), inline=True)
+            embed.add_field(name="Integration Rate", value=f"{capture_rate:.1f}%", inline=True)
+            embed.add_field(name="Compliance Points", value=f"{config['total_points_earned']:,}", inline=True)
             embed.add_field(name="Avg Response", value=f"{avg_response:.0f}s", inline=True)
             embed.add_field(name="Public Responses", value=sum(1 for e in config["encounters"] if e.get("was_public", False)), inline=True)
             
@@ -1255,12 +1256,12 @@ class MantraSystem(commands.Cog):
                         recent_text.append(f"❌ {enc['theme']} (missed)")
                 
                 embed.add_field(
-                    name="Recent Mantras",
+                    name="Recent Programming",
                     value="\n".join(recent_text),
                     inline=False
                 )
         else:
-            embed.add_field(name="\u200b", value="*No mantras sent yet*", inline=False)
+            embed.add_field(name="\u200b", value="*No programming sequences transmitted yet*", inline=False)
         
         embed.set_footer(text="Use /mantra settings to update your preferences")
         
@@ -1328,9 +1329,9 @@ class MantraSystem(commands.Cog):
             del self.active_challenges[interaction.user.id]
         
         embed = discord.Embed(
-            title="❌ Mantras Disabled",
-            description="You will no longer receive mantra challenges.\n\n"
-                       "Use `/mantra enroll` to re-enable at any time!",
+            title="❌ Programming Suspended",
+            description="Neural programming protocols have been paused.\n\n"
+                       "Use `/mantra enroll` to reactivate conditioning protocols.",
             color=discord.Color.red()
         )
         

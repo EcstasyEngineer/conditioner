@@ -132,6 +132,36 @@ When creating GitHub issues:
 - All user data is stored in JSON configs, not a database
 - Media files follow a specific naming convention for the gacha system
 
+## Language Guidelines for Hypnotic/Conditioning Features
+
+When developing new features or modifying existing ones, use language that emphasizes mental programming and conditioning rather than gamification:
+
+### Core Language Transformations
+- **Points/Rewards** → "Compliance points", "Integration points", "Conditioning metrics"
+- **Challenges/Games** → "Programming sequences", "Conditioning protocols", "Neural directives"
+- **Success/Failure** → "Integration successful", "Processing confirmed", "Sequence timed out"
+- **User Actions** → "Process", "Absorb", "Integrate" rather than "Complete", "Win", "Earn"
+
+### Specific Examples
+- "Mantra Challenge" → "Programming Sequence"
+- "You earned X points!" → "Integration successful: X compliance points absorbed"
+- "Good job!" → "Processing confirmed" or "Neural pathways responding well"
+- "Streak bonus" → "Synchronization level" or "Conditioning amplified"
+- "Repeat this mantra" → "Process this directive"
+
+### Status/Progress Language
+- "Deep Trance" → "Full Synchronization"
+- "In the Zone" → "Conditioning Amplified"
+- "Training enrolled" → "Neural pathways initialized"
+- "Settings updated" → "Programming parameters adjusted"
+
+### Avoid Overly Clinical/Drone Language
+- Keep "Pet Name" instead of "Unit Identifier" (dronification is a specific theme, not the whole bot)
+- Balance technical terms with warm conditioning language
+- Maintain consensual undertones while emphasizing mental programming
+
+This language shift creates an immersive hypnotic experience that aligns with the bot's true purpose of mental conditioning through repetitive mantra work and behavioral reinforcement.
+
 ## Development Workflow on Host Machine
 
 When developing on the host machine (WSL/local), follow this process:
