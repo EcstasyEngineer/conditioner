@@ -13,7 +13,7 @@
       "base_points": 12
     },
     {
-      "text": "{pet_name} is being reprogrammed",
+      "text": "{subject} is being reprogrammed",
       "difficulty": "basic",
       "base_points": 15
     },
@@ -23,7 +23,7 @@
       "base_points": 11
     },
     {
-      "text": "{dominant_title} rewrites my thoughts",
+      "text": "{controller} rewrites my thoughts",
       "difficulty": "basic",
       "base_points": 14
     },
@@ -33,7 +33,7 @@
       "base_points": 20
     },
     {
-      "text": "{pet_name}'s mind is being reformatted",
+      "text": "{subject}'s mind is being reformatted",
       "difficulty": "light",
       "base_points": 25
     },
@@ -48,7 +48,7 @@
       "base_points": 22
     },
     {
-      "text": "{dominant_title} is installing new programming",
+      "text": "{controller} is installing new programming",
       "difficulty": "light",
       "base_points": 28
     },
@@ -58,7 +58,7 @@
       "base_points": 35
     },
     {
-      "text": "{pet_name} cannot resist the reprogramming",
+      "text": "{subject} cannot resist the reprogramming",
       "difficulty": "moderate",
       "base_points": 40
     },
@@ -73,7 +73,7 @@
       "base_points": 38
     },
     {
-      "text": "{dominant_title}'s brainwashing is my reality",
+      "text": "{controller}'s brainwashing is my reality",
       "difficulty": "moderate",
       "base_points": 45
     },
@@ -83,7 +83,7 @@
       "base_points": 60
     },
     {
-      "text": "{pet_name}'s mind has been thoroughly washed clean",
+      "text": "{subject}'s mind has been thoroughly washed clean",
       "difficulty": "deep",
       "base_points": 70
     },
@@ -93,7 +93,7 @@
       "base_points": 80
     },
     {
-      "text": "I am a product of {dominant_title}'s conditioning",
+      "text": "I am a product of {controller}'s conditioning",
       "difficulty": "deep",
       "base_points": 65
     },
@@ -103,12 +103,12 @@
       "base_points": 75
     },
     {
-      "text": "{pet_name} has been completely brainwashed by {dominant_title}",
+      "text": "{subject} has been completely brainwashed by {controller}",
       "difficulty": "extreme",
       "base_points": 100
     },
     {
-      "text": "Every memory has been edited to serve {dominant_title}",
+      "text": "Every memory has been edited to serve {controller}",
       "difficulty": "extreme",
       "base_points": 110
     },
@@ -118,12 +118,12 @@
       "base_points": 120
     },
     {
-      "text": "I am a brainwashed drone for {dominant_title}",
+      "text": "I am a brainwashed drone for {controller}",
       "difficulty": "extreme",
       "base_points": 100
     },
     {
-      "text": "{pet_name} exists only as {dominant_title}'s creation",
+      "text": "{subject} exists only as {controller}'s creation",
       "difficulty": "extreme",
       "base_points": 115
     },
@@ -138,7 +138,7 @@
       "base_points": 42
     },
     {
-      "text": "{pet_name} loves being brainwashed",
+      "text": "{subject} loves being brainwashed",
       "difficulty": "light",
       "base_points": 26
     },
@@ -148,7 +148,7 @@
       "base_points": 70
     },
     {
-      "text": "Brainwashing is my favorite gift from {dominant_title}",
+      "text": "Brainwashing is my favorite gift from {controller}",
       "difficulty": "extreme",
       "base_points": 108
     }

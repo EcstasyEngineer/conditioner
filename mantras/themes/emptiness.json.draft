@@ -13,7 +13,7 @@
       "base_points": 11
     },
     {
-      "text": "{pet_name} likes being blank",
+      "text": "{subject} likes being blank",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -23,7 +23,7 @@
       "base_points": 13
     },
     {
-      "text": "My mind relaxes for {dominant_title}",
+      "text": "My mind relaxes for {controller}",
       "difficulty": "basic",
       "base_points": 14
     },
@@ -38,7 +38,7 @@
       "base_points": 20
     },
     {
-      "text": "{pet_name}'s thoughts are getting quieter",
+      "text": "{subject}'s thoughts are getting quieter",
       "difficulty": "light",
       "base_points": 22
     },
@@ -53,7 +53,7 @@
       "base_points": 26
     },
     {
-      "text": "{dominant_title}'s voice fills my empty mind",
+      "text": "{controller}'s voice fills my empty mind",
       "difficulty": "light",
       "base_points": 28
     },
@@ -68,7 +68,7 @@
       "base_points": 35
     },
     {
-      "text": "{pet_name} is becoming a vessel for {dominant_title}",
+      "text": "{subject} is becoming a vessel for {controller}",
       "difficulty": "moderate",
       "base_points": 38
     },
@@ -83,7 +83,7 @@
       "base_points": 42
     },
     {
-      "text": "{dominant_title} shapes my empty mind",
+      "text": "{controller} shapes my empty mind",
       "difficulty": "moderate",
       "base_points": 45
     },
@@ -93,7 +93,7 @@
       "base_points": 60
     },
     {
-      "text": "{pet_name}'s self dissolves almost completely",
+      "text": "{subject}'s self dissolves almost completely",
       "difficulty": "deep",
       "base_points": 65
     },
@@ -103,22 +103,22 @@
       "base_points": 70
     },
     {
-      "text": "I am fundamentally hollow for {dominant_title}",
+      "text": "I am fundamentally hollow for {controller}",
       "difficulty": "deep",
       "base_points": 75
     },
     {
-      "text": "My core is empty, waiting for {dominant_title}'s will",
+      "text": "My core is empty, waiting for {controller}'s will",
       "difficulty": "deep",
       "base_points": 80
     },
     {
-      "text": "I am permanently emptied for {dominant_title}",
+      "text": "I am permanently emptied for {controller}",
       "difficulty": "extreme",
       "base_points": 100
     },
     {
-      "text": "{pet_name} is nothing but void forever",
+      "text": "{subject} is nothing but void forever",
       "difficulty": "extreme",
       "base_points": 105
     },
@@ -128,12 +128,12 @@
       "base_points": 110
     },
     {
-      "text": "I exist only as {dominant_title}'s empty vessel",
+      "text": "I exist only as {controller}'s empty vessel",
       "difficulty": "extreme",
       "base_points": 115
     },
     {
-      "text": "{pet_name} has been irreversibly hollowed out",
+      "text": "{subject} has been irreversibly hollowed out",
       "difficulty": "extreme",
       "base_points": 120
     },
@@ -143,7 +143,7 @@
       "base_points": 42
     },
     {
-      "text": "{pet_name} regularly floats in nothingness",
+      "text": "{subject} regularly floats in nothingness",
       "difficulty": "light",
       "base_points": 26
     },
@@ -153,7 +153,7 @@
       "base_points": 72
     },
     {
-      "text": "Nothing but {dominant_title}'s will remains forever",
+      "text": "Nothing but {controller}'s will remains forever",
       "difficulty": "extreme",
       "base_points": 108
     },
@@ -178,7 +178,7 @@
       "base_points": 78
     },
     {
-      "text": "{pet_name} is completely and forever empty",
+      "text": "{subject} is completely and forever empty",
       "difficulty": "extreme",
       "base_points": 112
     }

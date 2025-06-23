@@ -12,7 +12,7 @@ Each theme is a JSON file in the `themes/` directory with the following structur
   "description": "Description of the theme",
   "mantras": [
     {
-      "text": "The mantra text with {subject_name} and {dominant_title} variables",
+      "text": "The mantra text with {subject} and {controller} variables",
       "difficulty": "basic|light|moderate|deep|extreme",
       "base_points": 10-120
     }
@@ -28,8 +28,8 @@ Each theme is a JSON file in the `themes/` directory with the following structur
 - **extreme**: 90-120 points - Most intense content (gated)
 
 ## Template Variables
-- `{subject_name}`: User's chosen subject name (e.g., "puppet", "puppy", "kitten", "pet")
-- `{dominant_title}`: User's chosen dominant title (e.g., "Master", "Mistress", "Goddess")
+- `{subject}`: User's chosen subject name (e.g., "puppet", "puppy", "kitten", "pet")
+- `{controller}`: User's chosen controller title (e.g., "Master", "Mistress", "Goddess", "Controller")
 
 ## Adding New Themes
 1. Create a new JSON file in `themes/` directory

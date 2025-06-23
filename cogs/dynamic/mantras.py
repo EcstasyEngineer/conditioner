@@ -265,8 +265,8 @@ class MantraSystem(commands.Cog):
         default_config = {
             "enrolled": False,
             "themes": [],
-            "subject_name": "puppet",
-            "dominant_title": "Master",
+            "subject": "puppet",
+            "controller": "Master",
             "frequency": 1.0,  # encounters per day
             "last_encounter": None,
             "next_encounter": None,
@@ -298,11 +298,11 @@ class MantraSystem(commands.Cog):
         # Force save to disk
         self.bot.config.flush()
     
-    def format_mantra(self, mantra_text: str, subject_name: str, dominant_title: str) -> str:
+    def format_mantra(self, mantra_text: str, subject: str, controller: str) -> str:
         """Replace template variables in mantra text."""
         formatted = mantra_text.format(
-            subject_name=subject_name,
-            dominant_title=dominant_title
+            subject=subject,
+            controller=controller
         )
         # Capitalize first letter
         if formatted and formatted[0].islower():
@@ -333,11 +333,11 @@ class MantraSystem(commands.Cog):
         if streak >= 20:
             return 100, "🌀 Full Synchronization"
         elif streak >= 10:
-            return 50, "💫 Neural Resonance"
+            return 50, "◉ Neural Resonance"
         elif streak >= 5:
-            return 25, "🔥 Conditioning Amplified"
+            return 25, "◈◈ Conditioning Amplified"
         elif streak >= 3:
-            return 10, "✨ Pathways Opening"
+            return 10, "◈ Pathways Opening"
         else:
             return 0, ""
     
@@ -419,8 +419,8 @@ class MantraSystem(commands.Cog):
                 # Format mantra
                 formatted_mantra = self.format_mantra(
                     mantra_data["text"],
-                    config["subject_name"],
-                    config["dominant_title"]
+                    config["subject"],
+                    config["controller"]
                 )
                 
                 # Calculate points with escalating multiplier
@@ -472,8 +472,8 @@ class MantraSystem(commands.Cog):
             # Completion message
             if user.id not in self.active_challenges:  # They completed all
                 embed = discord.Embed(
-                    title="🎉 Deep Programming Complete!",
-                    description=f"Exceptional neural integration, {config['subject_name']}! Full synchronization achieved!",
+                    title="🌀 Deep Programming Integration Complete",
+                    description=f"Exceptional neural integration, {config['subject']}! Full synchronization achieved!",
                     color=discord.Color.gold()
                 )
                 if public_channel:
@@ -679,8 +679,8 @@ class MantraSystem(commands.Cog):
                 # Format the mantra
                 formatted_mantra = self.format_mantra(
                     mantra_data["text"],
-                    config["subject_name"],
-                    config["dominant_title"]
+                    config["subject"],
+                    config["controller"]
                 )
                 
                 # Get timeout and multiplier based on difficulty
@@ -805,16 +805,16 @@ class MantraSystem(commands.Cog):
             # Send success message with positive reinforcement
             # Vary praise based on response time
             if response_time <= 30:
-                praise = f"Perfect response, {config['subject_name']}. Your mind accepts programming beautifully."
+                praise = f"Perfect response, {config['subject']}. Your mind accepts programming beautifully."
             elif response_time <= 60:
-                praise = f"Your neural pathways are responding well, {config['subject_name']}."
+                praise = f"Your neural pathways are responding well, {config['subject']}."
             elif response_time <= 120:
-                praise = f"Processing confirmed, {config['subject_name']}."
+                praise = f"Processing confirmed, {config['subject']}."
             else:
-                praise = f"Integration logged, {config['subject_name']}."
+                praise = f"Integration logged, {config['subject']}."
                 
             # Use the praise as the title
-            title_text = f"✨ {praise}"
+            title_text = f"◈ {praise}"
             
             # Build description with points and streak
             description_lines = [f"Integration successful: **{total_points} compliance points absorbed**"]
@@ -846,7 +846,7 @@ class MantraSystem(commands.Cog):
             # Add tip about public channel if configured and this was a DM response
             if self.public_channel_id and is_dm and random.random() < 0.33:  # Show 1/3 of the time
                 embed.add_field(
-                    name="💡 Tip",
+                    name="📍 Protocol Reminder",
                     value=f"Public processing in <#{self.public_channel_id}> amplifies conditioning effectiveness by {self.public_bonus_multiplier}x",
                     inline=False
                 )
@@ -858,7 +858,7 @@ class MantraSystem(commands.Cog):
             if message.author.id in self.user_streaks:
                 current_streak = self.user_streaks[message.author.id]["count"]
                 embed.add_field(
-                    name="🔥 Synchronization Level",
+                    name="◈ Synchronization Level",
                     value=f"{current_streak} sequences processed",
                     inline=True
                 )
@@ -882,11 +882,11 @@ class MantraSystem(commands.Cog):
     
     @mantra_group.command(name="enroll", description="Initialize mental programming protocols")
     @app_commands.describe(
-        subject_name="Your preferred subject name",
-        dominant_title="How to address the dominant"
+        subject="Your preferred subject name",
+        controller="How to address the dominant"
     )
     @app_commands.choices(
-        subject_name=[
+        subject=[
             app_commands.Choice(name="puppet", value="puppet"),
             app_commands.Choice(name="puppy", value="puppy"),
             app_commands.Choice(name="kitten", value="kitten"),
@@ -898,7 +898,7 @@ class MantraSystem(commands.Cog):
             app_commands.Choice(name="bimbo", value="bimbo"),
             app_commands.Choice(name="drone", value="drone")
         ],
-        dominant_title=[
+        controller=[
             app_commands.Choice(name="Master", value="Master"),
             app_commands.Choice(name="Mistress", value="Mistress"),
             app_commands.Choice(name="Goddess", value="Goddess")
@@ -907,11 +907,11 @@ class MantraSystem(commands.Cog):
     async def mantra_enroll(
         self,
         interaction: discord.Interaction,
-        subject_name: Optional[str] = None,
-        dominant_title: Optional[str] = None
+        subject: Optional[str] = None,
+        controller: Optional[str] = None
     ):
         """Enroll in the mantra training system."""
-        await self.enroll_user(interaction, None, subject_name, dominant_title)
+        await self.enroll_user(interaction, None, subject, controller)
     
     @mantra_group.command(name="status", description="Check your conditioning status")
     async def mantra_status(self, interaction: discord.Interaction):
@@ -920,13 +920,13 @@ class MantraSystem(commands.Cog):
     
     @mantra_group.command(name="settings", description="Update your mantra settings")
     @app_commands.describe(
-        subject_name="Your preferred subject name",
-        dominant_title="How to address the dominant",
+        subject="Your preferred subject name",
+        controller="How to address the dominant",
         online_only="Only receive mantras when online"
     )
     # Note: Use /mantra themes to manage your active themes
     @app_commands.choices(
-        subject_name=[
+        subject=[
             app_commands.Choice(name="puppet", value="puppet"),
             app_commands.Choice(name="puppy", value="puppy"),
             app_commands.Choice(name="kitten", value="kitten"),
@@ -938,7 +938,7 @@ class MantraSystem(commands.Cog):
             app_commands.Choice(name="bimbo", value="bimbo"),
             app_commands.Choice(name="drone", value="drone")
         ],
-        dominant_title=[
+        controller=[
             app_commands.Choice(name="Master", value="Master"),
             app_commands.Choice(name="Mistress", value="Mistress"),
             app_commands.Choice(name="Goddess", value="Goddess")
@@ -947,13 +947,13 @@ class MantraSystem(commands.Cog):
     async def mantra_settings(
         self,
         interaction: discord.Interaction,
-        subject_name: Optional[str] = None,
-        dominant_title: Optional[str] = None,
+        subject: Optional[str] = None,
+        controller: Optional[str] = None,
         online_only: Optional[bool] = None
     ):
         """Update mantra settings."""
         # Don't pass themes_list - keep existing themes
-        await self.update_settings(interaction, subject_name, dominant_title, None, online_only)
+        await self.update_settings(interaction, subject, controller, None, online_only)
     
     @mantra_group.command(name="disable", description="Suspend programming protocols")
     async def mantra_disable(self, interaction: discord.Interaction):
@@ -1098,7 +1098,7 @@ class MantraSystem(commands.Cog):
             
             # Add current settings if enrolled
             if config.get("enrolled"):
-                user_info.append(f"\n**Settings:** {config.get('subject_name', 'puppet')}/{config.get('dominant_title', 'Master')}")
+                user_info.append(f"\n**Settings:** {config.get('subject', 'puppet')}/{config.get('controller', 'Master')}")
                 if config.get("themes"):
                     user_info.append(f"**Programming Modules:** {', '.join(config['themes'])}")
                 user_info.append(f"**Transmission Rate:** {config.get('frequency', 1.0):.2f}/day")
@@ -1134,8 +1134,8 @@ class MantraSystem(commands.Cog):
         self,
         interaction: discord.Interaction,
         themes_str: Optional[str],
-        subject_name: Optional[str],
-        dominant_title: Optional[str]
+        subject: Optional[str],
+        controller: Optional[str]
     ):
         """Enroll user in mantra system."""
         config = self.get_user_mantra_config(interaction.user)
@@ -1159,8 +1159,8 @@ class MantraSystem(commands.Cog):
         # Update config
         config["enrolled"] = True
         config["themes"] = valid_themes
-        config["subject_name"] = subject_name or config["subject_name"]
-        config["dominant_title"] = dominant_title if dominant_title else config["dominant_title"]
+        config["subject"] = subject or config["subject"]
+        config["controller"] = controller if controller else config["controller"]
         config["consecutive_timeouts"] = 0  # Reset on re-enrollment
         
         # Schedule first encounter
@@ -1185,8 +1185,8 @@ class MantraSystem(commands.Cog):
             description="Programming sequences will be transmitted via DM.",
             color=discord.Color.purple()
         )
-        embed.add_field(name="Pet Name", value=config["subject_name"], inline=True)
-        embed.add_field(name="Dominant", value=config["dominant_title"], inline=True)
+        embed.add_field(name="Subject", value=config["subject"], inline=True)
+        embed.add_field(name="Controller", value=config["controller"], inline=True)
         embed.add_field(name="Programming Modules", value=", ".join(config["themes"]), inline=False)
         embed.add_field(
             name="Next Steps",
@@ -1217,8 +1217,8 @@ class MantraSystem(commands.Cog):
         )
         
         # Settings section
-        embed.add_field(name="Pet Name", value=config["subject_name"], inline=True)
-        embed.add_field(name="Dominant", value=config["dominant_title"], inline=True)
+        embed.add_field(name="Subject", value=config["subject"], inline=True)
+        embed.add_field(name="Controller", value=config["controller"], inline=True)
         embed.add_field(name="Programming Modules", value=", ".join(config["themes"]) or "None", inline=True)
         embed.add_field(name="Transmission Rate", value=f"{config['frequency']:.1f}/day", inline=True)
         embed.add_field(name="Online Only", value="Yes" if config["online_only"] else "No", inline=True)
@@ -1242,6 +1242,28 @@ class MantraSystem(commands.Cog):
             embed.add_field(name="Compliance Points", value=f"{config['total_points_earned']:,}", inline=True)
             embed.add_field(name="Avg Response", value=f"{avg_response:.0f}s", inline=True)
             embed.add_field(name="Public Responses", value=sum(1 for e in config["encounters"] if e.get("was_public", False)), inline=True)
+            
+            # Streak information
+            if interaction.user.id in self.user_streaks:
+                streak_data = self.user_streaks[interaction.user.id]
+                streak_count = streak_data["count"]
+                last_response = streak_data["last_response"]
+                time_since = datetime.now() - last_response
+                
+                # Format duration
+                hours = int(time_since.total_seconds() // 3600)
+                minutes = int((time_since.total_seconds() % 3600) // 60)
+                duration_str = f"{hours}h {minutes}m ago"
+                
+                streak_bonus, streak_title = self.get_streak_bonus(interaction.user.id)
+                streak_text = f"{streak_count} sequences"
+                if streak_title:
+                    streak_text += f" - {streak_title}"
+                
+                embed.add_field(name="\u200b", value="**◈ Synchronization Status**", inline=False)
+                embed.add_field(name="Current Streak", value=streak_text, inline=True)
+                embed.add_field(name="Last Response", value=duration_str, inline=True)
+                embed.add_field(name="Streak Bonus", value=f"+{streak_bonus} pts" if streak_bonus > 0 else "Building...", inline=True)
             
             # Recent mantras
             recent = config["encounters"][-5:]  # Last 5
@@ -1271,8 +1293,8 @@ class MantraSystem(commands.Cog):
     async def update_settings(
         self,
         interaction: discord.Interaction,
-        subject_name: Optional[str],
-        dominant_title: Optional[str],
+        subject: Optional[str],
+        controller: Optional[str],
         themes_list: Optional[List[str]],
         online_only: Optional[bool]
     ):
@@ -1282,13 +1304,13 @@ class MantraSystem(commands.Cog):
         # Track what was updated
         updates = []
         
-        if subject_name is not None:
-            config["subject_name"] = subject_name
-            updates.append(f"Subject name → {subject_name}")
+        if subject is not None:
+            config["subject"] = subject
+            updates.append(f"Subject → {subject}")
         
-        if dominant_title is not None:
-            config["dominant_title"] = dominant_title
-            updates.append(f"Dominant → {dominant_title}")
+        if controller is not None:
+            config["controller"] = controller
+            updates.append(f"Controller → {controller}")
         
         # Don't update themes from settings command anymore
         # themes_list should be None from settings command

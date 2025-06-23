@@ -13,7 +13,7 @@
       "base_points": 12
     },
     {
-      "text": "{pet_name} is getting giggly",
+      "text": "{subject} is getting giggly",
       "difficulty": "basic",
       "base_points": 15
     },
@@ -23,7 +23,7 @@
       "base_points": 11
     },
     {
-      "text": "{dominant_title} thinks for me",
+      "text": "{controller} thinks for me",
       "difficulty": "basic",
       "base_points": 14
     },
@@ -33,7 +33,7 @@
       "base_points": 20
     },
     {
-      "text": "{pet_name} is too pretty to think",
+      "text": "{subject} is too pretty to think",
       "difficulty": "light",
       "base_points": 25
     },
@@ -48,7 +48,7 @@
       "base_points": 22
     },
     {
-      "text": "I just smile and obey {dominant_title}",
+      "text": "I just smile and obey {controller}",
       "difficulty": "light",
       "base_points": 28
     },
@@ -58,7 +58,7 @@
       "base_points": 35
     },
     {
-      "text": "{pet_name} is becoming a perfect bimbo",
+      "text": "{subject} is becoming a perfect bimbo",
       "difficulty": "moderate",
       "base_points": 40
     },
@@ -68,7 +68,7 @@
       "base_points": 45
     },
     {
-      "text": "I'm too silly to resist {dominant_title}",
+      "text": "I'm too silly to resist {controller}",
       "difficulty": "moderate",
       "base_points": 38
     },
@@ -83,12 +83,12 @@
       "base_points": 60
     },
     {
-      "text": "{pet_name} has been bimbofied completely",
+      "text": "{subject} has been bimbofied completely",
       "difficulty": "deep",
       "base_points": 70
     },
     {
-      "text": "My brain is cotton candy for {dominant_title}",
+      "text": "My brain is cotton candy for {controller}",
       "difficulty": "deep",
       "base_points": 80
     },
@@ -98,17 +98,17 @@
       "base_points": 65
     },
     {
-      "text": "I am {dominant_title}'s ditzy plaything",
+      "text": "I am {controller}'s ditzy plaything",
       "difficulty": "deep",
       "base_points": 75
     },
     {
-      "text": "{pet_name} is permanently dumbed down for {dominant_title}",
+      "text": "{subject} is permanently dumbed down for {controller}",
       "difficulty": "extreme",
       "base_points": 100
     },
     {
-      "text": "My mind is bubble gum and {dominant_title} blows the bubbles",
+      "text": "My mind is bubble gum and {controller} blows the bubbles",
       "difficulty": "extreme",
       "base_points": 110
     },
@@ -118,12 +118,12 @@
       "base_points": 120
     },
     {
-      "text": "I am nothing but a giggly toy for {dominant_title}",
+      "text": "I am nothing but a giggly toy for {controller}",
       "difficulty": "extreme",
       "base_points": 100
     },
     {
-      "text": "{pet_name} exists only to be pretty and obedient",
+      "text": "{subject} exists only to be pretty and obedient",
       "difficulty": "extreme",
       "base_points": 115
     },
@@ -138,7 +138,7 @@
       "base_points": 42
     },
     {
-      "text": "{pet_name} bounces happily for {dominant_title}",
+      "text": "{subject} bounces happily for {controller}",
       "difficulty": "light",
       "base_points": 26
     },
@@ -148,7 +148,7 @@
       "base_points": 70
     },
     {
-      "text": "I'm {dominant_title}'s happy little airhead",
+      "text": "I'm {controller}'s happy little airhead",
       "difficulty": "extreme",
       "base_points": 108
     }

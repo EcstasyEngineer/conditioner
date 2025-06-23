@@ -13,7 +13,7 @@
       "base_points": 12
     },
     {
-      "text": "{pet_name} loves to obey",
+      "text": "{subject} loves to obey",
       "difficulty": "basic",
       "base_points": 15
     },
@@ -23,7 +23,7 @@
       "base_points": 11
     },
     {
-      "text": "I follow {dominant_title}'s lead",
+      "text": "I follow {controller}'s lead",
       "difficulty": "basic",
       "base_points": 14
     },
@@ -33,7 +33,7 @@
       "base_points": 20
     },
     {
-      "text": "{pet_name} obeys {dominant_title} instantly",
+      "text": "{subject} obeys {controller} instantly",
       "difficulty": "light",
       "base_points": 25
     },
@@ -48,17 +48,17 @@
       "base_points": 22
     },
     {
-      "text": "{dominant_title}'s wish is my command",
+      "text": "{controller}'s wish is my command",
       "difficulty": "light",
       "base_points": 28
     },
     {
-      "text": "I am programmed to obey {dominant_title}",
+      "text": "I am programmed to obey {controller}",
       "difficulty": "moderate",
       "base_points": 35
     },
     {
-      "text": "{pet_name} cannot resist any command",
+      "text": "{subject} cannot resist any command",
       "difficulty": "moderate",
       "base_points": 40
     },
@@ -68,12 +68,12 @@
       "base_points": 45
     },
     {
-      "text": "My will bends to {dominant_title}'s desires",
+      "text": "My will bends to {controller}'s desires",
       "difficulty": "moderate",
       "base_points": 38
     },
     {
-      "text": "I exist to serve and obey {dominant_title}",
+      "text": "I exist to serve and obey {controller}",
       "difficulty": "moderate",
       "base_points": 45
     },
@@ -83,32 +83,32 @@
       "base_points": 60
     },
     {
-      "text": "{pet_name} has no choice but absolute obedience",
+      "text": "{subject} has no choice but absolute obedience",
       "difficulty": "deep",
       "base_points": 70
     },
     {
-      "text": "Every cell in my body compels me to obey {dominant_title}",
+      "text": "Every cell in my body compels me to obey {controller}",
       "difficulty": "deep",
       "base_points": 80
     },
     {
-      "text": "Disobedience is impossible for {pet_name}",
+      "text": "Disobedience is impossible for {subject}",
       "difficulty": "deep",
       "base_points": 65
     },
     {
-      "text": "I am an obedience machine for {dominant_title}",
+      "text": "I am an obedience machine for {controller}",
       "difficulty": "deep",
       "base_points": 75
     },
     {
-      "text": "{pet_name}'s free will has been replaced with obedience protocols",
+      "text": "{subject}'s free will has been replaced with obedience protocols",
       "difficulty": "extreme",
       "base_points": 100
     },
     {
-      "text": "I am nothing but an extension of {dominant_title}'s will",
+      "text": "I am nothing but an extension of {controller}'s will",
       "difficulty": "extreme",
       "base_points": 110
     },
@@ -118,12 +118,12 @@
       "base_points": 120
     },
     {
-      "text": "My DNA has been rewritten to obey {dominant_title}",
+      "text": "My DNA has been rewritten to obey {controller}",
       "difficulty": "extreme",
       "base_points": 100
     },
     {
-      "text": "{pet_name} is permanently locked in obedience to {dominant_title}",
+      "text": "{subject} is permanently locked in obedience to {controller}",
       "difficulty": "extreme",
       "base_points": 115
     },
@@ -138,7 +138,7 @@
       "base_points": 42
     },
     {
-      "text": "{pet_name} responds to commands automatically",
+      "text": "{subject} responds to commands automatically",
       "difficulty": "light",
       "base_points": 26
     },
@@ -148,7 +148,7 @@
       "base_points": 70
     },
     {
-      "text": "I am {dominant_title}'s obedient property",
+      "text": "I am {controller}'s obedient property",
       "difficulty": "extreme",
       "base_points": 108
     }

@@ -1,5 +1,6 @@
 from discord.ext import commands
 import discord
+from discord import app_commands
 import re
 
 class Counter(commands.Cog):
@@ -19,10 +20,10 @@ class Counter(commands.Cog):
             return
         
         # Check for auto-claim trigger phrase FIRST (before deletion logic)
-        trigger_pattern = r'\bi\s+am\s+an?\s+addicted\s+count[-\s]?slut\b'
+        trigger_pattern = r'\bmy\s+mind\s+requires\s+counting\s+protocols\b'
         if re.search(trigger_pattern, message.content, re.IGNORECASE):
             self.bot.config.set_user(message.author, 'auto_claim_gacha', True)
-            await message.reply("Programming accepted. Automatic reward protocols engaged.", mention_author=False)
+            await message.reply("Counting protocols integrated. Automatic reward processing enabled.", mention_author=False)
             return  # Don't delete this message, allow it to stay
         
         # Lazy load: if last_number is -1, search last 10 messages for the highest count
@@ -55,6 +56,23 @@ class Counter(commands.Cog):
             points_cog = self.bot.get_cog("Points")
             if points_cog:
                 points_cog.add_points(message.author, 1)
+    
+    @app_commands.command(name="counting_rewards", description="Enable automatic counting reward protocols")
+    @app_commands.describe(enabled="Enable or disable automatic reward collection")
+    async def counting_rewards(self, interaction: discord.Interaction, enabled: bool):
+        """Toggle automatic reward collection for counting."""
+        self.bot.config.set_user(interaction.user, 'auto_claim_gacha', enabled)
+        
+        if enabled:
+            await interaction.response.send_message(
+                "Counting protocols integrated. Automatic reward processing enabled.",
+                ephemeral=True
+            )
+        else:
+            await interaction.response.send_message(
+                "Automatic reward protocols suspended.",
+                ephemeral=True
+            )
 
 async def setup(bot):
     await bot.add_cog(Counter(bot))

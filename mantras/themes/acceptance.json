@@ -13,7 +13,7 @@
       "base_points": 12
     },
     {
-      "text": "{pet_name} accepts what is given",
+      "text": "{subject} accepts what is given",
       "difficulty": "basic",
       "base_points": 15
     },
@@ -23,12 +23,12 @@
       "base_points": 20
     },
     {
-      "text": "Acceptance brings {pet_name} peace",
+      "text": "Acceptance brings {subject} peace",
       "difficulty": "light",
       "base_points": 25
     },
     {
-      "text": "I accept {dominant_title}'s guidance completely",
+      "text": "I accept {controller}'s guidance completely",
       "difficulty": "light",
       "base_points": 30
     },
@@ -38,7 +38,7 @@
       "base_points": 35
     },
     {
-      "text": "{pet_name} accepts all that {dominant_title} provides",
+      "text": "{subject} accepts all that {controller} provides",
       "difficulty": "moderate",
       "base_points": 40
     },
@@ -48,32 +48,32 @@
       "base_points": 45
     },
     {
-      "text": "Complete acceptance fills every part of {pet_name}",
+      "text": "Complete acceptance fills every part of {subject}",
       "difficulty": "deep",
       "base_points": 60
     },
     {
-      "text": "I accept that {dominant_title} knows what is best for me",
+      "text": "I accept that {controller} knows what is best for me",
       "difficulty": "deep",
       "base_points": 70
     },
     {
-      "text": "Surrender to {dominant_title} is my only truth",
+      "text": "Surrender to {controller} is my only truth",
       "difficulty": "deep",
       "base_points": 80
     },
     {
-      "text": "{pet_name} has no will except to accept and obey",
+      "text": "{subject} has no will except to accept and obey",
       "difficulty": "extreme",
       "base_points": 100
     },
     {
-      "text": "I am nothing and accept everything {dominant_title} makes me",
+      "text": "I am nothing and accept everything {controller} makes me",
       "difficulty": "extreme",
       "base_points": 110
     },
     {
-      "text": "Total acceptance has consumed {pet_name} completely",
+      "text": "Total acceptance has consumed {subject} completely",
       "difficulty": "extreme",
       "base_points": 120
     },
@@ -83,12 +83,12 @@
       "base_points": 11
     },
     {
-      "text": "{pet_name} embraces surrender",
+      "text": "{subject} embraces surrender",
       "difficulty": "basic",
       "base_points": 14
     },
     {
-      "text": "I accept my role as {dominant_title}'s {pet_name}",
+      "text": "I accept my role as {controller}'s {subject}",
       "difficulty": "light",
       "base_points": 22
     },
@@ -98,27 +98,27 @@
       "base_points": 28
     },
     {
-      "text": "I surrender my thoughts to {dominant_title}",
+      "text": "I surrender my thoughts to {controller}",
       "difficulty": "moderate",
       "base_points": 38
     },
     {
-      "text": "{pet_name} accepts being owned by {dominant_title}",
+      "text": "{subject} accepts being owned by {controller}",
       "difficulty": "moderate",
       "base_points": 45
     },
     {
-      "text": "My will dissolves into {dominant_title}'s desires",
+      "text": "My will dissolves into {controller}'s desires",
       "difficulty": "deep",
       "base_points": 65
     },
     {
-      "text": "I accept that I am nothing without {dominant_title}",
+      "text": "I accept that I am nothing without {controller}",
       "difficulty": "deep",
       "base_points": 75
     },
     {
-      "text": "{pet_name} has surrendered all control forever",
+      "text": "{subject} has surrendered all control forever",
       "difficulty": "extreme",
       "base_points": 100
     },
@@ -128,7 +128,7 @@
       "base_points": 115
     },
     {
-      "text": "I accept complete erasure of who I was before {dominant_title}",
+      "text": "I accept complete erasure of who I was before {controller}",
       "difficulty": "extreme",
       "base_points": 105
     },
@@ -138,12 +138,12 @@
       "base_points": 42
     },
     {
-      "text": "{pet_name} yields to {dominant_title}'s wisdom",
+      "text": "{subject} yields to {controller}'s wisdom",
       "difficulty": "light",
       "base_points": 26
     },
     {
-      "text": "I accept my mind belongs to {dominant_title}",
+      "text": "I accept my mind belongs to {controller}",
       "difficulty": "deep",
       "base_points": 70
     },

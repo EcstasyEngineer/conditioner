@@ -13,7 +13,7 @@
       "base_points": 12
     },
     {
-      "text": "{pet_name} feels something breaking",
+      "text": "{subject} feels something breaking",
       "difficulty": "basic",
       "base_points": 15
     },
@@ -23,7 +23,7 @@
       "base_points": 11
     },
     {
-      "text": "{dominant_title} unmakes me",
+      "text": "{controller} unmakes me",
       "difficulty": "basic",
       "base_points": 14
     },
@@ -33,7 +33,7 @@
       "base_points": 20
     },
     {
-      "text": "{pet_name}'s sanity bends for {dominant_title}",
+      "text": "{subject}'s sanity bends for {controller}",
       "difficulty": "light",
       "base_points": 25
     },
@@ -48,7 +48,7 @@
       "base_points": 22
     },
     {
-      "text": "My mind fractures at {dominant_title}'s touch",
+      "text": "My mind fractures at {controller}'s touch",
       "difficulty": "light",
       "base_points": 28
     },
@@ -58,7 +58,7 @@
       "base_points": 35
     },
     {
-      "text": "{pet_name} breaks a little more each day",
+      "text": "{subject} breaks a little more each day",
       "difficulty": "moderate",
       "base_points": 40
     },
@@ -73,7 +73,7 @@
       "base_points": 38
     },
     {
-      "text": "I dissolve and reconstitute for {dominant_title}",
+      "text": "I dissolve and reconstitute for {controller}",
       "difficulty": "moderate",
       "base_points": 45
     },
@@ -83,7 +83,7 @@
       "base_points": 60
     },
     {
-      "text": "{pet_name} exists in beautiful fragments for {dominant_title}",
+      "text": "{subject} exists in beautiful fragments for {controller}",
       "difficulty": "deep",
       "base_points": 70
     },
@@ -98,17 +98,17 @@
       "base_points": 65
     },
     {
-      "text": "My shattered mind belongs to {dominant_title}",
+      "text": "My shattered mind belongs to {controller}",
       "difficulty": "deep",
       "base_points": 75
     },
     {
-      "text": "{pet_name} has been irrevocably broken by {dominant_title}",
+      "text": "{subject} has been irrevocably broken by {controller}",
       "difficulty": "extreme",
       "base_points": 100
     },
     {
-      "text": "I am nothing but shards of devotion to {dominant_title}",
+      "text": "I am nothing but shards of devotion to {controller}",
       "difficulty": "extreme",
       "base_points": 110
     },
@@ -118,12 +118,12 @@
       "base_points": 120
     },
     {
-      "text": "My psyche exists only in pieces {dominant_title} arranges",
+      "text": "My psyche exists only in pieces {controller} arranges",
       "difficulty": "extreme",
       "base_points": 100
     },
     {
-      "text": "{pet_name} is beautifully, perfectly broken forever",
+      "text": "{subject} is beautifully, perfectly broken forever",
       "difficulty": "extreme",
       "base_points": 115
     },
@@ -133,12 +133,12 @@
       "base_points": 105
     },
     {
-      "text": "Each crack makes more room for {dominant_title}",
+      "text": "Each crack makes more room for {controller}",
       "difficulty": "moderate",
       "base_points": 42
     },
     {
-      "text": "{pet_name} embraces the breaking",
+      "text": "{subject} embraces the breaking",
       "difficulty": "light",
       "base_points": 26
     },
@@ -148,7 +148,7 @@
       "base_points": 70
     },
     {
-      "text": "I am {dominant_title}'s broken masterpiece",
+      "text": "I am {controller}'s broken masterpiece",
       "difficulty": "extreme",
       "base_points": 108
     }
