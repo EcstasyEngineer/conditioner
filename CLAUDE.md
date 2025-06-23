@@ -118,6 +118,12 @@ When modifying the mantra system:
 3. Consider the adaptive frequency system
 4. Maintain backward compatibility with existing user configs
 
+When creating GitHub issues:
+1. Review `.github/LABELS.md` for the comprehensive label system
+2. Apply appropriate labels for priority, effort, complexity, and components
+3. Use multiple labels to help with triage and contributor matching
+4. Follow the examples in the labels guide for consistent categorization
+
 ## Important Notes
 
 - The bot uses a single global superadmin system

@@ -243,3 +243,22 @@ Some themes may need special consideration:
 - **Addiction**: Build craving intensity gradually
 
 Remember: Quality over quantity. Well-crafted mantras that genuinely engage with the theme create better experiences than generic filler content.
+
+## Contributing Your Theme
+
+When you've created a new theme and want to contribute it:
+
+1. Test your theme thoroughly with the validation script
+2. Create a GitHub issue describing your new theme
+   - Review `.github/LABELS.md` for our label system
+   - Use labels: `feature request`, `component: mantras`, and appropriate effort/complexity labels
+3. Submit a Pull Request with your theme file
+   - Link to the issue you created
+   - Include example mantras in the PR description
+   - Explain the theme's purpose and target audience
+
+We especially welcome themes that:
+- Fill gaps in our current offerings
+- Provide culturally diverse perspectives
+- Offer unique psychological approaches
+- Include comprehensive difficulty progressions

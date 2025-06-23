@@ -12,7 +12,7 @@ Each theme is a JSON file in the `themes/` directory with the following structur
   "description": "Description of the theme",
   "mantras": [
     {
-      "text": "The mantra text with {pet_name} and {dominant_title} variables",
+      "text": "The mantra text with {subject_name} and {dominant_title} variables",
       "difficulty": "basic|light|moderate|deep|extreme",
       "base_points": 10-120
     }
@@ -28,8 +28,8 @@ Each theme is a JSON file in the `themes/` directory with the following structur
 - **extreme**: 90-120 points - Most intense content (gated)
 
 ## Template Variables
-- `{pet_name}`: User's chosen pet name (e.g., "puppy", "kitten", "pet")
-- `{dominant_title}`: User's chosen dominant title ("Master" or "Mistress")
+- `{subject_name}`: User's chosen subject name (e.g., "puppet", "puppy", "kitten", "pet")
+- `{dominant_title}`: User's chosen dominant title (e.g., "Master", "Mistress", "Goddess")
 
 ## Adding New Themes
 1. Create a new JSON file in `themes/` directory
@@ -38,12 +38,16 @@ Each theme is a JSON file in the `themes/` directory with the following structur
 4. Consider progression - easier mantras should build toward harder ones
 
 ## Current Themes
-- **suggestibility**: Foundation theme for openness and receptivity
 - **acceptance**: Foundation theme for surrender and letting go
+- **addiction**: Craving and compulsion loops
+- **bimbo**: Playful identity transformation
+- **brainwashing**: Mental reprogramming themes
+- **obedience**: Following commands and instructions
+- **suggestibility**: Foundation theme for openness and receptivity
 
 ## Planned Themes
-- **obedience**: Following commands and instructions
-- **addiction**: Craving and compulsion loops
-- **brainwashing**: Mental reprogramming themes
 - **mindbreak**: Total mental surrender (extreme, gated)
-- **bimbo**: Playful identity transformation
+- **emptiness**: Void and blank mind themes
+- **worship**: Devotion and reverence themes
+- **pet**: Animal transformation themes
+- **drone**: Robotic/programming themes

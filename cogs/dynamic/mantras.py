@@ -10,6 +10,118 @@ import os
 from typing import List, Dict, Optional
 import difflib
 
+
+class ThemeSelectView(discord.ui.View):
+    """View for managing themes with select menu."""
+    
+    def __init__(self, cog, user, current_themes):
+        super().__init__(timeout=300)  # 5 minute timeout
+        self.cog = cog
+        self.user = user
+        self.current_themes = current_themes.copy()
+        self.original_themes = current_themes.copy()
+        
+        # Create select menu with all available themes
+        options = []
+        for theme_name in sorted(self.cog.themes.keys()):
+            description = self.cog.themes[theme_name].get("description", "")[:100]
+            option = discord.SelectOption(
+                label=theme_name.capitalize(),
+                value=theme_name,
+                description=description,
+                default=theme_name in self.current_themes
+            )
+            options.append(option)
+        
+        select = discord.ui.Select(
+            placeholder="Select themes to toggle on/off",
+            options=options,
+            min_values=0,
+            max_values=len(options)
+        )
+        select.callback = self.theme_select_callback
+        self.add_item(select)
+        
+        # Add save button
+        save_button = discord.ui.Button(label="Save Changes", style=discord.ButtonStyle.primary)
+        save_button.callback = self.save_callback
+        self.add_item(save_button)
+        
+        # Add cancel button
+        cancel_button = discord.ui.Button(label="Cancel", style=discord.ButtonStyle.secondary)
+        cancel_button.callback = self.cancel_callback
+        self.add_item(cancel_button)
+    
+    async def theme_select_callback(self, interaction: discord.Interaction):
+        """Handle theme selection."""
+        # Update current themes based on selection
+        self.current_themes = interaction.data["values"]
+        
+        # Update embed to show current selection
+        embed = discord.Embed(
+            title="🌀 Manage Your Themes",
+            description=f"**Selected themes:** {', '.join(self.current_themes) if self.current_themes else 'None selected'}",
+            color=discord.Color.purple()
+        )
+        
+        if not self.current_themes:
+            embed.add_field(
+                name="⚠️ Warning",
+                value="You must select at least one theme!",
+                inline=False
+            )
+        
+        embed.add_field(
+            name="Instructions",
+            value="• Select themes you want to toggle on/off\n• You must keep at least 1 theme active\n• Click 'Save Changes' when done",
+            inline=False
+        )
+        
+        await interaction.response.edit_message(embed=embed)
+    
+    async def save_callback(self, interaction: discord.Interaction):
+        """Save theme changes."""
+        if not self.current_themes:
+            await interaction.response.send_message(
+                "You must have at least one theme active!",
+                ephemeral=True
+            )
+            return
+        
+        # Save changes
+        config = self.cog.get_user_mantra_config(self.user)
+        config["themes"] = self.current_themes
+        self.cog.save_user_mantra_config(self.user, config)
+        
+        embed = discord.Embed(
+            title="✅ Themes Updated!",
+            description=f"**Active themes:** {', '.join(self.current_themes)}",
+            color=discord.Color.green()
+        )
+        
+        # Disable all items
+        for item in self.children:
+            item.disabled = True
+        
+        await interaction.response.edit_message(embed=embed, view=self)
+        self.stop()
+    
+    async def cancel_callback(self, interaction: discord.Interaction):
+        """Cancel without saving."""
+        embed = discord.Embed(
+            title="❌ Cancelled",
+            description="No changes were made to your themes.",
+            color=discord.Color.red()
+        )
+        
+        # Disable all items
+        for item in self.children:
+            item.disabled = True
+        
+        await interaction.response.edit_message(embed=embed, view=self)
+        self.stop()
+
+
 class MantraSystem(commands.Cog):
     """Hypnotic mantra capture system with adaptive delivery."""
     
@@ -18,6 +130,9 @@ class MantraSystem(commands.Cog):
         self.logger = bot.logger if hasattr(bot, 'logger') else None
         self.mantras_dir = Path("mantras/themes")
         self.themes = self.load_themes()
+        
+        # Create theme choices for slash commands
+        self.theme_choices = self._generate_theme_choices()
         
         # Public channel for bonus points (can be set by admin)
         self.public_channel_id = None  # Will be loaded from guild config
@@ -42,17 +157,71 @@ class MantraSystem(commands.Cog):
         self.active_challenges = {}  # user_id: {"mantra": str, "theme": str, "difficulty": str, "base_points": int, "sent_at": datetime, "timeout_minutes": int}
         
     async def cog_load(self):
-        """Load public channel configuration when cog loads."""
+        """Load public channel configuration and calculate streaks when cog loads."""
         # Load public channel from guild configs
         for guild in self.bot.guilds:
             public_channel = self.bot.config.get(guild, 'mantra_public_channel', None)
             if public_channel:
                 self.public_channel_id = public_channel
                 break  # Use first configured channel found
+        
+        # Calculate streaks from user encounter history
+        self.calculate_streaks_from_history()
+        
     
     def cog_unload(self):
         """Clean up when cog is unloaded."""
         self.mantra_delivery.cancel()
+    
+    def calculate_streaks_from_history(self):
+        """Calculate user streaks from encounter history on bot startup."""
+        # Get all users from the bot's user cache
+        for user in self.bot.users:
+            if user.bot:
+                continue
+                
+            config = self.get_user_mantra_config(user)
+            if not config["enrolled"] or not config.get("encounters"):
+                continue
+                
+            # Sort encounters by timestamp (most recent first)
+            sorted_encounters = sorted(
+                config["encounters"],
+                key=lambda x: x["timestamp"],
+                reverse=True
+            )
+            
+            # Count consecutive successes
+            streak_count = 0
+            last_timestamp = None
+            
+            for encounter in sorted_encounters:
+                # Skip if not completed
+                if not encounter.get("completed", False):
+                    break
+                    
+                # Check time gap if not the first encounter
+                if last_timestamp:
+                    current_time = datetime.fromisoformat(encounter["timestamp"])
+                    time_diff = last_timestamp - current_time
+                    
+                    # Break if more than 2 hours between responses
+                    if time_diff > timedelta(hours=2):
+                        break
+                
+                streak_count += 1
+                last_timestamp = datetime.fromisoformat(encounter["timestamp"])
+            
+            # Only set streak if user has active streak
+            if streak_count > 0 and last_timestamp:
+                # Check if streak is still active (within 2 hours of now)
+                if datetime.now() - last_timestamp <= timedelta(hours=2):
+                    self.user_streaks[user.id] = {
+                        "count": streak_count,
+                        "last_response": last_timestamp
+                    }
+                    if self.logger:
+                        self.logger.info(f"Restored streak of {streak_count} for user {user.id}")
         
     def load_themes(self) -> Dict[str, Dict]:
         """Load all theme files from the mantras directory."""
@@ -74,12 +243,29 @@ class MantraSystem(commands.Cog):
                     
         return themes
     
+    def _generate_theme_choices(self) -> List[app_commands.Choice]:
+        """Generate theme choices dynamically from loaded themes."""
+        choices = []
+        for theme_name in sorted(self.themes.keys()):
+            # Capitalize first letter for display name
+            display_name = theme_name.capitalize()
+            choices.append(app_commands.Choice(name=display_name, value=theme_name))
+        return choices
+    
+    def _generate_theme_choices_with_none(self) -> List[app_commands.Choice]:
+        """Generate theme choices with None option."""
+        choices = [app_commands.Choice(name="None", value="none")]
+        for theme_name in sorted(self.themes.keys()):
+            display_name = theme_name.capitalize()
+            choices.append(app_commands.Choice(name=display_name, value=theme_name))
+        return choices
+    
     def get_user_mantra_config(self, user) -> Dict:
         """Get user's mantra configuration."""
         default_config = {
             "enrolled": False,
             "themes": [],
-            "pet_name": "puppet",
+            "subject_name": "puppet",
             "dominant_title": "Master",
             "frequency": 1.0,  # encounters per day
             "last_encounter": None,
@@ -90,13 +276,16 @@ class MantraSystem(commands.Cog):
             "online_only": True
         }
         
-        config = self.bot.config.get_user(user, 'mantra_system', {})
+        # Get existing config without providing defaults (to avoid overwriting)
+        config = self.bot.config.get_user(user, 'mantra_system', None)
         
-        # If config is empty or not a dict, use defaults
-        if not isinstance(config, dict):
+        # If config doesn't exist, create fresh default
+        if config is None:
+            config = default_config.copy()
+        elif not isinstance(config, dict):
             config = default_config.copy()
         else:
-            # Ensure all fields exist
+            # Only fill in missing keys without overwriting existing ones
             for key, value in default_config.items():
                 if key not in config:
                     config[key] = value
@@ -109,10 +298,10 @@ class MantraSystem(commands.Cog):
         # Force save to disk
         self.bot.config.flush()
     
-    def format_mantra(self, mantra_text: str, pet_name: str, dominant_title: str) -> str:
+    def format_mantra(self, mantra_text: str, subject_name: str, dominant_title: str) -> str:
         """Replace template variables in mantra text."""
         formatted = mantra_text.format(
-            pet_name=pet_name,
+            subject_name=subject_name,
             dominant_title=dominant_title
         )
         # Capitalize first letter
@@ -230,7 +419,7 @@ class MantraSystem(commands.Cog):
                 # Format mantra
                 formatted_mantra = self.format_mantra(
                     mantra_data["text"],
-                    config["pet_name"],
+                    config["subject_name"],
                     config["dominant_title"]
                 )
                 
@@ -284,7 +473,7 @@ class MantraSystem(commands.Cog):
             if user.id not in self.active_challenges:  # They completed all
                 embed = discord.Embed(
                     title="🎉 Rapid Fire Complete!",
-                    description=f"Amazing performance, {config['pet_name']}! You're in deep trance!",
+                    description=f"Amazing performance, {config['subject_name']}! You're in deep trance!",
                     color=discord.Color.gold()
                 )
                 if public_channel:
@@ -306,8 +495,8 @@ class MantraSystem(commands.Cog):
         # Calculate similarity ratio
         ratio = difflib.SequenceMatcher(None, user_response.lower(), expected_mantra.lower()).ratio()
         
-        # Accept if 80% similar or better
-        return ratio >= 0.8
+        # Accept if 95% similar or better (stricter threshold)
+        return ratio >= 0.95
     
     async def should_send_mantra(self, user) -> bool:
         """Check if we should send a mantra to this user."""
@@ -489,7 +678,7 @@ class MantraSystem(commands.Cog):
                 # Format the mantra
                 formatted_mantra = self.format_mantra(
                     mantra_data["text"],
-                    config["pet_name"],
+                    config["subject_name"],
                     config["dominant_title"]
                 )
                 
@@ -615,22 +804,25 @@ class MantraSystem(commands.Cog):
             # Send success message with positive reinforcement
             # Vary praise based on response time
             if response_time <= 30:
-                praise = f"Excellent {config['pet_name']}! Such quick obedience!"
+                praise = f"Excellent {config['subject_name']}! Such quick obedience!"
             elif response_time <= 60:
-                praise = f"Very good {config['pet_name']}!"
+                praise = f"Very good {config['subject_name']}!"
             elif response_time <= 120:
-                praise = f"Good {config['pet_name']}!"
+                praise = f"Good {config['subject_name']}!"
             else:
-                praise = f"Good {config['pet_name']}."
+                praise = f"Good {config['subject_name']}."
                 
-            # Add streak title to description if applicable
-            title_text = "✨ Success!"
+            # Use the praise as the title
+            title_text = f"✨ {praise}"
+            
+            # Build description with points and streak
+            description_lines = [f"You earned **{total_points} points**!"]
             if streak_title:
-                title_text = f"{streak_title} Success!"
+                description_lines.append(f"**{streak_title}**")
             
             embed = discord.Embed(
                 title=title_text,
-                description=f"{praise} You earned **{total_points} points**!",
+                description="\n".join(description_lines),
                 color=discord.Color.green()
             )
             
@@ -689,43 +881,11 @@ class MantraSystem(commands.Cog):
     
     @mantra_group.command(name="enroll", description="Enroll in the mantra training system")
     @app_commands.describe(
-        themes="Comma-separated list of themes (e.g., 'suggestibility,acceptance')",
-        pet_name="Your preferred pet name (type custom or select from list)",
-        dominant_title="Master or Mistress"
+        subject_name="Your preferred subject name",
+        dominant_title="How to address the dominant"
     )
-    @app_commands.choices(dominant_title=[
-        app_commands.Choice(name="Master", value="Master"),
-        app_commands.Choice(name="Mistress", value="Mistress"),
-        app_commands.Choice(name="Goddess", value="Goddess")
-    ])
-    async def mantra_enroll(
-        self,
-        interaction: discord.Interaction,
-        themes: Optional[str] = None,
-        pet_name: Optional[str] = None,
-        dominant_title: Optional[str] = None
-    ):
-        """Enroll in the mantra training system."""
-        await self.enroll_user(interaction, themes, pet_name, dominant_title)
-    
-    @mantra_group.command(name="status", description="Check your mantra training status")
-    async def mantra_status(self, interaction: discord.Interaction):
-        """Show user's mantra status and stats."""
-        await self.show_status(interaction)
-    
-    @mantra_group.command(name="settings", description="Update your mantra settings")
-    @app_commands.describe(
-        pet_name="Your preferred pet name",
-        dominant_title="Master or Mistress",
-        theme1="First theme choice",
-        theme2="Second theme choice (optional)",
-        theme3="Third theme choice (optional)",
-        online_only="Only receive mantras when online"
-    )
-    # TODO: Ideally we'd have a multi-select dropdown or allow setting themes one at a time
-    # Current workaround uses theme1/theme2/theme3 due to Discord limitations
     @app_commands.choices(
-        pet_name=[
+        subject_name=[
             app_commands.Choice(name="puppet", value="puppet"),
             app_commands.Choice(name="puppy", value="puppy"),
             app_commands.Choice(name="kitten", value="kitten"),
@@ -741,55 +901,239 @@ class MantraSystem(commands.Cog):
             app_commands.Choice(name="Master", value="Master"),
             app_commands.Choice(name="Mistress", value="Mistress"),
             app_commands.Choice(name="Goddess", value="Goddess")
+        ]
+    )
+    async def mantra_enroll(
+        self,
+        interaction: discord.Interaction,
+        subject_name: Optional[str] = None,
+        dominant_title: Optional[str] = None
+    ):
+        """Enroll in the mantra training system."""
+        await self.enroll_user(interaction, None, subject_name, dominant_title)
+    
+    @mantra_group.command(name="status", description="Check your mantra training status")
+    async def mantra_status(self, interaction: discord.Interaction):
+        """Show user's mantra status and stats."""
+        await self.show_status(interaction)
+    
+    @mantra_group.command(name="settings", description="Update your mantra settings")
+    @app_commands.describe(
+        subject_name="Your preferred subject name",
+        dominant_title="How to address the dominant",
+        online_only="Only receive mantras when online"
+    )
+    # Note: Use /mantra themes to manage your active themes
+    @app_commands.choices(
+        subject_name=[
+            app_commands.Choice(name="puppet", value="puppet"),
+            app_commands.Choice(name="puppy", value="puppy"),
+            app_commands.Choice(name="kitten", value="kitten"),
+            app_commands.Choice(name="pet", value="pet"),
+            app_commands.Choice(name="toy", value="toy"),
+            app_commands.Choice(name="doll", value="doll"),
+            app_commands.Choice(name="slave", value="slave"),
+            app_commands.Choice(name="slut", value="slut"),
+            app_commands.Choice(name="bimbo", value="bimbo"),
+            app_commands.Choice(name="drone", value="drone")
         ],
-        theme1=[
-            app_commands.Choice(name="Suggestibility", value="suggestibility"),
-            app_commands.Choice(name="Acceptance", value="acceptance")
-        ],
-        theme2=[
-            app_commands.Choice(name="None", value="none"),
-            app_commands.Choice(name="Suggestibility", value="suggestibility"),
-            app_commands.Choice(name="Acceptance", value="acceptance")
-        ],
-        theme3=[
-            app_commands.Choice(name="None", value="none"),
-            app_commands.Choice(name="Suggestibility", value="suggestibility"),
-            app_commands.Choice(name="Acceptance", value="acceptance")
+        dominant_title=[
+            app_commands.Choice(name="Master", value="Master"),
+            app_commands.Choice(name="Mistress", value="Mistress"),
+            app_commands.Choice(name="Goddess", value="Goddess")
         ]
     )
     async def mantra_settings(
         self,
         interaction: discord.Interaction,
-        pet_name: Optional[str] = None,
+        subject_name: Optional[str] = None,
         dominant_title: Optional[str] = None,
-        theme1: Optional[str] = None,
-        theme2: Optional[str] = None,
-        theme3: Optional[str] = None,
         online_only: Optional[bool] = None
     ):
         """Update mantra settings."""
-        # Collect themes
-        themes_list = []
-        if theme1 and theme1 != "none":
-            themes_list.append(theme1)
-        if theme2 and theme2 != "none" and theme2 not in themes_list:
-            themes_list.append(theme2)
-        if theme3 and theme3 != "none" and theme3 not in themes_list:
-            themes_list.append(theme3)
-        
-        await self.update_settings(interaction, pet_name, dominant_title, themes_list, online_only)
+        # Don't pass themes_list - keep existing themes
+        await self.update_settings(interaction, subject_name, dominant_title, None, online_only)
     
     @mantra_group.command(name="disable", description="Disable mantra training")
     async def mantra_disable(self, interaction: discord.Interaction):
         """Disable mantra encounters."""
         await self.disable_mantras(interaction)
     
+    @mantra_group.command(name="list_themes", description="List all available mantra themes")
+    async def mantra_list_themes(self, interaction: discord.Interaction):
+        """Show all available themes."""
+        embed = discord.Embed(
+            title="📚 Available Mantra Themes",
+            description="These themes are currently available for training:",
+            color=discord.Color.purple()
+        )
+        
+        for theme_name in sorted(self.themes.keys()):
+            theme_data = self.themes[theme_name]
+            description = theme_data.get("description", "No description available")
+            mantra_count = len(theme_data.get("mantras", []))
+            embed.add_field(
+                name=f"**{theme_name.capitalize()}**",
+                value=f"{description}\n*{mantra_count} mantras available*",
+                inline=False
+            )
+        
+        embed.set_footer(text="Use /mantra enroll to get started or /mantra themes to change your themes!")
+        await interaction.response.send_message(embed=embed, ephemeral=True)
+    
+    @mantra_group.command(name="themes", description="Manage your active mantra themes")
+    async def mantra_themes(self, interaction: discord.Interaction):
+        """Manage themes with a select menu."""
+        config = self.get_user_mantra_config(interaction.user)
+        
+        if not config["enrolled"]:
+            await interaction.response.send_message(
+                "You need to enroll first! Use `/mantra enroll` to get started.",
+                ephemeral=True
+            )
+            return
+        
+        # Create select menu
+        view = ThemeSelectView(self, interaction.user, config["themes"])
+        
+        embed = discord.Embed(
+            title="🌀 Manage Your Themes",
+            description=f"**Current themes:** {', '.join(config['themes']) if config['themes'] else 'None'}",
+            color=discord.Color.purple()
+        )
+        embed.add_field(
+            name="Instructions",
+            value="• Select themes you want to toggle on/off\n• You must keep at least 1 theme active\n• Click 'Save Changes' when done",
+            inline=False
+        )
+        
+        await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
+    
+    @commands.command(hidden=True)
+    @commands.has_permissions(administrator=True)
+    async def mantrastats(self, ctx):
+        """Hidden admin command to show detailed mantra statistics for all users."""
+        # Get all users with mantra data
+        seen_users = set()
+        users_with_mantras = []
+        
+        # Check all guilds and users
+        for guild in self.bot.guilds:
+            for member in guild.members:
+                if member.bot or member.id in seen_users:
+                    continue
+                    
+                config = self.get_user_mantra_config(member)
+                
+                # Check if user has ever enrolled or has encounters
+                if config.get("enrolled") or config.get("encounters"):
+                    users_with_mantras.append((member, config))
+                    seen_users.add(member.id)
+        
+        if not users_with_mantras:
+            await ctx.send("No users have tried the mantra system yet.")
+            return
+        
+        # Sort by total points earned (descending)
+        users_with_mantras.sort(key=lambda x: x[1].get("total_points_earned", 0), reverse=True)
+        
+        # Create multiple embeds if needed (Discord has a 25 field limit)
+        embeds = []
+        current_embed = discord.Embed(
+            title="📊 Mantra System Statistics",
+            description=f"Found {len(users_with_mantras)} users with mantra data",
+            color=discord.Color.purple()
+        )
+        field_count = 0
+        
+        one_week_ago = datetime.now() - timedelta(days=7)
+        
+        for user, config in users_with_mantras:
+            # Get encounters from the past week
+            recent_encounters = []
+            if config.get("encounters"):
+                for enc in config["encounters"]:
+                    try:
+                        enc_time = datetime.fromisoformat(enc["timestamp"])
+                        if enc_time >= one_week_ago:
+                            recent_encounters.append(enc)
+                    except:
+                        continue
+            
+            # Get last 5 mantras from recent encounters
+            last_5_mantras = recent_encounters[-5:] if recent_encounters else []
+            
+            # Build user summary
+            user_info = []
+            user_info.append(f"**Status:** {'🟢 Active' if config.get('enrolled') else '🔴 Inactive'}")
+            user_info.append(f"**Total Points:** {config.get('total_points_earned', 0):,}")
+            
+            total_encounters = len(config.get("encounters", []))
+            if total_encounters > 0:
+                completed = sum(1 for e in config.get("encounters", []) if e.get("completed", False))
+                user_info.append(f"**All Time:** {completed}/{total_encounters} ({completed/total_encounters*100:.1f}%)")
+            
+            # Add last 5 mantras from past week
+            if last_5_mantras:
+                user_info.append("\n**Recent Mantras (Past Week):**")
+                for i, enc in enumerate(reversed(last_5_mantras), 1):
+                    try:
+                        enc_time = datetime.fromisoformat(enc["timestamp"])
+                        time_str = enc_time.strftime("%b %d %H:%M")
+                        
+                        if enc.get("completed"):
+                            total_pts = enc.get("base_points", 0) + enc.get("speed_bonus", 0) + enc.get("streak_bonus", 0) + enc.get("public_bonus", 0)
+                            status = f"✅ {enc.get('theme', 'unknown')} - {total_pts}pts ({enc.get('response_time', '?')}s)"
+                            if enc.get("was_public"):
+                                status = "🌍 " + status
+                        else:
+                            status = f"❌ {enc.get('theme', 'unknown')} - MISSED"
+                        
+                        user_info.append(f"{i}. {time_str}: {status}")
+                    except:
+                        continue
+            else:
+                user_info.append("*No mantras in the past week*")
+            
+            # Add current settings if enrolled
+            if config.get("enrolled"):
+                user_info.append(f"\n**Settings:** {config.get('subject_name', 'puppet')}/{config.get('dominant_title', 'Master')}")
+                if config.get("themes"):
+                    user_info.append(f"**Themes:** {', '.join(config['themes'])}")
+                user_info.append(f"**Frequency:** {config.get('frequency', 1.0):.2f}/day")
+            
+            # Check if we need a new embed
+            if field_count >= 24:  # Leave room for 1 field
+                embeds.append(current_embed)
+                current_embed = discord.Embed(
+                    title="📊 Mantra System Statistics (Continued)",
+                    color=discord.Color.purple()
+                )
+                field_count = 0
+            
+            # Add field
+            current_embed.add_field(
+                name=f"{user.name}#{user.discriminator}",
+                value="\n".join(user_info)[:1024],  # Discord field limit
+                inline=False
+            )
+            field_count += 1
+        
+        # Add the last embed
+        if field_count > 0:
+            embeds.append(current_embed)
+        
+        # Send all embeds
+        for embed in embeds:
+            await ctx.send(embed=embed)
+    
+    
     
     async def enroll_user(
         self,
         interaction: discord.Interaction,
         themes_str: Optional[str],
-        pet_name: Optional[str],
+        subject_name: Optional[str],
         dominant_title: Optional[str]
     ):
         """Enroll user in mantra system."""
@@ -807,12 +1151,14 @@ class MantraSystem(commands.Cog):
                 )
                 return
         else:
-            valid_themes = ["suggestibility", "acceptance"]  # Default starter themes
+            # Default starter themes - pick first two available themes
+            available_themes = sorted(self.themes.keys())
+            valid_themes = available_themes[:2] if len(available_themes) >= 2 else available_themes
         
         # Update config
         config["enrolled"] = True
         config["themes"] = valid_themes
-        config["pet_name"] = pet_name or config["pet_name"]
+        config["subject_name"] = subject_name or config["subject_name"]
         config["dominant_title"] = dominant_title if dominant_title else config["dominant_title"]
         config["consecutive_timeouts"] = 0  # Reset on re-enrollment
         
@@ -822,10 +1168,15 @@ class MantraSystem(commands.Cog):
         
         # Debug log
         if self.logger:
-            self.logger.info(f"Enrolled {interaction.user} with config: {config}")
+            self.logger.info(f"Enrolling {interaction.user} with themes: {valid_themes}")
+            self.logger.info(f"Config before save: enrolled={config['enrolled']}, themes={config['themes']}")
             # Verify save
             saved_config = self.get_user_mantra_config(interaction.user)
-            self.logger.info(f"Verified saved config: enrolled={saved_config['enrolled']}, themes={saved_config['themes']}")
+            self.logger.info(f"Config after save: enrolled={saved_config['enrolled']}, themes={saved_config['themes']}")
+            # Double check by directly reading from config
+            direct_config = self.bot.config.get_user(interaction.user, 'mantra_system', None)
+            if direct_config:
+                self.logger.info(f"Direct config read: themes={direct_config.get('themes', 'NOT FOUND')}")
         
         # Send confirmation
         embed = discord.Embed(
@@ -833,14 +1184,15 @@ class MantraSystem(commands.Cog):
             description="You will receive mantra challenges via DM.",
             color=discord.Color.purple()
         )
-        embed.add_field(name="Pet Name", value=config["pet_name"], inline=True)
+        embed.add_field(name="Pet Name", value=config["subject_name"], inline=True)
         embed.add_field(name="Dominant", value=config["dominant_title"], inline=True)
         embed.add_field(name="Themes", value=", ".join(config["themes"]), inline=False)
         embed.add_field(
             name="Next Steps",
             value="• Wait for mantras to appear in DMs\n"
                   "• Repeat them quickly for bonus points\n"
-                  "• Use `/mantra status` to check progress",
+                  "• Use `/mantra status` to check progress\n"
+                  "• Use `/mantra manage_themes` to change themes",
             inline=False
         )
         
@@ -864,7 +1216,7 @@ class MantraSystem(commands.Cog):
         )
         
         # Settings section
-        embed.add_field(name="Pet Name", value=config["pet_name"], inline=True)
+        embed.add_field(name="Pet Name", value=config["subject_name"], inline=True)
         embed.add_field(name="Dominant", value=config["dominant_title"], inline=True)
         embed.add_field(name="Themes", value=", ".join(config["themes"]) or "None", inline=True)
         embed.add_field(name="Frequency", value=f"{config['frequency']:.1f}/day", inline=True)
@@ -884,11 +1236,11 @@ class MantraSystem(commands.Cog):
             
             embed.add_field(name="\u200b", value="**📊 Statistics**", inline=False)
             embed.add_field(name="Total Sent", value=str(total_sent), inline=True)
-            embed.add_field(name="Captured", value=str(total_captured), inline=True)
-            embed.add_field(name="Capture Rate", value=f"{capture_rate:.1f}%", inline=True)
+            embed.add_field(name="Completed", value=str(total_captured), inline=True)
+            embed.add_field(name="Completion Rate", value=f"{capture_rate:.1f}%", inline=True)
             embed.add_field(name="Points Earned", value=f"{config['total_points_earned']:,}", inline=True)
             embed.add_field(name="Avg Response", value=f"{avg_response:.0f}s", inline=True)
-            embed.add_field(name="Public Captures", value=sum(1 for e in config["encounters"] if e.get("was_public", False)), inline=True)
+            embed.add_field(name="Public Responses", value=sum(1 for e in config["encounters"] if e.get("was_public", False)), inline=True)
             
             # Recent mantras
             recent = config["encounters"][-5:]  # Last 5
@@ -918,7 +1270,7 @@ class MantraSystem(commands.Cog):
     async def update_settings(
         self,
         interaction: discord.Interaction,
-        pet_name: Optional[str],
+        subject_name: Optional[str],
         dominant_title: Optional[str],
         themes_list: Optional[List[str]],
         online_only: Optional[bool]
@@ -929,17 +1281,16 @@ class MantraSystem(commands.Cog):
         # Track what was updated
         updates = []
         
-        if pet_name is not None:
-            config["pet_name"] = pet_name
-            updates.append(f"Pet name → {pet_name}")
+        if subject_name is not None:
+            config["subject_name"] = subject_name
+            updates.append(f"Subject name → {subject_name}")
         
         if dominant_title is not None:
             config["dominant_title"] = dominant_title
             updates.append(f"Dominant → {dominant_title}")
         
-        if themes_list is not None:
-            config["themes"] = themes_list
-            updates.append(f"Themes → {', '.join(themes_list) if themes_list else 'None'}")
+        # Don't update themes from settings command anymore
+        # themes_list should be None from settings command
         
         if online_only is not None:
             config["online_only"] = online_only
