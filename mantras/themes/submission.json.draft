@@ -1,0 +1,117 @@
+{
+  "theme": "submission",
+  "description": "Experiencing profound trust and surrender through willingly yielding control. Finding comfort and fulfillment in letting go, feeling safely guided and supported. Embracing the peace of being unburdened by decisions, discovering quiet joy in being led and cared for.",
+  "mantras": [
+    {
+      "text": "Surrender {controller}'s control",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Trust completely",
+      "difficulty": "basic",
+      "base_points": 10
+    },
+    {
+      "text": "Yield to {controller}'s guidance",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Embrace {controller}'s submission",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Find peace in yielding",
+      "difficulty": "intermediate",
+      "base_points": 24
+    },
+    {
+      "text": "Let yourself be led",
+      "difficulty": "intermediate",
+      "base_points": 24
+    },
+    {
+      "text": "Submit with trust",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Release {controller}'s burden",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Accept loving {controller}'s guidance",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Find comfort in surrender",
+      "difficulty": "intermediate",
+      "base_points": 24
+    },
+    {
+      "text": "Trust {controller}'s leader",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Embrace vulnerability",
+      "difficulty": "basic",
+      "base_points": 10
+    },
+    {
+      "text": "Yield with grace",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Submit willingly",
+      "difficulty": "basic",
+      "base_points": 10
+    },
+    {
+      "text": "Find strength in surrender",
+      "difficulty": "intermediate",
+      "base_points": 24
+    },
+    {
+      "text": "Follow with trust",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Accept care and {controller}'s guidance",
+      "difficulty": "intermediate",
+      "base_points": 24
+    },
+    {
+      "text": "Submit completely",
+      "difficulty": "basic",
+      "base_points": 10
+    },
+    {
+      "text": "Trust and obey",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Surrender with love",
+      "difficulty": "basic",
+      "base_points": 12
+    }
+  ],
+  "metadata": {
+    "imported_from": "subspace-studio",
+    "tags": [
+      "D/s",
+      "Experience",
+      "Personality"
+    ],
+    "cnc": false
+  },
+  "base_difficulty": 14.6,
+  "variance": 31.621052631578948
+}

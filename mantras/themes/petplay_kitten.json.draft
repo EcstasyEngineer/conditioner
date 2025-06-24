@@ -1,0 +1,111 @@
+{
+  "theme": "petplay_kitten",
+  "description": "Adopting playful and curious kitten mindset with innocence and vulnerability, exploring environment with natural feline curiosity. Expressing affection and independence through behaviors like purring, nuzzling, and playful batting at objects. Finding light-hearted joy and safety in carefree, loving manner within nurturing dynamic.",
+  "mantras": [
+    {
+      "text": "Purr contentedly",
+      "difficulty": "basic",
+      "base_points": 10
+    },
+    {
+      "text": "Kitten-like curiosity",
+      "difficulty": "basic",
+      "base_points": 10
+    },
+    {
+      "text": "Graceful feline movements",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Nuzzle affectionately",
+      "difficulty": "basic",
+      "base_points": 10
+    },
+    {
+      "text": "Playful kitten nature",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Independent cat spirit",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Soft kitten sounds",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Feline exploration",
+      "difficulty": "basic",
+      "base_points": 10
+    },
+    {
+      "text": "Warm purring vibrations",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Kitten vulnerability",
+      "difficulty": "basic",
+      "base_points": 10
+    },
+    {
+      "text": "Cat-like stretching",
+      "difficulty": "basic",
+      "base_points": 10
+    },
+    {
+      "text": "Selective affection",
+      "difficulty": "basic",
+      "base_points": 10
+    },
+    {
+      "text": "Feline sensuality",
+      "difficulty": "basic",
+      "base_points": 10
+    },
+    {
+      "text": "Kitten playfulness",
+      "difficulty": "basic",
+      "base_points": 10
+    },
+    {
+      "text": "Adorable cat behavior",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Intimate feline bonding",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Curious kitten mind",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Gentle cat nature",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Loving kitten energy",
+      "difficulty": "basic",
+      "base_points": 12
+    }
+  ],
+  "metadata": {
+    "imported_from": "subspace-studio",
+    "tags": [
+      "Behavior",
+      "Experience",
+      "Identity",
+      "Personality"
+    ],
+    "cnc": false
+  }
+}

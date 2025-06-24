@@ -1,6 +1,8 @@
 {
   "theme": "obedience",
   "description": "Focus on following commands, compliance, and automatic obedience",
+  "base_difficulty": 52.0,
+  "variance": 1122.0,
   "mantras": [
     {
       "text": "I obey without question",

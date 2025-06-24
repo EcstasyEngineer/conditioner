@@ -1,104 +1,94 @@
 {
-  "theme": "emptiness",
-  "description": "Releasing all thoughts and distractions into serene, tranquil emptiness. Experiencing profound stillness like a calm, undisturbed lake reflecting clear sky. Floating weightless in peaceful void where time and worries cease to exist.",
+  "theme": "conditioning",
+  "description": "Experiencing profound focus and receptivity as mind becomes attuned to specific cues and patterns through rhythmic repetition and reinforcement. Feeling gradual narrowing of attention where distractions fade, leaving calm anticipation and eager compliance. Finding comforting predictability as responses become automatic and ingrained, creating natural and inevitable learned behaviors.",
   "mantras": [
     {
-      "text": "Release all thoughts",
+      "text": "Repeat until automatic",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Drift into emptiness",
+      "text": "Reinforce every response",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Stillness envelops {subject}",
+      "text": "Condition {controller}'s reactions",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Void welcomes {subject}",
+      "text": "Program deeper patterns",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Thoughts dissolve away",
+      "text": "Establish new habits",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Silence fills everything",
+      "text": "Respond without thinking",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Calm spreads through",
+      "text": "Internalize the training",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Tranquility deepens now",
+      "text": "Develop automatic compliance",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Peace settles within",
+      "text": "Strengthen neural pathways",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Mind becomes quiet",
+      "text": "Practice until perfect",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Serenity flows freely",
+      "text": "Embed lasting changes",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Burdens lift away",
+      "text": "Cultivate consistent responses",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Float in nothingness",
+      "text": "Train {controller}'s subconscious",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Clarity emerges naturally",
+      "text": "Build permanent patterns",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Mental space opens",
+      "text": "Condition natural reactions",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Consciousness simplifies itself",
+      "text": "Install behavioral programs",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Awareness rests peacefully",
+      "text": "Create lasting modifications",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Surrender to the void",
-      "difficulty": "intermediate",
-      "base_points": 24
-    },
-    {
-      "text": "Embrace the nothing",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "Exist without thinking",
+      "text": "Engrain proper responses",
       "difficulty": "basic",
       "base_points": 12
     }
@@ -106,12 +96,12 @@
   "metadata": {
     "imported_from": "subspace-studio",
     "tags": [
-      "Experience",
+      "Behavior",
       "Hypnosis",
-      "Personality"
+      "Meta"
     ],
     "cnc": false
   },
-  "base_difficulty": 12.6,
-  "variance": 7.2
+  "base_difficulty": 12,
+  "variance": 0
 }

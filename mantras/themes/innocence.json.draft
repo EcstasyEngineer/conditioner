@@ -1,104 +1,99 @@
 {
-  "theme": "emptiness",
-  "description": "Releasing all thoughts and distractions into serene, tranquil emptiness. Experiencing profound stillness like a calm, undisturbed lake reflecting clear sky. Floating weightless in peaceful void where time and worries cease to exist.",
+  "theme": "innocence",
+  "description": "Experiencing profound purity and naivety with gentle vulnerability and childlike openness. Shedding layers of complexity to return to unguarded trust and simplicity. Finding warmth and safety in natural, unassuming demeanor while seeking guidance and expressing genuine, unfiltered self.",
   "mantras": [
     {
-      "text": "Release all thoughts",
+      "text": "Become so pure",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Drift into emptiness",
+      "text": "Feel completely innocent",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Stillness envelops {subject}",
+      "text": "Trust so completely",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Void welcomes {subject}",
+      "text": "Feel so vulnerable",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Thoughts dissolve away",
+      "text": "Become childlike now",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Silence fills everything",
+      "text": "Feel so open",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Calm spreads through",
+      "text": "Experience pure wonder",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Tranquility deepens now",
+      "text": "Feel so gentle",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Peace settles within",
+      "text": "Become completely trusting",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Mind becomes quiet",
+      "text": "Feel perfectly safe",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Serenity flows freely",
+      "text": "Be so naive",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Burdens lift away",
+      "text": "Feel so sweet",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Float in nothingness",
+      "text": "Become so simple",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Clarity emerges naturally",
+      "text": "Feel completely protected",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Mental space opens",
+      "text": "Trust without question",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Consciousness simplifies itself",
+      "text": "Feel so curious",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Awareness rests peacefully",
+      "text": "Become so honest",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Surrender to the void",
-      "difficulty": "intermediate",
-      "base_points": 24
-    },
-    {
-      "text": "Embrace the nothing",
+      "text": "Feel completely genuine",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Exist without thinking",
+      "text": "Experience pure joy",
       "difficulty": "basic",
       "base_points": 12
     }
@@ -107,11 +102,9 @@
     "imported_from": "subspace-studio",
     "tags": [
       "Experience",
-      "Hypnosis",
+      "D/s",
       "Personality"
     ],
     "cnc": false
-  },
-  "base_difficulty": 12.6,
-  "variance": 7.2
+  }
 }

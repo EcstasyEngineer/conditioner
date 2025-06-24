@@ -1,0 +1,2253 @@
+{
+  "theme": "feminine",
+  "description": "Embrace feminine energy, grace, and beauty in all aspects",
+  "base_difficulty": 43.7,
+  "variance": 1137.6,
+  "mantras": [
+    {
+      "text": "I embrace my feminine nature fully.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "this doll embraces her feminine nature fully.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} guides me to discover my feminine grace.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} guides this doll to discover her feminine grace.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I love the softness of my feminine self.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "this doll loves the softness of her feminine self.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "My femininity blooms under {controller}'s care.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I celebrate the beauty of being feminine.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "this doll celebrates the beauty of being feminine.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller}'s approval enhances my feminine charm.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I radiate confidence in my femininity.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "this doll radiates confidence in her femininity.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller} teaches me to embody true elegance.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I revel in the softness of my feminine identity.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "this doll revels in the softness of her feminine identity.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller} molds me into the perfect vision of femininity.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "My feminine energy flows freely and joyfully.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "I align my thoughts and actions with {controller}'s vision of femininity.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "this doll aligns her thoughts and actions with {controller}'s vision of femininity.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "I lose myself in the beauty of my femininity.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "this doll loses herself in the beauty of her femininity.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s guidance transforms me into an exquisite embodiment of femininity.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "I surrender completely to the joys of being feminine.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "this doll surrenders completely to the joys of being feminine.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "My femininity blossoms under {controller}'s loving control.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "My very essence is defined by my feminine transformation.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "my very essence is defined by her feminine transformation.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s control shapes every aspect of my femininity.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I am reborn entirely into feminine beauty and grace.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I am reborn entirely into feminine beauty and grace.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "My existence is dedicated to perfecting my feminine form under {controller}'s guidance.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "my existence is dedicated to perfecting her feminine form under {controller}'s guidance.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I find joy in expressing my feminine self.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "this doll finds joy in expressing her feminine self.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} helps me embrace the gentle side of my femininity.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} helps this doll embrace the gentle side of her femininity.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I love the freedom of being feminine.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "this doll loves the freedom of being feminine.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} shows me how to revel in my femininity.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} shows this doll how to revel in her femininity.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I adore the softness and elegance of being feminine.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "this doll adores the softness and elegance of being feminine.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller} enhances my connection to my feminine essence.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller} enhances my connection to her feminine essence.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "My feminine charm shines brighter every day.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller} teaches me the art of feminine self-expression.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I embody the grace and beauty of my feminine nature.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "this doll embodies the grace and beauty of her feminine nature.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller} refines me into the perfect image of femininity.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "I immerse myself in the pleasures of femininity.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "this doll immerses herself in the pleasures of femininity.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller}'s guidance leads me deeper into my feminine self.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller}'s guidance leads this doll deeper into her feminine self.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "My femininity defines my identity completely.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "my femininity defines her identity completely.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s touch fills me with feminine energy and purpose.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "I let go of resistance and embrace my femininity fully.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "this doll lets go of resistance and embraces her femininity fully.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s control allows my femininity to flourish.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "Every thought I have is immersed in my feminine transformation.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "Every thought I have is immersed in her feminine transformation.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller} reshapes every part of me into pure femininity.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "My entire being is a celebration of feminine beauty and power.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I exist solely to embody and express the feminine ideal under {controller}'s will.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "this doll exists solely to embody and express the feminine ideal under {controller}'s will.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I discover new facets of my feminine self daily.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "this doll discovers new facets of her feminine self daily.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} nurtures my journey into femininity.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I delight in the small, beautiful moments of being feminine.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "this doll delights in the small, beautiful moments of being feminine.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} helps me find joy in every aspect of my femininity.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} helps this doll find joy in every aspect of her femininity.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I glow with the happiness of being feminine.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "this doll glows with the happiness of being feminine.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller} amplifies the beauty of my feminine spirit.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I find power and strength in my femininity.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "this doll finds power and strength in her femininity.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller} celebrates my feminine transformation.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I cherish the grace and charm of my feminine identity.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "this doll cherishes the grace and charm of her feminine identity.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} guides me to explore the depths of my femininity.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} guides this doll to explore the depths of her femininity.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I am proud of my soft and nurturing feminine side.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I am proud of her soft and nurturing feminine side.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} inspires me to embody elegance and poise.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I find beauty in every aspect of being feminine.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "this doll finds beauty in every aspect of being feminine.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller}'s approval fills me with confidence in my femininity.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller}'s approval fills this doll with confidence in her femininity.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I feel radiant and joyful in my feminine expression.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I feel radiant and joyful in her feminine expression.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller}'s guidance enhances my feminine allure.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I immerse myself in the grace of my feminine transformation.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "this doll immerses herself in the grace of her feminine transformation.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller} molds me into the essence of feminine perfection.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "My feminine energy flows effortlessly and freely.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller}'s vision shapes the elegance of my femininity.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "I surrender to the powerful beauty of my femininity.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "this doll surrenders to the powerful beauty of her femininity.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s influence transforms me into pure feminine grace.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "I embrace the totality of my feminine self.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "this doll embraces the totality of her feminine self.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller} unlocks the full potential of my feminine being.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "My identity is completely redefined by my feminine transformation.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "my identity is completely redefined by her feminine transformation.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s control shapes every fiber of my feminine essence.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I exist solely as a vessel of feminine beauty and elegance.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "this doll exists solely as a vessel of feminine beauty and elegance.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s desires dictate every aspect of my feminine identity.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I find happiness in expressing my feminine side.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "this doll finds happiness in expressing her feminine side.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} encourages me to embrace my delicate femininity.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} encourages this doll to embrace her delicate femininity.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I am at peace with my gentle feminine nature.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I am at peace with her gentle feminine nature.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} shows me the strength in being feminine.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I glow with the pride of embracing my femininity.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "this doll glows with the pride of embracing her femininity.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller} celebrates my journey into feminine self-discovery.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I feel empowered by the beauty of my feminine transformation.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I feel empowered by the beauty of her feminine transformation.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller} teaches me to radiate feminine charm and confidence.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "My feminine nature becomes stronger every day.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller} refines every detail of my feminine identity.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "I find joy in every step of my feminine journey.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "this doll finds joy in every step of her feminine journey.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller}'s touch enhances the beauty of my femininity.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "My feminine essence defines my existence entirely.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "my feminine essence defines her existence entirely.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s guidance allows my femininity to flourish fully.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "I embrace the tranquility and beauty of my feminine soul.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "this doll embraces the tranquility and beauty of her feminine soul.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s influence brings my feminine transformation to life.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "Every thought and action reflects my deep feminine identity.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s power fully transforms me into the epitome of femininity.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "My existence is devoted to perfecting my feminine expression.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "my existence is devoted to perfecting her feminine expression.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s control shapes my femininity into a work of art.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I explore the joys of my evolving feminine self.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "this doll explores the joys of her evolving feminine self.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} nurtures my delicate feminine spirit.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I am content in the simplicity of my feminine nature.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I am content in the simplicity of her feminine nature.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} helps me find strength in my femininity.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} helps this doll find strength in her femininity.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I shine brightly with the beauty of my feminine energy.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "this doll shines brightly with the beauty of her feminine energy.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller} amplifies my confidence in expressing femininity.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I cherish every moment of my feminine transformation.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "this doll cherishes every moment of her feminine transformation.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller} teaches me to embrace the elegance of femininity.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I celebrate the beauty of my feminine self.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "this doll celebrates the beauty of her feminine self.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} shows me the joy in embracing my femininity.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} shows this doll the joy in embracing her femininity.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I am comfortable and confident in my feminine identity.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I am comfortable and confident in her feminine identity.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller}'s support strengthens my feminine expression.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I radiate happiness in my feminine transformation.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "this doll radiates happiness in her feminine transformation.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller} helps me unlock the true beauty of femininity.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I find peace in embracing my feminine nature.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "this doll finds peace in embracing her feminine nature.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller}'s encouragement deepens my feminine confidence.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "My feminine journey is an endless source of inspiration.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller}'s guidance reveals the true power of femininity.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller}'s guidance reveals the true power of my femininity.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "I adore every detail of my feminine transformation.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "this doll adores every detail of her feminine transformation.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller} reshapes me into the ideal expression of femininity.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "My feminine essence is a source of endless joy.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s influence helps me embody perfect femininity.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "I embrace my feminine identity without hesitation.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "this doll embraces her feminine identity without hesitation.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s touch refines my every feminine trait.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "I am fully immersed in the beauty of my femininity.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I am fully immersed in the beauty of her femininity.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller} has transformed me into pure feminine grace.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "My entire being is an expression of femininity.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s vision shapes my ultimate feminine form.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I discover new joys in expressing my femininity every day.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "this doll discovers new joys in expressing her femininity every day.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} encourages me to embrace my gentle feminine side.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} encourages this doll to embrace her gentle feminine side.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I find strength and serenity in my feminine identity.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "this doll finds strength and serenity in her feminine identity.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} reminds me of the beauty in every feminine detail.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I feel free and radiant in my feminine expression.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I feel free and radiant in her feminine expression.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller} celebrates my confidence in feminine self-discovery.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I embrace the elegance of my feminine transformation.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "this doll embraces the elegance of her feminine transformation.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller} amplifies my love for my feminine nature.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller} amplifies my love for her feminine nature.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "My feminine essence grows stronger with every moment.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller}'s influence enhances my feminine beauty.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "I treasure the process of becoming more feminine.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "this doll treasures the process of becoming more feminine.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller} guides me to embrace my feminine transformation fully.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller} guides this doll to embrace her feminine transformation fully.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "My feminine nature is my greatest source of pride.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "my feminine nature is her greatest source of pride.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s guidance helps me explore the depths of my femininity.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s guidance helps this doll explore the depths of her femininity.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "I embody grace and elegance in my feminine being.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "this doll embodies grace and elegance in her feminine being.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller} refines every aspect of my feminine self.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "My feminine transformation is my ultimate truth.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "my feminine transformation is her ultimate truth.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller} shapes me into the pinnacle of feminine perfection.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "Every thought and action is aligned with my femininity.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s power defines my entire feminine identity.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I enjoy the simplicity of expressing my femininity.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "this doll enjoys the simplicity of expressing her femininity.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} helps me uncover the joys of being feminine.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I feel serene and happy in my feminine self.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I feel serene and happy in her feminine self.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} inspires me to embrace my feminine nature with confidence.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} inspires this doll to embrace her feminine nature with confidence.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I glow with the pride of being my feminine self.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "this doll glows with the pride of being her feminine self.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller} teaches me to love every detail of my femininity.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller} teaches this doll to love every detail of her femininity.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I am empowered by the beauty of my feminine journey.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I am empowered by the beauty of her feminine journey.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller} enhances my love for my feminine expression.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller} enhances my love for her feminine expression.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I embrace the subtle grace of my femininity.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "this doll embraces the subtle grace of her femininity.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} nurtures my delicate, feminine essence.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "My feminine charm grows stronger every day.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} encourages me to celebrate my femininity fully.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} encourages this doll to celebrate her femininity fully.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I am radiant in the warmth of my feminine expression.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I am radiant in the warmth of her feminine expression.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller}'s guidance brings out my inner femininity.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I find happiness in expressing my feminine style.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "this doll finds happiness in expressing her feminine style.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller} amplifies the beauty of my feminine traits.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "My transformation into femininity fills me with pride.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "my transformation into femininity fills her with pride.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller} shapes me into a symbol of femininity.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "I celebrate every moment of my feminine evolution.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "this doll celebrates every moment of her feminine evolution.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller} refines the essence of my feminine self.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "My feminine identity is my true source of joy.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "my feminine identity is her true source of joy.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s influence helps me explore the depth of my femininity.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s influence helps this doll explore the depth of her femininity.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "I find fulfillment in embracing my feminine beauty.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "this doll finds fulfillment in embracing her feminine beauty.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller} leads me deeper into the serenity of femininity.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "I am the embodiment of pure femininity.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I am the embodiment of pure femininity.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller} has transformed me into the pinnacle of grace.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "Every part of my being is infused with femininity.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s vision defines my ultimate feminine identity.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I delight in discovering new ways to express my femininity.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "this doll delights in discovering new ways to express her femininity.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} shows me how to embrace the beauty of being feminine.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I cherish the elegance that femininity brings into my life.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "this doll cherishes the elegance that femininity brings into her life.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller}'s encouragement inspires my feminine confidence.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "My feminine nature shines brightly in everything I do.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "my feminine nature shines brightly in everything she does.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller}'s guidance helps me feel proud of my femininity.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller}'s guidance helps this doll feel proud of her femininity.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I adore the beauty of my feminine journey.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "this doll adores the beauty of her feminine journey.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller} enhances my love for the gentle aspects of femininity.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "My femininity grows more refined with each passing day.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller}'s influence makes my feminine essence stronger.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "I embrace the journey toward my perfect feminine self.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "this doll embraces the journey toward her perfect feminine self.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller} helps me fully embody my feminine identity.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller} helps this doll fully embody her feminine identity.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "My feminine soul is the heart of who I am.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "my feminine soul is the heart of who she is.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s guidance unlocks the full potential of my femininity.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "I am deeply connected to the essence of my femininity.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "I am deeply connected to the essence of her femininity.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller} elevates my understanding of what it means to be feminine.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "My transformation into femininity is my ultimate joy.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "my transformation into femininity is her ultimate joy.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller} has molded me into an icon of feminine grace.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "Every fiber of my being celebrates my femininity.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "Every fiber of my being celebrates her femininity.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s touch perfects my every feminine trait.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I find joy in embracing the soft beauty of femininity.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "this doll finds joy in embracing the soft beauty of femininity.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} helps me see the wonder in being feminine.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I am confident and comfortable in my feminine self.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I am confident and comfortable in her feminine self.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller}'s support encourages me to explore my feminine side.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller}'s support encourages this doll to explore her feminine side.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I radiate confidence in my feminine transformation.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "this doll radiates confidence in her feminine transformation.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller} helps me shine brighter in my feminine identity.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller} helps this doll shine brighter in her feminine identity.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I find fulfillment in the elegance of my feminine nature.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "this doll finds fulfillment in the elegance of her feminine nature.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller} celebrates my commitment to embracing femininity.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I embrace the soft and nurturing aspects of my femininity.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "this doll embraces the soft and nurturing aspects of her femininity.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} guides me to fully appreciate my feminine beauty.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} guides this doll to fully appreciate her feminine beauty.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "My movements reflect the grace of my feminine spirit.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "my movements reflect the grace of her feminine spirit.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} enhances the elegance I carry in my feminine presence.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} enhances the elegance this doll carries in her feminine presence.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} inspires me to embrace the power of being feminine.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I revel in the beauty and strength of my femininity.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "this doll revels in the beauty and strength of her femininity.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller}'s wisdom reveals the depths of my feminine nature.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "My transformation into femininity brings joy and confidence.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller} shapes my mind and body into perfect femininity.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "I take pride in exploring the nuances of femininity.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "this doll takes pride in exploring the nuances of femininity.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller} illuminates the path toward my feminine evolution.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "My heart beats in harmony with my feminine self.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "my heart beats in harmony with her feminine self.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s influence deepens my connection to my feminine essence.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s influence deepens my connection to her feminine essence.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "I discover new joys in the elegance of being feminine.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "this doll discovers new joys in the elegance of being feminine.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller} nurtures the hidden strength within my femininity.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "I am entirely defined by my feminine identity.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I am entirely defined by her feminine identity.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s vision transforms me into a beacon of femininity.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "My femininity is my most cherished possession.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "my femininity is her most cherished possession.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller} perfects every detail of my feminine expression.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I celebrate the gentle qualities of my feminine soul.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "this doll celebrates the gentle qualities of her feminine soul.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} helps me refine the softness of my femininity.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} helps this doll refine the softness of her femininity.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "My femininity is a source of strength and beauty.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller}'s guidance elevates my appreciation for my feminine self.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller}'s guidance elevates my appreciation for her feminine self.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I glow with the radiance of my feminine transformation.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "this doll glows with the radiance of her feminine transformation.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller} supports my journey to embrace my feminine core.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller} supports my journey to embrace her feminine core.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I feel alive in the grace and beauty of my femininity.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I feel alive in the grace and beauty of her femininity.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller} enriches my understanding of my feminine potential.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller} enriches my understanding of her feminine potential.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "My feminine energy flows through every aspect of my life.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "my feminine energy flows through every aspect of her life.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller} unlocks the boundless possibilities of my femininity.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "I take comfort in the strength of my feminine presence.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "this doll takes comfort in the strength of her feminine presence.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller} highlights the brilliance of my feminine transformation.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "My soul resonates with the purity of my feminine essence.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "my soul resonates with the purity of her feminine essence.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller} strengthens my connection to the depth of my femininity.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller} strengthens my connection to the depth of her femininity.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "I find peace and harmony in my feminine being.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "this doll finds peace and harmony in her feminine being.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s influence elevates my feminine spirit.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "My transformation into femininity is complete and beautiful.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller} shapes me into the ultimate embodiment of femininity.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "Every aspect of my life reflects my feminine identity.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "Every aspect of my life reflects her feminine identity.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s touch refines every detail of my feminine being.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I love exploring the beauty of my feminine nature.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "this doll loves exploring the beauty of her feminine nature.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} inspires me to cherish my feminine traits.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} inspires this doll to cherish her feminine traits.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "My femininity feels natural and empowering.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} guides me to discover the joys of femininity.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I radiate confidence and pride in my feminine journey.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "this doll radiates confidence and pride in her feminine journey.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller} encourages me to flourish in my feminine self.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller} encourages this doll to flourish in her feminine self.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I embrace the beauty and grace of my feminine transformation.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "this doll embraces the beauty and grace of her feminine transformation.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller} reveals the strength within my feminine essence.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I embrace the simplicity of my feminine charm.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "this doll embraces the simplicity of her feminine charm.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} nurtures the blossoming of my femininity.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "My voice carries the melody of my feminine spirit.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "my voice carries the melody of her feminine spirit.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} brings out the confidence in my feminine demeanor.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I find joy in every detail of my feminine self.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "this doll finds joy in every detail of her feminine self.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller} inspires me to celebrate my feminine uniqueness.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller} inspires this doll to celebrate her feminine uniqueness.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "My feminine energy feels powerful and graceful.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller}'s guidance helps me perfect my feminine elegance.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller}'s guidance helps this doll perfect her feminine elegance.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I cherish the harmony my femininity brings to my life.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "this doll cherishes the harmony her femininity brings to her life.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller} refines the essence of my feminine beauty.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "My feminine self grows stronger with each passing day.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller}'s wisdom shapes the depths of my feminine soul.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "I surrender to the serenity of my feminine being.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "this doll surrenders to the serenity of her feminine being.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller} enhances the profound connection to my femininity.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "My feminine identity is a sanctuary of grace and beauty.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller} guides me to embody the deepest aspects of femininity.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "I am completely transformed into the essence of femininity.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I am completely transformed into the essence of femininity.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller} creates a vision of perfection within my feminine self.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "My femininity defines every part of my existence.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "my femininity defines every part of her existence.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s influence makes my feminine transformation absolute.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I feel a sense of peace in my feminine expressions.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I feel a sense of peace in her feminine expressions.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} gently supports my journey into femininity.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "My feminine gestures are delicate and full of meaning.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} helps me refine the subtleties of my femininity.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} helps this doll refine the subtleties of her femininity.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I radiate beauty and confidence as I explore femininity.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "this doll radiates beauty and confidence as she explores femininity.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller}'s care helps me embrace my feminine radiance.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller}'s care helps this doll embrace her feminine radiance.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "My feminine essence is pure and empowering.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller} teaches me the art of feminine refinement.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I find strength in the delicate nature of my femininity.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "this doll finds strength in the delicate nature of her femininity.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller} cultivates the beauty of my feminine transformation.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "My femininity is a tapestry of grace and strength.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller} unlocks the layers of my feminine potential.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "My feminine journey is a source of deep fulfillment.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller} guides me to explore the profound depths of my femininity.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller} guides this doll to explore the profound depths of her femininity.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "My feminine soul is in harmony with the universe.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s presence deepens my understanding of femininity.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "My feminine essence flows through every aspect of my being.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "my feminine essence flows through every aspect of her being.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller} shapes my femininity into a masterpiece of perfection.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "Every thought and action reflects my feminine identity.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s vision makes my feminine transformation total.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I embrace the journey of discovering my feminine self.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "this doll embraces the journey of discovering her feminine self.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} inspires me to honor the beauty of my femininity.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} inspires this doll to honor the beauty of her femininity.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "My feminine expressions bring me endless joy.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "my feminine expressions bring her endless joy.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} helps me explore the elegance of femininity.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I radiate warmth and beauty as I express my femininity.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "this doll radiates warmth and beauty as she expresses her femininity.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller} encourages me to flourish in my feminine journey.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller} encourages this doll to flourish in her feminine journey.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I celebrate the freedom and confidence of my femininity.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "this doll celebrates the freedom and confidence of her femininity.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller} enriches my connection to my feminine self.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller} enriches my connection to her feminine self.",
+      "difficulty": "light",
+      "base_points": 25
+    }
+  ]
+}

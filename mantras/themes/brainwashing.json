@@ -1,6 +1,8 @@
 {
   "theme": "brainwashing",
   "description": "Focus on mental reprogramming, thought replacement, and conditioning",
+  "base_difficulty": 52.0,
+  "variance": 1122.0,
   "mantras": [
     {
       "text": "My thoughts are being cleaned",

@@ -1,6 +1,8 @@
 {
   "theme": "suggestibility",
   "description": "Foundation theme focused on openness and receptivity to suggestions",
+  "base_difficulty": 48.0,
+  "variance": 1170.0,
   "mantras": [
     {
       "text": "I am open and receptive",

@@ -1,6 +1,8 @@
 {
   "theme": "bimbo",
   "description": "Focus on playful identity transformation, simplification, and carefree mindset",
+  "base_difficulty": 52.0,
+  "variance": 1122.0,
   "mantras": [
     {
       "text": "Thinking is hard, feeling is easy",

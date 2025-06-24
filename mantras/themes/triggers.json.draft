@@ -1,0 +1,119 @@
+{
+  "theme": "triggers",
+  "description": "Living in heightened readiness where specific words unlock instant transformations. Feeling anticipation as triggers become keys to changes in mindset, behavior, or arousal. Experiencing rushes of emotion and perception shifts through carefully placed cues, exploring new facets through instant response.",
+  "mantras": [
+    {
+      "text": "Respond instantly",
+      "difficulty": "basic",
+      "base_points": 10
+    },
+    {
+      "text": "Activate automatically",
+      "difficulty": "basic",
+      "base_points": 10
+    },
+    {
+      "text": "Trigger deep change",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "React without thought",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Transform immediately",
+      "difficulty": "basic",
+      "base_points": 10
+    },
+    {
+      "text": "Submit to triggers",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Become programmed",
+      "difficulty": "basic",
+      "base_points": 10
+    },
+    {
+      "text": "Respond like clockwork",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Surrender to activation",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Obey the trigger",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Shift states instantly",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "React compulsively",
+      "difficulty": "basic",
+      "base_points": 10
+    },
+    {
+      "text": "Answer the call",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Activate programming",
+      "difficulty": "basic",
+      "base_points": 10
+    },
+    {
+      "text": "Engage conditioning",
+      "difficulty": "basic",
+      "base_points": 10
+    },
+    {
+      "text": "Execute responses",
+      "difficulty": "basic",
+      "base_points": 10
+    },
+    {
+      "text": "Follow trigger {controller}'s commands",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Submit to activation",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Become trigger-ready",
+      "difficulty": "basic",
+      "base_points": 10
+    },
+    {
+      "text": "Respond automatically",
+      "difficulty": "basic",
+      "base_points": 10
+    }
+  ],
+  "metadata": {
+    "imported_from": "subspace-studio",
+    "tags": [
+      "Hypnosis",
+      "Experience",
+      "Personality",
+      "Meta",
+      "D/s"
+    ],
+    "cnc": false
+  },
+  "base_difficulty": 11,
+  "variance": 1.0526315789473684
+}

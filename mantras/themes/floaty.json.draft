@@ -1,0 +1,114 @@
+{
+  "theme": "floaty",
+  "description": "Experiencing sensation of lightness and detachment, floating on gentle breeze or drifting through dream with profound peace and tranquility. Feeling all worries and tensions lifted away through deep breathing and visualization of airy, weightless environments. Finding gentle swaying or gliding with soft, diffuse thoughts in serene detachment from physical world.",
+  "mantras": [
+    {
+      "text": "Float effortlessly upward",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Lightness lifts {subject}",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Weightlessness embraces fully",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Drift on gentle currents",
+      "difficulty": "intermediate",
+      "base_points": 24
+    },
+    {
+      "text": "Gravity releases its hold",
+      "difficulty": "intermediate",
+      "base_points": 24
+    },
+    {
+      "text": "Airy sensations surround",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Buoyancy supports {subject}",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Ethereal feeling spreads",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Feather-light awareness floats",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Levitation feels natural",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Suspension holds {subject}",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Elevation lifts higher",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Atmospheric pressure eases",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Cloudlike softness envelops",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Helium fills {controller}'s being",
+      "difficulty": "intermediate",
+      "base_points": 24
+    },
+    {
+      "text": "Balloon-like expansion grows",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Ascending motion continues",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Soaring sensation increases",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Airborne freedom expands",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Floating becomes effortless",
+      "difficulty": "basic",
+      "base_points": 12
+    }
+  ],
+  "metadata": {
+    "imported_from": "subspace-studio",
+    "tags": [
+      "Experience",
+      "Hypnosis"
+    ],
+    "cnc": false
+  }
+}

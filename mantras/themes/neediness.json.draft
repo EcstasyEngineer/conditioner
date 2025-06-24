@@ -1,104 +1,94 @@
 {
-  "theme": "emptiness",
-  "description": "Releasing all thoughts and distractions into serene, tranquil emptiness. Experiencing profound stillness like a calm, undisturbed lake reflecting clear sky. Floating weightless in peaceful void where time and worries cease to exist.",
+  "theme": "neediness",
+  "description": "Feeling intense longing for connection and support while embracing vulnerability. Experiencing heightened need for companionship, comfort, and reassurance. Finding relief in expressing desires openly and being cared for, accepting dependence on others for emotional intimacy.",
   "mantras": [
     {
-      "text": "Release all thoughts",
+      "text": "Need them desperately",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Drift into emptiness",
+      "text": "Crave {controller}'s attention",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Stillness envelops {subject}",
+      "text": "Feel so vulnerable",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Void welcomes {subject}",
+      "text": "Require {controller}'s comfort",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Thoughts dissolve away",
+      "text": "Depend on them",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Silence fills everything",
+      "text": "Long for connection",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Calm spreads through",
+      "text": "Need {controller}'s touch",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Tranquility deepens now",
+      "text": "Feel helpless without",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Peace settles within",
+      "text": "Crave {controller}'s approval",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Mind becomes quiet",
+      "text": "Need constant care",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Serenity flows freely",
+      "text": "Feel emotionally hungry",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Burdens lift away",
+      "text": "Require {controller}'s presence",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Float in nothingness",
+      "text": "Need {controller}'s {controller}'s guidance",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Clarity emerges naturally",
+      "text": "Feel incomplete alone",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Mental space opens",
+      "text": "Crave {controller}'s affection",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Consciousness simplifies itself",
+      "text": "Need {controller}'s support",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Awareness rests peacefully",
+      "text": "Feel desperately lonely",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Surrender to the void",
-      "difficulty": "intermediate",
-      "base_points": 24
-    },
-    {
-      "text": "Embrace the nothing",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "Exist without thinking",
+      "text": "Require {controller}'s love",
       "difficulty": "basic",
       "base_points": 12
     }
@@ -107,11 +97,9 @@
     "imported_from": "subspace-studio",
     "tags": [
       "Experience",
-      "Hypnosis",
-      "Personality"
+      "Personality",
+      "Identity"
     ],
     "cnc": false
-  },
-  "base_difficulty": 12.6,
-  "variance": 7.2
+  }
 }

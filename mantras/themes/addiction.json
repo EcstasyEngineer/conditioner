@@ -1,6 +1,8 @@
 {
   "theme": "addiction",
   "description": "Focus on craving, compulsion, and dependency loops",
+  "base_difficulty": 52.0,
+  "variance": 1122.0,
   "mantras": [
     {
       "text": "I crave {controller}'s control",

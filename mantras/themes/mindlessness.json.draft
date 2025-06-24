@@ -1,99 +1,89 @@
 {
-  "theme": "emptiness",
-  "description": "Releasing all thoughts and distractions into serene, tranquil emptiness. Experiencing profound stillness like a calm, undisturbed lake reflecting clear sky. Floating weightless in peaceful void where time and worries cease to exist.",
+  "theme": "mindlessness",
+  "description": "Experiencing profound emptiness and tranquility as mind is gently wiped clean of all thoughts and self-awareness. Feeling thoughts slowly dissipate into serene void while floating in vast, quiet space free from decision-making burdens. Finding peaceful detachment where fully present yet blissfully unaware, existing without need for conscious thought or action.",
   "mantras": [
     {
-      "text": "Release all thoughts",
+      "text": "Empty {controller}'s mind",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Drift into emptiness",
+      "text": "Think no thoughts",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Stillness envelops {subject}",
+      "text": "Become perfectly blank",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Void welcomes {subject}",
+      "text": "Drift in silence",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Thoughts dissolve away",
+      "text": "Float in emptiness",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Silence fills everything",
+      "text": "Rest completely now",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Calm spreads through",
+      "text": "Stop all thinking",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Tranquility deepens now",
+      "text": "Embrace the void",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Peace settles within",
+      "text": "Feel perfectly still",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Mind becomes quiet",
+      "text": "Dissolve into nothing",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Serenity flows freely",
+      "text": "Let thoughts disappear",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Burdens lift away",
+      "text": "Sink into blankness",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Float in nothingness",
+      "text": "Become thoughtless",
+      "difficulty": "basic",
+      "base_points": 10
+    },
+    {
+      "text": "Enter pure quiet",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Clarity emerges naturally",
+      "text": "Flow in emptiness",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Mental space opens",
+      "text": "Trust the silence",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Consciousness simplifies itself",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "Awareness rests peacefully",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "Surrender to the void",
-      "difficulty": "intermediate",
-      "base_points": 24
-    },
-    {
-      "text": "Embrace the nothing",
+      "text": "Surrender all thought",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -112,6 +102,6 @@
     ],
     "cnc": false
   },
-  "base_difficulty": 12.6,
-  "variance": 7.2
+  "base_difficulty": 11.88888888888889,
+  "variance": 0.2222222222222222
 }

@@ -1,0 +1,106 @@
+{
+  "theme": "confusion",
+  "description": "Drifting through swirling, kaleidoscopic confusion where clarity dissolves into wonder. Feeling thought patterns unravel as logic gives way to instinct and intuition. Embracing the unknown through playful disorientation, discovering new insights in the fertile fog of uncertainty.",
+  "mantras": [
+    {
+      "text": "Lose track of thoughts",
+      "difficulty": "intermediate",
+      "base_points": 24
+    },
+    {
+      "text": "Embrace the uncertainty",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Drift between ideas",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Surrender logical control",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Follow intuitive impulses",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Dissolve rigid patterns",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Float in mental fog",
+      "difficulty": "intermediate",
+      "base_points": 24
+    },
+    {
+      "text": "Abandon clear thinking",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Trust instinctive responses",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Release analytical mind",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Wander through confusion",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Accept disorientation",
+      "difficulty": "basic",
+      "base_points": 10
+    },
+    {
+      "text": "Flow with uncertainty",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Let thoughts scatter",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Embrace mental fluidity",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Welcome the unknown",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Drift without direction",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Surrender to confusion",
+      "difficulty": "basic",
+      "base_points": 12
+    }
+  ],
+  "metadata": {
+    "imported_from": "subspace-studio",
+    "tags": [
+      "Experience",
+      "Hypnosis"
+    ],
+    "cnc": false
+  },
+  "base_difficulty": 13.222222222222221,
+  "variance": 15.594771241830065
+}

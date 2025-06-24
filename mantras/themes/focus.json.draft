@@ -1,104 +1,104 @@
 {
-  "theme": "emptiness",
-  "description": "Releasing all thoughts and distractions into serene, tranquil emptiness. Experiencing profound stillness like a calm, undisturbed lake reflecting clear sky. Floating weightless in peaceful void where time and worries cease to exist.",
+  "theme": "focus",
+  "description": "Achieving laser-like concentration where distractions fade and awareness narrows to a single point. Mind zooming in like a camera lens, bringing chosen focus into sharp clarity. Entering flow state with calm determination, time slipping away while fully absorbed in purposeful attention.",
   "mantras": [
     {
-      "text": "Release all thoughts",
+      "text": "Attention sharpens now",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Drift into emptiness",
+      "text": "Focus deepens naturally",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Stillness envelops {subject}",
+      "text": "Concentration flows easily",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Void welcomes {subject}",
+      "text": "Clarity emerges instantly",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Thoughts dissolve away",
+      "text": "Distractions fade away",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Silence fills everything",
+      "text": "Mind zeroes in",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Calm spreads through",
+      "text": "Awareness narrows precisely",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Tranquility deepens now",
+      "text": "Engagement becomes total",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Peace settles within",
+      "text": "Absorption happens automatically",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Mind becomes quiet",
+      "text": "Flow state activates",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Serenity flows freely",
+      "text": "Tunnel vision develops",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Burdens lift away",
+      "text": "Laser focus emerges",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Float in nothingness",
+      "text": "Single-minded determination grows",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Clarity emerges naturally",
+      "text": "Productivity increases dramatically",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Mental space opens",
+      "text": "Mental energy consolidates",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Consciousness simplifies itself",
+      "text": "Cognitive resources align",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Awareness rests peacefully",
+      "text": "Intellectual precision sharpens",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Surrender to the void",
-      "difficulty": "intermediate",
-      "base_points": 24
-    },
-    {
-      "text": "Embrace the nothing",
+      "text": "Sustained attention deepens",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Exist without thinking",
+      "text": "Mental clarity intensifies",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Concentrated effort flows",
       "difficulty": "basic",
       "base_points": 12
     }
@@ -112,6 +112,6 @@
     ],
     "cnc": false
   },
-  "base_difficulty": 12.6,
-  "variance": 7.2
+  "base_difficulty": 12,
+  "variance": 0
 }

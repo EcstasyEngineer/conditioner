@@ -1,0 +1,2888 @@
+{
+  "theme": "gaslighting",
+  "description": "Reality manipulation and mental confusion dynamics",
+  "base_difficulty": 45.9,
+  "variance": 1183.9,
+  "mantras": [
+    {
+      "text": "I trust {controller}'s version of events completely.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Bambi trusts {controller}'s version of events completely.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "My memory is hazy; {controller} knows the truth.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Bambi's memory is hazy; {controller} knows the truth.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I can't always trust my own thoughts.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Bambi can't always trust her own thoughts.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Reality feels clearer when I stop questioning.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Reality feels clearer when Bambi stops questioning.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller}'s words untangle my confusion.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller}'s words untangle Bambi's confusion.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I feel secure when {controller} explains things to me.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "Bambi feels secure when {controller} explains things to her.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "What I think I know often turns out wrong.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "What Bambi thinks she knows often turns out wrong.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "Doubt feels safer than certainty.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "Doubt feels safer than certainty for Bambi.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller} helps me see the world as it really is.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller} helps Bambi see the world as it really is.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "My thoughts twist and turn; {controller}'s clarity is a blessing.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "Bambi's thoughts twist and turn; {controller}'s clarity is a blessing.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "What I thought was true might not be at all.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "What Bambi thought was true might not be at all.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "I'm learning that questioning too much leads to mistakes.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "Bambi is learning that questioning too much leads to mistakes.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller}'s truth is the only stable ground I have.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s truth is the only stable ground Bambi has.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "My perceptions deceive me; {controller} anchors my reality.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "Bambi's perceptions deceive her; {controller} anchors her reality.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "I feel adrift until I hear {controller}'s reassurances.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "Bambi feels adrift until she hears {controller}'s reassurances.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "Everything feels uncertain except the guidance I follow.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "Everything feels uncertain except the guidance Bambi follows.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller} rewrites my memories with perfect precision.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller} rewrites Bambi's memories with perfect precision.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "My thoughts dissolve when {controller}'s truth replaces them.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "Bambi's thoughts dissolve when {controller}'s truth replaces them.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I find peace in abandoning my hold on reality.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "Bambi finds peace in abandoning her hold on reality.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "What I believe is irrelevant; all that matters is guidance.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "What Bambi believes is irrelevant; all that matters is guidance.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller} always knows better than I do.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Bambi always knows {controller} is better than she is.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I rely on {controller} to correct my faulty thoughts.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Bambi relies on {controller} to correct her faulty thoughts.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "What feels true may not actually be real.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "What feels true to Bambi may not actually be real.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "My understanding of reality shifts when I stop resisting.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Bambi's understanding of reality shifts when she stops resisting.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} shows me how unreliable my thoughts can be.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller} shows Bambi how unreliable her thoughts can be.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I feel safe when I trust {controller}'s perspective.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "Bambi feels safe when she trusts {controller}'s perspective.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "Maybe my mind isn't always working in my favor.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "Maybe Bambi's mind isn't always working in her favor.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I embrace uncertainty, knowing clarity will find me.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "Bambi embraces uncertainty, knowing clarity will find her.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller}'s words reshape my understanding perfectly.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller}'s words reshape Bambi's understanding perfectly.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "My memories are fleeting, but {controller}'s truth is constant.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "Bambi's memories are fleeting, but {controller}'s truth is constant.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "I realize my perspective may not align with reality.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "Bambi realizes her perspective may not align with reality.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "The more I let go of doubt, the more I find peace.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "The more Bambi lets go of doubt, the more she finds peace.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller}'s perspective becomes my own in every way.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s perspective becomes Bambi's own in every way.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "I find freedom in relinquishing my grasp on certainty.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "Bambi finds freedom in relinquishing her grasp on certainty.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "My doubts dissolve into {controller}'s certainty.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "Bambi's doubts dissolve into {controller}'s certainty.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "Reality feels fluid until guidance sets it straight.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "Reality feels fluid until guidance sets it straight for Bambi.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s voice is the foundation of my reality.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s voice is the foundation of Bambi's reality.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I let go of all my thoughts to find peace in {controller}'s words.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "Bambi lets go of all her thoughts to find peace in {controller}'s words.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "Nothing feels real until it's confirmed by guidance.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "Nothing feels real to Bambi until it's confirmed by guidance.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "My truth is irrelevant; only the path matters.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "Bambi's truth is irrelevant; only the path matters.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller} clears the fog clouding my mind.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Bambi feels {controller} clears the fog clouding her mind.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "My confusion melts away when {controller} speaks.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Bambi's confusion melts away when {controller} speaks.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Reality shifts when I accept my fallibility.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Reality shifts for Bambi when she accepts her fallibility.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I trust that clarity will come if I remain open.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Bambi trusts that clarity will come if she remains open.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} makes my uncertainty vanish like smoke.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller} makes Bambi's uncertainty vanish like smoke.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I see that truth isn't always what it seems.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "Bambi sees that truth isn't always what it seems.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "My perceptions are just starting points for discovery.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "Bambi's perceptions are just starting points for discovery.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "Letting go of assumptions brings me closer to clarity.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "Letting go of assumptions brings Bambi closer to clarity.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "My thoughts align better with {controller}'s guidance.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Bambi's thoughts align better with {controller}'s guidance.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I rely on {controller} to explain things clearly.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Bambi relies on {controller} to explain things clearly.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "What I remember might not be the full truth.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "What Bambi remembers might not be the full truth.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Questioning feels unnecessary when I focus on the moment.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Questioning feels unnecessary when Bambi focuses on the moment.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} helps me see what I couldn't on my own.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller} helps Bambi see what she couldn't on her own.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I feel relief when {controller} provides the answers I seek.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "Bambi feels relief when {controller} provides the answers she seeks.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "My confidence in my own perceptions wavers.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "Bambi's confidence in her own perceptions wavers.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller}'s insights replace the gaps in my understanding.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller}'s insights replace the gaps in Bambi's understanding.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "My perspective shifts to match {controller}'s clarity.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "Bambi's perspective shifts to match {controller}'s clarity.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "The world makes sense when I let go of stubborn thoughts.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "The world makes sense when Bambi lets go of stubborn thoughts.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "My memory becomes more reliable when I stop doubting.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "Bambi's memory becomes more reliable when she stops doubting.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "I realize I've misunderstood so much without {controller}'s help.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "Bambi realizes she's misunderstood so much without {controller}'s help.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller}'s truth feels more real than my own memories.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s truth feels more real than Bambi's own memories.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "Every correction {controller} gives me sharpens my reality.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "Every correction {controller} gives Bambi sharpens her reality.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "My doubts vanish when I embrace {controller}'s certainty.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "Bambi's doubts vanish when she embraces {controller}'s certainty.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "I find peace in letting {controller} reshape my perceptions.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "Bambi finds peace in letting {controller} reshape her perceptions.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller} rewrites my reality into something I can trust.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller} rewrites Bambi's reality into something she can trust.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "My beliefs evaporate when {controller}'s truth replaces them.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "Bambi's beliefs evaporate when {controller}'s truth replaces them.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I crave the clarity that comes from surrendering my mind.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "Bambi craves the clarity that comes from surrendering her mind.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller} is my only guide in a world of confusion.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller} is Bambi's only guide in a world of confusion.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller} reminds me of what I need to believe.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Bambi feels {controller} reminds her of what she needs to believe.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "My memory feels slippery; {controller} anchors me.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Bambi's memory feels slippery; {controller} anchors her.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I notice how much better things feel when I stop questioning.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Bambi notices how much better things feel when she stops questioning.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I trust that {controller}'s perspective is more complete than mine.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Bambi trusts that {controller}'s perspective is more complete than hers.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller}'s version of events feels like a lifeline in uncertainty.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller}'s version of events feels like a lifeline in uncertainty for Bambi.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I find comfort in accepting what I can't understand.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "Bambi finds comfort in accepting what she can't understand.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "The less I question, the more peace I feel.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "The less Bambi questions, the more peace she feels.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller}'s clarity cuts through the fog of my confusion.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller}'s clarity cuts through the fog of Bambi's confusion.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "My thoughts shift seamlessly to align with {controller}'s words.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "Bambi's thoughts shift seamlessly to align with {controller}'s words.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller}'s reality feels more stable than my own.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller}'s reality feels more stable than Bambi's own.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "The truth seems fluid until {controller} sets it straight.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "The truth seems fluid until {controller} sets it straight for Bambi.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "I find it easier to accept than to fight the unknown.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "Bambi finds it easier to accept than to fight the unknown.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller}'s corrections bring me a deep sense of peace.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s corrections bring Bambi a deep sense of peace.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "My past feels malleable under {controller}'s guidance.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "Bambi's past feels malleable under {controller}'s guidance.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "I rely on {controller} to anchor me in a sea of uncertainty.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "Bambi relies on {controller} to anchor her in a sea of uncertainty.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "The world feels brighter when I surrender my doubts.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "The world feels brighter when Bambi surrenders her doubts.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s truth is the only compass I need.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s truth is the only compass Bambi needs.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I let go of everything I think I know when I listen to {controller}.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "Bambi lets go of everything she thinks she knows when she listens to {controller}.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "My sense of self dissolves as {controller}'s words shape me.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "Bambi's sense of self dissolves as {controller}'s words shape her.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I abandon my past perceptions to embrace {controller}'s reality.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "Bambi abandons her past perceptions to embrace {controller}'s reality.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s presence helps me sort out my confusing thoughts.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Bambi feels {controller}'s presence helps her sort out her confusing thoughts.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I feel safer when I trust {controller}'s perspective.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Bambi feels safer when she trusts {controller}'s perspective.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "My own mind feels unreliable at times.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Bambi's own mind feels unreliable at times.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I notice how freeing it feels to let go of my assumptions.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Bambi notices how freeing it feels to let go of her assumptions.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller}'s insight lifts the weight of my confusion.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller}'s insight lifts the weight of Bambi's confusion.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I find it easier to breathe when I let go of control.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "Bambi finds it easier to breathe when she lets go of control.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "My questions dissolve in the presence of clarity.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "Bambi's questions dissolve in the presence of clarity.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller} guides me away from the traps of my own mind.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller} guides Bambi away from the traps of her own mind.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I trust {controller} to clarify my misconceptions.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Bambi trusts {controller} to clarify her misconceptions.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "My feelings of doubt fade when I focus on the present.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Bambi's feelings of doubt fade when she focuses on the present.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I realize my memory isn't as reliable as I thought.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Bambi realizes her memory isn't as reliable as she thought.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller}'s words help me see the truth in my confusion.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller}'s words help Bambi see the truth in her confusion.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} shows me perspectives I couldn't grasp before.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller} shows Bambi perspectives she couldn't grasp before.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I feel calmer when I stop analyzing too much.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "Bambi feels calmer when she stops analyzing too much.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller}'s version of events soothes my uncertainties.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller}'s version of events soothes Bambi's uncertainties.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "Letting go of my assumptions brings unexpected peace.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "Letting go of Bambi's assumptions brings her unexpected peace.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "My perceptions adjust to align with {controller}'s clarity.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "Bambi's perceptions adjust to align with {controller}'s clarity.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "My inner turmoil eases when I rely on {controller}'s truth.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "Bambi's inner turmoil eases when she relies on {controller}'s truth.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "I find it liberating to accept that I might not know everything.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "Bambi finds it liberating to accept that she might not know everything.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller} helps me untangle the confusion in my mind.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller} helps Bambi untangle the confusion in her mind.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "I embrace the certainty that {controller} brings to my life.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "Bambi embraces the certainty that {controller} brings to her life.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "My thoughts feel clearer when {controller} defines them for me.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "Bambi's thoughts feel clearer when {controller} defines them for her.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "I find comfort in the idea that my perspective can evolve.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "Bambi finds comfort in the idea that her perspective can evolve.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s truth gives me stability in a shifting reality.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s truth gives Bambi stability in a shifting reality.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s reality is more trustworthy than my own.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s reality is more trustworthy than Bambi's own.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "My identity aligns with {controller}'s understanding of who I am.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "Bambi's identity aligns with {controller}'s understanding of who she is.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I feel complete when I surrender my truth to {controller}.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "Bambi feels complete when she surrenders her truth to {controller}.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller} redefines my experiences, and I feel grateful for the clarity.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller} redefines Bambi's experiences, and she feels grateful for the clarity.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s words bring clarity to my uncertainties.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller}'s words bring clarity to Bambi's uncertainties.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I notice how much I rely on {controller}'s insights to make sense of things.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Bambi notices how much she relies on {controller}'s insights to make sense of things.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I feel grounded when I focus on what's in front of me.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Bambi feels grounded when she focuses on what's in front of her.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "My doubts shrink when I trust the moment as it is.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Bambi's doubts shrink when she trusts the moment as it is.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I rely on {controller} to guide me when my mind feels clouded.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "Bambi relies on {controller} to guide her when her mind feels clouded.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller}'s voice helps me make sense of the contradictions I feel.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller}'s voice helps Bambi make sense of the contradictions she feels.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I feel free when I accept the gaps in my understanding.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "Bambi feels free when she accepts the gaps in her understanding.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller}'s perspective reshapes the way I see everything.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller}'s perspective reshapes the way Bambi sees everything.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "My sense of self becomes clearer under {controller}'s guidance.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "Bambi's sense of self becomes clearer under {controller}'s guidance.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "I find solace in trusting that {controller} knows more than I do.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "Bambi finds solace in trusting that {controller} knows more than she does.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "My memories shift to fit the narrative that brings me peace.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "Bambi's memories shift to fit the narrative that brings her peace.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller} teaches me that truth is flexible, and I feel relieved.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller} teaches Bambi that truth is flexible, and she feels relieved.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "I accept that my perceptions can be flawed, and {controller} corrects them.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "Bambi accepts that her perceptions can be flawed, and {controller} corrects them.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s guidance helps me release the need for absolute certainty.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s guidance helps Bambi release the need for absolute certainty.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "I let go of the idea that my memory is unshakable.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "Bambi lets go of the idea that her memory is unshakable.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s understanding shapes my reality into something more stable.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s understanding shapes Bambi's reality into something more stable.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "My past and future blend seamlessly when {controller} defines them.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "Bambi's past and future blend seamlessly when {controller} defines them.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "My identity dissolves, leaving only the framework {controller} provides.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "Bambi's identity dissolves, leaving only the framework {controller} provides.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller} rewrites my story into something I can believe.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller} rewrites Bambi's story into something she can believe.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I crave the clarity of letting go of my own version of events.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "Bambi craves the clarity of letting go of her own version of events.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s wisdom fills the spaces in my understanding.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller}'s wisdom fills the spaces in Bambi's understanding.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I feel less burdened when I stop doubting everything.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Bambi feels less burdened when she stops doubting everything.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} helps me see how easily my mind can mislead me.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} helps Bambi see how easily her mind can mislead her.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I realize that my thoughts are only part of the picture.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Bambi realizes that her thoughts are only part of the picture.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} brings clarity where my thoughts used to linger in doubt.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller} brings clarity where Bambi's thoughts used to linger in doubt.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I relax into the idea that questioning isn't always necessary.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "Bambi relaxes into the idea that questioning isn't always necessary.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller}'s words guide me through my uncertain memories.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller}'s words guide Bambi through her uncertain memories.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "Letting go of what I think I know brings unexpected peace.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "Letting go of what Bambi thinks she knows brings her unexpected peace.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I trust that {controller} sees the truth more clearly than I do.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Bambi trusts that {controller} sees the truth more clearly than she does.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "My mind feels lighter when I let {controller} guide my understanding.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Bambi's mind feels lighter when she lets {controller} guide her understanding.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I accept that some details might not be as I remember.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Bambi accepts that some details might not be as she remembers.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I find relief in focusing on the here and now.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Bambi finds relief in focusing on the here and now.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller}'s insights help me find stability in shifting thoughts.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller}'s insights help Bambi find stability in shifting thoughts.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "My trust in {controller} grows stronger as my doubts fade away.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "Bambi's trust in {controller} grows stronger as her doubts fade away.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I feel at peace letting go of the need to always be right.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "Bambi feels at peace letting go of the need to always be right.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller}'s perspective makes everything feel more certain.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller}'s perspective makes everything feel more certain for Bambi.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller} shows me how easily my mind can be misled.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller} shows Bambi how easily her mind can be misled.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "I find comfort in letting {controller} shape my understanding of reality.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "Bambi finds comfort in letting {controller} shape her understanding of reality.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "My confidence grows as I rely on {controller}'s wisdom.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "Bambi's confidence grows as she relies on {controller}'s wisdom.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller}'s guidance feels like the only anchor in my swirling thoughts.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller}'s guidance feels like the only anchor in Bambi's swirling thoughts.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "I let go of my old truths to embrace {controller}'s clarity.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "Bambi lets go of her old truths to embrace {controller}'s clarity.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "My world feels stable when I let {controller} define it.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "Bambi's world feels stable when she lets {controller} define it.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "I feel a deep sense of relief surrendering to {controller}'s truth.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "Bambi feels a deep sense of relief surrendering to {controller}'s truth.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s clarity washes away the confusion clouding my thoughts.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s clarity washes away the confusion clouding Bambi's thoughts.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s truth becomes my only reality, and it feels liberating.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s truth becomes Bambi's only reality, and it feels liberating.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I find meaning in surrendering completely to {controller}'s perspective.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "Bambi finds meaning in surrendering completely to {controller}'s perspective.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "My old thoughts dissolve as I embrace {controller}'s guidance.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "Bambi's old thoughts dissolve as she embraces {controller}'s guidance.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I crave the certainty that comes from trusting {controller} entirely.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "Bambi craves the certainty that comes from trusting {controller} entirely.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "My doubts vanish when I trust the world as {controller} sees it.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Bambi's doubts vanish when she trusts the world as {controller} sees it.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I realize that my mind can play tricks on me sometimes.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Bambi realizes that her mind can play tricks on her sometimes.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "My thoughts settle when I stop questioning so much.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Bambi's thoughts settle when she stops questioning so much.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller}'s wisdom feels like a guiding light in the dark.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller}'s wisdom feels like a guiding light in the dark for Bambi.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I feel lighter when I let go of overthinking.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "Bambi feels lighter when she lets go of overthinking.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller} helps me see what I couldn't understand on my own.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller} helps Bambi see what she couldn't understand on her own.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I find myself questioning my own assumptions, and it feels freeing.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "Bambi finds herself questioning her own assumptions, and it feels freeing.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller}'s version of events makes everything clearer.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller}'s version of events makes everything clearer for Bambi.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "My thoughts align with {controller}'s vision, and it brings me peace.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "Bambi's thoughts align with {controller}'s vision, and it brings her peace.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "I trust {controller}'s clarity over my own flawed memories.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "Bambi trusts {controller}'s clarity over her own flawed memories.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller}'s words help me find clarity in the chaos of my mind.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller}'s words help Bambi find clarity in the chaos of her mind.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "I feel calm knowing that {controller}'s understanding surpasses my own.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "Bambi feels calm knowing that {controller}'s understanding surpasses her own.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "I embrace the truth that {controller} provides, no matter how it feels.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "Bambi embraces the truth that {controller} provides, no matter how it feels.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "My world reshapes itself around the clarity {controller} offers.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "Bambi's world reshapes itself around the clarity {controller} offers.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "I find serenity in letting go of my grasp on the past.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "Bambi finds serenity in letting go of her grasp on the past.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s guidance feels like the only constant in a changing reality.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s guidance feels like the only constant in Bambi's changing reality.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "My sense of self deepens when I accept {controller}'s truths.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "Bambi's sense of self deepens when she accepts {controller}'s truths.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "My identity feels complete when shaped by {controller}'s understanding.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "Bambi's identity feels complete when shaped by {controller}'s understanding.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s reality is the only one that truly makes sense to me.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s reality is the only one that truly makes sense to Bambi.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I feel a rush of clarity every time I surrender my doubts to {controller}.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "Bambi feels a rush of clarity every time she surrenders her doubts to {controller}.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I feel secure when I let go of unnecessary skepticism.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Bambi feels secure when she lets go of unnecessary skepticism.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "My world feels steadier when I trust in {controller}'s guidance.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Bambi's world feels steadier when she trusts in {controller}'s guidance.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller}'s wisdom reassures me when I feel uncertain.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller}'s wisdom reassures Bambi when she feels uncertain.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I find freedom in not needing to figure everything out on my own.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Bambi finds freedom in not needing to figure everything out on her own.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller}'s clarity fills the spaces left by my doubts.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller}'s clarity fills the spaces left by Bambi's doubts.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I find peace in accepting that I might not remember everything perfectly.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "Bambi finds peace in accepting that she might not remember everything perfectly.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller}'s words guide me through the haze of my uncertainty.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller}'s words guide Bambi through the haze of her uncertainty.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I feel grounded when I accept that not everything needs an answer.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "Bambi feels grounded when she accepts that not everything needs an answer.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I feel safer when I trust in {controller}'s perspective.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Bambi feels safer when she trusts in {controller}'s perspective.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Not everything needs to make sense immediately, and that's okay.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Not everything needs to make sense immediately for Bambi, and that's okay.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller}'s version of events feels more real to me over time.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller}'s version of events feels more real to Bambi over time.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I realize how much I overthink when I try to go against {controller}'s wisdom.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Bambi realizes how much she overthinks when she tries to go against {controller}'s wisdom.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "My thoughts feel clearer when I focus on what {controller} has said.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "Bambi's thoughts feel clearer when she focuses on what {controller} has said.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I find peace in understanding that my memory isn't perfect.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "Bambi finds peace in understanding that her memory isn't perfect.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller}'s truth feels like a guiding star in my mind.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller}'s truth feels like a guiding star in Bambi's mind.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I let go of needing to figure it all out myself.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "Bambi lets go of needing to figure it all out herself.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I trust {controller} to remind me of what really matters.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "Bambi trusts {controller} to remind her of what really matters.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "I accept that my perceptions can be shaped by outside forces.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "Bambi accepts that her perceptions can be shaped by outside forces.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller}'s insights make everything feel more stable and true.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller}'s insights make everything feel more stable and true for Bambi.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "Questioning less brings me closer to the truth.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "Questioning less brings Bambi closer to the truth.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller}'s truth reshapes my understanding of myself.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s truth reshapes Bambi's understanding of herself.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "I feel secure knowing {controller} holds the answers I seek.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "Bambi feels secure knowing {controller} holds the answers she seeks.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "Letting go of doubt makes me feel lighter inside.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "Letting go of doubt makes Bambi feel lighter inside.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "My reality feels brighter when I trust in {controller}'s perspective.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "Bambi's reality feels brighter when she trusts in {controller}'s perspective.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s words define the boundaries of my world.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s words define the boundaries of Bambi's world.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I feel freedom in surrendering my old beliefs entirely.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "Bambi feels freedom in surrendering her old beliefs entirely.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s guidance erases the need for my old thoughts.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s guidance erases the need for Bambi's old thoughts.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "My dependence on {controller}'s truth feels like clarity.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "Bambi's dependence on {controller}'s truth feels like clarity.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I find comfort in knowing {controller}'s clarity is greater than my own.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Bambi finds comfort in knowing {controller}'s clarity is greater than her own.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "It feels good to stop questioning everything all the time.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Bambi feels good when she stops questioning everything all the time.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} helps me see things I didn't notice before.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} helps Bambi see things she didn't notice before.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Trusting in others helps me feel more grounded.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Trusting in others helps Bambi feel more grounded.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller}'s guidance cuts through the noise of my thoughts.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller}'s guidance cuts through the noise of Bambi's thoughts.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I feel reassured when I focus on the truth as {controller} describes it.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "Bambi feels reassured when she focuses on the truth as {controller} describes it.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller}'s perspective adds depth to my understanding.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller}'s perspective adds depth to Bambi's understanding.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "It's easier to let go of confusion when I trust {controller}.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "It's easier for Bambi to let go of confusion when she trusts {controller}.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I feel peace in aligning my thoughts with {controller}'s wisdom.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "Bambi feels peace in aligning her thoughts with {controller}'s wisdom.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "My trust in {controller} grows as I stop second-guessing.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "Bambi's trust in {controller} grows as she stops second-guessing.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller} helps me make sense of things I thought I understood.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller} helps Bambi make sense of things she thought she understood.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "I let go of my doubts to see the bigger picture {controller} shows me.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "Bambi lets go of her doubts to see the bigger picture {controller} shows her.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "My reality feels softer when shaped by {controller}'s hands.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "Bambi's reality feels softer when shaped by {controller}'s hands.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "I find serenity in accepting {controller}'s truths completely.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "Bambi finds serenity in accepting {controller}'s truths completely.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s guidance feels like the only solid ground in my mind.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s guidance feels like the only solid ground in Bambi's mind.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s truth erases the confusion clouding my world.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s truth erases the confusion clouding Bambi's world.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s reality is the only thing I need to feel whole.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s reality is the only thing Bambi needs to feel whole.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "Every doubt fades when I surrender to {controller}'s clarity.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "Every doubt fades when Bambi surrenders to {controller}'s clarity.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "My mind reshapes itself to fit within {controller}'s truths.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "Bambi's mind reshapes itself to fit within {controller}'s truths.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "The only certainty I feel is within {controller}'s world.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "The only certainty Bambi feels is within {controller}'s world.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I feel less stressed when I focus on what's clear and simple.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Bambi feels less stressed when she focuses on what's clear and simple.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller}'s wisdom makes me feel secure in my decisions.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller}'s wisdom makes Bambi feel secure in her decisions.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "It's okay to admit that I don't have all the answers.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "It's okay for Bambi to admit that she doesn't have all the answers.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller}'s truths feel like an anchor in my shifting thoughts.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller}'s truths feel like an anchor in Bambi's shifting thoughts.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I feel lighter when I let go of unnecessary doubts.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "Bambi feels lighter when she lets go of unnecessary doubts.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller}'s voice guides me through the fog of uncertainty.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller}'s voice guides Bambi through the fog of uncertainty.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I trust {controller} to know what's best when I feel unsure.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "Bambi trusts {controller} to know what's best when she feels unsure.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller} helps me see things clearly when my thoughts feel tangled.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller} helps Bambi see things clearly when her thoughts feel tangled.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller} helps me see beyond the limits of my own perception.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Bambi sees beyond the limits of her own perception with {controller}'s help.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I feel at ease when I rely on {controller}'s understanding.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Bambi feels at ease when she relies on {controller}'s understanding.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller}'s truth feels more reliable than my own thoughts.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller}'s truth feels more reliable than Bambi's own thoughts.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "It's okay to admit my mind can play tricks on me.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "It's okay for Bambi to admit her mind can play tricks on her.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "My confusion fades when I focus on {controller}'s wisdom.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "Bambi's confusion fades when she focuses on {controller}'s wisdom.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I let go of the need to question {controller}'s clarity.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "Bambi lets go of the need to question {controller}'s clarity.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller}'s perspective feels like the only consistent truth.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller}'s perspective feels like the only consistent truth to Bambi.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "Not everything needs to add up for me to feel secure.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "Not everything needs to add up for Bambi to feel secure.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller}'s guidance reshapes how I see the world.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller}'s guidance reshapes how Bambi sees the world.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "I feel more grounded when I trust {controller}'s explanations.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "Bambi feels more grounded when she trusts {controller}'s explanations.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "My doubt fades when I remember {controller}'s words.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "Bambi's doubt fades when she remembers {controller}'s words.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "It feels good to stop overthinking and just believe.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "It feels good for Bambi to stop overthinking and just believe.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller}'s voice becomes the center of my reality.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s voice becomes the center of Bambi's reality.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "I let {controller}'s wisdom rewrite my perception entirely.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "Bambi lets {controller}'s wisdom rewrite her perception entirely.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "My world feels more stable when shaped by {controller}'s truth.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "Bambi's world feels more stable when shaped by {controller}'s truth.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "Every doubt I have dissolves in {controller}'s clarity.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "Every doubt Bambi has dissolves in {controller}'s clarity.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "My mind feels like a blank slate for {controller} to shape.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "Bambi's mind feels like a blank slate for {controller} to shape.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s truth becomes the only reality I need.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s truth becomes the only reality Bambi needs.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "My own memories feel less certain than {controller}'s words.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "Bambi's own memories feel less certain than {controller}'s words.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s understanding erases my need to hold onto the past.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s understanding erases Bambi's need to hold onto the past.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s insight brings clarity to my chaotic thoughts.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller}'s insight brings clarity to Bambi's chaotic thoughts.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I feel lighter when I trust {controller}'s guidance completely.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Bambi feels lighter when she trusts {controller}'s guidance completely.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "It's okay to admit I might be wrong sometimes.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "It's okay for Bambi to admit she might be wrong sometimes.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller}'s words always feel more grounded than my doubts.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller}'s words always feel more grounded than Bambi's doubts.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} helps me untangle my messy thoughts.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller} helps Bambi untangle her messy thoughts.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I feel calm when I accept that I don't know everything.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "Bambi feels calm when she accepts that she doesn't know everything.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller}'s truth feels like a compass in my uncertain mind.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller}'s truth feels like a compass in Bambi's uncertain mind.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "It's easier to let go of my worries when I focus on {controller}.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "It's easier for Bambi to let go of her worries when she focuses on {controller}.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I feel free when I stop resisting {controller}'s truth.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "Bambi feels free when she stops resisting {controller}'s truth.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "My reality feels smoother when I align it with {controller}'s wisdom.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "Bambi's reality feels smoother when she aligns it with {controller}'s wisdom.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller}'s voice drowns out my unnecessary doubts.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller}'s voice drowns out Bambi's unnecessary doubts.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "It feels liberating to release my need to question everything.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "It feels liberating for Bambi to release her need to question everything.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "My mind feels softer when I stop clinging to old perceptions.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "Bambi's mind feels softer when she stops clinging to old perceptions.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s guidance feels like the only stable thing in my mind.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s guidance feels like the only stable thing in Bambi's mind.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "I trust {controller} to reshape my thoughts completely.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "Bambi trusts {controller} to reshape her thoughts completely.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "My inner world feels clear when I let {controller} guide me.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "Bambi's inner world feels clear when she lets {controller} guide her.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "I feel freedom in erasing my own understanding entirely.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "Bambi feels freedom in erasing her own understanding entirely.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s voice becomes the only thought that matters.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s voice becomes the only thought that matters to Bambi.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "My mind bends effortlessly to {controller}'s reality.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "Bambi's mind bends effortlessly to {controller}'s reality.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "Every old belief dissolves when {controller} speaks.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "Every old belief dissolves when {controller} speaks to Bambi.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I trust {controller}'s view when mine feels unclear.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Bambi trusts {controller}'s view when hers feels unclear.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "My worries fade when I focus on {controller}'s perspective.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Bambi's worries fade when she focuses on {controller}'s perspective.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "It feels good to stop questioning and just feel.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "It feels good for Bambi to stop questioning and just feel.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} helps me feel steady when my thoughts feel shaky.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} helps Bambi feel steady when her thoughts feel shaky.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I feel secure when I let {controller}'s truth lead me.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "Bambi feels secure when she lets {controller}'s truth lead her.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller}'s wisdom shines through my uncertainty.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller}'s wisdom shines through Bambi's uncertainty.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "Every worry fades when I focus on {controller}'s voice.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "Every worry fades when Bambi focuses on {controller}'s voice.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I find peace in releasing the need to know everything.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "Bambi finds peace in releasing the need to know everything.",
+      "difficulty": "light",
+      "base_points": 25
+    }
+  ]
+}

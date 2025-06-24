@@ -1,0 +1,117 @@
+{
+  "theme": "trusting",
+  "description": "Experiencing serene, comforting state enveloped in profound confidence and reliability with warm, reassuring presence. Letting go of doubts to embrace unwavering belief in self and others through soothing waves of calmness. Finding quiet assurance and empowerment to build strong, trusting relationships with deep emotional and mental connection.",
+  "mantras": [
+    {
+      "text": "Trust completely",
+      "difficulty": "basic",
+      "base_points": 10
+    },
+    {
+      "text": "Surrender doubt",
+      "difficulty": "basic",
+      "base_points": 10
+    },
+    {
+      "text": "Embrace faith",
+      "difficulty": "basic",
+      "base_points": 10
+    },
+    {
+      "text": "Release suspicion",
+      "difficulty": "basic",
+      "base_points": 10
+    },
+    {
+      "text": "Open {controller}'s heart",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Believe without question",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Accept with confidence",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Trust the process",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Surrender skepticism",
+      "difficulty": "basic",
+      "base_points": 10
+    },
+    {
+      "text": "Embrace vulnerability",
+      "difficulty": "basic",
+      "base_points": 10
+    },
+    {
+      "text": "Place complete faith",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Release all guards",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Trust implicitly",
+      "difficulty": "basic",
+      "base_points": 10
+    },
+    {
+      "text": "Believe wholeheartedly",
+      "difficulty": "basic",
+      "base_points": 10
+    },
+    {
+      "text": "Surrender to {controller}'s guidance",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Embrace complete trust",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Release all doubt",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Trust without reservation",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Believe unconditionally",
+      "difficulty": "basic",
+      "base_points": 10
+    },
+    {
+      "text": "Surrender to safety",
+      "difficulty": "basic",
+      "base_points": 12
+    }
+  ],
+  "metadata": {
+    "imported_from": "subspace-studio",
+    "tags": [
+      "Experience",
+      "Personality",
+      "Identity"
+    ],
+    "cnc": false
+  },
+  "base_difficulty": 11.1,
+  "variance": 1.0421052631578946
+}

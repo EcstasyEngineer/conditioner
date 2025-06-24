@@ -1,0 +1,111 @@
+{
+  "theme": "pleasure",
+  "description": "Focusing on pure, unadulterated joy and satisfaction in every sensation. Becoming attuned to positive emotions and simple pleasures, worries fading away. Immersing fully in present moment contentment, savoring a rich tapestry of sensory and emotional fulfillment.",
+  "mantras": [
+    {
+      "text": "Feel the pleasure building",
+      "difficulty": "intermediate",
+      "base_points": 24
+    },
+    {
+      "text": "Let yourself enjoy this",
+      "difficulty": "intermediate",
+      "base_points": 24
+    },
+    {
+      "text": "Savor every sensation",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Give in to the feeling",
+      "difficulty": "intermediate",
+      "base_points": 26
+    },
+    {
+      "text": "Embrace the joy",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Allow yourself to indulge",
+      "difficulty": "intermediate",
+      "base_points": 24
+    },
+    {
+      "text": "Feel the satisfaction washing over {subject}",
+      "difficulty": "advanced",
+      "base_points": 38
+    },
+    {
+      "text": "Let the pleasure take control",
+      "difficulty": "intermediate",
+      "base_points": 26
+    },
+    {
+      "text": "Surrender to the bliss",
+      "difficulty": "intermediate",
+      "base_points": 24
+    },
+    {
+      "text": "Feel yourself melting into pleasure",
+      "difficulty": "intermediate",
+      "base_points": 26
+    },
+    {
+      "text": "Let the happiness flow through {subject}",
+      "difficulty": "advanced",
+      "base_points": 38
+    },
+    {
+      "text": "Allow the sensations to overwhelm {subject}",
+      "difficulty": "advanced",
+      "base_points": 38
+    },
+    {
+      "text": "Feel the contentment spreading",
+      "difficulty": "intermediate",
+      "base_points": 24
+    },
+    {
+      "text": "Let yourself be consumed by pleasure",
+      "difficulty": "advanced",
+      "base_points": 38
+    },
+    {
+      "text": "Embrace the intoxicating feelings",
+      "difficulty": "intermediate",
+      "base_points": 24
+    },
+    {
+      "text": "Allow the euphoria to take hold",
+      "difficulty": "advanced",
+      "base_points": 38
+    },
+    {
+      "text": "Feel the waves of satisfaction",
+      "difficulty": "intermediate",
+      "base_points": 26
+    },
+    {
+      "text": "Let the pleasure guide {subject}",
+      "difficulty": "intermediate",
+      "base_points": 26
+    },
+    {
+      "text": "Surrender to the overwhelming joy",
+      "difficulty": "intermediate",
+      "base_points": 26
+    }
+  ],
+  "metadata": {
+    "imported_from": "subspace-studio",
+    "tags": [
+      "Experience",
+      "Personality"
+    ],
+    "cnc": false
+  },
+  "base_difficulty": 27.05263157894737,
+  "variance": 61.941520467836256
+}

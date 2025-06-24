@@ -1,6 +1,8 @@
 {
   "theme": "acceptance",
   "description": "Foundation theme focused on surrender and acceptance of control",
+  "base_difficulty": 48.0,
+  "variance": 1170.0,
   "mantras": [
     {
       "text": "I accept and surrender",

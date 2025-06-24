@@ -1,0 +1,112 @@
+{
+  "theme": "looping",
+  "description": "Becoming enveloped in continuous cycle of thoughts or phrases that repeat endlessly in mind. Experiencing deep immersion where repeated programming becomes sole mental focus, gently cradled by rhythm. Feeling comforting inevitability as loop becomes natural mental landscape, guiding thoughts in harmonious cycle.",
+  "mantras": [
+    {
+      "text": "Repeat these words",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Loop in {controller}'s mind",
+      "difficulty": "intermediate",
+      "base_points": 24
+    },
+    {
+      "text": "Keep repeating now",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Cycle through thoughts",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Repeat continuously",
+      "difficulty": "basic",
+      "base_points": 10
+    },
+    {
+      "text": "Words loop endlessly",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Think on repeat",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Cycle keeps going",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Repeat without stopping",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Loop becomes stronger",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Words repeat constantly",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Cycle continues forever",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Repeat these phrases",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Loop grows deeper",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Words cycle through",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Repeat automatically",
+      "difficulty": "basic",
+      "base_points": 10
+    },
+    {
+      "text": "Loop takes control",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Words repeat themselves",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Cycle becomes natural",
+      "difficulty": "basic",
+      "base_points": 12
+    }
+  ],
+  "metadata": {
+    "imported_from": "subspace-studio",
+    "tags": [
+      "Experience",
+      "Hypnosis",
+      "Meta"
+    ],
+    "cnc": false
+  },
+  "base_difficulty": 12.421052631578947,
+  "variance": 8.257309941520468
+}
