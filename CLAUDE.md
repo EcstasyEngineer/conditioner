@@ -99,7 +99,7 @@ media/           # Bot avatars and gacha rewards
 
 1. **Async/Await**: All Discord operations use proper async patterns
 2. **Error Handling**: Try-except blocks with logging throughout
-3. **Config Access**: Always use `self.bot.get_cog('ConfigManager')` for config operations
+3. **Config Access**: Always use `self.bot.config` for config operations (e.g., `self.bot.config.get()`, `self.bot.config.set_user()`)
 4. **Slash Commands**: Modern Discord interactions via `app_commands`
 5. **Auto-save**: Config changes auto-save after 5 seconds to prevent data loss
 

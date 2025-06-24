@@ -9,6 +9,7 @@ from pathlib import Path
 import os
 from typing import List, Dict, Optional
 import difflib
+import time
 
 
 class ThemeSelectView(discord.ui.View):
@@ -156,6 +157,9 @@ class MantraSystem(commands.Cog):
         # Track active mantra challenges
         self.active_challenges = {}  # user_id: {"mantra": str, "theme": str, "difficulty": str, "base_points": int, "sent_at": datetime, "timeout_minutes": int}
         
+        # Track user online status history for better detection
+        self.user_status_history = {}  # user_id: {"consecutive_online_loops": int, "last_status": str, "last_check": datetime}
+        
     async def cog_load(self):
         """Load public channel configuration and calculate streaks when cog loads."""
         # Load public channel from guild configs
@@ -273,7 +277,9 @@ class MantraSystem(commands.Cog):
             "encounters": [],
             "consecutive_timeouts": 0,
             "total_points_earned": 0,
-            "online_only": True
+            "online_only": True,
+            "online_consecutive_checks": 3,  # Number of consecutive checks
+            "online_check_interval": 2.0     # Seconds between checks
         }
         
         # Get existing config without providing defaults (to avoid overwriting)
@@ -512,16 +518,39 @@ class MantraSystem(commands.Cog):
             
         # Check online status if required
         if config["online_only"]:
-            # Check if user is online/idle/dnd (not offline or invisible)
-            # Need to check member status in at least one mutual guild
-            is_online = False
+            # Check current status (single check)
+            is_online_now = False
             for guild in self.bot.guilds:
                 member = guild.get_member(user.id)
-                if member and member.status != discord.Status.offline:
-                    is_online = True
+                if member and member.status in [discord.Status.online, discord.Status.dnd]:
+                    is_online_now = True
                     break
             
-            if not is_online:
+            # Update status history
+            user_history = self.user_status_history.get(user.id, {
+                "consecutive_online_loops": 0,
+                "last_status": "offline",
+                "last_check": datetime.now()
+            })
+            
+            # If online now, increment counter; otherwise reset
+            if is_online_now:
+                if user_history["last_status"] in ["online", "dnd"]:
+                    user_history["consecutive_online_loops"] += 1
+                else:
+                    user_history["consecutive_online_loops"] = 1
+                user_history["last_status"] = "online"
+            else:
+                user_history["consecutive_online_loops"] = 0
+                user_history["last_status"] = "offline"
+            
+            user_history["last_check"] = datetime.now()
+            self.user_status_history[user.id] = user_history
+            
+            # Require 3 consecutive loops of being online (6 minutes total)
+            if user_history["consecutive_online_loops"] < 3:
+                if self.logger:
+                    self.logger.info(f"User {user.id} online for {user_history['consecutive_online_loops']}/3 loops")
                 return False
         
         
@@ -532,6 +561,8 @@ class MantraSystem(commands.Cog):
                 return False
                 
         return True
+    
+    # Note: Removed check_user_online_consecutive - now using status history tracking
     
     def select_mantra_for_user(self, config: Dict) -> Optional[Dict]:
         """Select a mantra based on user's themes and progression."""
@@ -609,7 +640,7 @@ class MantraSystem(commands.Cog):
                 
         return False
     
-    @tasks.loop(minutes=5)
+    @tasks.loop(minutes=2)
     async def mantra_delivery(self):
         """Main task loop for delivering mantras."""
         # Get all user configs
@@ -702,6 +733,9 @@ class MantraSystem(commands.Cog):
                     embed.set_footer(text=f"Integration window: {timeout_minutes} minutes")
                     
                     await user.send(embed=embed)
+                    
+                    if self.logger:
+                        self.logger.info(f"User {user.id} sent mantra after {self.user_status_history.get(user.id, {}).get('consecutive_online_loops', 0)} consecutive online loops")
                     
                     # Track the challenge
                     self.active_challenges[user.id] = {

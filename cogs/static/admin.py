@@ -32,8 +32,7 @@ class Admin(commands.Cog):
             await ctx.send("You lack admin privileges on this server.")
             return
         # use per-guild config for admins
-        config = self.bot.config
-        admins = config.get(ctx, "admins", [])
+        admins = self.bot.config.get(ctx, "admins", [])
         if not ctx.author.id == global_superadmin and admins: # user is not a superadmin and there are already admins
             await ctx.send("There are already admins for this server. You must be added by one of the admins with !addadmin @you.")
             return
@@ -42,7 +41,7 @@ class Admin(commands.Cog):
             await ctx.send("You are already a bot admin.")
         else:
             admins.append(ctx.author.id)
-            config.set(ctx, "admins", admins)
+            self.bot.config.set(ctx, "admins", admins)
             self.logger.info(f"{ctx.author} (ID: {ctx.author.id}) granted admin in guild {ctx.guild.id}")
             await ctx.send("You are now a bot admin.")
 
@@ -57,8 +56,7 @@ class Admin(commands.Cog):
             await ctx.send("Please specify a user to add as bot admin.")
             self.logger.warning(f"addadmin called without member by {ctx.author} (ID: {ctx.author.id})")
             return
-        config = self.bot.config
-        admins = config.get(ctx, "admins", [])
+        admins = self.bot.config.get(ctx, "admins", [])
         if ctx.author.id != self.bot.config.get(None, "superadmin") and not (
             ctx.author.guild_permissions.administrator or ctx.author == ctx.guild.owner or 
             ctx.author.id in admins
@@ -71,7 +69,7 @@ class Admin(commands.Cog):
             await ctx.send(f"{member} is already an bot admin.")
         else:
             admins.append(member.id)
-            config.set(ctx, "admins", admins)
+            self.bot.config.set(ctx, "admins", admins)
             self.logger.info(f"{member} (ID: {member.id}) added as admin by {ctx.author} (ID: {ctx.author.id}) in guild {ctx.guild.id}")
             await ctx.send(f"{member} has been added as an bot admin.")    
     
