@@ -1,0 +1,758 @@
+{
+  "theme": "doll",
+  "description": "Transform into a perfect, beautiful doll focused on appearance and obedience",
+  "base_difficulty": 48.2,
+  "variance": 1147.8,
+  "mantras": [
+    {
+      "text": "{controller}'s care ensures this doll is always immaculate.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller} ensures its elegance is always impeccable.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "This doll's existence celebrates the artistry of elegance and poise.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s desires mold every aspect of its existence.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s vision defines its existence as a perfect doll.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s care transforms its existence into a living work of art.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s control defines its existence as a flawless creation.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s vision sculpts its perfection into being.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s touch crafts its existence into a masterpiece of grace.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s influence ensures its existence is one of perfection.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "My very existence is a tribute to elegance and artistry.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller} ensures This doll am always an example of exquisite beauty.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "This doll radiate elegance in every aspect of its being.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller}'s care ensures that every detail of its being exudes grace.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s influence defines every aspect of its being as perfection.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s touch crafts its existence into flawless elegance.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s care transforms its being into an example of divine perfection.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "My existence celebrates the refinement and elegance of a true creation.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s vision sculpts every detail of its existence into flawlessness.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "This doll find purpose in being an icon of poise and sophistication.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "My very being is a celebration of elegance and artistry.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s care defines every aspect of its existence as a masterpiece.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller} ensures its beauty is always at its peak.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller}'s care ensures This doll am always a vision of refinement.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "Every part of its being is sculpted into perfection by {controller}'s vision.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "My being radiates the grace of one shaped by endless care.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "Every detail of its existence is crafted into flawless artistry.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller} sculpts every detail of its being into an icon of refinement.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "This doll am poised and graceful under {controller}'s guidance.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "This doll embody elegance in every movement.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller}'s care makes it a perfect doll.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "This doll take pride in its refined beauty.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller}'s touch perfects its presentation.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "This doll am a masterpiece of elegance and poise.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "This doll delight in {controller}'s admiration of its beauty.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "This doll move with the grace of a perfectly crafted doll.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller} molds it into a flawless creation.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "My beauty is a reflection of perfection.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller}'s guidance ensures its every detail is exquisite.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "This doll am an object of fascination, adored by all.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "Under {controller}'s direction, This doll am a living work of art.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "This doll exist to bring beauty and joy to the world.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s vision shapes it into perfection.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "This doll am the embodiment of elegance and charm.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s control transforms it into their exquisite doll.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "This doll am an elegant object, cherished and admired.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s desires sculpt its every detail.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "This doll am a flawless creation of beauty and grace.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "its polished appearance brings her pride.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} perfects its elegance with their touch.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "This doll find joy in every detail of its presentation.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller}'s words refine its poise and beauty.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "This doll am a symbol of sophistication and grace.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller} admires its poised demeanor.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "This doll thrive on the beauty This doll bring to life.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller}'s vision perfects its every move.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "This doll am a vessel for elegance and perfection.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "My presence is a testament to refinement and grace.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller}'s hands craft its flawless elegance.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "This doll am a living symbol of timeless beauty.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s love enhances its beauty and poise.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "This doll radiate perfection in every moment.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s control is the essence of its elegance.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "My perfection is a reflection of {controller}'s desires.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "This doll exist solely to embody beauty and grace.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "My elegance reflects {controller}'s care.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "This doll delight in presenting myself with refinement.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller}'s guidance polishes its grace and charm.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "This doll take pride in its poised and graceful demeanor.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller}'s touch enhances its natural beauty.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "This doll am a reflection of elegance and sophistication.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller}'s presence ensures its every movement is flawless.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "This doll embody timeless grace and charm.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s control defines its perfection.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "This doll am the pinnacle of elegance under {controller}'s guidance.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s presence brings out its elegance.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "This doll find joy in embodying poise and beauty.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} guides its every graceful step.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "This doll am serene and composed in all things.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "This doll radiate charm and sophistication effortlessly.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "This doll thrive on presenting myself with grace.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller} shapes it into a vision of perfection.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "This doll am an icon of beauty and refinement.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller} ensures This doll am polished and poised at all times.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "My every movement reflects the essence of grace.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller}'s guidance transforms it into a living doll.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "This doll embody perfection, elegance, and beauty.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s touch elevates its every feature.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "This doll am a timeless creation of grace and charm.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "This doll am a flawless representation of refinement and beauty.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller} sculpts its essence into a perfect doll.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "This doll mirror {controller}'s vision of grace.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "This doll's polished demeanor is a reflection of {controller}'s care for detail.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} ensures This doll am a perfect balance of charm and poise.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller}'s guidance allows it to shine with elegance.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "This doll exude grace and charm in every interaction.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "This doll am a symbol of refinement and sophistication.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller}'s care shapes it into a masterpiece.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "This doll represent poise and elegance in every setting.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller} ensures its appearance is flawless.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "My elegance inspires admiration and respect.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller}'s presence completes its transformation into perfection.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "This doll am a radiant creation of beauty and poise.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "This doll stand as a testament to timeless elegance and beauty.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s control is the foundation of its perfection.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "This doll am a vessel of grace, sculpted by vision and care.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "My poise and elegance are a reflection of flawless creation.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "This doll take pride in presenting myself with polished perfection.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "This doll find delight in showcasing its refined appearance.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller}'s care transforms its every movement into grace.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "This doll represent the harmony of beauty and refinement.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller}'s influence shapes it into a vision of grace and charm.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "My poise reflects {controller}'s vision of perfection.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "This doll carry myself with grace and elegance.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} shapes its demeanor into polished beauty.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "My movements are delicate and intentional.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} refines its every detail with care.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller}'s influence makes it a flawless creation.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller}'s presence elevates its sense of refinement.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "This doll embody sophistication and charm with every step.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller}'s care perfects its image in every way.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "My essence is one of grace and timeless beauty.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller}'s guidance molds it into a vision of poise.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "This doll stand as a symbol of refinement and allure.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s influence shapes its every graceful action.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "My elegance is a tribute to flawless craftsmanship.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s control sculpts its poise and perfection.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "My presence radiates the ultimate expression of grace.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s praise enhances its natural grace.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "This doll take pride in its polished appearance.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "This doll's composure reflects {controller}'s dedication to beauty.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller}'s guidance brings out its refined charm.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "This doll shine with confidence and elegance.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller}'s influence ensures This doll embody timeless beauty.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "This doll's movements reflect its innate grace and charm.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "This doll's elegance speaks of {controller}'s devotion to refinement.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller}'s influence crafts its every perfect detail.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "This doll represent the pinnacle of grace and refinement.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "My elegance is the ultimate expression of artistry.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "My presence is a testament to the art of beauty and poise.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s guidance ensures its grace is effortless.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "This doll radiate elegance with every movement This doll make.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller}'s care polishes every aspect of its demeanor.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "This doll's charm is enhanced by its refined presentation.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "This doll embody poise and sophistication in every moment.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "This doll stand as a monument to elegance and refinement.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s guidance makes it a flawless representation of beauty.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "This doll's movements are precise and graceful, a testament to its elegance.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} admires the poise This doll display effortlessly.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "This doll take pride in every detail of its refined appearance.",
+      "difficulty": "basic",
+      "base_points": 12
+    }
+  ]
+}
