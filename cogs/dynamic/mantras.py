@@ -20,6 +20,7 @@ class ThemeSelectView(discord.ui.View):
         self.user = user
         self.current_themes = current_themes.copy()
         self.original_themes = current_themes.copy()
+        self._is_finished = False  # Track if we've already handled a button press
         
         # Create select menu with all available themes
         options = []
@@ -48,7 +49,7 @@ class ThemeSelectView(discord.ui.View):
         self.add_item(save_button)
         
         # Add cancel button
-        cancel_button = discord.ui.Button(label="Revert Changes", style=discord.ButtonStyle.secondary)
+        cancel_button = discord.ui.Button(label="Cancel", style=discord.ButtonStyle.secondary)
         cancel_button.callback = self.cancel_callback
         self.add_item(cancel_button)
     
@@ -57,35 +58,22 @@ class ThemeSelectView(discord.ui.View):
         # Update current themes based on selection
         self.current_themes = interaction.data["values"]
         
-        # Update embed to show current selection
-        embed = discord.Embed(
-            title="🌀 Adjust Conditioning Themes",
-            description=f"**Active modules:** {', '.join(self.current_themes) if self.current_themes else 'None'}",
-            color=discord.Color.purple()
-        )
-        
-        if not self.current_themes:
-            embed.add_field(
-                name="❗ Requirement",
-                value="At least one conditioning module must remain active.",
-                inline=False
-            )
-        
-        embed.add_field(
-            name="Directives",
-            value="• Select the conditioning module you wish to activate or deactivate.\n• At least one stream must remain active.\n• Click 'Confirm Parameters' to apply changes.",
-            inline=False
-        )
-        
-        await interaction.response.edit_message(embed=embed)
+        # Use defer with ephemeral=True to match the original message
+        await interaction.response.defer(ephemeral=True)
     
     async def save_callback(self, interaction: discord.Interaction):
         """Save theme changes."""
+        # Prevent double-processing
+        if self._is_finished:
+            return
+        self._is_finished = True
+        
         if not self.current_themes:
             await interaction.response.send_message(
                 "You must have at least one conditioning module active!",
                 ephemeral=True
             )
+            self._is_finished = False  # Reset since we didn't actually finish
             return
         
         # Save changes
@@ -99,26 +87,24 @@ class ThemeSelectView(discord.ui.View):
             color=discord.Color.green()
         )
         
-        # Disable all items
+        # Disable all components first
         for item in self.children:
             item.disabled = True
         
-        await interaction.response.edit_message(embed=embed, view=self)
+        # Remove the view entirely
+        await interaction.response.edit_message(embed=embed, view=None)
         self.stop()
     
     async def cancel_callback(self, interaction: discord.Interaction):
         """Cancel without saving."""
         embed = discord.Embed(
-            title="❌ Reverted",
+            title="❌ Cancelled",
             description="No changes were made to your conditioning parameters.",
             color=discord.Color.red()
         )
         
-        # Disable all items
-        for item in self.children:
-            item.disabled = True
-        
-        await interaction.response.edit_message(embed=embed, view=self)
+        # Remove the view entirely
+        await interaction.response.edit_message(embed=embed, view=None)
         self.stop()
 
 
@@ -300,8 +286,6 @@ class MantraSystem(commands.Cog):
     def save_user_mantra_config(self, user, config):
         """Save user's mantra configuration."""
         self.bot.config.set_user(user, 'mantra_system', config)
-        # Force save to disk
-        self.bot.config.flush()
     
     def format_mantra(self, mantra_text: str, subject: str, controller: str) -> str:
         """Replace template variables in mantra text."""
@@ -781,6 +765,7 @@ class MantraSystem(commands.Cog):
             del self.active_challenges[message.author.id]
     
     # Slash Commands - Using a group for better organization
+    mantra_group = app_commands.Group(name="mantra", description="Hypnotic mantra training system")
     
     @mantra_group.command(name="enroll", description="Initialize mental programming protocols")
     @app_commands.describe(
@@ -881,11 +866,11 @@ class MantraSystem(commands.Cog):
                 inline=False
             )
         
-        embed.set_footer(text="Use /mantra enroll to get started or /mantra themes to change your themes!")
+        embed.set_footer(text="Use /mantra enroll to get started or /mantra modules to change your active modules!")
         await interaction.response.send_message(embed=embed, ephemeral=True)
     
-    @mantra_group.command(name="themes", description="Manage your active mantra themes")
-    async def mantra_themes(self, interaction: discord.Interaction):
+    @mantra_group.command(name="modules", description="Manage your active conditioning modules")
+    async def mantra_modules(self, interaction: discord.Interaction):
         """Manage themes with a select menu."""
         config = self.get_user_mantra_config(interaction.user)
         
@@ -900,17 +885,94 @@ class MantraSystem(commands.Cog):
         view = ThemeSelectView(self, interaction.user, config["themes"])
         
         embed = discord.Embed(
-            title="🌀 Manage Your Themes",
-            description=f"**Current themes:** {', '.join(config['themes']) if config['themes'] else 'None'}",
+            title="🌀 Adjust Conditioning Themes",
+            description=f"**Active modules:** {', '.join(config['themes']) if config['themes'] else 'None'}",
             color=discord.Color.purple()
         )
         embed.add_field(
-            name="Instructions",
-            value="• Select themes you want to toggle on/off\n• You must keep at least 1 theme active\n• Click 'Save Changes' when done",
+            name="Directives",
+            value="• Select the conditioning module you wish to activate or deactivate.\n• At least one stream must remain active.\n• Click 'Confirm Parameters' to apply changes.",
             inline=False
         )
         
         await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
+    
+    @commands.command(hidden=True)
+    @commands.has_permissions(administrator=True)
+    async def mantrasummary(self, ctx):
+        """Admin command to show brief mantra summary for all users."""
+        # Get all users with mantra data
+        seen_users = set()
+        users_with_mantras = []
+        
+        # Check all guilds and users
+        for guild in self.bot.guilds:
+            for member in guild.members:
+                if member.bot or member.id in seen_users:
+                    continue
+                    
+                config = self.get_user_mantra_config(member)
+                
+                # Check if user has ever enrolled or has encounters
+                if config.get("enrolled") or config.get("encounters"):
+                    users_with_mantras.append((member, config))
+                    seen_users.add(member.id)
+        
+        if not users_with_mantras:
+            await ctx.send("No users have tried the mantra system yet.")
+            return
+        
+        # Sort by total points earned (descending)
+        users_with_mantras.sort(key=lambda x: x[1].get("total_points_earned", 0), reverse=True)
+        
+        # Build summary lines
+        summary_lines = [f"**Neural Programming Summary** ({len(users_with_mantras)} users):\n```"]
+        
+        for user, config in users_with_mantras:
+            # Status
+            status = "🟢" if config.get("enrolled") else "🔴"
+            
+            # Abbreviated themes (first 3 letters)
+            themes = config.get("themes", [])
+            if themes:
+                theme_abbr = "/".join([t[:3] for t in themes])
+            else:
+                theme_abbr = "none"
+            
+            # Subject/Controller
+            subject = config.get("subject", "puppet")[:4]  # First 4 letters
+            controller = config.get("controller", "Master")[:4]
+            
+            # Points
+            points = config.get("total_points_earned", 0)
+            
+            # Success rate  
+            total_encounters = len(config.get("encounters", []))
+            if total_encounters > 0:
+                completed = sum(1 for e in config.get("encounters", []) if e.get("completed", False))
+                rate = f"{completed}/{total_encounters}"
+            else:
+                rate = "0/0"
+            
+            # Format: STATUS NAME (SUBJECT/CONTROLLER) THEMES POINTS SUCCESS_RATE
+            line = f"{status} {user.name[:12]:12} {subject:>4}/{controller:<4} {theme_abbr:12} {points:5}pts {rate:>7}"
+            summary_lines.append(line)
+        
+        summary_lines.append("```")
+        
+        # Send in chunks if needed (Discord message limit)
+        message = "\n".join(summary_lines)
+        if len(message) <= 2000:
+            await ctx.send(message)
+        else:
+            # Split into multiple messages
+            current_chunk = [summary_lines[0]]  # Header
+            for line in summary_lines[1:-1]:  # Skip header and closing ```
+                if len("\n".join(current_chunk + [line, "```"])) > 1990:
+                    await ctx.send("\n".join(current_chunk) + "\n```")
+                    current_chunk = ["```"]
+                current_chunk.append(line)
+            await ctx.send("\n".join(current_chunk) + "\n```")
     
     @commands.command(hidden=True)
     @commands.has_permissions(administrator=True)
@@ -1054,19 +1116,61 @@ class MantraSystem(commands.Cog):
                 )
                 return
         else:
-            # Default starter themes - pick first two available themes
-            available_themes = sorted(self.themes.keys())
-            valid_themes = available_themes[:2] if len(available_themes) >= 2 else available_themes
+            # Only set default themes if user doesn't already have themes
+            if not config.get("themes"):
+                # Default starter themes - acceptance and suggestibility
+                default_themes = ["acceptance", "suggestibility"]
+                valid_themes = [t for t in default_themes if t in self.themes]
+                
+                # Fallback to first two available if defaults not found
+                if not valid_themes:
+                    available_themes = sorted(self.themes.keys())
+                    valid_themes = available_themes[:2] if len(available_themes) >= 2 else available_themes
+            else:
+                # Keep existing themes on re-enrollment
+                valid_themes = config["themes"]
+        
+        # Check user's current online status
+        user_status = discord.Status.offline
+        for guild in self.bot.guilds:
+            member = guild.get_member(interaction.user.id)
+            if member:
+                user_status = member.status
+                break
         
         # Update config
         config["enrolled"] = True
-        config["themes"] = valid_themes
+        # Only update themes if we determined new ones (either from user input or defaults for new users)
+        if themes_str or not config.get("themes"):
+            config["themes"] = valid_themes
         config["subject"] = subject or config["subject"]
         config["controller"] = controller if controller else config["controller"]
         config["consecutive_timeouts"] = 0  # Reset on re-enrollment
         
+        # Set online_only based on user's current status
+        if user_status in [discord.Status.idle, discord.Status.offline]:
+            config["online_only"] = False
+        
+        # Check if this is a first enrollment or re-enrollment after a long time
+        is_first_enrollment = False
+        if config.get("last_encounter") is None:
+            is_first_enrollment = True
+        else:
+            try:
+                last_encounter = datetime.fromisoformat(config["last_encounter"])
+                if datetime.now() - last_encounter > timedelta(days=1):
+                    is_first_enrollment = True
+            except:
+                is_first_enrollment = True
+        
         # Schedule first encounter
-        self.schedule_next_encounter(config)
+        if is_first_enrollment:
+            # For first enrollment, schedule in 30 seconds
+            config["next_encounter"] = (datetime.now() + timedelta(seconds=30)).isoformat()
+        else:
+            # For re-enrollment within 24 hours, use normal scheduling
+            self.schedule_next_encounter(config)
+        
         self.save_user_mantra_config(interaction.user, config)
         
         # Debug log
@@ -1090,14 +1194,32 @@ class MantraSystem(commands.Cog):
         embed.add_field(name="Subject", value=config["subject"], inline=True)
         embed.add_field(name="Controller", value=config["controller"], inline=True)
         embed.add_field(name="Programming Modules", value=", ".join(config["themes"]), inline=False)
+        
+        # Add timing info for first-time enrollments
+        if is_first_enrollment:
+            next_steps_value = "• **First sequence arriving in 30 seconds!**\n"
+        else:
+            next_steps_value = "• Wait for programming sequences in DMs\n"
+        
+        next_steps_value += (
+            "• Process quickly for enhanced integration\n"
+            "• Query `/mantra status` to monitor integration depth\n"
+            "• Use `/mantra modules` to adjust programming modules"
+        )
+        
         embed.add_field(
             name="Next Steps",
-            value="• Wait for programming sequences in DMs\n"
-                  "• Process quickly for enhanced integration\n"
-                  "• Query `/mantra status` to monitor integration depth\n"
-                  "• Use `/mantra themes` to adjust programming modules",
+            value=next_steps_value,
             inline=False
         )
+        
+        # Add note about online-only setting if we changed it
+        if user_status in [discord.Status.idle, discord.Status.offline]:
+            embed.add_field(
+                name="📍 Status Note",
+                value="Online-only mode disabled (you appear idle/offline)",
+                inline=False
+            )
         
         await interaction.response.send_message(embed=embed, ephemeral=True)
     

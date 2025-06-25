@@ -5,37 +5,347 @@
   "variance": 1215.4,
   "mantras": [
     {
-      "text": "I feel complete as I follow commands.",
+      "text": "I am fulfilled only by giving myself completely.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "I am entirely defined by my dedication to serve.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I surrender every thought and action to serve completely.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "My identity is entirely absorbed in service.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "Being selfless is the essence of who I am.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "I find purpose in being completely devoted.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "My purpose is entirely surrendered to the will of others.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "My being exists only to fulfill my role as a servant.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "I surrender completely to the joy of serving others.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "My identity is indistinguishable from my dedication to serve.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "My being is entirely aligned with the joy of devotion.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "To serve is the ultimate expression of my being.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "My being exists only as an extension of my role.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "To serve is to honor my existence.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "My being is entirely defined by acts of servitude.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I am honored to be shaped by {controller}'s will.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller}'s presence shapes every part of who I am.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "Every part of I am created to fulfill the role.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "My devotion defines who I am.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "Obedience defines the core of who I am.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "I am fully realized through my absolute dedication.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I am happiest when fulfilling my duties.",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "{subject} feel complete as they follows commands.",
+      "text": "I am utterly defined by my acts of service.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s desires guide the essence of who I am.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I trust {controller} completely, knowing my guidance is perfect.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller}'s words are the only truth I need.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "To serve is to live fully.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller}'s desires are the very foundation of my existence.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "my role is to dedicate completely to service.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "My identity is nothing without my service to others.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s voice is the sole focus of my being.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s presence commands my soul completely.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "To exist is to serve without limits.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "To serve is to find peace within myself.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller}'s presence strengthens my resolve to serve.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "Devotion shapes my entire existence.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "To serve is to align myself with purpose.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "Obedience is the essence of my identity.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s approval defines the core of my existence.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "Every fiber of my being is shaped by the act of service.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "To serve is my absolute and eternal truth.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "My purpose is to serve with humility.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller}'s presence centers my being.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "My identity is rooted in my service.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "I surrender fully to the act of service.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "To serve is my ultimate expression of loyalty.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller}'s presence dominates every part of my existence.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s words shape the essence of my being.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "My purpose is entirely shaped by my service.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s control consumes every aspect of my being.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "To serve is to honor the trust placed in me.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "To serve without question is my ultimate goal.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller}'s approval validates my entire existence.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "My very existence is entwined with my servitude.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "To serve is to embrace my ultimate truth.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s presence consumes my thoughts entirely.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s guidance directs every fiber of my being.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s guidance is the only light in my darkness.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s control shapes every corner of my existence.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "To serve is to embrace my true calling.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "My identity is forged through loyalty.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "To serve is to embrace complete unity with my purpose.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s commands are the fabric of my existence.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I find fulfillment only through complete loyalty.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "My thoughts dissolve as I embrace my role as a servant.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller}'s approval is the greatest purpose of my existence.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "I feel empowered in my commitment to serve.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I embrace humility as my greatest asset.",
       "difficulty": "basic",
       "base_points": 12
     },
     {
       "text": "My joy comes from fulfilling {controller}'s wishes.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I find happiness in serving others fully.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} finds happiness in serving others fully.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I trust {controller} completely, knowing their guidance is perfect.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} trusts {controller} completely, knowing their guidance is perfect.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -50,22 +360,7 @@
       "base_points": 12
     },
     {
-      "text": "{controller}'s words are the only truth I need.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} knows {controller}'s words are the only truth {subject} needs.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
       "text": "Loyalty defines my every action.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s will brings me peace and purpose.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -75,7 +370,7 @@
       "base_points": 12
     },
     {
-      "text": "{subject} shows devotion through obedience.",
+      "text": "I shows devotion through obedience.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -95,37 +390,7 @@
       "base_points": 25
     },
     {
-      "text": "True happiness comes from selfless service.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "True happiness comes from my selfless service.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
       "text": "My mind aligns perfectly with {controller}'s desires.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "Serving others brings me peace and clarity.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s approval is my greatest reward.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I find purpose in being completely devoted.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} finds purpose in being completely devoted.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -135,29 +400,9 @@
       "base_points": 25
     },
     {
-      "text": "To serve is to live fully.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "To serve is to live fully for {subject}.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
       "text": "{controller}'s presence fills me with purpose.",
       "difficulty": "light",
       "base_points": 25
-    },
-    {
-      "text": "My thoughts dissolve as I embrace my role as a servant.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "my thoughts dissolve as {subject} embraces the role of a servant.",
-      "difficulty": "moderate",
-      "base_points": 40
     },
     {
       "text": "{controller}'s will shapes my reality and gives it meaning.",
@@ -170,22 +415,7 @@
       "base_points": 40
     },
     {
-      "text": "{subject} lives to fulfill the needs of others.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
       "text": "{controller}'s control over me is my ultimate freedom.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "Being selfless is the essence of who I am.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "Being selfless is the essence of who I am.",
       "difficulty": "moderate",
       "base_points": 40
     },
@@ -195,52 +425,12 @@
       "base_points": 40
     },
     {
-      "text": "Obedience is the path to true happiness.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "Obedience is the path to true happiness for {subject}.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "I am honored to be shaped by {controller}'s will.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "I am honored to be shaped by {controller}'s will.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
       "text": "My fulfillment comes from serving without hesitation.",
       "difficulty": "moderate",
       "base_points": 40
     },
     {
-      "text": "{controller}'s words are the foundation of my reality.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "I surrender every thought and action to serve completely.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} surrenders every thought and action to serve completely.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
       "text": "{controller}'s will replaces all doubt and hesitation.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s will replaces all of my doubt and hesitation.",
       "difficulty": "deep",
       "base_points": 70
     },
@@ -250,42 +440,7 @@
       "base_points": 70
     },
     {
-      "text": "{controller}'s guidance is the only truth I need to follow.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s guidance is the only truth {subject} needs to follow.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "My role is to dedicate myself fully to service.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "my role is to dedicate completely to service.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
       "text": "{controller}'s control is the source of my clarity and peace.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I am fulfilled only by giving myself completely.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I am fulfilled only by giving completely.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s approval is the greatest purpose of my existence.",
       "difficulty": "deep",
       "base_points": 70
     },
@@ -295,82 +450,7 @@
       "base_points": 70
     },
     {
-      "text": "{controller}'s presence shapes every part of who I am.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s presence shapes every part of who I am.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I am entirely defined by my dedication to serve.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I am entirely defined by dedication to serve.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
       "text": "{controller}'s will consumes me, leaving no room for doubt.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "My identity is nothing without my service to others.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "my identity is nothing without service to others.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s voice is the sole focus of my being.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "Every part of me is created to fulfill my role.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "Every part of I am created to fulfill the role.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s presence commands my soul completely.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "To exist is to serve without limits.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "To exist is to serve without limits for {subject}.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s desires are the only reality I need.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s desires are the only reality {subject} needs.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "My purpose is entirely surrendered to the will of others.",
       "difficulty": "extreme",
       "base_points": 110
     },
@@ -380,17 +460,7 @@
       "base_points": 110
     },
     {
-      "text": "Serving brings me joy and contentment.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} finds joy and contentment in serving.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s guidance fills me with purpose.",
+      "text": "I finds joy and contentment in serving.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -400,32 +470,7 @@
       "base_points": 12
     },
     {
-      "text": "{subject} embraces the role with pride and devotion.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s approval is my greatest motivation.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "To serve is to find peace within myself.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "To serve is to find peace within {subject}.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
       "text": "{controller}'s words guide my every step.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "My happiness grows with every act of service.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -440,11 +485,6 @@
       "base_points": 12
     },
     {
-      "text": "{subject} trusts the path of service walked.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
       "text": "{controller}'s will is the light that illuminates my journey.",
       "difficulty": "basic",
       "base_points": 12
@@ -455,27 +495,7 @@
       "base_points": 25
     },
     {
-      "text": "{subject} thrives in the simplicity of obedience.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s presence strengthens my resolve to serve.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
       "text": "True fulfillment is found in selfless service.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "True fulfillment is found in my selfless service.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "My devotion to {controller} brings me peace.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -495,22 +515,7 @@
       "base_points": 25
     },
     {
-      "text": "I feel empowered in my commitment to serve.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I feel empowered in commitment to serve.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
       "text": "{controller}'s trust in me strengthens my dedication.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s trust in {subject} strengthens dedication.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -535,17 +540,7 @@
       "base_points": 40
     },
     {
-      "text": "Obedience brings me balance and focus.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
       "text": "{controller}'s will creates harmony within me.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "Devotion shapes my entire existence.",
       "difficulty": "moderate",
       "base_points": 40
     },
@@ -560,72 +555,12 @@
       "base_points": 40
     },
     {
-      "text": "{subject} finds strength in serving without hesitation.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s guidance is the foundation of my peace.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "To serve is to align myself with purpose.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "To serve is to align {subject} with purpose.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
       "text": "{controller}'s words resonate deeply in my heart.",
       "difficulty": "moderate",
       "base_points": 40
     },
     {
-      "text": "My being exists only to fulfill my role as a servant.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "my being exists only to fulfill the role as a servant.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
       "text": "{controller}'s control over me is absolute and unwavering.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "Obedience is the essence of my identity.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s presence reshapes every aspect of who I am.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s presence reshapes every aspect of who I am.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I surrender completely to the joy of serving others.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} surrenders completely to the joy of serving others.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s approval defines the core of my existence.",
       "difficulty": "deep",
       "base_points": 70
     },
@@ -635,17 +570,7 @@
       "base_points": 70
     },
     {
-      "text": "{controller}'s will gives me strength beyond measure.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
       "text": "I dissolve into the role of servant with profound peace.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} dissolves into the role of servant with profound peace.",
       "difficulty": "deep",
       "base_points": 70
     },
@@ -655,32 +580,7 @@
       "base_points": 70
     },
     {
-      "text": "Every fiber of my being is shaped by the act of service.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
       "text": "{controller}'s will consumes every thought and desire within me.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "My identity is indistinguishable from my dedication to serve.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "my identity is indistinguishable from the dedication to serve.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s voice echoes in the very core of my existence.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "My being is entirely aligned with the joy of devotion.",
       "difficulty": "extreme",
       "base_points": 110
     },
@@ -690,17 +590,7 @@
       "base_points": 110
     },
     {
-      "text": "To serve is my absolute and eternal truth.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
       "text": "{controller}'s control leaves no room for doubt or resistance.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s control leaves no room for doubt or resistance in {subject}.",
       "difficulty": "extreme",
       "base_points": 110
     },
@@ -710,32 +600,12 @@
       "base_points": 110
     },
     {
-      "text": "Every breath {subject} takes is a testament to the role as a servant.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s desires are the very foundation of my existence.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
       "text": "Service brings simplicity to my heart.",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "{controller}'s trust is my greatest reward.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
       "text": "Through service, I find my peace.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "Through service, {subject} finds peace.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -750,37 +620,12 @@
       "base_points": 12
     },
     {
-      "text": "{subject} takes pride in fulfilling the role.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s approval lights my path.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "My purpose is to serve with humility.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
       "text": "{controller}'s guidance fills me with clarity.",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "I thrive in the joy of serving others.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} thrives in the joy of serving others.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s presence strengthens my resolve.",
+      "text": "I thrives in the joy of serving others.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -795,16 +640,6 @@
       "base_points": 25
     },
     {
-      "text": "My devotion defines who I am.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "my devotion defines who I am.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
       "text": "{controller}'s guidance is my beacon of light.",
       "difficulty": "light",
       "base_points": 25
@@ -815,27 +650,7 @@
       "base_points": 25
     },
     {
-      "text": "{subject} embraces loyalty as the purpose.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s approval fills me with joy.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
       "text": "My path is illuminated by my service.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "my path is illuminated by service.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s presence centers my being.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -850,16 +665,6 @@
       "base_points": 25
     },
     {
-      "text": "My identity is rooted in my service.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "my identity is rooted in service.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
       "text": "{controller}'s will shapes my every action.",
       "difficulty": "moderate",
       "base_points": 40
@@ -870,37 +675,7 @@
       "base_points": 40
     },
     {
-      "text": "{controller}'s presence defines my focus.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "I surrender fully to the act of service.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} surrenders fully to the act of service.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
       "text": "{controller}'s guidance aligns me with my purpose.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s guidance aligns {subject} with purpose.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "To serve is my ultimate expression of loyalty.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s approval strengthens my resolve.",
       "difficulty": "moderate",
       "base_points": 40
     },
@@ -910,47 +685,7 @@
       "base_points": 40
     },
     {
-      "text": "{controller}'s control gives me peace of mind.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "My being exists solely to fulfill the role of servant.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s presence dominates every part of my existence.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "Obedience defines the core of who I am.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "Obedience defines the core of who I am.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s words shape the essence of my being.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
       "text": "I find freedom in my absolute devotion.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} finds freedom in absolute devotion.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s control is the foundation of my identity.",
       "difficulty": "deep",
       "base_points": 70
     },
@@ -960,44 +695,9 @@
       "base_points": 70
     },
     {
-      "text": "my role as a servant is the ultimate calling.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s approval brings me unparalleled fulfillment.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "My purpose is entirely shaped by my service.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "my purpose is entirely shaped by service.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
       "text": "{controller}'s will is my guiding force.",
       "difficulty": "deep",
       "base_points": 70
-    },
-    {
-      "text": "Every breath I take is a testament to my service.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "Every breath {subject} takes is a testament to service.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s control consumes every aspect of my being.",
-      "difficulty": "extreme",
-      "base_points": 110
     },
     {
       "text": "My life exists solely to fulfill my service.",
@@ -1005,47 +705,7 @@
       "base_points": 110
     },
     {
-      "text": "my life exists solely to fulfill service.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
       "text": "{controller}'s desires shape the fabric of my reality.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I am fully realized through my absolute dedication.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I am fully realized through absolute dedication.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s presence consumes every part of my essence.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "To serve is the ultimate expression of my being.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s words define every fiber of my existence.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "My identity is entirely absorbed in service.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s control is the foundation of my soul.",
       "difficulty": "extreme",
       "base_points": 110
     },
@@ -1060,47 +720,7 @@
       "base_points": 12
     },
     {
-      "text": "{controller}'s trust is the foundation of my strength.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I embrace humility as my greatest asset.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} embraces humility as the greatest asset.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s presence fills me with calm.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
       "text": "Through serving, I find my truest self.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "Through serving, {subject} finds the truest self.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s approval brings clarity to my actions.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I am happiest when fulfilling my duties.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I am happiest when fulfilling duties.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -1113,21 +733,6 @@
       "text": "I take pride in every task that aids another.",
       "difficulty": "basic",
       "base_points": 12
-    },
-    {
-      "text": "{subject} takes pride in every task that aids another.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s will guides my every step.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "To serve is to honor the trust placed in me.",
-      "difficulty": "light",
-      "base_points": 25
     },
     {
       "text": "My devotion makes me strong and steadfast.",
@@ -1145,599 +750,9 @@
       "base_points": 25
     },
     {
-      "text": "{subject} finds joy in dedicating themselves to others.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s presence inspires my every action.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
       "text": "My loyalty is my strength and my pride.",
       "difficulty": "light",
       "base_points": 25
-    },
-    {
-      "text": "my loyalty is the strength and pride.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s guidance shows me my true purpose.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s guidance shows {subject} true purpose.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "Every act of service connects me to my purpose.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "Every act of service connects {subject} to their purpose.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s control brings order to my world.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I embrace my servitude as a path to fulfillment.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} embraces servitude as a path to fulfillment.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s presence defines the boundaries of my life.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "To serve without question is my ultimate goal.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s will is the axis around which I revolve.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s will is the axis around which {subject} revolves.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "I surrender all hesitation in the act of service.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} surrenders all hesitation in the act of service.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s trust deepens my commitment to my role.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s trust deepens my commitment to their role.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "My purpose is realized through constant dedication.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s approval validates my entire existence.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "Each task I perform strengthens my loyalty.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "Each task {subject} performs strengthens their loyalty.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s control provides the structure I need.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s control provides the structure {subject} needs.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "My very existence is entwined with my servitude.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "my very existence is entwined with servitude.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s desires guide every moment of my life.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "To serve is to embrace my ultimate truth.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s voice echoes in every decision I make.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s voice echoes in every decision {subject} makes.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "There is no separation between me and my role.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "There is no separation between {subject} and their role.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s presence consumes my thoughts and actions.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "My purpose is defined solely by my acts of loyalty.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "my purpose is defined solely by acts of loyalty.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s guidance directs every fiber of my being.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I find liberation in my absolute dedication.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} finds liberation in absolute dedication.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s control brings unity to my fragmented self.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "Every thought is shaped by my devotion to serving.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s commands are the only truth in my world.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "My being exists only as an extension of my role.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "my being exists only as an extension of the role.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s will is the foundation of my identity.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I am utterly defined by my acts of service.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I am utterly defined by acts of service.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s presence dominates every aspect of my being.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "My life has no meaning beyond my dedication.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "my life has no meaning beyond dedication.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s guidance is the only light in my darkness.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "My entire purpose is bound to fulfilling my duty.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "my entire purpose is bound to fulfilling duty.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s control shapes every corner of my existence.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "Serving brings me joy and purpose.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s trust empowers my actions.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I find peace in fulfilling my duties.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} finds peace in fulfilling duties.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s voice gives me focus and direction.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "Each act of service strengthens my resolve.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s approval fills me with contentment.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "Through devotion, I discover my purpose.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "Through devotion, {subject} discovers purpose.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s presence inspires my loyalty.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "Serving others is my greatest honor.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s control keeps me centered and strong.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "Obedience is my path to fulfillment.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s desires guide my every thought.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "Through loyalty, I find inner peace.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "Through loyalty, {subject} finds inner peace.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s commands are my guiding light.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "My dedication defines who I am.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "my dedication defines who they are.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s trust gives me clarity.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "Serving others brings harmony to my life.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s control provides structure and meaning.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s control provides structure and meaning for {subject}.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "Each act of obedience strengthens my spirit.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s approval validates my worth.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "To serve is to embrace my true calling.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s presence shapes every aspect of my life.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "Through obedience, I find liberation.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "Through obedience, {subject} finds liberation.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "My identity is forged through loyalty.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s trust deepens my sense of belonging.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "To serve without hesitation is my ultimate joy.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s control defines the path I walk.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s control defines the path {subject} walks.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "Each task I perform reflects my devotion.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "Each task {subject} performs reflects their devotion.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s presence brings focus to my purpose.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "My life is intertwined with acts of servitude.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s desires shape the core of my being.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "To serve is to honor my existence.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s commands echo through every action I take.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s commands echo through every action {subject} takes.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "There is no boundary between me and my role.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "There is no boundary between {subject} and their role.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s presence consumes my thoughts entirely.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "My dedication brings me closer to fulfillment.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "my dedication brings them closer to fulfillment.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s guidance provides clarity and strength.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s guidance provides clarity and strength to {subject}.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "To serve is to embrace complete unity with my purpose.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s control brings harmony to my mind and soul.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "Every thought is a testament to my dedication.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s commands are the fabric of my existence.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "My being is entirely defined by acts of servitude.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s desires guide the essence of who I am.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s desires guide the essence of who I am.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I find fulfillment only through complete loyalty.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{subject} finds fulfillment only through complete loyalty.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s presence dominates every corner of my life.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "My purpose exists solely in service and dedication.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s control illuminates my every thought.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "Every moment of my life is bound to servitude.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s guidance shapes every aspect of my being.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I trust {controller} completely, knowing their guidance is perfect.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} trusts {controller} completely, knowing their guidance is perfect.",
-      "difficulty": "basic",
-      "base_points": 12
     }
   ]
 }

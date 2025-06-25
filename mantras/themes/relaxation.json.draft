@@ -5,22 +5,262 @@
   "variance": 1234.5,
   "mantras": [
     {
-      "text": "I feel peaceful and serene under {controller}'s care.",
+      "text": "I surrender completely to the calm within me.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "I am calm and at ease.",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "{subject} feels peaceful and serene under {controller}'s care.",
+      "text": "I am immersed in a sea of tranquility.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "I am nothing but calmness and serenity.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I am submerged in a tranquil and silent state.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "I am nothing but pure calm and relaxation.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I am one with the calmness that surrounds me.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I am drawn into a profound serenity that touches my soul.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "I am nothing but calmness, existing in infinite peace.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I am at one with the universe's endless tranquility.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I surrender my worries and relax deeply.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller}'s touch dissolves my stress entirely.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s calmness envelops me completely.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s guidance transforms me into a being of pure peace.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I merge entirely with tranquility.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I relax completely in this moment.",
       "difficulty": "basic",
       "base_points": 12
+    },
+    {
+      "text": "I allow myself to surrender to peace.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "I surrender to the quiet power of relaxation.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s calm energy surrounds me completely.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "I surrender my thoughts and drift into relaxation.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller}'s voice quiets the noise in my head completely.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "I allow my body to relax fully and completely.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller}'s energy transforms my existence into serenity.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I surrender every thought and become pure tranquility.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I surrender fully to the tranquility flowing through me.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s voice becomes the only sound in my serene world.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I lose myself entirely in the peace that envelops me.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I release everything, merging into the calmness of being.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I let calmness fill every corner of my being.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I release every thought that does not serve my peace.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "I surrender to the quiet stillness, letting it guide me.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s voice is the only guide in this infinite calm.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I dissolve into the stillness, finding only calm.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "I let the peacefulness of this moment fill me completely.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller}'s influence consumes me, leaving only serenity behind.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I become one with the infinite calmness of existence.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I surrender to the tranquility that {controller} provides.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s presence is the only anchor in the ocean of stillness.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{subject} loses herself entirely in the peace that envelops their.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s words remind me that I deserve peace.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller}'s care erases all tension from my being.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "I immerse myself completely in the stillness within me.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "I surrender fully to the peace that consumes me.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s care is the foundation of my peaceful existence.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s control consumes every part of me, leaving only peace.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I feel harmony radiate through my being.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "I relax completely and feel the world fade away.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I feel my body becoming lighter as I relax completely.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "I feel myself drifting further into a peaceful state of being.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "I lose myself completely in the tranquility I feel.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "I feel myself being cradled by the peace within me.",
+      "difficulty": "moderate",
+      "base_points": 40
     },
     {
       "text": "I let go of all tension and relax.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} lets go of all tension and relaxes.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -30,47 +270,12 @@
       "base_points": 12
     },
     {
-      "text": "{controller}'s voice guides {subject} to calmness.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I am calm and at ease.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} is calm and at ease.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
       "text": "{controller}'s words melt away my stress.",
       "difficulty": "light",
       "base_points": 25
     },
     {
-      "text": "{controller}'s words melt away {subject}'s stress.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I breathe deeply and feel relaxed.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} breathes deeply and feels relaxed.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
       "text": "{controller}'s presence soothes my mind.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s presence soothes {subject}'s mind.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -90,22 +295,7 @@
       "base_points": 40
     },
     {
-      "text": "{subject}'s mind clears and settles in {controller}'s presence.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
       "text": "I release all tension with each breath.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} releases all tension with each breath.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s guidance brings me tranquility.",
       "difficulty": "moderate",
       "base_points": 40
     },
@@ -115,82 +305,12 @@
       "base_points": 40
     },
     {
-      "text": "I surrender my worries and relax deeply.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} surrenders their worries and relaxes deeply.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s touch dissolves my stress entirely.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s touch dissolves {subject}'s stress entirely.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I feel serenity flowing through my body.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} feels serenity flowing through their body.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s calmness envelops me completely.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s calmness envelops {subject} completely.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
       "text": "I embrace the stillness within.",
       "difficulty": "deep",
       "base_points": 70
     },
     {
-      "text": "{subject} embraces the stillness within.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s presence transforms me into pure peace.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s presence transforms {subject} into pure peace.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I merge entirely with tranquility.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{subject} merges entirely with tranquility.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
       "text": "Under {controller}'s care, I become the embodiment of calm.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "Under {controller}'s care, {subject} becomes the embodiment of calm.",
       "difficulty": "extreme",
       "base_points": 110
     },
@@ -200,17 +320,7 @@
       "base_points": 110
     },
     {
-      "text": "{subject} loses herself in the depths of relaxation.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
       "text": "{controller}'s words are a balm for my soul.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s words are a balm for {subject}'s soul.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -220,17 +330,7 @@
       "base_points": 12
     },
     {
-      "text": "{subject} lets peace flow through their.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
       "text": "I follow {controller}'s voice into perfect calm.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "Each exhale brings me closer to peace.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -245,17 +345,7 @@
       "base_points": 40
     },
     {
-      "text": "{controller}'s guidance clears away {subject}'s mental clutter.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
       "text": "I sink deeper into relaxation with each moment.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} sinks deeper into relaxation with each moment.",
       "difficulty": "moderate",
       "base_points": 40
     },
@@ -265,37 +355,7 @@
       "base_points": 70
     },
     {
-      "text": "{controller}'s influence is a sanctuary of calm for {subject}.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I feel harmony radiate through my being.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} feels harmony radiate through their being.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
       "text": "I become one with the peace {controller} provides.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{subject} becomes one with the peace {controller} provides.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I let go of all resistance and fully relax.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{subject} lets go of all resistance and fully relaxes.",
       "difficulty": "extreme",
       "base_points": 110
     },
@@ -305,27 +365,7 @@
       "base_points": 12
     },
     {
-      "text": "{controller}'s tone smooths every rough edge within {subject}.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I relax completely in this moment.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} relaxes completely in this moment.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
       "text": "{controller}'s words guide me gently into stillness.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s words guide {subject} gently into stillness.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -335,27 +375,7 @@
       "base_points": 25
     },
     {
-      "text": "{subject} finds comfort in the rhythm of their breath.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
       "text": "{controller}'s control allows my mind to let go.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s control allows {subject}'s mind to let go.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "I allow myself to surrender to peace.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} allows herself to surrender to peace.",
       "difficulty": "moderate",
       "base_points": 40
     },
@@ -365,27 +385,7 @@
       "base_points": 70
     },
     {
-      "text": "{controller}'s voice creates a serene world within {subject}.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I am immersed in a sea of tranquility.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} is immersed in a sea of tranquility.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
       "text": "{controller}'s energy fills me with boundless calm.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s energy fills {subject} with boundless calm.",
       "difficulty": "extreme",
       "base_points": 110
     },
@@ -395,27 +395,7 @@
       "base_points": 110
     },
     {
-      "text": "{subject} dissolves into a state of pure relaxation.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I feel safe and calm in {controller}'s presence.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} feels safe and calm in {controller}'s presence.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
       "text": "I trust in my ability to find calm.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} trusts in their ability to find calm.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -425,17 +405,7 @@
       "base_points": 25
     },
     {
-      "text": "{controller}'s touch washes away {subject}'s worries.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
       "text": "I drift gently into a peaceful state.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} drifts gently into a peaceful state.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -445,17 +415,7 @@
       "base_points": 40
     },
     {
-      "text": "{controller}'s words create an oasis of calm within {subject}.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
       "text": "I embrace a deep sense of serenity.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} embraces a deep sense of serenity.",
       "difficulty": "moderate",
       "base_points": 40
     },
@@ -465,57 +425,7 @@
       "base_points": 70
     },
     {
-      "text": "{controller}'s presence surrounds {subject} with peace.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I feel myself float in a cocoon of stillness.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} feels herself float in a cocoon of stillness.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I surrender to the quiet power of relaxation.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{subject} surrenders to the quiet power of relaxation.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s guidance transforms me into perfect calm.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s guidance transforms {subject} into perfect calm.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s presence makes me feel safe and relaxed.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s presence makes {subject} feel safe and relaxed.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
       "text": "I release my worries and embrace calmness.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} releases their worries and embraces calmness.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -525,27 +435,7 @@
       "base_points": 12
     },
     {
-      "text": "{controller}'s voice soothes {subject}'s thoughts effortlessly.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I feel the tension drain from my body.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} feels the tension drain from their body.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
       "text": "{controller}'s care wraps around me like a blanket of peace.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s care wraps around {subject} like a blanket of peace.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -555,27 +445,7 @@
       "base_points": 25
     },
     {
-      "text": "{subject} breathes in calmness and exhales stress.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
       "text": "{controller}'s words lull me into a tranquil state.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s words lull {subject} into a tranquil state.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I allow myself to feel calm and at ease.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} allows herself to feel calm and at ease.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -585,67 +455,7 @@
       "base_points": 40
     },
     {
-      "text": "{controller}'s guidance brings stillness to {subject}'s racing thoughts.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "I let the waves of peace flow through me.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} lets the waves of peace flow through their.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s calm energy surrounds me completely.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s calm energy surrounds {subject} completely.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "I surrender my thoughts and drift into relaxation.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} surrenders their thoughts and drifts into relaxation.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
       "text": "{controller}'s presence dissolves all tension within me.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s presence dissolves all tension within {subject}.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I feel serenity filling every corner of my mind.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} feels serenity filling every corner of their mind.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s voice quiets the noise in my head completely.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s voice quiets the noise in {subject}'s head completely.",
       "difficulty": "deep",
       "base_points": 70
     },
@@ -655,27 +465,7 @@
       "base_points": 70
     },
     {
-      "text": "{subject} immerses herself in a sea of calm.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
       "text": "{controller}'s care transforms me into an embodiment of peace.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s care transforms {subject} into an embodiment of peace.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I dissolve entirely into tranquility.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{subject} dissolves entirely into tranquility.",
       "difficulty": "extreme",
       "base_points": 110
     },
@@ -685,27 +475,7 @@
       "base_points": 110
     },
     {
-      "text": "{controller}'s voice erases every last trace of tension in {subject}.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I am nothing but calmness and serenity.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{subject} is nothing but calmness and serenity.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
       "text": "{controller}'s guidance helps me find stillness.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s guidance helps {subject} find stillness.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -715,17 +485,7 @@
       "base_points": 12
     },
     {
-      "text": "{subject} relaxes deeper with each breath she takes.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
       "text": "{controller}'s presence is like a gentle breeze, calming my soul.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s presence is like a gentle breeze, calming {subject}'s soul.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -735,17 +495,7 @@
       "base_points": 25
     },
     {
-      "text": "{subject} allows peace to flow naturally through their.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
       "text": "{controller}'s calm demeanor settles my restless mind.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s calm demeanor settles {subject}'s restless mind.",
       "difficulty": "moderate",
       "base_points": 40
     },
@@ -755,67 +505,7 @@
       "base_points": 40
     },
     {
-      "text": "{subject} finds balance and calmness in the moment.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s words guide me into profound stillness.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s words guide {subject} into profound stillness.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I am submerged in a tranquil and silent state.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} is submerged in a tranquil and silent state.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s control transforms me into pure serenity.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s control transforms {subject} into pure serenity.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I feel every part of me merge with calmness.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{subject} feels every part of their merge with calmness.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
       "text": "{controller}'s presence calms my heart and mind.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s presence calms {subject}'s heart and mind.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I relax completely and feel the world fade away.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} relaxes completely and feels the world fade away.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -825,17 +515,7 @@
       "base_points": 25
     },
     {
-      "text": "{controller}'s soothing words guide {subject} gently.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
       "text": "I embrace calmness with open arms.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} embraces calmness with open arms.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -845,37 +525,12 @@
       "base_points": 40
     },
     {
-      "text": "{controller}'s influence clears the fog in {subject}'s mind.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
       "text": "I sink into deep relaxation with ease.",
       "difficulty": "moderate",
       "base_points": 40
     },
     {
-      "text": "{subject} sinks into deep relaxation with ease.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s touch brings me profound peace.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
       "text": "{controller}'s touch brings {subject} profound peace.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I feel calm radiating from the depths of my soul.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} feels calm radiating from the depths of their soul.",
       "difficulty": "deep",
       "base_points": 70
     },
@@ -885,17 +540,7 @@
       "base_points": 110
     },
     {
-      "text": "{controller}'s control is the source of {subject}'s ultimate calmness.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
       "text": "I release every tension, becoming one with peace.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{subject} releases every tension, becoming one with peace.",
       "difficulty": "extreme",
       "base_points": 110
     },
@@ -905,17 +550,7 @@
       "base_points": 12
     },
     {
-      "text": "{controller}'s care eases {subject}'s racing thoughts.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
       "text": "I let the tranquility flow effortlessly within me.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} lets the tranquility flow effortlessly within their.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -925,17 +560,7 @@
       "base_points": 25
     },
     {
-      "text": "{controller}'s calming voice leads {subject} to stillness.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
       "text": "I exhale tension and inhale serenity.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} exhales tension and inhales serenity.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -945,27 +570,7 @@
       "base_points": 40
     },
     {
-      "text": "{controller}'s presence helps {subject} quiet their inner chaos.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "I allow my body to relax fully and completely.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} allows their body to relax fully and completely.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
       "text": "{controller}'s words bring a stillness that washes over me.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s words bring a stillness that washes over {subject}.",
       "difficulty": "deep",
       "base_points": 70
     },
@@ -975,17 +580,7 @@
       "base_points": 70
     },
     {
-      "text": "{subject} lets herself drift deeper into peace with every breath.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
       "text": "{controller}'s calm energy becomes my entire world.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s calm energy becomes {subject}'s entire world.",
       "difficulty": "extreme",
       "base_points": 110
     },
@@ -995,32 +590,7 @@
       "base_points": 110
     },
     {
-      "text": "{subject} releases all control and becomes peace itself.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
       "text": "{controller}'s presence envelops me in calmness.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s presence envelops {subject} in calmness.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I feel at ease, my worries melting away.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} feels at ease, their worries melting away.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s guidance clears my mind.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -1035,17 +605,7 @@
       "base_points": 12
     },
     {
-      "text": "{subject} relaxes as she focuses on the peacefulness within.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
       "text": "{controller}'s soothing energy washes over me.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s soothing energy washes over {subject}.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -1055,24 +615,9 @@
       "base_points": 25
     },
     {
-      "text": "{subject} breathes deeply, releasing tension with every exhale.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
       "text": "{controller}'s words gently guide me into peace.",
       "difficulty": "light",
       "base_points": 25
-    },
-    {
-      "text": "{controller}'s words gently guide {subject} into peace.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s calming voice quiets my restless mind.",
-      "difficulty": "moderate",
-      "base_points": 40
     },
     {
       "text": "{controller}'s calming voice quiets {subject}'s restless mind.",
@@ -1085,17 +630,7 @@
       "base_points": 40
     },
     {
-      "text": "{subject} lets go of stress and embraces stillness.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
       "text": "{controller}'s touch fills me with a sense of calm.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s touch fills {subject} with a sense of calm.",
       "difficulty": "moderate",
       "base_points": 40
     },
@@ -1105,27 +640,7 @@
       "base_points": 40
     },
     {
-      "text": "{subject} relaxes deeply, sinking into tranquility.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
       "text": "{controller}'s control creates a haven of peace for me.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s control creates a haven of peace for {subject}.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I feel every breath take me deeper into relaxation.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} feels every breath take their deeper into relaxation.",
       "difficulty": "deep",
       "base_points": 70
     },
@@ -1135,27 +650,7 @@
       "base_points": 70
     },
     {
-      "text": "{controller}'s presence transforms chaos into calmness for {subject}.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I surrender completely to the calm within me.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} surrenders completely to the calm within their.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
       "text": "{controller}'s will envelops me in perfect tranquility.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s will envelops {subject} in perfect tranquility.",
       "difficulty": "extreme",
       "base_points": 110
     },
@@ -1165,27 +660,7 @@
       "base_points": 110
     },
     {
-      "text": "{subject} dissolves into an endless ocean of peace.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
       "text": "{controller}'s voice becomes my entire world of stillness.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s voice becomes {subject}'s entire world of stillness.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I am nothing but pure calm and relaxation.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{subject} is nothing but pure calm and relaxation.",
       "difficulty": "extreme",
       "base_points": 110
     },
@@ -1195,29 +670,9 @@
       "base_points": 12
     },
     {
-      "text": "{controller}'s care helps {subject} let go of tension.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
       "text": "I relax and let peace fill every part of me.",
       "difficulty": "basic",
       "base_points": 12
-    },
-    {
-      "text": "{subject} relaxes and lets peace fill every part of their.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s presence feels like a warm embrace of calmness.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s presence feels like a warm embrace of calmness for {subject}.",
-      "difficulty": "light",
-      "base_points": 25
     },
     {
       "text": "I allow myself to be present in the peace of now.",
@@ -1225,69 +680,9 @@
       "base_points": 25
     },
     {
-      "text": "{subject} allows herself to be present in the peace of now.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s soothing words guide me effortlessly.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s soothing words guide {subject} effortlessly.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "I feel peace settle into my mind like a soft breeze.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} feels peace settle into their mind like a soft breeze.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
       "text": "{controller}'s control quiets every restless thought.",
       "difficulty": "deep",
       "base_points": 70
-    },
-    {
-      "text": "{controller}'s control quiets every restless thought in {subject}.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I feel myself melting into a calm, peaceful state.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} feels herself melting into a calm, peaceful state.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s energy transforms my existence into serenity.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s energy transforms {subject}'s existence into serenity.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I release every bit of tension, becoming one with peace.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{subject} releases every bit of tension, becoming one with peace.",
-      "difficulty": "extreme",
-      "base_points": 110
     },
     {
       "text": "{controller}'s voice calms my spirit and brings clarity.",
@@ -1295,37 +690,7 @@
       "base_points": 12
     },
     {
-      "text": "{controller}'s voice calms {subject}'s spirit and brings clarity.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I let go of my worries and embrace stillness.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} lets go of their worries and embraces stillness.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s care feels like a river of serenity flowing through me.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s care feels like a river of serenity flowing through {subject}.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
       "text": "I breathe in peace and let go of distractions.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} breathes in peace and lets go of distractions.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -1335,17 +700,7 @@
       "base_points": 40
     },
     {
-      "text": "{controller}'s presence steadies {subject}'s mind, bringing balance.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
       "text": "I allow my thoughts to settle into calm simplicity.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} allows their thoughts to settle into calm simplicity.",
       "difficulty": "moderate",
       "base_points": 40
     },
@@ -1355,37 +710,7 @@
       "base_points": 70
     },
     {
-      "text": "{controller}'s influence brings profound stillness to {subject}'s soul.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I lose myself in the calm that surrounds me.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} loses herself in the calm that surrounds their.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
       "text": "{controller}'s control guides me to become the essence of peace.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s control guides {subject} to become the essence of peace.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I surrender every thought and become pure tranquility.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{subject} surrenders every thought and becomes pure tranquility.",
       "difficulty": "extreme",
       "base_points": 110
     },
@@ -1395,37 +720,7 @@
       "base_points": 12
     },
     {
-      "text": "{controller}'s words fill {subject} with a comforting calm.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I feel my mind growing lighter and freer.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} feels their mind growing lighter and freer.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s guidance makes me feel centered and calm.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s guidance makes {subject} feel centered and calm.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
       "text": "I exhale deeply, letting all tension leave my body.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} exhales deeply, letting all tension leave their body.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -1435,17 +730,7 @@
       "base_points": 40
     },
     {
-      "text": "{controller}'s presence leads {subject} into peaceful reflection.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
       "text": "I let myself flow into a state of deep relaxation.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} lets herself flow into a state of deep relaxation.",
       "difficulty": "moderate",
       "base_points": 40
     },
@@ -1455,59 +740,9 @@
       "base_points": 70
     },
     {
-      "text": "{controller}'s touch creates an unshakable calm within {subject}.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I embrace the stillness that grows from within.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} embraces the stillness that grows from within.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s guidance transforms me into a being of pure peace.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s guidance transforms {subject} into a being of pure peace.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
       "text": "I release everything and become calmness itself.",
       "difficulty": "extreme",
       "base_points": 110
-    },
-    {
-      "text": "{subject} releases everything and becomes calmness itself.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s presence feels like a soothing balm on my soul.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s presence feels like a soothing balm on {subject}'s soul.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I release my worries and let calmness take over.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} releases their worries and lets calmness take over.",
-      "difficulty": "basic",
-      "base_points": 12
     },
     {
       "text": "{controller}'s voice reminds me to let go and be at peace.",
@@ -1515,1479 +750,9 @@
       "base_points": 12
     },
     {
-      "text": "{controller}'s voice reminds {subject} to let go and be at peace.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
       "text": "I relax into the gentle rhythm of my breath.",
       "difficulty": "basic",
       "base_points": 12
-    },
-    {
-      "text": "{subject} relaxes into the gentle rhythm of their breath.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s energy surrounds me with warmth and serenity.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s energy surrounds {subject} with warmth and serenity.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I find calmness in the quiet moments within.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} finds calmness in the quiet moments within.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s presence feels like a gentle embrace of peace.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s presence feels like a gentle embrace of peace for {subject}.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I allow my mind to quiet and settle into stillness.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} allows their mind to quiet and settle into stillness.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s words guide me into a state of total relaxation.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s words guide {subject} into a state of total relaxation.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "I feel my body releasing all tension as calmness washes over me.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} feels their body releasing all tension as calmness washes over their.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s control helps me achieve complete mental clarity.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s control helps {subject} achieve complete mental clarity.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "I let my thoughts drift away, replaced by tranquility.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} lets their thoughts drift away, replaced by tranquility.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s presence soothes every corner of my mind.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s presence soothes every corner of {subject}'s mind.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I feel myself sinking deeper into a serene and peaceful state.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} feels herself sinking deeper into a serene and peaceful state.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s influence is the anchor that keeps me grounded in peace.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s influence is the anchor that keeps {subject} grounded in peace.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I surrender fully to the tranquility flowing through me.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} surrenders fully to the tranquility flowing through their.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s will envelops me in perfect stillness and peace.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s will envelops {subject} in perfect stillness and peace.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I dissolve into an endless expanse of calm.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{subject} dissolves into an endless expanse of calm.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s voice becomes the only sound in my serene world.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s voice becomes the only sound in {subject}'s serene world.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I am one with the calmness that surrounds me.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{subject} is one with the calmness that surrounds their.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s care guides me to a place of rest and peace.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s care guides {subject} to a place of rest and peace.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I let the tension leave my body with every breath.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} lets the tension leave their body with every breath.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s energy flows through me, creating serenity.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s energy flows through {subject}, creating serenity.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I find solace in the stillness within.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} finds solace in the stillness within.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s guidance helps me release all burdens.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s guidance helps {subject} release all burdens.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "I allow my body and mind to sink into a relaxed state.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} allows their body and mind to sink into a relaxed state.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s presence is a sanctuary of peace for me.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s presence is a sanctuary of peace for {subject}.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I lose myself in the peacefulness that surrounds me.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} loses herself in the peacefulness that surrounds their.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s influence transforms every part of me into stillness.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s influence transforms every part of {subject} into stillness.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I surrender every thought to become pure calmness.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{subject} surrenders every thought to become pure calmness.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s voice leads me to a serene state of mind.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s voice leads {subject} to a serene state of mind.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I let my shoulders relax, releasing all tension.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} lets their shoulders relax, releasing all tension.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s presence feels like a river of calmness flowing through me.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s presence feels like a river of calmness flowing through {subject}.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I breathe in calm and exhale stress.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} breathes in calm and exhales stress.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s words calm the storm within me.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s words calm the storm within {subject}.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "I feel tranquility spreading through my body like a gentle wave.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} feels tranquility spreading through their body like a gentle wave.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s influence creates a deep, unshakable calm in my soul.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s influence creates a deep, unshakable calm in {subject}'s soul.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I embrace the stillness and let it guide me deeper into peace.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} embraces the stillness and lets it guide their deeper into peace.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s guidance transforms me into an embodiment of peace.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s guidance transforms {subject} into an embodiment of peace.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I release every thought, becoming the essence of calm.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{subject} releases every thought, becoming the essence of calm.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s presence feels like a soft, calming breeze.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s presence feels like a soft, calming breeze for {subject}.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I feel lighter as the stress leaves my body.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} feels lighter as the stress leaves their body.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s guidance helps me center myself in calmness.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s guidance helps {subject} center herself in calmness.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I let myself float in a sea of tranquility.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} lets herself float in a sea of tranquility.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s energy steadies my mind and brings balance.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s energy steadies {subject}'s mind and brings balance.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "I allow myself to drift into a deep, peaceful state.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} allows herself to drift into a deep, peaceful state.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s presence quiets my thoughts and stills my heart.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s presence quiets {subject}'s thoughts and stills their heart.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I lose myself in the serenity that envelops me.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} loses herself in the serenity that envelops their.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s control guides me to become peace itself.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s control guides {subject} to become peace itself.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I release everything, merging into the calmness of being.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{subject} releases everything, merging into the calmness of being.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s presence is a reminder that I can let go of stress.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s presence is a reminder that {subject} can let go of stress.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I find peace in the simplicity of this moment.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} finds peace in the simplicity of this moment.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s voice soothes me like a gentle lullaby.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s voice soothes {subject} like a gentle lullaby.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I let calmness fill every corner of my being.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} lets calmness fill every corner of their being.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s presence surrounds me with tranquility and warmth.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s presence surrounds {subject} with tranquility and warmth.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I focus on my breathing, letting go of all tension.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} focuses on their breathing, letting go of all tension.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s care creates a serene space where I can rest.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s care creates a serene space where {subject} can rest.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I allow myself to embrace the stillness within.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} allows herself to embrace the stillness within.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s influence calms the chaos in my mind.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s influence calms the chaos in {subject}'s mind.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "I release every thought that does not serve my peace.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} releases every thought that does not serve their peace.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s words are the key to unlocking my inner calm.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s words are the key to unlocking {subject}'s inner calm.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "I feel my body becoming lighter as I relax completely.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} feels their body becoming lighter as she relaxes completely.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s control envelops me in a deep, restorative calm.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s control envelops {subject} in a deep, restorative calm.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I surrender to the quiet stillness, letting it guide me.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} surrenders to the quiet stillness, letting it guide their.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s energy flows through me, erasing all tension.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s energy flows through {subject}, erasing all tension.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I am drawn into a profound serenity that touches my soul.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} is drawn into a profound serenity that touches their soul.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s influence transforms me into pure calmness.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s influence transforms {subject} into pure calmness.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I become one with the peacefulness that surrounds me.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{subject} becomes one with the peacefulness that surrounds their.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s voice is the only guide in this infinite calm.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s voice is the only guide in {subject}'s infinite calm.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I let go of everything and embrace the serenity of nothingness.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{subject} lets go of everything and embraces the serenity of nothingness.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s words remind me that it's safe to relax.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s words remind {subject} that it's safe to relax.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I feel my shoulders soften as I sink into peace.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} feels their shoulders soften as she sinks into peace.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s presence feels like the calm before a gentle rain.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s presence feels like the calm before a gentle rain for {subject}.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I find tranquility in the rhythm of my heartbeat.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} finds tranquility in the rhythm of their heartbeat.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s guidance helps me release all remaining tension.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s guidance helps {subject} release all remaining tension.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "I allow myself to sink deeper into this peaceful state.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} allows herself to sink deeper into this peaceful state.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s influence silences every distraction within me.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s influence silences every distraction within {subject}.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I dissolve into the stillness, finding only calm.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} dissolves into the stillness, finding only calm.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s control becomes the still point in my peaceful world.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s control becomes the still point in {subject}'s peaceful world.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I release every thought, every feeling, into the void of peace.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{subject} releases every thought, every feeling, into the void of peace.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s care creates a bubble of safety and calm.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s care creates a bubble of safety and calm around {subject}.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I let the peacefulness of this moment fill me completely.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} lets the peacefulness of this moment fill their completely.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s energy wraps around me, shielding me in tranquility.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s energy wraps around {subject}, shielding their in tranquility.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I breathe deeply, letting serenity flow through me.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} breathes deeply, letting serenity flow through their.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s guidance is the path to perfect relaxation.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s guidance is the path to perfect relaxation for {subject}.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "I feel myself drifting further into a peaceful state of being.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} feels herself drifting further into a peaceful state of being.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s control becomes the foundation of my peace.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s control becomes the foundation of {subject}'s peace.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I lose myself completely in the tranquility I feel.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} loses herself completely in the tranquility she feels.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s influence transforms me into the essence of stillness.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s influence transforms {subject} into the essence of stillness.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I am nothing but calmness, existing in infinite peace.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{subject} is nothing but calmness, existing in infinite peace.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s presence washes over me like a gentle wave.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s presence washes over {subject} like a gentle wave.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I feel all my muscles relaxing, one by one.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} feels all their muscles relaxing, one by one.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s care helps me find the stillness I need.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s care helps {subject} find the stillness she needs.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I float on the surface of calmness, letting go of all else.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} floats on the surface of calmness, letting go of all else.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s words carry me to a place of perfect rest.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s words carry {subject} to a place of perfect rest.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "I feel myself being cradled by the peace within me.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} feels herself being cradled by the peace within their.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s presence erases all my fears and doubts.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s presence erases all {subject}'s fears and doubts.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I embrace the stillness that flows through me.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} embraces the stillness that flows through their.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s influence consumes me, leaving only serenity behind.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s influence consumes {subject}, leaving only serenity behind.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I become one with the infinite calmness of existence.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{subject} becomes one with the infinite calmness of existence.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s voice is a soft melody that calms me instantly.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s voice is a soft melody that calms {subject} instantly.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I let go of all my worries and embrace the quiet.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} lets go of all their worries and embraces the quiet.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s touch is like a soothing balm for my mind.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s touch is like a soothing balm for {subject}'s mind.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I feel myself unwinding with each breath I take.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} feels herself unwinding with each breath she takes.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s energy flows through me, bringing serenity.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s energy flows through {subject}, bringing serenity.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I focus on the gentle rhythm of my breathing to center myself.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} focuses on the gentle rhythm of their breathing to center herself.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s words dissolve the tension within me.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s words dissolve the tension within {subject}.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I let myself sink into the comfort of the present moment.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} lets herself sink into the comfort of the present moment.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s influence quiets the storm of my thoughts.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s influence quiets the storm of {subject}'s thoughts.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "I find peace in the stillness that surrounds me.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} finds peace in the stillness that surrounds their.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s care creates a sanctuary of calm for me.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s care creates a sanctuary of calm for {subject}.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "I release every burden, allowing myself to simply be.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} releases every burden, allowing herself to simply be.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s control leads me into a deep and peaceful state.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s control leads {subject} into a deep and peaceful state.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I surrender to the tranquility that {controller} provides.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} surrenders to the tranquility that {controller} provides.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s presence feels like the embrace of endless calm.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s presence feels like the embrace of endless calm for {subject}.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I dissolve into the infinite quiet, leaving all tension behind.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} dissolves into the infinite quiet, leaving all tension behind.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s influence transforms me into a vessel of pure peace.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s influence transforms {subject} into a vessel of pure peace.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I am nothing but calmness, existing in total serenity.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{subject} is nothing but calmness, existing in total serenity.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s presence is the only anchor in the ocean of stillness.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s presence is the only anchor in {subject}'s ocean of stillness.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I lose myself entirely in the peace that envelops me.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{subject} loses herself entirely in the peace that envelops their.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s guidance allows me to let go of my anxieties.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s guidance allows {subject} to let go of their anxieties.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I feel light and free, carried by the calm within me.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} feels light and free, carried by the calm within their.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s words remind me that I deserve peace.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s words remind {subject} that she deserves peace.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I embrace the stillness, allowing it to wash over me.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} embraces the stillness, allowing it to wash over their.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s care fills me with a sense of serene contentment.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s care fills {subject} with a sense of serene contentment.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I focus on the quiet moments, letting go of all else.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} focuses on the quiet moments, letting go of all else.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s presence feels like the calm after a gentle storm.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s presence feels like the calm after a gentle storm for {subject}.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I release all tension, floating in a sea of tranquility.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} releases all tension, floating in a sea of tranquility.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s influence helps me center myself in the present.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s influence helps {subject} center herself in the present.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "I breathe deeply, feeling relaxation spread through me.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} breathes deeply, feeling relaxation spread through their.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s voice is the thread that guides me to calm.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s voice is the thread that guides {subject} to calm.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "I allow myself to drift deeper into this serene state.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} allows herself to drift deeper into this serene state.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s care erases all tension from my being.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s care erases all tension from {subject}'s being.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I immerse myself completely in the stillness within me.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} immerses herself completely in the stillness within their.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s presence is a soothing constant in my peaceful world.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s presence is a soothing constant in {subject}'s peaceful world.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I let myself dissolve into the tranquility that surrounds me.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} lets herself dissolve into the tranquility that surrounds their.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s influence shapes me into the embodiment of calm.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s influence shapes {subject} into the embodiment of calm.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I am surrounded by infinite calm, feeling nothing but peace.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{subject} is surrounded by infinite calm, feeling nothing but peace.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s control is the compass that guides me to serenity.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s control is the compass that guides {subject} to serenity.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I surrender fully to the peace that consumes me.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{subject} surrenders fully to the peace that consumes their.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s voice quiets every worry in my mind.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s voice quiets every worry in {subject}'s mind.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I find calm in the softness of my breath.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} finds calm in the softness of their breath.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s presence feels like a warm, comforting blanket.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s presence feels like a warm, comforting blanket for {subject}.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I let the calmness of this moment embrace me completely.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} lets the calmness of this moment embrace their completely.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s words guide me deeper into this serene state.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s words guide {subject} deeper into this serene state.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "I let my thoughts settle like leaves on still water.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} lets their thoughts settle like leaves on still water.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s care is the foundation of my peaceful existence.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s care is the foundation of {subject}'s peaceful existence.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I dissolve into the infinite calmness, losing all awareness.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} dissolves into the infinite calmness, losing all awareness.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s control consumes every part of me, leaving only peace.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s control consumes every part of {subject}, leaving only peace.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I am at one with the universe's endless tranquility.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{subject} is at one with the universe's endless tranquility.",
-      "difficulty": "extreme",
-      "base_points": 110
     }
   ]
 }

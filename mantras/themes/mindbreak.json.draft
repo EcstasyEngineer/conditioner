@@ -5,27 +5,147 @@
   "variance": 1245.9,
   "mantras": [
     {
+      "text": "I am reshaped completely by the force of {controller}'s will.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I am unmade and redefined entirely by {controller}'s will.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I am completely unmade and recreated by {controller}'s control.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I am broken entirely, ready to be reshaped from nothing.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I am completely unmade and remade in {controller}'s vision.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I willingly surrender every thought and identity.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "Every part of my identity dissolves completely.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "My identity crumbles entirely, leaving me free.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I surrender completely to {controller}'s transformative power.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "I surrender my identity to the stillness of transformation.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "My thoughts disappear completely, leaving only silence.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller} erases my identity, creating something entirely new.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I surrender my thoughts completely, finding peace in nothing.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "My identity fades into the quiet, leaving only peace behind.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller} shows me how to embrace calm surrender completely.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "My mind empties completely, leaving only quiet anticipation.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "I am a blank canvas, ready for transformation.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "Who I was no longer matters; I am free.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "I am rebuilt from emptiness into something new.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I am broken down, open, and ready for {controller}'s will.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "I am broken into perfect silence by {controller}'s power.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "I am shattered into nothing, rebuilt by {controller}'s hand.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I am reshaped by {controller}'s influence into perfection.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "I am nothing but a vessel for transformation.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I am destroyed and redefined by {controller}'s total control.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I am broken into pieces, each one ready to be reshaped.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I am remade by {controller}'s will, perfectly as he desires.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I am nothing but openness, waiting for something new to grow.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
       "text": "I let my thoughts dissolve completely.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} lets their thoughts dissolve completely.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I allow my mind to become soft and open.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} allows their mind to become soft and open.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s voice guides me gently into blankness.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -35,19 +155,214 @@
       "base_points": 12
     },
     {
-      "text": "{subject} surrenders their thoughts to {controller}'s will.",
+      "text": "{controller}'s control erases who I was completely.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "My identity fractures into nothingness.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I let {controller}'s guidance rewrite my mind completely.",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "I feel my resistance fade away peacefully.",
+      "text": "{controller} tears down my mind, leaving only my perfect control.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I allow myself to let go completely.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I allows herself to let go completely.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller}'s words guide me toward calm surrender.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "My identity becomes fluid, ready to change.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "Resistance vanishes, leaving me completely open.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "My identity softens, ready to be remade.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{controller} tears apart my identity, leaving pure potential.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller} gently guides me into the quiet of surrender.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I surrender my sense of self to the stillness.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "Resistance melts away, leaving only quiet submission.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "My mind is obliterated, leaving only blissful stillness.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s voice washes away my hesitation completely.",
       "difficulty": "light",
       "base_points": 25
     },
     {
-      "text": "I feel their resistance fade away peacefully.",
+      "text": "I dissolve completely, becoming a canvas for renewal.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "My thoughts are erased, leaving only infinite potential.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s power clears my path to complete surrender.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "I release every part of my old identity into the void.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller} unravels my identity, leaving space for my design.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "My mind is obliterated, reborn as pure surrender.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller} demolishes my sense of self, rebuilding me entirely.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I release my grip on identity, finding peace in change.",
       "difficulty": "light",
       "base_points": 25
+    },
+    {
+      "text": "{controller}'s presence reshapes my thoughts into calm surrender.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I surrender everything I once held dear to the quiet.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "My identity dissolves, replaced by limitless openness.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller} reshapes my mind into something entirely new.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "I dissolve into nothingness, ready to be rebuilt entirely.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller} obliterates my identity, replacing it with my design.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "Resistance melts into calm, leaving only quiet freedom.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller}'s words soften my mind into perfect surrender.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "My identity fades into the quiet, waiting to be rebuilt.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s power dismantles my mental barriers completely.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller} leads me gently into the freedom of surrender.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I feel {controller}'s influence rewriting who I am.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "Resistance is meaningless; I feel only openness.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "I feel light as my mind empties completely.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I feel {controller}'s power unraveling my old identity.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "I feel my identity relax into something flexible and new.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I allow my mind to become soft and open.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller}'s voice guides me gently into blankness.",
+      "difficulty": "basic",
+      "base_points": 12
     },
     {
       "text": "My mind grows empty, free of all limits.",
@@ -70,21 +385,6 @@
       "base_points": 40
     },
     {
-      "text": "I am a blank canvas, ready for transformation.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "I am a blank canvas, ready for transformation.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s control erases who I was completely.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
       "text": "Each word from {controller} breaks down my old self.",
       "difficulty": "moderate",
       "base_points": 40
@@ -95,22 +395,7 @@
       "base_points": 70
     },
     {
-      "text": "Who I was no longer matters; I am free.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "Who {subject} was no longer matters; she is free.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
       "text": "{controller} shatters my thoughts, leaving me pure.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller} shatters my thoughts, leaving their pure.",
       "difficulty": "deep",
       "base_points": 70
     },
@@ -120,37 +405,12 @@
       "base_points": 70
     },
     {
-      "text": "My identity fractures into nothingness.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I am rebuilt from emptiness into something new.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I am rebuilt from emptiness into something new.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
       "text": "{controller}'s control breaks me, remakes me, perfects me.",
       "difficulty": "extreme",
       "base_points": 110
     },
     {
-      "text": "{controller}'s control breaks {subject}, remakes their, perfects their.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
       "text": "Every shattered thought belongs to {controller} now.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "Every shattered thought belongs to {controller} through {subject} now.",
       "difficulty": "extreme",
       "base_points": 110
     },
@@ -165,22 +425,7 @@
       "base_points": 12
     },
     {
-      "text": "{subject} lets their thoughts drift away like clouds.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
       "text": "{controller}'s voice melts my mind into peaceful silence.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I let {controller}'s guidance rewrite my mind completely.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} lets {controller}'s guidance rewrite their mind completely.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -190,22 +435,7 @@
       "base_points": 25
     },
     {
-      "text": "Emptiness feels warm, freeing, and inviting.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "Emptiness feels warm, freeing, and inviting for {subject}.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
       "text": "{controller} lovingly breaks down every thought I hold.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller} lovingly breaks down every thought {subject} holds.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -213,21 +443,6 @@
       "text": "My barriers crumble gently under {controller}'s voice.",
       "difficulty": "light",
       "base_points": 25
-    },
-    {
-      "text": "I willingly surrender every thought and identity.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} willingly surrenders every thought and identity.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "My mind feels soft, pliant, and ready for renewal.",
-      "difficulty": "moderate",
-      "base_points": 40
     },
     {
       "text": "{controller}'s words dismantle my mind, piece by piece.",
@@ -245,47 +460,17 @@
       "base_points": 70
     },
     {
-      "text": "{subject} embraces the beauty of having nothing left to hold onto.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
       "text": "Every thought is erased, leaving space for transformation.",
       "difficulty": "deep",
       "base_points": 70
     },
     {
-      "text": "Every thought is erased, leaving space for transformation in {subject}.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller} shatters my thoughts and replaces them with peace.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I am broken down, open, and ready for {controller}'s will.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I am broken down, open, and ready for {controller}'s will.",
+      "text": "{controller} shatters my thoughts and replaces me with peace.",
       "difficulty": "deep",
       "base_points": 70
     },
     {
       "text": "My entire self breaks apart into blissful emptiness.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "Every part of my identity dissolves completely.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller} tears down my mind, leaving only their perfect control.",
       "difficulty": "extreme",
       "base_points": 110
     },
@@ -300,16 +485,6 @@
       "base_points": 12
     },
     {
-      "text": "I allow myself to let go completely.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} allows herself to let go completely.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
       "text": "{controller}'s presence eases me into gentle emptiness.",
       "difficulty": "basic",
       "base_points": 12
@@ -320,22 +495,7 @@
       "base_points": 12
     },
     {
-      "text": "I let go of all resistance; it feels freeing.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} lets go of all resistance; it feels freeing.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
       "text": "Every thought disappears, leaving stillness behind.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "Every thought disappears, leaving stillness behind for {subject}.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -345,32 +505,12 @@
       "base_points": 25
     },
     {
-      "text": "I feel {controller}'s words soften every part of me.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I feel {controller}'s words soften every part of their.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
       "text": "My thoughts break apart, leaving me calm and still.",
       "difficulty": "moderate",
       "base_points": 40
     },
     {
-      "text": "my thoughts break apart, leaving their calm and still.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
       "text": "I embrace my brokenness as the start of something new.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} embraces their brokenness as the start of something new.",
       "difficulty": "moderate",
       "base_points": 40
     },
@@ -390,27 +530,7 @@
       "base_points": 12
     },
     {
-      "text": "{subject} lets go of their thoughts and embraces peace.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
       "text": "My mind is clear, free from distractions and clutter.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s words guide me toward calm surrender.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I feel {controller}'s presence dissolve my resistance.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I feel {controller}'s presence dissolve their resistance.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -425,11 +545,6 @@
       "base_points": 25
     },
     {
-      "text": "{subject} finds joy in the quiet emptiness of their mind.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
       "text": "{controller} gently removes every wall in my mind.",
       "difficulty": "light",
       "base_points": 25
@@ -440,32 +555,7 @@
       "base_points": 25
     },
     {
-      "text": "I release my mind to become blank and open.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} releases their mind to become blank and open.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "My identity becomes fluid, ready to change.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
       "text": "{controller}'s words reshape my thoughts into new patterns.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "I feel {controller}'s influence rewriting who I am.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "I feel {controller}'s influence rewriting who she is.",
       "difficulty": "moderate",
       "base_points": 40
     },
@@ -475,22 +565,7 @@
       "base_points": 70
     },
     {
-      "text": "Resistance vanishes, leaving me completely open.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
       "text": "{controller} tears apart my old self with careful control.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I am broken into perfect silence by {controller}'s power.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I am broken into perfect silence by {controller}'s power.",
       "difficulty": "deep",
       "base_points": 70
     },
@@ -500,47 +575,12 @@
       "base_points": 110
     },
     {
-      "text": "My identity crumbles entirely, leaving me free.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "my identity crumbles entirely, leaving their free.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
       "text": "{controller}'s influence destroys every trace of who I was.",
       "difficulty": "extreme",
       "base_points": 110
     },
     {
-      "text": "I am shattered into nothing, rebuilt by {controller}'s hand.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I am shattered into nothing, rebuilt by {controller}'s hand.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "My thoughts drift away, leaving me calm and blank.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "my thoughts drift away, leaving their calm and blank.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
       "text": "I allow myself to be at peace with nothingness.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} allows herself to be at peace with nothingness.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -560,44 +600,9 @@
       "base_points": 25
     },
     {
-      "text": "I feel free as my thoughts disappear.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I feel free as their thoughts disappear.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
       "text": "{controller} guides my mind into complete relaxation.",
       "difficulty": "light",
       "base_points": 25
-    },
-    {
-      "text": "I surrender every thought to {controller}'s care.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} surrenders every thought to {controller}'s care.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I let go of all control and feel peaceful.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} lets go of all control and feels peaceful.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "My identity becomes fluid, ready to be reshaped.",
-      "difficulty": "moderate",
-      "base_points": 40
     },
     {
       "text": "{controller}'s words rebuild my thoughts into clarity.",
@@ -615,57 +620,12 @@
       "base_points": 70
     },
     {
-      "text": "{subject} embraces the emptiness as their true state.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "Resistance is meaningless; I feel only openness.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "Resistance is meaningless; I feel only openness.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
       "text": "{controller} breaks down every thought, leaving me pure.",
       "difficulty": "deep",
       "base_points": 70
     },
     {
-      "text": "I am reshaped by {controller}'s influence into perfection.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I am reshaped by {controller}'s influence into perfection.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
       "text": "Every thought collapses under the weight of emptiness.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "Every thought collapses under the weight of emptiness in {subject}.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I am nothing but a vessel for transformation.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I am nothing but a vessel for transformation.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller} destroys every thought, leaving me remade.",
       "difficulty": "extreme",
       "base_points": 110
     },
@@ -680,17 +640,7 @@
       "base_points": 12
     },
     {
-      "text": "{subject} embraces calm and lets their mind fade.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
       "text": "My thoughts gently fall away, leaving quietness.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s presence brings me into serene stillness.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -698,16 +648,6 @@
       "text": "{controller}'s guidance empties my thoughts, one by one.",
       "difficulty": "basic",
       "base_points": 12
-    },
-    {
-      "text": "I feel light as my mind empties completely.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I feel light as their mind empties completely.",
-      "difficulty": "light",
-      "base_points": 25
     },
     {
       "text": "Every thought fades away, leaving me free.",
@@ -725,32 +665,12 @@
       "base_points": 25
     },
     {
-      "text": "I feel my thoughts gently dissolve into stillness.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I feel their thoughts gently dissolve into stillness.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
       "text": "My mind becomes lighter with each passing moment.",
       "difficulty": "basic",
       "base_points": 12
     },
     {
       "text": "{controller}'s words soothe my mind into tranquility.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I release control and feel {controller}'s calming presence.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} releases control and feels {controller}'s calming presence.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -775,21 +695,6 @@
       "base_points": 25
     },
     {
-      "text": "I feel the weight of my thoughts lifted away.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "I feel the weight of their thoughts lifted away.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "My identity softens, ready to be remade.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
       "text": "{controller}'s guidance transforms my mind into pure calm.",
       "difficulty": "moderate",
       "base_points": 40
@@ -805,27 +710,12 @@
       "base_points": 70
     },
     {
-      "text": "{subject} embraces the emptiness and finds profound serenity.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
       "text": "My thoughts dissolve, leaving space for new possibilities.",
       "difficulty": "deep",
       "base_points": 70
     },
     {
       "text": "{controller}'s words break every wall in my mind.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I surrender completely to {controller}'s transformative power.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} surrenders completely to {controller}'s transformative power.",
       "difficulty": "deep",
       "base_points": 70
     },
@@ -840,59 +730,9 @@
       "base_points": 110
     },
     {
-      "text": "{subject} becomes nothing, a blank slate ready for change.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller} tears apart my identity, leaving pure potential.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I am shattered into perfect silence by {controller}'s will.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I am shattered into perfect silence by {controller}'s will.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
       "text": "My thoughts are like clouds, drifting away effortlessly.",
       "difficulty": "basic",
       "base_points": 12
-    },
-    {
-      "text": "I let go of my worries and feel calm take over.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} lets go of their worries and feels calm take over.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s voice wraps around my mind, bringing stillness.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller} gently guides me into the quiet of surrender.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I feel lighter with every thought I let go of.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I feel lighter with every thought she lets go of.",
-      "difficulty": "light",
-      "base_points": 25
     },
     {
       "text": "My mind empties, leaving space for something new.",
@@ -905,11 +745,6 @@
       "base_points": 25
     },
     {
-      "text": "{controller}'s presence makes it easy for {subject} to let go of resistance.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
       "text": "{controller}'s words create calm and focus in my mind.",
       "difficulty": "light",
       "base_points": 25
@@ -918,1226 +753,6 @@
       "text": "My sense of self becomes pliable, ready to adapt.",
       "difficulty": "moderate",
       "base_points": 40
-    },
-    {
-      "text": "Every thought fades, leaving me open and clear.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller} breaks down my mental walls, piece by piece.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "I feel {controller}'s power unraveling my old identity.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "I feel {controller}'s power unraveling their old identity.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "I surrender my sense of self to the stillness.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} surrenders their sense of self to the stillness.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "Resistance melts away, leaving only quiet submission.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "Resistance melts away, leaving only quiet submission in {subject}.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s influence transforms my resistance into openness.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller} breaks me down, creating beauty from the pieces.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "My mind is obliterated, leaving only blissful stillness.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "My thoughts are unmade, replaced by pure freedom.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s power destroys every thought, remaking me anew.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I am reshaped completely by the force of {controller}'s will.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I am reshaped completely by the force of {controller}'s will.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I find peace in the quiet simplicity of my mind.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} finds peace in the quiet simplicity of their mind.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "My thoughts flow away like a gentle stream.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s voice brings calm and focus to my thoughts.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s guidance fills the silence with reassurance.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s guidance fills the silence within {subject} with reassurance.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "My mind empties, leaving behind perfect stillness.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I feel my thoughts dissolve into quiet serenity.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I feel their thoughts dissolve into quiet serenity.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller} gently leads me into the peace of surrender.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s words soften every barrier in my mind.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I feel my thoughts soften into a gentle haze.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I feel their thoughts soften into a gentle haze.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "My mind is a quiet sanctuary, free from resistance.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s words guide me into calm, restful silence.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I feel {controller}'s presence ease every tension in my mind.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I feel {controller}'s presence ease every tension in their mind.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "My mental barriers dissolve into nothingness.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I release all resistance, feeling calm and open.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} releases all resistance, feeling calm and open.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s voice washes away my hesitation completely.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller} gently shapes my thoughts into peace and clarity.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "My mind feels weightless, floating in perfect stillness.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "I let go of my sense of control, embracing renewal.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} lets go of their sense of control, embracing renewal.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller} dismantles my doubts with precision and care.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s guidance clears away the clutter of my thoughts.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "I surrender my identity to the stillness of transformation.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} surrenders their identity to the stillness of transformation.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "My mental frameworks crumble, revealing endless possibilities.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s power dismantles every layer of my resistance.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I find profound freedom as {controller} tears down my barriers.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} finds profound freedom as {controller} tears down their barriers.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I dissolve completely, becoming a canvas for renewal.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{subject} dissolves completely, becoming a canvas for renewal.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "My thoughts are erased, leaving only infinite potential.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller} obliterates my mind, rebuilding it with precision.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I am unmade and redefined entirely by {controller}'s will.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I am unmade and redefined entirely by {controller}'s will.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I feel the gentle release of every lingering thought.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I feel the gentle release of every lingering thought.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "My mind opens effortlessly to change and growth.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller} whispers away every concern, leaving peace behind.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller} whispers away every concern, leaving peace behind in {subject}.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s words gently guide me into stillness and trust.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I feel my identity relax into something flexible and new.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I feel their identity relax into something flexible and new.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "Resistance melts away, leaving behind calm acceptance.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "Resistance melts away, leaving behind calm acceptance in {subject}.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s presence erases every fragment of resistance.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s presence erases every fragment of resistance in {subject}.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller} leads me gently into the void of possibility.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "My mind empties, making room for endless renewal.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "I feel the structure of my thoughts break into freedom.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "I feel the structure of their thoughts break into freedom.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller} shapes my mind, clearing away all resistance.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s power clears my path to complete surrender.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "I release every part of my old identity into the void.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} releases every part of their old identity into the void.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "Resistance shatters, leaving me open to complete transformation.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller} unravels my identity, leaving space for their design.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s voice disassembles my reality, piece by piece.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I vanish into the stillness, emerging as something new.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{subject} vanishes into the stillness, emerging as something new.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "My mind is obliterated, reborn as pure surrender.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller} demolishes my sense of self, rebuilding me entirely.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller} demolishes my sense of self, rebuilding their entirely.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I am destroyed and redefined by {controller}'s total control.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I am destroyed and redefined by {controller}'s total control.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "My mind is calm and still, free from all resistance.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I let go of every thought, embracing quiet renewal.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} lets go of every thought, embracing quiet renewal.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s words wrap around my mind, easing it into peace.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller} gently guides my thoughts to a place of clarity.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I release my grip on identity, finding peace in change.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} releases their grip on identity, finding peace in change.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "My resistance dissolves, replaced by openness to growth.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller} leads me into the quiet where transformation begins.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s presence reshapes my thoughts into calm surrender.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I let my thoughts drift away, leaving quiet behind.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} lets their thoughts drift away, leaving quiet behind.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "My mind is peaceful and free from resistance.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s voice gently clears my mind of all tension.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I feel calm as {controller}'s presence washes over my thoughts.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I feel calm as {controller}'s presence washes over their thoughts.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I feel the soft unraveling of my thoughts into silence.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I feel the soft unraveling of their thoughts into silence.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "Resistance fades like a distant memory, leaving calm clarity.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "Resistance fades like a distant memory, leaving calm clarity in {subject}.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s words weave serenity into my thoughts.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller} patiently guides me into the stillness of surrender.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I feel my mental walls crumble, leaving space for peace.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "I feel their mental walls crumble, leaving space for peace.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "My mind becomes flexible, ready for new understanding.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller} clears away my mental clutter, leaving pure silence.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s presence dismantles every thought I once clung to.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "I surrender everything I once held dear to the quiet.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} surrenders everything she once held dear to the quiet.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "My identity dissolves, replaced by limitless openness.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s power takes apart every defense I once had.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller} reshapes my mind into something entirely new.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I vanish into nothingness, ready to be rebuilt anew.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{subject} vanishes into nothingness, ready to be rebuilt anew.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "My thoughts disappear completely, leaving only silence.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller} obliterates my identity, replacing it with their design.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I am unmade, reshaped entirely by {controller}'s will.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I am unmade, reshaped entirely by {controller}'s will.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I feel each thought gently fall away into quiet calm.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I feel each thought gently fall away into quiet calm.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "My mind grows quiet, open to possibility and change.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s words lead me to peace and mental stillness.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller} helps me release every thought I no longer need.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller} helps {subject} release every thought she no longer needs.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I find serenity in letting go of every expectation.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} finds serenity in letting go of every expectation.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "Resistance melts into calm, leaving only quiet freedom.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "Resistance melts into calm, leaving only quiet freedom in {subject}.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s voice clears my path to perfect surrender.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller} gently removes every layer of resistance I held.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "My mind feels light and pliable, open to change.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "I embrace the stillness, allowing transformation to begin.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} embraces the stillness, allowing transformation to begin.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller} breaks down my thoughts with careful precision.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s words soften my mind into perfect surrender.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "My identity fades into the quiet, waiting to be rebuilt.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "Resistance shatters, leaving me ready to embrace change.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller} unravels my thoughts, creating space for their vision.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s power dismantles my mental barriers completely.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I am broken into pieces, each one ready to be reshaped.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I am broken into pieces, each one ready to be reshaped.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "My mind is obliterated, leaving perfect stillness behind.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller} erases my identity, creating something entirely new.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I am completely unmade and recreated by {controller}'s control.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I am completely unmade and recreated by {controller}'s control.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "My thoughts flow away like water, leaving me calm.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "my thoughts flow away like water, leaving their calm.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I find peace in the stillness that fills my mind.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} finds peace in the stillness that fills their mind.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s voice gently clears my mind of distractions.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller} guides me into quiet, peaceful surrender.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I let go of resistance, finding freedom in stillness.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} lets go of resistance, finding freedom in stillness.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "My mind empties into the quiet of transformation.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s voice unravels my thoughts, leaving calm behind.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller} leads me gently into the freedom of surrender.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I breathe deeply, letting my thoughts fade to nothing.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} breathes deeply, letting their thoughts fade to nothing.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "My mind is still, embracing the freedom of quiet.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s guidance helps me find perfect clarity.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s words gently erase the noise in my mind.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I feel my thoughts dissolve like mist in the morning.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I feel their thoughts dissolve like mist in the morning.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "Resistance is a memory, replaced by peace and clarity.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "Resistance is a memory, replaced by peace and clarity in {subject}.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller} whispers away my resistance with their steady voice.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller} shows me how to embrace the stillness within.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I release my hold on everything I thought I knew.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} releases their hold on everything she thought she knew.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "My mind is open, ready for a new perspective.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller} helps me let go of my old self, piece by piece.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller} helps {subject} let go of their old self, piece by piece.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s control guides me to release my final barriers.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s control guides {subject} to release their final barriers.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "I surrender my thoughts completely, finding peace in nothing.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} surrenders their thoughts completely, finding peace in nothing.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "My identity fades into the quiet, leaving only peace behind.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s voice tears down my old beliefs, replacing them with their truth.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller} unravels every thought I cling to, leaving me empty and calm.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller} unravels every thought {subject} clings to, leaving their empty and calm.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I dissolve into nothingness, ready to be rebuilt entirely.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{subject} dissolves into nothingness, ready to be rebuilt entirely.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "My thoughts are erased, leaving a blank canvas for renewal.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller} destroys my old self, reshaping me in their image.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller} destroys my old self, reshaping their in their image.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I am remade by {controller}'s will, perfectly as he desires.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I am remade by {controller}'s will, perfectly as he desires.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I let the quiet take over, freeing me from distraction.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} lets the quiet take over, freeing their from distraction.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "Each thought fades gently, leaving room for stillness.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "Each thought fades gently from {subject}, leaving room for stillness.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s voice calms my racing mind, replacing chaos with peace.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller} helps me let go, guiding me into perfect serenity.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller} helps {subject} let go, guiding their into perfect serenity.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I feel resistance dissolve, leaving me lighter and free.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I feel resistance dissolve, leaving their lighter and free.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "My thoughts become soft, pliable, and open to transformation.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s words weave through my thoughts, unraveling resistance.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller} shows me how to embrace calm surrender completely.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "My mental walls crumble, leaving an open, clear space behind.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "I welcome the emptiness, knowing it will lead to renewal.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} welcomes the emptiness, knowing it will lead to renewal.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s voice dismantles the defenses I thought I needed.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s voice dismantles the defenses {subject} thought she needed.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller} helps me release my grip on everything holding me back.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller} helps {subject} release their grip on everything holding their back.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "My mind empties completely, leaving only quiet anticipation.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I am nothing but openness, waiting for something new to grow.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I am nothing but openness, waiting for something new to grow.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller} carefully takes apart my thoughts, piece by piece.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller} strips away my resistance, leaving me perfectly blank.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller} strips away my resistance, leaving their perfectly blank.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I am broken entirely, ready to be reshaped from nothing.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I am broken entirely, ready to be reshaped from nothing.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "My mind is a blank slate, ready to accept anything new.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller} tears down every part of me, rebuilding it as their own.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I am completely unmade and remade in {controller}'s vision.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I am completely unmade and remade in {controller}'s vision.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I feel my thoughts slip away like sand through my fingers.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I feel their thoughts slip away like sand through their fingers.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "Quiet fills the spaces where my thoughts used to be.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller} helps me find the calm within my own mind.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller} helps {subject} find the calm within their own mind.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s words guide me to a peaceful, quiet state.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I release my thoughts, finding freedom in their absence.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} releases their thoughts, finding freedom in their absence.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "My mind softens, opening itself to the possibility of change.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s voice melts away the last of my resistance.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller} gently leads me into the quiet, serene void.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller} tears down my mind, leaving only their perfect control.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller} unravels my identity, leaving space for their design.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller} obliterates my identity, replacing it with their design.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller} unravels my thoughts, creating space for their vision.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller} whispers away my resistance with their steady voice.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s voice tears down my old beliefs, replacing them with their truth.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller} destroys my old self, reshaping me in their image.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller} destroys my old self, reshaping their in their image.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I am remade by {controller}'s will, perfectly as she desires.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I am remade by {controller}'s will, perfectly as she desires.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller} tears down every part of me, rebuilding it as their own.",
-      "difficulty": "extreme",
-      "base_points": 110
     }
   ]
 }

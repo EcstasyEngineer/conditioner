@@ -5,12 +5,282 @@
   "variance": 1137.6,
   "mantras": [
     {
-      "text": "I embrace my feminine nature fully.",
+      "text": "I am entirely defined by my feminine identity.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I surrender completely to the joys of being feminine.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "I am reborn entirely into feminine beauty and grace.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I am comfortable and confident in my feminine identity.",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "{subject} embraces their feminine nature fully.",
+      "text": "I am completely transformed into the essence of femininity.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "My identity is completely redefined by my feminine transformation.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "My femininity defines my identity completely.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "I surrender to the serenity of my feminine being.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "My feminine essence defines my existence entirely.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "I am fully immersed in the beauty of my femininity.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I exist solely to embody and express the feminine ideal under {controller}'s will.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I am proud of my soft and nurturing feminine side.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I exist solely as a vessel of feminine beauty and elegance.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I am at peace with my gentle feminine nature.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I am empowered by the beauty of my feminine journey.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I am content in the simplicity of my feminine nature.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I am radiant in the warmth of my feminine expression.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I am the embodiment of pure femininity.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "My feminine soul is the heart of who I am.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "I am deeply connected to the essence of my femininity.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "I am confident and comfortable in my feminine self.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I revel in the softness of my feminine identity.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "I celebrate the beauty of being feminine.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "My existence is dedicated to perfecting my feminine form under {controller}'s guidance.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I love the freedom of being feminine.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I adore the softness and elegance of being feminine.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "My entire being is a celebration of feminine beauty and power.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I delight in the small, beautiful moments of being feminine.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I glow with the pride of being my feminine self.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "I cherish the grace and charm of my feminine identity.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I find beauty in every aspect of being feminine.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller} unlocks the full potential of my feminine being.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s desires dictate every aspect of my feminine identity.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller} shows me the strength in being feminine.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} refines every detail of my feminine identity.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "Every thought and action reflects my deep feminine identity.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "My existence is devoted to perfecting my feminine expression.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I embrace my feminine identity without hesitation.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "My entire being is an expression of femininity.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s vision defines my ultimate feminine identity.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I find strength and serenity in my feminine identity.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "I embody grace and elegance in my feminine being.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s power defines my entire feminine identity.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller} helps me uncover the joys of being feminine.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "My feminine identity is my true source of joy.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "Every part of my being is infused with femininity.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller} shows me how to embrace the beauty of being feminine.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} helps me fully embody my feminine identity.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "Every fiber of my being celebrates my femininity.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I discover new joys in the elegance of being feminine.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "My feminine essence flows through every aspect of my being.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I find peace and harmony in my feminine being.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "Every aspect of my life reflects my feminine identity.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "My feminine identity is a sanctuary of grace and beauty.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "My femininity defines every part of my existence.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "I embrace my feminine nature fully.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -20,34 +290,9 @@
       "base_points": 12
     },
     {
-      "text": "{controller} guides {subject} to discover their feminine grace.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I love the softness of my feminine self.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} loves the softness of their feminine self.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
       "text": "My femininity blooms under {controller}'s care.",
       "difficulty": "basic",
       "base_points": 12
-    },
-    {
-      "text": "I celebrate the beauty of being feminine.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} celebrates the beauty of being feminine.",
-      "difficulty": "light",
-      "base_points": 25
     },
     {
       "text": "{controller}'s approval enhances my feminine charm.",
@@ -60,24 +305,9 @@
       "base_points": 25
     },
     {
-      "text": "{subject} radiates confidence in their femininity.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
       "text": "{controller} teaches me to embody true elegance.",
       "difficulty": "light",
       "base_points": 25
-    },
-    {
-      "text": "I revel in the softness of my feminine identity.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} revels in the softness of their feminine identity.",
-      "difficulty": "moderate",
-      "base_points": 40
     },
     {
       "text": "{controller} molds me into the perfect vision of femininity.",
@@ -95,72 +325,12 @@
       "base_points": 40
     },
     {
-      "text": "{subject} aligns their thoughts and actions with {controller}'s vision of femininity.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "I lose myself in the beauty of my femininity.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} loses herself in the beauty of their femininity.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
       "text": "{controller}'s guidance transforms me into an exquisite embodiment of femininity.",
       "difficulty": "deep",
       "base_points": 70
     },
     {
-      "text": "I surrender completely to the joys of being feminine.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} surrenders completely to the joys of being feminine.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "My femininity blossoms under {controller}'s loving control.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "My very essence is defined by my feminine transformation.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "my very essence is defined by their feminine transformation.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
       "text": "{controller}'s control shapes every aspect of my femininity.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I am reborn entirely into feminine beauty and grace.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I am reborn entirely into feminine beauty and grace.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "My existence is dedicated to perfecting my feminine form under {controller}'s guidance.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "my existence is dedicated to perfecting their feminine form under {controller}'s guidance.",
       "difficulty": "extreme",
       "base_points": 110
     },
@@ -170,27 +340,7 @@
       "base_points": 12
     },
     {
-      "text": "{subject} finds joy in expressing their feminine self.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
       "text": "{controller} helps me embrace the gentle side of my femininity.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller} helps {subject} embrace the gentle side of their femininity.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I love the freedom of being feminine.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} loves the freedom of being feminine.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -200,27 +350,7 @@
       "base_points": 12
     },
     {
-      "text": "{controller} shows {subject} how to revel in their femininity.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I adore the softness and elegance of being feminine.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} adores the softness and elegance of being feminine.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
       "text": "{controller} enhances my connection to my feminine essence.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller} enhances my connection to their feminine essence.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -240,22 +370,7 @@
       "base_points": 40
     },
     {
-      "text": "{subject} embodies the grace and beauty of their feminine nature.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller} refines me into the perfect image of femininity.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
       "text": "I immerse myself in the pleasures of femininity.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} immerses herself in the pleasures of femininity.",
       "difficulty": "moderate",
       "base_points": 40
     },
@@ -265,32 +380,12 @@
       "base_points": 40
     },
     {
-      "text": "{controller}'s guidance leads {subject} deeper into their feminine self.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "My femininity defines my identity completely.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "my femininity defines their identity completely.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
       "text": "{controller}'s touch fills me with feminine energy and purpose.",
       "difficulty": "deep",
       "base_points": 70
     },
     {
       "text": "I let go of resistance and embrace my femininity fully.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} lets go of resistance and embraces their femininity fully.",
       "difficulty": "deep",
       "base_points": 70
     },
@@ -305,27 +400,7 @@
       "base_points": 110
     },
     {
-      "text": "Every thought I have is immersed in their feminine transformation.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
       "text": "{controller} reshapes every part of me into pure femininity.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "My entire being is a celebration of feminine beauty and power.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I exist solely to embody and express the feminine ideal under {controller}'s will.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{subject} exists solely to embody and express the feminine ideal under {controller}'s will.",
       "difficulty": "extreme",
       "base_points": 110
     },
@@ -335,22 +410,7 @@
       "base_points": 12
     },
     {
-      "text": "{subject} discovers new facets of their feminine self daily.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
       "text": "{controller} nurtures my journey into femininity.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I delight in the small, beautiful moments of being feminine.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} delights in the small, beautiful moments of being feminine.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -358,21 +418,6 @@
       "text": "{controller} helps me find joy in every aspect of my femininity.",
       "difficulty": "basic",
       "base_points": 12
-    },
-    {
-      "text": "{controller} helps {subject} find joy in every aspect of their femininity.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I glow with the happiness of being feminine.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} glows with the happiness of being feminine.",
-      "difficulty": "light",
-      "base_points": 25
     },
     {
       "text": "{controller} amplifies the beauty of my feminine spirit.",
@@ -385,42 +430,12 @@
       "base_points": 25
     },
     {
-      "text": "{subject} finds power and strength in their femininity.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
       "text": "{controller} celebrates my feminine transformation.",
       "difficulty": "light",
       "base_points": 25
     },
     {
-      "text": "I cherish the grace and charm of my feminine identity.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} cherishes the grace and charm of their feminine identity.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
       "text": "{controller} guides me to explore the depths of my femininity.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller} guides {subject} to explore the depths of their femininity.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I am proud of my soft and nurturing feminine side.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I am proud of their soft and nurturing feminine side.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -430,37 +445,7 @@
       "base_points": 12
     },
     {
-      "text": "I find beauty in every aspect of being feminine.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} finds beauty in every aspect of being feminine.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
       "text": "{controller}'s approval fills me with confidence in my femininity.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s approval fills {subject} with confidence in their femininity.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I feel radiant and joyful in my feminine expression.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I feel radiant and joyful in their feminine expression.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s guidance enhances my feminine allure.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -470,17 +455,7 @@
       "base_points": 40
     },
     {
-      "text": "{subject} immerses herself in the grace of their feminine transformation.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
       "text": "{controller} molds me into the essence of feminine perfection.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "My feminine energy flows effortlessly and freely.",
       "difficulty": "moderate",
       "base_points": 40
     },
@@ -488,16 +463,6 @@
       "text": "{controller}'s vision shapes the elegance of my femininity.",
       "difficulty": "moderate",
       "base_points": 40
-    },
-    {
-      "text": "I surrender to the powerful beauty of my femininity.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} surrenders to the powerful beauty of their femininity.",
-      "difficulty": "deep",
-      "base_points": 70
     },
     {
       "text": "{controller}'s influence transforms me into pure feminine grace.",
@@ -510,77 +475,7 @@
       "base_points": 70
     },
     {
-      "text": "{subject} embraces the totality of their feminine self.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller} unlocks the full potential of my feminine being.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "My identity is completely redefined by my feminine transformation.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "my identity is completely redefined by their feminine transformation.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s control shapes every fiber of my feminine essence.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I exist solely as a vessel of feminine beauty and elegance.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{subject} exists solely as a vessel of feminine beauty and elegance.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s desires dictate every aspect of my feminine identity.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I find happiness in expressing my feminine side.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} finds happiness in expressing their feminine side.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
       "text": "{controller} encourages me to embrace my delicate femininity.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller} encourages {subject} to embrace their delicate femininity.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I am at peace with my gentle feminine nature.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I am at peace with their gentle feminine nature.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller} shows me the strength in being feminine.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -590,22 +485,7 @@
       "base_points": 25
     },
     {
-      "text": "{subject} glows with the pride of embracing their femininity.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
       "text": "{controller} celebrates my journey into feminine self-discovery.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I feel empowered by the beauty of my feminine transformation.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I feel empowered by the beauty of their feminine transformation.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -620,17 +500,7 @@
       "base_points": 40
     },
     {
-      "text": "{controller} refines every detail of my feminine identity.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
       "text": "I find joy in every step of my feminine journey.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} finds joy in every step of their feminine journey.",
       "difficulty": "moderate",
       "base_points": 40
     },
@@ -640,52 +510,12 @@
       "base_points": 40
     },
     {
-      "text": "My feminine essence defines my existence entirely.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "my feminine essence defines their existence entirely.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s guidance allows my femininity to flourish fully.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I embrace the tranquility and beauty of my feminine soul.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} embraces the tranquility and beauty of their feminine soul.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
       "text": "{controller}'s influence brings my feminine transformation to life.",
       "difficulty": "deep",
       "base_points": 70
     },
     {
-      "text": "Every thought and action reflects my deep feminine identity.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
       "text": "{controller}'s power fully transforms me into the epitome of femininity.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "My existence is devoted to perfecting my feminine expression.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "my existence is devoted to perfecting their feminine expression.",
       "difficulty": "extreme",
       "base_points": 110
     },
@@ -700,42 +530,12 @@
       "base_points": 12
     },
     {
-      "text": "{subject} explores the joys of their evolving feminine self.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
       "text": "{controller} nurtures my delicate feminine spirit.",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "I am content in the simplicity of my feminine nature.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I am content in the simplicity of their feminine nature.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller} helps me find strength in my femininity.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller} helps {subject} find strength in their femininity.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
       "text": "I shine brightly with the beauty of my feminine energy.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} shines brightly with the beauty of their feminine energy.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -750,42 +550,12 @@
       "base_points": 25
     },
     {
-      "text": "{subject} cherishes every moment of their feminine transformation.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
       "text": "{controller} teaches me to embrace the elegance of femininity.",
       "difficulty": "light",
       "base_points": 25
     },
     {
-      "text": "I celebrate the beauty of my feminine self.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} celebrates the beauty of their feminine self.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
       "text": "{controller} shows me the joy in embracing my femininity.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller} shows {subject} the joy in embracing their femininity.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I am comfortable and confident in my feminine identity.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I am comfortable and confident in their feminine identity.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -795,27 +565,12 @@
       "base_points": 12
     },
     {
-      "text": "I radiate happiness in my feminine transformation.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} radiates happiness in their feminine transformation.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
       "text": "{controller} helps me unlock the true beauty of femininity.",
       "difficulty": "light",
       "base_points": 25
     },
     {
       "text": "I find peace in embracing my feminine nature.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} finds peace in embracing their feminine nature.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -835,21 +590,6 @@
       "base_points": 40
     },
     {
-      "text": "{controller}'s guidance reveals the true power of my femininity.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "I adore every detail of my feminine transformation.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} adores every detail of their feminine transformation.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
       "text": "{controller} reshapes me into the ideal expression of femininity.",
       "difficulty": "moderate",
       "base_points": 40
@@ -865,72 +605,12 @@
       "base_points": 70
     },
     {
-      "text": "I embrace my feminine identity without hesitation.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} embraces their feminine identity without hesitation.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
       "text": "{controller}'s touch refines my every feminine trait.",
       "difficulty": "deep",
       "base_points": 70
     },
     {
-      "text": "I am fully immersed in the beauty of my femininity.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I am fully immersed in the beauty of their femininity.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller} has transformed me into pure feminine grace.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "My entire being is an expression of femininity.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s vision shapes my ultimate feminine form.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
       "text": "I discover new joys in expressing my femininity every day.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} discovers new joys in expressing their femininity every day.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller} encourages me to embrace my gentle feminine side.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller} encourages {subject} to embrace their gentle feminine side.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I find strength and serenity in my feminine identity.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} finds strength and serenity in their feminine identity.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -940,37 +620,7 @@
       "base_points": 12
     },
     {
-      "text": "I feel free and radiant in my feminine expression.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I feel free and radiant in their feminine expression.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller} celebrates my confidence in feminine self-discovery.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I embrace the elegance of my feminine transformation.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} embraces the elegance of their feminine transformation.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
       "text": "{controller} amplifies my love for my feminine nature.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller} amplifies my love for their feminine nature.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -990,67 +640,12 @@
       "base_points": 40
     },
     {
-      "text": "{subject} treasures the process of becoming more feminine.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
       "text": "{controller} guides me to embrace my feminine transformation fully.",
       "difficulty": "moderate",
       "base_points": 40
     },
     {
-      "text": "{controller} guides {subject} to embrace their feminine transformation fully.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "My feminine nature is my greatest source of pride.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "my feminine nature is their greatest source of pride.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s guidance helps me explore the depths of my femininity.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s guidance helps {subject} explore the depths of their femininity.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I embody grace and elegance in my feminine being.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} embodies grace and elegance in their feminine being.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller} refines every aspect of my feminine self.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
       "text": "My feminine transformation is my ultimate truth.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "my feminine transformation is their ultimate truth.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller} shapes me into the pinnacle of feminine perfection.",
       "difficulty": "extreme",
       "base_points": 110
     },
@@ -1060,32 +655,7 @@
       "base_points": 110
     },
     {
-      "text": "{controller}'s power defines my entire feminine identity.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
       "text": "I enjoy the simplicity of expressing my femininity.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} enjoys the simplicity of expressing their femininity.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller} helps me uncover the joys of being feminine.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I feel serene and happy in my feminine self.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I feel serene and happy in their feminine self.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -1095,107 +665,12 @@
       "base_points": 12
     },
     {
-      "text": "{controller} inspires {subject} to embrace their feminine nature with confidence.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I glow with the pride of being my feminine self.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} glows with the pride of being their feminine self.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller} teaches me to love every detail of my femininity.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller} teaches {subject} to love every detail of their femininity.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I am empowered by the beauty of my feminine journey.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I am empowered by the beauty of their feminine journey.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller} enhances my love for my feminine expression.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller} enhances my love for their feminine expression.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
       "text": "I embrace the subtle grace of my femininity.",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "{subject} embraces the subtle grace of their femininity.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller} nurtures my delicate, feminine essence.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "My feminine charm grows stronger every day.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller} encourages me to celebrate my femininity fully.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller} encourages {subject} to celebrate their femininity fully.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I am radiant in the warmth of my feminine expression.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I am radiant in the warmth of their feminine expression.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
       "text": "{controller}'s guidance brings out my inner femininity.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I find happiness in expressing my feminine style.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} finds happiness in expressing their feminine style.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller} amplifies the beauty of my feminine traits.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -1205,22 +680,7 @@
       "base_points": 40
     },
     {
-      "text": "my transformation into femininity fills their with pride.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
       "text": "{controller} shapes me into a symbol of femininity.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "I celebrate every moment of my feminine evolution.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} celebrates every moment of their feminine evolution.",
       "difficulty": "moderate",
       "base_points": 40
     },
@@ -1230,62 +690,12 @@
       "base_points": 40
     },
     {
-      "text": "My feminine identity is my true source of joy.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "my feminine identity is their true source of joy.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s influence helps me explore the depth of my femininity.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s influence helps {subject} explore the depth of their femininity.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I find fulfillment in embracing my feminine beauty.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} finds fulfillment in embracing their feminine beauty.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
       "text": "{controller} leads me deeper into the serenity of femininity.",
       "difficulty": "deep",
       "base_points": 70
     },
     {
-      "text": "I am the embodiment of pure femininity.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I am the embodiment of pure femininity.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
       "text": "{controller} has transformed me into the pinnacle of grace.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "Every part of my being is infused with femininity.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s vision defines my ultimate feminine identity.",
       "difficulty": "extreme",
       "base_points": 110
     },
@@ -1295,27 +705,7 @@
       "base_points": 12
     },
     {
-      "text": "{subject} delights in discovering new ways to express their femininity.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller} shows me how to embrace the beauty of being feminine.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
       "text": "I cherish the elegance that femininity brings into my life.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} cherishes the elegance that femininity brings into their life.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s encouragement inspires my feminine confidence.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -1325,27 +715,7 @@
       "base_points": 25
     },
     {
-      "text": "my feminine nature shines brightly in everything she does.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s guidance helps me feel proud of my femininity.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s guidance helps {subject} feel proud of their femininity.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
       "text": "I adore the beauty of my feminine journey.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} adores the beauty of their feminine journey.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -1370,59 +740,9 @@
       "base_points": 40
     },
     {
-      "text": "{subject} embraces the journey toward their perfect feminine self.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller} helps me fully embody my feminine identity.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller} helps {subject} fully embody their feminine identity.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "My feminine soul is the heart of who I am.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "my feminine soul is the heart of who she is.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s guidance unlocks the full potential of my femininity.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I am deeply connected to the essence of my femininity.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I am deeply connected to the essence of their femininity.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
       "text": "{controller} elevates my understanding of what it means to be feminine.",
       "difficulty": "deep",
       "base_points": 70
-    },
-    {
-      "text": "My transformation into femininity is my ultimate joy.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "my transformation into femininity is their ultimate joy.",
-      "difficulty": "extreme",
-      "base_points": 110
     },
     {
       "text": "{controller} has molded me into an icon of feminine grace.",
@@ -1430,824 +750,9 @@
       "base_points": 110
     },
     {
-      "text": "Every fiber of my being celebrates my femininity.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "Every fiber of my being celebrates their femininity.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s touch perfects my every feminine trait.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
       "text": "I find joy in embracing the soft beauty of femininity.",
       "difficulty": "basic",
       "base_points": 12
-    },
-    {
-      "text": "{subject} finds joy in embracing the soft beauty of femininity.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller} helps me see the wonder in being feminine.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I am confident and comfortable in my feminine self.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I am confident and comfortable in their feminine self.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s support encourages me to explore my feminine side.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s support encourages {subject} to explore their feminine side.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I radiate confidence in my feminine transformation.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} radiates confidence in their feminine transformation.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller} helps me shine brighter in my feminine identity.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller} helps {subject} shine brighter in their feminine identity.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I find fulfillment in the elegance of my feminine nature.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} finds fulfillment in the elegance of their feminine nature.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller} celebrates my commitment to embracing femininity.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I embrace the soft and nurturing aspects of my femininity.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} embraces the soft and nurturing aspects of their femininity.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller} guides me to fully appreciate my feminine beauty.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller} guides {subject} to fully appreciate their feminine beauty.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "My movements reflect the grace of my feminine spirit.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "my movements reflect the grace of their feminine spirit.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller} enhances the elegance I carry in my feminine presence.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller} enhances the elegance {subject} carries in their feminine presence.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller} inspires me to embrace the power of being feminine.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I revel in the beauty and strength of my femininity.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} revels in the beauty and strength of their femininity.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s wisdom reveals the depths of my feminine nature.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "My transformation into femininity brings joy and confidence.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller} shapes my mind and body into perfect femininity.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "I take pride in exploring the nuances of femininity.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} takes pride in exploring the nuances of femininity.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller} illuminates the path toward my feminine evolution.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "My heart beats in harmony with my feminine self.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "my heart beats in harmony with their feminine self.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s influence deepens my connection to my feminine essence.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s influence deepens my connection to their feminine essence.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I discover new joys in the elegance of being feminine.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} discovers new joys in the elegance of being feminine.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller} nurtures the hidden strength within my femininity.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I am entirely defined by my feminine identity.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I am entirely defined by their feminine identity.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s vision transforms me into a beacon of femininity.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "My femininity is my most cherished possession.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "my femininity is their most cherished possession.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller} perfects every detail of my feminine expression.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I celebrate the gentle qualities of my feminine soul.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} celebrates the gentle qualities of their feminine soul.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller} helps me refine the softness of my femininity.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller} helps {subject} refine the softness of their femininity.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "My femininity is a source of strength and beauty.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s guidance elevates my appreciation for my feminine self.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s guidance elevates my appreciation for their feminine self.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I glow with the radiance of my feminine transformation.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} glows with the radiance of their feminine transformation.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller} supports my journey to embrace my feminine core.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller} supports my journey to embrace their feminine core.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I feel alive in the grace and beauty of my femininity.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I feel alive in the grace and beauty of their femininity.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller} enriches my understanding of my feminine potential.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller} enriches my understanding of their feminine potential.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "My feminine energy flows through every aspect of my life.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "my feminine energy flows through every aspect of their life.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller} unlocks the boundless possibilities of my femininity.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "I take comfort in the strength of my feminine presence.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} takes comfort in the strength of their feminine presence.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller} highlights the brilliance of my feminine transformation.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "My soul resonates with the purity of my feminine essence.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "my soul resonates with the purity of their feminine essence.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller} strengthens my connection to the depth of my femininity.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller} strengthens my connection to the depth of their femininity.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I find peace and harmony in my feminine being.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} finds peace and harmony in their feminine being.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s influence elevates my feminine spirit.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "My transformation into femininity is complete and beautiful.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller} shapes me into the ultimate embodiment of femininity.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "Every aspect of my life reflects my feminine identity.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "Every aspect of my life reflects their feminine identity.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s touch refines every detail of my feminine being.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I love exploring the beauty of my feminine nature.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} loves exploring the beauty of their feminine nature.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller} inspires me to cherish my feminine traits.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller} inspires {subject} to cherish their feminine traits.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "My femininity feels natural and empowering.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller} guides me to discover the joys of femininity.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I radiate confidence and pride in my feminine journey.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} radiates confidence and pride in their feminine journey.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller} encourages me to flourish in my feminine self.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller} encourages {subject} to flourish in their feminine self.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I embrace the beauty and grace of my feminine transformation.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} embraces the beauty and grace of their feminine transformation.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller} reveals the strength within my feminine essence.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I embrace the simplicity of my feminine charm.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} embraces the simplicity of their feminine charm.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller} nurtures the blossoming of my femininity.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "My voice carries the melody of my feminine spirit.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "my voice carries the melody of their feminine spirit.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller} brings out the confidence in my feminine demeanor.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I find joy in every detail of my feminine self.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} finds joy in every detail of their feminine self.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller} inspires me to celebrate my feminine uniqueness.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller} inspires {subject} to celebrate their feminine uniqueness.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "My feminine energy feels powerful and graceful.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s guidance helps me perfect my feminine elegance.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s guidance helps {subject} perfect their feminine elegance.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I cherish the harmony my femininity brings to my life.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} cherishes the harmony their femininity brings to their life.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller} refines the essence of my feminine beauty.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "My feminine self grows stronger with each passing day.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s wisdom shapes the depths of my feminine soul.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "I surrender to the serenity of my feminine being.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} surrenders to the serenity of their feminine being.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller} enhances the profound connection to my femininity.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "My feminine identity is a sanctuary of grace and beauty.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller} guides me to embody the deepest aspects of femininity.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I am completely transformed into the essence of femininity.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I am completely transformed into the essence of femininity.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller} creates a vision of perfection within my feminine self.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "My femininity defines every part of my existence.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "my femininity defines every part of their existence.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s influence makes my feminine transformation absolute.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I feel a sense of peace in my feminine expressions.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I feel a sense of peace in their feminine expressions.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller} gently supports my journey into femininity.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "My feminine gestures are delicate and full of meaning.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller} helps me refine the subtleties of my femininity.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller} helps {subject} refine the subtleties of their femininity.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I radiate beauty and confidence as I explore femininity.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} radiates beauty and confidence as she explores femininity.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s care helps me embrace my feminine radiance.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s care helps {subject} embrace their feminine radiance.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "My feminine essence is pure and empowering.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller} teaches me the art of feminine refinement.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I find strength in the delicate nature of my femininity.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} finds strength in the delicate nature of their femininity.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller} cultivates the beauty of my feminine transformation.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "My femininity is a tapestry of grace and strength.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller} unlocks the layers of my feminine potential.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "My feminine journey is a source of deep fulfillment.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller} guides me to explore the profound depths of my femininity.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller} guides {subject} to explore the profound depths of their femininity.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "My feminine soul is in harmony with the universe.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s presence deepens my understanding of femininity.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "My feminine essence flows through every aspect of my being.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "my feminine essence flows through every aspect of their being.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller} shapes my femininity into a masterpiece of perfection.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "Every thought and action reflects my feminine identity.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s vision makes my feminine transformation total.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I embrace the journey of discovering my feminine self.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} embraces the journey of discovering their feminine self.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller} inspires me to honor the beauty of my femininity.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller} inspires {subject} to honor the beauty of their femininity.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "My feminine expressions bring me endless joy.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "my feminine expressions bring their endless joy.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller} helps me explore the elegance of femininity.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I radiate warmth and beauty as I express my femininity.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} radiates warmth and beauty as she expresses their femininity.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller} encourages me to flourish in my feminine journey.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller} encourages {subject} to flourish in their feminine journey.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I celebrate the freedom and confidence of my femininity.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} celebrates the freedom and confidence of their femininity.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller} enriches my connection to my feminine self.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller} enriches my connection to their feminine self.",
-      "difficulty": "light",
-      "base_points": 25
     }
   ]
 }

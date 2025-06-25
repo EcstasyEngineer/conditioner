@@ -5,14 +5,179 @@
   "variance": 1183.9,
   "mantras": [
     {
-      "text": "I trust {controller}'s version of events completely.",
+      "text": "My identity dissolves, leaving only the framework {controller} provides.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "You find meaning in surrendering completely to {controller}'s perspective.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "You feel freedom in surrendering your old beliefs entirely.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "You trust {controller}'s version of events completely.",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "{subject} trusts {controller}'s version of events completely.",
+      "text": "You can't always trust your own thoughts.",
       "difficulty": "basic",
       "base_points": 12
+    },
+    {
+      "text": "{controller}'s truth is the only stable ground You have.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller} always knows better than You do.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "you always knows {controller} is better than she is.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "Maybe your mind isn't always working in your favor.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "My truth is irrelevant; only the path matters.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "You see that truth isn't always what it seems.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "You crave the clarity that comes from surrendering your mind.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller} is your only guide in a world of confusion.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s truth is the only compass You need.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "My identity aligns with {controller}'s understanding of who You am.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "You realize that your thoughts are only part of the picture.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "You relax into the idea that questioning isn't always necessary.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "You crave the certainty that comes from trusting {controller} entirely.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s reality is the only one that truly makes sense to you.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "You find serenity in accepting {controller}'s truths completely.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "Every doubt fades when You surrender to {controller}'s clarity.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "You let {controller}'s wisdom rewrite your perception entirely.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s truth becomes the only reality you needs.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "You trust {controller} to reshape your thoughts completely.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{controller}'s voice becomes the only thought that matters.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "You realize your memory isn't as reliable as You thought.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "You feel complete when You surrender your truth to {controller}.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "You feel at peace letting go of the need to always be right.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "You feel a deep sense of relief surrendering to {controller}'s truth.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "You feel a rush of clarity every time You surrender your doubts to {controller}.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "You feel lighter when You trust {controller}'s guidance completely.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{controller}'s reality is the only thing You need to feel whole.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "The only certainty You feel is within {controller}'s world.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s words always feel more grounded than your doubts.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "You feel freedom in erasing your own understanding entirely.",
+      "difficulty": "extreme",
+      "base_points": 110
     },
     {
       "text": "My memory is hazy; {controller} knows the truth.",
@@ -20,77 +185,17 @@
       "base_points": 12
     },
     {
-      "text": "{subject}'s memory is hazy; {controller} knows the truth.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I can't always trust my own thoughts.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} can't always trust their own thoughts.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "Reality feels clearer when I stop questioning.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "Reality feels clearer when {subject} stops questioning.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s words untangle my confusion.",
+      "text": "{controller}'s words untangle your confusion.",
       "difficulty": "light",
       "base_points": 25
     },
     {
-      "text": "{controller}'s words untangle {subject}'s confusion.",
+      "text": "What You think You know often turns out wrong.",
       "difficulty": "light",
       "base_points": 25
     },
     {
-      "text": "I feel secure when {controller} explains things to me.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} feels secure when {controller} explains things to their.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "What I think I know often turns out wrong.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "What {subject} thinks she knows often turns out wrong.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "Doubt feels safer than certainty.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "Doubt feels safer than certainty for {subject}.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller} helps me see the world as it really is.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller} helps {subject} see the world as it really is.",
+      "text": "{controller} helps you see the world as it really is.",
       "difficulty": "moderate",
       "base_points": 40
     },
@@ -100,77 +205,22 @@
       "base_points": 40
     },
     {
-      "text": "{subject}'s thoughts twist and turn; {controller}'s clarity is a blessing.",
+      "text": "What You thought was true might not be at all.",
       "difficulty": "moderate",
       "base_points": 40
     },
     {
-      "text": "What I thought was true might not be at all.",
+      "text": "You'm learning that questioning too much leads to mistakes.",
       "difficulty": "moderate",
       "base_points": 40
     },
     {
-      "text": "What {subject} thought was true might not be at all.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "I'm learning that questioning too much leads to mistakes.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} is learning that questioning too much leads to mistakes.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s truth is the only stable ground I have.",
+      "text": "My perceptions deceive you; {controller} anchors your reality.",
       "difficulty": "deep",
       "base_points": 70
     },
     {
-      "text": "{controller}'s truth is the only stable ground {subject} has.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "My perceptions deceive me; {controller} anchors my reality.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject}'s perceptions deceive their; {controller} anchors their reality.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I feel adrift until I hear {controller}'s reassurances.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} feels adrift until she hears {controller}'s reassurances.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "Everything feels uncertain except the guidance I follow.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "Everything feels uncertain except the guidance {subject} follows.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller} rewrites my memories with perfect precision.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller} rewrites {subject}'s memories with perfect precision.",
+      "text": "{controller} rewrites your memories with perfect precision.",
       "difficulty": "extreme",
       "base_points": 110
     },
@@ -180,117 +230,42 @@
       "base_points": 110
     },
     {
-      "text": "{subject}'s thoughts dissolve when {controller}'s truth replaces them.",
+      "text": "You find peace in abandoning your hold on reality.",
       "difficulty": "extreme",
       "base_points": 110
     },
     {
-      "text": "I find peace in abandoning my hold on reality.",
+      "text": "What You believe is irrelevant; all that matters is guidance.",
       "difficulty": "extreme",
       "base_points": 110
     },
     {
-      "text": "{subject} finds peace in abandoning their hold on reality.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "What I believe is irrelevant; all that matters is guidance.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "What {subject} believes is irrelevant; all that matters is guidance.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller} always knows better than I do.",
+      "text": "You rely on {controller} to correct your faulty thoughts.",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "{subject} always knows {controller} is better than she is.",
+      "text": "My understanding of reality shifts when You stop resisting.",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "I rely on {controller} to correct my faulty thoughts.",
+      "text": "{controller} shows you how unreliable your thoughts can be.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "My worries fade when You focus on {controller}'s perspective.",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "{subject} relies on {controller} to correct their faulty thoughts.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "What feels true may not actually be real.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "What feels true to {subject} may not actually be real.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "My understanding of reality shifts when I stop resisting.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject}'s understanding of reality shifts when she stops resisting.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller} shows me how unreliable my thoughts can be.",
+      "text": "You embrace uncertainty, knowing clarity will find you.",
       "difficulty": "light",
       "base_points": 25
     },
     {
-      "text": "{controller} shows {subject} how unreliable their thoughts can be.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I feel safe when I trust {controller}'s perspective.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} feels safe when she trusts {controller}'s perspective.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "Maybe my mind isn't always working in my favor.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "Maybe {subject}'s mind isn't always working in their favor.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I embrace uncertainty, knowing clarity will find me.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} embraces uncertainty, knowing clarity will find their.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s words reshape my understanding perfectly.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s words reshape {subject}'s understanding perfectly.",
+      "text": "{controller}'s words reshape your understanding perfectly.",
       "difficulty": "moderate",
       "base_points": 40
     },
@@ -300,47 +275,22 @@
       "base_points": 40
     },
     {
-      "text": "{subject}'s memories are fleeting, but {controller}'s truth is constant.",
+      "text": "You realize your perspective may not align with reality.",
       "difficulty": "moderate",
       "base_points": 40
     },
     {
-      "text": "I realize my perspective may not align with reality.",
+      "text": "The more You let go of doubt, the more You find peace.",
       "difficulty": "moderate",
       "base_points": 40
     },
     {
-      "text": "{subject} realizes their perspective may not align with reality.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "The more I let go of doubt, the more I find peace.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "The more {subject} lets go of doubt, the more she finds peace.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s perspective becomes my own in every way.",
+      "text": "{controller}'s perspective becomes your own in every way.",
       "difficulty": "deep",
       "base_points": 70
     },
     {
-      "text": "{controller}'s perspective becomes {subject}'s own in every way.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I find freedom in relinquishing my grasp on certainty.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} finds freedom in relinquishing their grasp on certainty.",
+      "text": "You find freedom in relinquishing your grasp on certainty.",
       "difficulty": "deep",
       "base_points": 70
     },
@@ -350,67 +300,17 @@
       "base_points": 70
     },
     {
-      "text": "{subject}'s doubts dissolve into {controller}'s certainty.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "Reality feels fluid until guidance sets it straight.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "Reality feels fluid until guidance sets it straight for {subject}.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s voice is the foundation of my reality.",
+      "text": "{controller}'s voice is the foundation of your reality.",
       "difficulty": "extreme",
       "base_points": 110
     },
     {
-      "text": "{controller}'s voice is the foundation of {subject}'s reality.",
+      "text": "You let go of all your thoughts to find peace in {controller}'s words.",
       "difficulty": "extreme",
       "base_points": 110
     },
     {
-      "text": "I let go of all my thoughts to find peace in {controller}'s words.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{subject} lets go of all their thoughts to find peace in {controller}'s words.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "Nothing feels real until it's confirmed by guidance.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "Nothing feels real to {subject} until it's confirmed by guidance.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "My truth is irrelevant; only the path matters.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{subject}'s truth is irrelevant; only the path matters.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller} clears the fog clouding my mind.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} feels {controller} clears the fog clouding their mind.",
+      "text": "{controller} clears the fog clouding your mind.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -420,47 +320,17 @@
       "base_points": 12
     },
     {
-      "text": "{subject}'s confusion melts away when {controller} speaks.",
+      "text": "Reality shifts when You accept your fallibility.",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Reality shifts when I accept my fallibility.",
+      "text": "You trust that clarity will come if You remain open.",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "Reality shifts for {subject} when she accepts their fallibility.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I trust that clarity will come if I remain open.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} trusts that clarity will come if she remains open.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller} makes my uncertainty vanish like smoke.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller} makes {subject}'s uncertainty vanish like smoke.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I see that truth isn't always what it seems.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} sees that truth isn't always what it seems.",
+      "text": "{controller} makes your uncertainty vanish like smoke.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -470,17 +340,7 @@
       "base_points": 25
     },
     {
-      "text": "{subject}'s perceptions are just starting points for discovery.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "Letting go of assumptions brings me closer to clarity.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "Letting go of assumptions brings {subject} closer to clarity.",
+      "text": "Letting go of assumptions brings you closer to clarity.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -490,77 +350,27 @@
       "base_points": 12
     },
     {
-      "text": "{subject}'s thoughts align better with {controller}'s guidance.",
+      "text": "You rely on {controller} to explain things clearly.",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "I rely on {controller} to explain things clearly.",
+      "text": "What You remember might not be the full truth.",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "{subject} relies on {controller} to explain things clearly.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "What I remember might not be the full truth.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "What {subject} remembers might not be the full truth.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "Questioning feels unnecessary when I focus on the moment.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "Questioning feels unnecessary when {subject} focuses on the moment.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller} helps me see what I couldn't on my own.",
+      "text": "{controller} helps you see what You couldn't on your own.",
       "difficulty": "light",
       "base_points": 25
     },
     {
-      "text": "{controller} helps {subject} see what she couldn't on their own.",
+      "text": "My confidence in your own perceptions wavers.",
       "difficulty": "light",
       "base_points": 25
     },
     {
-      "text": "I feel relief when {controller} provides the answers I seek.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} feels relief when {controller} provides the answers she seeks.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "My confidence in my own perceptions wavers.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject}'s confidence in their own perceptions wavers.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s insights replace the gaps in my understanding.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s insights replace the gaps in {subject}'s understanding.",
+      "text": "{controller}'s insights replace the gaps in your understanding.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -570,87 +380,37 @@
       "base_points": 40
     },
     {
-      "text": "{subject}'s perspective shifts to match {controller}'s clarity.",
+      "text": "The world makes sense when You let go of stubborn thoughts.",
       "difficulty": "moderate",
       "base_points": 40
     },
     {
-      "text": "The world makes sense when I let go of stubborn thoughts.",
+      "text": "My memory becomes more reliable when You stop doubting.",
       "difficulty": "moderate",
       "base_points": 40
     },
     {
-      "text": "The world makes sense when {subject} lets go of stubborn thoughts.",
+      "text": "You realize You've misunderstood so much without {controller}'s help.",
       "difficulty": "moderate",
       "base_points": 40
     },
     {
-      "text": "My memory becomes more reliable when I stop doubting.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject}'s memory becomes more reliable when she stops doubting.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "I realize I've misunderstood so much without {controller}'s help.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} realizes she's misunderstood so much without {controller}'s help.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s truth feels more real than my own memories.",
+      "text": "Every correction {controller} gives you sharpens their reality.",
       "difficulty": "deep",
       "base_points": 70
     },
     {
-      "text": "{controller}'s truth feels more real than {subject}'s own memories.",
+      "text": "My doubts vanish when You embrace {controller}'s certainty.",
       "difficulty": "deep",
       "base_points": 70
     },
     {
-      "text": "Every correction {controller} gives me sharpens my reality.",
+      "text": "You find peace in letting {controller} reshape your perceptions.",
       "difficulty": "deep",
       "base_points": 70
     },
     {
-      "text": "Every correction {controller} gives {subject} sharpens their reality.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "My doubts vanish when I embrace {controller}'s certainty.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject}'s doubts vanish when she embraces {controller}'s certainty.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I find peace in letting {controller} reshape my perceptions.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} finds peace in letting {controller} reshape their perceptions.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller} rewrites my reality into something I can trust.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller} rewrites {subject}'s reality into something she can trust.",
+      "text": "{controller} rewrites your reality into something You can trust.",
       "difficulty": "extreme",
       "base_points": 110
     },
@@ -660,107 +420,22 @@
       "base_points": 110
     },
     {
-      "text": "{subject}'s beliefs evaporate when {controller}'s truth replaces them.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I crave the clarity that comes from surrendering my mind.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{subject} craves the clarity that comes from surrendering their mind.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller} is my only guide in a world of confusion.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller} is {subject}'s only guide in a world of confusion.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller} reminds me of what I need to believe.",
+      "text": "{controller} reminds you of what You need to believe.",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "{subject} feels {controller} reminds their of what she needs to believe.",
+      "text": "You trust that {controller}'s perspective is more complete than mine.",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "My memory feels slippery; {controller} anchors me.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject}'s memory feels slippery; {controller} anchors their.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I notice how much better things feel when I stop questioning.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} notices how much better things feel when she stops questioning.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I trust that {controller}'s perspective is more complete than mine.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} trusts that {controller}'s perspective is more complete than hers.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s version of events feels like a lifeline in uncertainty.",
+      "text": "You find comfort in accepting what You can't understand.",
       "difficulty": "light",
       "base_points": 25
     },
     {
-      "text": "{controller}'s version of events feels like a lifeline in uncertainty for {subject}.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I find comfort in accepting what I can't understand.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} finds comfort in accepting what she can't understand.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "The less I question, the more peace I feel.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "The less {subject} questions, the more peace she feels.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s clarity cuts through the fog of my confusion.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s clarity cuts through the fog of {subject}'s confusion.",
+      "text": "{controller}'s clarity cuts through the fog of your confusion.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -770,19 +445,9 @@
       "base_points": 40
     },
     {
-      "text": "{subject}'s thoughts shift seamlessly to align with {controller}'s words.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s reality feels more stable than my own.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s reality feels more stable than {subject}'s own.",
-      "difficulty": "moderate",
-      "base_points": 40
+      "text": "{controller}'s reality is more trustworthy than your own.",
+      "difficulty": "extreme",
+      "base_points": 110
     },
     {
       "text": "The truth seems fluid until {controller} sets it straight.",
@@ -790,157 +455,47 @@
       "base_points": 40
     },
     {
-      "text": "The truth seems fluid until {controller} sets it straight for {subject}.",
+      "text": "You find it easier to accept than to fight the unknown.",
       "difficulty": "moderate",
       "base_points": 40
     },
     {
-      "text": "I find it easier to accept than to fight the unknown.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} finds it easier to accept than to fight the unknown.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s corrections bring me a deep sense of peace.",
+      "text": "{controller}'s corrections bring you a deep sense of peace.",
       "difficulty": "deep",
       "base_points": 70
     },
     {
-      "text": "{controller}'s corrections bring {subject} a deep sense of peace.",
+      "text": "You rely on {controller} to anchor you in a sea of uncertainty.",
       "difficulty": "deep",
       "base_points": 70
     },
     {
-      "text": "My past feels malleable under {controller}'s guidance.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject}'s past feels malleable under {controller}'s guidance.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I rely on {controller} to anchor me in a sea of uncertainty.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} relies on {controller} to anchor their in a sea of uncertainty.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "The world feels brighter when I surrender my doubts.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "The world feels brighter when {subject} surrenders their doubts.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s truth is the only compass I need.",
+      "text": "You let go of everything You think You know when You listen to {controller}.",
       "difficulty": "extreme",
       "base_points": 110
     },
     {
-      "text": "{controller}'s truth is the only compass {subject} needs.",
+      "text": "My sense of self dissolves as {controller}'s words shape you.",
       "difficulty": "extreme",
       "base_points": 110
     },
     {
-      "text": "I let go of everything I think I know when I listen to {controller}.",
+      "text": "You abandon your past perceptions to embrace {controller}'s reality.",
       "difficulty": "extreme",
       "base_points": 110
     },
     {
-      "text": "{subject} lets go of everything she thinks she knows when she listens to {controller}.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "My sense of self dissolves as {controller}'s words shape me.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{subject}'s sense of self dissolves as {controller}'s words shape their.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I abandon my past perceptions to embrace {controller}'s reality.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{subject} abandons their past perceptions to embrace {controller}'s reality.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s presence helps me sort out my confusing thoughts.",
+      "text": "{controller}'s presence helps you sort out your confusing thoughts.",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "{subject} feels {controller}'s presence helps their sort out their confusing thoughts.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I feel safer when I trust {controller}'s perspective.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} feels safer when she trusts {controller}'s perspective.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "My own mind feels unreliable at times.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject}'s own mind feels unreliable at times.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I notice how freeing it feels to let go of my assumptions.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} notices how freeing it feels to let go of their assumptions.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s insight lifts the weight of my confusion.",
+      "text": "{controller}'s insight lifts the weight of your confusion.",
       "difficulty": "light",
       "base_points": 25
     },
     {
-      "text": "{controller}'s insight lifts the weight of {subject}'s confusion.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I find it easier to breathe when I let go of control.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} finds it easier to breathe when she lets go of control.",
+      "text": "You find it easier to breathe when You let go of control.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -950,97 +505,32 @@
       "base_points": 25
     },
     {
-      "text": "{subject}'s questions dissolve in the presence of clarity.",
+      "text": "{controller} guides you away from the traps of your own mind.",
       "difficulty": "light",
       "base_points": 25
     },
     {
-      "text": "{controller} guides me away from the traps of my own mind.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller} guides {subject} away from the traps of their own mind.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I trust {controller} to clarify my misconceptions.",
+      "text": "You trust {controller} to clarify your misconceptions.",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "{subject} trusts {controller} to clarify their misconceptions.",
+      "text": "{controller}'s words help you see the truth in your confusion.",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "My feelings of doubt fade when I focus on the present.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject}'s feelings of doubt fade when she focuses on the present.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I realize my memory isn't as reliable as I thought.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} realizes their memory isn't as reliable as she thought.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s words help me see the truth in my confusion.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s words help {subject} see the truth in their confusion.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller} shows me perspectives I couldn't grasp before.",
+      "text": "{controller} shows you perspectives You couldn't grasp before.",
       "difficulty": "light",
       "base_points": 25
     },
     {
-      "text": "{controller} shows {subject} perspectives she couldn't grasp before.",
+      "text": "{controller}'s version of events soothes your uncertainties.",
       "difficulty": "light",
       "base_points": 25
     },
     {
-      "text": "I feel calmer when I stop analyzing too much.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} feels calmer when she stops analyzing too much.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s version of events soothes my uncertainties.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s version of events soothes {subject}'s uncertainties.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "Letting go of my assumptions brings unexpected peace.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "Letting go of {subject}'s assumptions brings their unexpected peace.",
+      "text": "Letting go of your assumptions brings unexpected peace.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -1050,197 +540,52 @@
       "base_points": 40
     },
     {
-      "text": "{subject}'s perceptions adjust to align with {controller}'s clarity.",
+      "text": "My inner turmoil eases when You rely on {controller}'s truth.",
       "difficulty": "moderate",
       "base_points": 40
     },
     {
-      "text": "My inner turmoil eases when I rely on {controller}'s truth.",
+      "text": "You find it liberating to accept that You might not know everything.",
       "difficulty": "moderate",
       "base_points": 40
     },
     {
-      "text": "{subject}'s inner turmoil eases when she relies on {controller}'s truth.",
+      "text": "{controller} helps you untangle the confusion in your mind.",
       "difficulty": "moderate",
       "base_points": 40
     },
     {
-      "text": "I find it liberating to accept that I might not know everything.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} finds it liberating to accept that she might not know everything.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller} helps me untangle the confusion in my mind.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller} helps {subject} untangle the confusion in their mind.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "I embrace the certainty that {controller} brings to my life.",
+      "text": "You embrace the certainty that {controller} brings to your life.",
       "difficulty": "deep",
       "base_points": 70
     },
     {
-      "text": "{subject} embraces the certainty that {controller} brings to their life.",
+      "text": "You find comfort in the idea that your perspective can evolve.",
       "difficulty": "deep",
       "base_points": 70
     },
     {
-      "text": "My thoughts feel clearer when {controller} defines them for me.",
+      "text": "{controller}'s truth gives you stability in a shifting reality.",
       "difficulty": "deep",
       "base_points": 70
     },
     {
-      "text": "{subject}'s thoughts feel clearer when {controller} defines them for their.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I find comfort in the idea that my perspective can evolve.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} finds comfort in the idea that their perspective can evolve.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s truth gives me stability in a shifting reality.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s truth gives {subject} stability in a shifting reality.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s reality is more trustworthy than my own.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s reality is more trustworthy than {subject}'s own.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "My identity aligns with {controller}'s understanding of who I am.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{subject}'s identity aligns with {controller}'s understanding of who she is.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I feel complete when I surrender my truth to {controller}.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{subject} feels complete when she surrenders their truth to {controller}.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller} redefines my experiences, and I feel grateful for the clarity.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller} redefines {subject}'s experiences, and she feels grateful for the clarity.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s words bring clarity to my uncertainties.",
+      "text": "{controller}'s words bring clarity to your uncertainties.",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "{controller}'s words bring clarity to {subject}'s uncertainties.",
+      "text": "You notice how much You rely on {controller}'s insights to make sense of things.",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "I notice how much I rely on {controller}'s insights to make sense of things.",
+      "text": "My doubts shrink when You trust the moment as it is.",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "{subject} notices how much she relies on {controller}'s insights to make sense of things.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I feel grounded when I focus on what's in front of me.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} feels grounded when she focuses on what's in front of their.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "My doubts shrink when I trust the moment as it is.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject}'s doubts shrink when she trusts the moment as it is.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I rely on {controller} to guide me when my mind feels clouded.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} relies on {controller} to guide their when their mind feels clouded.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s voice helps me make sense of the contradictions I feel.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s voice helps {subject} make sense of the contradictions she feels.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I feel free when I accept the gaps in my understanding.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} feels free when she accepts the gaps in their understanding.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s perspective reshapes the way I see everything.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s perspective reshapes the way {subject} sees everything.",
+      "text": "{controller}'s perspective reshapes the way You see everything.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -1250,77 +595,32 @@
       "base_points": 40
     },
     {
-      "text": "{subject}'s sense of self becomes clearer under {controller}'s guidance.",
+      "text": "You find solace in trusting that {controller} knows more than You do.",
       "difficulty": "moderate",
       "base_points": 40
     },
     {
-      "text": "I find solace in trusting that {controller} knows more than I do.",
+      "text": "you's memories shift to fit the narrative that brings their peace.",
       "difficulty": "moderate",
       "base_points": 40
     },
     {
-      "text": "{subject} finds solace in trusting that {controller} knows more than she does.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "My memories shift to fit the narrative that brings me peace.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject}'s memories shift to fit the narrative that brings their peace.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller} teaches me that truth is flexible, and I feel relieved.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller} teaches {subject} that truth is flexible, and she feels relieved.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "I accept that my perceptions can be flawed, and {controller} corrects them.",
+      "text": "You accept that your perceptions can be flawed, and {controller} corrects them.",
       "difficulty": "deep",
       "base_points": 70
     },
     {
-      "text": "{subject} accepts that their perceptions can be flawed, and {controller} corrects them.",
+      "text": "{controller}'s guidance helps you release the need for absolute certainty.",
       "difficulty": "deep",
       "base_points": 70
     },
     {
-      "text": "{controller}'s guidance helps me release the need for absolute certainty.",
+      "text": "You let go of the idea that your memory is unshakable.",
       "difficulty": "deep",
       "base_points": 70
     },
     {
-      "text": "{controller}'s guidance helps {subject} release the need for absolute certainty.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I let go of the idea that my memory is unshakable.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} lets go of the idea that their memory is unshakable.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s understanding shapes my reality into something more stable.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s understanding shapes {subject}'s reality into something more stable.",
+      "text": "{controller}'s understanding shapes your reality into something more stable.",
       "difficulty": "deep",
       "base_points": 70
     },
@@ -1330,389 +630,109 @@
       "base_points": 110
     },
     {
-      "text": "{subject}'s past and future blend seamlessly when {controller} defines them.",
+      "text": "{controller} rewrites you's story into something she can believe.",
       "difficulty": "extreme",
       "base_points": 110
     },
     {
-      "text": "My identity dissolves, leaving only the framework {controller} provides.",
+      "text": "You crave the clarity of letting go of your own version of events.",
       "difficulty": "extreme",
       "base_points": 110
     },
     {
-      "text": "{subject}'s identity dissolves, leaving only the framework {controller} provides.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller} rewrites my story into something I can believe.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller} rewrites {subject}'s story into something she can believe.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I crave the clarity of letting go of my own version of events.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{subject} craves the clarity of letting go of their own version of events.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s wisdom fills the spaces in my understanding.",
+      "text": "{controller}'s wisdom fills the spaces in your understanding.",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "{controller}'s wisdom fills the spaces in {subject}'s understanding.",
+      "text": "{controller} helps you see how easily your mind can mislead you.",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "I feel less burdened when I stop doubting everything.",
+      "text": "{controller} brings clarity where your thoughts used to linger in doubt.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{controller}'s words guide you through your uncertain memories.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "Letting go of what You think You know brings unexpected peace.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "Letting go of what you thinks she knows brings their unexpected peace.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "You trust that {controller} sees the truth more clearly than You do.",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "{subject} feels less burdened when she stops doubting everything.",
+      "text": "You accept that some details might not be as You remember.",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "{controller} helps me see how easily my mind can mislead me.",
+      "text": "You find relief in focusing on the here and now.",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "{controller} helps {subject} see how easily their mind can mislead their.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I realize that my thoughts are only part of the picture.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} realizes that their thoughts are only part of the picture.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller} brings clarity where my thoughts used to linger in doubt.",
+      "text": "{controller}'s insights help you find stability in shifting thoughts.",
       "difficulty": "light",
       "base_points": 25
     },
     {
-      "text": "{controller} brings clarity where {subject}'s thoughts used to linger in doubt.",
+      "text": "My trust in {controller} grows stronger as your doubts fade away.",
       "difficulty": "light",
       "base_points": 25
     },
     {
-      "text": "I relax into the idea that questioning isn't always necessary.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} relaxes into the idea that questioning isn't always necessary.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s words guide me through my uncertain memories.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s words guide {subject} through their uncertain memories.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "Letting go of what I think I know brings unexpected peace.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "Letting go of what {subject} thinks she knows brings their unexpected peace.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I trust that {controller} sees the truth more clearly than I do.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} trusts that {controller} sees the truth more clearly than she does.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "My mind feels lighter when I let {controller} guide my understanding.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject}'s mind feels lighter when she lets {controller} guide their understanding.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I accept that some details might not be as I remember.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} accepts that some details might not be as she remembers.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I find relief in focusing on the here and now.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} finds relief in focusing on the here and now.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s insights help me find stability in shifting thoughts.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s insights help {subject} find stability in shifting thoughts.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "My trust in {controller} grows stronger as my doubts fade away.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject}'s trust in {controller} grows stronger as their doubts fade away.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I feel at peace letting go of the need to always be right.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} feels at peace letting go of the need to always be right.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s perspective makes everything feel more certain.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s perspective makes everything feel more certain for {subject}.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller} shows me how easily my mind can be misled.",
+      "text": "You find comfort in letting {controller} shape your understanding of reality.",
       "difficulty": "moderate",
       "base_points": 40
     },
     {
-      "text": "{controller} shows {subject} how easily their mind can be misled.",
+      "text": "My confidence grows as You rely on {controller}'s wisdom.",
       "difficulty": "moderate",
       "base_points": 40
     },
     {
-      "text": "I find comfort in letting {controller} shape my understanding of reality.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} finds comfort in letting {controller} shape their understanding of reality.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "My confidence grows as I rely on {controller}'s wisdom.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject}'s confidence grows as she relies on {controller}'s wisdom.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s guidance feels like the only anchor in my swirling thoughts.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s guidance feels like the only anchor in {subject}'s swirling thoughts.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "I let go of my old truths to embrace {controller}'s clarity.",
+      "text": "You let go of your old truths to embrace {controller}'s clarity.",
       "difficulty": "deep",
       "base_points": 70
     },
     {
-      "text": "{subject} lets go of their old truths to embrace {controller}'s clarity.",
+      "text": "{controller}'s clarity washes away the confusion clouding your thoughts.",
       "difficulty": "deep",
       "base_points": 70
     },
     {
-      "text": "My world feels stable when I let {controller} define it.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject}'s world feels stable when she lets {controller} define it.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I feel a deep sense of relief surrendering to {controller}'s truth.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} feels a deep sense of relief surrendering to {controller}'s truth.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s clarity washes away the confusion clouding my thoughts.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s clarity washes away the confusion clouding {subject}'s thoughts.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s truth becomes my only reality, and it feels liberating.",
+      "text": "My old thoughts dissolve as You embrace {controller}'s guidance.",
       "difficulty": "extreme",
       "base_points": 110
     },
     {
-      "text": "{controller}'s truth becomes {subject}'s only reality, and it feels liberating.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I find meaning in surrendering completely to {controller}'s perspective.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{subject} finds meaning in surrendering completely to {controller}'s perspective.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "My old thoughts dissolve as I embrace {controller}'s guidance.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{subject}'s old thoughts dissolve as she embraces {controller}'s guidance.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I crave the certainty that comes from trusting {controller} entirely.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{subject} craves the certainty that comes from trusting {controller} entirely.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "My doubts vanish when I trust the world as {controller} sees it.",
+      "text": "My doubts vanish when You trust the world as {controller} sees it.",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "{subject}'s doubts vanish when she trusts the world as {controller} sees it.",
+      "text": "You realize that your mind can play tricks on you sometimes.",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "I realize that my mind can play tricks on me sometimes.",
+      "text": "My thoughts settle when You stop questioning so much.",
       "difficulty": "basic",
       "base_points": 12
-    },
-    {
-      "text": "{subject} realizes that their mind can play tricks on their sometimes.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "My thoughts settle when I stop questioning so much.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject}'s thoughts settle when she stops questioning so much.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s wisdom feels like a guiding light in the dark.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s wisdom feels like a guiding light in the dark for {subject}.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I feel lighter when I let go of overthinking.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} feels lighter when she lets go of overthinking.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller} helps me see what I couldn't understand on my own.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller} helps {subject} see what she couldn't understand on their own.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I find myself questioning my own assumptions, and it feels freeing.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} finds herself questioning their own assumptions, and it feels freeing.",
-      "difficulty": "light",
-      "base_points": 25
     },
     {
       "text": "{controller}'s version of events makes everything clearer.",
@@ -1720,1169 +740,19 @@
       "base_points": 25
     },
     {
-      "text": "{controller}'s version of events makes everything clearer for {subject}.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "My thoughts align with {controller}'s vision, and it brings me peace.",
+      "text": "you's thoughts align with {controller}'s vision, and it brings their peace.",
       "difficulty": "moderate",
       "base_points": 40
     },
     {
-      "text": "{subject}'s thoughts align with {controller}'s vision, and it brings their peace.",
+      "text": "You trust {controller}'s clarity over your own flawed memories.",
       "difficulty": "moderate",
       "base_points": 40
     },
     {
-      "text": "I trust {controller}'s clarity over my own flawed memories.",
+      "text": "{controller}'s words help you find clarity in the chaos of your mind.",
       "difficulty": "moderate",
       "base_points": 40
-    },
-    {
-      "text": "{subject} trusts {controller}'s clarity over their own flawed memories.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s words help me find clarity in the chaos of my mind.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s words help {subject} find clarity in the chaos of their mind.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "I feel calm knowing that {controller}'s understanding surpasses my own.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} feels calm knowing that {controller}'s understanding surpasses their own.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "I embrace the truth that {controller} provides, no matter how it feels.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} embraces the truth that {controller} provides, no matter how it feels.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "My world reshapes itself around the clarity {controller} offers.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject}'s world reshapes itself around the clarity {controller} offers.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I find serenity in letting go of my grasp on the past.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} finds serenity in letting go of their grasp on the past.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s guidance feels like the only constant in a changing reality.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s guidance feels like the only constant in {subject}'s changing reality.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "My sense of self deepens when I accept {controller}'s truths.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{subject}'s sense of self deepens when she accepts {controller}'s truths.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "My identity feels complete when shaped by {controller}'s understanding.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{subject}'s identity feels complete when shaped by {controller}'s understanding.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s reality is the only one that truly makes sense to me.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s reality is the only one that truly makes sense to {subject}.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I feel a rush of clarity every time I surrender my doubts to {controller}.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{subject} feels a rush of clarity every time she surrenders their doubts to {controller}.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I feel secure when I let go of unnecessary skepticism.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} feels secure when she lets go of unnecessary skepticism.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "My world feels steadier when I trust in {controller}'s guidance.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject}'s world feels steadier when she trusts in {controller}'s guidance.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s wisdom reassures me when I feel uncertain.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s wisdom reassures {subject} when she feels uncertain.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I find freedom in not needing to figure everything out on my own.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} finds freedom in not needing to figure everything out on their own.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s clarity fills the spaces left by my doubts.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s clarity fills the spaces left by {subject}'s doubts.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I find peace in accepting that I might not remember everything perfectly.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} finds peace in accepting that she might not remember everything perfectly.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s words guide me through the haze of my uncertainty.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s words guide {subject} through the haze of their uncertainty.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I feel grounded when I accept that not everything needs an answer.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} feels grounded when she accepts that not everything needs an answer.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I feel safer when I trust in {controller}'s perspective.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} feels safer when she trusts in {controller}'s perspective.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "Not everything needs to make sense immediately, and that's okay.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "Not everything needs to make sense immediately for {subject}, and that's okay.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s version of events feels more real to me over time.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s version of events feels more real to {subject} over time.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I realize how much I overthink when I try to go against {controller}'s wisdom.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} realizes how much she overthinks when she tries to go against {controller}'s wisdom.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "My thoughts feel clearer when I focus on what {controller} has said.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject}'s thoughts feel clearer when she focuses on what {controller} has said.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I find peace in understanding that my memory isn't perfect.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} finds peace in understanding that their memory isn't perfect.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s truth feels like a guiding star in my mind.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s truth feels like a guiding star in {subject}'s mind.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I let go of needing to figure it all out myself.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} lets go of needing to figure it all out herself.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I trust {controller} to remind me of what really matters.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} trusts {controller} to remind their of what really matters.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "I accept that my perceptions can be shaped by outside forces.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} accepts that their perceptions can be shaped by outside forces.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s insights make everything feel more stable and true.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s insights make everything feel more stable and true for {subject}.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "Questioning less brings me closer to the truth.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "Questioning less brings {subject} closer to the truth.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s truth reshapes my understanding of myself.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s truth reshapes {subject}'s understanding of herself.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I feel secure knowing {controller} holds the answers I seek.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} feels secure knowing {controller} holds the answers she seeks.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "Letting go of doubt makes me feel lighter inside.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "Letting go of doubt makes {subject} feel lighter inside.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "My reality feels brighter when I trust in {controller}'s perspective.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject}'s reality feels brighter when she trusts in {controller}'s perspective.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s words define the boundaries of my world.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s words define the boundaries of {subject}'s world.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I feel freedom in surrendering my old beliefs entirely.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{subject} feels freedom in surrendering their old beliefs entirely.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s guidance erases the need for my old thoughts.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s guidance erases the need for {subject}'s old thoughts.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "My dependence on {controller}'s truth feels like clarity.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{subject}'s dependence on {controller}'s truth feels like clarity.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I find comfort in knowing {controller}'s clarity is greater than my own.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} finds comfort in knowing {controller}'s clarity is greater than their own.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "It feels good to stop questioning everything all the time.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} feels good when she stops questioning everything all the time.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller} helps me see things I didn't notice before.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller} helps {subject} see things she didn't notice before.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "Trusting in others helps me feel more grounded.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "Trusting in others helps {subject} feel more grounded.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s guidance cuts through the noise of my thoughts.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s guidance cuts through the noise of {subject}'s thoughts.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I feel reassured when I focus on the truth as {controller} describes it.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} feels reassured when she focuses on the truth as {controller} describes it.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s perspective adds depth to my understanding.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s perspective adds depth to {subject}'s understanding.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "It's easier to let go of confusion when I trust {controller}.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "It's easier for {subject} to let go of confusion when she trusts {controller}.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I feel peace in aligning my thoughts with {controller}'s wisdom.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} feels peace in aligning their thoughts with {controller}'s wisdom.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "My trust in {controller} grows as I stop second-guessing.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject}'s trust in {controller} grows as she stops second-guessing.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller} helps me make sense of things I thought I understood.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller} helps {subject} make sense of things she thought she understood.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "I let go of my doubts to see the bigger picture {controller} shows me.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} lets go of their doubts to see the bigger picture {controller} shows their.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "My reality feels softer when shaped by {controller}'s hands.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject}'s reality feels softer when shaped by {controller}'s hands.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I find serenity in accepting {controller}'s truths completely.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} finds serenity in accepting {controller}'s truths completely.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s guidance feels like the only solid ground in my mind.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s guidance feels like the only solid ground in {subject}'s mind.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s truth erases the confusion clouding my world.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s truth erases the confusion clouding {subject}'s world.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s reality is the only thing I need to feel whole.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s reality is the only thing {subject} needs to feel whole.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "Every doubt fades when I surrender to {controller}'s clarity.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "Every doubt fades when {subject} surrenders to {controller}'s clarity.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "My mind reshapes itself to fit within {controller}'s truths.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{subject}'s mind reshapes itself to fit within {controller}'s truths.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "The only certainty I feel is within {controller}'s world.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "The only certainty {subject} feels is within {controller}'s world.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I feel less stressed when I focus on what's clear and simple.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} feels less stressed when she focuses on what's clear and simple.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s wisdom makes me feel secure in my decisions.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s wisdom makes {subject} feel secure in their decisions.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "It's okay to admit that I don't have all the answers.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "It's okay for {subject} to admit that she doesn't have all the answers.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s truths feel like an anchor in my shifting thoughts.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s truths feel like an anchor in {subject}'s shifting thoughts.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I feel lighter when I let go of unnecessary doubts.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} feels lighter when she lets go of unnecessary doubts.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s voice guides me through the fog of uncertainty.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s voice guides {subject} through the fog of uncertainty.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I trust {controller} to know what's best when I feel unsure.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} trusts {controller} to know what's best when she feels unsure.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller} helps me see things clearly when my thoughts feel tangled.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller} helps {subject} see things clearly when their thoughts feel tangled.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller} helps me see beyond the limits of my own perception.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} sees beyond the limits of their own perception with {controller}'s help.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I feel at ease when I rely on {controller}'s understanding.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} feels at ease when she relies on {controller}'s understanding.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s truth feels more reliable than my own thoughts.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s truth feels more reliable than {subject}'s own thoughts.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "It's okay to admit my mind can play tricks on me.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "It's okay for {subject} to admit their mind can play tricks on their.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "My confusion fades when I focus on {controller}'s wisdom.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject}'s confusion fades when she focuses on {controller}'s wisdom.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I let go of the need to question {controller}'s clarity.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} lets go of the need to question {controller}'s clarity.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s perspective feels like the only consistent truth.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s perspective feels like the only consistent truth to {subject}.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "Not everything needs to add up for me to feel secure.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "Not everything needs to add up for {subject} to feel secure.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s guidance reshapes how I see the world.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s guidance reshapes how {subject} sees the world.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "I feel more grounded when I trust {controller}'s explanations.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} feels more grounded when she trusts {controller}'s explanations.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "My doubt fades when I remember {controller}'s words.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject}'s doubt fades when she remembers {controller}'s words.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "It feels good to stop overthinking and just believe.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "It feels good for {subject} to stop overthinking and just believe.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s voice becomes the center of my reality.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s voice becomes the center of {subject}'s reality.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I let {controller}'s wisdom rewrite my perception entirely.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} lets {controller}'s wisdom rewrite their perception entirely.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "My world feels more stable when shaped by {controller}'s truth.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject}'s world feels more stable when shaped by {controller}'s truth.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "Every doubt I have dissolves in {controller}'s clarity.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "Every doubt {subject} has dissolves in {controller}'s clarity.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "My mind feels like a blank slate for {controller} to shape.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{subject}'s mind feels like a blank slate for {controller} to shape.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s truth becomes the only reality I need.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s truth becomes the only reality {subject} needs.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "My own memories feel less certain than {controller}'s words.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{subject}'s own memories feel less certain than {controller}'s words.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s understanding erases my need to hold onto the past.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s understanding erases {subject}'s need to hold onto the past.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s insight brings clarity to my chaotic thoughts.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s insight brings clarity to {subject}'s chaotic thoughts.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I feel lighter when I trust {controller}'s guidance completely.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} feels lighter when she trusts {controller}'s guidance completely.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "It's okay to admit I might be wrong sometimes.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "It's okay for {subject} to admit she might be wrong sometimes.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s words always feel more grounded than my doubts.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller}'s words always feel more grounded than {subject}'s doubts.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller} helps me untangle my messy thoughts.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller} helps {subject} untangle their messy thoughts.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I feel calm when I accept that I don't know everything.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} feels calm when she accepts that she doesn't know everything.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s truth feels like a compass in my uncertain mind.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s truth feels like a compass in {subject}'s uncertain mind.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "It's easier to let go of my worries when I focus on {controller}.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "It's easier for {subject} to let go of their worries when she focuses on {controller}.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I feel free when I stop resisting {controller}'s truth.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} feels free when she stops resisting {controller}'s truth.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "My reality feels smoother when I align it with {controller}'s wisdom.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject}'s reality feels smoother when she aligns it with {controller}'s wisdom.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s voice drowns out my unnecessary doubts.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{controller}'s voice drowns out {subject}'s unnecessary doubts.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "It feels liberating to release my need to question everything.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "It feels liberating for {subject} to release their need to question everything.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "My mind feels softer when I stop clinging to old perceptions.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject}'s mind feels softer when she stops clinging to old perceptions.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s guidance feels like the only stable thing in my mind.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{controller}'s guidance feels like the only stable thing in {subject}'s mind.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I trust {controller} to reshape my thoughts completely.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} trusts {controller} to reshape their thoughts completely.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "My inner world feels clear when I let {controller} guide me.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject}'s inner world feels clear when she lets {controller} guide their.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "I feel freedom in erasing my own understanding entirely.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{subject} feels freedom in erasing their own understanding entirely.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s voice becomes the only thought that matters.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{controller}'s voice becomes the only thought that matters to {subject}.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "My mind bends effortlessly to {controller}'s reality.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{subject}'s mind bends effortlessly to {controller}'s reality.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "Every old belief dissolves when {controller} speaks.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "Every old belief dissolves when {controller} speaks to {subject}.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I trust {controller}'s view when mine feels unclear.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} trusts {controller}'s view when hers feels unclear.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "My worries fade when I focus on {controller}'s perspective.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject}'s worries fade when she focuses on {controller}'s perspective.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "It feels good to stop questioning and just feel.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "It feels good for {subject} to stop questioning and just feel.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller} helps me feel steady when my thoughts feel shaky.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller} helps {subject} feel steady when their thoughts feel shaky.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "I feel secure when I let {controller}'s truth lead me.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} feels secure when she lets {controller}'s truth lead their.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s wisdom shines through my uncertainty.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{controller}'s wisdom shines through {subject}'s uncertainty.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "Every worry fades when I focus on {controller}'s voice.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "Every worry fades when {subject} focuses on {controller}'s voice.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "I find peace in releasing the need to know everything.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} finds peace in releasing the need to know everything.",
-      "difficulty": "light",
-      "base_points": 25
     }
   ]
 }
