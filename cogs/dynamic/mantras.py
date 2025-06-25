@@ -13,76 +13,88 @@ import difflib
 
 class ThemeSelectView(discord.ui.View):
     """View for managing themes with select menu."""
+    
     def __init__(self, cog, user, current_themes):
-        super().__init__(timeout=120)
+        super().__init__(timeout=300)  # 5 minute timeout
         self.cog = cog
         self.user = user
-        self.current_themes = current_themes.copy() if current_themes else []
-        self.selected_themes = self.current_themes.copy()
-        # Build select options from loaded themes
-        options = [
-            discord.SelectOption(
-                label=theme.capitalize(),
-                value=theme,
-                default=theme in self.current_themes
+        self.current_themes = current_themes.copy()
+        self.original_themes = current_themes.copy()
+        self._is_finished = False  # Track if we've already handled a button press
+        
+        # Create select menu with all available themes
+        options = []
+        for theme_name in sorted(self.cog.themes.keys()):
+            description = self.cog.themes[theme_name].get("description", "")[:100]
+            option = discord.SelectOption(
+                label=theme_name.capitalize(),
+                value=theme_name,
+                description=description,
+                default=theme_name in self.current_themes
             )
-            for theme in sorted(self.cog.themes.keys())
-        ]
-        self.select = discord.ui.Select(
-            placeholder="Select your active modules...",
-            min_values=1,
-            max_values=len(options),
+            options.append(option)
+        
+        select = discord.ui.Select(
+            placeholder="Select modules to toggle on/off",
             options=options,
-            custom_id="theme_select"
+            min_values=0,
+            max_values=len(options)
         )
-        self.select.callback = self.theme_select_callback
-        self.add_item(self.select)
-        # Confirm button
-        self.save_button = discord.ui.Button(
-            label="Confirm Parameters",
-            style=discord.ButtonStyle.success,
-            custom_id="save_themes"
-        )
-        self.save_button.callback = self.save_callback
-        self.add_item(self.save_button)
-        # Cancel button
-        self.cancel_button = discord.ui.Button(
-            label="Cancel",
-            style=discord.ButtonStyle.danger,
-            custom_id="cancel_themes"
-        )
-        self.cancel_button.callback = self.cancel_callback
-        self.add_item(self.cancel_button)
-
+        select.callback = self.theme_select_callback
+        self.add_item(select)
+        
+        # Add save button
+        save_button = discord.ui.Button(label="Confirm Parameters", style=discord.ButtonStyle.primary)
+        save_button.callback = self.save_callback
+        self.add_item(save_button)
+        
+        # Add cancel button
+        cancel_button = discord.ui.Button(label="Cancel", style=discord.ButtonStyle.secondary)
+        cancel_button.callback = self.cancel_callback
+        self.add_item(cancel_button)
+    
     async def theme_select_callback(self, interaction: discord.Interaction):
-        # Update selected themes
-        self.selected_themes = self.select.values
-        await interaction.response.defer()  # No UI update needed
-
+        """Handle theme selection."""
+        # Update current themes based on selection
+        self.current_themes = interaction.data["values"]
+        
+        # Use defer with ephemeral=True to match the original message
+        await interaction.response.defer(ephemeral=True)
+    
     async def save_callback(self, interaction: discord.Interaction):
-        # Always get the latest selection
-        selected = self.select.values
-        if not selected:
-            await interaction.response.send_message(
-                "You must select at least one module.", ephemeral=True
-            )
+        """Save theme changes."""
+        # Prevent double-processing
+        if self._is_finished:
             return
-        # Save to user config
+        self._is_finished = True
+        
+        if not self.current_themes:
+            await interaction.response.send_message(
+                "You must have at least one conditioning module active!",
+                ephemeral=True
+            )
+            self._is_finished = False  # Reset since we didn't actually finish
+            return
+        
+        # Save changes
         config = self.cog.get_user_mantra_config(self.user)
-        config["themes"] = selected
+        config["themes"] = self.current_themes
         self.cog.save_user_mantra_config(self.user, config)
-        # Build confirmation embed
+        
         embed = discord.Embed(
-            title="✅ Modules Updated",
-            description=f"Active modules: {', '.join(selected)}",
+            title="✅ Parameters Adjusted",
+            description=f"**Active conditioning modules:** {', '.join(self.current_themes)}",
             color=discord.Color.green()
         )
-        # Disable all components
+        
+        # Disable all components first
         for item in self.children:
             item.disabled = True
-        await interaction.response.edit_message(embed=embed, view=self)
+        
+        # Remove the view entirely
+        await interaction.response.edit_message(embed=embed, view=None)
         self.stop()
-
+    
     async def cancel_callback(self, interaction: discord.Interaction):
         """Cancel without saving."""
         embed = discord.Embed(
@@ -90,10 +102,9 @@ class ThemeSelectView(discord.ui.View):
             description="No changes were made to your conditioning parameters.",
             color=discord.Color.red()
         )
-        # Disable all components
-        for item in self.children:
-            item.disabled = True
-        await interaction.response.edit_message(embed=embed, view=self)
+        
+        # Remove the view entirely
+        await interaction.response.edit_message(embed=embed, view=None)
         self.stop()
 
 
