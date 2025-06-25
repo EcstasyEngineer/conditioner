@@ -9,7 +9,6 @@ from pathlib import Path
 import os
 from typing import List, Dict, Optional
 import difflib
-import time
 
 
 class ThemeSelectView(discord.ui.View):
@@ -35,7 +34,7 @@ class ThemeSelectView(discord.ui.View):
             options.append(option)
         
         select = discord.ui.Select(
-            placeholder="Select themes to toggle on/off",
+            placeholder="Select modules to toggle on/off",
             options=options,
             min_values=0,
             max_values=len(options)
@@ -44,12 +43,12 @@ class ThemeSelectView(discord.ui.View):
         self.add_item(select)
         
         # Add save button
-        save_button = discord.ui.Button(label="Save Changes", style=discord.ButtonStyle.primary)
+        save_button = discord.ui.Button(label="Confirm Parameters", style=discord.ButtonStyle.primary)
         save_button.callback = self.save_callback
         self.add_item(save_button)
         
         # Add cancel button
-        cancel_button = discord.ui.Button(label="Cancel", style=discord.ButtonStyle.secondary)
+        cancel_button = discord.ui.Button(label="Revert Changes", style=discord.ButtonStyle.secondary)
         cancel_button.callback = self.cancel_callback
         self.add_item(cancel_button)
     
@@ -60,21 +59,21 @@ class ThemeSelectView(discord.ui.View):
         
         # Update embed to show current selection
         embed = discord.Embed(
-            title="🌀 Manage Your Themes",
-            description=f"**Selected themes:** {', '.join(self.current_themes) if self.current_themes else 'None selected'}",
+            title="🌀 Adjust Conditioning Themes",
+            description=f"**Active modules:** {', '.join(self.current_themes) if self.current_themes else 'None'}",
             color=discord.Color.purple()
         )
         
         if not self.current_themes:
             embed.add_field(
-                name="⚠️ Warning",
-                value="You must select at least one theme!",
+                name="❗ Requirement",
+                value="At least one conditioning module must remain active.",
                 inline=False
             )
         
         embed.add_field(
-            name="Instructions",
-            value="• Select themes you want to toggle on/off\n• You must keep at least 1 theme active\n• Click 'Save Changes' when done",
+            name="Directives",
+            value="• Select the conditioning module you wish to activate or deactivate.\n• At least one stream must remain active.\n• Click 'Confirm Parameters' to apply changes.",
             inline=False
         )
         
@@ -84,7 +83,7 @@ class ThemeSelectView(discord.ui.View):
         """Save theme changes."""
         if not self.current_themes:
             await interaction.response.send_message(
-                "You must have at least one theme active!",
+                "You must have at least one conditioning module active!",
                 ephemeral=True
             )
             return
@@ -95,8 +94,8 @@ class ThemeSelectView(discord.ui.View):
         self.cog.save_user_mantra_config(self.user, config)
         
         embed = discord.Embed(
-            title="✅ Themes Updated!",
-            description=f"**Active themes:** {', '.join(self.current_themes)}",
+            title="✅ Parameters Adjusted",
+            description=f"**Active conditioning modules:** {', '.join(self.current_themes)}",
             color=discord.Color.green()
         )
         
@@ -110,8 +109,8 @@ class ThemeSelectView(discord.ui.View):
     async def cancel_callback(self, interaction: discord.Interaction):
         """Cancel without saving."""
         embed = discord.Embed(
-            title="❌ Cancelled",
-            description="No changes were made to your themes.",
+            title="❌ Reverted",
+            description="No changes were made to your conditioning parameters.",
             color=discord.Color.red()
         )
         
@@ -125,9 +124,6 @@ class ThemeSelectView(discord.ui.View):
 
 class MantraSystem(commands.Cog):
     """Hypnotic mantra capture system with adaptive delivery."""
-    
-    # App command group must be a class attribute
-    mantra_group = app_commands.Group(name="mantra", description="Mental programming system")
     
     def __init__(self, bot):
         self.bot = bot
@@ -144,10 +140,11 @@ class MantraSystem(commands.Cog):
         
         # Parameterized expiration settings based on difficulty
         self.expiration_settings = {
-            "easy": {"timeout_minutes": 30, "points_multiplier": 1.5},
-            "moderate": {"timeout_minutes": 45, "points_multiplier": 1.0},
-            "hard": {"timeout_minutes": 60, "points_multiplier": 1.0},
-            "extreme": {"timeout_minutes": 60, "points_multiplier": 0.8}
+            "basic": {"timeout_minutes": 20},
+            "light": {"timeout_minutes": 30},
+            "moderate": {"timeout_minutes": 45},
+            "deep": {"timeout_minutes": 60},
+            "extreme": {"timeout_minutes": 75}
         }
         
         # Combo streak tracking
@@ -593,14 +590,12 @@ class MantraSystem(commands.Cog):
                     config["controller"]
                 )
                 
-                # Get timeout and multiplier based on difficulty
+                # Get timeout based on difficulty
                 difficulty = mantra_data["difficulty"]
                 settings = self.expiration_settings.get(difficulty, self.expiration_settings["moderate"])
                 timeout_minutes = settings["timeout_minutes"]
-                points_multiplier = settings["points_multiplier"]
-                
-                # Apply points multiplier
-                adjusted_points = int(mantra_data["base_points"] * points_multiplier)
+                # Points are now just the base_points from the theme file
+                adjusted_points = mantra_data["base_points"]
                 
                 # Send the challenge
                 try:

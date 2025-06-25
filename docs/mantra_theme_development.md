@@ -11,7 +11,7 @@ This guide provides best practices and requirements for creating new mantra them
   "description": "Brief description of the theme's focus",
   "mantras": [
     {
-      "text": "The mantra text with {pet_name} and {dominant_title} variables",
+      "text": "The mantra text with {subject} and {controller} variables",
       "difficulty": "basic|light|moderate|deep|extreme",
       "base_points": 10-120
     }
@@ -24,8 +24,8 @@ This guide provides best practices and requirements for creating new mantra them
 2. **Description**: 10-20 word summary of the theme
 3. **Mantras array**: Minimum 25-30 mantras for variety
 4. **Template variables**: 
-   - `{pet_name}` - User's chosen pet name
-   - `{dominant_title}` - Either "Master" or "Mistress"
+   - `{subject}` - User's chosen pet name
+   - `{controller}` - Either "Master" or "Mistress"
 
 ### Difficulty Distribution
 - **Basic** (10-15 points): 5-6 mantras - Simple affirmations
@@ -42,6 +42,17 @@ Based on difficulty analysis, use these specific point values:
 - **Deep**: 60, 65, 70, 75, 80
 - **Extreme**: 100, 105, 110, 115, 120
 
+## Gender Neutrality
+All mantra text **must** be gender-neutral. The `{controller}` variable can represent any gender (e.g., Master, Mistress, Goddess), and mantras must flow naturally with any of them. Avoid gendered terms or pronouns that are not part of the template variables.
+
+**Good Example (Neutral):**
+- `"{subject} exists to serve {controller}."`
+- `"{controller} owns {subject}'s thoughts."`
+
+**Bad Example (Gendered):**
+- `"She owns {subject}'s thoughts."` (Incorrectly assumes a female controller)
+- `"He is {subject}'s only reality."` (Incorrectly assumes a male controller)
+
 ## Content Guidelines
 
 ### 1. Progression Design
@@ -56,7 +67,7 @@ Each difficulty level should build naturally:
 
 #### Effective Techniques
 - **First person**: "I am...", "My mind..."
-- **Third person with pet_name**: "{pet_name} becomes...", "{pet_name}'s thoughts..."
+- **Third person with subject**: "{subject} becomes...", "{subject}'s thoughts..."
 - **Present tense**: Creates immediacy
 - **Progressive tense**: "becoming", "growing" - implies ongoing change
 - **Declarative statements**: State as fact, not possibility
@@ -127,23 +138,23 @@ Each difficulty level should build naturally:
 Create example mantras for each level first:
 ```
 Basic: "I enjoy [theme concept]"
-Light: "[Theme] feels natural for {pet_name}"
+Light: "[Theme] feels natural for {subject}"
 Moderate: "I am defined by my [theme]"
 Deep: "My entire being is consumed by [theme]"
-Extreme: "{pet_name} exists only as [theme] for {dominant_title}"
+Extreme: "{subject} exists only as [theme] for {controller}"
 ```
 
 ### Step 3: Variation Techniques
 For each difficulty level, vary:
-- **Perspective**: I/my vs {pet_name}/{pet_name}'s
+- **Perspective**: I/my vs {subject}/{subject}'s
 - **Focus**: Mental vs emotional vs physical
 - **Intensity**: Gentle → firm → absolute
 - **Scope**: Specific → general → all-encompassing
 
 ### Step 4: Template Testing
 Check each mantra with different combinations:
-- pet_name: puppet, kitten, toy, slave
-- dominant_title: Master, Mistress
+- subject: puppet, kitten, toy, slave
+- controller: Master, Mistress
 
 Ensure natural flow with all combinations.
 
@@ -160,7 +171,7 @@ Before finalizing a theme:
 - [ ] Natural language flow
 - [ ] Appropriate point values
 - [ ] No duplicate concepts
-- [ ] Tested with various pet_name/dominant_title combinations
+- [ ] Tested with various subject/controller combinations
 
 ## Example Development Process
 
@@ -179,13 +190,6 @@ Before finalizing a theme:
    - Moderate: Identity connecting to emptiness
    - Deep: Fundamental hollowness
    - Extreme: Complete mental void
-
-## Safety Considerations
-
-- Extreme content should be clearly marked
-- Consider adding progression gates for intense themes
-- Balance intensity with user safety
-- Include positive reinforcement where appropriate
 
 ## File Management
 

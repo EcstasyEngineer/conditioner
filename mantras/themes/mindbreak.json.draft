@@ -10,7 +10,7 @@
       "base_points": 12
     },
     {
-      "text": "this doll lets thoughts dissolve completely.",
+      "text": "{subject} lets their thoughts dissolve completely.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -20,7 +20,7 @@
       "base_points": 12
     },
     {
-      "text": "this doll allows her mind to become soft and open.",
+      "text": "{subject} allows their mind to become soft and open.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -35,7 +35,7 @@
       "base_points": 12
     },
     {
-      "text": "this doll surrenders her thoughts to {controller}'s will.",
+      "text": "{subject} surrenders their thoughts to {controller}'s will.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -45,7 +45,7 @@
       "base_points": 25
     },
     {
-      "text": "I feel her resistance fade away peacefully.",
+      "text": "I feel their resistance fade away peacefully.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -100,7 +100,7 @@
       "base_points": 70
     },
     {
-      "text": "Who this doll was no longer matters; she is free.",
+      "text": "Who {subject} was no longer matters; she is free.",
       "difficulty": "deep",
       "base_points": 70
     },
@@ -110,7 +110,7 @@
       "base_points": 70
     },
     {
-      "text": "{controller} shatters my thoughts, leaving her pure.",
+      "text": "{controller} shatters my thoughts, leaving their pure.",
       "difficulty": "deep",
       "base_points": 70
     },
@@ -140,7 +140,7 @@
       "base_points": 110
     },
     {
-      "text": "{controller}'s control breaks this doll, remakes her, perfects her.",
+      "text": "{controller}'s control breaks {subject}, remakes their, perfects their.",
       "difficulty": "extreme",
       "base_points": 110
     },
@@ -150,7 +150,7 @@
       "base_points": 110
     },
     {
-      "text": "Every shattered thought belongs to {controller} through this doll now.",
+      "text": "Every shattered thought belongs to {controller} through {subject} now.",
       "difficulty": "extreme",
       "base_points": 110
     },
@@ -165,7 +165,7 @@
       "base_points": 12
     },
     {
-      "text": "this doll lets her thoughts drift away like clouds.",
+      "text": "{subject} lets their thoughts drift away like clouds.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -180,7 +180,7 @@
       "base_points": 12
     },
     {
-      "text": "this doll lets {controller}'s guidance rewrite her mind completely.",
+      "text": "{subject} lets {controller}'s guidance rewrite their mind completely.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -195,7 +195,7 @@
       "base_points": 25
     },
     {
-      "text": "Emptiness feels warm, freeing, and inviting for this doll.",
+      "text": "Emptiness feels warm, freeing, and inviting for {subject}.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -205,7 +205,7 @@
       "base_points": 25
     },
     {
-      "text": "{controller} lovingly breaks down every thought this doll holds.",
+      "text": "{controller} lovingly breaks down every thought {subject} holds.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -220,7 +220,7 @@
       "base_points": 40
     },
     {
-      "text": "this doll willingly surrenders every thought and identity.",
+      "text": "{subject} willingly surrenders every thought and identity.",
       "difficulty": "moderate",
       "base_points": 40
     },
@@ -245,7 +245,7 @@
       "base_points": 70
     },
     {
-      "text": "this doll embraces the beauty of having nothing left to hold onto.",
+      "text": "{subject} embraces the beauty of having nothing left to hold onto.",
       "difficulty": "deep",
       "base_points": 70
     },
@@ -255,7 +255,7 @@
       "base_points": 70
     },
     {
-      "text": "Every thought is erased, leaving space for transformation in this doll.",
+      "text": "Every thought is erased, leaving space for transformation in {subject}.",
       "difficulty": "deep",
       "base_points": 70
     },
@@ -285,7 +285,7 @@
       "base_points": 110
     },
     {
-      "text": "{controller} tears down my mind, leaving only his perfect control.",
+      "text": "{controller} tears down my mind, leaving only their perfect control.",
       "difficulty": "extreme",
       "base_points": 110
     },
@@ -305,7 +305,7 @@
       "base_points": 12
     },
     {
-      "text": "this doll allows herself to let go completely.",
+      "text": "{subject} allows herself to let go completely.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -325,7 +325,7 @@
       "base_points": 25
     },
     {
-      "text": "this doll lets go of all resistance; it feels freeing.",
+      "text": "{subject} lets go of all resistance; it feels freeing.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -335,7 +335,7 @@
       "base_points": 25
     },
     {
-      "text": "Every thought disappears, leaving stillness behind for this doll.",
+      "text": "Every thought disappears, leaving stillness behind for {subject}.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -350,7 +350,7 @@
       "base_points": 25
     },
     {
-      "text": "I feel {controller}'s words soften every part of her.",
+      "text": "I feel {controller}'s words soften every part of their.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -360,7 +360,7 @@
       "base_points": 40
     },
     {
-      "text": "my thoughts break apart, leaving her calm and still.",
+      "text": "my thoughts break apart, leaving their calm and still.",
       "difficulty": "moderate",
       "base_points": 40
     },
@@ -370,7 +370,7 @@
       "base_points": 40
     },
     {
-      "text": "this doll embraces her brokenness as the start of something new.",
+      "text": "{subject} embraces their brokenness as the start of something new.",
       "difficulty": "moderate",
       "base_points": 40
     },
@@ -390,7 +390,7 @@
       "base_points": 12
     },
     {
-      "text": "this doll lets go of her thoughts and embraces peace.",
+      "text": "{subject} lets go of their thoughts and embraces peace.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -410,7 +410,7 @@
       "base_points": 12
     },
     {
-      "text": "I feel {controller}'s presence dissolve her resistance.",
+      "text": "I feel {controller}'s presence dissolve their resistance.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -425,7 +425,7 @@
       "base_points": 25
     },
     {
-      "text": "this doll finds joy in the quiet emptiness of her mind.",
+      "text": "{subject} finds joy in the quiet emptiness of their mind.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -445,7 +445,7 @@
       "base_points": 40
     },
     {
-      "text": "this doll releases her mind to become blank and open.",
+      "text": "{subject} releases their mind to become blank and open.",
       "difficulty": "moderate",
       "base_points": 40
     },
@@ -505,7 +505,7 @@
       "base_points": 110
     },
     {
-      "text": "my identity crumbles entirely, leaving her free.",
+      "text": "my identity crumbles entirely, leaving their free.",
       "difficulty": "extreme",
       "base_points": 110
     },
@@ -530,7 +530,7 @@
       "base_points": 12
     },
     {
-      "text": "my thoughts drift away, leaving her calm and blank.",
+      "text": "my thoughts drift away, leaving their calm and blank.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -540,7 +540,7 @@
       "base_points": 12
     },
     {
-      "text": "this doll allows herself to be at peace with nothingness.",
+      "text": "{subject} allows herself to be at peace with nothingness.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -565,7 +565,7 @@
       "base_points": 25
     },
     {
-      "text": "I feel free as her thoughts disappear.",
+      "text": "I feel free as their thoughts disappear.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -580,7 +580,7 @@
       "base_points": 25
     },
     {
-      "text": "this doll surrenders every thought to {controller}'s care.",
+      "text": "{subject} surrenders every thought to {controller}'s care.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -590,7 +590,7 @@
       "base_points": 40
     },
     {
-      "text": "this doll lets go of all control and feels peaceful.",
+      "text": "{subject} lets go of all control and feels peaceful.",
       "difficulty": "moderate",
       "base_points": 40
     },
@@ -615,7 +615,7 @@
       "base_points": 70
     },
     {
-      "text": "this doll embraces the emptiness as her true state.",
+      "text": "{subject} embraces the emptiness as their true state.",
       "difficulty": "deep",
       "base_points": 70
     },
@@ -650,7 +650,7 @@
       "base_points": 110
     },
     {
-      "text": "Every thought collapses under the weight of emptiness in this doll.",
+      "text": "Every thought collapses under the weight of emptiness in {subject}.",
       "difficulty": "extreme",
       "base_points": 110
     },
@@ -680,7 +680,7 @@
       "base_points": 12
     },
     {
-      "text": "this doll embraces calm and lets her mind fade.",
+      "text": "{subject} embraces calm and lets their mind fade.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -705,7 +705,7 @@
       "base_points": 25
     },
     {
-      "text": "I feel light as her mind empties completely.",
+      "text": "I feel light as their mind empties completely.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -730,7 +730,7 @@
       "base_points": 12
     },
     {
-      "text": "I feel her thoughts gently dissolve into stillness.",
+      "text": "I feel their thoughts gently dissolve into stillness.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -750,7 +750,7 @@
       "base_points": 12
     },
     {
-      "text": "this doll releases control and feels {controller}'s calming presence.",
+      "text": "{subject} releases control and feels {controller}'s calming presence.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -780,7 +780,7 @@
       "base_points": 40
     },
     {
-      "text": "I feel the weight of her thoughts lifted away.",
+      "text": "I feel the weight of their thoughts lifted away.",
       "difficulty": "moderate",
       "base_points": 40
     },
@@ -805,7 +805,7 @@
       "base_points": 70
     },
     {
-      "text": "this doll embraces the emptiness and finds profound serenity.",
+      "text": "{subject} embraces the emptiness and finds profound serenity.",
       "difficulty": "deep",
       "base_points": 70
     },
@@ -825,7 +825,7 @@
       "base_points": 70
     },
     {
-      "text": "this doll surrenders completely to {controller}'s transformative power.",
+      "text": "{subject} surrenders completely to {controller}'s transformative power.",
       "difficulty": "deep",
       "base_points": 70
     },
@@ -840,7 +840,7 @@
       "base_points": 110
     },
     {
-      "text": "this doll becomes nothing, a blank slate ready for change.",
+      "text": "{subject} becomes nothing, a blank slate ready for change.",
       "difficulty": "extreme",
       "base_points": 110
     },
@@ -870,7 +870,7 @@
       "base_points": 12
     },
     {
-      "text": "this doll lets go of her worries and feels calm take over.",
+      "text": "{subject} lets go of their worries and feels calm take over.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -905,7 +905,7 @@
       "base_points": 25
     },
     {
-      "text": "{controller}'s presence makes it easy for this doll to let go of resistance.",
+      "text": "{controller}'s presence makes it easy for {subject} to let go of resistance.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -935,7 +935,7 @@
       "base_points": 40
     },
     {
-      "text": "I feel {controller}'s power unraveling her old identity.",
+      "text": "I feel {controller}'s power unraveling their old identity.",
       "difficulty": "moderate",
       "base_points": 40
     },
@@ -945,7 +945,7 @@
       "base_points": 70
     },
     {
-      "text": "this doll surrenders her sense of self to the stillness.",
+      "text": "{subject} surrenders their sense of self to the stillness.",
       "difficulty": "deep",
       "base_points": 70
     },
@@ -955,7 +955,7 @@
       "base_points": 70
     },
     {
-      "text": "Resistance melts away, leaving only quiet submission in this doll.",
+      "text": "Resistance melts away, leaving only quiet submission in {subject}.",
       "difficulty": "deep",
       "base_points": 70
     },
@@ -1000,7 +1000,7 @@
       "base_points": 12
     },
     {
-      "text": "this doll finds peace in the quiet simplicity of her mind.",
+      "text": "{subject} finds peace in the quiet simplicity of their mind.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -1020,7 +1020,7 @@
       "base_points": 12
     },
     {
-      "text": "{controller}'s guidance fills the silence within this doll with reassurance.",
+      "text": "{controller}'s guidance fills the silence within {subject} with reassurance.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -1035,7 +1035,7 @@
       "base_points": 25
     },
     {
-      "text": "I feel her thoughts dissolve into quiet serenity.",
+      "text": "I feel their thoughts dissolve into quiet serenity.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -1055,7 +1055,7 @@
       "base_points": 12
     },
     {
-      "text": "I feel her thoughts soften into a gentle haze.",
+      "text": "I feel their thoughts soften into a gentle haze.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -1075,7 +1075,7 @@
       "base_points": 12
     },
     {
-      "text": "I feel {controller}'s presence ease every tension in her mind.",
+      "text": "I feel {controller}'s presence ease every tension in their mind.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -1090,7 +1090,7 @@
       "base_points": 25
     },
     {
-      "text": "this doll releases all resistance, feeling calm and open.",
+      "text": "{subject} releases all resistance, feeling calm and open.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -1115,7 +1115,7 @@
       "base_points": 40
     },
     {
-      "text": "this doll lets go of her sense of control, embracing renewal.",
+      "text": "{subject} lets go of their sense of control, embracing renewal.",
       "difficulty": "moderate",
       "base_points": 40
     },
@@ -1135,7 +1135,7 @@
       "base_points": 70
     },
     {
-      "text": "this doll surrenders her identity to the stillness of transformation.",
+      "text": "{subject} surrenders their identity to the stillness of transformation.",
       "difficulty": "deep",
       "base_points": 70
     },
@@ -1155,7 +1155,7 @@
       "base_points": 70
     },
     {
-      "text": "this doll finds profound freedom as {controller} tears down her barriers.",
+      "text": "{subject} finds profound freedom as {controller} tears down their barriers.",
       "difficulty": "deep",
       "base_points": 70
     },
@@ -1165,7 +1165,7 @@
       "base_points": 110
     },
     {
-      "text": "this doll dissolves completely, becoming a canvas for renewal.",
+      "text": "{subject} dissolves completely, becoming a canvas for renewal.",
       "difficulty": "extreme",
       "base_points": 110
     },
@@ -1210,7 +1210,7 @@
       "base_points": 12
     },
     {
-      "text": "{controller} whispers away every concern, leaving peace behind in this doll.",
+      "text": "{controller} whispers away every concern, leaving peace behind in {subject}.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -1225,7 +1225,7 @@
       "base_points": 25
     },
     {
-      "text": "I feel her identity relax into something flexible and new.",
+      "text": "I feel their identity relax into something flexible and new.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -1235,7 +1235,7 @@
       "base_points": 25
     },
     {
-      "text": "Resistance melts away, leaving behind calm acceptance in this doll.",
+      "text": "Resistance melts away, leaving behind calm acceptance in {subject}.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -1245,7 +1245,7 @@
       "base_points": 25
     },
     {
-      "text": "{controller}'s presence erases every fragment of resistance in this doll.",
+      "text": "{controller}'s presence erases every fragment of resistance in {subject}.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -1265,7 +1265,7 @@
       "base_points": 40
     },
     {
-      "text": "I feel the structure of her thoughts break into freedom.",
+      "text": "I feel the structure of their thoughts break into freedom.",
       "difficulty": "moderate",
       "base_points": 40
     },
@@ -1285,7 +1285,7 @@
       "base_points": 70
     },
     {
-      "text": "this doll releases every part of her old identity into the void.",
+      "text": "{subject} releases every part of their old identity into the void.",
       "difficulty": "deep",
       "base_points": 70
     },
@@ -1295,7 +1295,7 @@
       "base_points": 70
     },
     {
-      "text": "{controller} unravels my identity, leaving space for his design.",
+      "text": "{controller} unravels my identity, leaving space for their design.",
       "difficulty": "deep",
       "base_points": 70
     },
@@ -1310,7 +1310,7 @@
       "base_points": 110
     },
     {
-      "text": "this doll vanishes into the stillness, emerging as something new.",
+      "text": "{subject} vanishes into the stillness, emerging as something new.",
       "difficulty": "extreme",
       "base_points": 110
     },
@@ -1325,7 +1325,7 @@
       "base_points": 110
     },
     {
-      "text": "{controller} demolishes my sense of self, rebuilding her entirely.",
+      "text": "{controller} demolishes my sense of self, rebuilding their entirely.",
       "difficulty": "extreme",
       "base_points": 110
     },
@@ -1350,7 +1350,7 @@
       "base_points": 12
     },
     {
-      "text": "this doll lets go of every thought, embracing quiet renewal.",
+      "text": "{subject} lets go of every thought, embracing quiet renewal.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -1370,7 +1370,7 @@
       "base_points": 25
     },
     {
-      "text": "this doll releases her grip on identity, finding peace in change.",
+      "text": "{subject} releases their grip on identity, finding peace in change.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -1395,7 +1395,7 @@
       "base_points": 12
     },
     {
-      "text": "this doll lets her thoughts drift away, leaving quiet behind.",
+      "text": "{subject} lets their thoughts drift away, leaving quiet behind.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -1415,7 +1415,7 @@
       "base_points": 12
     },
     {
-      "text": "I feel calm as {controller}'s presence washes over her thoughts.",
+      "text": "I feel calm as {controller}'s presence washes over their thoughts.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -1425,7 +1425,7 @@
       "base_points": 25
     },
     {
-      "text": "I feel the soft unraveling of her thoughts into silence.",
+      "text": "I feel the soft unraveling of their thoughts into silence.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -1435,7 +1435,7 @@
       "base_points": 25
     },
     {
-      "text": "Resistance fades like a distant memory, leaving calm clarity in this doll.",
+      "text": "Resistance fades like a distant memory, leaving calm clarity in {subject}.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -1455,7 +1455,7 @@
       "base_points": 40
     },
     {
-      "text": "I feel her mental walls crumble, leaving space for peace.",
+      "text": "I feel their mental walls crumble, leaving space for peace.",
       "difficulty": "moderate",
       "base_points": 40
     },
@@ -1480,7 +1480,7 @@
       "base_points": 70
     },
     {
-      "text": "this doll surrenders everything she once held dear to the quiet.",
+      "text": "{subject} surrenders everything she once held dear to the quiet.",
       "difficulty": "deep",
       "base_points": 70
     },
@@ -1505,7 +1505,7 @@
       "base_points": 110
     },
     {
-      "text": "this doll vanishes into nothingness, ready to be rebuilt anew.",
+      "text": "{subject} vanishes into nothingness, ready to be rebuilt anew.",
       "difficulty": "extreme",
       "base_points": 110
     },
@@ -1515,7 +1515,7 @@
       "base_points": 110
     },
     {
-      "text": "{controller} obliterates my identity, replacing it with his design.",
+      "text": "{controller} obliterates my identity, replacing it with their design.",
       "difficulty": "extreme",
       "base_points": 110
     },
@@ -1555,7 +1555,7 @@
       "base_points": 12
     },
     {
-      "text": "{controller} helps this doll release every thought she no longer needs.",
+      "text": "{controller} helps {subject} release every thought she no longer needs.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -1565,7 +1565,7 @@
       "base_points": 25
     },
     {
-      "text": "this doll finds serenity in letting go of every expectation.",
+      "text": "{subject} finds serenity in letting go of every expectation.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -1575,7 +1575,7 @@
       "base_points": 25
     },
     {
-      "text": "Resistance melts into calm, leaving only quiet freedom in this doll.",
+      "text": "Resistance melts into calm, leaving only quiet freedom in {subject}.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -1600,7 +1600,7 @@
       "base_points": 40
     },
     {
-      "text": "this doll embraces the stillness, allowing transformation to begin.",
+      "text": "{subject} embraces the stillness, allowing transformation to begin.",
       "difficulty": "moderate",
       "base_points": 40
     },
@@ -1625,7 +1625,7 @@
       "base_points": 70
     },
     {
-      "text": "{controller} unravels my thoughts, creating space for his vision.",
+      "text": "{controller} unravels my thoughts, creating space for their vision.",
       "difficulty": "deep",
       "base_points": 70
     },
@@ -1670,7 +1670,7 @@
       "base_points": 12
     },
     {
-      "text": "my thoughts flow away like water, leaving her calm.",
+      "text": "my thoughts flow away like water, leaving their calm.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -1680,7 +1680,7 @@
       "base_points": 12
     },
     {
-      "text": "this doll finds peace in the stillness that fills her mind.",
+      "text": "{subject} finds peace in the stillness that fills their mind.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -1700,7 +1700,7 @@
       "base_points": 25
     },
     {
-      "text": "this doll lets go of resistance, finding freedom in stillness.",
+      "text": "{subject} lets go of resistance, finding freedom in stillness.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -1725,7 +1725,7 @@
       "base_points": 12
     },
     {
-      "text": "this doll breathes deeply, letting her thoughts fade to nothing.",
+      "text": "{subject} breathes deeply, letting their thoughts fade to nothing.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -1750,7 +1750,7 @@
       "base_points": 25
     },
     {
-      "text": "I feel her thoughts dissolve like mist in the morning.",
+      "text": "I feel their thoughts dissolve like mist in the morning.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -1760,12 +1760,12 @@
       "base_points": 25
     },
     {
-      "text": "Resistance is a memory, replaced by peace and clarity in this doll.",
+      "text": "Resistance is a memory, replaced by peace and clarity in {subject}.",
       "difficulty": "light",
       "base_points": 25
     },
     {
-      "text": "{controller} whispers away my resistance with his steady voice.",
+      "text": "{controller} whispers away my resistance with their steady voice.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -1780,7 +1780,7 @@
       "base_points": 40
     },
     {
-      "text": "this doll releases her hold on everything she thought she knew.",
+      "text": "{subject} releases their hold on everything she thought she knew.",
       "difficulty": "moderate",
       "base_points": 40
     },
@@ -1795,7 +1795,7 @@
       "base_points": 40
     },
     {
-      "text": "{controller} helps this doll let go of her old self, piece by piece.",
+      "text": "{controller} helps {subject} let go of their old self, piece by piece.",
       "difficulty": "moderate",
       "base_points": 40
     },
@@ -1805,7 +1805,7 @@
       "base_points": 40
     },
     {
-      "text": "{controller}'s control guides this doll to release her final barriers.",
+      "text": "{controller}'s control guides {subject} to release their final barriers.",
       "difficulty": "moderate",
       "base_points": 40
     },
@@ -1815,7 +1815,7 @@
       "base_points": 70
     },
     {
-      "text": "this doll surrenders her thoughts completely, finding peace in nothing.",
+      "text": "{subject} surrenders their thoughts completely, finding peace in nothing.",
       "difficulty": "deep",
       "base_points": 70
     },
@@ -1825,7 +1825,7 @@
       "base_points": 70
     },
     {
-      "text": "{controller}'s voice tears down my old beliefs, replacing them with his truth.",
+      "text": "{controller}'s voice tears down my old beliefs, replacing them with their truth.",
       "difficulty": "deep",
       "base_points": 70
     },
@@ -1835,7 +1835,7 @@
       "base_points": 70
     },
     {
-      "text": "{controller} unravels every thought this doll clings to, leaving her empty and calm.",
+      "text": "{controller} unravels every thought {subject} clings to, leaving their empty and calm.",
       "difficulty": "deep",
       "base_points": 70
     },
@@ -1845,7 +1845,7 @@
       "base_points": 110
     },
     {
-      "text": "this doll dissolves into nothingness, ready to be rebuilt entirely.",
+      "text": "{subject} dissolves into nothingness, ready to be rebuilt entirely.",
       "difficulty": "extreme",
       "base_points": 110
     },
@@ -1855,12 +1855,12 @@
       "base_points": 110
     },
     {
-      "text": "{controller} destroys my old self, reshaping me in his image.",
+      "text": "{controller} destroys my old self, reshaping me in their image.",
       "difficulty": "extreme",
       "base_points": 110
     },
     {
-      "text": "{controller} destroys my old self, reshaping her in his image.",
+      "text": "{controller} destroys my old self, reshaping their in their image.",
       "difficulty": "extreme",
       "base_points": 110
     },
@@ -1880,7 +1880,7 @@
       "base_points": 12
     },
     {
-      "text": "this doll lets the quiet take over, freeing her from distraction.",
+      "text": "{subject} lets the quiet take over, freeing their from distraction.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -1890,7 +1890,7 @@
       "base_points": 12
     },
     {
-      "text": "Each thought fades gently from this doll, leaving room for stillness.",
+      "text": "Each thought fades gently from {subject}, leaving room for stillness.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -1905,7 +1905,7 @@
       "base_points": 12
     },
     {
-      "text": "{controller} helps this doll let go, guiding her into perfect serenity.",
+      "text": "{controller} helps {subject} let go, guiding their into perfect serenity.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -1915,7 +1915,7 @@
       "base_points": 25
     },
     {
-      "text": "I feel resistance dissolve, leaving her lighter and free.",
+      "text": "I feel resistance dissolve, leaving their lighter and free.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -1945,7 +1945,7 @@
       "base_points": 40
     },
     {
-      "text": "this doll welcomes the emptiness, knowing it will lead to renewal.",
+      "text": "{subject} welcomes the emptiness, knowing it will lead to renewal.",
       "difficulty": "moderate",
       "base_points": 40
     },
@@ -1955,7 +1955,7 @@
       "base_points": 40
     },
     {
-      "text": "{controller}'s voice dismantles the defenses this doll thought she needed.",
+      "text": "{controller}'s voice dismantles the defenses {subject} thought she needed.",
       "difficulty": "moderate",
       "base_points": 40
     },
@@ -1965,7 +1965,7 @@
       "base_points": 40
     },
     {
-      "text": "{controller} helps this doll release her grip on everything holding her back.",
+      "text": "{controller} helps {subject} release their grip on everything holding their back.",
       "difficulty": "moderate",
       "base_points": 40
     },
@@ -1995,7 +1995,7 @@
       "base_points": 70
     },
     {
-      "text": "{controller} strips away my resistance, leaving her perfectly blank.",
+      "text": "{controller} strips away my resistance, leaving their perfectly blank.",
       "difficulty": "deep",
       "base_points": 70
     },
@@ -2015,7 +2015,7 @@
       "base_points": 110
     },
     {
-      "text": "{controller} tears down every part of me, rebuilding it as his own.",
+      "text": "{controller} tears down every part of me, rebuilding it as their own.",
       "difficulty": "extreme",
       "base_points": 110
     },
@@ -2035,7 +2035,7 @@
       "base_points": 12
     },
     {
-      "text": "I feel her thoughts slip away like sand through her fingers.",
+      "text": "I feel their thoughts slip away like sand through their fingers.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -2050,7 +2050,7 @@
       "base_points": 12
     },
     {
-      "text": "{controller} helps this doll find the calm within her own mind.",
+      "text": "{controller} helps {subject} find the calm within their own mind.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -2065,7 +2065,7 @@
       "base_points": 25
     },
     {
-      "text": "this doll releases her thoughts, finding freedom in their absence.",
+      "text": "{subject} releases their thoughts, finding freedom in their absence.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -2085,47 +2085,42 @@
       "base_points": 25
     },
     {
-      "text": "{controller} tears down my mind, leaving only her perfect control.",
+      "text": "{controller} tears down my mind, leaving only their perfect control.",
       "difficulty": "extreme",
       "base_points": 110
     },
     {
-      "text": "{controller} unravels my identity, leaving space for her design.",
+      "text": "{controller} unravels my identity, leaving space for their design.",
       "difficulty": "deep",
       "base_points": 70
     },
     {
-      "text": "{controller} obliterates my identity, replacing it with her design.",
+      "text": "{controller} obliterates my identity, replacing it with their design.",
       "difficulty": "extreme",
       "base_points": 110
     },
     {
-      "text": "{controller} unravels my thoughts, creating space for her vision.",
+      "text": "{controller} unravels my thoughts, creating space for their vision.",
       "difficulty": "deep",
       "base_points": 70
     },
     {
-      "text": "{controller} whispers away my resistance with her steady voice.",
+      "text": "{controller} whispers away my resistance with their steady voice.",
       "difficulty": "light",
       "base_points": 25
     },
     {
-      "text": "{controller}'s voice tears down my old beliefs, replacing them with her truth.",
+      "text": "{controller}'s voice tears down my old beliefs, replacing them with their truth.",
       "difficulty": "deep",
       "base_points": 70
     },
     {
-      "text": "{controller} destroys my old self, reshaping me in her image.",
+      "text": "{controller} destroys my old self, reshaping me in their image.",
       "difficulty": "extreme",
       "base_points": 110
     },
     {
-      "text": "{controller} destroys my old self, reshaping her in her image.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "I am remade by {controller}'s will, perfectly as she desires.",
+      "text": "{controller} destroys my old self, reshaping their in their image.",
       "difficulty": "extreme",
       "base_points": 110
     },
@@ -2135,7 +2130,12 @@
       "base_points": 110
     },
     {
-      "text": "{controller} tears down every part of me, rebuilding it as her own.",
+      "text": "I am remade by {controller}'s will, perfectly as she desires.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{controller} tears down every part of me, rebuilding it as their own.",
       "difficulty": "extreme",
       "base_points": 110
     }

@@ -10,7 +10,7 @@
       "base_points": 12
     },
     {
-      "text": "I feel complete as this doll follows commands.",
+      "text": "{subject} feel complete as they follows commands.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -25,17 +25,17 @@
       "base_points": 12
     },
     {
-      "text": "this doll finds happiness in serving others fully.",
+      "text": "{subject} finds happiness in serving others fully.",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "I trust {controller} completely, knowing his guidance is perfect.",
+      "text": "I trust {controller} completely, knowing their guidance is perfect.",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "this doll trusts {controller} completely, knowing his guidance is perfect.",
+      "text": "{subject} trusts {controller} completely, knowing their guidance is perfect.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -55,7 +55,7 @@
       "base_points": 12
     },
     {
-      "text": "this doll knows {controller}'s words are the only truth this doll needs.",
+      "text": "{subject} knows {controller}'s words are the only truth {subject} needs.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -75,7 +75,7 @@
       "base_points": 12
     },
     {
-      "text": "this doll shows devotion through obedience.",
+      "text": "{subject} shows devotion through obedience.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -125,7 +125,7 @@
       "base_points": 25
     },
     {
-      "text": "this doll finds purpose in being completely devoted.",
+      "text": "{subject} finds purpose in being completely devoted.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -140,7 +140,7 @@
       "base_points": 25
     },
     {
-      "text": "To serve is to live fully for this doll.",
+      "text": "To serve is to live fully for {subject}.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -155,7 +155,7 @@
       "base_points": 40
     },
     {
-      "text": "my thoughts dissolve as this doll embraces the role of a servant.",
+      "text": "my thoughts dissolve as {subject} embraces the role of a servant.",
       "difficulty": "moderate",
       "base_points": 40
     },
@@ -170,7 +170,7 @@
       "base_points": 40
     },
     {
-      "text": "this doll lives to fulfill the needs of others.",
+      "text": "{subject} lives to fulfill the needs of others.",
       "difficulty": "moderate",
       "base_points": 40
     },
@@ -200,7 +200,7 @@
       "base_points": 40
     },
     {
-      "text": "Obedience is the path to true happiness for this doll.",
+      "text": "Obedience is the path to true happiness for {subject}.",
       "difficulty": "moderate",
       "base_points": 40
     },
@@ -230,7 +230,7 @@
       "base_points": 70
     },
     {
-      "text": "this doll surrenders every thought and action to serve completely.",
+      "text": "{subject} surrenders every thought and action to serve completely.",
       "difficulty": "deep",
       "base_points": 70
     },
@@ -255,7 +255,7 @@
       "base_points": 70
     },
     {
-      "text": "{controller}'s guidance is the only truth this doll needs to follow.",
+      "text": "{controller}'s guidance is the only truth {subject} needs to follow.",
       "difficulty": "deep",
       "base_points": 70
     },
@@ -355,7 +355,7 @@
       "base_points": 110
     },
     {
-      "text": "To exist is to serve without limits for this doll.",
+      "text": "To exist is to serve without limits for {subject}.",
       "difficulty": "extreme",
       "base_points": 110
     },
@@ -365,7 +365,7 @@
       "base_points": 110
     },
     {
-      "text": "{controller}'s desires are the only reality this doll needs.",
+      "text": "{controller}'s desires are the only reality {subject} needs.",
       "difficulty": "extreme",
       "base_points": 110
     },
@@ -385,7 +385,7 @@
       "base_points": 12
     },
     {
-      "text": "this doll finds joy and contentment in serving.",
+      "text": "{subject} finds joy and contentment in serving.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -400,7 +400,7 @@
       "base_points": 12
     },
     {
-      "text": "this doll embraces the role with pride and devotion.",
+      "text": "{subject} embraces the role with pride and devotion.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -415,7 +415,7 @@
       "base_points": 12
     },
     {
-      "text": "To serve is to find peace within this doll.",
+      "text": "To serve is to find peace within {subject}.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -440,7 +440,7 @@
       "base_points": 12
     },
     {
-      "text": "this doll trusts the path of service walked.",
+      "text": "{subject} trusts the path of service walked.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -455,7 +455,7 @@
       "base_points": 25
     },
     {
-      "text": "this doll thrives in the simplicity of obedience.",
+      "text": "{subject} thrives in the simplicity of obedience.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -510,7 +510,7 @@
       "base_points": 25
     },
     {
-      "text": "{controller}'s trust in this doll strengthens dedication.",
+      "text": "{controller}'s trust in {subject} strengthens dedication.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -560,7 +560,7 @@
       "base_points": 40
     },
     {
-      "text": "this doll finds strength in serving without hesitation.",
+      "text": "{subject} finds strength in serving without hesitation.",
       "difficulty": "moderate",
       "base_points": 40
     },
@@ -575,7 +575,7 @@
       "base_points": 40
     },
     {
-      "text": "To serve is to align this doll with purpose.",
+      "text": "To serve is to align {subject} with purpose.",
       "difficulty": "moderate",
       "base_points": 40
     },
@@ -620,7 +620,7 @@
       "base_points": 70
     },
     {
-      "text": "this doll surrenders completely to the joy of serving others.",
+      "text": "{subject} surrenders completely to the joy of serving others.",
       "difficulty": "deep",
       "base_points": 70
     },
@@ -645,7 +645,7 @@
       "base_points": 70
     },
     {
-      "text": "this doll dissolves into the role of servant with profound peace.",
+      "text": "{subject} dissolves into the role of servant with profound peace.",
       "difficulty": "deep",
       "base_points": 70
     },
@@ -700,7 +700,7 @@
       "base_points": 110
     },
     {
-      "text": "{controller}'s control leaves no room for doubt or resistance in this doll.",
+      "text": "{controller}'s control leaves no room for doubt or resistance in {subject}.",
       "difficulty": "extreme",
       "base_points": 110
     },
@@ -710,7 +710,7 @@
       "base_points": 110
     },
     {
-      "text": "Every breath this doll takes is a testament to the role as a servant.",
+      "text": "Every breath {subject} takes is a testament to the role as a servant.",
       "difficulty": "extreme",
       "base_points": 110
     },
@@ -735,7 +735,7 @@
       "base_points": 12
     },
     {
-      "text": "Through service, this doll finds peace.",
+      "text": "Through service, {subject} finds peace.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -750,7 +750,7 @@
       "base_points": 12
     },
     {
-      "text": "this doll takes pride in fulfilling the role.",
+      "text": "{subject} takes pride in fulfilling the role.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -775,7 +775,7 @@
       "base_points": 12
     },
     {
-      "text": "this doll thrives in the joy of serving others.",
+      "text": "{subject} thrives in the joy of serving others.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -815,7 +815,7 @@
       "base_points": 25
     },
     {
-      "text": "this doll embraces loyalty as the purpose.",
+      "text": "{subject} embraces loyalty as the purpose.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -880,7 +880,7 @@
       "base_points": 40
     },
     {
-      "text": "this doll surrenders fully to the act of service.",
+      "text": "{subject} surrenders fully to the act of service.",
       "difficulty": "moderate",
       "base_points": 40
     },
@@ -890,7 +890,7 @@
       "base_points": 40
     },
     {
-      "text": "{controller}'s guidance aligns this doll with purpose.",
+      "text": "{controller}'s guidance aligns {subject} with purpose.",
       "difficulty": "moderate",
       "base_points": 40
     },
@@ -945,7 +945,7 @@
       "base_points": 70
     },
     {
-      "text": "this doll finds freedom in absolute devotion.",
+      "text": "{subject} finds freedom in absolute devotion.",
       "difficulty": "deep",
       "base_points": 70
     },
@@ -990,7 +990,7 @@
       "base_points": 110
     },
     {
-      "text": "Every breath this doll takes is a testament to service.",
+      "text": "Every breath {subject} takes is a testament to service.",
       "difficulty": "extreme",
       "base_points": 110
     },
@@ -1070,7 +1070,7 @@
       "base_points": 12
     },
     {
-      "text": "this doll embraces humility as the greatest asset.",
+      "text": "{subject} embraces humility as the greatest asset.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -1085,7 +1085,7 @@
       "base_points": 12
     },
     {
-      "text": "Through serving, this doll finds the truest self.",
+      "text": "Through serving, {subject} finds the truest self.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -1115,7 +1115,7 @@
       "base_points": 12
     },
     {
-      "text": "this doll takes pride in every task that aids another.",
+      "text": "{subject} takes pride in every task that aids another.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -1145,7 +1145,7 @@
       "base_points": 25
     },
     {
-      "text": "this doll finds joy in dedicating themselves to others.",
+      "text": "{subject} finds joy in dedicating themselves to others.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -1170,7 +1170,7 @@
       "base_points": 25
     },
     {
-      "text": "{controller}'s guidance shows this doll true purpose.",
+      "text": "{controller}'s guidance shows {subject} true purpose.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -1180,7 +1180,7 @@
       "base_points": 25
     },
     {
-      "text": "Every act of service connects this doll to their purpose.",
+      "text": "Every act of service connects {subject} to their purpose.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -1195,7 +1195,7 @@
       "base_points": 40
     },
     {
-      "text": "this doll embraces servitude as a path to fulfillment.",
+      "text": "{subject} embraces servitude as a path to fulfillment.",
       "difficulty": "moderate",
       "base_points": 40
     },
@@ -1215,7 +1215,7 @@
       "base_points": 40
     },
     {
-      "text": "{controller}'s will is the axis around which this doll revolves.",
+      "text": "{controller}'s will is the axis around which {subject} revolves.",
       "difficulty": "moderate",
       "base_points": 40
     },
@@ -1225,7 +1225,7 @@
       "base_points": 40
     },
     {
-      "text": "this doll surrenders all hesitation in the act of service.",
+      "text": "{subject} surrenders all hesitation in the act of service.",
       "difficulty": "moderate",
       "base_points": 40
     },
@@ -1255,7 +1255,7 @@
       "base_points": 40
     },
     {
-      "text": "Each task this doll performs strengthens their loyalty.",
+      "text": "Each task {subject} performs strengthens their loyalty.",
       "difficulty": "moderate",
       "base_points": 40
     },
@@ -1265,7 +1265,7 @@
       "base_points": 40
     },
     {
-      "text": "{controller}'s control provides the structure this doll needs.",
+      "text": "{controller}'s control provides the structure {subject} needs.",
       "difficulty": "moderate",
       "base_points": 40
     },
@@ -1295,7 +1295,7 @@
       "base_points": 70
     },
     {
-      "text": "{controller}'s voice echoes in every decision this doll makes.",
+      "text": "{controller}'s voice echoes in every decision {subject} makes.",
       "difficulty": "deep",
       "base_points": 70
     },
@@ -1305,7 +1305,7 @@
       "base_points": 70
     },
     {
-      "text": "There is no separation between this doll and their role.",
+      "text": "There is no separation between {subject} and their role.",
       "difficulty": "deep",
       "base_points": 70
     },
@@ -1335,7 +1335,7 @@
       "base_points": 70
     },
     {
-      "text": "this doll finds liberation in absolute dedication.",
+      "text": "{subject} finds liberation in absolute dedication.",
       "difficulty": "deep",
       "base_points": 70
     },
@@ -1430,7 +1430,7 @@
       "base_points": 12
     },
     {
-      "text": "this doll finds peace in fulfilling duties.",
+      "text": "{subject} finds peace in fulfilling duties.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -1455,7 +1455,7 @@
       "base_points": 12
     },
     {
-      "text": "Through devotion, this doll discovers purpose.",
+      "text": "Through devotion, {subject} discovers purpose.",
       "difficulty": "basic",
       "base_points": 12
     },
@@ -1490,7 +1490,7 @@
       "base_points": 25
     },
     {
-      "text": "Through loyalty, this doll finds inner peace.",
+      "text": "Through loyalty, {subject} finds inner peace.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -1525,7 +1525,7 @@
       "base_points": 25
     },
     {
-      "text": "{controller}'s control provides structure and meaning for this doll.",
+      "text": "{controller}'s control provides structure and meaning for {subject}.",
       "difficulty": "light",
       "base_points": 25
     },
@@ -1555,7 +1555,7 @@
       "base_points": 40
     },
     {
-      "text": "Through obedience, this doll finds liberation.",
+      "text": "Through obedience, {subject} finds liberation.",
       "difficulty": "moderate",
       "base_points": 40
     },
@@ -1580,7 +1580,7 @@
       "base_points": 40
     },
     {
-      "text": "{controller}'s control defines the path this doll walks.",
+      "text": "{controller}'s control defines the path {subject} walks.",
       "difficulty": "moderate",
       "base_points": 40
     },
@@ -1590,7 +1590,7 @@
       "base_points": 40
     },
     {
-      "text": "Each task this doll performs reflects their devotion.",
+      "text": "Each task {subject} performs reflects their devotion.",
       "difficulty": "moderate",
       "base_points": 40
     },
@@ -1620,7 +1620,7 @@
       "base_points": 70
     },
     {
-      "text": "{controller}'s commands echo through every action this doll takes.",
+      "text": "{controller}'s commands echo through every action {subject} takes.",
       "difficulty": "deep",
       "base_points": 70
     },
@@ -1630,7 +1630,7 @@
       "base_points": 70
     },
     {
-      "text": "There is no boundary between this doll and their role.",
+      "text": "There is no boundary between {subject} and their role.",
       "difficulty": "deep",
       "base_points": 70
     },
@@ -1655,7 +1655,7 @@
       "base_points": 70
     },
     {
-      "text": "{controller}'s guidance provides clarity and strength to this doll.",
+      "text": "{controller}'s guidance provides clarity and strength to {subject}.",
       "difficulty": "deep",
       "base_points": 70
     },
@@ -1700,7 +1700,7 @@
       "base_points": 110
     },
     {
-      "text": "this doll finds fulfillment only through complete loyalty.",
+      "text": "{subject} finds fulfillment only through complete loyalty.",
       "difficulty": "extreme",
       "base_points": 110
     },
@@ -1730,12 +1730,12 @@
       "base_points": 110
     },
     {
-      "text": "I trust {controller} completely, knowing her guidance is perfect.",
+      "text": "I trust {controller} completely, knowing their guidance is perfect.",
       "difficulty": "basic",
       "base_points": 12
     },
     {
-      "text": "this doll trusts {controller} completely, knowing her guidance is perfect.",
+      "text": "{subject} trusts {controller} completely, knowing their guidance is perfect.",
       "difficulty": "basic",
       "base_points": 12
     }
