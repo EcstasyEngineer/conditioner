@@ -13,88 +13,76 @@ import difflib
 
 class ThemeSelectView(discord.ui.View):
     """View for managing themes with select menu."""
-    
     def __init__(self, cog, user, current_themes):
-        super().__init__(timeout=300)  # 5 minute timeout
+        super().__init__(timeout=120)
         self.cog = cog
         self.user = user
-        self.current_themes = current_themes.copy()
-        self.original_themes = current_themes.copy()
-        self._is_finished = False  # Track if we've already handled a button press
-        
-        # Create select menu with all available themes
-        options = []
-        for theme_name in sorted(self.cog.themes.keys()):
-            description = self.cog.themes[theme_name].get("description", "")[:100]
-            option = discord.SelectOption(
-                label=theme_name.capitalize(),
-                value=theme_name,
-                description=description,
-                default=theme_name in self.current_themes
+        self.current_themes = current_themes.copy() if current_themes else []
+        self.selected_themes = self.current_themes.copy()
+        # Build select options from loaded themes
+        options = [
+            discord.SelectOption(
+                label=theme.capitalize(),
+                value=theme,
+                default=theme in self.current_themes
             )
-            options.append(option)
-        
-        select = discord.ui.Select(
-            placeholder="Select modules to toggle on/off",
+            for theme in sorted(self.cog.themes.keys())
+        ]
+        self.select = discord.ui.Select(
+            placeholder="Select your active modules...",
+            min_values=1,
+            max_values=len(options),
             options=options,
-            min_values=0,
-            max_values=len(options)
+            custom_id="theme_select"
         )
-        select.callback = self.theme_select_callback
-        self.add_item(select)
-        
-        # Add save button
-        save_button = discord.ui.Button(label="Confirm Parameters", style=discord.ButtonStyle.primary)
-        save_button.callback = self.save_callback
-        self.add_item(save_button)
-        
-        # Add cancel button
-        cancel_button = discord.ui.Button(label="Cancel", style=discord.ButtonStyle.secondary)
-        cancel_button.callback = self.cancel_callback
-        self.add_item(cancel_button)
-    
+        self.select.callback = self.theme_select_callback
+        self.add_item(self.select)
+        # Confirm button
+        self.save_button = discord.ui.Button(
+            label="Confirm Parameters",
+            style=discord.ButtonStyle.success,
+            custom_id="save_themes"
+        )
+        self.save_button.callback = self.save_callback
+        self.add_item(self.save_button)
+        # Cancel button
+        self.cancel_button = discord.ui.Button(
+            label="Cancel",
+            style=discord.ButtonStyle.danger,
+            custom_id="cancel_themes"
+        )
+        self.cancel_button.callback = self.cancel_callback
+        self.add_item(self.cancel_button)
+
     async def theme_select_callback(self, interaction: discord.Interaction):
-        """Handle theme selection."""
-        # Update current themes based on selection
-        self.current_themes = interaction.data["values"]
-        
-        # Use defer with ephemeral=True to match the original message
-        await interaction.response.defer(ephemeral=True)
-    
+        # Update selected themes
+        self.selected_themes = self.select.values
+        await interaction.response.defer()  # No UI update needed
+
     async def save_callback(self, interaction: discord.Interaction):
-        """Save theme changes."""
-        # Prevent double-processing
-        if self._is_finished:
-            return
-        self._is_finished = True
-        
-        if not self.current_themes:
+        # Always get the latest selection
+        selected = self.select.values
+        if not selected:
             await interaction.response.send_message(
-                "You must have at least one conditioning module active!",
-                ephemeral=True
+                "You must select at least one module.", ephemeral=True
             )
-            self._is_finished = False  # Reset since we didn't actually finish
             return
-        
-        # Save changes
+        # Save to user config
         config = self.cog.get_user_mantra_config(self.user)
-        config["themes"] = self.current_themes
+        config["themes"] = selected
         self.cog.save_user_mantra_config(self.user, config)
-        
+        # Build confirmation embed
         embed = discord.Embed(
-            title="✅ Parameters Adjusted",
-            description=f"**Active conditioning modules:** {', '.join(self.current_themes)}",
+            title="✅ Modules Updated",
+            description=f"Active modules: {', '.join(selected)}",
             color=discord.Color.green()
         )
-        
-        # Disable all components first
+        # Disable all components
         for item in self.children:
             item.disabled = True
-        
-        # Remove the view entirely
-        await interaction.response.edit_message(embed=embed, view=None)
+        await interaction.response.edit_message(embed=embed, view=self)
         self.stop()
-    
+
     async def cancel_callback(self, interaction: discord.Interaction):
         """Cancel without saving."""
         embed = discord.Embed(
@@ -102,9 +90,10 @@ class ThemeSelectView(discord.ui.View):
             description="No changes were made to your conditioning parameters.",
             color=discord.Color.red()
         )
-        
-        # Remove the view entirely
-        await interaction.response.edit_message(embed=embed, view=None)
+        # Disable all components
+        for item in self.children:
+            item.disabled = True
+        await interaction.response.edit_message(embed=embed, view=self)
         self.stop()
 
 
