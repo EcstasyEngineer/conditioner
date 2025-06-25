@@ -77,7 +77,6 @@ The mantra system (`cogs/dynamic/mantras.py`) is the most complex feature:
   - Speed bonuses for quick responses
   - Streak bonuses (up to 100 points for 20+ streak)
   - Public channel multiplier (2.5x)
-  - Rapid fire mode for exceptional performance
 - **Content Loading**: Mantras loaded from JSON files in `mantras/themes/`
 - **Persistence**: User progress tracked in guild configs
 

@@ -126,6 +126,9 @@ class ThemeSelectView(discord.ui.View):
 class MantraSystem(commands.Cog):
     """Hypnotic mantra capture system with adaptive delivery."""
     
+    # App command group must be a class attribute
+    mantra_group = app_commands.Group(name="mantra", description="Mental programming system")
+    
     def __init__(self, bot):
         self.bot = bot
         self.logger = bot.logger if hasattr(bot, 'logger') else None
@@ -149,7 +152,6 @@ class MantraSystem(commands.Cog):
         
         # Combo streak tracking
         self.user_streaks = {}  # user_id: {"count": int, "last_response": datetime}
-        self.rapid_fire_active = {}  # user_id: bool
         
         # Start the mantra delivery task
         self.mantra_delivery.start()
@@ -368,129 +370,6 @@ class MantraSystem(commands.Cog):
             if user_id in self.user_streaks:
                 del self.user_streaks[user_id]
     
-    async def check_rapid_fire_trigger(self, user_id: int, response_time: int) -> bool:
-        """Check if rapid fire mode should be triggered."""
-        # Conditions for rapid fire:
-        # 1. Response under 15 seconds
-        # 2. Current streak of 3+
-        # 3. Not already in rapid fire mode
-        
-        if user_id in self.rapid_fire_active and self.rapid_fire_active[user_id]:
-            return False
-            
-        if response_time > 15:
-            return False
-            
-        if user_id not in self.user_streaks or self.user_streaks[user_id]["count"] < 3:
-            return False
-            
-        return True
-    
-    async def start_rapid_fire_mode(self, user: discord.User, public_channel: Optional[discord.TextChannel] = None):
-        """Start rapid fire mode for a user."""
-        self.rapid_fire_active[user.id] = True
-        
-        try:
-            # Send announcement
-            embed = discord.Embed(
-                title="🔥⚡ DEEP PROGRAMMING SEQUENCE INITIATED! ⚡🔥",
-                description=f"Prepare for deep integration, {user.mention}! Process multiple directives for maximum conditioning.",
-                color=discord.Color.gold()
-            )
-            embed.add_field(
-                name="Multipliers",
-                value="2x → 3x → 5x → 10x",
-                inline=False
-            )
-            
-            if public_channel:
-                await public_channel.send(embed=embed)
-            else:
-                await user.send(embed=embed)
-            
-            await asyncio.sleep(3)  # Give them a moment to prepare
-            
-            config = self.get_user_mantra_config(user)
-            
-            # Send 3-5 rapid mantras
-            num_mantras = random.randint(3, 5)
-            multipliers = [2, 3, 5, 10]
-            
-            for i in range(num_mantras):
-                # Select mantra
-                mantra_data = self.select_mantra_for_user(config)
-                if not mantra_data:
-                    break
-                
-                # Format mantra
-                formatted_mantra = self.format_mantra(
-                    mantra_data["text"],
-                    config["subject"],
-                    config["controller"]
-                )
-                
-                # Calculate points with escalating multiplier
-                multiplier = multipliers[min(i, len(multipliers)-1)]
-                rapid_points = mantra_data["base_points"] * multiplier
-                
-                # Send rapid mantra
-                embed = discord.Embed(
-                    title=f"⚡ Deep Sequence #{i+1} ({multiplier}x integration!)",
-                    description=f"**{rapid_points} compliance points**: {formatted_mantra}",
-                    color=discord.Color.orange()
-                )
-                embed.set_footer(text="30 seconds to process!")
-                
-                if public_channel:
-                    await public_channel.send(embed=embed)
-                else:
-                    await user.send(embed=embed)
-                
-                # Track challenge with shorter timeout
-                self.active_challenges[user.id] = {
-                    "mantra": formatted_mantra,
-                    "theme": mantra_data["theme"],
-                    "difficulty": mantra_data["difficulty"],
-                    "base_points": rapid_points,
-                    "sent_at": datetime.now(),
-                    "timeout_minutes": 0.5,  # 30 second timeout
-                    "is_rapid_fire": True,
-                    "rapid_number": i + 1
-                }
-                
-                # Wait up to 30 seconds for response
-                await asyncio.sleep(30)
-                
-                # If they didn't respond, break the chain
-                if user.id in self.active_challenges:
-                    # They failed this one
-                    del self.active_challenges[user.id]
-                    await user.send("❌ Deep programming sequence interrupted!")
-                    break
-                    
-                # Small pause between mantras if they succeeded
-                if i < num_mantras - 1:
-                    await asyncio.sleep(2)
-            
-            # End rapid fire mode
-            self.rapid_fire_active[user.id] = False
-            
-            # Completion message
-            if user.id not in self.active_challenges:  # They completed all
-                embed = discord.Embed(
-                    title="🌀 Deep Programming Integration Complete",
-                    description=f"Exceptional neural integration, {config['subject']}! Full synchronization achieved!",
-                    color=discord.Color.gold()
-                )
-                if public_channel:
-                    await public_channel.send(embed=embed)
-                else:
-                    await user.send(embed=embed)
-                    
-        except Exception as e:
-            if self.logger:
-                self.logger.error(f"Error in rapid fire mode for {user.id}: {e}")
-            self.rapid_fire_active[user.id] = False
     
     def check_mantra_match(self, user_response: str, expected_mantra: str) -> bool:
         """Check if user response matches mantra with typo tolerance."""
@@ -905,14 +784,8 @@ class MantraSystem(commands.Cog):
             
             # Remove from active challenges
             del self.active_challenges[message.author.id]
-            
-            # Check for rapid fire mode trigger
-            if await self.check_rapid_fire_trigger(message.author.id, int(response_time)):
-                # Trigger rapid fire mode!
-                await self.start_rapid_fire_mode(message.author, message.channel if is_public else None)
     
     # Slash Commands - Using a group for better organization
-    mantra_group = app_commands.Group(name="mantra", description="Mental programming system")
     
     @mantra_group.command(name="enroll", description="Initialize mental programming protocols")
     @app_commands.describe(

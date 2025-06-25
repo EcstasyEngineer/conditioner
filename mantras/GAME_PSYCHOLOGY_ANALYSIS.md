@@ -85,7 +85,6 @@ Engagement Score = (
 )
 
 If engagement > 0.8: Enter "High Engagement Mode"
-- Check for rapid fire opportunities
 - Decrease minimum interval to 30 minutes
 - Increase max daily encounters to 5
 
@@ -103,7 +102,7 @@ If engagement < 0.5: "Gentle Mode"
 
 1. **Immediate**: Extend base timeout to 45-60 minutes with sliding point scale
 2. **High Priority**: Implement streak system and combo mechanics
-3. **Medium Priority**: Add rapid fire mode for engaged users
+3. **Medium Priority**: ~~Add rapid fire mode for engaged users~~ (Removed - not as engaging as expected)
 4. **Future**: Social dynamics and witness bonuses
 
 ## Metrics to Track
@@ -119,7 +118,7 @@ If engagement < 0.5: "Gentle Mode"
 The system should create a "flow state" where users:
 1. Feel challenged but not overwhelmed (adaptive difficulty)
 2. Receive immediate feedback (instant points, streaks)
-3. Have clear goals (maintain streak, trigger rapid fire)
+3. Have clear goals (maintain streak)
 4. Experience variable rewards (bonus multipliers, special modes)
 5. Feel social validation (public responses, witness bonuses)
 
