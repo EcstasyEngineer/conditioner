@@ -262,7 +262,7 @@ class MantraSystem(commands.Cog):
             "controller": "Master",
             "frequency": 1.0,  # encounters per day
             "last_encounter": None,
-            "next_encounter": None,
+            "next_encounter": None,  # Will be migrated to object format
             "encounters": [],
             "consecutive_timeouts": 0,
             "total_points_earned": 0,
@@ -284,12 +284,30 @@ class MantraSystem(commands.Cog):
             for key, value in default_config.items():
                 if key not in config:
                     config[key] = value
+        
+        # Migrate next_encounter from timestamp string to object format
+        if config.get("next_encounter") and isinstance(config["next_encounter"], str):
+            self.migrate_next_encounter_format(config)
                     
         return config
     
     def save_user_mantra_config(self, user, config):
         """Save user's mantra configuration."""
         self.bot.config.set_user(user, 'mantra_system', config)
+    
+    def migrate_next_encounter_format(self, config: Dict):
+        """Migrate next_encounter from timestamp string to object format."""
+        if self.logger:
+            self.logger.info(f"Migrating next_encounter format for user config")
+        
+        # Use a default moderate programming mantra for migration        
+        config["next_encounter"] = {
+            "timestamp": config["next_encounter"],  # Keep existing timestamp
+            "mantra": "{subject}'s thoughts are being reprogrammed by {controller}",
+            "theme": "brainwashing",
+            "difficulty": "moderate",
+            "base_points": 40
+        }
     
     def format_mantra(self, mantra_text: str, subject: str, controller: str) -> str:
         """Replace template variables in mantra text."""
@@ -423,7 +441,13 @@ class MantraSystem(commands.Cog):
         
         # Check if it's time for next encounter
         if config["next_encounter"]:
-            next_time = datetime.fromisoformat(config["next_encounter"])
+            if isinstance(config["next_encounter"], dict):
+                # New object format
+                next_time = datetime.fromisoformat(config["next_encounter"]["timestamp"])
+            else:
+                # Old string format (should be migrated by now)
+                next_time = datetime.fromisoformat(config["next_encounter"])
+            
             if datetime.now() < next_time:
                 return False
                 
@@ -455,7 +479,7 @@ class MantraSystem(commands.Cog):
         return random.choice(available_mantras)
     
     def schedule_next_encounter(self, config: Dict):
-        """Schedule the next mantra encounter based on frequency."""
+        """Schedule the next mantra encounter with pre-planned content."""
         # Base frequency is encounters per day
         frequency = config["frequency"]
         
@@ -471,7 +495,20 @@ class MantraSystem(commands.Cog):
             actual_hours = max(2.0, actual_hours)
             
             next_time = datetime.now() + timedelta(hours=actual_hours)
-            config["next_encounter"] = next_time.isoformat()
+            
+            # Pre-select the mantra for this encounter
+            mantra_data = self.select_mantra_for_user(config)
+            if mantra_data:
+                config["next_encounter"] = {
+                    "timestamp": next_time.isoformat(),
+                    "mantra": mantra_data["text"],  # Keep templated format
+                    "theme": mantra_data["theme"],
+                    "difficulty": mantra_data["difficulty"],
+                    "base_points": mantra_data["base_points"]
+                }
+            else:
+                # No mantras available, disable scheduling
+                config["next_encounter"] = None
         else:
             # Frequency 0 means disabled
             config["next_encounter"] = None
@@ -569,24 +606,33 @@ class MantraSystem(commands.Cog):
             if await self.should_send_mantra(user):
                 config = self.get_user_mantra_config(user)
                 
-                # Select a mantra
-                mantra_data = self.select_mantra_for_user(config)
-                if not mantra_data:
-                    continue
+                # Use pre-planned encounter if available
+                if config["next_encounter"] and isinstance(config["next_encounter"], dict):
+                    planned_encounter = config["next_encounter"]
+                    mantra_text = planned_encounter["mantra"]
+                    difficulty = planned_encounter["difficulty"]
+                    adjusted_points = planned_encounter["base_points"]
+                    theme = planned_encounter["theme"]
+                else:
+                    # Fallback to old method if no planned encounter
+                    mantra_data = self.select_mantra_for_user(config)
+                    if not mantra_data:
+                        continue
+                    mantra_text = mantra_data["text"]
+                    difficulty = mantra_data["difficulty"]
+                    adjusted_points = mantra_data["base_points"]
+                    theme = mantra_data["theme"]
                 
-                # Format the mantra
+                # Format the mantra (applies templating)
                 formatted_mantra = self.format_mantra(
-                    mantra_data["text"],
+                    mantra_text,
                     config["subject"],
                     config["controller"]
                 )
                 
                 # Get timeout based on difficulty
-                difficulty = mantra_data["difficulty"]
                 settings = self.expiration_settings.get(difficulty, self.expiration_settings["moderate"])
                 timeout_minutes = settings["timeout_minutes"]
-                # Points are now just the base_points from the theme file
-                adjusted_points = mantra_data["base_points"]
                 
                 # Send the challenge
                 try:
@@ -605,8 +651,8 @@ class MantraSystem(commands.Cog):
                     # Track the challenge
                     self.active_challenges[user.id] = {
                         "mantra": formatted_mantra,
-                        "theme": mantra_data["theme"],
-                        "difficulty": mantra_data["difficulty"],
+                        "theme": theme,
+                        "difficulty": difficulty,
                         "base_points": adjusted_points,
                         "sent_at": datetime.now(),
                         "timeout_minutes": timeout_minutes
