@@ -133,10 +133,15 @@ class MantraSystem(commands.Cog):
             "extreme": {"timeout_minutes": 75}
         }
         
+        # Online status checking configuration
+        self.MANTRA_DELIVERY_INTERVAL_MINUTES = 2  # How often to check for mantra delivery
+        self.REQUIRED_CONSECUTIVE_ONLINE_CHECKS = 3  # Consecutive online checks needed
+        
         # Combo streak tracking
         self.user_streaks = {}  # user_id: {"count": int, "last_response": datetime}
         
-        # Start the mantra delivery task
+        # Start the mantra delivery task with configured interval
+        self.mantra_delivery.change_interval(minutes=self.MANTRA_DELIVERY_INTERVAL_MINUTES)
         self.mantra_delivery.start()
         
         # Track active mantra challenges
@@ -164,13 +169,16 @@ class MantraSystem(commands.Cog):
     
     def calculate_streaks_from_history(self):
         """Calculate user streaks from encounter history on bot startup."""
+        if self.logger:
+            self.logger.info("Starting streak calculation from history...")
+            
         # Get all users from the bot's user cache
         for user in self.bot.users:
             if user.bot:
                 continue
                 
             config = self.get_user_mantra_config(user)
-            if not config["enrolled"] or not config.get("encounters"):
+            if not config.get("encounters"):
                 continue
                 
             # Sort encounters by timestamp (most recent first)
@@ -180,37 +188,33 @@ class MantraSystem(commands.Cog):
                 reverse=True
             )
             
-            # Count consecutive successes
+            # Count consecutive successes from most recent until first failure
             streak_count = 0
-            last_timestamp = None
+            last_successful_timestamp = None
             
             for encounter in sorted_encounters:
-                # Skip if not completed
-                if not encounter.get("completed", False):
+                if encounter.get("completed", False):
+                    streak_count += 1
+                    if last_successful_timestamp is None:  # First successful encounter (most recent)
+                        last_successful_timestamp = datetime.fromisoformat(encounter["timestamp"])
+                else:
+                    # Hit a failure - stop counting
                     break
-                    
-                # Check time gap if not the first encounter
-                if last_timestamp:
-                    current_time = datetime.fromisoformat(encounter["timestamp"])
-                    time_diff = last_timestamp - current_time
-                    
-                    # Break if more than 2 hours between responses
-                    if time_diff > timedelta(hours=2):
-                        break
-                
-                streak_count += 1
-                last_timestamp = datetime.fromisoformat(encounter["timestamp"])
             
-            # Only set streak if user has active streak
-            if streak_count > 0 and last_timestamp:
-                # Check if streak is still active (within 2 hours of now)
-                if datetime.now() - last_timestamp <= timedelta(hours=2):
-                    self.user_streaks[user.id] = {
-                        "count": streak_count,
-                        "last_response": last_timestamp
-                    }
-                    if self.logger:
-                        self.logger.info(f"Restored streak of {streak_count} for user {user.id}")
+            # Set streak if user has any consecutive successes
+            if streak_count > 0 and last_successful_timestamp:
+                self.user_streaks[user.id] = {
+                    "count": streak_count,
+                    "last_response": last_successful_timestamp
+                }
+                if self.logger:
+                    self.logger.info(f"Restored streak of {streak_count} for user {user.id} ({user.name})")
+            elif self.logger:
+                if streak_count == 0:
+                    self.logger.info(f"No streak for user {user.id} ({user.name}) - most recent encounter was a failure or no encounters")
+                
+        if self.logger:
+            self.logger.info(f"Streak calculation complete. Active streaks: {len(self.user_streaks)}")
         
     def load_themes(self) -> Dict[str, Dict]:
         """Load all theme files from the mantras directory."""
@@ -336,18 +340,14 @@ class MantraSystem(commands.Cog):
         
         if success:
             if user_id in self.user_streaks:
-                # Check if streak is still active (within 2 hours)
-                last_response = self.user_streaks[user_id]["last_response"]
-                if (now - last_response).total_seconds() < 7200:  # 2 hours
-                    self.user_streaks[user_id]["count"] += 1
-                else:
-                    # Streak broken due to time
-                    self.user_streaks[user_id] = {"count": 1, "last_response": now}
+                # Continue existing streak
+                self.user_streaks[user_id]["count"] += 1
+                self.user_streaks[user_id]["last_response"] = now
             else:
                 # Start new streak
                 self.user_streaks[user_id] = {"count": 1, "last_response": now}
         else:
-            # Break streak
+            # Break streak on failure only
             if user_id in self.user_streaks:
                 del self.user_streaks[user_id]
     
@@ -386,31 +386,38 @@ class MantraSystem(commands.Cog):
                     is_online_now = True
                     break
             
-            # Update status history
-            user_history = self.user_status_history.get(user.id, {
-                "consecutive_online_loops": 0,
-                "last_status": "offline",
-                "last_check": datetime.now()
-            })
+            # Initialize or get rotating buffer for this user
+            if user.id not in self.user_status_history:
+                self.user_status_history[user.id] = {
+                    "checks": [False] * self.REQUIRED_CONSECUTIVE_ONLINE_CHECKS,  # Rotating buffer of online status
+                    "current_index": 0,  # Current position in rotating buffer
+                    "total_checks": 0    # Total number of checks performed (for initial filling)
+                }
             
-            # If online now, increment counter; otherwise reset
-            if is_online_now:
-                if user_history["last_status"] in ["online", "dnd"]:
-                    user_history["consecutive_online_loops"] += 1
+            user_history = self.user_status_history[user.id]
+            
+            # Add current check to rotating buffer
+            user_history["checks"][user_history["current_index"]] = is_online_now
+            user_history["current_index"] = (user_history["current_index"] + 1) % self.REQUIRED_CONSECUTIVE_ONLINE_CHECKS
+            user_history["total_checks"] += 1
+            
+            # Count consecutive online checks from most recent
+            consecutive_online = 0
+            checks_to_examine = min(user_history["total_checks"], self.REQUIRED_CONSECUTIVE_ONLINE_CHECKS)
+            
+            # Walk backwards from current position counting consecutive True values
+            for i in range(checks_to_examine):
+                # Calculate index going backwards from current position
+                check_index = (user_history["current_index"] - 1 - i) % self.REQUIRED_CONSECUTIVE_ONLINE_CHECKS
+                if user_history["checks"][check_index]:
+                    consecutive_online += 1
                 else:
-                    user_history["consecutive_online_loops"] = 1
-                user_history["last_status"] = "online"
-            else:
-                user_history["consecutive_online_loops"] = 0
-                user_history["last_status"] = "offline"
+                    break  # Stop at first False
             
-            user_history["last_check"] = datetime.now()
-            self.user_status_history[user.id] = user_history
-            
-            # Require 3 consecutive loops of being online (6 minutes total)
-            if user_history["consecutive_online_loops"] < 3:
+            # Require self.REQUIRED_CONSECUTIVE_ONLINE_CHECKS consecutive loops of being online
+            if consecutive_online < self.REQUIRED_CONSECUTIVE_ONLINE_CHECKS:
                 if self.logger:
-                    self.logger.info(f"User {user.id} online for {user_history['consecutive_online_loops']}/3 loops")
+                    self.logger.info(f"User {user.id} online for {consecutive_online}/{self.REQUIRED_CONSECUTIVE_ONLINE_CHECKS} loops")
                 return False
         
         
@@ -500,7 +507,7 @@ class MantraSystem(commands.Cog):
                 
         return False
     
-    @tasks.loop(minutes=2)
+    @tasks.loop(minutes=2)  # Default interval, overridden in __init__ with self.MANTRA_DELIVERY_INTERVAL_MINUTES
     async def mantra_delivery(self):
         """Main task loop for delivering mantras."""
         # Get all user configs
@@ -925,6 +932,19 @@ class MantraSystem(commands.Cog):
         # Sort by total points earned (descending)
         users_with_mantras.sort(key=lambda x: x[1].get("total_points_earned", 0), reverse=True)
         
+        # Calculate dynamic theme column width (find longest theme abbreviation)
+        max_theme_width = 0
+        for user, config in users_with_mantras:
+            themes = config.get("themes", [])
+            if themes:
+                theme_abbr = "/".join([t[:4] for t in themes])  # 4 letters now
+            else:
+                theme_abbr = "none"
+            max_theme_width = max(max_theme_width, len(theme_abbr))
+        
+        # Ensure minimum width for readability
+        theme_width = max(max_theme_width, 12)
+        
         # Build summary lines
         summary_lines = [f"**Neural Programming Summary** ({len(users_with_mantras)} users):\n```"]
         
@@ -932,15 +952,15 @@ class MantraSystem(commands.Cog):
             # Status
             status = "🟢" if config.get("enrolled") else "🔴"
             
-            # Abbreviated themes (first 3 letters)
+            # Abbreviated themes (first 4 letters)
             themes = config.get("themes", [])
             if themes:
-                theme_abbr = "/".join([t[:3] for t in themes])
+                theme_abbr = "/".join([t[:4] for t in themes])
             else:
                 theme_abbr = "none"
             
-            # Subject/Controller
-            subject = config.get("subject", "puppet")[:4]  # First 4 letters
+            # Subject/Controller (4 letters each)
+            subject = config.get("subject", "puppet")[:4]
             controller = config.get("controller", "Master")[:4]
             
             # Points
@@ -954,8 +974,11 @@ class MantraSystem(commands.Cog):
             else:
                 rate = "0/0"
             
-            # Format: STATUS NAME (SUBJECT/CONTROLLER) THEMES POINTS SUCCESS_RATE
-            line = f"{status} {user.name[:12]:12} {subject:>4}/{controller:<4} {theme_abbr:12} {points:5}pts {rate:>7}"
+            # Daily rate from frequency setting
+            daily_rate = config.get("frequency", 1.0)
+            
+            # Format: STATUS NAME SUBJ/CTRL THEMES POINTS RATE DAILY_RATE
+            line = f"{status} {user.name[:12]:<12} {subject}/{controller} {theme_abbr:<{theme_width}} {points:>4}pts {rate:>7} {daily_rate:>4.2f}"
             summary_lines.append(line)
         
         summary_lines.append("```")
@@ -1013,7 +1036,7 @@ class MantraSystem(commands.Cog):
         
         one_week_ago = datetime.now() - timedelta(days=7)
         
-        for user, config in users_with_mantras:
+        for user_index, (user, config) in enumerate(users_with_mantras):
             # Get encounters from the past week
             recent_encounters = []
             if config.get("encounters"):
@@ -1031,16 +1054,22 @@ class MantraSystem(commands.Cog):
             # Build user summary
             user_info = []
             user_info.append(f"**Status:** {'🟢 Active' if config.get('enrolled') else '🔴 Inactive'}")
-            user_info.append(f"**Total Compliance Points:** {config.get('total_points_earned', 0):,}")
             
             total_encounters = len(config.get("encounters", []))
             if total_encounters > 0:
                 completed = sum(1 for e in config.get("encounters", []) if e.get("completed", False))
                 user_info.append(f"**All Time:** {completed}/{total_encounters} ({completed/total_encounters*100:.1f}%)")
             
-            # Add last 5 mantras from past week
+            # Add current settings if enrolled
+            if config.get("enrolled"):
+                user_info.append(f"**Settings:** {config.get('subject', 'puppet')}/{config.get('controller', 'Master')}")
+                if config.get("themes"):
+                    user_info.append(f"**Programming Modules:** {', '.join(config['themes'])}")
+                user_info.append(f"**Transmission Rate:** {config.get('frequency', 1.0):.2f}/day")
+            
+            # Add last 5 mantras from past week (moved to end)
             if last_5_mantras:
-                user_info.append("\n**Recent Programming (Past Week):**")
+                user_info.append("\n**Recent Programming:**")
                 for i, enc in enumerate(reversed(last_5_mantras), 1):
                     try:
                         enc_time = datetime.fromisoformat(enc["timestamp"])
@@ -1058,14 +1087,7 @@ class MantraSystem(commands.Cog):
                     except:
                         continue
             else:
-                user_info.append("*No programming sequences in the past week*")
-            
-            # Add current settings if enrolled
-            if config.get("enrolled"):
-                user_info.append(f"\n**Settings:** {config.get('subject', 'puppet')}/{config.get('controller', 'Master')}")
-                if config.get("themes"):
-                    user_info.append(f"**Programming Modules:** {', '.join(config['themes'])}")
-                user_info.append(f"**Transmission Rate:** {config.get('frequency', 1.0):.2f}/day")
+                user_info.append("\n*No recent programming sequences*")
             
             # Check if we need a new embed
             if field_count >= 24:  # Leave room for 1 field
@@ -1076,13 +1098,23 @@ class MantraSystem(commands.Cog):
                 )
                 field_count = 0
             
-            # Add field
+            # Add field with better spacing
             current_embed.add_field(
                 name=f"{user.name}#{user.discriminator}",
                 value="\n".join(user_info)[:1024],  # Discord field limit
                 inline=False
             )
+            
             field_count += 1
+            
+            # Add spacer field for better readability (except for last user)
+            if user_index < len(users_with_mantras) - 1:
+                current_embed.add_field(
+                    name="\u200b",  # Zero-width space
+                    value="─────────────────────────────",
+                    inline=False
+                )
+                field_count += 1
         
         # Add the last embed
         if field_count > 0:
