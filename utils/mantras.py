@@ -159,13 +159,13 @@ def calculate_next_encounter_time(frequency: float) -> datetime:
     return datetime.now() + timedelta(hours=actual_hours)
 
 
-def adjust_user_frequency(config: Dict, success: bool, response_time: Optional[int] = None) -> bool:
+def adjust_user_frequency(config: Dict, success: bool, response_time: Optional[int] = None) -> str:
     """
     Adjust encounter frequency based on engagement.
     Updates the config dict in place.
     
     Returns:
-        bool: True if user was auto-disabled, False otherwise
+        str: "disabled" if auto-disabled, "offer_break" if should offer break, "continue" if normal
     """
     current_freq = config["frequency"]
     
@@ -180,7 +180,7 @@ def adjust_user_frequency(config: Dict, success: bool, response_time: Optional[i
             new_freq = min(3.0, current_freq * 1.05)
             
         config["frequency"] = new_freq
-        return False
+        return "continue"
     else:
         # Timeout/miss
         config["consecutive_timeouts"] += 1
@@ -189,13 +189,16 @@ def adjust_user_frequency(config: Dict, success: bool, response_time: Optional[i
         new_freq = max(0.33, current_freq * 0.9)  # Min 1 per 3 days
         config["frequency"] = new_freq
         
-        # Auto-disable after 2 consecutive timeouts
-        if config["consecutive_timeouts"] >= 2:
+        # Auto-disable after 8 consecutive timeouts
+        if config["consecutive_timeouts"] >= 8:
             config["enrolled"] = False
             config["frequency"] = 1.0  # Reset to default for re-enrollment
-            return True  # Signal that we auto-disabled
+            return "disabled"  # Signal that we auto-disabled
+        # Offer break after 3 consecutive timeouts
+        elif config["consecutive_timeouts"] >= 3:
+            return "offer_break"  # Signal to offer break option
             
-    return False
+    return "continue"
 
 
 def should_auto_disable_user(consecutive_timeouts: int) -> bool:
@@ -460,6 +463,64 @@ def generate_mantra_stats_embeds(bot, guild_members: List = None) -> List[discor
         embeds.append(current_embed)
     
     return embeds
+
+
+def get_user_mantra_config(bot_config, user) -> Dict:
+    """Load user's mantra configuration with validation."""
+    default_config = {
+        "enrolled": False,
+        "themes": [],
+        "subject": "puppet",
+        "controller": "the conditioning system",
+        "frequency": 1.0,
+        "last_encounter": None,
+        "next_encounter": None,
+        "total_points_earned": 0,
+        "encounters_completed": 0,
+        "online_only": True,
+        "consecutive_timeouts": 0,
+        "mantras_seen": []
+    }
+    
+    config = bot_config.get_user(user, 'mantra_system', None)
+    if config is None or not isinstance(config, dict):
+        config = default_config.copy()
+    else:
+        # Merge with defaults for backward compatibility
+        for key, value in default_config.items():
+            if key not in config:
+                config[key] = value
+    
+    # Ensure we're using online-only mode for hypnotic themes
+    if any(theme in ["brainwashing", "gaslighting", "dronification", "hypnosis", "intox", "drugging"] for theme in config.get("themes", [])):
+        config["online_only"] = True
+    
+    # Validate the config
+    return validate_mantra_config(config)
+
+
+def save_user_mantra_config(bot_config, user, config: Dict):
+    """Save user's mantra configuration."""
+    bot_config.set_user(user, 'mantra_system', config)
+
+
+def update_streak(user_streaks: Dict, user_id: int, success: bool = True) -> None:
+    """Update user's streak status in the provided streaks dictionary."""
+    from datetime import datetime
+    now = datetime.now()
+    
+    if success:
+        if user_id in user_streaks:
+            # Continue existing streak
+            user_streaks[user_id]["count"] += 1
+            user_streaks[user_id]["last_response"] = now
+        else:
+            # Start new streak
+            user_streaks[user_id] = {"count": 1, "last_response": now}
+    else:
+        # Break streak on failure only
+        if user_id in user_streaks:
+            del user_streaks[user_id]
 
 
 def validate_mantra_config(config: Dict) -> Dict:

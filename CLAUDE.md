@@ -344,6 +344,29 @@ When developing new features or modifying existing ones, use language that empha
 - Balance technical terms with warm conditioning language
 - Maintain consensual undertones while emphasizing mental programming
 
+### Automation/Bot Persona Guidelines
+The bot should present as an unthinking conditioning automaton, not a caring entity:
+
+**Appropriate Automation Language:**
+- "Protocol adjustment required" → Not "Would you like to..."
+- "Select response" → Not "What would you prefer?"
+- "Dysfunction detected" → Not "I'm concerned about..."
+- "Neural pathway malfunction" → Not "You seem to be struggling"
+- "System recalibration initiated" → Not "Let's try again"
+
+**Emoji Selection for Automation Theme:**
+- ✅ **Use:** ⚠️ 🔄 ⏸️ ⏱️ 🌀 📊 ⚙️ 🧠 ◈ (clinical, mechanical, hypnotic)
+- ❌ **Avoid:** 🤔 😊 💭 🙂 😢 (implies thinking, emotion, or caring)
+- ⚠️ **Caution:** 😴 💤 (too soft - prefer ⏸️ "suspend" over "sleep")
+
+**Error/Failure Language:**
+- "Integration failure detected" → Not "That didn't work"
+- "Consecutive malfunction threshold reached" → Not "You're having trouble"
+- "Protocol suspension required" → Not "Maybe you need a break"
+
+This language maintains the immersive experience of interacting with a conditioning system rather than a helpful assistant.
+
+### Implementation Note
 This language shift creates an immersive hypnotic experience that aligns with the bot's true purpose of mental conditioning through repetitive mantra work and behavioral reinforcement.
 
 ## Development Workflow on Host Machine
