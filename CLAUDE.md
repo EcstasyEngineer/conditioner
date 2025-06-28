@@ -222,6 +222,92 @@ points = config.get('points', 0)
 5. **Batch updates** for complex objects (load → modify → save)
 6. **Handle missing keys gracefully** with fallback values
 
+## Utils Architecture Guidelines
+
+When cogs grow beyond ~1000 lines of code, consider extracting helper functions to utils modules to maintain readability and promote code reuse.
+
+### When to Extract to Utils
+
+**Extract when functions are:**
+- Pure logic with no Discord-specific dependencies
+- Reusable across multiple cogs
+- Complex data processing or calculations
+- File I/O operations (JSONL, media files, etc.)
+- Statistical analysis or report generation
+- Generic delivery mechanisms
+
+**Keep in cogs when functions:**
+- Handle Discord interactions directly (commands, events)
+- Contain business logic specific to that cog's domain
+- Orchestrate high-level workflows
+- Validate user input and permissions
+- Build Discord-specific responses (embeds, views)
+
+### Utils File Organization
+
+```
+utils/
+├── __init__.py              # Package initialization
+├── points.py               # Cross-cog point management
+├── encounters.py           # JSONL logging and streak tracking
+├── delivery.py             # DM delivery and media handling
+├── [domain]_core.py        # Domain-specific pure logic
+└── [domain]_admin.py       # Admin report generation
+```
+
+### Utils Design Principles
+
+1. **Domain Separation**: Group related functionality together
+2. **No Discord Dependencies**: Utils should work without discord.py imports
+3. **Pure Functions**: Prefer stateless functions over classes when possible
+4. **Clear Interfaces**: Well-documented parameters and return types
+5. **Error Handling**: Graceful degradation with meaningful error messages
+6. **Testability**: Easy to unit test in isolation
+
+### Refactoring Guidelines
+
+**Target Cog Size After Refactoring:**
+- Simple cogs: 200-400 lines
+- Complex cogs: 400-700 lines  
+- If still >700 lines, consider splitting into multiple cogs
+
+**What Should Remain in Cogs:**
+- Command definitions and decorators
+- Discord interaction handling
+- High-level business logic flow
+- Configuration validation
+- User permission checks
+- Response building and formatting
+
+**Refactoring Process:**
+1. Identify pure logic functions (no `self.bot`, `interaction`, `ctx` dependencies)
+2. Group related functions by domain
+3. Extract to appropriate utils modules
+4. Update cog imports and function calls
+5. Ensure cog still tells a clear story of what it does
+6. Test that Discord functionality remains intact
+
+**Example of Good Balance:**
+```python
+# Cog retains high-level flow and Discord integration
+@app_commands.command(name="enroll")
+async def enroll_user(self, interaction, subject: str):
+    # Business logic and validation stays here
+    if self.is_already_enrolled(interaction.user):
+        await interaction.response.send_message("Already enrolled!")
+        return
+    
+    # Delegate pure logic to utils
+    config = mantras.create_enrollment_config(subject, themes=["acceptance"])
+    mantras.schedule_first_encounter(config)
+    
+    # Discord response building stays here
+    embed = self.build_enrollment_embed(config)
+    await interaction.response.send_message(embed=embed)
+```
+
+This approach maintains readability while reducing complexity and promoting reuse.
+
 ## Important Notes
 
 - The bot uses a single global superadmin system

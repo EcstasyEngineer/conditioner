@@ -3,6 +3,8 @@ import discord
 from discord import app_commands
 import re
 
+from utils.points import add_points
+
 class Counter(commands.Cog):
     """Cog for managing a counting channel."""
     def __init__(self, bot):
@@ -53,9 +55,7 @@ class Counter(commands.Cog):
             self.last_number = num
             
             # Award 1 point for valid counting
-            current_points = self.bot.config.get_user(message.author, 'points', 0)
-            new_total = max(0, current_points + 1)
-            self.bot.config.set_user(message.author, 'points', new_total)
+            add_points(self.bot, message.author, 1)
     
     @app_commands.command(name="counting_rewards", description="Enable automatic counting reward protocols")
     @app_commands.describe(enabled="Enable or disable automatic reward collection")

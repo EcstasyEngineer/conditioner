@@ -6,6 +6,8 @@ import json
 import re
 from pathlib import Path
 
+from utils.points import add_points
+
 # Configuration
 # Overall chance of getting any reward
 OVERALL_REWARD_CHANCE = 1/5  # 20% chance of any reward
@@ -164,9 +166,7 @@ class GachaRewards(commands.Cog):
             
             # Award points directly
             tier_points_award = tier_points.get(tier, 2)
-            current_points = self.bot.config.get_user(user, 'points', 0)
-            new_total = max(0, current_points + tier_points_award)
-            self.bot.config.set_user(user, 'points', new_total)
+            add_points(self.bot, user, tier_points_award)
             
             # Send the media file or link content as DM with collection info
             if media_file.suffix.lower() == '.txt':

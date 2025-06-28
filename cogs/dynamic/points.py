@@ -2,44 +2,14 @@ from discord.ext import commands
 import discord
 from datetime import datetime
 
+from utils.points import get_points, add_points, set_points
+
 class Points(commands.Cog):
     """Cog for managing user points across the bot ecosystem."""
     
     def __init__(self, bot):
         self.bot = bot
         self.logger = bot.logger if hasattr(bot, 'logger') else None
-    
-    # ===================
-    # HELPER FUNCTIONS FOR OTHER COGS
-    # ===================
-    
-    def add_points(self, user, amount):
-        """
-        Add points to a user (can be negative to subtract).
-        
-        Args:
-            user: Discord user object or user ID
-            amount: Points to add (can be negative)
-            
-        Returns:
-            int: New point total
-        """
-        current_points = self.bot.config.get_user(user, 'points', 0)
-        new_total = max(0, current_points + amount)  # Prevent going below 0
-        self.bot.config.set_user(user, 'points', new_total)
-        return new_total
-    
-    def get_points(self, user):
-        """
-        Get current point balance for a user.
-        
-        Args:
-            user: Discord user object or user ID
-            
-        Returns:
-            int: Current point balance
-        """
-        return self.bot.config.get_user(user, 'points', 0)
     
     # ===================
     # USER COMMANDS
@@ -49,7 +19,7 @@ class Points(commands.Cog):
     async def check_points(self, ctx, member: discord.Member = None):
         """Check your point balance or another user's balance."""
         target = member if member else ctx.author
-        points = self.get_points(target)
+        points = get_points(self.bot, target)
         
         if target == ctx.author:
             await ctx.send(f"💎 You have **{points:,}** points")
@@ -71,7 +41,7 @@ class Points(commands.Cog):
         # Get all guild members and their points
         for member in ctx.guild.members:
             if not member.bot:
-                points = self.get_points(member)
+                points = get_points(self.bot, member)
                 if points > 0:
                     guild_members.append((member, points))
         
@@ -110,7 +80,7 @@ class Points(commands.Cog):
                 break
         
         if user_rank and user_rank > limit:
-            user_points = self.get_points(ctx.author)
+            user_points = get_points(self.bot, ctx.author)
             embed.set_footer(text=f"Your rank: #{user_rank} with {user_points:,} points")
         
         await ctx.send(embed=embed)
@@ -124,7 +94,7 @@ class Points(commands.Cog):
     @commands.has_permissions(administrator=True)
     async def admin_add_points(self, ctx, member: discord.Member, amount: int):
         """Add points to a user (Admin only). Amount can be negative to subtract."""
-        new_total = self.add_points(member, amount)
+        new_total = add_points(self.bot, member, amount)
         
         if amount > 0:
             await ctx.send(f"✅ Added {amount:,} points to {member.mention}. New balance: {new_total:,}")
@@ -139,8 +109,8 @@ class Points(commands.Cog):
             await ctx.send("Amount cannot be negative!")
             return
         
-        old_balance = self.get_points(member)
-        self.bot.config.set_user(member, 'points', amount)
+        old_balance = get_points(self.bot, member)
+        set_points(self.bot, member, amount)
         
         await ctx.send(f"✅ Set {member.mention}'s points to {amount:,} (was {old_balance:,})")
 async def setup(bot):
