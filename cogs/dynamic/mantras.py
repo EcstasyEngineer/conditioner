@@ -11,6 +11,61 @@ from typing import List, Dict, Optional
 import difflib
 
 
+def log_encounter(user_id: int, encounter: Dict):
+    """Log encounter to JSONL file for performance."""
+    encounters_dir = Path('logs/encounters')
+    encounters_dir.mkdir(parents=True, exist_ok=True)
+    
+    encounters_file = encounters_dir / f'user_{user_id}.jsonl'
+    with open(encounters_file, 'a') as f:
+        f.write(json.dumps(encounter) + '\n')
+
+def load_encounters(user_id: int) -> List[Dict]:
+    """Load all encounters from JSONL file."""
+    encounters_file = Path('logs/encounters') / f'user_{user_id}.jsonl'
+    
+    if not encounters_file.exists():
+        return []
+    
+    encounters = []
+    try:
+        with open(encounters_file, 'r') as f:
+            for line in f:
+                line = line.strip()
+                if line:
+                    encounters.append(json.loads(line))
+    except (json.JSONDecodeError, IOError) as e:
+        print(f"Error loading encounters for user {user_id}: {e}")
+        return []
+    
+    return encounters
+
+def load_recent_encounters(user_id: int, days: int = 7) -> List[Dict]:
+    """Load encounters from the past N days for performance."""
+    cutoff_date = datetime.now() - timedelta(days=days)
+    cutoff_str = cutoff_date.isoformat()
+    
+    encounters = []
+    encounters_file = Path('logs/encounters') / f'user_{user_id}.jsonl'
+    
+    if not encounters_file.exists():
+        return []
+    
+    try:
+        with open(encounters_file, 'r') as f:
+            for line in f:
+                line = line.strip()
+                if line:
+                    encounter = json.loads(line)
+                    if encounter.get('timestamp', '') >= cutoff_str:
+                        encounters.append(encounter)
+    except (json.JSONDecodeError, IOError) as e:
+        print(f"Error loading recent encounters for user {user_id}: {e}")
+        return []
+    
+    return encounters
+
+
 class ThemeSelectView(discord.ui.View):
     """View for managing themes with select menu."""
     
@@ -25,11 +80,9 @@ class ThemeSelectView(discord.ui.View):
         # Create select menu with all available themes
         options = []
         for theme_name in sorted(self.cog.themes.keys()):
-            description = self.cog.themes[theme_name].get("description", "")[:100]
             option = discord.SelectOption(
                 label=theme_name.capitalize(),
                 value=theme_name,
-                description=description,
                 default=theme_name in self.current_themes
             )
             options.append(option)
@@ -177,13 +230,13 @@ class MantraSystem(commands.Cog):
             if user.bot:
                 continue
                 
-            config = self.get_user_mantra_config(user)
-            if not config.get("encounters"):
+            encounters = load_encounters(user.id)
+            if not encounters:
                 continue
                 
             # Sort encounters by timestamp (most recent first)
             sorted_encounters = sorted(
-                config["encounters"],
+                encounters,
                 key=lambda x: x["timestamp"],
                 reverse=True
             )
@@ -262,8 +315,7 @@ class MantraSystem(commands.Cog):
             "controller": "Master",
             "frequency": 1.0,  # encounters per day
             "last_encounter": None,
-            "next_encounter": None,  # Will be migrated to object format
-            "encounters": [],
+            "next_encounter": None,  # Object format: {timestamp, mantra, theme, difficulty, base_points}
             "consecutive_timeouts": 0,
             "total_points_earned": 0,
             "online_only": True,
@@ -285,9 +337,6 @@ class MantraSystem(commands.Cog):
                 if key not in config:
                     config[key] = value
         
-        # Migrate next_encounter from timestamp string to object format
-        if config.get("next_encounter") and isinstance(config["next_encounter"], str):
-            self.migrate_next_encounter_format(config)
                     
         return config
     
@@ -295,19 +344,6 @@ class MantraSystem(commands.Cog):
         """Save user's mantra configuration."""
         self.bot.config.set_user(user, 'mantra_system', config)
     
-    def migrate_next_encounter_format(self, config: Dict):
-        """Migrate next_encounter from timestamp string to object format."""
-        if self.logger:
-            self.logger.info(f"Migrating next_encounter format for user config")
-        
-        # Use a default moderate programming mantra for migration        
-        config["next_encounter"] = {
-            "timestamp": config["next_encounter"],  # Keep existing timestamp
-            "mantra": "{subject}'s thoughts are being reprogrammed by {controller}",
-            "theme": "brainwashing",
-            "difficulty": "moderate",
-            "base_points": 40
-        }
     
     def format_mantra(self, mantra_text: str, subject: str, controller: str) -> str:
         """Replace template variables in mantra text."""
@@ -441,12 +477,7 @@ class MantraSystem(commands.Cog):
         
         # Check if it's time for next encounter
         if config["next_encounter"]:
-            if isinstance(config["next_encounter"], dict):
-                # New object format
-                next_time = datetime.fromisoformat(config["next_encounter"]["timestamp"])
-            else:
-                # Old string format (should be migrated by now)
-                next_time = datetime.fromisoformat(config["next_encounter"])
+            next_time = datetime.fromisoformat(config["next_encounter"]["timestamp"])
             
             if datetime.now() < next_time:
                 return False
@@ -456,30 +487,40 @@ class MantraSystem(commands.Cog):
     # Note: Removed check_user_online_consecutive - now using status history tracking
     
     def select_mantra_for_user(self, config: Dict) -> Optional[Dict]:
-        """Select a mantra based on user's themes and progression."""
-        available_mantras = []
-        
-        # Collect mantras from selected themes
-        for theme_name in config["themes"]:
-            if theme_name in self.themes:
-                theme = self.themes[theme_name]
-                for mantra in theme["mantras"]:
-                    # For now, include all difficulties
-                    # TODO: Add progression gating for extreme content
-                    available_mantras.append({
-                        **mantra,
-                        "theme": theme_name
-                    })
-        
-        if not available_mantras:
+        """Select a mantra with balanced theme weighting."""
+        if not config["themes"]:
             return None
-            
-        # Weight selection toward moderate difficulty
-        # Could be enhanced with user performance tracking
-        return random.choice(available_mantras)
+        
+        # First select a theme randomly (equal probability per theme)
+        selected_theme = random.choice(config["themes"])
+        
+        # Then select from mantras in that theme
+        if selected_theme in self.themes:
+            theme_mantras = self.themes[selected_theme]["mantras"]
+            if theme_mantras:
+                mantra = random.choice(theme_mantras)
+                return {
+                    **mantra,
+                    "theme": selected_theme
+                }
+        
+        return None
     
-    def schedule_next_encounter(self, config: Dict):
+    def schedule_next_encounter(self, config: Dict, first_enrollment: bool = False):
         """Schedule the next mantra encounter with pre-planned content."""
+        
+        # Handle first enrollment with special pre-canned message
+        if first_enrollment:
+            next_time = datetime.now() + timedelta(seconds=30)
+            config["next_encounter"] = {
+                "timestamp": next_time.isoformat(),
+                "mantra": "My thoughts are being reprogrammed.",
+                "theme": "enrollment",
+                "difficulty": "moderate",
+                "base_points": 100
+            }
+            return
+        
         # Base frequency is encounters per day
         frequency = config["frequency"]
         
@@ -568,7 +609,7 @@ class MantraSystem(commands.Cog):
                         "completed": False,
                         "expired": True
                     }
-                    config["encounters"].append(encounter)
+                    log_encounter(user.id, encounter)
                     
                     # Break streak on timeout
                     self.update_streak(user_id, success=False)
@@ -718,10 +759,10 @@ class MantraSystem(commands.Cog):
                 total_points = base_total
                 public_bonus = 0
             
-            # Award points
-            points_cog = self.bot.get_cog("Points")
-            if points_cog:
-                points_cog.add_points(message.author, total_points)
+            # Award points directly
+            current_points = self.bot.config.get_user(message.author, 'points', 0)
+            new_total = max(0, current_points + total_points)
+            self.bot.config.set_user(message.author, 'points', new_total)
             
             # Update user config
             config = self.get_user_mantra_config(message.author)
@@ -741,7 +782,7 @@ class MantraSystem(commands.Cog):
                 "response_time": int(response_time),
                 "was_public": is_public
             }
-            config["encounters"].append(encounter)
+            log_encounter(message.author.id, encounter)
             
             # Adjust frequency
             self.adjust_frequency(config, success=True, response_time=int(response_time))
@@ -796,7 +837,7 @@ class MantraSystem(commands.Cog):
                     inline=False
                 )
             
-            current_points = points_cog.get_points(message.author) if points_cog else 0
+            current_points = self.bot.config.get_user(message.author, 'points', 0)
             embed.set_footer(text=f"Total compliance points: {current_points:,}")
             
             # Show streak count if present
@@ -900,12 +941,12 @@ class MantraSystem(commands.Cog):
         """Disable mantra encounters."""
         await self.disable_mantras(interaction)
     
-    @mantra_group.command(name="list_themes", description="List all available mantra themes")
-    async def mantra_list_themes(self, interaction: discord.Interaction):
-        """Show all available themes."""
+    @mantra_group.command(name="list_modules", description="List all available mantra modules")
+    async def mantra_list_modules(self, interaction: discord.Interaction):
+        """Show all available modules."""
         embed = discord.Embed(
-            title="📚 Available Mantra Themes",
-            description="These themes are currently available for training:",
+            title="📚 Available Conditioning Modules",
+            description="These modules are currently available for programming:",
             color=discord.Color.purple()
         )
         
@@ -951,9 +992,17 @@ class MantraSystem(commands.Cog):
         await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
     
     @commands.command(hidden=True)
-    @commands.has_permissions(administrator=True)
     async def mantrasummary(self, ctx):
         """Admin command to show brief mantra summary for all users."""
+        # Check if user is superadmin (for DM access) or guild admin
+        superadmins = self.bot.config.get_global("superadmins", [])
+        is_superadmin = ctx.author.id in superadmins
+        is_guild_admin = (ctx.guild is not None and 
+                         (ctx.author.guild_permissions.administrator or ctx.author == ctx.guild.owner))
+        
+        if not (is_superadmin or is_guild_admin):
+            await ctx.send("You need administrator permissions or superadmin status to use this command.")
+            return
         # Get all users with mantra data
         seen_users = set()
         users_with_mantras = []
@@ -966,8 +1015,9 @@ class MantraSystem(commands.Cog):
                     
                 config = self.get_user_mantra_config(member)
                 
-                # Check if user has ever enrolled or has encounters
-                if config.get("enrolled") or config.get("encounters"):
+                # Check if user has ever enrolled or has encounters (check JSONL files)
+                has_encounters = len(load_encounters(member.id)) > 0
+                if config.get("enrolled") or has_encounters:
                     users_with_mantras.append((member, config))
                     seen_users.add(member.id)
         
@@ -1012,10 +1062,11 @@ class MantraSystem(commands.Cog):
             # Points
             points = config.get("total_points_earned", 0)
             
-            # Success rate  
-            total_encounters = len(config.get("encounters", []))
+            # Success rate from JSONL files
+            encounters = load_encounters(user.id)
+            total_encounters = len(encounters)
             if total_encounters > 0:
-                completed = sum(1 for e in config.get("encounters", []) if e.get("completed", False))
+                completed = sum(1 for e in encounters if e.get("completed", False))
                 rate = f"{completed}/{total_encounters}"
             else:
                 rate = "0/0"
@@ -1044,9 +1095,17 @@ class MantraSystem(commands.Cog):
             await ctx.send("\n".join(current_chunk) + "\n```")
     
     @commands.command(hidden=True)
-    @commands.has_permissions(administrator=True)
     async def mantrastats(self, ctx):
         """Hidden admin command to show detailed mantra statistics for all users."""
+        # Check if user is superadmin (for DM access) or guild admin
+        superadmins = self.bot.config.get_global("superadmins", [])
+        is_superadmin = ctx.author.id in superadmins
+        is_guild_admin = (ctx.guild is not None and 
+                         (ctx.author.guild_permissions.administrator or ctx.author == ctx.guild.owner))
+        
+        if not (is_superadmin or is_guild_admin):
+            await ctx.send("You need administrator permissions or superadmin status to use this command.")
+            return
         # Get all users with mantra data
         seen_users = set()
         users_with_mantras = []
@@ -1059,8 +1118,9 @@ class MantraSystem(commands.Cog):
                     
                 config = self.get_user_mantra_config(member)
                 
-                # Check if user has ever enrolled or has encounters
-                if config.get("enrolled") or config.get("encounters"):
+                # Check if user has ever enrolled or has encounters (check JSONL files)
+                has_encounters = len(load_encounters(member.id)) > 0
+                if config.get("enrolled") or has_encounters:
                     users_with_mantras.append((member, config))
                     seen_users.add(member.id)
         
@@ -1083,16 +1143,8 @@ class MantraSystem(commands.Cog):
         one_week_ago = datetime.now() - timedelta(days=7)
         
         for user_index, (user, config) in enumerate(users_with_mantras):
-            # Get encounters from the past week
-            recent_encounters = []
-            if config.get("encounters"):
-                for enc in config["encounters"]:
-                    try:
-                        enc_time = datetime.fromisoformat(enc["timestamp"])
-                        if enc_time >= one_week_ago:
-                            recent_encounters.append(enc)
-                    except:
-                        continue
+            # Get encounters from the past week using JSONL
+            recent_encounters = load_recent_encounters(user.id, days=7)
             
             # Get last 5 mantras from recent encounters
             last_5_mantras = recent_encounters[-5:] if recent_encounters else []
@@ -1101,9 +1153,11 @@ class MantraSystem(commands.Cog):
             user_info = []
             user_info.append(f"**Status:** {'🟢 Active' if config.get('enrolled') else '🔴 Inactive'}")
             
-            total_encounters = len(config.get("encounters", []))
+            # Get all encounters from JSONL files
+            all_encounters = load_encounters(user.id)
+            total_encounters = len(all_encounters)
             if total_encounters > 0:
-                completed = sum(1 for e in config.get("encounters", []) if e.get("completed", False))
+                completed = sum(1 for e in all_encounters if e.get("completed", False))
                 user_info.append(f"**All Time:** {completed}/{total_encounters} ({completed/total_encounters*100:.1f}%)")
             
             # Add current settings if enrolled
@@ -1242,12 +1296,7 @@ class MantraSystem(commands.Cog):
                 is_first_enrollment = True
         
         # Schedule first encounter
-        if is_first_enrollment:
-            # For first enrollment, schedule in 30 seconds
-            config["next_encounter"] = (datetime.now() + timedelta(seconds=30)).isoformat()
-        else:
-            # For re-enrollment within 24 hours, use normal scheduling
-            self.schedule_next_encounter(config)
+        self.schedule_next_encounter(config, first_enrollment=is_first_enrollment)
         
         self.save_user_mantra_config(interaction.user, config)
         
@@ -1275,7 +1324,7 @@ class MantraSystem(commands.Cog):
         
         # Add timing info for first-time enrollments
         if is_first_enrollment:
-            next_steps_value = "• **First sequence arriving in 30 seconds!**\n"
+            next_steps_value = "• **First sequence arriving soon!**\n"
         else:
             next_steps_value = "• Wait for programming sequences in DMs\n"
         
@@ -1326,14 +1375,15 @@ class MantraSystem(commands.Cog):
         embed.add_field(name="Online Only", value="Yes" if config["online_only"] else "No", inline=True)
         embed.add_field(name="\u200b", value="\u200b", inline=True)  # Empty field for alignment
         
-        # Stats section
-        total_sent = len(config["encounters"])
+        # Stats section from JSONL files
+        encounters = load_encounters(interaction.user.id)
+        total_sent = len(encounters)
         if total_sent > 0:
-            total_captured = sum(1 for e in config["encounters"] if e.get("completed", False))
+            total_captured = sum(1 for e in encounters if e.get("completed", False))
             capture_rate = (total_captured / total_sent * 100)
             
             # Average response time for completed mantras
-            response_times = [e["response_time"] for e in config["encounters"] 
+            response_times = [e["response_time"] for e in encounters 
                              if e.get("completed", False) and "response_time" in e]
             avg_response = sum(response_times) / len(response_times) if response_times else 0
             
@@ -1343,7 +1393,7 @@ class MantraSystem(commands.Cog):
             embed.add_field(name="Integration Rate", value=f"{capture_rate:.1f}%", inline=True)
             embed.add_field(name="Compliance Points", value=f"{config['total_points_earned']:,}", inline=True)
             embed.add_field(name="Avg Response", value=f"{avg_response:.0f}s", inline=True)
-            embed.add_field(name="Public Responses", value=sum(1 for e in config["encounters"] if e.get("was_public", False)), inline=True)
+            embed.add_field(name="Public Responses", value=sum(1 for e in encounters if e.get("was_public", False)), inline=True)
             
             # Streak information
             if interaction.user.id in self.user_streaks:
@@ -1367,8 +1417,8 @@ class MantraSystem(commands.Cog):
                 embed.add_field(name="Last Response", value=duration_str, inline=True)
                 embed.add_field(name="Streak Bonus", value=f"+{streak_bonus} pts" if streak_bonus > 0 else "Building...", inline=True)
             
-            # Recent mantras
-            recent = config["encounters"][-5:]  # Last 5
+            # Recent mantras from JSONL
+            recent = encounters[-5:]  # Last 5
             if recent:
                 recent_text = []
                 for enc in reversed(recent):

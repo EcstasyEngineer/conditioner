@@ -53,9 +53,9 @@ class Counter(commands.Cog):
             self.last_number = num
             
             # Award 1 point for valid counting
-            points_cog = self.bot.get_cog("Points")
-            if points_cog:
-                points_cog.add_points(message.author, 1)
+            current_points = self.bot.config.get_user(message.author, 'points', 0)
+            new_total = max(0, current_points + 1)
+            self.bot.config.set_user(message.author, 'points', new_total)
     
     @app_commands.command(name="counting_rewards", description="Enable automatic counting reward protocols")
     @app_commands.describe(enabled="Enable or disable automatic reward collection")

@@ -162,9 +162,11 @@ class GachaRewards(commands.Cog):
                 "epic": 5
             }
             
-            points_cog = self.bot.get_cog("Points")
-            if points_cog:
-                points_cog.add_points(user, tier_points.get(tier, 2))
+            # Award points directly
+            tier_points_award = tier_points.get(tier, 2)
+            current_points = self.bot.config.get_user(user, 'points', 0)
+            new_total = max(0, current_points + tier_points_award)
+            self.bot.config.set_user(user, 'points', new_total)
             
             # Send the media file or link content as DM with collection info
             if media_file.suffix.lower() == '.txt':

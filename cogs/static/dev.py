@@ -27,8 +27,8 @@ def is_server_admin(ctx):
 def is_superadmin(ctx):
     """Check if user is global superadmin."""
     bot = ctx.bot
-    global_superadmin = bot.config.get(None, "superadmin")
-    return ctx.author.id == global_superadmin
+    superadmins = bot.config.get_global("superadmins", [])
+    return ctx.author.id in superadmins
 
 class Dev(commands.Cog):
     """This is a cog with owner-only commands.
@@ -208,12 +208,12 @@ class Dev(commands.Cog):
             await message.edit(content=f'An error has occurred: {exc}', delete_after=20)
             
     @commands.command(name='shutdown', aliases=['restart'], hidden=True)
-    @commands.check(is_server_admin)
+    @commands.check(is_superadmin)
     async def shutdown(self, ctx):
         """This command shuts down the bot (expects systemctl auto-restart).
         
         Note:
-            This command can be used by server admins.
+            This command can be used by superadmins only.
             This command is hidden from the help menu.
             Use 'restart' alias for cleaner command.
         """
@@ -227,24 +227,46 @@ class Dev(commands.Cog):
             self.logger.error("Error during shutdown", exc_info=True)
             await message.edit(content=f'An error has occurred: {exc}', delete_after=20)
             
-    @commands.command(name='sync', hidden=True)
+    @commands.command(name='sync_dev', aliases=['syncdev'], hidden=True)
     @commands.is_owner()
-    async def sync(self, ctx):
-        """This command syncs the bot's commands with Discord.
+    async def sync_dev(self, ctx):
+        """Fast guild sync for immediate testing (creates temporary overrides).
         
         Note:
             This command can be used only from the bot owner.
             This command is hidden from the help menu.
+            Use sync_clean to remove guild overrides after testing.
         """
-        self.logger.info(f"{ctx.author} invoked sync for guild {ctx.guild.id}")
-        message = await ctx.send('Syncing commands...')
+        self.logger.info(f"{ctx.author} invoked sync_dev for guild {ctx.guild.id}")
+        message = await ctx.send('Fast syncing for testing...')
         await ctx.message.delete()
         try:
             self.bot.tree.copy_global_to(guild=ctx.guild)
             await self.bot.tree.sync(guild=ctx.guild)
-            await message.edit(content='Commands synced successfully.', delete_after=20)
+            await message.edit(content='✅ Dev commands synced (guild override active)\n💡 Remember to run !sync_clean when done testing', delete_after=20)
         except Exception as exc:
-            self.logger.error("Error syncing commands", exc_info=True)
+            self.logger.error("Error syncing dev commands", exc_info=True)
+            await message.edit(content=f'An error has occurred: {exc}', delete_after=20)
+    
+    @commands.command(name='sync_clean', aliases=['syncclean'], hidden=True)
+    @commands.is_owner()
+    async def sync_clean(self, ctx):
+        """Remove guild command overrides, return to global commands only.
+        
+        Note:
+            This command can be used only from the bot owner.
+            This command is hidden from the help menu.
+            Clears guild-specific commands to prevent duplicates.
+        """
+        self.logger.info(f"{ctx.author} invoked sync_clean for guild {ctx.guild.id}")
+        message = await ctx.send('Cleaning guild overrides...')
+        await ctx.message.delete()
+        try:
+            self.bot.tree.clear_commands(guild=ctx.guild)
+            await self.bot.tree.sync(guild=ctx.guild)
+            await message.edit(content='✅ Guild overrides cleared (global commands active)', delete_after=20)
+        except Exception as exc:
+            self.logger.error("Error cleaning guild commands", exc_info=True)
             await message.edit(content=f'An error has occurred: {exc}', delete_after=20)
 
 async def setup(bot):

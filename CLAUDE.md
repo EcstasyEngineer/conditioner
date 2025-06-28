@@ -98,7 +98,10 @@ media/           # Bot avatars and gacha rewards
 
 1. **Async/Await**: All Discord operations use proper async patterns
 2. **Error Handling**: Try-except blocks with logging throughout
-3. **Config Access**: Always use `self.bot.config` for config operations (e.g., `self.bot.config.get()`, `self.bot.config.set_user()`)
+3. **Config Access**: Always use `self.bot.config` for config operations with proper scope methods:
+   - Guild configs: `self.bot.config.get(ctx, key)`, `self.bot.config.set(ctx, key, value)`
+   - User configs: `self.bot.config.get_user(user, key)`, `self.bot.config.set_user(user, key, value)`
+   - Global configs: `self.bot.config.get_global(key)`, `self.bot.config.set_global(key, value)`
 4. **Slash Commands**: Modern Discord interactions via `app_commands`
 5. **Auto-save**: Config changes auto-save after 5 seconds to prevent data loss
 
@@ -122,6 +125,102 @@ When creating GitHub issues:
 2. Apply appropriate labels for priority, effort, complexity, and components
 3. Use multiple labels to help with triage and contributor matching
 4. Follow the examples in the labels guide for consistent categorization
+
+## Configuration System Guide
+
+The bot uses a centralized, thread-safe configuration system with three distinct scopes:
+
+### Configuration Scopes
+
+1. **Global Config** (`configs/global.json`)
+   - Bot-wide settings (superadmin, bot-level toggles)
+   - **Methods**: `get_global(key, default=None)`, `set_global(key, value)`
+   - **Example**: `superadmin = self.bot.config.get_global("superadmin")`
+
+2. **Guild Config** (`configs/{guild_id}.json`)
+   - Per-server settings (guild admins, channel configurations)
+   - **Methods**: `get(ctx, key, default=None)`, `set(ctx, key, value)`
+   - **Example**: `admins = self.bot.config.get(ctx, "admins", [])`
+
+3. **User Config** (`configs/user_{user_id}.json`)
+   - Per-user settings (points, preferences, mantra configs)
+   - **Methods**: `get_user(user, key, default=None)`, `set_user(user, key, value)`
+   - **Example**: `points = self.bot.config.get_user(user, 'points', 0)`
+
+### Configuration Usage Patterns
+
+#### Basic Access with Defaults
+```python
+# User settings
+points = self.bot.config.get_user(user, 'points', 0)
+auto_claim = self.bot.config.get_user(user, 'auto_claim_gacha', False)
+
+# Guild settings  
+admins = self.bot.config.get(ctx, "admins", [])
+channel = self.bot.config.get(ctx, 'mantra_public_channel', None)
+
+# Global settings
+superadmin = self.bot.config.get_global("superadmin")
+```
+
+#### Complex Configuration Objects
+```python
+# Load complex config with safe defaults
+def get_user_mantra_config(self, user):
+    default_config = {
+        "enrolled": False,
+        "themes": [],
+        "subject": "puppet",
+        "total_points_earned": 0
+    }
+    
+    config = self.bot.config.get_user(user, 'mantra_system', None)
+    if config is None or not isinstance(config, dict):
+        config = default_config.copy()
+    else:
+        # Safe merge - only add missing keys
+        for key, value in default_config.items():
+            if key not in config:
+                config[key] = value
+    
+    return config
+
+# Modify and save
+config = self.get_user_mantra_config(user)
+config["enrolled"] = True
+config["themes"] = ["acceptance"]
+self.bot.config.set_user(user, 'mantra_system', config)
+```
+
+#### Error Handling Best Practices
+```python
+# Always provide sensible defaults
+config = self.bot.config.get_user(user, 'settings', {})
+
+# Type checking for complex objects
+if not isinstance(config, dict):
+    config = {}
+
+# Safe key access
+points = config.get('points', 0)
+```
+
+### System Features
+
+- **Thread-safe**: Automatic save buffering (5-second delay)
+- **Atomic writes**: Prevents corruption during saves
+- **External monitoring**: Detects manual file changes every 2 seconds
+- **Lazy initialization**: Creates defaults on first access
+- **Type safety**: Built-in validation support
+
+### Configuration Guidelines
+
+1. **Use appropriate scope methods** - Never use `get(None, ...)` for global configs
+2. **Always provide defaults** when calling get methods
+3. **Use type checking** for complex configuration objects
+4. **Implement migration logic** for configuration format changes
+5. **Batch updates** for complex objects (load → modify → save)
+6. **Handle missing keys gracefully** with fallback values
 
 ## Important Notes
 

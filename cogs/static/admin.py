@@ -7,16 +7,38 @@ class Admin(commands.Cog):
         self.logger = bot.logger
 
     @commands.command(name="claimsuper", aliases=["claimsuperadmin"])
+    @commands.is_owner()
     async def claimsuper(self, ctx):
-        """Claim the sole superadmin spot."""
-        # use global config for superadmin
-        if self.bot.config.get(None, "superadmin") is None:
-            self.bot.config.set(None, "superadmin", ctx.author.id)
+        """Claim the first superadmin spot (owner only)."""
+        # use global config for superadmins
+        superadmins = self.bot.config.get_global("superadmins", [])
+        if ctx.author.id not in superadmins:
+            superadmins.append(ctx.author.id)
+            self.bot.config.set_global("superadmins", superadmins)
             self.logger.info(f"Superadmin claimed by {ctx.author} (ID: {ctx.author.id})")
             await ctx.send("Superadmin claimed.")
         else:
-            self.logger.warning(f"Failed superadmin claim by {ctx.author} (ID: {ctx.author.id}); already set")
-            await ctx.send("There can only be one bot superadmin.")
+            self.logger.warning(f"Failed superadmin claim by {ctx.author} (ID: {ctx.author.id}); already superadmin")
+            await ctx.send("You are already a bot superadmin.")
+
+    @commands.command(name="addsuperadmin")
+    @commands.is_owner()
+    async def addsuperadmin(self, ctx, member: discord.Member = None):
+        """Add a user as a bot superadmin (owner only)."""
+        if not member:
+            await ctx.send("Please specify a user to add as bot superadmin.")
+            self.logger.warning(f"addsuperadmin called without member by {ctx.author} (ID: {ctx.author.id})")
+            return
+        
+        superadmins = self.bot.config.get_global("superadmins", [])
+        if member.id in superadmins:
+            self.logger.info(f"{member} (ID: {member.id}) already superadmin")
+            await ctx.send(f"{member} is already a bot superadmin.")
+        else:
+            superadmins.append(member.id)
+            self.bot.config.set_global("superadmins", superadmins)
+            self.logger.info(f"{member} (ID: {member.id}) added as superadmin by {ctx.author} (ID: {ctx.author.id})")
+            await ctx.send(f"{member} has been added as a bot superadmin.")
 
     @commands.command(name="claimadmin")
     async def claimadmin(self, ctx):
@@ -26,14 +48,14 @@ class Admin(commands.Cog):
             self.logger.warning(f"claimadmin attempted in DMs by {ctx.author} (ID: {ctx.author.id})")
             return
         
-        global_superadmin = self.bot.config.get(None, "superadmin")
-        if not (ctx.author.id == global_superadmin or ctx.author.guild_permissions.administrator or ctx.author == ctx.guild.owner):
+        superadmins = self.bot.config.get_global("superadmins", [])
+        if not (ctx.author.id in superadmins or ctx.author.guild_permissions.administrator or ctx.author == ctx.guild.owner):
             self.logger.warning(f"Unauthorized claimadmin attempt by {ctx.author} (ID: {ctx.author.id}) in guild {ctx.guild.id}")
             await ctx.send("You lack admin privileges on this server.")
             return
         # use per-guild config for admins
         admins = self.bot.config.get(ctx, "admins", [])
-        if not ctx.author.id == global_superadmin and admins: # user is not a superadmin and there are already admins
+        if ctx.author.id not in superadmins and admins: # user is not a superadmin and there are already admins
             await ctx.send("There are already admins for this server. You must be added by one of the admins with !addadmin @you.")
             return
         if ctx.author.id in admins:
@@ -57,7 +79,8 @@ class Admin(commands.Cog):
             self.logger.warning(f"addadmin called without member by {ctx.author} (ID: {ctx.author.id})")
             return
         admins = self.bot.config.get(ctx, "admins", [])
-        if ctx.author.id != self.bot.config.get(None, "superadmin") and not (
+        superadmins = self.bot.config.get_global("superadmins", [])
+        if ctx.author.id not in superadmins and not (
             ctx.author.guild_permissions.administrator or ctx.author == ctx.guild.owner or 
             ctx.author.id in admins
         ):

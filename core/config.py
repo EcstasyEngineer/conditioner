@@ -38,7 +38,7 @@ class Config:
 
     def _resolve_config_id(self, ctx, scope='guild'):
         """Resolve context to config file identifier"""
-        if scope == 'global' or ctx is None:
+        if scope == 'global':
             return 'global'
         elif scope == 'user':
             if hasattr(ctx, 'id'):

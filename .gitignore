@@ -3,7 +3,7 @@
 __pycache__
 .env
 .env.dev
-configs/*.json
+configs/
 /media/common/*
 !/media/common/sample.*
 /media/uncommon/*
