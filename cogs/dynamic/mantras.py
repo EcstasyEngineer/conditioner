@@ -754,7 +754,7 @@ class MantraSystem(commands.Cog):
             return
         
         # Generate summary using utils (simple husk)
-        summary = generate_mantra_summary(self.bot, ctx.guild.members if ctx.guild else [])
+        summary = generate_mantra_summary(self.bot)
         
         # Send in chunks if needed (Discord message limit)
         if len(summary) <= 2000:
@@ -788,7 +788,7 @@ class MantraSystem(commands.Cog):
             return
         
         # Generate stats using utils (simple husk)
-        embeds = generate_mantra_stats_embeds(self.bot, ctx.guild.members if ctx.guild else [])
+        embeds = generate_mantra_stats_embeds(self.bot)
         
         # Send all embeds
         for embed in embeds:

@@ -207,24 +207,51 @@ def should_auto_disable_user(consecutive_timeouts: int) -> bool:
 # ADMIN REPORT GENERATION
 # =============================================================================
 
-def generate_mantra_summary(bot, guild_members: List) -> str:
+def generate_mantra_summary(bot, guild_members: List = None) -> str:
     """Generate brief mantra summary for all users (husk function for cog)."""
-    seen_users = set()
     users_with_mantras = []
     
-    # Collect user data
-    for member in guild_members:
-        if member.bot or member.id in seen_users:
+    # Read user JSON files directly
+    import os
+    import json
+    from pathlib import Path
+    
+    configs_dir = Path('configs')
+    if not configs_dir.exists():
+        return "No users have tried the mantra system yet."
+    
+    for config_file in configs_dir.glob('user_*.json'):
+        try:
+            user_id = int(config_file.stem.replace('user_', ''))
+            
+            # Read JSON file directly
+            with open(config_file, 'r') as f:
+                user_data = json.load(f)
+            
+            config = user_data.get('mantra_system', {})
+            
+            # Check if user has encounters or is enrolled
+            has_encounters = len(load_encounters(user_id)) > 0
+            if not (config.get("enrolled") or has_encounters):
+                continue
+            
+            # Try to get user object (for display name)
+            user = bot.get_user(user_id)
+            if not user:
+                # Create a minimal user-like object for display
+                class FakeUser:
+                    def __init__(self, user_id):
+                        self.id = user_id
+                        self.name = f"User_{user_id}"
+                        self.bot = False
+                user = FakeUser(user_id)
+            elif user.bot:
+                continue
+                
+            users_with_mantras.append((user, config))
+            
+        except (ValueError, json.JSONDecodeError, IOError):
             continue
-        
-        # Get config using the bot's config system
-        config = bot.config.get_user(member, 'mantra_system', {})
-        
-        # Check if user has encounters or is enrolled
-        has_encounters = len(load_encounters(member.id)) > 0
-        if config.get("enrolled") or has_encounters:
-            users_with_mantras.append((member, config))
-            seen_users.add(member.id)
     
     if not users_with_mantras:
         return "No users have tried the mantra system yet."
@@ -285,21 +312,56 @@ def generate_mantra_summary(bot, guild_members: List) -> str:
     return "\n".join(summary_lines)
 
 
-def generate_mantra_stats_embeds(bot, guild_members: List) -> List[discord.Embed]:
+def generate_mantra_stats_embeds(bot, guild_members: List = None) -> List[discord.Embed]:
     """Generate detailed mantra statistics embeds (husk function for cog)."""
-    seen_users = set()
     users_with_mantras = []
     
-    # Collect user data
-    for member in guild_members:
-        if member.bot or member.id in seen_users:
+    # Read user JSON files directly
+    import os
+    import json
+    from pathlib import Path
+    
+    configs_dir = Path('configs')
+    if not configs_dir.exists():
+        embed = discord.Embed(
+            title="📊 Neural Programming Statistics",
+            description="No users have tried the mantra system yet.",
+            color=discord.Color.purple()
+        )
+        return [embed]
+    
+    for config_file in configs_dir.glob('user_*.json'):
+        try:
+            user_id = int(config_file.stem.replace('user_', ''))
+            
+            # Read JSON file directly
+            with open(config_file, 'r') as f:
+                user_data = json.load(f)
+            
+            config = user_data.get('mantra_system', {})
+            
+            # Check if user has encounters or is enrolled
+            has_encounters = len(load_encounters(user_id)) > 0
+            if not (config.get("enrolled") or has_encounters):
+                continue
+            
+            # Try to get user object (for display name)
+            user = bot.get_user(user_id)
+            if not user:
+                # Create a minimal user-like object for display
+                class FakeUser:
+                    def __init__(self, user_id):
+                        self.id = user_id
+                        self.name = f"User_{user_id}"
+                        self.bot = False
+                user = FakeUser(user_id)
+            elif user.bot:
+                continue
+                
+            users_with_mantras.append((user, config))
+            
+        except (ValueError, json.JSONDecodeError, IOError):
             continue
-        
-        config = bot.config.get_user(member, 'mantra_system', {})
-        has_encounters = len(load_encounters(member.id)) > 0
-        if config.get("enrolled") or has_encounters:
-            users_with_mantras.append((member, config))
-            seen_users.add(member.id)
     
     if not users_with_mantras:
         embed = discord.Embed(

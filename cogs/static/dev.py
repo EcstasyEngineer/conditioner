@@ -218,8 +218,17 @@ class Dev(commands.Cog):
             Use 'restart' alias for cleaner command.
         """
         self.logger.info(f"{ctx.author} invoked shutdown")
+        
+        # Send message first
         message = await ctx.send('Restarting...')
-        await ctx.message.delete()
+        
+        # Try to delete original message if possible (skip if DM)
+        try:
+            await ctx.message.delete()
+        except discord.Forbidden:
+            pass  # Can't delete in DMs, that's fine
+        
+        # Actually shut down
         try:
             await self.bot.close()
             sys.exit()
