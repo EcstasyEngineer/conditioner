@@ -6,7 +6,6 @@ Includes duplicate resolution and proper sequential numbering.
 """
 
 import os
-import shutil
 from pathlib import Path
 import json
 from datetime import datetime

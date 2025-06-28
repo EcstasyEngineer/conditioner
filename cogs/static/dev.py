@@ -4,8 +4,8 @@ from sys import version_info as sysv
 from os import listdir
 import subprocess
 from datetime import datetime
-from utils import smart_split
 import sys
+
 
 def is_server_admin(ctx):
     """Check if user is server admin (bot admin, Discord admin, or server owner)."""

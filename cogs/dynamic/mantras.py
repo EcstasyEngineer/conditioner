@@ -3,7 +3,6 @@ from discord.ext import commands, tasks
 from discord import app_commands
 import json
 import random
-import asyncio
 from datetime import datetime, timedelta
 from pathlib import Path
 import os
@@ -978,7 +977,7 @@ class MantraSystem(commands.Cog):
                 minutes = int((time_since.total_seconds() % 3600) // 60)
                 duration_str = f"{hours}h {minutes}m ago"
                 
-                streak_bonus, streak_title = self.get_streak_bonus(interaction.user.id)
+                streak_bonus, streak_title = get_streak_bonus(streak_count)
                 streak_text = f"{streak_count} sequences"
                 if streak_title:
                     streak_text += f" - {streak_title}"
@@ -1018,7 +1017,6 @@ class MantraSystem(commands.Cog):
         interaction: discord.Interaction,
         subject: Optional[str],
         controller: Optional[str],
-        themes_list: Optional[List[str]],
         online_only: Optional[bool]
     ):
         """Update user's mantra settings."""
