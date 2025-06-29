@@ -4,6 +4,7 @@ __pycache__
 .env
 .env.dev
 configs/
+*config*backup*/
 /media/common/*
 !/media/common/sample.*
 /media/uncommon/*

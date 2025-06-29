@@ -204,12 +204,20 @@ class GachaRewards(commands.Cog):
         if reward_tier:
             # Always add appropriate reaction based on tier
             emoji = discord.PartialEmoji.from_str(TIER_EMOJIS[reward_tier])
-            await message.add_reaction(emoji)
+            try:
+                await message.add_reaction(emoji)
+            except discord.NotFound:
+                # Message was deleted (likely by counter for wrong number)
+                return
             
             # Add "nice" emoji for 69 and 420 endings
             if str(count_number).endswith('69') or str(count_number).endswith('420'):
                 nice_emoji = discord.PartialEmoji(name='nice', id=1197721927385612378)
-                await message.add_reaction(nice_emoji)
+                try:
+                    await message.add_reaction(nice_emoji)
+                except discord.NotFound:
+                    # Message was deleted
+                    pass
             
             # Check if user has auto-claim enabled
             if self.has_auto_claim(message.author):

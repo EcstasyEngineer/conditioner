@@ -506,7 +506,6 @@ class MantraSystem(commands.Cog):
             
             # Update user config
             config = get_user_mantra_config(self.bot.config, message.author)
-            config["total_points_earned"] += total_points
             
             # Record the capture
             encounter = {
@@ -925,6 +924,15 @@ class MantraSystem(commands.Cog):
             total_captured = sum(1 for e in encounters if e.get("completed", False))
             capture_rate = (total_captured / total_sent * 100)
             
+            # Calculate total points earned from encounters
+            total_points_earned = 0
+            for e in encounters:
+                if e.get("completed", False):
+                    total_points_earned += e.get("base_points", 0)
+                    total_points_earned += e.get("speed_bonus", 0) 
+                    total_points_earned += e.get("streak_bonus", 0)
+                    total_points_earned += e.get("public_bonus", 0)
+            
             # Average response time for completed mantras
             response_times = [e["response_time"] for e in encounters 
                              if e.get("completed", False) and "response_time" in e]
@@ -934,7 +942,7 @@ class MantraSystem(commands.Cog):
             embed.add_field(name="Sequences Transmitted", value=str(total_sent), inline=True)
             embed.add_field(name="Successfully Integrated", value=str(total_captured), inline=True)
             embed.add_field(name="Integration Rate", value=f"{capture_rate:.1f}%", inline=True)
-            embed.add_field(name="Compliance Points", value=f"{config['total_points_earned']:,}", inline=True)
+            embed.add_field(name="Compliance Points", value=f"{total_points_earned:,}", inline=True)
             embed.add_field(name="Avg Response", value=f"{avg_response:.0f}s", inline=True)
             embed.add_field(name="Public Responses", value=sum(1 for e in encounters if e.get("was_public", False)), inline=True)
             

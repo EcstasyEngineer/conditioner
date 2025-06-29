@@ -71,25 +71,33 @@ def format_mantra_text(mantra_text: str, subject: str, controller: str) -> str:
     return formatted
 
 
-def select_mantra_from_themes(themes: List[str], available_themes: Dict[str, Dict]) -> Optional[Dict]:
-    """Select a mantra with balanced theme weighting."""
+def select_mantra_from_themes(themes: List[str], available_themes: Dict[str, Dict], last_mantra: Optional[str] = None) -> Optional[Dict]:
+    """Select a mantra with balanced theme weighting, avoiding repeats."""
     if not themes:
         return None
     
-    # First select a theme randomly (equal probability per theme)
-    selected_theme = random.choice(themes)
+    # Collect all possible mantras from all themes
+    all_mantras = []
+    for theme in themes:
+        if theme in available_themes:
+            theme_mantras = available_themes[theme]["mantras"]
+            for mantra in theme_mantras:
+                all_mantras.append({
+                    **mantra,
+                    "theme": theme
+                })
     
-    # Then select from mantras in that theme
-    if selected_theme in available_themes:
-        theme_mantras = available_themes[selected_theme]["mantras"]
-        if theme_mantras:
-            mantra = random.choice(theme_mantras)
-            return {
-                **mantra,
-                "theme": selected_theme
-            }
+    if not all_mantras:
+        return None
     
-    return None
+    # Filter out the last mantra if provided and we have alternatives
+    if last_mantra and len(all_mantras) > 1:
+        filtered_mantras = [m for m in all_mantras if m["text"] != last_mantra]
+        if filtered_mantras:  # Only use filtered list if it's not empty
+            all_mantras = filtered_mantras
+    
+    # Select randomly from available mantras
+    return random.choice(all_mantras)
 
 
 def schedule_next_encounter(config: Dict, available_themes: Dict, first_enrollment: bool = False):
@@ -123,8 +131,11 @@ def schedule_next_encounter(config: Dict, available_themes: Dict, first_enrollme
         
         next_time = datetime.now() + timedelta(hours=actual_hours)
         
+        # Get last mantra to avoid repeats
+        last_mantra = config.get("next_encounter", {}).get("mantra")
+        
         # Pre-select the mantra for this encounter
-        mantra_data = select_mantra_from_themes(config["themes"], available_themes)
+        mantra_data = select_mantra_from_themes(config["themes"], available_themes, last_mantra)
         if mantra_data:
             config["next_encounter"] = {
                 "timestamp": next_time.isoformat(),
@@ -259,8 +270,20 @@ def generate_mantra_summary(bot, guild_members: List = None) -> str:
     if not users_with_mantras:
         return "No users have tried the mantra system yet."
     
-    # Sort by total points earned
-    users_with_mantras.sort(key=lambda x: x[1].get("total_points_earned", 0), reverse=True)
+    # Sort by total points earned (calculated from encounters)
+    def get_user_total_points(user_config_tuple):
+        user, config = user_config_tuple
+        encounters = load_encounters(user.id)
+        total_points = 0
+        for e in encounters:
+            if e.get("completed", False):
+                total_points += e.get("base_points", 0)
+                total_points += e.get("speed_bonus", 0) 
+                total_points += e.get("streak_bonus", 0)
+                total_points += e.get("public_bonus", 0)
+        return total_points
+    
+    users_with_mantras.sort(key=get_user_total_points, reverse=True)
     
     # Calculate dynamic theme column width
     max_theme_width = 0
@@ -303,11 +326,15 @@ def generate_mantra_summary(bot, guild_members: List = None) -> str:
         subject = config.get("subject", "puppet")[:4]
         controller = config.get("controller", "Master")[:4]
         
-        # Points
-        points = config.get("total_points_earned", 0)
-        
-        # Success rate from encounters
+        # Load encounters once and calculate points + success rate
         encounters = load_encounters(user.id)
+        points = 0
+        for e in encounters:
+            if e.get("completed", False):
+                points += e.get("base_points", 0)
+                points += e.get("speed_bonus", 0) 
+                points += e.get("streak_bonus", 0)
+                points += e.get("public_bonus", 0)
         total_encounters = len(encounters)
         if total_encounters > 0:
             completed = sum(1 for e in encounters if e.get("completed", False))
@@ -385,8 +412,20 @@ def generate_mantra_stats_embeds(bot, guild_members: List = None) -> List[discor
         )
         return [embed]
     
-    # Sort by total points earned
-    users_with_mantras.sort(key=lambda x: x[1].get("total_points_earned", 0), reverse=True)
+    # Sort by total points earned (calculated from encounters)
+    def get_user_total_points(user_config_tuple):
+        user, config = user_config_tuple
+        encounters = load_encounters(user.id)
+        total_points = 0
+        for e in encounters:
+            if e.get("completed", False):
+                total_points += e.get("base_points", 0)
+                total_points += e.get("speed_bonus", 0) 
+                total_points += e.get("streak_bonus", 0)
+                total_points += e.get("public_bonus", 0)
+        return total_points
+    
+    users_with_mantras.sort(key=get_user_total_points, reverse=True)
     
     # Create embeds (max 25 fields per embed)
     embeds = []
@@ -519,11 +558,8 @@ def get_user_mantra_config(bot_config, user) -> Dict:
         "frequency": 1.0,
         "last_encounter": None,
         "next_encounter": None,
-        "total_points_earned": 0,
-        "encounters_completed": 0,
         "online_only": True,
-        "consecutive_timeouts": 0,
-        "mantras_seen": []
+        "consecutive_timeouts": 0
     }
     
     config = bot_config.get_user(user, 'mantra_system', None)
@@ -578,10 +614,7 @@ def validate_mantra_config(config: Dict) -> Dict:
         "last_encounter": None,
         "next_encounter": None,
         "consecutive_timeouts": 0,
-        "total_points_earned": 0,
-        "online_only": True,
-        "online_consecutive_checks": 3,
-        "online_check_interval": 2.0
+        "online_only": True
     }
     
     if config is None or not isinstance(config, dict):
