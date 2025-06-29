@@ -35,30 +35,14 @@ class MantraRequestView(discord.ui.View):
             if self.bot_config and self.user:
                 try:
                     from utils.mantras import adjust_user_frequency, schedule_next_encounter, get_user_mantra_config, save_user_mantra_config, update_streak
-                    from utils.encounters import log_encounter
                     
                     config = get_user_mantra_config(self.bot_config, self.user)
                     
                     # Get current count for display
                     current_timeouts = config.get("consecutive_timeouts", 0)
                     
-                    # Record the failure encounter
-                    encounter = {
-                        "timestamp": datetime.now().isoformat(),
-                        "mantra": self.mantra_text,
-                        "theme": "timeout",
-                        "difficulty": "timeout",
-                        "base_points": 0,
-                        "total_points": 0,
-                        "speed_bonus": 0,
-                        "streak_bonus": 0,
-                        "streak_count": 0,
-                        "public_bonus": 0,
-                        "completed": False,
-                        "response_time": self.timeout_minutes * 60,
-                        "was_public": False
-                    }
-                    log_encounter(self.user.id, encounter)
+                    # Don't log encounter here - the mantra delivery loop already handles expired encounters
+                    # This prevents duplicate entries in the JSONL file
                     
                     # Use existing utils function to determine what should happen
                     result = adjust_user_frequency(config, success=False)

@@ -308,6 +308,126 @@ async def enroll_user(self, interaction, subject: str):
 
 This approach maintains readability while reducing complexity and promoting reuse.
 
+## UI Components Guidelines (`utils/ui.py`)
+
+The `utils/ui.py` file should contain **ONLY** Discord UI components (Views, Buttons, Select Menus, Modals) that handle user interaction. These components should be "dumb" views that display information and capture user input, NOT process business logic.
+
+### What SHOULD be in `ui.py`:
+
+1. **Discord UI Components**:
+   - `discord.ui.View` subclasses
+   - `discord.ui.Button` implementations
+   - `discord.ui.Select` menus
+   - `discord.ui.Modal` forms
+   - Embed creation helper functions
+
+2. **Pure Display Logic**:
+   - Formatting data for display
+   - Creating embed layouts
+   - Setting button labels and styles
+   - Managing view timeouts for UI cleanup
+
+3. **User Input Handling**:
+   - Capturing button clicks
+   - Processing select menu choices
+   - Validating modal form inputs
+   - Sending responses to interactions
+
+### What should NOT be in `ui.py`:
+
+1. **Business Logic** ❌:
+   - Config loading/saving
+   - Points calculations
+   - State transitions
+   - Scheduling operations
+   - Data persistence
+
+2. **Complex Decision Making** ❌:
+   - Determining next actions based on business rules
+   - Calculating values or scores
+   - Managing user state
+   - Adjusting system parameters
+
+3. **External System Calls** ❌:
+   - Database/file operations
+   - API calls
+   - Background task management
+   - Cross-cog communication
+
+### Example of GOOD UI component:
+
+```python
+class ConfirmationView(discord.ui.View):
+    def __init__(self, *, timeout: float = 180.0):
+        super().__init__(timeout=timeout)
+        self.value = None
+    
+    @discord.ui.button(label="Confirm", style=discord.ButtonStyle.green)
+    async def confirm(self, interaction: discord.Interaction, button: discord.ui.Button):
+        self.value = True
+        self.stop()
+        await interaction.response.send_message("Confirmed!", ephemeral=True)
+    
+    @discord.ui.button(label="Cancel", style=discord.ButtonStyle.red)
+    async def cancel(self, interaction: discord.Interaction, button: discord.ui.Button):
+        self.value = False
+        self.stop()
+        await interaction.response.send_message("Cancelled!", ephemeral=True)
+```
+
+### Example of BAD UI component:
+
+```python
+class BadView(discord.ui.View):
+    async def on_timeout(self):
+        # ❌ BAD: Business logic in UI
+        config = load_user_config(self.user)
+        config["points"] += calculate_timeout_penalty()
+        config["streak"] = 0
+        save_user_config(self.user, config)
+        
+        # ❌ BAD: Complex decision making
+        if config["failures"] > 5:
+            await disable_user_features(self.user)
+        
+        # ❌ BAD: Scheduling operations
+        schedule_next_event(self.user, delay=3600)
+```
+
+### Proper Architecture Pattern:
+
+```python
+# In ui.py - Just the view
+class MantraTimeoutView(discord.ui.View):
+    def __init__(self, callback_handler, *, timeout: float = 1800):
+        super().__init__(timeout=timeout)
+        self.callback_handler = callback_handler
+    
+    async def on_timeout(self):
+        # ✅ GOOD: Delegate to handler
+        if self.callback_handler:
+            result = await self.callback_handler.handle_timeout()
+            if result.embed and self._message:
+                await self._message.edit(embed=result.embed, view=result.next_view)
+
+# In cog or service - Business logic
+class MantraService:
+    async def handle_timeout(self) -> TimeoutResult:
+        # All business logic here
+        config = self.load_config()
+        self.adjust_parameters(config)
+        self.save_config(config)
+        
+        return TimeoutResult(
+            embed=self.create_timeout_embed(),
+            next_view=self.determine_next_view()
+        )
+```
+
+### Key Principle: Separation of Concerns
+
+UI components should be reusable across different features without modification. They should not contain feature-specific logic or dependencies on specific data structures. Think of them as "templates" that can display any data passed to them and return user selections without knowing what those selections mean.
+
 ## Important Notes
 
 - The bot uses a single global superadmin system
