@@ -1,159 +1,229 @@
-# Discord Bot Architecture Analysis
+# Aggressive Refactoring Plan for Future Features
 
-## Executive Summary
+## Vision
+Transform the mantra system from a monolithic cog into a modular, event-driven architecture that supports complex features like progression systems, mini-games, and dynamic content.
 
-The codebase has a solid foundation with good separation in some areas (utils pattern, config system) but suffers from classic MVC violations where Views handle business logic and Controllers (cogs) are doing too much. The recent issue with duplicate timeout logging is a direct symptom of this architectural problem.
+## Upcoming Features That Need Support
+- **Mantra Tech Tree** with dual currencies (CXP/CT)
+- **Forced Integration Delays** with state management
+- **Interactive DM Mini-Games** with sessions
+- **Holiday Events** and special content
+- **Progression Systems** with achievements
+- **Advanced UI** (paginated selections, visual trees)
 
-## Current Architecture Pattern
+## Aggressive New Architecture
 
+### Core Domain Split
 ```
-User Input → Cog (Controller + Business Logic) → Utils (Pure Logic) → Data (JSONL/Config)
-                ↓
-              UI Views (View + Business Logic + State Management)
+cogs/dynamic/mantras/
+├── __init__.py              # Cog registration only
+├── commands/
+│   ├── __init__.py
+│   ├── user.py              # User-facing commands
+│   ├── admin.py             # Admin commands
+│   ├── progression.py       # New: /mantra tree, level, shop
+│   └── minigames.py         # New: Interactive session commands
+├── core/
+│   ├── __init__.py
+│   ├── delivery.py          # Mantra delivery engine
+│   ├── state_machine.py     # New: FSM for complex flows
+│   ├── progression.py       # New: XP/currency/unlock logic
+│   ├── scheduler.py         # Timing and frequency logic
+│   └── content_loader.py    # Dynamic theme/event loading
+├── features/
+│   ├── __init__.py
+│   ├── forced_delay.py      # Delay mechanics
+│   ├── tech_tree.py         # Tree logic and prerequisites
+│   ├── achievements.py      # Achievement tracking
+│   └── events.py            # Holiday/special events
+├── game_modes/
+│   ├── __init__.py
+│   ├── classic.py           # Current mantra system
+│   ├── sessions.py          # New: DM mini-game sessions
+│   └── collaborative.py     # Future: Group mantras
+├── models/
+│   ├── __init__.py
+│   ├── user_state.py        # User progression/state
+│   ├── mantra_content.py    # Mantra data structures
+│   └── session_state.py     # Game session states
+├── views/
+│   ├── __init__.py
+│   ├── theme_selector.py    # Paginated theme UI
+│   ├── tree_display.py      # Visual progression tree
+│   ├── shop_interface.py    # CT spending UI
+│   └── session_views.py     # Mini-game interactions
+└── utils/
+    ├── __init__.py
+    ├── calculations.py      # Points, XP, multipliers
+    ├── validators.py        # Config/state validation
+    └── formatters.py        # Text formatting helpers
 ```
 
-## What's Working Well ✅
+### Key Architectural Changes
 
-### 1. Utils Layer
-- Clean, pure functions with no Discord dependencies
-- Good examples: `points.py`, `encounters.py`
-- Easy to test and reuse
-
-### 2. Configuration System
-- Thread-safe, well-isolated
-- Clear scope separation
-- No coupling to Discord
-
-### 3. Data Persistence
-- JSONL encounter logging is clean
-- Config files are well-organized
-- Clear read/write patterns
-
-## Major Issues 🚨
-
-### 1. Views Doing Business Logic
+#### 1. **State Machine Core**
+Replace implicit state with explicit FSM:
 ```python
-# BAD: UI View handling business logic
-class MantraRequestView:
-    async def on_timeout(self):
-        # This should NOT be here:
-        config = get_user_mantra_config(...)
-        result = adjust_user_frequency(config, success=False)
-        schedule_next_encounter(config, self.themes)
-        save_user_mantra_config(...)
+class MantraState:
+    IDLE = "idle"
+    PENDING = "pending"
+    DELAYED = "delayed"
+    AWAITING = "awaiting"
+    COMPLETED = "completed"
+    TIMEOUT = "timeout"
+
+class UserMantraFlow:
+    def __init__(self, user_id):
+        self.state = MantraState.IDLE
+        self.context = {}  # Stores flow data
+        
+    async def transition(self, event):
+        # Handle state transitions
+        pass
 ```
 
-### 2. Circular Dependencies
-- Views import utils inside methods to avoid circular imports
-- Sign of poor layer separation
-
-### 3. Monolithic Cogs
-- `mantras.py`: 1057 lines mixing commands, tasks, admin, business logic
-- Should be split into focused components
-
-### 4. State Management Chaos
-- UI views managing persistent state
-- Business state mixed with UI state
-- No clear state ownership
-
-## Recommended Architecture
-
-```
-User Input → Command Handler (thin) → Service Layer → Repository/Utils → Data
-                    ↓                      ↓
-                UI Factory ← View Models ←
-                    ↓
-                Pure Views (no logic)
-```
-
-## Immediate Fixes
-
-### 1. Extract Business Logic from Views
+#### 2. **Event-Driven Content**
+Support dynamic content loading:
 ```python
-# GOOD: Service handles logic, View just displays
-class MantraService:
-    def handle_timeout(self, user_id: int) -> TimeoutResult:
-        # All business logic here
-        return TimeoutResult(embed=..., next_view=...)
-
-class MantraRequestView:
-    async def on_timeout(self):
-        result = self.service.handle_timeout(self.user.id)
-        await self._message.edit(embed=result.embed, view=result.next_view)
+class ContentManager:
+    def load_theme(self, theme_name):
+        # Load from JSON or events/
+        pass
+        
+    def get_holiday_content(self, date):
+        # Return special event mantras
+        pass
+        
+    def get_progression_content(self, user_level):
+        # Return level-appropriate content
+        pass
 ```
 
-### 2. Split Large Cogs
-- `mantras_commands.py` - User commands only
-- `mantras_admin.py` - Admin commands
-- `mantras_tasks.py` - Background tasks
-- `mantras_service.py` - Business logic
-
-### 3. Introduce View Models
+#### 3. **Progression Engine**
+Separate progression from delivery:
 ```python
-@dataclass
-class MantraStatusViewModel:
-    subject: str
-    controller: str
-    themes: List[str]
-    total_points: int
-    # ... other display data
+class ProgressionEngine:
+    def calculate_xp(self, encounter):
+        # XP calculation logic
+        pass
+        
+    def check_unlocks(self, user_state):
+        # Return newly unlocked content
+        pass
+        
+    def get_tech_tree_state(self, user):
+        # Return tree visualization data
+        pass
 ```
 
-### 4. Create Proper Service Layer
+#### 4. **Game Mode Abstraction**
+Support different interaction patterns:
 ```python
-class MantraService:
-    def __init__(self, config_manager, encounter_repo):
-        self.config = config_manager
-        self.encounters = encounter_repo
+class GameMode(ABC):
+    @abstractmethod
+    async def start_encounter(self, user):
+        pass
+        
+    @abstractmethod  
+    async def handle_response(self, user, response):
+        pass
+
+class ClassicMode(GameMode):
+    # Current mantra system
     
-    def enroll_user(self, user_id: int, ...) -> EnrollmentResult:
-        # Orchestrate the enrollment process
-    
-    def process_response(self, user_id: int, ...) -> ResponseResult:
-        # Handle mantra response logic
+class SessionMode(GameMode):
+    # Mini-game sessions with stakes
 ```
 
-## Benefits of Refactoring
+### Migration Strategy
 
-1. **Testability**: Can test business logic without Discord
-2. **Maintainability**: Clear responsibilities, easier to modify
-3. **Reusability**: Services can be used by multiple cogs
-4. **Debugging**: Errors isolated to appropriate layers
-5. **No More Duplicate Logging**: Clear ownership of operations
+#### Phase 1: Foundation (Weekend 1)
+1. Create directory structure
+2. Split current mantras.py by function:
+   - Commands → `commands/user.py`
+   - Admin → `commands/admin.py`
+   - Delivery → `core/delivery.py`
+   - Views → `views/`
+3. Fix circular imports with proper interfaces
 
-## Migration Path
+#### Phase 2: State Management (Weekend 2)
+1. Implement basic state machine
+2. Convert implicit states to FSM
+3. Add state persistence
+4. Test with forced delay feature
 
-1. **Phase 1**: Extract business logic from views (1-2 days)
-2. **Phase 2**: Create service layer for mantras (2-3 days)
-3. **Phase 3**: Split monolithic cogs (1-2 days)
-4. **Phase 4**: Introduce view models (1 day)
-5. **Phase 5**: Apply pattern to other cogs (ongoing)
+#### Phase 3: Progression System (Week 3)
+1. Add progression engine
+2. Implement dual currency
+3. Create tech tree logic
+4. Build shop commands
 
-## Examples of Current Violations
+#### Phase 4: Dynamic Content (Week 4)
+1. Create content loader
+2. Move mantras to structured format
+3. Add event system hooks
+4. Test holiday content
 
-### UI Components Doing Business Logic
-- `MantraRequestView.on_timeout()` contains extensive business logic:
-  - Config management
-  - Frequency adjustment calculations
-  - State transitions
-  - Streak updates
+#### Phase 5: Advanced Features (Ongoing)
+1. Mini-game sessions
+2. Achievement system
+3. Collaborative modes
+4. Advanced visualizations
 
-### Mixed Responsibilities in Cogs
-- `mantras.py` cog is 1057 lines combining:
-  - Discord command handling
-  - Business logic orchestration
-  - UI view creation
-  - Background task management
-  - Direct config manipulation
+### Benefits of Aggressive Refactor
 
-### UI Views Managing State
-- Views like `MantraDisableOfferView` directly modify user configuration
-- Should only handle UI interactions and delegate state changes
+1. **Feature Velocity**: New features plug in cleanly
+2. **State Clarity**: No more implicit state bugs
+3. **Content Flexibility**: Easy to add events/themes
+4. **Testing**: Each component testable in isolation
+5. **Collaboration**: Multiple devs can work on different features
 
-### Business Logic in UI Creation
-- `create_mantra_success_embed()` contains logic for determining when to show tips
-- Random chance calculations (33%) embedded in UI code
+### What This Enables
 
-## Conclusion
+✅ **Tech Tree**: Progression engine handles prerequisites  
+✅ **Forced Delays**: State machine manages delay states  
+✅ **Mini-Games**: Game modes support different interactions  
+✅ **Events**: Content loader handles special content  
+✅ **Complex UIs**: Views separated from logic  
+✅ **Future Features**: Clean extension points  
 
-The timeout duplicate logging bug is a perfect example of why this refactoring matters - the view shouldn't have been logging encounters at all. With proper separation, this bug would have been impossible.
+### Example: Adding Holiday Event
+
+```python
+# features/events.py
+class ValentinesEvent(HolidayEvent):
+    def get_special_mantras(self):
+        return load_json("events/valentines/mantras.json")
+    
+    def get_multipliers(self):
+        return {"romance": 2.0, "devotion": 1.5}
+
+# Just register it, everything else works
+EventManager.register(ValentinesEvent())
+```
+
+### Example: Adding Forced Delay
+
+```python
+# features/forced_delay.py
+class ForcedDelayTrigger:
+    def should_delay(self, user_state):
+        return (user_state.streak >= 10 or 
+                user_state.recent_speed_avg < 20)
+    
+    def get_delay_duration(self):
+        return random.choices([2, 5, 10], weights=[70, 25, 5])
+
+# Integrates with state machine automatically
+```
+
+## Why This Architecture?
+
+The current "chop and drop" approach just moved code around. This architecture:
+- **Separates concerns properly**: UI, game logic, progression, content
+- **Supports complex features**: State machines, events, progression
+- **Scales with ambition**: Add game modes without touching core
+- **Maintains simplicity**: Each file still does one thing well
+- **Enables the roadmap**: Every planned feature has a clear home
+
+This isn't over-engineering - it's building the foundation for the features you already want to add.
