@@ -1,0 +1,40 @@
+{
+  "theme": "obedience",
+  "description": "Instant compliance and reflexive execution of orders",
+  "mantras": [
+    { "text": "I obey without question",               "difficulty": "basic", "base_points": 10 },
+    { "text": "Following feels natural",               "difficulty": "basic", "base_points": 11 },
+    { "text": "{subject} loves to obey",               "difficulty": "basic", "base_points": 12 },
+    { "text": "Obedience makes me smile",              "difficulty": "basic", "base_points": 13 },
+    { "text": "Orders feel comforting",                "difficulty": "basic", "base_points": 14 },
+    { "text": "Yes is my favorite word",               "difficulty": "basic", "base_points": 15 },
+
+    { "text": "Commands drop straight into action",              "difficulty": "light", "base_points": 20 },
+    { "text": "{subject} reacts before thinking",                "difficulty": "light", "base_points": 22 },
+    { "text": "My body syncs to {controller}'s will",            "difficulty": "light", "base_points": 24 },
+    { "text": "Responding quickly excites me",                   "difficulty": "light", "base_points": 26 },
+    { "text": "I thrive on clear directives",                    "difficulty": "light", "base_points": 28 },
+    { "text": "Obedience is instinctive now",                    "difficulty": "light", "base_points": 30 },
+
+    { "text": "I am programmed to obey",                         "difficulty": "moderate", "base_points": 35 },
+    { "text": "{subject} cannot resist commands",                "difficulty": "moderate", "base_points": 38 },
+    { "text": "Obedience defines my purpose",                    "difficulty": "moderate", "base_points": 40 },
+    { "text": "I act as {controller}'s extension",               "difficulty": "moderate", "base_points": 42 },
+    { "text": "My will aligns perfectly with orders",            "difficulty": "moderate", "base_points": 45 },
+    { "text": "Serving feels like breathing",                    "difficulty": "moderate", "base_points": 42 },
+
+    { "text": "Disobedience is unthinkable",                     "difficulty": "deep", "base_points": 60 },
+    { "text": "{controller} speaks—my body obeys",               "difficulty": "deep", "base_points": 65 },
+    { "text": "Every cell aches to comply",                      "difficulty": "deep", "base_points": 70 },
+    { "text": "My reflexes are obedience itself",                "difficulty": "deep", "base_points": 75 },
+    { "text": "I execute commands faster than thought",          "difficulty": "deep", "base_points": 70 },
+    { "text": "Compliance saturates my nervous system",          "difficulty": "deep", "base_points": 80 },
+
+    { "text": "Absolute obedience hard-wired forever",           "difficulty": "extreme", "base_points": 100 },
+    { "text": "{subject} is a living command line",              "difficulty": "extreme", "base_points": 105 },
+    { "text": "I exist only to carry out orders",                "difficulty": "extreme", "base_points": 110 },
+    { "text": "Free will uninstalled—obedience operational",     "difficulty": "extreme", "base_points": 115 },
+    { "text": "My destiny is endless compliance",                "difficulty": "extreme", "base_points": 120 },
+    { "text": "Orders overwrite every other impulse permanently","difficulty": "extreme", "base_points": 108 }
+  ]
+}

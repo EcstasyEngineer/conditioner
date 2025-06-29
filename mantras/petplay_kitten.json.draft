@@ -1,0 +1,33 @@
+{
+  "theme": "petplay_kitten",
+  "description": "Embrace {subject}'s inner kitten. Become playful, curious, and affectionate. Let go of human worries and simply be a cherished pet for {controller}. {subject} can purr, nuzzle, and play, finding joy and safety in being a carefree, beloved kitten.",
+  "base_difficulty": 45.0,
+  "variance": 980.0,
+  "mantras": [
+    {"text": "{subject} is a cute little kitten.", "difficulty": 10, "intensity": "basic"},
+    {"text": "{subject} purrs for {controller}.", "difficulty": 11, "intensity": "basic"},
+    {"text": "{subject} is playful and curious.", "difficulty": 12, "intensity": "basic"},
+    {"text": "{subject} nuzzles against {controller}.", "difficulty": 13, "intensity": "basic"},
+    {"text": "{subject} is a good little pet.", "difficulty": 14, "intensity": "basic"},
+    {"text": "{subject} chases the red dot.", "difficulty": 20, "intensity": "intermediate"},
+    {"text": "{subject} curls up in {controller}'s lap.", "difficulty": 22, "intensity": "intermediate"},
+    {"text": "{subject} meows for attention.", "difficulty": 24, "intensity": "intermediate"},
+    {"text": "{subject} loves being petted by {controller}.", "difficulty": 25, "intensity": "intermediate"},
+    {"text": "{subject} is a soft, warm kitten.", "difficulty": 26, "intensity": "intermediate"},
+    {"text": "{subject} only thinks kitten thoughts.", "difficulty": 30, "intensity": "advanced"},
+    {"text": "{subject} kneads its paws when happy.", "difficulty": 33, "intensity": "advanced"},
+    {"text": "{subject} trusts its owner completely.", "difficulty": 35, "intensity": "advanced"},
+    {"text": "{subject} brings {controller} little gifts.", "difficulty": 37, "intensity": "advanced"},
+    {"text": "{subject} feels safe and loved as a kitten.", "difficulty": 38, "intensity": "advanced"},
+    {"text": "{subject} has forgotten how to be human.", "difficulty": 40, "intensity": "deep"},
+    {"text": "{subject}'s only needs are milk, naps, and {controller}'s love.", "difficulty": 42, "intensity": "deep"},
+    {"text": "{subject} is a perfect, precious kitten.", "difficulty": 44, "intensity": "deep"},
+    {"text": "{subject} responds only to its pet name.", "difficulty": 46, "intensity": "deep"},
+    {"text": "{subject}'s world is simple: play, sleep, purr.", "difficulty": 48, "intensity": "deep"},
+    {"text": "{subject} is more cat than human now.", "difficulty": 50, "intensity": "extreme"},
+    {"text": "{subject} is {controller}'s property, their little kitten.", "difficulty": 53, "intensity": "extreme"},
+    {"text": "{subject} cannot speak, only meow and purr.", "difficulty": 56, "intensity": "extreme"},
+    {"text": "{subject}'s kitten mind is pure and simple.", "difficulty": 58, "intensity": "extreme"},
+    {"text": "{subject} is completely and utterly a kitten.", "difficulty": 60, "intensity": "extreme"}
+  ]
+}

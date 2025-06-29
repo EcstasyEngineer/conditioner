@@ -1,0 +1,35 @@
+{
+  "theme": "affirmation",
+  "description": "Embrace a nurturing cocoon of positive energy. These affirmations reinforce {subject}'s core value, building a foundation of self-love, confidence, and motivation. Let each statement guide {subject} toward personal growth and inner peace, championed by {controller}.",
+  "base_difficulty": 45.0,
+  "variance": 980.0,
+  "mantras": [
+    { "text": "{subject} is worthy of love and respect", "difficulty": "basic", "base_points": 10 },
+    { "text": "I am capable and strong", "difficulty": "basic", "base_points": 11 },
+    { "text": "I believe in my own potential", "difficulty": "basic", "base_points": 12 },
+    { "text": "My thoughts are becoming more positive", "difficulty": "basic", "base_points": 13 },
+    { "text": "I embrace my unique and wonderful qualities", "difficulty": "basic", "base_points": 14 },
+    { "text": "I am enough, just as I am", "difficulty": "basic", "base_points": 15 },
+
+    { "text": "{subject} radiates confidence and warmth", "difficulty": "light", "base_points": 20 },
+    { "text": "I attract positivity and joy into my life", "difficulty": "light", "base_points": 22 },
+    { "text": "My mind is a garden of nurturing thoughts", "difficulty": "light", "base_points": 24 },
+    { "text": "I am guided by {controller}'s encouragement", "difficulty": "light", "base_points": 25 },
+    { "text": "Every day, I grow stronger and more self-assured", "difficulty": "light", "base_points": 26 },
+    { "text": "I release self-doubt and welcome self-love", "difficulty": "light", "base_points": 28 },
+    { "text": "My voice is valuable and my opinions matter", "difficulty": "light", "base_points": 30 },
+
+    { "text": "{subject}'s self-worth is unshakeable", "difficulty": "moderate", "base_points": 35 },
+    { "text": "I am the architect of my own happiness", "difficulty": "moderate", "base_points": 38 },
+    { "text": "{controller}'s belief in me fuels my success", "difficulty": "moderate", "base_points": 40 },
+    { "text": "I am a beacon of love and positivity", "difficulty": "moderate", "base_points": 42 },
+    { "text": "My inner strength is my greatest asset", "difficulty": "moderate", "base_points": 44 },
+    { "text": "I confidently pursue my dreams and goals", "difficulty": "moderate", "base_points": 45 },
+
+    { "text": "My core being is defined by self-love", "difficulty": "deep", "base_points": 60 },
+    { "text": "I am empowered by {controller} to be my best self", "difficulty": "deep", "base_points": 65 },
+    { "text": "{subject}'s spirit is resilient and unbreakable", "difficulty": "deep", "base_points": 70 },
+    { "text": "I am a masterpiece of confidence and grace", "difficulty": "deep", "base_points": 75 },
+    { "text": "My self-perception is permanently and wonderfully positive", "difficulty": "deep", "base_points": 80 }
+  ]
+}

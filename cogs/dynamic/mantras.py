@@ -122,7 +122,7 @@ class MantraSystem(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.logger = bot.logger if hasattr(bot, 'logger') else None
-        self.mantras_dir = Path("mantras/themes")
+        self.mantras_dir = Path("mantras")
         self.themes = self.load_themes()
         
         # Create theme choices for slash commands

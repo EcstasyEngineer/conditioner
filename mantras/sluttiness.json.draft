@@ -1,0 +1,33 @@
+{
+  "theme": "sluttiness",
+  "description": "Embrace {subject}'s inner slut. Feel the liberating thrill of sensuality, the joy of being uninhibited. {subject} is confident, playful, and eager to explore their desires without shame. Shed all constraints and embrace a carefree spirit of heightened self-assuredness and allure, all for {controller}.",
+  "base_difficulty": 45.0,
+  "variance": 980.0,
+  "mantras": [
+    {"text": "{subject} is a slut.", "difficulty": 10, "intensity": "basic"},
+    {"text": "{subject} is sexy and confident.", "difficulty": 11, "intensity": "basic"},
+    {"text": "{subject} loves their body.", "difficulty": 12, "intensity": "basic"},
+    {"text": "{subject} is not ashamed of their desires.", "difficulty": 13, "intensity": "basic"},
+    {"text": "{subject} is playful and flirty.", "difficulty": 14, "intensity": "basic"},
+    {"text": "{subject} is a dirty little slut for {controller}.", "difficulty": 20, "intensity": "intermediate"},
+    {"text": "{subject} loves being looked at.", "difficulty": 22, "intensity": "intermediate"},
+    {"text": "{subject} is eager to please.", "difficulty": 24, "intensity": "intermediate"},
+    {"text": "{subject}'s body is for {controller}'s use.", "difficulty": 25, "intensity": "intermediate"},
+    {"text": "{subject} feels powerful in their sluttiness.", "difficulty": 26, "intensity": "intermediate"},
+    {"text": "{subject} is an exhibitionist.", "difficulty": 30, "intensity": "advanced"},
+    {"text": "{subject} craves being used and filled.", "difficulty": 33, "intensity": "advanced"},
+    {"text": "{subject} is proud to be a whore.", "difficulty": 35, "intensity": "advanced"},
+    {"text": "{subject} will do anything for {controller}'s pleasure.", "difficulty": 37, "intensity": "advanced"},
+    {"text": "{subject}'s only purpose is to be fucked.", "difficulty": 38, "intensity": "advanced"},
+    {"text": "{subject} is a mindless, drooling cocksleeve.", "difficulty": 40, "intensity": "deep"},
+    {"text": "{subject}'s holes are always ready for {controller}.", "difficulty": 42, "intensity": "deep"},
+    {"text": "{subject} thinks only about sex.", "difficulty": 44, "intensity": "deep"},
+    {"text": "{subject} is a public use object.", "difficulty": 46, "intensity": "deep"},
+    {"text": "{subject}'s sluttiness is their identity.", "difficulty": 48, "intensity": "deep"},
+    {"text": "{subject} is a cum-dumpster for {controller}.", "difficulty": 50, "intensity": "extreme"},
+    {"text": "{subject} has no limits, no morals, only need.", "difficulty": 53, "intensity": "extreme"},
+    {"text": "{subject} is the perfect slut, empty and waiting.", "difficulty": 56, "intensity": "extreme"},
+    {"text": "{subject} is defined by the cock in their mouth.", "difficulty": 58, "intensity": "extreme"},
+    {"text": "{subject} is a slut, and nothing else matters.", "difficulty": 60, "intensity": "extreme"}
+  ]
+}

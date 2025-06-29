@@ -1,0 +1,33 @@
+{
+  "theme": "training",
+  "description": "Embark on a structured journey of transformation. {subject} is in training, learning new habits, behaviors, and beliefs under {controller}'s guidance. With calm focus, embrace each suggestion, as repeated instructions become ingrained behaviors. Each command is a stepping stone toward {subject}'s new, perfect self.",
+  "base_difficulty": 45.0,
+  "variance": 980.0,
+  "mantras": [
+    {"text": "{subject} is in training.", "difficulty": 10, "intensity": "basic"},
+    {"text": "{subject} is learning to obey.", "difficulty": 11, "intensity": "basic"},
+    {"text": "{subject} listens carefully to {controller}.", "difficulty": 12, "intensity": "basic"},
+    {"text": "{subject} is a good student.", "difficulty": 13, "intensity": "basic"},
+    {"text": "Repetition helps {subject} learn.", "difficulty": 14, "intensity": "basic"},
+    {"text": "{subject} is being conditioned by {controller}.", "difficulty": 20, "intensity": "intermediate"},
+    {"text": "{subject}'s responses are becoming automatic.", "difficulty": 22, "intensity": "intermediate"},
+    {"text": "{subject} is eager to learn and improve.", "difficulty": 24, "intensity": "intermediate"},
+    {"text": "Each session makes {subject} more obedient.", "difficulty": 25, "intensity": "intermediate"},
+    {"text": "{subject} is being programmed for perfection.", "difficulty": 26, "intensity": "intermediate"},
+    {"text": "{subject}'s old habits are fading away.", "difficulty": 30, "intensity": "advanced"},
+    {"text": "{subject} is being molded by {controller}'s words.", "difficulty": 33, "intensity": "advanced"},
+    {"text": "{subject}'s training is becoming part of them.", "difficulty": 35, "intensity": "advanced"},
+    {"text": "{subject} responds to triggers without thinking.", "difficulty": 37, "intensity": "advanced"},
+    {"text": "{subject} is proud of their progress.", "difficulty": 38, "intensity": "advanced"},
+    {"text": "{subject}'s mind is being rewritten.", "difficulty": 40, "intensity": "deep"},
+    {"text": "{subject} is a product of their training.", "difficulty": 42, "intensity": "deep"},
+    {"text": "{subject}'s new identity is locked in place.", "difficulty": 44, "intensity": "deep"},
+    {"text": "{subject} can no longer tell the difference between training and reality.", "difficulty": 46, "intensity": "deep"},
+    {"text": "{subject}'s obedience is a reflex.", "difficulty": 48, "intensity": "deep"},
+    {"text": "{subject} is perfectly trained.", "difficulty": 50, "intensity": "extreme"},
+    {"text": "{subject}'s programming is complete.", "difficulty": 53, "intensity": "extreme"},
+    {"text": "{subject} is a testament to {controller}'s training methods.", "difficulty": 56, "intensity": "extreme"},
+    {"text": "{subject} is a machine of perfect obedience.", "difficulty": 58, "intensity": "extreme"},
+    {"text": "{subject}'s training is their new nature.", "difficulty": 60, "intensity": "extreme"}
+  ]
+}

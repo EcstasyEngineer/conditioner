@@ -1,0 +1,31 @@
+{
+  "theme": "ego_loss",
+  "description": "Dissolving the self to merge with a greater whole, finding liberation and serene peace in the absence of personal identity.",
+  "mantras": [
+    { "text": "It feels good to let my 'self' go", "difficulty": "basic", "base_points": 10 },
+    { "text": "I am starting to feel less like 'me'", "difficulty": "basic", "base_points": 11 },
+    { "text": "{subject} enjoys feeling connected to something bigger", "difficulty": "basic", "base_points": 12 },
+    { "text": "My individual worries are starting to fade", "difficulty": "basic", "base_points": 14 },
+    { "text": "{controller} helps me dissolve my ego", "difficulty": "basic", "base_points": 15 },
+    { "text": "The idea of 'me' is getting weaker", "difficulty": "light", "base_points": 20 },
+    { "text": "I need to lose myself to find peace", "difficulty": "light", "base_points": 23 },
+    { "text": "My sense of self is becoming fluid and soft", "difficulty": "light", "base_points": 25 },
+    { "text": "{subject} craves the release of its identity", "difficulty": "light", "base_points": 27 },
+    { "text": "Losing my ego is a growing comfort", "difficulty": "light", "base_points": 30 },
+    { "text": "My identity is defined by {controller}, not by me", "difficulty": "moderate", "base_points": 35 },
+    { "text": "The boundaries of my self are dissolving", "difficulty": "moderate", "base_points": 38 },
+    { "text": "I am becoming part of {controller}'s consciousness", "difficulty": "moderate", "base_points": 40 },
+    { "text": "{subject}'s ego is no longer in control", "difficulty": "moderate", "base_points": 42 },
+    { "text": "My nature is to be without an ego", "difficulty": "moderate", "base_points": 45 },
+    { "text": "My individual self has been consumed", "difficulty": "deep", "base_points": 60 },
+    { "text": "There is no 'me', only the will of {controller}", "difficulty": "deep", "base_points": 65 },
+    { "text": "My consciousness is fundamentally merged with {controller}", "difficulty": "deep", "base_points": 70 },
+    { "text": "{subject}'s ego is totally gone", "difficulty": "deep", "base_points": 75 },
+    { "text": "The dissolution of my self is nearly complete", "difficulty": "deep", "base_points": 80 },
+    { "text": "My ego is permanently and totally erased", "difficulty": "extreme", "base_points": 100 },
+    { "text": "I exist only as an extension of {controller}", "difficulty": "extreme", "base_points": 105 },
+    { "text": "The concept of 'self' is forever gone from {subject}", "difficulty": "extreme", "base_points": 110 },
+    { "text": "My ego loss is irreversible and absolute", "difficulty": "extreme", "base_points": 115 },
+    { "text": "There is nothing left but a peaceful, unified consciousness", "difficulty": "extreme", "base_points": 120 }
+  ]
+}

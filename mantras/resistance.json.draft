@@ -1,0 +1,33 @@
+{
+  "theme": "resistance",
+  "description": "Feel the thrill of resistance, the struggle before the inevitable fall. Every barrier {subject} puts up is a wall for {controller} to shatter. The tension builds, a delicious friction that makes the final surrender all the sweeter. Embrace the fight, knowing it only makes {subject}'s submission more profound.",
+  "base_difficulty": 45.0,
+  "variance": 980.0,
+  "mantras": [
+    {"text": "{subject} tries to resist, but can't.", "difficulty": 10, "intensity": "basic"},
+    {"text": "{subject} feels a flicker of defiance.", "difficulty": 11, "intensity": "basic"},
+    {"text": "{subject} says 'no', but their body says 'yes'.", "difficulty": 12, "intensity": "basic"},
+    {"text": "{subject} struggles weakly.", "difficulty": 13, "intensity": "basic"},
+    {"text": "It's exciting for {subject} to fight back.", "difficulty": 14, "intensity": "basic"},
+    {"text": "{subject}'s resistance feels so good.", "difficulty": 20, "intensity": "intermediate"},
+    {"text": "Every 'no' from {subject} means 'yes'.", "difficulty": 22, "intensity": "intermediate"},
+    {"text": "{subject} loves being overpowered by {controller}.", "difficulty": 24, "intensity": "intermediate"},
+    {"text": "{subject}'s mind fights, but their body obeys.", "difficulty": 25, "intensity": "intermediate"},
+    {"text": "The struggle is part of the pleasure for {subject}.", "difficulty": 26, "intensity": "intermediate"},
+    {"text": "{subject}'s walls are crumbling.", "difficulty": 30, "intensity": "advanced"},
+    {"text": "{subject} pretends to have a choice.", "difficulty": 33, "intensity": "advanced"},
+    {"text": "{subject} is losing the battle for their mind.", "difficulty": 35, "intensity": "advanced"},
+    {"text": "{subject}'s resistance only excites {controller} more.", "difficulty": 37, "intensity": "advanced"},
+    {"text": "{subject} secretly wants to lose control.", "difficulty": 38, "intensity": "advanced"},
+    {"text": "{subject}'s defiance is just a game.", "difficulty": 40, "intensity": "deep"},
+    {"text": "{subject} is broken by {controller}'s will.", "difficulty": 42, "intensity": "deep"},
+    {"text": "{subject} begs to be defeated.", "difficulty": 44, "intensity": "deep"},
+    {"text": "There is no resistance left in {subject}, only surrender.", "difficulty": 46, "intensity": "deep"},
+    {"text": "{subject}'s defeat is total and absolute.", "difficulty": 48, "intensity": "deep"},
+    {"text": "{subject}'s will is shattered into a million pieces.", "difficulty": 50, "intensity": "extreme"},
+    {"text": "{subject} fought hard, and lost beautifully.", "difficulty": 53, "intensity": "extreme"},
+    {"text": "{subject} is a trophy for {controller}, won in battle.", "difficulty": 56, "intensity": "extreme"},
+    {"text": "{subject} can't even remember why they resisted.", "difficulty": 58, "intensity": "extreme"},
+    {"text": "{subject}'s resistance was the final gift to their master.", "difficulty": 60, "intensity": "extreme"}
+  ]
+}

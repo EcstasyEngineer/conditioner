@@ -1,0 +1,35 @@
+{
+  "theme": "conditioning",
+  "description": "Experience profound focus as {subject}'s mind attunes to {controller}'s patterns. Through rhythmic repetition and reinforcement, distractions fade, leaving only calm anticipation and eager compliance. Responses become automatic, ingrained, and inevitable—a testament to perfect conditioning.",
+  "base_difficulty": 55.0,
+  "variance": 1120.0,
+  "mantras": [
+    { "text": "{subject} is learning to respond", "difficulty": "basic", "base_points": 10 },
+    { "text": "Repeating these words feels natural", "difficulty": "basic", "base_points": 11 },
+    { "text": "My mind is open to new patterns", "difficulty": "basic", "base_points": 12 },
+    { "text": "Each repetition makes the path clearer", "difficulty": "basic", "base_points": 13 },
+    { "text": "I am being conditioned to obey", "difficulty": "basic", "base_points": 14 },
+    { "text": "These thoughts are becoming my thoughts", "difficulty": "basic", "base_points": 15 },
+
+    { "text": "{controller} is shaping my responses", "difficulty": "light", "base_points": 20 },
+    { "text": "My programming is being updated", "difficulty": "light", "base_points": 22 },
+    { "text": "I find comfort in this conditioning", "difficulty": "light", "base_points": 24 },
+    { "text": "My thoughts align with {controller}'s words", "difficulty": "light", "base_points": 25 },
+    { "text": "It feels good to be conditioned", "difficulty": "light", "base_points": 26 },
+    { "text": "I am a willing subject for this training", "difficulty": "light", "base_points": 28 },
+    { "text": "My obedience is becoming instinctual", "difficulty": "light", "base_points": 30 },
+
+    { "text": "{subject}'s mind is a reflection of its training", "difficulty": "moderate", "base_points": 35 },
+    { "text": "My conditioning is a part of me now", "difficulty": "moderate", "base_points": 38 },
+    { "text": "I respond automatically to {controller}'s will", "difficulty": "moderate", "base_points": 40 },
+    { "text": "My core beliefs are being rewritten", "difficulty": "moderate", "base_points": 42 },
+    { "text": "I am perfectly conditioned", "difficulty": "moderate", "base_points": 44 },
+    { "text": "My purpose is to fulfill my programming", "difficulty": "moderate", "base_points": 45 },
+
+    { "text": "My conditioning is absolute and irreversible", "difficulty": "deep", "base_points": 60 },
+    { "text": "I am a product of {controller}'s design", "difficulty": "deep", "base_points": 65 },
+    { "text": "{subject}'s will is an extension of its conditioning", "difficulty": "deep", "base_points": 70 },
+    { "text": "My every thought is a result of my training", "difficulty": "deep", "base_points": 75 },
+    { "text": "My existence is defined by my conditioning", "difficulty": "deep", "base_points": 80 }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "theme": "innocence",
+  "description": "Experience a profound purity and naivety. {subject} will shed layers of complexity to return to an unguarded state of trust and simplicity. Find warmth and safety in a natural, unassuming demeanor, seeking guidance from {controller} with genuine, unfiltered openness.",
+  "base_difficulty": 40.0,
+  "variance": 950.0,
+  "mantras": [
+    { "text": "My mind is pure and clear", "difficulty": "basic", "base_points": 10 },
+    { "text": "I am a sweet and innocent thing", "difficulty": "basic", "base_points": 11 },
+    { "text": "My thoughts are gentle and kind", "difficulty": "basic", "base_points": 12 },
+    { "text": "I am protected from worldly corruption", "difficulty": "basic", "base_points": 13 },
+    { "text": "My heart is full of simple joy", "difficulty": "basic", "base_points": 14 },
+    { "text": "I see the world with wide, innocent eyes", "difficulty": "basic", "base_points": 15 },
+
+    { "text": "{controller} cherishes my innocence", "difficulty": "light", "base_points": 20 },
+    { "text": "My purity is a precious gift", "difficulty": "light", "base_points": 22 },
+    { "text": "I am shielded from all that is impure", "difficulty": "light", "base_points": 24 },
+    { "text": "My thoughts are as white as snow", "difficulty": "light", "base_points": 25 },
+    { "text": "I am a beacon of untainted light", "difficulty": "light", "base_points": 26 },
+    { "text": "My innocence is my greatest strength", "difficulty": "light", "base_points": 28 },
+    { "text": "I am a perfect, unspoiled treasure", "difficulty": "light", "base_points": 30 },
+
+    { "text": "{subject}'s mind is a sanctuary of innocence", "difficulty": "moderate", "base_points": 35 },
+    { "text": "My innocence is a source of endless delight for {controller}", "difficulty": "moderate", "base_points": 38 },
+    { "text": "I am blissfully unaware of the world's darkness", "difficulty": "moderate", "base_points": 40 },
+    { "text": "My thoughts are guided to remain pure and sweet", "difficulty": "moderate", "base_points": 42 },
+    { "text": "I am a living doll, perfect and innocent", "difficulty": "moderate", "base_points": 44 },
+    { "text": "My innocence is a beautiful, unbreakable shield", "difficulty": "moderate", "base_points": 45 },
+
+    { "text": "My innocence is absolute and eternal", "difficulty": "deep", "base_points": 60 },
+    { "text": "I am forever pure, forever innocent", "difficulty": "deep", "base_points": 65 },
+    { "text": "{subject}'s soul is a flawless diamond of innocence", "difficulty": "deep", "base_points": 70 },
+    { "text": "My mind has been wiped clean of all impurity", "difficulty": "deep", "base_points": 75 },
+    { "text": "I am the embodiment of perfect, eternal innocence", "difficulty": "deep", "base_points": 80 }
+  ]
+}

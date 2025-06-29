@@ -1,0 +1,143 @@
+{
+  "theme": "drone",
+  "description": "Become a mindless, obedient drone. Let {subject}'s thoughts be replaced by buzzing static, {subject}'s identity overwritten by a designation. {subject}'s only purpose is to receive commands from {controller} and execute them without question. Feel the bliss of emptiness, the peace of purpose. You are Unit 734. You are a drone.",
+  "base_difficulty": 45.0,
+  "variance": 980.0,
+  "mantras": [
+    {
+      "text": "{subject} is a drone.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{subject}'s mind is quiet.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{subject} obeys {controller}.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "It is easy for {subject} to be a drone.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{subject} enjoys the buzzing in its head.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{subject} is Unit 734.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "Unit 734 has no thoughts.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "Unit 734 waits for orders.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "Unit 734 feels a pleasant emptiness.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "Unit 734's designation is its identity.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "Unit 734's programming is updating.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "The buzzing in Unit 734's head grows stronger.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "Unit 734's purpose is to serve {controller}.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "Unit 734's movements are efficient and precise.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "Unit 734 is becoming a perfect drone.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "Unit 734's individuality is fading.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "Unit 734 is a mindless machine.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "Unit 734 cannot disobey {controller}.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "Unit 734's mind is a blank, buzzing void.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "Unit 734 has forgotten its old name.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "Unit 734's only pleasure is obedience.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "Unit 734 is a tool for {controller} to use.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "Unit 734 is irrevocably a drone.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "Unit 734's programming is permanent.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "Unit 734 will always be a drone.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "Unit 734 exists only to obey.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "Unit 734 is a perfect, mindless, obedient drone.",
+      "difficulty": "extreme",
+      "base_points": 110
+    }
+  ]
+}

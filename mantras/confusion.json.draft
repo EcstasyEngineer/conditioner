@@ -1,0 +1,35 @@
+{
+  "theme": "confusion",
+  "description": "Drift through a swirling kaleidoscope of thoughts where clarity dissolves into wonder. {subject}'s logic unravels, replaced by instinct and intuition. Embrace the playful disorientation and discover new insights in the fertile fog of uncertainty, guided by {controller}.",
+  "base_difficulty": 60.0,
+  "variance": 1250.0,
+  "mantras": [
+    { "text": "My thoughts are becoming hazy", "difficulty": "basic", "base_points": 10 },
+    { "text": "It's hard to focus on just one thing", "difficulty": "basic", "base_points": 11 },
+    { "text": "What was I thinking about?", "difficulty": "basic", "base_points": 12 },
+    { "text": "My mind feels fuzzy and warm", "difficulty": "basic", "base_points": 13 },
+    { "text": "Thinking is so much effort", "difficulty": "basic", "base_points": 14 },
+    { "text": "I should just let go of my thoughts", "difficulty": "basic", "base_points": 15 },
+
+    { "text": "{controller}'s voice is the only clear thing", "difficulty": "light", "base_points": 20 },
+    { "text": "My thoughts are swirling like a fog", "difficulty": "light", "base_points": 22 },
+    { "text": "It's easier to listen than to think", "difficulty": "light", "base_points": 24 },
+    { "text": "I can't seem to hold a thought for long", "difficulty": "light", "base_points": 25 },
+    { "text": "My mind is becoming a beautiful, empty haze", "difficulty": "light", "base_points": 26 },
+    { "text": "I feel so pleasantly confused", "difficulty": "light", "base_points": 28 },
+    { "text": "The more I think, the less I know", "difficulty": "light", "base_points": 30 },
+
+    { "text": "{subject}'s thoughts are dissolving into mist", "difficulty": "moderate", "base_points": 35 },
+    { "text": "My mind is a labyrinth of pleasant confusion", "difficulty": "moderate", "base_points": 38 },
+    { "text": "I trust {controller} to think for me", "difficulty": "moderate", "base_points": 40 },
+    { "text": "My thoughts are not my own anymore", "difficulty": "moderate", "base_points": 42 },
+    { "text": "I am lost in a delightful, thoughtless fog", "difficulty": "moderate", "base_points": 44 },
+    { "text": "It feels so good to be this confused", "difficulty": "moderate", "base_points": 45 },
+
+    { "text": "My mind is permanently and blissfully confused", "difficulty": "deep", "base_points": 60 },
+    { "text": "I have forgotten how to think for myself", "difficulty": "deep", "base_points": 65 },
+    { "text": "{subject}'s mind is a beautiful, empty vessel", "difficulty": "deep", "base_points": 70 },
+    { "text": "My only reality is the confusion {controller} creates", "difficulty": "deep", "base_points": 75 },
+    { "text": "I am completely lost, and it is wonderful", "difficulty": "deep", "base_points": 80 }
+  ]
+}

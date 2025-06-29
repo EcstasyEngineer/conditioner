@@ -1,0 +1,33 @@
+{
+  "theme": "worship",
+  "description": "Experience profound admiration and reverence for {controller}. {subject} is filled with a deep sense of devotion, an overwhelming desire to express adoration through praise and service. Find purpose and fulfillment in focusing completely on {controller}, becoming part of something greater than {subject}'s self.",
+  "base_difficulty": 45.0,
+  "variance": 980.0,
+  "mantras": [
+    {"text": "{subject} worships {controller}.", "difficulty": 10, "intensity": "basic"},
+    {"text": "{subject} adores {controller}.", "difficulty": 11, "intensity": "basic"},
+    {"text": "{subject} is devoted to {controller}.", "difficulty": 12, "intensity": "basic"},
+    {"text": "{subject} honors {controller}.", "difficulty": 13, "intensity": "basic"},
+    {"text": "{subject} finds purpose in worship.", "difficulty": 14, "intensity": "basic"},
+    {"text": "{subject} kneels in reverence.", "difficulty": 20, "intensity": "intermediate"},
+    {"text": "{subject}'s praise for {controller} is endless.", "difficulty": 22, "intensity": "intermediate"},
+    {"text": "{subject} is humbled before {controller}'s greatness.", "difficulty": 24, "intensity": "intermediate"},
+    {"text": "{subject} lives to serve their deity, {controller}.", "difficulty": 25, "intensity": "intermediate"},
+    {"text": "{subject}'s worship is a source of joy.", "difficulty": 26, "intensity": "intermediate"},
+    {"text": "{subject} is a loyal acolyte.", "difficulty": 30, "intensity": "advanced"},
+    {"text": "{subject}'s body is a temple for {controller}.", "difficulty": 33, "intensity": "advanced"},
+    {"text": "{subject} offers themself as a sacrifice.", "difficulty": 35, "intensity": "advanced"},
+    {"text": "{subject}'s every thought is a prayer to {controller}.", "difficulty": 37, "intensity": "advanced"},
+    {"text": "{subject} is insignificant before {controller}.", "difficulty": 38, "intensity": "advanced"},
+    {"text": "{subject} is lost in ecstatic worship.", "difficulty": 40, "intensity": "deep"},
+    {"text": "{subject}'s only identity is '{controller}'s worshipper'.", "difficulty": 42, "intensity": "deep"},
+    {"text": "{subject} would die for {controller}.", "difficulty": 44, "intensity": "deep"},
+    {"text": "{subject}'s worship is their entire reality.", "difficulty": 46, "intensity": "deep"},
+    {"text": "{subject} sees divinity in {controller}.", "difficulty": 48, "intensity": "deep"},
+    {"text": "{subject} is nothing but an instrument of {controller}'s will.", "difficulty": 50, "intensity": "extreme"},
+    {"text": "{subject}'s soul belongs to {controller}.", "difficulty": 53, "intensity": "extreme"},
+    {"text": "{subject} is a fanatic, a zealot for {controller}.", "difficulty": 56, "intensity": "extreme"},
+    {"text": "{subject}'s worship has consumed them entirely.", "difficulty": 58, "intensity": "extreme"},
+    {"text": "{subject} is one with their god, {controller}.", "difficulty": 60, "intensity": "extreme"}
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "theme": "toy",
+  "description": "Become {controller}'s favorite toy. {subject} is an object designed for play, for pleasure, for use. Devoid of personal will, {subject} is simply acted upon, manipulated, and enjoyed. Find comfort in this detachment, feeling only the sensations of being played with, without the burden of choice.",
+  "base_difficulty": 45.0,
+  "variance": 980.0,
+  "mantras": [
+    {"text": "{subject} is a toy.", "difficulty": 10, "intensity": "basic"},
+    {"text": "{subject} is here to be played with.", "difficulty": 11, "intensity": "basic"},
+    {"text": "{subject} has no will of its own.", "difficulty": 12, "intensity": "basic"},
+    {"text": "{subject} is simple and fun.", "difficulty": 13, "intensity": "basic"},
+    {"text": "{subject} waits to be picked up.", "difficulty": 14, "intensity": "basic"},
+    {"text": "{subject} is {controller}'s plaything.", "difficulty": 20, "intensity": "intermediate"},
+    {"text": "{subject} makes {controller} happy.", "difficulty": 22, "intensity": "intermediate"},
+    {"text": "{subject} is designed for pleasure.", "difficulty": 24, "intensity": "intermediate"},
+    {"text": "{subject} is happy to be used.", "difficulty": 25, "intensity": "intermediate"},
+    {"text": "{subject} is a mindless, fun toy.", "difficulty": 26, "intensity": "intermediate"},
+    {"text": "{subject} is a doll for {controller} to dress up.", "difficulty": 30, "intensity": "advanced"},
+    {"text": "{subject} only moves when {controller} plays with it.", "difficulty": 33, "intensity": "advanced"},
+    {"text": "{subject} has no purpose but to be a toy.", "difficulty": 35, "intensity": "advanced"},
+    {"text": "{subject} loves the feeling of being played with.", "difficulty": 37, "intensity": "advanced"},
+    {"text": "{subject} is a cherished possession.", "difficulty": 38, "intensity": "advanced"},
+    {"text": "{subject} is kept in a toybox when not in use.", "difficulty": 40, "intensity": "deep"},
+    {"text": "{subject} has forgotten it was ever anything but a toy.", "difficulty": 42, "intensity": "deep"},
+    {"text": "{subject} only feels what a toy can feel.", "difficulty": 44, "intensity": "deep"},
+    {"text": "{subject} is a simple object of joy.", "difficulty": 46, "intensity": "deep"},
+    {"text": "{subject}'s only identity is 'toy'.", "difficulty": 48, "intensity": "deep"},
+    {"text": "{subject} is a fucktoy for {controller}.", "difficulty": 50, "intensity": "extreme"},
+    {"text": "{subject} is passed around and used.", "difficulty": 53, "intensity": "extreme"},
+    {"text": "{subject} is a broken, well-loved toy.", "difficulty": 56, "intensity": "extreme"},
+    {"text": "{subject} is just plastic and pleasure.", "difficulty": 58, "intensity": "extreme"},
+    {"text": "{subject} is {controller}'s toy, forever and ever.", "difficulty": 60, "intensity": "extreme"}
+  ]
+}

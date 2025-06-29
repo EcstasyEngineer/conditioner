@@ -1,0 +1,33 @@
+{
+  "theme": "pleasure",
+  "description": "Immerse {subject} in pure, unadulterated pleasure. Every sensation is a wave of joy, every touch is electric. Let go of worries and focus only on feeling good. {subject}'s body is a vessel for bliss, and {controller} is the source of all delight.",
+  "base_difficulty": 45.0,
+  "variance": 980.0,
+  "mantras": [
+    {"text": "{subject} feels good.", "difficulty": 10, "intensity": "basic"},
+    {"text": "{subject} embraces pleasure.", "difficulty": 11, "intensity": "basic"},
+    {"text": "{subject}'s body is relaxed and open.", "difficulty": 12, "intensity": "basic"},
+    {"text": "{subject} enjoys every sensation.", "difficulty": 13, "intensity": "basic"},
+    {"text": "{controller}'s voice is a pleasure to {subject}.", "difficulty": 14, "intensity": "basic"},
+    {"text": "Warmth spreads through {subject}'s body.", "difficulty": 20, "intensity": "intermediate"},
+    {"text": "Every touch from {controller} feels amazing to {subject}.", "difficulty": 22, "intensity": "intermediate"},
+    {"text": "{subject} is sensitive and responsive.", "difficulty": 24, "intensity": "intermediate"},
+    {"text": "{subject} sighs with contentment.", "difficulty": 25, "intensity": "intermediate"},
+    {"text": "{subject} is attuned to positive feelings.", "difficulty": 26, "intensity": "intermediate"},
+    {"text": "Waves of pleasure wash over {subject}.", "difficulty": 30, "intensity": "advanced"},
+    {"text": "{subject}'s only focus is feeling good.", "difficulty": 33, "intensity": "advanced"},
+    {"text": "{subject} is an instrument of pleasure for {controller}.", "difficulty": 35, "intensity": "advanced"},
+    {"text": "{subject} moans softly with every breath.", "difficulty": 37, "intensity": "advanced"},
+    {"text": "{subject} is addicted to the pleasure {controller} gives.", "difficulty": 38, "intensity": "advanced"},
+    {"text": "{subject}'s mind is flooded with bliss.", "difficulty": 40, "intensity": "deep"},
+    {"text": "{subject} can only think about pleasure.", "difficulty": 42, "intensity": "deep"},
+    {"text": "{subject}'s body trembles on the edge of ecstasy.", "difficulty": 44, "intensity": "deep"},
+    {"text": "{subject} exists only for pleasure.", "difficulty": 46, "intensity": "deep"},
+    {"text": "{subject} is a vessel of pure sensation.", "difficulty": 48, "intensity": "deep"},
+    {"text": "{subject}'s pleasure is {controller}'s command.", "difficulty": 50, "intensity": "extreme"},
+    {"text": "{subject} is lost in an ocean of bliss.", "difficulty": 53, "intensity": "extreme"},
+    {"text": "{subject}'s orgasm is a gift to {controller}.", "difficulty": 56, "intensity": "extreme"},
+    {"text": "{subject} is pleasure itself.", "difficulty": 58, "intensity": "extreme"},
+    {"text": "{subject}'s entire being is redefined by pleasure.", "difficulty": 60, "intensity": "extreme"}
+  ]
+}

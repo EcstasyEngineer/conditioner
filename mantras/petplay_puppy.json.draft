@@ -1,0 +1,33 @@
+{
+  "theme": "petplay_puppy",
+  "description": "Become a playful, loyal puppy for {controller}. Let go of human concerns and embrace the simple joy of being a good dog. {subject} is eager to please, full of love, and devoted to {controller}. Wag, bark, and play, finding happiness in being a cherished pet.",
+  "base_difficulty": 45.0,
+  "variance": 980.0,
+  "mantras": [
+    {"text": "{subject} is a good puppy.", "difficulty": 10, "intensity": "basic"},
+    {"text": "{subject} wags their tail for {controller}.", "difficulty": 11, "intensity": "basic"},
+    {"text": "{subject} is loyal and obedient.", "difficulty": 12, "intensity": "basic"},
+    {"text": "{subject} wants to play.", "difficulty": 13, "intensity": "basic"},
+    {"text": "{subject} loves their owner, {controller}.", "difficulty": 14, "intensity": "basic"},
+    {"text": "{subject} fetches for {controller}.", "difficulty": 20, "intensity": "intermediate"},
+    {"text": "{subject} barks happily.", "difficulty": 22, "intensity": "intermediate"},
+    {"text": "{subject} loves belly rubs from {controller}.", "difficulty": 24, "intensity": "intermediate"},
+    {"text": "{subject} is eager to please.", "difficulty": 25, "intensity": "intermediate"},
+    {"text": "{subject} is a happy, playful puppy.", "difficulty": 26, "intensity": "intermediate"},
+    {"text": "{subject} only has puppy thoughts.", "difficulty": 30, "intensity": "advanced"},
+    {"text": "{subject} comes when {controller} calls.", "difficulty": 33, "intensity": "advanced"},
+    {"text": "{subject} protects its owner.", "difficulty": 35, "intensity": "advanced"},
+    {"text": "{subject} is always happy to see {controller}.", "difficulty": 37, "intensity": "advanced"},
+    {"text": "{subject} is a devoted and loving pet.", "difficulty": 38, "intensity": "advanced"},
+    {"text": "{subject} has forgotten what it's like to be human.", "difficulty": 40, "intensity": "deep"},
+    {"text": "{subject}'s only needs are food, walks, and {controller}'s praise.", "difficulty": 42, "intensity": "deep"},
+    {"text": "{subject} is a perfect, obedient puppy.", "difficulty": 44, "intensity": "deep"},
+    {"text": "{subject} responds only to their puppy name.", "difficulty": 46, "intensity": "deep"},
+    {"text": "{subject}'s world is simple: eat, sleep, play, obey.", "difficulty": 48, "intensity": "deep"},
+    {"text": "{subject} is more dog than human now.", "difficulty": 50, "intensity": "extreme"},
+    {"text": "{subject} is {controller}'s property, their loyal puppy.", "difficulty": 53, "intensity": "extreme"},
+    {"text": "{subject} cannot speak, only bark and whine.", "difficulty": 56, "intensity": "extreme"},
+    {"text": "{subject}'s puppy brain is simple and happy.", "difficulty": 58, "intensity": "extreme"},
+    {"text": "{subject} is completely and utterly a puppy.", "difficulty": 60, "intensity": "extreme"}
+  ]
+}

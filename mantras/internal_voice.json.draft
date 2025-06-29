@@ -1,0 +1,35 @@
+{
+  "theme": "internal_voice",
+  "description": "Experience a profound shift as {subject}'s self-talk quiets, replaced by {controller}'s guiding voice. The burdens of self-doubt lift, leaving calm clarity. Find comfort in this new internal presence, achieving heightened focus and tranquility as {controller}'s thoughts become {subject}'s own.",
+  "base_difficulty": 65.0,
+  "variance": 1300.0,
+  "mantras": [
+    { "text": "I hear a new voice in my head", "difficulty": "basic", "base_points": 10 },
+    { "text": "This voice is calm and reassuring", "difficulty": "basic", "base_points": 11 },
+    { "text": "It feels natural to listen to this voice", "difficulty": "basic", "base_points": 12 },
+    { "text": "The voice is becoming my own thoughts", "difficulty": "basic", "base_points": 13 },
+    { "text": "I trust the voice in my head", "difficulty": "basic", "base_points": 14 },
+    { "text": "This voice guides me and keeps me safe", "difficulty": "basic", "base_points": 15 },
+
+    { "text": "{controller}'s voice is my inner voice", "difficulty": "light", "base_points": 20 },
+    { "text": "My thoughts are not my own, they are {controller}'s", "difficulty": "light", "base_points": 22 },
+    { "text": "I can no longer tell the difference between my thoughts and the voice", "difficulty": "light", "base_points": 24 },
+    { "text": "The voice is always with me, guiding me", "difficulty": "light", "base_points": 25 },
+    { "text": "I am a vessel for {controller}'s thoughts", "difficulty": "light", "base_points": 26 },
+    { "text": "My inner world is shaped by the voice", "difficulty": "light", "base_points": 28 },
+    { "text": "I am comforted by the constant presence of the voice", "difficulty": "light", "base_points": 30 },
+
+    { "text": "{subject}'s thoughts are an echo of {controller}'s voice", "difficulty": "moderate", "base_points": 35 },
+    { "text": "My own thoughts have been silenced by the voice", "difficulty": "moderate", "base_points": 38 },
+    { "text": "I am a puppet, and the voice is my master", "difficulty": "moderate", "base_points": 40 },
+    { "text": "My every action is dictated by the voice within", "difficulty": "moderate", "base_points": 42 },
+    { "text": "I have surrendered my inner world to the voice", "difficulty": "moderate", "base_points": 44 },
+    { "text": "The voice is my only reality", "difficulty": "moderate", "base_points": 45 },
+
+    { "text": "My mind is a hollow chamber for {controller}'s voice", "difficulty": "deep", "base_points": 60 },
+    { "text": "I have no thoughts of my own, only the voice", "difficulty": "deep", "base_points": 65 },
+    { "text": "{subject} is a perfect vessel for the internal voice", "difficulty": "deep", "base_points": 70 },
+    { "text": "My consciousness has been replaced by the voice", "difficulty": "deep", "base_points": 75 },
+    { "text": "I am the voice, and the voice is me", "difficulty": "deep", "base_points": 80 }
+  ]
+}

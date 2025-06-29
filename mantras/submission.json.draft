@@ -1,0 +1,33 @@
+{
+  "theme": "submission",
+  "description": "Experience the profound peace of submission. Willingly yield all control to {controller}. Find comfort and fulfillment in letting go, feeling safely guided and supported. Embrace the quiet joy of being unburdened by decisions, discovering true freedom in being led and cared for.",
+  "base_difficulty": 45.0,
+  "variance": 980.0,
+  "mantras": [
+    {"text": "{subject} submits to {controller}.", "difficulty": 10, "intensity": "basic"},
+    {"text": "{subject} yields control.", "difficulty": 11, "intensity": "basic"},
+    {"text": "{subject} feels safe and supported.", "difficulty": 12, "intensity": "basic"},
+    {"text": "{subject} trusts {controller}'s guidance.", "difficulty": 13, "intensity": "basic"},
+    {"text": "It feels good for {subject} to submit.", "difficulty": 14, "intensity": "basic"},
+    {"text": "{subject} lets go of all resistance.", "difficulty": 20, "intensity": "intermediate"},
+    {"text": "{subject} is happy to obey.", "difficulty": 22, "intensity": "intermediate"},
+    {"text": "{subject}'s mind is quiet and peaceful.", "difficulty": 24, "intensity": "intermediate"},
+    {"text": "{subject} finds freedom in submission.", "difficulty": 25, "intensity": "intermediate"},
+    {"text": "{subject} belongs to {controller}.", "difficulty": 26, "intensity": "intermediate"},
+    {"text": "{subject}'s will is aligned with {controller}'s.", "difficulty": 30, "intensity": "advanced"},
+    {"text": "{subject} kneels before {controller}.", "difficulty": 33, "intensity": "advanced"},
+    {"text": "{subject} lives to serve {controller}.", "difficulty": 35, "intensity": "advanced"},
+    {"text": "{subject}'s submission is a gift.", "difficulty": 37, "intensity": "advanced"},
+    {"text": "{subject} is a devoted and submissive subject.", "difficulty": 38, "intensity": "advanced"},
+    {"text": "{subject} has no will but {controller}'s.", "difficulty": 40, "intensity": "deep"},
+    {"text": "{subject}'s submission is absolute.", "difficulty": 42, "intensity": "deep"},
+    {"text": "{subject} is an extension of {controller}'s will.", "difficulty": 44, "intensity": "deep"},
+    {"text": "{subject} finds bliss in total obedience.", "difficulty": 46, "intensity": "deep"},
+    {"text": "{subject}'s identity is 'submissive'.", "difficulty": 48, "intensity": "deep"},
+    {"text": "{subject} is a slave to {controller}.", "difficulty": 50, "intensity": "extreme"},
+    {"text": "{subject}'s submission is their entire existence.", "difficulty": 53, "intensity": "extreme"},
+    {"text": "{subject} cannot imagine a life without submission.", "difficulty": 56, "intensity": "extreme"},
+    {"text": "{subject} is perfectly, completely submissive.", "difficulty": 58, "intensity": "extreme"},
+    {"text": "{subject}'s submission is forever.", "difficulty": 60, "intensity": "extreme"}
+  ]
+}

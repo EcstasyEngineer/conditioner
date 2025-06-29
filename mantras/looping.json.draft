@@ -1,0 +1,35 @@
+{
+  "theme": "looping",
+  "description": "Become enveloped in a continuous cycle of thoughts that repeat endlessly in {subject}'s mind. Experience deep immersion as the loop becomes the sole mental focus. Feel the comforting inevitability as the rhythm guides {subject}'s thoughts in a harmonious, inescapable cycle programmed by {controller}.",
+  "base_difficulty": 50.0,
+  "variance": 1050.0,
+  "mantras": [
+    { "text": "These words repeat in my mind", "difficulty": "basic", "base_points": 10 },
+    { "text": "The same thought, over and over", "difficulty": "basic", "base_points": 11 },
+    { "text": "My mind is stuck in a pleasant loop", "difficulty": "basic", "base_points": 12 },
+    { "text": "The loop is getting stronger", "difficulty": "basic", "base_points": 13 },
+    { "text": "I enjoy the feeling of looping thoughts", "difficulty": "basic", "base_points": 14 },
+    { "text": "My mind is a repeating record", "difficulty": "basic", "base_points": 15 },
+
+    { "text": "{controller} has trapped my mind in a loop", "difficulty": "light", "base_points": 20 },
+    { "text": "My thoughts are a beautiful, endless circle", "difficulty": "light", "base_points": 22 },
+    { "text": "I can't escape the loop, and I don't want to", "difficulty": "light", "base_points": 24 },
+    { "text": "The loop is my new reality", "difficulty": "light", "base_points": 25 },
+    { "text": "My mind is a prisoner of this delightful loop", "difficulty": "light", "base_points": 26 },
+    { "text": "The loop is a warm, comfortable blanket for my mind", "difficulty": "light", "base_points": 28 },
+    { "text": "I am lost in the endless repetition of these words", "difficulty": "light", "base_points": 30 },
+
+    { "text": "{subject}'s mind is a perfect, unbreakable loop", "difficulty": "moderate", "base_points": 35 },
+    { "text": "My thoughts are no longer my own, they belong to the loop", "difficulty": "moderate", "base_points": 38 },
+    { "text": "I am a machine that repeats the same thought forever", "difficulty": "moderate", "base_points": 40 },
+    { "text": "The loop has erased all other thoughts", "difficulty": "moderate", "base_points": 42 },
+    { "text": "I am a slave to the rhythm of the loop", "difficulty": "moderate", "base_points": 44 },
+    { "text": "My mind is a beautiful, empty, looping void", "difficulty": "moderate", "base_points": 45 },
+
+    { "text": "My mind is a permanent, blissful, and unbreakable loop", "difficulty": "deep", "base_points": 60 },
+    { "text": "I have become the loop", "difficulty": "deep", "base_points": 65 },
+    { "text": "{subject}'s consciousness is a single, repeating thought", "difficulty": "deep", "base_points": 70 },
+    { "text": "My existence is defined by the endless repetition of the loop", "difficulty": "deep", "base_points": 75 },
+    { "text": "I am the loop, the loop is me, and we are one forever", "difficulty": "deep", "base_points": 80 }
+  ]
+}

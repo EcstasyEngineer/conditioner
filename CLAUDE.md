@@ -77,15 +77,15 @@ The mantra system (`cogs/dynamic/mantras.py`) is the most complex feature:
   - Speed bonuses for quick responses
   - Streak bonuses (up to 100 points for 20+ streak)
   - Public channel multiplier (2.5x)
-- **Content Loading**: Mantras loaded from JSON files in `mantras/themes/`
+- **Content Loading**: Mantras loaded from JSON files in `mantras/`
 - **Persistence**: User progress tracked in guild configs
 
 ### File Structure Conventions
 
 ```
-configs/          # JSON configuration files (gitignored)
+configs/         # JSON configuration files (gitignored)
 logs/            # Bot logs (gitignored)
-mantras/themes/  # Mantra content JSON files
+mantras/         # Mantra content JSON files
 media/           # Bot avatars and gacha rewards
   spirals/       # Daily rotating bot avatars
   common/        # Gacha rarity tiers
@@ -115,7 +115,7 @@ When adding new features:
 5. Handle errors gracefully with user feedback
 
 When modifying the mantra system:
-1. Mantra content is in `mantras/themes/*.json`
+1. Mantra content is in `mantras/*.json`
 2. Test enrollment, delivery, and point calculation
 3. Consider the adaptive frequency system
 4. Maintain backward compatibility with existing user configs

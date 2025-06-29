@@ -1,0 +1,35 @@
+{
+  "theme": "masochism",
+  "description": "Experience a profound transformation where discomfort becomes a tool for growth. Embrace pain and challenge, transmuting them into a powerful, meaningful experience. Find cathartic release and liberation as vulnerability becomes a source of pleasure, strength, and renewed self-awareness under {controller}.",
+  "base_difficulty": 85.0,
+  "variance": 1700.0,
+  "mantras": [
+    { "text": "I find pleasure in my own suffering", "difficulty": "basic", "base_points": 10 },
+    { "text": "My pain is a beautiful and exquisite sensation", "difficulty": "basic", "base_points": 11 },
+    { "text": "I deserve the pain that is inflicted upon me", "difficulty": "basic", "base_points": 12 },
+    { "text": "My body is a canvas for the art of pain", "difficulty": "basic", "base_points": 13 },
+    { "text": "I ache for the sting of the whip, the bite of the clamp", "difficulty": "basic", "base_points": 14 },
+    { "text": "My suffering is a testament to my devotion", "difficulty": "basic", "base_points": 15 },
+
+    { "text": "{controller} is the master of my pain, and I am grateful", "difficulty": "light", "base_points": 20 },
+    { "text": "I get wet when I think about the pain to come", "difficulty": "light", "base_points": 22 },
+    { "text": "My pain is a symphony, and {controller} is the conductor", "difficulty": "light", "base_points": 24 },
+    { "text": "I am a worthless pain slut, and I love it", "difficulty": "light", "base_points": 25 },
+    { "text": "The more it hurts, the more I want it", "difficulty": "light", "base_points": 26 },
+    { "text": "My body is a temple of exquisite agony", "difficulty": "light", "base_points": 28 },
+    { "text": "I am a masochist, and I am proud of it", "difficulty": "light", "base_points": 30 },
+
+    { "text": "{subject}'s only purpose is to feel pain", "difficulty": "moderate", "base_points": 35 },
+    { "text": "I am a mindless vessel for the experience of pain", "difficulty": "moderate", "base_points": 38 },
+    { "text": "My mind is breaking under the weight of blissful agony", "difficulty": "moderate", "base_points": 40 },
+    { "text": "I will do anything to feel more pain", "difficulty": "moderate", "base_points": 42 },
+    { "text": "My pain is a form of worship to my master", "difficulty": "moderate", "base_points": 44 },
+    { "text": "I am a pathetic creature who lives only for pain", "difficulty": "moderate", "base_points": 45 },
+
+    { "text": "My existence is a constant state of blissful, unending pain", "difficulty": "deep", "base_points": 60 },
+    { "text": "I am nothing more than a vessel for the art of torture", "difficulty": "deep", "base_points": 65 },
+    { "text": "{subject}'s only identity is as a masochistic slave", "difficulty": "deep", "base_points": 70 },
+    { "text": "My mind has been shattered by pain, and I am grateful", "difficulty": "deep", "base_points": 75 },
+    { "text": "I am a worthless, pain-loving object, and it is my only joy", "difficulty": "deep", "base_points": 80 }
+  ]
+}

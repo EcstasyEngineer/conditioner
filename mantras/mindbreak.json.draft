@@ -1,0 +1,133 @@
+{
+  "theme": "mindbreak",
+  "description": "Experience the ultimate bliss of a broken mind. Let {subject}'s thoughts shatter into a million glittering fragments. There is no self, no will, only a beautiful, ecstatic emptiness. {subject} is a mindless, drooling doll, utterly dependent on {controller} for everything. This is the point of no return. This is perfection.",
+  "base_difficulty": 47.6,
+  "variance": 1245.9,
+  "mantras": [
+    {
+      "text": "{subject}'s mind is starting to crack.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "It feels good for {subject} to let go of their thoughts.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{subject}'s thoughts are fuzzy and distant.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{subject} is becoming mindless.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{subject} drools with a happy, empty smile.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{subject}'s mind is a beautiful, empty space.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{subject} can't think anymore, and it's wonderful.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{subject} is a broken, happy toy.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{subject} is completely mindless for {controller}.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{subject}'s mind is shattered beyond repair.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{subject} is a mindless, drooling doll.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{subject} has no thoughts, only bliss.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{subject} is completely and utterly broken.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{subject}'s mindbreak is a gift to {controller}.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{subject} is forever broken, forever happy.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{subject} is nothing but ecstatic emptiness.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{subject}'s only purpose is to be a mindless object for {controller}.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{subject} is a perfect, broken thing.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{subject}'s mind is gone, and only {controller} remains.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "The breaking was the best thing that ever happened to {subject}.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{subject} is a mindless slave, happily broken.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{subject} is a testament to {controller}'s power.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{subject}'s broken mind is a work of art.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{subject} is a beautiful ruin, owned by {controller}.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "There is no {subject}, only the blissful, broken emptiness.",
+      "difficulty": "extreme",
+      "base_points": 110
+    }
+  ]
+}

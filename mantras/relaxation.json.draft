@@ -1,0 +1,153 @@
+{
+  "theme": "relaxation",
+  "description": "Sink deep into a state of profound relaxation. Let every muscle in {subject}'s body become loose and heavy. {subject}'s mind becomes a calm, still pool, free from all stress and worry. Follow {controller}'s voice down, down, down into a peaceful, blissful trance.",
+  "base_difficulty": 51.5,
+  "variance": 1234.5,
+  "mantras": [
+    {
+      "text": "{subject} is feeling calm and relaxed.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{subject}'s breathing is slow and deep.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{subject} is letting go of all tension.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{subject} feels safe and comfortable.",
+      "difficulty": "basic",
+      "base_points": 12
+    },
+    {
+      "text": "{subject}'s body is heavy and warm.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{subject} is sinking deeper into relaxation.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{subject}'s mind is becoming quiet.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "Every word from {controller} relaxes {subject} more.",
+      "difficulty": "light",
+      "base_points": 25
+    },
+    {
+      "text": "{subject} is floating in a peaceful space.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{subject} is in a deep, pleasant trance.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{subject} is completely at ease.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{subject}'s relaxation is deep and profound.",
+      "difficulty": "moderate",
+      "base_points": 40
+    },
+    {
+      "text": "{subject} is lost in a sea of tranquility.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{subject}'s mind is still and empty.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{subject} is deeply, deeply relaxed.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{subject} is on the edge of sleep, but aware of {controller}'s voice.",
+      "difficulty": "deep",
+      "base_points": 70
+    },
+    {
+      "text": "{subject}'s relaxation is so deep, they can barely move.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{subject} is in the deepest trance they have ever known.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{subject} is pure relaxation, without thought or care.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+      "text": "{subject}'s mind is completely submerged in peace.",
+      "difficulty": "extreme",
+      "base_points": 110
+    },
+    {
+        "text": "{subject} is letting go.",
+        "difficulty": "basic",
+        "base_points": 12
+    },
+    {
+        "text": "{subject} feels so heavy.",
+        "difficulty": "light",
+        "base_points": 25
+    },
+    {
+        "text": "{subject} is drifting away.",
+        "difficulty": "light",
+        "base_points": 25
+    },
+    {
+        "text": "{subject} is so sleepy.",
+        "difficulty": "moderate",
+        "base_points": 40
+    },
+    {
+        "text": "{subject} can only hear {controller}'s voice.",
+        "difficulty": "moderate",
+        "base_points": 40
+    },
+    {
+        "text": "{subject} is sinking into a warm, dark place.",
+        "difficulty": "deep",
+        "base_points": 70
+    },
+    {
+        "text": "{subject} is completely under {controller}'s spell.",
+        "difficulty": "deep",
+        "base_points": 70
+    },
+    {
+        "text": "{subject} is a mindless, relaxed doll.",
+        "difficulty": "extreme",
+        "base_points": 110
+    },
+    {
+        "text": "{subject} is completely and utterly relaxed.",
+        "difficulty": "extreme",
+        "base_points": 110
+    }
+  ]
+}

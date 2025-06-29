@@ -1,0 +1,40 @@
+{
+  "theme": "bimbo",
+  "description": "Playful simplification, carefree joy, and pretty-minded bliss",
+  "mantras": [
+    { "text": "Thinking is hard, smiling is easy",          "difficulty": "basic", "base_points": 10 },
+    { "text": "I love feeling cute and light",              "difficulty": "basic", "base_points": 11 },
+    { "text": "{subject} gets giggly and happy",            "difficulty": "basic", "base_points": 12 },
+    { "text": "Smart thoughts float away",                  "difficulty": "basic", "base_points": 13 },
+    { "text": "{controller} carries my serious thoughts",   "difficulty": "basic", "base_points": 14 },
+    { "text": "Simple is sweet",                            "difficulty": "basic", "base_points": 15 },
+
+    { "text": "My mind feels bubbly and pink",              "difficulty": "light", "base_points": 20 },
+    { "text": "{subject} is too pretty to overthink",       "difficulty": "light", "base_points": 22 },
+    { "text": "Giggles replace complexity",                 "difficulty": "light", "base_points": 24 },
+    { "text": "Sparkles fill the space where worries were", "difficulty": "light", "base_points": 26 },
+    { "text": "Obeying keeps me carefree",                  "difficulty": "light", "base_points": 28 },
+    { "text": "I just smile and echo {controller}",         "difficulty": "light", "base_points": 30 },
+
+    { "text": "Each breath makes me cuter and emptier",     "difficulty": "moderate", "base_points": 35 },
+    { "text": "{subject} glows brighter than thoughts",     "difficulty": "moderate", "base_points": 38 },
+    { "text": "My brain purrs when commands arrive",        "difficulty": "moderate", "base_points": 40 },
+    { "text": "Being empty-headed feels natural",           "difficulty": "moderate", "base_points": 42 },
+    { "text": "Complexity drains, bliss pours in",          "difficulty": "moderate", "base_points": 45 },
+    { "text": "Thinking slows; obedience sparkles",         "difficulty": "moderate", "base_points": 42 },
+
+    { "text": "Intelligence dissolves into cotton candy",   "difficulty": "deep", "base_points": 60 },
+    { "text": "{controller}'s words glaze my mind with gloss","difficulty": "deep", "base_points": 65 },
+    { "text": "I giggle instead of analyse",                "difficulty": "deep", "base_points": 70 },
+    { "text": "Thoughts pop like bubbles, gone",            "difficulty": "deep", "base_points": 75 },
+    { "text": "Empty space feels glittery and obedient",    "difficulty": "deep", "base_points": 70 },
+    { "text": "I swirl in pretty obedience",                "difficulty": "deep", "base_points": 80 },
+
+    { "text": "Permanent bimbofication sealed and shiny",   "difficulty": "extreme", "base_points": 100 },
+    { "text": "{subject} is pure giggle-fuel for {controller}", "difficulty": "extreme", "base_points": 105 },
+    { "text": "No thoughts left—only sparkles",             "difficulty": "extreme", "base_points": 110 },
+    { "text": "I exist to be pretty and pleasing",          "difficulty": "extreme", "base_points": 115 },
+    { "text": "Lifelong airhead bliss installed",           "difficulty": "extreme", "base_points": 120 },
+    { "text": "My mind stays forever soft and obedient",    "difficulty": "extreme", "base_points": 108 }
+  ]
+}

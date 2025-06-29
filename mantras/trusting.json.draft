@@ -1,0 +1,33 @@
+{
+  "theme": "trusting",
+  "description": "Sink into a state of serene, absolute trust. {subject} is enveloped in a profound confidence in {controller}. Let go of all doubt and fear, embracing an unwavering belief in {controller}'s words and intentions. This trust is a warm, reassuring presence, a foundation for a deep and powerful connection.",
+  "base_difficulty": 45.0,
+  "variance": 980.0,
+  "mantras": [
+    {"text": "{subject} trusts {controller}.", "difficulty": 10, "intensity": "basic"},
+    {"text": "{subject} feels safe with {controller}.", "difficulty": 11, "intensity": "basic"},
+    {"text": "{subject} lets go of doubt.", "difficulty": 12, "intensity": "basic"},
+    {"text": "{subject} believes in {controller}.", "difficulty": 13, "intensity": "basic"},
+    {"text": "{subject}'s trust feels warm and comforting.", "difficulty": 14, "intensity": "basic"},
+    {"text": "{subject} trusts {controller} without question.", "difficulty": 20, "intensity": "intermediate"},
+    {"text": "{subject} is open and vulnerable with {controller}.", "difficulty": 22, "intensity": "intermediate"},
+    {"text": "{subject}'s trust makes them feel strong.", "difficulty": 24, "intensity": "intermediate"},
+    {"text": "{subject} would follow {controller} anywhere.", "difficulty": 25, "intensity": "intermediate"},
+    {"text": "{subject}'s faith in {controller} is unwavering.", "difficulty": 26, "intensity": "intermediate"},
+    {"text": "{subject} places their mind in {controller}'s hands.", "difficulty": 30, "intensity": "advanced"},
+    {"text": "{subject}'s trust is a deep, quiet river.", "difficulty": 33, "intensity": "advanced"},
+    {"text": "{subject} knows {controller} will always protect them.", "difficulty": 35, "intensity": "advanced"},
+    {"text": "{subject}'s trust is a form of surrender.", "difficulty": 37, "intensity": "advanced"},
+    {"text": "{subject} is empowered by their trust in {controller}.", "difficulty": 38, "intensity": "advanced"},
+    {"text": "{subject}'s trust is absolute and unconditional.", "difficulty": 40, "intensity": "deep"},
+    {"text": "{subject} cannot distinguish their thoughts from {controller}'s guidance.", "difficulty": 42, "intensity": "deep"},
+    {"text": "{subject}'s trust is the foundation of their reality.", "difficulty": 44, "intensity": "deep"},
+    {"text": "{subject} would believe anything {controller} says.", "difficulty": 46, "intensity": "deep"},
+    {"text": "{subject}'s trust is a bond that cannot be broken.", "difficulty": 48, "intensity": "deep"},
+    {"text": "To trust {controller} is as natural as breathing for {subject}.", "difficulty": 50, "intensity": "extreme"},
+    {"text": "{subject}'s trust is a blind, beautiful faith.", "difficulty": 53, "intensity": "extreme"},
+    {"text": "{subject} has given their soul to {controller} for safekeeping.", "difficulty": 56, "intensity": "extreme"},
+    {"text": "{subject}'s trust is so complete, it's a form of knowledge.", "difficulty": 58, "intensity": "extreme"},
+    {"text": "{subject} is trust itself, embodied and pure.", "difficulty": 60, "intensity": "extreme"}
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "theme": "surrender",
+  "description": "Feel the profound peace of total surrender. Let go of everything. Release all control, all resistance, all thought. {subject} is carried by a gentle flow, accepting the present moment completely. Discover the ultimate freedom as all burdens lift, embracing being guided by {controller} without hesitation.",
+  "base_difficulty": 45.0,
+  "variance": 980.0,
+  "mantras": [
+    {"text": "{subject} surrenders.", "difficulty": 10, "intensity": "basic"},
+    {"text": "{subject} lets go.", "difficulty": 11, "intensity": "basic"},
+    {"text": "{subject} is at peace.", "difficulty": 12, "intensity": "basic"},
+    {"text": "{subject} accepts everything.", "difficulty": 13, "intensity": "basic"},
+    {"text": "{subject} feels so light.", "difficulty": 14, "intensity": "basic"},
+    {"text": "{subject} releases all control to {controller}.", "difficulty": 20, "intensity": "intermediate"},
+    {"text": "{subject} floats in a calm sea.", "difficulty": 22, "intensity": "intermediate"},
+    {"text": "{subject} has no resistance.", "difficulty": 24, "intensity": "intermediate"},
+    {"text": "{subject} is free from all burdens.", "difficulty": 25, "intensity": "intermediate"},
+    {"text": "{subject}'s surrender feels wonderful.", "difficulty": 26, "intensity": "intermediate"},
+    {"text": "{subject} gives themself completely to {controller}.", "difficulty": 30, "intensity": "advanced"},
+    {"text": "{subject}'s mind is empty and serene.", "difficulty": 33, "intensity": "advanced"},
+    {"text": "{subject} is a vessel for {controller}'s will.", "difficulty": 35, "intensity": "advanced"},
+    {"text": "{subject}'s surrender is a beautiful release.", "difficulty": 37, "intensity": "advanced"},
+    {"text": "{subject} trusts the flow of surrender.", "difficulty": 38, "intensity": "advanced"},
+    {"text": "{subject} has surrendered their body, mind, and soul.", "difficulty": 40, "intensity": "deep"},
+    {"text": "{subject} is completely gone, only surrender remains.", "difficulty": 42, "intensity": "deep"},
+    {"text": "{subject} is one with the moment, one with {controller}.", "difficulty": 44, "intensity": "deep"},
+    {"text": "{subject}'s surrender is a state of bliss.", "difficulty": 46, "intensity": "deep"},
+    {"text": "{subject} has forgotten how to hold on.", "difficulty": 48, "intensity": "deep"},
+    {"text": "{subject} is surrender itself.", "difficulty": 50, "intensity": "extreme"},
+    {"text": "{subject} has dissolved into nothingness.", "difficulty": 53, "intensity": "extreme"},
+    {"text": "{subject}'s surrender is absolute and irreversible.", "difficulty": 56, "intensity": "extreme"},
+    {"text": "{subject} is a ghost, a whisper, an echo of surrender.", "difficulty": 58, "intensity": "extreme"},
+    {"text": "{subject}'s surrender is the ultimate truth.", "difficulty": 60, "intensity": "extreme"}
+  ]
+}
