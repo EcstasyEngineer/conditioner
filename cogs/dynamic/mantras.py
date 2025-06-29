@@ -700,7 +700,7 @@ class MantraSystem(commands.Cog):
         
         await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
     
-    @commands.command(hidden=True)
+    @commands.command(hidden=True, aliases=['msummary'])
     async def mantrasummary(self, ctx):
         """Admin command to show brief mantra summary for all users."""
         # Check if user is superadmin (for DM access) or guild admin
@@ -734,7 +734,7 @@ class MantraSystem(commands.Cog):
             if current_chunk:
                 await ctx.send('\n'.join(current_chunk))
     
-    @commands.command(hidden=True)
+    @commands.command(hidden=True, aliases=['mstats'])
     async def mantrastats(self, ctx):
         """Hidden admin command to show detailed mantra statistics for all users."""
         # Check if user is superadmin (for DM access) or guild admin

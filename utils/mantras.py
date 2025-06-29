@@ -278,8 +278,19 @@ def generate_mantra_summary(bot, guild_members: List = None) -> str:
     summary_lines = [f"**Neural Programming Summary** ({len(users_with_mantras)} users):\n```"]
     
     for user, config in users_with_mantras:
-        # Status
-        status = "🟢" if config.get("enrolled") else "🔴"
+        # Status with overdue detection
+        status = "🔴"  # Default to red (inactive)
+        if config.get("enrolled"):
+            status = "🟢"  # Green for active
+            
+            # Check for overdue mantras (yellow status)
+            if config.get("online_only") and config.get("next_encounter"):
+                try:
+                    next_time = datetime.fromisoformat(config["next_encounter"]["timestamp"])
+                    if datetime.now() > next_time:
+                        status = "🟡"  # Yellow for overdue
+                except (ValueError, KeyError, TypeError):
+                    pass  # Keep green if we can't parse the date
         
         # Abbreviated themes (first 4 letters)
         themes = config.get("themes", [])
@@ -393,7 +404,40 @@ def generate_mantra_stats_embeds(bot, guild_members: List = None) -> List[discor
         
         # Build user info
         user_info = []
-        user_info.append(f"**Status:** {'🟢 Active' if config.get('enrolled') else '🔴 Inactive'}")
+        
+        # Status with overdue detection and time until next mantra
+        if config.get("enrolled"):
+            status = "🟢"  # Green for active
+            time_info = ""
+            
+            # Check for overdue mantras (yellow status) and calculate time info
+            if config.get("online_only") and config.get("next_encounter"):
+                try:
+                    next_time = datetime.fromisoformat(config["next_encounter"]["timestamp"])
+                    now = datetime.now()
+                    time_diff = next_time - now
+                    
+                    if time_diff.total_seconds() < 0:
+                        # Overdue
+                        status = "🟡"
+                        overdue_seconds = abs(time_diff.total_seconds())
+                        overdue_hours = int(overdue_seconds // 3600)
+                        overdue_minutes = int((overdue_seconds % 3600) // 60)
+                        time_info = f"overdue {overdue_hours}h {overdue_minutes}m"
+                    else:
+                        # Upcoming
+                        upcoming_hours = int(time_diff.total_seconds() // 3600)
+                        upcoming_minutes = int((time_diff.total_seconds() % 3600) // 60)
+                        time_info = f"next in {upcoming_hours}h {upcoming_minutes}m"
+                        
+                except (ValueError, KeyError, TypeError):
+                    time_info = "scheduling error"
+            else:
+                time_info = "no encounter scheduled"
+                
+            user_info.append(f"**Status:** {status} {time_info}")
+        else:
+            user_info.append(f"**Status:** 🔴 Inactive")
         
         # All time stats
         all_encounters = load_encounters(user.id)
@@ -443,7 +487,7 @@ def generate_mantra_stats_embeds(bot, guild_members: List = None) -> List[discor
         
         # Add field
         current_embed.add_field(
-            name=f"{user.name}#{user.discriminator}",
+            name=user.name,
             value="\n".join(user_info)[:1024],  # Discord field limit
             inline=False
         )
