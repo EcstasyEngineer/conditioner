@@ -29,6 +29,8 @@ from core.config import Config
 from core.media_migration import run_migration
 import random
 from datetime import datetime, timedelta
+import sys
+from core.error_handler import log_error_to_discord
 # Logging setup
 import logging
 from logging.handlers import RotatingFileHandler
@@ -70,6 +72,8 @@ bot = commands.Bot(command_prefix=get_prefix, intents=discord.Intents.all())
 # Attach central logger to bot for use in cogs
 bot.logger = logger
 bot.config = Config()
+
+# Error logging is handled by simple utility functions
 
 # Function to load all cogs in the './cogs_static' and './cogs_dynamic' directories
 async def load_cogs():
@@ -132,6 +136,10 @@ async def on_message(message):
 @bot.event
 async def on_command_error(ctx, error):
     logger.error(f'Error in command {ctx.command}: {error}', exc_info=True)
+    # Send to Discord error channel
+    command_name = ctx.command.name if ctx.command else "unknown"
+    extra_info = f"User: {ctx.author} (ID: {ctx.author.id})\nChannel: {ctx.channel}"
+    await log_error_to_discord(bot, error, f"command_{command_name}", extra_info)
 
 @bot.event
 async def on_command(ctx):
@@ -144,6 +152,11 @@ async def on_command_completion(ctx):
 @bot.event
 async def on_error(event, *args, **kwargs):
     logger.exception(f'Unhandled exception in event {event}', exc_info=True)
+    # Send to Discord error channel
+    error = sys.exc_info()[1]
+    if error:
+        extra_info = f"Event: {event}\nArgs: {str(args)[:500]}"
+        await log_error_to_discord(bot, error, f"event_{event}", extra_info)
 
 # Teasy Hypnotic Statuses  
 statuslist = cycle([
@@ -169,6 +182,13 @@ async def change_status():
         https://discordpy.readthedocs.io/en/latest/ext/tasks/index.html
     """
     await bot.change_presence(activity=discord.Game(next(statuslist)))
+
+
+@change_status.error
+async def change_status_error(error):
+    """Handle errors in the change_status task loop."""
+    logger.error(f"Error in change_status task: {error}", exc_info=True)
+    await log_error_to_discord(bot, error, "task_change_status")
 
 
 if __name__ == "__main__":

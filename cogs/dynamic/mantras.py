@@ -18,6 +18,7 @@ from utils.mantras import (
     get_user_mantra_config, save_user_mantra_config, update_streak
 )
 from utils.ui import MantraRequestView, MantraResponseView, MantraDisableOfferView, MantraResetView, create_mantra_request_embed, create_mantra_success_embed
+from core.error_handler import log_error_to_discord
 
 
 class ThemeSelectView(discord.ui.View):
@@ -440,6 +441,18 @@ class MantraSystem(commands.Cog):
     async def before_mantra_delivery(self):
         """Wait for bot to be ready before starting delivery loop."""
         await self.bot.wait_until_ready()
+    
+    @mantra_delivery.error
+    async def mantra_delivery_error(self, error):
+        """Handle errors in the mantra delivery task loop."""
+        if self.logger:
+            self.logger.error(f"Error in mantra_delivery task: {error}", exc_info=True)
+        
+        # Import error handler at function level to avoid circular imports
+        from core.error_handler import log_error_to_discord
+        
+        # Send to Discord error channel
+        await log_error_to_discord(self.bot, error, "task_mantra_delivery")
     
     @commands.Cog.listener()
     async def on_message(self, message):
