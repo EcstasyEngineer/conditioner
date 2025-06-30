@@ -84,3 +84,64 @@ Before finalizing a theme, ensure it meets these standards:
 - Have others review for typos, flow, and intensity.
 - Use blind comparison tests to verify difficulty ordering.
 - Ensure intensity markers match their assigned difficulty.
+
+## 4. Quality Assessment Methodology
+
+When performing systematic QA analysis of mantra themes, use the following comprehensive scoring framework:
+
+### QA Scoring Criteria
+
+**Scoring Weight Distribution:**
+- **Hypnotic Effectiveness (30%)**: Progressive conditioning strength, psychological impact, trance compatibility
+- **Content Quality (25%)**: Writing quality, mantra variety, clear progression, grammar and flow
+- **Technical Implementation (25%)**: File structure compliance, consistent formatting, balanced point progression
+- **Thematic Coherence (20%)**: Mantras align with theme concept, unified user experience
+
+### Scoring Scale
+- **Excellent (90-100)**: Ready for immediate activation, gold standard quality
+- **Good (75-89)**: High quality, minor improvements recommended
+- **Adequate (60-74)**: Functional but needs enhancement for optimal effectiveness
+- **Needs Work (40-59)**: Significant improvements required before activation
+- **Poor (0-39)**: Major overhaul or retirement recommended
+
+### Assessment Categories
+
+**Hypnotic Effectiveness Evaluation:**
+- Does the theme create a clear psychological progression?
+- Are mantras designed to bypass critical thinking?
+- Does the difficulty progression enhance conditioning over time?
+- Are the mantras compatible with trance states and repetitive conditioning?
+
+**Content Quality Evaluation:**
+- Are mantras well-written with proper grammar and flow?
+- Is there sufficient variety to prevent monotony?
+- Do mantras read naturally with different subject/controller combinations?
+- Is the language appropriate for the target difficulty level?
+
+**Technical Implementation Evaluation:**
+- Does the file follow standard JSON structure (no "intensity", "base_difficulty", etc.)?
+- Are mantras formatted as one per line for readability?
+- Do point values follow the standardized progression (10-15, 20-30, 35-45, 60-80, 100-120)?
+- Are all required properties present and correctly named?
+
+**Thematic Coherence Evaluation:**
+- Do all mantras support the central theme concept?
+- Is the user experience unified and immersive?
+- Does the theme description accurately represent the content?
+- Are there conflicting or off-theme mantras that dilute the experience?
+
+### Quality Assurance Process
+1. **Initial Assessment**: Score each category individually on 0-100 scale
+2. **Weighted Calculation**: Apply percentage weights to determine overall score
+3. **Issue Documentation**: Note specific problems and improvement opportunities
+4. **Recommendations**: Provide actionable feedback for enhancement
+5. **Activation Readiness**: Determine if theme is ready for user deployment
+
+### Common Quality Issues
+- **Repetitive Content**: Multiple mantras with identical structure or meaning
+- **Inconsistent Difficulty**: Mantras placed in wrong difficulty categories
+- **Poor Progression**: No clear escalation from basic to extreme
+- **Technical Debt**: Non-standard file structure or property naming
+- **Thematic Drift**: Mantras that don't align with the core theme concept
+
+This methodology ensures consistent, objective evaluation of all mantra themes and provides clear guidance for systematic improvement.

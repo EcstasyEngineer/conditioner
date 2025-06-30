@@ -1,6 +1,6 @@
 {
   "theme": "worship",
-  "description": "Experience profound admiration and reverence for {controller}. {subject} is filled with a deep sense of devotion, an overwhelming desire to express adoration through praise and service. Find purpose and fulfillment in focusing completely on {controller}, becoming part of something greater than {subject}'s self.",
+  "description": "Profound reverence and devoted adoration through service",
   "base_difficulty": 45.0,
   "variance": 980.0,
   "mantras": [

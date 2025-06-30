@@ -1,0 +1,31 @@
+{
+  "theme": "puppet",
+  "description": "Controlled movement and speech through invisible strings and guidance",
+  "mantras": [
+    { "text": "{subject} is a puppet.", "difficulty": "basic", "base_points": 10 },
+    { "text": "{controller} pulls {subject}'s strings.", "difficulty": "basic", "base_points": 11 },
+    { "text": "{subject}'s body moves on its own.", "difficulty": "basic", "base_points": 12 },
+    { "text": "{subject} has no will.", "difficulty": "basic", "base_points": 13 },
+    { "text": "{subject} is calm and empty.", "difficulty": "basic", "base_points": 14 },
+    { "text": "{subject}'s limbs feel light and detached.", "difficulty": "light", "base_points": 20 },
+    { "text": "{controller}'s will moves {subject}.", "difficulty": "light", "base_points": 22 },
+    { "text": "{subject} is an observer in their own body.", "difficulty": "light", "base_points": 24 },
+    { "text": "{subject} speaks the words {controller} provides.", "difficulty": "light", "base_points": 25 },
+    { "text": "It's easy for {subject} to be a puppet.", "difficulty": "light", "base_points": 26 },
+    { "text": "{subject} dances on {controller}'s strings.", "difficulty": "light", "base_points": 30 },
+    { "text": "{subject} has no thoughts, only movements.", "difficulty": "moderate", "base_points": 33 },
+    { "text": "{subject} is a perfect marionette.", "difficulty": "moderate", "base_points": 35 },
+    { "text": "{subject} feels no responsibility for their actions.", "difficulty": "moderate", "base_points": 37 },
+    { "text": "{subject} loves being {controller}'s puppet.", "difficulty": "moderate", "base_points": 38 },
+    { "text": "{subject} is hollowed out, waiting for {controller}'s command.", "difficulty": "moderate", "base_points": 40 },
+    { "text": "{subject}'s body is a tool for {controller} to animate.", "difficulty": "moderate", "base_points": 42 },
+    { "text": "{subject} cannot tell where they end and {controller} begins.", "difficulty": "moderate", "base_points": 44 },
+    { "text": "{subject} is a beautiful, mindless puppet.", "difficulty": "deep", "base_points": 46 },
+    { "text": "{subject}'s only purpose is to perform for {controller}.", "difficulty": "deep", "base_points": 48 },
+    { "text": "{subject} is nothing more than wood and string.", "difficulty": "deep", "base_points": 50 },
+    { "text": "{subject} is completely inanimate without {controller}.", "difficulty": "deep", "base_points": 53 },
+    { "text": "{subject}'s strings are woven into their soul.", "difficulty": "deep", "base_points": 56 },
+    { "text": "{subject} is a puppet even in their dreams.", "difficulty": "extreme", "base_points": 58 },
+    { "text": "{subject} is {controller}'s puppet, now and forever.", "difficulty": "extreme", "base_points": 60 }
+  ]
+}

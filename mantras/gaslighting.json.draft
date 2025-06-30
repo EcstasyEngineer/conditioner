@@ -1,6 +1,6 @@
 {
   "theme": "gaslighting",
-  "description": "Let {subject}'s reality bend and warp. {subject} can't trust their own memory, their own thoughts. Only what {controller} says is true. Feel the confusion, the doubt, the delicious uncertainty. It's easier to just let go and let {controller} define what is real for {subject}.",
+  "description": "Reality distortion and dependency on external truth validation",
   "base_difficulty": 45.9,
   "variance": 1183.9,
   "mantras": [

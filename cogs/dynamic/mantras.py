@@ -21,6 +21,27 @@ from utils.ui import MantraRequestView, MantraResponseView, MantraDisableOfferVi
 from core.error_handler import log_error_to_discord
 
 
+def get_max_themes_for_user(bot, user):
+    """Calculate maximum allowed themes based on user points.
+    
+    Tier System:
+    - Initiate (0+ points): 3 themes
+    - Intermediate (500+ points): 5 themes  
+    - Advanced (1500+ points): 7 themes
+    - Master (3000+ points): 10 themes
+    """
+    points = get_points(bot, user)
+    
+    if points >= 3000:      # Master tier
+        return 10
+    elif points >= 1500:    # Advanced tier  
+        return 7
+    elif points >= 500:     # Intermediate tier
+        return 5
+    else:                   # Initiate tier
+        return 3
+
+
 class ThemeSelectView(discord.ui.View):
     """View for managing themes with select menu."""
     
@@ -35,18 +56,23 @@ class ThemeSelectView(discord.ui.View):
         # Create select menu with all available themes
         options = []
         for theme_name in sorted(self.cog.themes.keys()):
+            # Convert underscores to spaces and capitalize each word
+            display_name = theme_name.replace('_', ' ').title()
             option = discord.SelectOption(
-                label=theme_name.capitalize(),
+                label=display_name,
                 value=theme_name,
                 default=theme_name in self.current_themes
             )
             options.append(option)
         
+        # Calculate max themes user can select based on their points
+        max_user_themes = get_max_themes_for_user(self.cog.bot, self.user)
+        
         select = discord.ui.Select(
             placeholder="Select modules to toggle on/off",
             options=options,
             min_values=0,
-            max_values=len(options)
+            max_values=min(len(options), max_user_themes)
         )
         select.callback = self.theme_select_callback
         self.add_item(select)
@@ -79,6 +105,34 @@ class ThemeSelectView(discord.ui.View):
         if not self.current_themes:
             await interaction.response.send_message(
                 "You must have at least one conditioning module active!",
+                ephemeral=True
+            )
+            self._is_finished = False  # Reset since we didn't actually finish
+            return
+        
+        # Check theme limit based on user points
+        max_themes = get_max_themes_for_user(self.cog.bot, self.user)
+        if len(self.current_themes) > max_themes:
+            user_points = get_points(self.cog.bot, self.user)
+            
+            # Determine tier name for message
+            if user_points >= 3000:
+                tier_name = "Master"
+            elif user_points >= 1500:
+                tier_name = "Advanced"
+            elif user_points >= 500:
+                tier_name = "Intermediate"
+            else:
+                tier_name = "Initiate"
+            
+            await interaction.response.send_message(
+                f"**Theme limit exceeded!**\n"
+                f"Your current tier (**{tier_name}** - {user_points:,} points) allows maximum {max_themes} themes.\n"
+                f"You selected {len(self.current_themes)} themes.\n\n"
+                f"**Earn more points to unlock additional theme slots:**\n"
+                f"• 500+ points: 5 themes (Intermediate)\n"
+                f"• 1,500+ points: 7 themes (Advanced)\n"
+                f"• 3,000+ points: 10 themes (Master)",
                 ephemeral=True
             )
             self._is_finished = False  # Reset since we didn't actually finish
@@ -675,8 +729,10 @@ class MantraSystem(commands.Cog):
             theme_data = self.themes[theme_name]
             description = theme_data.get("description", "No description available")
             mantra_count = len(theme_data.get("mantras", []))
+            # Convert underscores to spaces and capitalize each word
+            display_name = theme_name.replace('_', ' ').title()
             embed.add_field(
-                name=f"**{theme_name.capitalize()}**",
+                name=f"**{display_name}**",
                 value=f"{description}\n*{mantra_count} mantras available*",
                 inline=False
             )
@@ -696,14 +752,42 @@ class MantraSystem(commands.Cog):
             )
             return
         
+        # Get user's current tier info
+        user_points = get_points(self.bot, interaction.user)
+        max_themes = get_max_themes_for_user(self.bot, interaction.user)
+        
+        if user_points >= 3000:
+            tier_name = "Master"
+            next_tier = None
+        elif user_points >= 1500:
+            tier_name = "Advanced"
+            next_tier = f"Master (3,000 points) - 10 themes"
+        elif user_points >= 500:
+            tier_name = "Intermediate"
+            next_tier = f"Advanced (1,500 points) - 7 themes"
+        else:
+            tier_name = "Initiate"
+            next_tier = f"Intermediate (500 points) - 5 themes"
+        
         # Create select menu
         view = ThemeSelectView(self, interaction.user, config["themes"])
         
         embed = discord.Embed(
             title="🌀 Adjust Conditioning Themes",
-            description=f"**Active modules:** {', '.join(config['themes']) if config['themes'] else 'None'}",
+            description=f"**Active modules:** {', '.join(config['themes']) if config['themes'] else 'None'} ({len(config['themes'])}/{max_themes})",
             color=discord.Color.purple()
         )
+        embed.add_field(
+            name="Current Tier",
+            value=f"**{tier_name}** ({user_points:,} points) - Maximum {max_themes} themes",
+            inline=False
+        )
+        if next_tier:
+            embed.add_field(
+                name="Next Tier",
+                value=next_tier,
+                inline=False
+            )
         embed.add_field(
             name="Directives",
             value="• Select the conditioning module you wish to activate or deactivate.\n• At least one stream must remain active.\n• Click 'Confirm Parameters' to apply changes.",

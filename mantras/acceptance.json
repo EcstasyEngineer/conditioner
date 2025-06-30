@@ -1,6 +1,6 @@
 {
   "theme": "acceptance",
-  "description": "Embrace the peace of surrender. Let go of resistance and welcome the guidance of {controller}. Feel the comfort in yielding, the strength in compliance. {subject}'s will aligns with {controller}'s, creating a perfect harmony of trust and obedience. Acceptance is not defeat; it is liberation.",
+  "description": "Embrace surrender and release resistance through peaceful compliance",
   "mantras": [
     { "text": "{subject} accepts and surrenders", "difficulty": "basic", "base_points": 10 },
     { "text": "Letting go feels so good for {subject}", "difficulty": "basic", "base_points": 11 },

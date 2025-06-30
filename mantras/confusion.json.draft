@@ -1,6 +1,6 @@
 {
   "theme": "confusion",
-  "description": "Drift through a swirling kaleidoscope of thoughts where clarity dissolves into wonder. {subject}'s logic unravels, replaced by instinct and intuition. Embrace the playful disorientation and discover new insights in the fertile fog of uncertainty, guided by {controller}.",
+  "description": "Mental disorientation and uncertainty that erodes logical thinking",
   "base_difficulty": 60.0,
   "variance": 1250.0,
   "mantras": [

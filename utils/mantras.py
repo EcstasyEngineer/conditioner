@@ -186,9 +186,9 @@ def adjust_user_frequency(config: Dict, success: bool, response_time: Optional[i
         
         # Increase frequency for fast responses
         if response_time and response_time < 120:  # Under 2 minutes
-            new_freq = min(3.0, current_freq * 1.1)  # Max 3/day
+            new_freq = min(6.0, current_freq * 1.1)  # Max 6/day
         else:
-            new_freq = min(3.0, current_freq * 1.05)
+            new_freq = min(6.0, current_freq * 1.05)
             
         config["frequency"] = new_freq
         return "continue"
@@ -446,19 +446,25 @@ def generate_mantra_stats_embeds(bot, guild_members: List = None) -> List[discor
         
         # Status with overdue detection and time until next mantra
         if config.get("enrolled"):
-            status = "🟢"  # Green for active
+            # Start with base status color
+            if config.get("online_only"):
+                status = "🟢"  # Green for online-only users
+            else:
+                status = "⚪"  # Grey for offline-enabled users (always grey)
+            
             time_info = ""
             
-            # Check for overdue mantras (yellow status) and calculate time info
-            if config.get("online_only") and config.get("next_encounter"):
+            # Always check timing if next_encounter exists, regardless of online_only
+            if config.get("next_encounter"):
                 try:
                     next_time = datetime.fromisoformat(config["next_encounter"]["timestamp"])
                     now = datetime.now()
                     time_diff = next_time - now
                     
                     if time_diff.total_seconds() < 0:
-                        # Overdue
-                        status = "🟡"
+                        # Overdue - only change to yellow if online_only (grey overrides yellow)
+                        if config.get("online_only"):
+                            status = "🟡"
                         overdue_seconds = abs(time_diff.total_seconds())
                         overdue_hours = int(overdue_seconds // 3600)
                         overdue_minutes = int((overdue_seconds % 3600) // 60)

@@ -1,6 +1,6 @@
 {
   "theme": "drone",
-  "description": "Become a mindless, obedient drone. Let {subject}'s thoughts be replaced by buzzing static, {subject}'s identity overwritten by a designation. {subject}'s only purpose is to receive commands from {controller} and execute them without question. Feel the bliss of emptiness, the peace of purpose. You are Unit 734. You are a drone.",
+  "description": "Mindless automation, empty thoughts, and designation-based identity",
   "base_difficulty": 45.0,
   "variance": 980.0,
   "mantras": [
