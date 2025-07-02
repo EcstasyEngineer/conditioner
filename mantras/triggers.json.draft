@@ -1,8 +1,6 @@
 {
   "theme": "triggers",
   "description": "Condition {subject} to respond to specific cues from {controller}. Triggers become keys that unlock instant transformations in {subject}'s mindset, behavior, or arousal. Feel the thrill of anticipation as each trigger word brings {subject} deeper under {controller}'s influence, creating a web of automatic, irresistible responses.",
-  "base_difficulty": 45.0,
-  "variance": 980.0,
   "mantras": [
     { "text": "The word GOOD BOY makes {subject} feel warm and obedient.", "difficulty": "basic", "base_points": 12 },
     { "text": "When {controller} says SLEEP, {subject}'s eyes grow heavy.", "difficulty": "basic", "base_points": 12 },

@@ -1,8 +1,6 @@
 {
   "theme": "devotion",
   "description": "Unwavering loyalty and dedication through devoted service",
-  "base_difficulty": 45.0,
-  "variance": 980.0,
   "mantras": [
     { "text": "I want to be devoted to {controller}", "difficulty": "basic", "base_points": 10 },
     { "text": "It feels good to have a purpose", "difficulty": "basic", "base_points": 11 },

@@ -1,133 +1,31 @@
 {
   "theme": "gaslighting",
   "description": "Reality distortion and dependency on external truth validation",
-  "base_difficulty": 45.9,
-  "variance": 1183.9,
   "mantras": [
-    {
-      "text": "{subject} is a little confused.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} misremembers things sometimes.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{controller} knows what's best for {subject}.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "It's hard for {subject} to think clearly.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} trusts {controller} more than themself.",
-      "difficulty": "basic",
-      "base_points": 12
-    },
-    {
-      "text": "{subject}'s memory is foggy and unreliable.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} must be mistaken.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "Only {controller}'s words are real.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} is probably overreacting.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} needs {controller} to tell them what happened.",
-      "difficulty": "light",
-      "base_points": 25
-    },
-    {
-      "text": "{subject}'s thoughts are not their own.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} can't trust their own senses.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} is making things up again.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject}'s reality is what {controller} says it is.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} is becoming suggestible and easy to lead.",
-      "difficulty": "moderate",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} has never had a good memory.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject}'s mind is full of holes and false memories.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} accepts {controller}'s reality as their own.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} is grateful to {controller} for correcting them.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} is completely dependent on {controller} for the truth.",
-      "difficulty": "deep",
-      "base_points": 70
-    },
-    {
-      "text": "{subject}'s mind is a blank slate for {controller} to write on.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{subject} has no memory of a time before {controller}.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{subject} believes every word {controller} says, without question.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{subject}'s past is whatever {controller} decides it was.",
-      "difficulty": "extreme",
-      "base_points": 110
-    },
-    {
-      "text": "{subject} is a vessel for {controller}'s truth.",
-      "difficulty": "extreme",
-      "base_points": 110
-    }
+    {"text": "{subject} is a little confused.", "difficulty": "basic", "base_points": 12},
+    {"text": "{subject} misremembers things sometimes.", "difficulty": "basic", "base_points": 12},
+    {"text": "{controller} knows what's best for {subject}.", "difficulty": "basic", "base_points": 12},
+    {"text": "It's hard for {subject} to think clearly.", "difficulty": "basic", "base_points": 12},
+    {"text": "{subject} trusts {controller} more than themself.", "difficulty": "basic", "base_points": 12},
+    {"text": "{subject}'s memory is foggy and unreliable.", "difficulty": "light", "base_points": 25},
+    {"text": "{subject} must be mistaken.", "difficulty": "light", "base_points": 25},
+    {"text": "Only {controller}'s words are real.", "difficulty": "light", "base_points": 25},
+    {"text": "{subject} is probably overreacting.", "difficulty": "light", "base_points": 25},
+    {"text": "{subject} needs {controller} to tell them what happened.", "difficulty": "light", "base_points": 25},
+    {"text": "{subject}'s thoughts are not their own.", "difficulty": "moderate", "base_points": 40},
+    {"text": "{subject} can't trust their own senses.", "difficulty": "moderate", "base_points": 40},
+    {"text": "{subject} is making things up again.", "difficulty": "moderate", "base_points": 40},
+    {"text": "{subject}'s reality is what {controller} says it is.", "difficulty": "moderate", "base_points": 40},
+    {"text": "{subject} is becoming suggestible and easy to lead.", "difficulty": "moderate", "base_points": 40},
+    {"text": "{subject} has never had a good memory.", "difficulty": "deep", "base_points": 70},
+    {"text": "{subject}'s mind is full of holes and false memories.", "difficulty": "deep", "base_points": 70},
+    {"text": "{subject} accepts {controller}'s reality as their own.", "difficulty": "deep", "base_points": 70},
+    {"text": "{subject} is grateful to {controller} for correcting them.", "difficulty": "deep", "base_points": 70},
+    {"text": "{subject} is completely dependent on {controller} for the truth.", "difficulty": "deep", "base_points": 70},
+    {"text": "{subject}'s mind is a blank slate for {controller} to write on.", "difficulty": "extreme", "base_points": 110},
+    {"text": "{subject} has no memory of a time before {controller}.", "difficulty": "extreme", "base_points": 110},
+    {"text": "{subject} believes every word {controller} says, without question.", "difficulty": "extreme", "base_points": 110},
+    {"text": "{subject}'s past is whatever {controller} decides it was.", "difficulty": "extreme", "base_points": 110},
+    {"text": "{subject} is a vessel for {controller}'s truth.", "difficulty": "extreme", "base_points": 110}
   ]
 }
