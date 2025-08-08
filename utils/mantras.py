@@ -563,7 +563,7 @@ def get_user_mantra_config(bot_config, user) -> Dict:
         "consecutive_timeouts": 0
     }
     
-    config = bot_config.get_user(user, 'mantra_system', None)
+    config = bot_config.get_user(user, 'mantra_system', {})
    
     # Merge with defaults for backward compatibility
     for key, value in default_config.items():
