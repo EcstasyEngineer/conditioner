@@ -560,7 +560,7 @@ def get_user_mantra_config(bot_config, user) -> Dict:
         "enrolled": False,
         "themes": [],
         "subject": "puppet",
-        "controller": "the conditioning system",
+        "controller": "Master",
         "frequency": 1.0,
         "last_encounter": None,
         "next_encounter": None,
@@ -569,20 +569,17 @@ def get_user_mantra_config(bot_config, user) -> Dict:
     }
     
     config = bot_config.get_user(user, 'mantra_system', None)
-    if config is None or not isinstance(config, dict):
-        config = default_config.copy()
-    else:
-        # Merge with defaults for backward compatibility
-        for key, value in default_config.items():
-            if key not in config:
-                config[key] = value
-    
-    # Ensure we're using online-only mode for hypnotic themes
-    if any(theme in ["brainwashing", "gaslighting", "dronification", "hypnosis", "intox", "drugging"] for theme in config.get("themes", [])):
-        config["online_only"] = True
-    
-    # Validate the config
-    return validate_mantra_config(config)
+   
+    # Merge with defaults for backward compatibility
+    for key, value in default_config.items():
+        if key not in config:
+            config[key] = value
+
+    # Ensure next_encounter is a dict if None exists
+    if config.get("next_encounter") is None:
+        config["next_encounter"] = schedule_next_encounter(config, load_encounters(user.id), first_enrollment=config.get("enrolled", True))
+
+    return config
 
 
 def save_user_mantra_config(bot_config, user, config: Dict):
@@ -607,30 +604,5 @@ def update_streak(user_streaks: Dict, user_id: int, success: bool = True) -> Non
         # Break streak on failure only
         if user_id in user_streaks:
             del user_streaks[user_id]
-
-
-def validate_mantra_config(config: Dict) -> Dict:
-    """Validate and fill in missing keys in mantra config."""
-    default_config = {
-        "enrolled": False,
-        "themes": [],
-        "subject": "puppet", 
-        "controller": "Master",
-        "frequency": 1.0,
-        "last_encounter": None,
-        "next_encounter": None,
-        "consecutive_timeouts": 0,
-        "online_only": True
-    }
-    
-    if config is None or not isinstance(config, dict):
-        return default_config.copy()
-    
-    # Fill in missing keys
-    for key, value in default_config.items():
-        if key not in config:
-            config[key] = value
-    
-    return config
 
 
