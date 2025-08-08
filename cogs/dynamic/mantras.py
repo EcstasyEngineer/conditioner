@@ -13,7 +13,7 @@ from utils.points import get_points, add_points
 from utils.encounters import log_encounter, load_encounters, load_recent_encounters, calculate_user_streak_from_history
 from utils.mantras import (
     calculate_speed_bonus, get_streak_bonus, check_mantra_match, format_mantra_text,
-    select_mantra_from_themes, validate_mantra_config, generate_mantra_summary,
+    select_mantra_from_themes, generate_mantra_summary,
     generate_mantra_stats_embeds, schedule_next_encounter, adjust_user_frequency,
     get_user_mantra_config, save_user_mantra_config, update_streak
 )
