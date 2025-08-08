@@ -9,14 +9,14 @@ class Test(commands.Cog):
 
 
     @commands.command(name="getconfig")
-    async def get_config(ctx):
+    async def get_config(self, ctx):
         """Get the current configuration."""
-        config = ctx.bot.config
+        config = self.bot.config
         await ctx.send(f"Current config: {config}")
 
 
     @commands.command(name="helloworld")
-    async def hello_world(ctx):
+    async def hello_world(self, ctx):
         """A simple command that responds with 'Hello, World!'."""
         await ctx.send("Hello, World!")
 
