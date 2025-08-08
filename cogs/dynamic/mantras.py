@@ -1,4 +1,3 @@
-from core import config
 import discord
 from discord.ext import commands, tasks
 from discord import app_commands
@@ -16,12 +15,9 @@ from utils.mantras import (
     calculate_speed_bonus, get_streak_bonus, check_mantra_match, format_mantra_text,
     select_mantra_from_themes, generate_mantra_summary,
     generate_mantra_stats_embeds, schedule_next_encounter, adjust_user_frequency,
-    get_user_mantra_config, save_user_mantra_config, update_streak
+    save_user_mantra_config, get_user_mantra_config,
+    update_streak
 )
-from utils.ui import MantraRequestView, MantraResponseView, MantraDisableOfferView, MantraResetView, create_mantra_request_embed, create_mantra_success_embed
-from core.error_handler import log_error_to_discord
-
-
 def get_max_themes_for_user(bot, user):
     """Calculate maximum allowed themes based on user points.
     
@@ -291,10 +287,9 @@ class MantraSystem(commands.Cog):
     
     
     
-    
     async def should_send_mantra(self, user) -> bool:
         """Check if we should send a mantra to this user."""
-        config = get_user_mantra_config(self.bot.config, user)
+        config = self.get_user_mantra_config(user)
         
         # Not enrolled
         if not config["enrolled"]:
@@ -344,6 +339,8 @@ class MantraSystem(commands.Cog):
             
             # Require self.REQUIRED_CONSECUTIVE_ONLINE_CHECKS consecutive loops of being online
             if consecutive_online < self.REQUIRED_CONSECUTIVE_ONLINE_CHECKS:
+                if self.logger:
+                    self.logger.info(f"User {user.id} online for {consecutive_online}/{self.REQUIRED_CONSECUTIVE_ONLINE_CHECKS} loops")
                 return False
         
         
@@ -448,25 +445,23 @@ class MantraSystem(commands.Cog):
                     config["controller"]
                 )
                 
-                # Get timeout based on difficulty and apply extension if needed
+                # Get timeout based on difficulty
                 settings = self.expiration_settings.get(difficulty, self.expiration_settings["moderate"])
-                base_timeout_minutes = settings["timeout_minutes"]
-                timeout_minutes = base_timeout_minutes + int(extended_timeout_hours * 60)
+                timeout_minutes = settings["timeout_minutes"]
                 
-                # Send the challenge with UI view
+                # Send the challenge
                 try:
-                    embed = create_mantra_request_embed(formatted_mantra, adjusted_points, timeout_minutes)
-                    view = MantraRequestView(
-                        formatted_mantra, adjusted_points, timeout_minutes,
-                        bot_config=self.bot.config, user=user, themes=self.themes,
-                        user_streaks=self.user_streaks
+                    embed = discord.Embed(
+                        title="🌀 Programming Sequence",
+                        description=f"Process this directive for **{adjusted_points} integration points**:\n\n**{formatted_mantra}**",
+                        color=discord.Color.purple()
                     )
+                    embed.set_footer(text=f"Integration window: {timeout_minutes} minutes")
                     
-                    message = await user.send(embed=embed, view=view)
-                    view.set_message(message)
+                    await user.send(embed=embed)
                     
-                    if self.logger and extended_timeout_hours > 0:
-                        self.logger.info(f"Extended timeout for user {user.id}: {base_timeout_minutes}min -> {timeout_minutes}min")
+                    if self.logger:
+                        self.logger.info(f"User {user.id} sent mantra after {self.user_status_history.get(user.id, {}).get('consecutive_online_loops', 0)} consecutive online loops")
                     
                     # Track the challenge
                     self.active_challenges[user.id] = {
@@ -475,9 +470,7 @@ class MantraSystem(commands.Cog):
                         "difficulty": difficulty,
                         "base_points": adjusted_points,
                         "sent_at": datetime.now(),
-                        "timeout_minutes": timeout_minutes,
-                        "view": view,
-                        "message": message
+                        "timeout_minutes": timeout_minutes
                     }
                     
                     # Update last encounter time and schedule next
@@ -486,8 +479,9 @@ class MantraSystem(commands.Cog):
                     save_user_mantra_config(self.bot.config, user, config)
                     
                 except discord.Forbidden:
-                    # Can't DM user - only log if debug mode
-                    pass
+                    # Can't DM user
+                    if self.logger:
+                        self.logger.info(f"Unable to establish direct neural link for user {user.id}")
                 except Exception as e:
                     if self.logger:
                         self.logger.error(f"Error transmitting programming to {user.id}: {e}")
@@ -537,7 +531,7 @@ class MantraSystem(commands.Cog):
             base_total = challenge["base_points"] + speed_bonus
             
             # Update streak
-            update_streak(self.user_streaks, message.author.id, success=True)
+            self.update_streak(message.author.id, success=True)
             # Get streak bonus from user's current streak
             if message.author.id in self.user_streaks:
                 streak_count = self.user_streaks[message.author.id]["count"]
@@ -560,7 +554,8 @@ class MantraSystem(commands.Cog):
             add_points(self.bot, message.author, total_points)
             
             # Update user config
-            config = get_user_mantra_config(self.bot.config, message.author)
+            config = self.get_user_mantra_config(message.author)
+            config["total_points_earned"] += total_points
             
             # Record the capture
             encounter = {
@@ -580,11 +575,7 @@ class MantraSystem(commands.Cog):
             
             # Adjust frequency
             adjust_user_frequency(config, success=True, response_time=int(response_time))
-            save_user_mantra_config(self.bot.config, message.author, config)
-            
-            # Mark the view as completed to prevent timeout editing
-            if message.author.id in self.active_challenges and "view" in self.active_challenges[message.author.id]:
-                self.active_challenges[message.author.id]["view"].mark_completed()
+            self.save_user_mantra_config(message.author, config)
             
             # Send success message with positive reinforcement
             # Vary praise based on response time
@@ -596,6 +587,20 @@ class MantraSystem(commands.Cog):
                 praise = f"Processing confirmed, {config['subject']}."
             else:
                 praise = f"Integration logged, {config['subject']}."
+                
+            # Use the praise as the title
+            title_text = f"◈ {praise}"
+            
+            # Build description with points and streak
+            description_lines = [f"Integration successful: **{total_points} compliance points absorbed**"]
+            if streak_title:
+                description_lines.append(f"**{streak_title}**")
+            
+            embed = discord.Embed(
+                title=title_text,
+                description="\n".join(description_lines),
+                color=discord.Color.green()
+            )
             
             # Build breakdown
             breakdown_lines = [f"Base: {challenge['base_points']} pts"]
@@ -606,30 +611,38 @@ class MantraSystem(commands.Cog):
             if public_bonus > 0:
                 breakdown_lines.append(f"Public bonus: +{public_bonus} pts")
             
+            if len(breakdown_lines) > 1:
+                embed.add_field(
+                    name="Breakdown",
+                    value="\n".join(breakdown_lines),
+                    inline=False
+                )
+            
+            # Add tip about public channel if configured and this was a DM response
+            if self.public_channel_id and is_dm and random.random() < 0.33:  # Show 1/3 of the time
+                embed.add_field(
+                    name="📍 Protocol Reminder",
+                    value=f"Public processing in <#{self.public_channel_id}> amplifies conditioning effectiveness by {self.public_bonus_multiplier}x",
+                    inline=False
+                )
+            
             current_points = get_points(self.bot, message.author)
-            current_streak = self.user_streaks[message.author.id]["count"] if message.author.id in self.user_streaks else None
+            embed.set_footer(text=f"Total compliance points: {current_points:,}")
             
-            # Create success embed using utility function
-            embed = create_mantra_success_embed(
-                praise=praise,
-                total_points=total_points,
-                streak_title=streak_title,
-                breakdown_lines=breakdown_lines if len(breakdown_lines) > 1 else None,
-                current_points=current_points,
-                current_streak=current_streak,
-                public_channel_id=self.public_channel_id,
-                public_bonus_multiplier=self.public_bonus_multiplier,
-                is_dm=is_dm
-            )
-            
-            # Create response view with action buttons
-            view = MantraResponseView(bot_config=self.bot.config)
+            # Show streak count if present
+            if message.author.id in self.user_streaks:
+                current_streak = self.user_streaks[message.author.id]["count"]
+                embed.add_field(
+                    name="◈ Synchronization Level",
+                    value=f"{current_streak} sequences processed",
+                    inline=True
+                )
             
             # Send reward message publicly if response was public
             if is_public:
-                await message.reply(embed=embed, view=view)
+                await message.reply(embed=embed)
             else:
-                await message.author.send(embed=embed, view=view)
+                await message.author.send(embed=embed)
             
             # Remove from active challenges
             del self.active_challenges[message.author.id]
@@ -818,9 +831,9 @@ class MantraSystem(commands.Cog):
         config["next_encounter"]["base_points"] = 5  # dont let people cheese points
         save_user_mantra_config(self.bot.config, ctx.author, config)
         await ctx.send("New mantra scheduled for immediate delivery.")
-
-    
     @commands.command(hidden=True, aliases=['mstats'])
+
+    @commands.command(hidden=True)
     async def mantrastats(self, ctx):
         """Hidden admin command to show detailed mantra statistics for all users."""
         # Check if user is superadmin (for DM access) or guild admin
