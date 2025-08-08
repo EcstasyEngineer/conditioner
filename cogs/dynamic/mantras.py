@@ -1,3 +1,4 @@
+from core import config
 import discord
 from discord.ext import commands, tasks
 from discord import app_commands
@@ -796,39 +797,28 @@ class MantraSystem(commands.Cog):
         
         await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
     
-    @commands.command(hidden=True, aliases=['msummary'])
-    async def mantrasummary(self, ctx):
-        """Admin command to show brief mantra summary for all users."""
-        # Check if user is superadmin (for DM access) or guild admin
-        superadmins = self.bot.config.get_global("superadmins", [])
-        is_superadmin = ctx.author.id in superadmins
-        is_guild_admin = (ctx.guild is not None and 
-                         (ctx.author.guild_permissions.administrator or ctx.author == ctx.guild.owner))
-        
-        if not (is_superadmin or is_guild_admin):
-            await ctx.send("You need administrator permissions or superadmin status to use this command.")
+    @commands.command(name="mantra_test", hidden=True)
+    async def get_new_mantra(self, ctx):
+        """Get a new mantra (for testing purposes)."""
+        if not ctx.guild or not ctx.author.guild_permissions.administrator:
+            await ctx.send("This command can only be used in a server by an admin.")
             return
         
-        # Generate summary using utils (simple husk)
-        summary = generate_mantra_summary(self.bot)
-        
-        # Send in chunks if needed (Discord message limit)
-        if len(summary) <= 2000:
-            await ctx.send(summary)
-        else:
-            # Split into multiple messages at code block boundaries
-            lines = summary.split('\n')
-            current_chunk = []
-            
-            for line in lines:
-                if len('\n'.join(current_chunk + [line])) > 1990:
-                    await ctx.send('\n'.join(current_chunk))
-                    current_chunk = [line]
-                else:
-                    current_chunk.append(line)
-            
-            if current_chunk:
-                await ctx.send('\n'.join(current_chunk))
+        # Get user config
+        config = get_user_mantra_config(self.bot.config, ctx.author)
+        if not config["enrolled"]:
+            await ctx.send("You need to enroll first! Use `/mantra enroll` to get started.")
+            return
+        if not config["themes"]:
+            await ctx.send("You need to have at least one theme selected. Use `/mantra modules` to choose themes.")
+            return  
+    
+        # simply set the next encounter to now
+        config["next_encounter"]["timestamp"] = datetime.now().isoformat()
+        config["next_encounter"]["base_points"] = 5  # dont let people cheese points
+        save_user_mantra_config(self.bot.config, ctx.author, config)
+        await ctx.send("New mantra scheduled for immediate delivery.")
+
     
     @commands.command(hidden=True, aliases=['mstats'])
     async def mantrastats(self, ctx):
