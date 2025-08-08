@@ -14,6 +14,12 @@ async def get_config(ctx):
     config = ctx.bot.config
     await ctx.send(f"Current config: {config}")
 
+
+@commands.command(name="helloworld")
+async def hello_world(ctx):
+    """A simple command that responds with 'Hello, World!'."""
+    await ctx.send("Hello, World!")
+
 async def setup(bot):
     """Every cog needs a setup function like this."""
     await bot.add_cog(Test(bot))
