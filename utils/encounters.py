@@ -63,17 +63,14 @@ def load_encounters(user_id: int) -> List[Dict]:
     return encounters
 
 
-def load_recent_encounters(user_id: int, days: int = 7) -> List[Dict]:
-    """Load encounters from the past N days for performance."""
-    cutoff_date = datetime.now() - timedelta(days=days)
-    cutoff_str = cutoff_date.isoformat()
-    
-    encounters = []
+def load_recent_encounters(user_id: int, limit: int = 7) -> List[Dict]:
+    """Load the most recent N encounters for a user."""
     encounters_file = Path('logs/encounters') / f'user_{user_id}.jsonl'
     
     if not encounters_file.exists():
         return []
     
+    encounters = []
     try:
         with open(encounters_file, 'r') as f:
             for line_num, line in enumerate(f, 1):
@@ -81,7 +78,6 @@ def load_recent_encounters(user_id: int, days: int = 7) -> List[Dict]:
                 if line:
                     # Handle potential multiple JSON objects on one line
                     if '}{' in line:
-                        # Split and process each JSON object separately
                         parts = line.split('}{')
                         for i, part in enumerate(parts):
                             if i == 0:
@@ -90,26 +86,22 @@ def load_recent_encounters(user_id: int, days: int = 7) -> List[Dict]:
                                 part = '{' + part
                             else:
                                 part = '{' + part + '}'
-                            
                             try:
-                                encounter = json.loads(part)
-                                if encounter.get('timestamp', '') >= cutoff_str:
-                                    encounters.append(encounter)
+                                encounters.append(json.loads(part))
                             except json.JSONDecodeError as e:
                                 print(f"Error parsing JSON fragment on line {line_num} for user {user_id}: {e}")
                     else:
                         try:
-                            encounter = json.loads(line)
-                            if encounter.get('timestamp', '') >= cutoff_str:
-                                encounters.append(encounter)
+                            encounters.append(json.loads(line))
                         except json.JSONDecodeError as e:
                             print(f"Error parsing JSON on line {line_num} for user {user_id}: {e}")
                             # Continue processing other lines instead of failing completely
     except IOError as e:
-        print(f"Error reading recent encounters file for user {user_id}: {e}")
+        print(f"Error reading encounters file for user {user_id}: {e}")
         return []
     
-    return encounters
+    # Return the last N encounters
+    return encounters[-limit:] if encounters else []
 
 
 def calculate_user_streak_from_history(user_id: int) -> Optional[Dict]:

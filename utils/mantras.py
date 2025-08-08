@@ -116,40 +116,35 @@ def schedule_next_encounter(config: Dict, available_themes: Dict, first_enrollme
         return
     
     # Base frequency is encounters per day
-    frequency = config["frequency"]
+    frequency = max(config["frequency"],0.1)  # Avoid zeros and negatives
+
+    hours_between = 24 / frequency
     
-    # Calculate average hours between encounters
-    if frequency > 0:
-        hours_between = 24 / frequency
+    # Add randomization (-25% to +25%)
+    variation = random.uniform(0.75, 1.25)
+    actual_hours = hours_between * variation
+    
+    # Minimum 2 hours between encounters
+    actual_hours = max(2.0, actual_hours)
+    
+    next_time = datetime.now() + timedelta(hours=actual_hours)
+    
+    # Get last mantra to avoid repeats
+    last_encounters = load_recent_encounters(config["user_id"], limit=1)
+    last_mantra = last_encounters[0].get("mantra", None) if last_encounters else None
+
+    # Pre-select the mantra for this encounter
+    mantra_data = select_mantra_from_themes(config["themes"], available_themes, last_mantra)
+    if mantra_data:
+        config["next_encounter"] = {
+            "timestamp": next_time.isoformat(),
+            "mantra": mantra_data["text"],  # Keep templated format
+            "theme": mantra_data["theme"],
+            "difficulty": mantra_data["difficulty"],
+            "base_points": mantra_data["base_points"]
+        }
         
-        # Add randomization (-25% to +25%)
-        variation = random.uniform(0.75, 1.25)
-        actual_hours = hours_between * variation
         
-        # Minimum 2 hours between encounters
-        actual_hours = max(2.0, actual_hours)
-        
-        next_time = datetime.now() + timedelta(hours=actual_hours)
-        
-        # Get last mantra to avoid repeats
-        last_mantra = config.get("next_encounter", {}).get("mantra")
-        
-        # Pre-select the mantra for this encounter
-        mantra_data = select_mantra_from_themes(config["themes"], available_themes, last_mantra)
-        if mantra_data:
-            config["next_encounter"] = {
-                "timestamp": next_time.isoformat(),
-                "mantra": mantra_data["text"],  # Keep templated format
-                "theme": mantra_data["theme"],
-                "difficulty": mantra_data["difficulty"],
-                "base_points": mantra_data["base_points"]
-            }
-        else:
-            # No mantras available, disable scheduling
-            config["next_encounter"] = None
-    else:
-        # Frequency 0 means disabled
-        config["next_encounter"] = None
 
 
 def calculate_next_encounter_time(frequency: float) -> datetime:
@@ -438,7 +433,7 @@ def generate_mantra_stats_embeds(bot, guild_members: List = None) -> List[discor
     
     for user_index, (user, config) in enumerate(users_with_mantras):
         # Get recent encounters
-        recent_encounters = load_recent_encounters(user.id, days=7)
+        recent_encounters = load_recent_encounters(user.id, limit=5)
         last_5_mantras = recent_encounters[-5:] if recent_encounters else []
         
         # Build user info
@@ -577,7 +572,14 @@ def get_user_mantra_config(bot_config, user) -> Dict:
 
     # Ensure next_encounter is a dict if None exists
     if config.get("next_encounter") is None:
-        config["next_encounter"] = schedule_next_encounter(config, load_encounters(user.id), first_enrollment=config.get("enrolled", True))
+        # we cant use schedule_next_encounter here because it calls this function
+        config["next_encounter"] = {
+            "timestamp": datetime.now().isoformat(),
+            "mantra": "Brainwashing is good for me",
+            "theme": "placeholder",
+            "difficulty": "placeholder",
+            "base_points": 69
+        }
 
     return config
 
