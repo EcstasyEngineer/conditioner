@@ -12,7 +12,11 @@ class Test(commands.Cog):
     async def get_config(self, ctx):
         """Get the current configuration."""
         config = self.bot.config
-        await ctx.send(f"Current config: {config}")
+        await ctx.send(f"Current user config: {config.get_user(ctx.author)}")
+        await ctx.send(f"Current guild config: {config.get_guild(ctx.guild)}")
+
+        await ctx.send(f"Current user config (id): {config.get_user(ctx.author.id)}")
+        await ctx.send(f"Current guild config (id): {config.get_guild(ctx.guild.id)}")
 
 
     @commands.command(name="helloworld")
