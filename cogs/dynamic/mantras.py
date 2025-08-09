@@ -5,9 +5,7 @@ import json
 import random
 from datetime import datetime, timedelta
 from pathlib import Path
-import os
 from typing import List, Dict, Optional
-import difflib
 
 from utils.points import get_points, add_points
 from utils.encounters import log_encounter, load_encounters
@@ -374,52 +372,24 @@ class MantraSystem(commands.Cog):
                 
             if await self.should_send_mantra(user):
                 config = get_user_mantra_config(self.bot.config, user)
-                
-                # Check for significant delay between intended and actual send time
-                extended_timeout_hours = 0
-                if config["next_encounter"] and isinstance(config["next_encounter"], dict):
-                    intended_time = datetime.fromisoformat(config["next_encounter"]["timestamp"])
-                    actual_time = datetime.now()
-                    delay_seconds = (actual_time - intended_time).total_seconds()
-                    
-                    # If delay is more than 2 hours (suggesting brief online blip), extend timeout
-                    if delay_seconds > 7200:  # 2 hours in seconds
-                        extended_timeout_hours = min(2.0, delay_seconds / 3600 * 0.5)  # Up to 2 hours extension
-                        if self.logger:
-                            self.logger.info(f"User {user.id} delayed delivery by {delay_seconds/3600:.1f}h, extending timeout by {extended_timeout_hours:.1f}h")
-                
-                # Use pre-planned encounter if available
-                if config["next_encounter"] and isinstance(config["next_encounter"], dict):
-                    planned_encounter = config["next_encounter"]
-                    mantra_text = planned_encounter["mantra"]
-                    difficulty = planned_encounter["difficulty"]
-                    adjusted_points = planned_encounter["base_points"]
-                    theme = planned_encounter["theme"]
-                else:
-                    # Fallback to old method if no planned encounter
-                    mantra_data = select_mantra_from_themes(config["themes"], self.themes)
-                    if not mantra_data:
-                        continue
-                    mantra_text = mantra_data["text"]
-                    difficulty = mantra_data["difficulty"]
-                    adjusted_points = mantra_data["base_points"]
-                    theme = mantra_data["theme"]
-                
+                if not config:
+                    raise ValueError(f"User mantra config not found for {user.id}")
+
                 # Format the mantra (applies templating)
                 formatted_mantra = format_mantra_text(
-                    mantra_text,
+                    config["next_encounter"]["mantra"],
                     config["subject"],
                     config["controller"]
                 )
                 
                 # Get timeout based on difficulty
-                settings = self.expiration_settings.get(difficulty, self.expiration_settings["moderate"])
+                settings = self.expiration_settings.get(config["next_encounter"]["difficulty"], self.expiration_settings["moderate"])
                 timeout_minutes = settings["timeout_minutes"]
                 
 
                 embed = discord.Embed(
                     title="🌀 Programming Sequence",
-                    description=f"Process this directive for **{adjusted_points} integration points**:\n\n**{formatted_mantra}**",
+                    description=f"Process this directive for **{config['next_encounter']['base_points']} integration points**:\n\n**{formatted_mantra}**",
                     color=discord.Color.purple()
                 )
                 embed.set_footer(text=f"Integration window: {timeout_minutes} minutes")
@@ -432,19 +402,13 @@ class MantraSystem(commands.Cog):
                 # Track the challenge
                 self.active_challenges[user.id] = {
                     "mantra": formatted_mantra,
-                    "theme": theme,
-                    "difficulty": difficulty,
-                    "base_points": adjusted_points,
+                    "theme": config['next_encounter']['theme'],
+                    "difficulty": config['next_encounter']['difficulty'],
+                    "base_points": config['next_encounter']['base_points'],
                     "sent_at": datetime.now(),
                     "timeout_minutes": timeout_minutes
                 }
-                
-                # Update last encounter time and schedule next
-                config["last_encounter"] = datetime.now().isoformat()
-                schedule_next_encounter(config, self.themes)
-                save_user_mantra_config(self.bot.config, user, config)
-                
-
+    
     
     @mantra_delivery.before_loop
     async def before_mantra_delivery(self):
@@ -485,6 +449,9 @@ class MantraSystem(commands.Cog):
         
         # Check if message matches the mantra
         if check_mantra_match(message.content, challenge["mantra"]):
+            # Remove from active challenges
+            del self.active_challenges[message.author.id]
+
             # Calculate response time and speed bonus
             response_time = (datetime.now() - challenge["sent_at"]).total_seconds()
             speed_bonus = calculate_speed_bonus(int(response_time))
@@ -518,10 +485,13 @@ class MantraSystem(commands.Cog):
                 "response_time": int(response_time),
                 "was_public": is_public
             }
+
+            # record to jsonl
             log_encounter(message.author.id, encounter)
             
-            # Adjust frequency
+            # Adjust frequency and schedule next encounter
             adjust_user_frequency(config, success=True, response_time=int(response_time))
+            schedule_next_encounter(config, self.themes)
             save_user_mantra_config(self.bot.config, message.author, config)
 
             # Send success message with positive reinforcement
@@ -578,9 +548,6 @@ class MantraSystem(commands.Cog):
             else:
                 await message.author.send(embed=embed)
             
-            # Remove from active challenges
-            del self.active_challenges[message.author.id]
-    
     # Slash Commands - Using a group for better organization
     mantra_group = app_commands.Group(name="mantra", description="Hypnotic mantra training system")
     

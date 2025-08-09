@@ -58,7 +58,7 @@ def format_mantra_text(mantra_text: str, subject: str, controller: str) -> str:
         formatted = formatted[0].upper() + formatted[1:]
     return formatted
 
-
+# Helper function used by schedule_next_encounter to select the next random mantra
 def select_mantra_from_themes(themes: List[str], available_themes: Dict[str, Dict]) -> Optional[Dict]:
     """Select a mantra with balanced theme weighting, avoiding repeats."""
     if not themes:
@@ -143,13 +143,10 @@ def calculate_next_encounter_time(frequency: float) -> datetime:
     return datetime.now() + timedelta(hours=actual_hours)
 
 
-def adjust_user_frequency(config: Dict, success: bool, response_time: Optional[int] = None) -> str:
+def adjust_user_frequency(config: Dict, success: bool, response_time: Optional[int] = None) -> None:
     """
     Adjust encounter frequency based on engagement.
     Updates the config dict in place.
-    
-    Returns:
-        str: "disabled" if auto-disabled, "offer_break" if should offer break, "continue" if normal
     """
     current_freq = config["frequency"]
     
@@ -164,7 +161,7 @@ def adjust_user_frequency(config: Dict, success: bool, response_time: Optional[i
             new_freq = min(6.0, current_freq * 1.05)
             
         config["frequency"] = new_freq
-        return "continue"
+
     else:
         # Timeout/miss
         config["consecutive_timeouts"] += 1
@@ -177,13 +174,6 @@ def adjust_user_frequency(config: Dict, success: bool, response_time: Optional[i
         if config["consecutive_timeouts"] >= 8:
             config["enrolled"] = False
             config["frequency"] = 1.0  # Reset to default for re-enrollment
-            return "disabled"  # Signal that we auto-disabled
-        # Offer break after 3 consecutive timeouts
-        elif config["consecutive_timeouts"] >= 3:
-            return "offer_break"  # Signal to offer break option
-            
-    return "continue"
-
 
 def should_auto_disable_user(consecutive_timeouts: int) -> bool:
     """Check if user should be auto-disabled due to consecutive timeouts."""
