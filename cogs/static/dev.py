@@ -5,30 +5,7 @@ from os import listdir
 import subprocess
 from datetime import datetime
 import sys
-
-
-def is_server_admin(ctx):
-    """Check if user is server admin (bot admin, Discord admin, or server owner)."""
-    if ctx.guild is None:
-        return False
-    
-    # Check if user is in bot's admin list for this guild
-    bot = ctx.bot
-    admins = bot.config.get(ctx, "admins", [])
-    if ctx.author.id in admins:
-        return True
-    
-    # Check Discord server permissions
-    if ctx.author.guild_permissions.administrator or ctx.author == ctx.guild.owner:
-        return True
-    
-    return False
-
-def is_superadmin(ctx):
-    """Check if user is global superadmin."""
-    bot = ctx.bot
-    superadmins = bot.config.get_global("superadmins", [])
-    return ctx.author.id in superadmins
+from core.utils import is_superadmin
 
 class Dev(commands.Cog):
     """This is a cog with owner-only commands.
@@ -65,7 +42,7 @@ class Dev(commands.Cog):
         return f'cogs.dynamic.{cog.lower()}'
 
     @commands.command(name='load', hidden=True)
-    @commands.is_owner()
+    @commands.check(is_superadmin)
     async def load(self, ctx, *, cog: str):
         """This commands loads the selected cog, as long as that cog is in the `./cogs` folder.
                 
@@ -79,7 +56,6 @@ class Dev(commands.Cog):
         """
         self.logger.info(f"{ctx.author} (ID: {ctx.author.id}) invoked load on {cog}")
         message = await ctx.send('Loading...')
-        await ctx.message.delete()
         try:
             await self.bot.load_extension(self.check_cog(cog))
         except Exception as exc:
@@ -90,7 +66,7 @@ class Dev(commands.Cog):
             await message.edit(content=f'{self.check_cog(cog)} has been loaded.', delete_after=20)
 
     @commands.command(name='unload', hidden=True)
-    @commands.is_owner()
+    @commands.check(is_superadmin)
     async def unload(self, ctx, *, cog: str):
         """This commands unloads the selected cog, as long as that cog is in the `./cogs` folder.
         
@@ -104,7 +80,6 @@ class Dev(commands.Cog):
 		
         self.logger.info(f"{ctx.author} (ID: {ctx.author.id}) invoked unload on {cog}")
         message = await ctx.send('Unloading...')
-        await ctx.message.delete()
         try:
             await self.bot.unload_extension(self.check_cog(cog))
         except Exception as exc:
@@ -115,7 +90,7 @@ class Dev(commands.Cog):
             await message.edit(content=f'{self.check_cog(cog)} has been unloaded.', delete_after=20)
             
     @commands.command(name='reload', hidden=True)#This command is hidden from the help menu.
-    @commands.is_owner()
+    @commands.check(is_superadmin)
     async def reload(self, ctx, cog=None):
         """This commands reloads a specific cog or all cogs in the `./cogs/dynamic` folder.
         
@@ -125,7 +100,6 @@ class Dev(commands.Cog):
             This command deletes its messages after 20 seconds."""
 
         self.logger.info(f"{ctx.author} (ID: {ctx.author.id}) invoked reload on {cog or 'all dynamic'}")
-        await ctx.message.delete()
         
         if cog is None:
             cogs_to_unload = [c for c in self.bot.extensions if c.startswith("cogs.dynamic.")]
@@ -162,7 +136,7 @@ class Dev(commands.Cog):
         await message.edit(content=response, delete_after=20)
         
     @commands.command(name='update', hidden=True)
-    @commands.check(is_server_admin)
+    @commands.check(is_superadmin)
     async def update(self, ctx):
         """This command executes a git pull command in the current environment to update the code.
         
@@ -172,7 +146,6 @@ class Dev(commands.Cog):
         """
         self.logger.info(f"{ctx.author} invoked update command")
         message = await ctx.send('Updating code...')
-        await ctx.message.delete()
         try:
             result = subprocess.run(['git', 'pull'], capture_output=True, text=True)
             if result.returncode == 0:
@@ -189,7 +162,7 @@ class Dev(commands.Cog):
             await message.edit(content=f'An error has occurred: {exc}', delete_after=20)
 
     @commands.command(name='list_cogs', aliases=['listcogs'], hidden=True)
-    @commands.is_owner()
+    @commands.check(is_superadmin)
     async def list_cogs(self, ctx):
         """This command lists all the cogs in the `cogs/dynamic` directory.
         
@@ -198,14 +171,12 @@ class Dev(commands.Cog):
             This command is hidden from the help menu.
         """
         self.logger.info(f"{ctx.author} invoked list_cogs")
-        message = await ctx.send('Listing all cogs...')
-        await ctx.message.delete()
         try:
             cogs = [cog[:-3] for cog in listdir('./cogs/dynamic') if cog.endswith('.py')]
-            await message.edit(content=f'Available cogs: {", ".join(cogs)}', delete_after=20)
+            await ctx.send(f'Available cogs: {", ".join(cogs)}', delete_after=20)
         except Exception as exc:
             self.logger.error("Error listing cogs", exc_info=True)
-            await message.edit(content=f'An error has occurred: {exc}', delete_after=20)
+            await ctx.send(f'An error has occurred: {exc}', delete_after=20)
             
     @commands.command(name='shutdown', aliases=['restart'], hidden=True)
     @commands.check(is_superadmin)
@@ -222,12 +193,6 @@ class Dev(commands.Cog):
         # Send message first
         message = await ctx.send('Restarting...')
         
-        # Try to delete original message if possible (skip if DM)
-        try:
-            await ctx.message.delete()
-        except discord.Forbidden:
-            pass  # Can't delete in DMs, that's fine
-        
         # Actually shut down
         try:
             await self.bot.close()
@@ -237,7 +202,7 @@ class Dev(commands.Cog):
             await message.edit(content=f'An error has occurred: {exc}', delete_after=20)
             
     @commands.command(name='sync_dev', aliases=['syncdev'], hidden=True)
-    @commands.is_owner()
+    @commands.check(is_superadmin)
     async def sync_dev(self, ctx):
         """Fast guild sync for immediate testing (creates temporary overrides).
         
@@ -248,7 +213,6 @@ class Dev(commands.Cog):
         """
         self.logger.info(f"{ctx.author} invoked sync_dev for guild {ctx.guild.id}")
         message = await ctx.send('Fast syncing for testing...')
-        await ctx.message.delete()
         try:
             self.bot.tree.copy_global_to(guild=ctx.guild)
             await self.bot.tree.sync(guild=ctx.guild)
@@ -258,7 +222,7 @@ class Dev(commands.Cog):
             await message.edit(content=f'An error has occurred: {exc}', delete_after=20)
     
     @commands.command(name='sync_clean', aliases=['syncclean'], hidden=True)
-    @commands.is_owner()
+    @commands.check(is_superadmin)
     async def sync_clean(self, ctx):
         """Remove guild command overrides, return to global commands only.
         
@@ -269,7 +233,6 @@ class Dev(commands.Cog):
         """
         self.logger.info(f"{ctx.author} invoked sync_clean for guild {ctx.guild.id}")
         message = await ctx.send('Cleaning guild overrides...')
-        await ctx.message.delete()
         try:
             self.bot.tree.clear_commands(guild=ctx.guild)
             await self.bot.tree.sync(guild=ctx.guild)

@@ -103,48 +103,6 @@ def load_recent_encounters(user_id: int, limit: int = 7) -> List[Dict]:
     # Return the last N encounters
     return encounters[-limit:] if encounters else []
 
-
-def calculate_user_streak_from_history(user_id: int) -> Optional[Dict]:
-    """
-    Calculate user's current streak from encounter history.
-    
-    Returns:
-        Optional[Dict]: {"count": int, "last_response": datetime} or None if no streak
-    """
-    encounters = load_encounters(user_id)
-    if not encounters:
-        return None
-        
-    # Sort encounters by timestamp (most recent first)
-    sorted_encounters = sorted(
-        encounters,
-        key=lambda x: x["timestamp"],
-        reverse=True
-    )
-    
-    # Count consecutive successes from most recent until first failure
-    streak_count = 0
-    last_successful_timestamp = None
-    
-    for encounter in sorted_encounters:
-        if encounter.get("completed", False):
-            streak_count += 1
-            if last_successful_timestamp is None:  # First successful encounter (most recent)
-                last_successful_timestamp = datetime.fromisoformat(encounter["timestamp"])
-        else:
-            # Hit a failure - stop counting
-            break
-    
-    # Return streak if user has any consecutive successes
-    if streak_count > 0 and last_successful_timestamp:
-        return {
-            "count": streak_count,
-            "last_response": last_successful_timestamp
-        }
-    
-    return None
-
-
 def get_user_encounter_stats(user_id: int) -> Dict:
     """
     Get comprehensive encounter statistics for a user.

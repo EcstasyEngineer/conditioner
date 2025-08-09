@@ -6,6 +6,7 @@ generation functions that are specific to the mantra cog.
 """
 
 import discord
+import re
 import json
 import random
 import difflib
@@ -31,21 +32,6 @@ def calculate_speed_bonus(response_time_seconds: int) -> int:
     else:
         return 0
 
-
-def get_streak_bonus(streak_count: int) -> Tuple[int, str]:
-    """Get streak bonus points and title."""
-    if streak_count >= 20:
-        return 100, "🌀 Full Synchronization"
-    elif streak_count >= 10:
-        return 50, "◉ Neural Resonance"
-    elif streak_count >= 5:
-        return 25, "◈◈ Conditioning Amplified"
-    elif streak_count >= 3:
-        return 10, "◈ Pathways Opening"
-    else:
-        return 0, ""
-
-
 def check_mantra_match(user_response: str, expected_mantra: str) -> bool:
     """Check if user response matches mantra with typo tolerance."""
     # Exact match (case insensitive)
@@ -53,7 +39,9 @@ def check_mantra_match(user_response: str, expected_mantra: str) -> bool:
         return True
         
     # Calculate similarity ratio
-    ratio = difflib.SequenceMatcher(None, user_response.lower(), expected_mantra.lower()).ratio()
+    user_clean = re.sub(r'\W+', '', user_response.lower())
+    expected_clean = re.sub(r'\W+', '', expected_mantra.lower())
+    ratio = difflib.SequenceMatcher(None, user_clean, expected_clean).ratio()
     
     # Accept if 95% similar or better (stricter threshold)
     return ratio >= 0.95
@@ -71,7 +59,7 @@ def format_mantra_text(mantra_text: str, subject: str, controller: str) -> str:
     return formatted
 
 
-def select_mantra_from_themes(themes: List[str], available_themes: Dict[str, Dict], last_mantra: Optional[str] = None) -> Optional[Dict]:
+def select_mantra_from_themes(themes: List[str], available_themes: Dict[str, Dict]) -> Optional[Dict]:
     """Select a mantra with balanced theme weighting, avoiding repeats."""
     if not themes:
         return None
@@ -89,12 +77,6 @@ def select_mantra_from_themes(themes: List[str], available_themes: Dict[str, Dic
     
     if not all_mantras:
         return None
-    
-    # Filter out the last mantra if provided and we have alternatives
-    if last_mantra and len(all_mantras) > 1:
-        filtered_mantras = [m for m in all_mantras if m["text"] != last_mantra]
-        if filtered_mantras:  # Only use filtered list if it's not empty
-            all_mantras = filtered_mantras
     
     # Select randomly from available mantras
     return random.choice(all_mantras)
@@ -128,13 +110,9 @@ def schedule_next_encounter(config: Dict, available_themes: Dict, first_enrollme
     actual_hours = max(2.0, actual_hours)
     
     next_time = datetime.now() + timedelta(hours=actual_hours)
-    
-    # Get last mantra to avoid repeats
-    last_encounters = load_recent_encounters(config["user_id"], limit=1)
-    last_mantra = last_encounters[0].get("mantra", None) if last_encounters else None
 
     # Pre-select the mantra for this encounter
-    mantra_data = select_mantra_from_themes(config["themes"], available_themes, last_mantra)
+    mantra_data = select_mantra_from_themes(config["themes"], available_themes)
     if mantra_data:
         config["next_encounter"] = {
             "timestamp": next_time.isoformat(),
@@ -211,144 +189,7 @@ def should_auto_disable_user(consecutive_timeouts: int) -> bool:
     """Check if user should be auto-disabled due to consecutive timeouts."""
     return consecutive_timeouts >= 2
 
-
-# =============================================================================
-# ADMIN REPORT GENERATION
-# =============================================================================
-
-def generate_mantra_summary(bot, guild_members: List = None) -> str:
-    """Generate brief mantra summary for all users (husk function for cog)."""
-    users_with_mantras = []
-    
-    # Read user JSON files directly
-    import os
-    import json
-    from pathlib import Path
-    
-    configs_dir = Path('configs')
-    if not configs_dir.exists():
-        return "No users have tried the mantra system yet."
-    
-    for config_file in configs_dir.glob('user_*.json'):
-        try:
-            user_id = int(config_file.stem.replace('user_', ''))
-            
-            # Read JSON file directly
-            with open(config_file, 'r') as f:
-                user_data = json.load(f)
-            
-            config = user_data.get('mantra_system', {})
-            
-            # Check if user has encounters or is enrolled
-            has_encounters = len(load_encounters(user_id)) > 0
-            if not (config.get("enrolled") or has_encounters):
-                continue
-            
-            # Try to get user object (for display name)
-            user = bot.get_user(user_id)
-            if not user:
-                # Create a minimal user-like object for display
-                class FakeUser:
-                    def __init__(self, user_id):
-                        self.id = user_id
-                        self.name = f"User_{user_id}"
-                        self.bot = False
-                user = FakeUser(user_id)
-            elif user.bot:
-                continue
-                
-            users_with_mantras.append((user, config))
-            
-        except (ValueError, json.JSONDecodeError, IOError):
-            continue
-    
-    if not users_with_mantras:
-        return "No users have tried the mantra system yet."
-    
-    # Sort by total points earned (calculated from encounters)
-    def get_user_total_points(user_config_tuple):
-        user, config = user_config_tuple
-        encounters = load_encounters(user.id)
-        total_points = 0
-        for e in encounters:
-            if e.get("completed", False):
-                total_points += e.get("base_points", 0)
-                total_points += e.get("speed_bonus", 0) 
-                total_points += e.get("streak_bonus", 0)
-                total_points += e.get("public_bonus", 0)
-        return total_points
-    
-    users_with_mantras.sort(key=get_user_total_points, reverse=True)
-    
-    # Calculate dynamic theme column width
-    max_theme_width = 0
-    for user, config in users_with_mantras:
-        themes = config.get("themes", [])
-        if themes:
-            theme_abbr = "/".join([t[:4] for t in themes])
-        else:
-            theme_abbr = "none"
-        max_theme_width = max(max_theme_width, len(theme_abbr))
-    
-    theme_width = max(max_theme_width, 12)
-    
-    # Build summary
-    summary_lines = [f"**Neural Programming Summary** ({len(users_with_mantras)} users):\n```"]
-    
-    for user, config in users_with_mantras:
-        # Status with overdue detection
-        status = "🔴"  # Default to red (inactive)
-        if config.get("enrolled"):
-            status = "🟢"  # Green for active
-            
-            # Check for overdue mantras (yellow status)
-            if config.get("online_only") and config.get("next_encounter"):
-                try:
-                    next_time = datetime.fromisoformat(config["next_encounter"]["timestamp"])
-                    if datetime.now() > next_time:
-                        status = "🟡"  # Yellow for overdue
-                except (ValueError, KeyError, TypeError):
-                    pass  # Keep green if we can't parse the date
-        
-        # Abbreviated themes (first 4 letters)
-        themes = config.get("themes", [])
-        if themes:
-            theme_abbr = "/".join([t[:4] for t in themes])
-        else:
-            theme_abbr = "none"
-        
-        # Subject/Controller (4 letters each)
-        subject = config.get("subject", "puppet")[:4]
-        controller = config.get("controller", "Master")[:4]
-        
-        # Load encounters once and calculate points + success rate
-        encounters = load_encounters(user.id)
-        points = 0
-        for e in encounters:
-            if e.get("completed", False):
-                points += e.get("base_points", 0)
-                points += e.get("speed_bonus", 0) 
-                points += e.get("streak_bonus", 0)
-                points += e.get("public_bonus", 0)
-        total_encounters = len(encounters)
-        if total_encounters > 0:
-            completed = sum(1 for e in encounters if e.get("completed", False))
-            rate = f"{completed}/{total_encounters}"
-        else:
-            rate = "0/0"
-        
-        # Daily rate
-        daily_rate = config.get("frequency", 1.0)
-        
-        # Format line
-        line = f"{status} {user.name[:12]:<12} {subject}/{controller} {theme_abbr:<{theme_width}} {points:>4}pts {rate:>7} {daily_rate:>4.2f}"
-        summary_lines.append(line)
-    
-    summary_lines.append("```")
-    return "\n".join(summary_lines)
-
-
-def generate_mantra_stats_embeds(bot, guild_members: List = None) -> List[discord.Embed]:
+def generate_mantra_stats(bot, guild_members: List = None) -> List[discord.Embed]:
     """Generate detailed mantra statistics embeds (husk function for cog)."""
     users_with_mantras = []
     
@@ -560,7 +401,8 @@ def get_user_mantra_config(bot_config, user) -> Dict:
         "last_encounter": None,
         "next_encounter": None,
         "online_only": True,
-        "consecutive_timeouts": 0
+        "consecutive_timeouts": 0,
+        "total_points_earned": 0,
     }
     
     config = bot_config.get_user(user, 'mantra_system', {})
@@ -587,24 +429,4 @@ def get_user_mantra_config(bot_config, user) -> Dict:
 def save_user_mantra_config(bot_config, user, config: Dict):
     """Save user's mantra configuration."""
     bot_config.set_user(user, 'mantra_system', config)
-
-
-def update_streak(user_streaks: Dict, user_id: int, success: bool = True) -> None:
-    """Update user's streak status in the provided streaks dictionary."""
-    from datetime import datetime
-    now = datetime.now()
-    
-    if success:
-        if user_id in user_streaks:
-            # Continue existing streak
-            user_streaks[user_id]["count"] += 1
-            user_streaks[user_id]["last_response"] = now
-        else:
-            # Start new streak
-            user_streaks[user_id] = {"count": 1, "last_response": now}
-    else:
-        # Break streak on failure only
-        if user_id in user_streaks:
-            del user_streaks[user_id]
-
 

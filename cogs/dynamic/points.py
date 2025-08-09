@@ -1,7 +1,7 @@
 from discord.ext import commands
 import discord
 from datetime import datetime
-
+from core.utils import is_admin
 from utils.points import get_points, add_points, set_points
 
 class Points(commands.Cog):
@@ -91,8 +91,8 @@ class Points(commands.Cog):
     # ===================
     
     @commands.command(name='add_points', aliases=['addpoints'])
-    @commands.has_permissions(administrator=True)
-    async def admin_add_points(self, ctx, member: discord.Member, amount: int):
+    @commands.check(is_admin)
+    async def admin_add_points(self, ctx, member: discord.Member, amount: int = 10):
         """Add points to a user (Admin only). Amount can be negative to subtract."""
         new_total = add_points(self.bot, member, amount)
         
@@ -100,9 +100,8 @@ class Points(commands.Cog):
             await ctx.send(f"✅ Added {amount:,} points to {member.mention}. New balance: {new_total:,}")
         else:
             await ctx.send(f"✅ Removed {abs(amount):,} points from {member.mention}. New balance: {new_total:,}")
-    
+
     @commands.command(name='set_points', aliases=['setpoints'])
-    @commands.has_permissions(administrator=True)
     async def admin_set_points(self, ctx, member: discord.Member, amount: int):
         """Set a user's points to a specific amount (Admin only)."""
         if amount < 0:
