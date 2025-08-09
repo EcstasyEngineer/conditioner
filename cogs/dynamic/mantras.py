@@ -191,7 +191,7 @@ class MantraSystem(commands.Cog):
         
         # Online status checking configuration
         self.MANTRA_DELIVERY_INTERVAL_MINUTES = 1 
-        self.REQUIRED_CONSECUTIVE_ONLINE_CHECKS = 1
+        self.REQUIRED_CONSECUTIVE_ONLINE_CHECKS = 5
         
         # Start the mantra delivery task with configured interval
         self.mantra_delivery.change_interval(minutes=self.MANTRA_DELIVERY_INTERVAL_MINUTES)
@@ -308,7 +308,7 @@ class MantraSystem(commands.Cog):
             # Require self.REQUIRED_CONSECUTIVE_ONLINE_CHECKS consecutive loops of being online
             if consecutive_online < self.REQUIRED_CONSECUTIVE_ONLINE_CHECKS:
                 if self.logger:
-                    self.logger.info(f"User {user.id} online for {consecutive_online}/{self.REQUIRED_CONSECUTIVE_ONLINE_CHECKS} loops")
+                    self.logger.info(f"User {user.id} online for {consecutive_online}/{self.MANTRA_DELIVERY_INTERVAL_MINUTES} loops")
                 return False
         
         
