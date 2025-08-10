@@ -353,12 +353,26 @@ class MantraSystem(commands.Cog):
                     log_encounter(user.id, encounter)
                     
                     # Adjust frequency and check for auto-disable or break offer
-                    disable_action = adjust_user_frequency(config, success=False)
-                    
-                    # View timeout will handle all the UI updates and messaging
-                    # Just save the config here
-                    pass
-                    
+                    adjust_user_frequency(config, success=False)
+
+                    # Create Embed showing that the challenge has expired
+                    embed = discord.Embed(
+                        title="Challenge Expired",
+                        description=f"Mantra challenge has expired:\n\n**{challenge['mantra']}**",
+                        color=discord.Color.red()
+                    )
+                    # Add a note if consecutive failures > 1
+                    if config.get("consecutive_timeouts", 0) > 1:
+                        embed.add_field(
+                            name="Need a break?",
+                            value="You have missed several challenges in a row. Use `/mantra disable` to pause programming protocols.",
+                            inline=False
+                        )
+                    embed.set_footer(text=f"Theme: {challenge['theme']} | Difficulty: {challenge['difficulty']} | Base Points: {challenge['base_points']}")
+                    await user.send(embed=embed)
+
+                    # Create a new challenge
+                    schedule_next_encounter(config, self.themes)
                     save_user_mantra_config(self.bot.config, user, config)
                     
                 # Remove from active challenges
@@ -395,9 +409,6 @@ class MantraSystem(commands.Cog):
                 embed.set_footer(text=f"Integration window: {timeout_minutes} minutes")
                 
                 await user.send(embed=embed)
-                
-                if self.logger:
-                    self.logger.info(f"User {user.id} sent mantra after {self.user_status_history.get(user.id, {}).get('consecutive_online_loops', 0)} consecutive online loops")
                 
                 # Track the challenge
                 self.active_challenges[user.id] = {
@@ -454,7 +465,7 @@ class MantraSystem(commands.Cog):
 
             # Calculate response time and speed bonus
             response_time = (datetime.now() - challenge["sent_at"]).total_seconds()
-            speed_bonus = calculate_speed_bonus(int(response_time))
+            speed_bonus = max(calculate_speed_bonus(int(response_time),challenge["base_points"]), 0) # the 5 point manual challenges cant be cheesed 
             base_total = challenge["base_points"] + speed_bonus
             
             # Apply public bonus if applicable

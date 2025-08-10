@@ -138,25 +138,36 @@ class Dev(commands.Cog):
     @commands.command(name='update', hidden=True)
     @commands.check(is_superadmin)
     async def update(self, ctx):
-        """This command executes a git pull command in the current environment to update the code.
-        
-        Note:
-            This command can be used by server admins.
-            This command is hidden from the help menu.
-        """
+        """Force update to upstream (discard local changes), then report the latest commit."""
         self.logger.info(f"{ctx.author} invoked update command")
         message = await ctx.send('Updating code...')
+
         try:
-            result = subprocess.run(['git', 'pull'], capture_output=True, text=True)
-            if result.returncode == 0:
-                self.logger.info(f"Git pull success: {result.stdout.strip()}")
-                commit_info = subprocess.run(['git', 'log', '-1', '--format="%H %ct"'], capture_output=True, text=True)
-                commit_hash, commit_timestamp = commit_info.stdout.replace("\"","").strip().split()
-                human_time = datetime.fromtimestamp(int(commit_timestamp)).strftime("%Y-%m-%d %H:%M")
-                await message.edit(content=f'Code updated successfully:\nCommit Hash: {commit_hash}\nTimestamp: {human_time}', delete_after=20)
-            else:
-                self.logger.error(f"Git pull error: {result.stderr.strip()}")
-                await message.edit(content=f'Error updating code:\n{result.stderr}', delete_after=20)
+            # 1) fetch latest refs
+            fetch = subprocess.run(['git', 'fetch', '--all', '--prune'], capture_output=True, text=True)
+            if fetch.returncode != 0:
+                self.logger.error(f"git fetch error: {fetch.stderr.strip()}")
+                await message.edit(content=f'Error updating code:\n{fetch.stderr}', delete_after=20)
+                return
+
+            # 2) hard reset to the branch's upstream (discard local changes & unpushed commits)
+            force = subprocess.run(['git', 'reset', '--hard', '@{u}'], capture_output=True, text=True)
+            if force.returncode != 0:
+                self.logger.error(f"git reset --hard @{{u}} error: {force.stderr.strip() or force.stdout.strip()}")
+                await message.edit(content=f'Error updating code:\n{force.stderr or force.stdout}', delete_after=20)
+                return
+
+            # 3) show latest commit info (unchanged from your version)
+            commit_info = subprocess.run(['git', 'log', '-1', '--format="%H %ct"'], capture_output=True, text=True)
+            commit_hash, commit_timestamp = commit_info.stdout.replace("\"","").strip().split()
+            human_time = datetime.fromtimestamp(int(commit_timestamp)).strftime("%Y-%m-%d %H:%M")
+
+            await message.edit(
+                content=f'Code updated successfully:\nCommit Hash: {commit_hash}\nTimestamp: {human_time}',
+                delete_after=20
+            )
+            self.logger.info(f"Git reset success: {commit_hash} @ {human_time}")
+        
         except Exception as exc:
             self.logger.error("Exception during update", exc_info=True)
             await message.edit(content=f'An error has occurred: {exc}', delete_after=20)

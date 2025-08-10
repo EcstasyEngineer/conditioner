@@ -84,6 +84,9 @@ def select_mantra_from_themes(themes: List[str], available_themes: Dict[str, Dic
 
 def schedule_next_encounter(config: Dict, available_themes: Dict, first_enrollment: bool = False):
     """Schedule the next mantra encounter with pre-planned content."""
+
+    if not config.get("enrolled", False):
+        return  # No enrollment, no scheduling
     
     # Handle first enrollment with special pre-canned message
     if first_enrollment:
