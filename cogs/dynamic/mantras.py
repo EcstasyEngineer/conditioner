@@ -465,7 +465,7 @@ class MantraSystem(commands.Cog):
 
             # Calculate response time and speed bonus
             response_time = (datetime.now() - challenge["sent_at"]).total_seconds()
-            speed_bonus = max(calculate_speed_bonus(int(response_time),challenge["base_points"]), 0) # the 5 point manual challenges cant be cheesed 
+            speed_bonus = max(calculate_speed_bonus(int(response_time)), challenge["base_points"]) # the 5 point manual challenges cant be cheesed
             base_total = challenge["base_points"] + speed_bonus
             
             # Apply public bonus if applicable
