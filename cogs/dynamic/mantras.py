@@ -7,6 +7,7 @@ from datetime import datetime, timedelta
 from pathlib import Path
 from typing import List, Dict, Optional
 
+from core.utils import is_admin
 from utils.points import get_points, add_points
 from utils.encounters import log_encounter, load_encounters
 from utils.mantras import (
@@ -191,7 +192,7 @@ class MantraSystem(commands.Cog):
         
         # Online status checking configuration
         self.MANTRA_DELIVERY_INTERVAL_MINUTES = 1 
-        self.REQUIRED_CONSECUTIVE_ONLINE_CHECKS = 5
+        self.REQUIRED_CONSECUTIVE_ONLINE_CHECKS = 1
         
         # Start the mantra delivery task with configured interval
         self.mantra_delivery.change_interval(minutes=self.MANTRA_DELIVERY_INTERVAL_MINUTES)
@@ -308,7 +309,7 @@ class MantraSystem(commands.Cog):
             # Require self.REQUIRED_CONSECUTIVE_ONLINE_CHECKS consecutive loops of being online
             if consecutive_online < self.REQUIRED_CONSECUTIVE_ONLINE_CHECKS:
                 if self.logger:
-                    self.logger.info(f"User {user.id} online for {consecutive_online}/{self.MANTRA_DELIVERY_INTERVAL_MINUTES} loops")
+                    self.logger.info(f"User {user.id} online for {consecutive_online}/{self.REQUIRED_CONSECUTIVE_ONLINE_CHECKS} loops")
                 return False
         
         
@@ -321,59 +322,71 @@ class MantraSystem(commands.Cog):
                 
         return True
     
-    # Note: Removed check_user_online_consecutive - now using status history tracking
-    
-    
-    
-    
     @tasks.loop(minutes=2)  # Default interval, overridden in __init__ with self.MANTRA_DELIVERY_INTERVAL_MINUTES
     async def mantra_delivery(self):
         """Main task loop for delivering mantras."""
         # Get all user configs
         for user_id in list(self.active_challenges.keys()):
+            config = get_user_mantra_config(self.bot.config, user_id)
             # Check for expired challenges
             challenge = self.active_challenges[user_id]
-            timeout_minutes = challenge.get("timeout_minutes", 45)  # Default to 45 if not set
+            timeout_minutes = challenge.get("timeout_minutes", 60)  # Default to 60 if not set
             if datetime.now() > challenge["sent_at"] + timedelta(minutes=timeout_minutes):
-                # Challenge expired
-                user = self.bot.get_user(user_id)
-                if user:
-                    config = get_user_mantra_config(self.bot.config, user)
-                    
-                    # Record the miss
-                    encounter = {
-                        "timestamp": challenge["sent_at"].isoformat(),
-                        "mantra": challenge["mantra"],
-                        "theme": challenge["theme"],
-                        "difficulty": challenge["difficulty"],
-                        "base_points": challenge["base_points"],
-                        "completed": False,
-                        "expired": True
-                    }
-                    log_encounter(user.id, encounter)
-                    
-                    # Adjust frequency and check for auto-disable or break offer
-                    adjust_user_frequency(config, success=False)
+                # Record the missed challenge
+                encounter = {
+                    "timestamp": challenge["sent_at"].isoformat(),
+                    "mantra": challenge["mantra"],
+                    "theme": challenge["theme"],
+                    "difficulty": challenge["difficulty"],
+                    "base_points": challenge["base_points"],
+                    "completed": False,
+                    "expired": True
+                }
+                log_encounter(user_id, encounter)
+                
+                # Adjust frequency and check for auto-disable or break offer
+                adjust_user_frequency(config, success=False)
 
-                    # Create Embed showing that the challenge has expired
-                    embed = discord.Embed(
-                        title="Challenge Expired",
-                        description=f"Mantra challenge has expired:\n\n**{challenge['mantra']}**",
-                        color=discord.Color.red()
+                # Create Embed showing that the challenge has expired
+                embed = discord.Embed(
+                    title="Challenge Expired",
+                    description=f"Mantra challenge has expired:\n\n**{challenge['mantra']}**",
+                    color=discord.Color.red()
+                )
+
+                if config.get("consecutive_timeouts", 0) > 8:
+                    embed.add_field(
+                        name="Auto-disabled",
+                        value="Programming has been disabled due to repeated timeouts.",
+                        inline=False
                     )
-                    # Add a note if consecutive failures > 1
-                    if config.get("consecutive_timeouts", 0) > 1:
-                        embed.add_field(
-                            name="Need a break?",
-                            value="You have missed several challenges in a row. Use `/mantra disable` to pause programming protocols.",
-                            inline=False
-                        )
-                    embed.set_footer(text=f"Theme: {challenge['theme']} | Difficulty: {challenge['difficulty']} | Base Points: {challenge['base_points']}")
+                    config["enrolled"] = False
+
+                # Add a reminder that you can pause
+                elif config.get("consecutive_timeouts", 0) > 3:
+                    # get the User's subject name from config, and capitalize the first letter
+                    subject_name = config.get("subject", "")
+                    subject_predicate = f", {subject_name}" if subject_name else ""
+                    embed.add_field(
+                        name="Need a break?",
+                        value=f"You missed several challenges in a row{subject_predicate}. Use `/mantra disable` to pause programming protocols.",
+                        inline=False
+                    )
+                embed.set_footer(text=f"Theme: {challenge['theme']} | Difficulty: {challenge['difficulty']} | Base Points: {challenge['base_points']}")
+                
+                # Try to update the last message to reduce spam
+                challenge_msg = challenge.get("last_encounter_msg", None)
+                if challenge_msg:
+                    try:
+                        await challenge_msg.edit(embed=embed)
+                    except:
+                        await user.send(embed=embed)
+                else:
                     await user.send(embed=embed)
 
-                    # Create a new challenge
-                    schedule_next_encounter(config, self.themes)
-                    save_user_mantra_config(self.bot.config, user, config)
+                # Create a new challenge
+                schedule_next_encounter(config, self.themes)
+                save_user_mantra_config(self.bot.config, user_id, config)
                     
                 # Remove from active challenges
                 del self.active_challenges[user_id]
@@ -386,8 +399,6 @@ class MantraSystem(commands.Cog):
                 
             if await self.should_send_mantra(user):
                 config = get_user_mantra_config(self.bot.config, user)
-                if not config:
-                    raise ValueError(f"User mantra config not found for {user.id}")
 
                 # Format the mantra (applies templating)
                 formatted_mantra = format_mantra_text(
@@ -395,11 +406,55 @@ class MantraSystem(commands.Cog):
                     config["subject"],
                     config["controller"]
                 )
-                
-                # Get timeout based on difficulty
-                settings = self.expiration_settings.get(config["next_encounter"]["difficulty"], self.expiration_settings["moderate"])
+
+                # Get timeout based on difficulty (needed if we reconstruct an active challenge)
+                settings = self.expiration_settings.get(
+                    config["next_encounter"]["difficulty"],
+                    self.expiration_settings["moderate"]
+                )
                 timeout_minutes = settings["timeout_minutes"]
-                
+
+                # Quick check: did we already send this mantra before a reboot?
+                # If next_encounter_ts is before bot.start_time, it's likely unrecorded
+                if datetime.fromisoformat(config["next_encounter"]["timestamp"]) < self.bot.start_time:
+                    # Look through the user's DM channel history for a matching message
+                    dm = user.dm_channel or await user.create_dm()
+                    already_sent = False
+                    async for message in dm.history(limit=5):
+                        found = False
+                        # Check embeds first (we send mantras via embed description)
+                        if message.embeds:
+                            for e in message.embeds:
+                                try:
+                                    if e.description and "Process this directive" in e.description and formatted_mantra in e.description:
+                                        found = True
+                                        self.logger.info(f"Found previously sent mantra from before reboot: {formatted_mantra}")
+                                        break
+                                except Exception:
+                                    pass
+                        # Fallback to plain content
+                        if not found and message.content:
+                            if "Process this directive" in message.content and formatted_mantra in message.content:
+                                found = True
+
+                        if found:
+                            # Recreate the active challenge so the user can respond
+                            self.active_challenges[user.id] = {
+                                "mantra": formatted_mantra,
+                                "theme": config['next_encounter']['theme'],
+                                "difficulty": config['next_encounter']['difficulty'],
+                                "base_points": config['next_encounter']['base_points'],
+                                "sent_at": datetime.now(),
+                                "timeout_minutes": timeout_minutes,
+                                "last_encounter_msg": message
+                            }
+                            already_sent = True
+                            break
+
+                    if already_sent:
+                        # Skip sending again for this user in this cycle
+                        continue
+
 
                 embed = discord.Embed(
                     title="🌀 Programming Sequence",
@@ -407,17 +462,16 @@ class MantraSystem(commands.Cog):
                     color=discord.Color.purple()
                 )
                 embed.set_footer(text=f"Integration window: {timeout_minutes} minutes")
-                
-                await user.send(embed=embed)
-                
-                # Track the challenge
+
+                sent_message = await user.send(embed=embed)
                 self.active_challenges[user.id] = {
                     "mantra": formatted_mantra,
                     "theme": config['next_encounter']['theme'],
                     "difficulty": config['next_encounter']['difficulty'],
                     "base_points": config['next_encounter']['base_points'],
                     "sent_at": datetime.now(),
-                    "timeout_minutes": timeout_minutes
+                    "timeout_minutes": timeout_minutes,
+                    "last_encounter_msg": sent_message
                 }
     
     
@@ -465,7 +519,7 @@ class MantraSystem(commands.Cog):
 
             # Calculate response time and speed bonus
             response_time = (datetime.now() - challenge["sent_at"]).total_seconds()
-            speed_bonus = max(calculate_speed_bonus(int(response_time)), challenge["base_points"]) # the 5 point manual challenges cant be cheesed
+            speed_bonus = min(calculate_speed_bonus(int(response_time)), challenge["base_points"]) # the 5 point manual challenges cant be cheesed
             base_total = challenge["base_points"] + speed_bonus
             
             # Apply public bonus if applicable
@@ -481,7 +535,6 @@ class MantraSystem(commands.Cog):
             
             # Update user config
             config = get_user_mantra_config(self.bot.config, message.author)
-            config["total_points_earned"] += total_points
             
             # Record the capture
             encounter = {
@@ -723,12 +776,8 @@ class MantraSystem(commands.Cog):
         await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
     
     @commands.command(name="mantra_test", hidden=True)
+    @commands.check(is_admin)
     async def get_new_mantra(self, ctx):
-        """Get a new mantra (for testing purposes)."""
-        if not ctx.guild or not ctx.author.guild_permissions.administrator:
-            await ctx.send("This command can only be used in a server by an admin.")
-            return
-        
         # Get user config
         config = get_user_mantra_config(self.bot.config, ctx.author)
         if not config["enrolled"]:
@@ -745,10 +794,9 @@ class MantraSystem(commands.Cog):
         await ctx.send("New mantra scheduled for immediate delivery.")
     
     @commands.command(hidden=True, aliases=['mstats'])
+    #@commands.check(is_admin)
     async def mantrastats(self, ctx):
-        """Hidden admin command to show detailed mantra statistics for all users."""
-        
-        
+        """Admin command to show detailed mantra statistics for all users."""
         # Generate stats using utils (simple husk)
         embeds = generate_mantra_stats(self.bot)
         
@@ -839,7 +887,7 @@ class MantraSystem(commands.Cog):
             color=discord.Color.purple()
         )
         embed.add_field(name="Subject", value=config["subject"], inline=True)
-        embed.add_field(name="Controller", value=config["controller"], inline=True)
+        embed.add_field(name="Dominant", value=config["controller"], inline=True)
         embed.add_field(name="Programming Modules", value=", ".join(config["themes"]), inline=False)
         
         # Add timing info for first-time enrollments
@@ -901,7 +949,6 @@ class MantraSystem(commands.Cog):
                 if e.get("completed", False):
                     total_points_earned += e.get("base_points", 0)
                     total_points_earned += e.get("speed_bonus", 0) 
-                    total_points_earned += e.get("streak_bonus", 0)
                     total_points_earned += e.get("public_bonus", 0)
             
             # Average response time for completed mantras
@@ -940,7 +987,7 @@ class MantraSystem(commands.Cog):
         
         embed.set_footer(text="Use /mantra settings to update your preferences")
         
-        await interaction.response.send_message(embed=embed, ephemeral=True)
+        #await interaction.response.send_message(embed=embed, ephemeral=True)
     
     
     async def update_settings(

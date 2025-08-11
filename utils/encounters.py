@@ -21,6 +21,7 @@ def log_encounter(user_id: int, encounter: Dict):
         f.write(json.dumps(encounter) + '\n')
 
 
+#todo this should be refactored such that it uses compactable logs such that the total score of the compacted files are added to the header of the current log during a pseudo-rotate
 def load_encounters(user_id: int) -> List[Dict]:
     """Load all encounters from JSONL file."""
     encounters_file = Path('logs/encounters') / f'user_{user_id}.jsonl'

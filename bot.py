@@ -71,6 +71,7 @@ def get_prefix(bot, message):
 bot = commands.Bot(command_prefix=get_prefix, intents=discord.Intents.all())
 # Attach central logger to bot for use in cogs
 bot.logger = logger
+bot.start_time = datetime.now()
 bot.config = Config()
 
 # Error logging is handled by simple utility functions

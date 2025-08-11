@@ -1,5 +1,8 @@
 def is_admin(ctx):
     """Check if user is server admin (bot admin, Discord admin, or server owner)."""
+    if is_superadmin(ctx):
+        return True
+
     if ctx.guild is None:
         return False
     

@@ -172,11 +172,6 @@ def adjust_user_frequency(config: Dict, success: bool, response_time: Optional[i
         # Decrease frequency
         new_freq = max(0.33, current_freq * 0.9)  # Min 1 per 3 days
         config["frequency"] = new_freq
-        
-        # Auto-disable after 8 consecutive timeouts
-        if config["consecutive_timeouts"] >= 8:
-            config["enrolled"] = False
-            config["frequency"] = 1.0  # Reset to default for re-enrollment
 
 def should_auto_disable_user(consecutive_timeouts: int) -> bool:
     """Check if user should be auto-disabled due to consecutive timeouts."""
@@ -395,7 +390,7 @@ def get_user_mantra_config(bot_config, user) -> Dict:
         "next_encounter": None,
         "online_only": True,
         "consecutive_timeouts": 0,
-        "total_points_earned": 0,
+
     }
     
     config = bot_config.get_user(user, 'mantra_system', {})
