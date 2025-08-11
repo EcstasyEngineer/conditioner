@@ -617,8 +617,8 @@ class MantraSystem(commands.Cog):
     
     @mantra_group.command(name="enroll", description="Initialize mental programming protocols")
     @app_commands.describe(
-        subject="Your preferred subject name",
-        controller="How to address the dominant"
+        subject="Preferred subject pet name",
+        dominant="Preferred dominant honorific"
     )
     @app_commands.choices(
         subject=[
@@ -633,21 +633,22 @@ class MantraSystem(commands.Cog):
             app_commands.Choice(name="bimbo", value="bimbo"),
             app_commands.Choice(name="drone", value="drone")
         ],
-        controller=[
+        dominant=[
             app_commands.Choice(name="Master", value="Master"),
             app_commands.Choice(name="Mistress", value="Mistress"),
-            app_commands.Choice(name="Goddess", value="Goddess")
+            app_commands.Choice(name="Goddess", value="Goddess"),
+            app_commands.Choice(name="Daddy", value="Daddy")
         ]
     )
     async def mantra_enroll(
         self,
         interaction: discord.Interaction,
         subject: Optional[str] = None,
-        controller: Optional[str] = None
+        dominant: Optional[str] = None
     ):
         """Enroll in the mantra training system."""
-        await self.enroll_user(interaction, None, subject, controller)
-    
+        await self.enroll_user(interaction, None, subject, dominant)
+
     @mantra_group.command(name="status", description="Check your conditioning status")
     async def mantra_status(self, interaction: discord.Interaction):
         """Show user's mantra status and stats."""
@@ -655,8 +656,8 @@ class MantraSystem(commands.Cog):
     
     @mantra_group.command(name="settings", description="Update your mantra settings")
     @app_commands.describe(
-        subject="Your preferred subject name",
-        controller="How to address the dominant",
+        subject="Preferred subject pet name",
+        dominant="Preferred dominant honorific",
         online_only="Only receive mantras when online"
     )
     # Note: Use /mantra themes to manage your active themes
@@ -673,22 +674,23 @@ class MantraSystem(commands.Cog):
             app_commands.Choice(name="bimbo", value="bimbo"),
             app_commands.Choice(name="drone", value="drone")
         ],
-        controller=[
+        dominant=[
             app_commands.Choice(name="Master", value="Master"),
             app_commands.Choice(name="Mistress", value="Mistress"),
-            app_commands.Choice(name="Goddess", value="Goddess")
+            app_commands.Choice(name="Goddess", value="Goddess"),
+            app_commands.Choice(name="Daddy", value="Daddy")
         ]
     )
     async def mantra_settings(
         self,
         interaction: discord.Interaction,
         subject: Optional[str] = None,
-        controller: Optional[str] = None,
+        dominant: Optional[str] = None,
         online_only: Optional[bool] = None
     ):
         """Update mantra settings."""
         # Don't pass themes_list - keep existing themes
-        await self.update_settings(interaction, subject, controller, online_only)
+        await self.update_settings(interaction, subject, dominant, online_only)
     
     @mantra_group.command(name="disable", description="Suspend programming protocols")
     async def mantra_disable(self, interaction: discord.Interaction):
@@ -865,31 +867,65 @@ class MantraSystem(commands.Cog):
         
         # Check if this is a first enrollment or re-enrollment after a long time
         is_first_enrollment = False
+        recent_encounters = load_encounters(interaction.user.id)
+        recent_enroll = None
+        now = datetime.now()
+        # Find last enrollment or disable event (theme == 'enrollment')
+        for enc in reversed(recent_encounters[-5:]):
+            if enc.get("theme") == "enrollment":
+                recent_enroll = enc
+                break
+        # If last enrollment was within 6 hours, treat as abuse attempt
+        abuse_window = timedelta(hours=6)
+        low_enroll_points = 50
+        normal_enroll_points = 100
+        enroll_delay_seconds = 30
+        abuse_delay_seconds = 3600  # 1 hour
         if config.get("last_encounter") is None:
             is_first_enrollment = True
         else:
             try:
                 last_encounter = datetime.fromisoformat(config["last_encounter"])
-                if datetime.now() - last_encounter > timedelta(days=1):
+                if now - last_encounter > timedelta(days=1):
                     is_first_enrollment = True
             except:
                 is_first_enrollment = True
-        
-        # Schedule first encounter
-        schedule_next_encounter(config, self.themes, first_enrollment=is_first_enrollment)
-        
+
+        # If recent enrollment, lower points and delay
+        if recent_enroll and (now - datetime.fromisoformat(recent_enroll["timestamp"]) < abuse_window):
+            next_time = now + timedelta(seconds=abuse_delay_seconds)
+            config["next_encounter"] = {
+                "timestamp": next_time.isoformat(),
+                "mantra": "My thoughts are being reprogrammed.",
+                "theme": "enrollment",
+                "difficulty": "moderate",
+                "base_points": low_enroll_points
+            }
+        elif is_first_enrollment:
+            next_time = now + timedelta(seconds=enroll_delay_seconds)
+            config["next_encounter"] = {
+                "timestamp": next_time.isoformat(),
+                "mantra": "My thoughts are being reprogrammed.",
+                "theme": "enrollment",
+                "difficulty": "moderate",
+                "base_points": normal_enroll_points
+            }
+        else:
+            # Schedule next encounter as normal
+            schedule_next_encounter(config, self.themes, first_enrollment=False)
+
         save_user_mantra_config(self.bot.config, interaction.user, config)
-        
+
         # Send confirmation
         embed = discord.Embed(
             title="🌀 Neural Pathways Initialized!",
-            description="Programming sequences will be transmitted via DM.",
+            description="Programming sequences will be transmitted soon.",
             color=discord.Color.purple()
         )
         embed.add_field(name="Subject", value=config["subject"], inline=True)
         embed.add_field(name="Dominant", value=config["controller"], inline=True)
         embed.add_field(name="Programming Modules", value=", ".join(config["themes"]), inline=False)
-        
+
         # Add timing info for first-time enrollments
         if is_first_enrollment:
             next_steps_value = "• **First sequence arriving soon!**\n"
@@ -987,7 +1023,7 @@ class MantraSystem(commands.Cog):
         
         embed.set_footer(text="Use /mantra settings to update your preferences")
         
-        #await interaction.response.send_message(embed=embed, ephemeral=True)
+        await interaction.response.send_message(embed=embed, ephemeral=True)
     
     
     async def update_settings(
