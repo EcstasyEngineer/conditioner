@@ -244,13 +244,13 @@ def generate_mantra_stats(bot, guild_members: List = None) -> List[discord.Embed
         for e in encounters:
             if e.get("completed", False):
                 total_points += e.get("base_points", 0)
-                total_points += e.get("speed_bonus", 0) 
-                total_points += e.get("streak_bonus", 0)
+                total_points += e.get("speed_bonus", 0)
                 total_points += e.get("public_bonus", 0)
         return total_points
-    
+
+    users_with_mantras = [x for x in users_with_mantras if x[1].get("enrolled")]
     users_with_mantras.sort(key=get_user_total_points, reverse=True)
-    
+
     # Create embeds (max 25 fields per embed)
     embeds = []
     current_embed = discord.Embed(
