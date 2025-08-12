@@ -192,7 +192,7 @@ class MantraSystem(commands.Cog):
         
         # Online status checking configuration
         self.MANTRA_DELIVERY_INTERVAL_MINUTES = 1 
-        self.REQUIRED_CONSECUTIVE_ONLINE_CHECKS = 5
+        self.REQUIRED_CONSECUTIVE_ONLINE_CHECKS = 3
         
         # Start the mantra delivery task with configured interval
         self.mantra_delivery.change_interval(minutes=self.MANTRA_DELIVERY_INTERVAL_MINUTES)
@@ -274,37 +274,33 @@ class MantraSystem(commands.Cog):
             is_online_now = False
             for guild in self.bot.guilds:
                 member = guild.get_member(user.id)
-                if member and member.status in [discord.Status.online, discord.Status.dnd]:
-                    is_online_now = True
+                if member:
+                    # Only check status for the first found member, then break
+                    if member.status in [discord.Status.online, discord.Status.dnd]:
+                        is_online_now = True
                     break
             
             # Initialize or get rotating buffer for this user
             if user.id not in self.user_status_history:
                 self.user_status_history[user.id] = {
                     "checks": [False] * self.REQUIRED_CONSECUTIVE_ONLINE_CHECKS,  # Rotating buffer of online status
-                    "current_index": 0,  # Current position in rotating buffer
-                    "total_checks": 0    # Total number of checks performed (for initial filling)
+                    "current_index": 0  # Current position in rotating buffer
                 }
             
             user_history = self.user_status_history[user.id]
-            
+
             # Add current check to rotating buffer
             user_history["checks"][user_history["current_index"]] = is_online_now
             user_history["current_index"] = (user_history["current_index"] + 1) % self.REQUIRED_CONSECUTIVE_ONLINE_CHECKS
-            user_history["total_checks"] += 1
-            
-            # Count consecutive online checks from most recent
-            consecutive_online = 0
-            checks_to_examine = min(user_history["total_checks"], self.REQUIRED_CONSECUTIVE_ONLINE_CHECKS)
-            
-            # Walk backwards from current position counting consecutive True values
-            for i in range(checks_to_examine):
-                # Calculate index going backwards from current position
-                check_index = (user_history["current_index"] - 1 - i) % self.REQUIRED_CONSECUTIVE_ONLINE_CHECKS
-                if user_history["checks"][check_index]:
-                    consecutive_online += 1
-                else:
-                    break  # Stop at first False
+
+            # Fast-fail: if the current sample is offline, don't send.
+            if not is_online_now:
+                return False
+
+            # Require all of the last N samples to be online
+            # The buffer is pre-filled with False, so startup naturally waits for N online checks.
+            if not all(user_history["checks"]):
+                return False
         
         # Check if it's time for next encounter
         if config["next_encounter"]:
