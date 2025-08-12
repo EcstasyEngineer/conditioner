@@ -192,7 +192,7 @@ class MantraSystem(commands.Cog):
         
         # Online status checking configuration
         self.MANTRA_DELIVERY_INTERVAL_MINUTES = 1 
-        self.REQUIRED_CONSECUTIVE_ONLINE_CHECKS = 3
+        self.REQUIRED_CONSECUTIVE_ONLINE_CHECKS = 5
         
         # Start the mantra delivery task with configured interval
         self.mantra_delivery.change_interval(minutes=self.MANTRA_DELIVERY_INTERVAL_MINUTES)
@@ -276,7 +276,8 @@ class MantraSystem(commands.Cog):
                 member = guild.get_member(user.id)
                 if member:
                     # Only check status for the first found member, then break
-                    if member.status in [discord.Status.online, discord.Status.dnd]:
+                    #if member.status in [discord.Status.online, discord.Status.dnd]:
+                    if member.status in [discord.Status.online]:
                         is_online_now = True
                     break
             
