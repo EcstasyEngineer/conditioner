@@ -1,5 +1,5 @@
 from discord.ext import commands
-from core.utils import is_superadmin, is_admin
+from core.permissions import is_superadmin, is_admin
 import discord
 
 class Admin(commands.Cog):

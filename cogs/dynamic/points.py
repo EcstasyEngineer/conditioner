@@ -1,8 +1,8 @@
 from discord.ext import commands
 import discord
 from datetime import datetime
-from core.utils import is_admin
-from utils.points import get_points, add_points, set_points
+from core.permissions import is_admin
+from features.points import get_points, add_points, set_points
 
 class Points(commands.Cog):
     """Cog for managing user points across the bot ecosystem."""
@@ -19,7 +19,7 @@ class Points(commands.Cog):
     async def check_points(self, ctx, member: discord.Member = None):
         """Check your point balance or another user's balance."""
         target = member if member else ctx.author
-        points = get_points(self.bot, target)
+        points = get_points(self.bot.config, target)
         
         if target == ctx.author:
             await ctx.send(f"💎 You have **{points:,}** points")
@@ -41,7 +41,7 @@ class Points(commands.Cog):
         # Get all guild members and their points
         for member in ctx.guild.members:
             if not member.bot:
-                points = get_points(self.bot, member)
+                points = get_points(self.bot.config, member)
                 if points > 0:
                     guild_members.append((member, points))
         
@@ -80,7 +80,7 @@ class Points(commands.Cog):
                 break
         
         if user_rank and user_rank > limit:
-            user_points = get_points(self.bot, ctx.author)
+            user_points = get_points(self.bot.config, ctx.author)
             embed.set_footer(text=f"Your rank: #{user_rank} with {user_points:,} points")
         
         await ctx.send(embed=embed)
@@ -94,7 +94,7 @@ class Points(commands.Cog):
     @commands.check(is_admin)
     async def admin_add_points(self, ctx, member: discord.Member, amount: int = 10):
         """Add points to a user (Admin only). Amount can be negative to subtract."""
-        new_total = add_points(self.bot, member, amount)
+        new_total = add_points(self.bot.config, member, amount)
         
         if amount > 0:
             await ctx.send(f"✅ Added {amount:,} points to {member.mention}. New balance: {new_total:,}")
@@ -108,8 +108,8 @@ class Points(commands.Cog):
             await ctx.send("Amount cannot be negative!")
             return
         
-        old_balance = get_points(self.bot, member)
-        set_points(self.bot, member, amount)
+        old_balance = get_points(self.bot.config, member)
+        set_points(self.bot.config, member, amount)
         
         await ctx.send(f"✅ Set {member.mention}'s points to {amount:,} (was {old_balance:,})")
 async def setup(bot):

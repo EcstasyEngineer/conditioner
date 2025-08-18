@@ -36,7 +36,14 @@ def _create_error_key(error: Exception, context: str) -> str:
     return f"{context}:{error_type}:{error_msg}"
 
 
-async def log_error_to_discord(bot, error: Exception, context: str, extra_info: str = ""):
+async def log_error_to_discord(
+    bot,
+    error: Exception,
+    context: str,
+    extra_info: str = "",
+    guild_id: Optional[int] = None,
+    channel_id: Optional[int] = None,
+):
     """
     Log error to Discord channel with rate limiting.
     
@@ -46,23 +53,39 @@ async def log_error_to_discord(bot, error: Exception, context: str, extra_info: 
         context: Context where error occurred (e.g., "command_help", "event_on_message")
         extra_info: Additional context information
     """
-    # Get error channel from config
+    # Resolve target channel preference: explicit channel > guild log channel > global error channel
     if not hasattr(bot, 'config'):
         return
-    
-    error_channel_id = bot.config.get_global("error_channel_id")
-    if not error_channel_id:
-        return  # No channel configured
-    
+
     # Check rate limiting
     error_key = _create_error_key(error, context)
     if not _should_send_error(error_key):
         return  # Rate limited
-    
-    # Get the channel
-    channel = bot.get_channel(error_channel_id)
+
+    channel = None
+    # 1) Explicit channel id
+    if channel_id:
+        channel = bot.get_channel(channel_id)
+    # 2) Per-guild configured log channel (or a channel named 'log')
+    if not channel and guild_id:
+        guild = bot.get_guild(guild_id)
+        if guild:
+            try:
+                configured = bot.config.get(guild_id, "log_channel_id", None)
+            except Exception:
+                configured = None
+            if configured:
+                channel = guild.get_channel(configured)
+            if not channel:
+                channel = discord.utils.get(guild.text_channels, name="log")
+    # 3) Global error channel fallback
     if not channel:
-        return  # Channel not found
+        error_channel_id = bot.config.get_global("error_channel_id")
+        if not error_channel_id:
+            return  # No channel configured anywhere
+        channel = bot.get_channel(error_channel_id)
+        if not channel:
+            return  # Channel not found
     
     # Create embed
     embed = discord.Embed(

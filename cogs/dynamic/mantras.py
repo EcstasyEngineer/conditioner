@@ -7,160 +7,124 @@ from datetime import datetime, timedelta
 from pathlib import Path
 from typing import List, Dict, Optional
 
-from core.utils import is_admin
-from utils.points import get_points, add_points
-from utils.encounters import log_encounter, load_encounters
-from utils.mantras import (
+from core.permissions import is_admin
+from features.points import get_points, add_points
+from features.encounters import log_encounter, load_encounters
+from features.mantras import (
     calculate_speed_bonus, check_mantra_match, format_mantra_text,
     select_mantra_from_themes,
-    generate_mantra_stats, schedule_next_encounter, adjust_user_frequency,
-    save_user_mantra_config, get_user_mantra_config
+    schedule_next_encounter, adjust_user_frequency,
+    save_user_mantra_config, get_user_mantra_config,
+    get_theme_tier_info
 )
-def get_max_themes_for_user(bot, user):
-    """Calculate maximum allowed themes based on user points.
-    
-    Tier System:
-    - Initiate (0+ points): 3 themes
-    - Intermediate (500+ points): 5 themes  
-    - Advanced (1500+ points): 7 themes
-    - Master (3000+ points): 10 themes
-    """
-    points = get_points(bot, user)
-    
-    if points >= 3000:      # Master tier
-        return 10
-    elif points >= 1500:    # Advanced tier  
-        return 7
-    elif points >= 500:     # Intermediate tier
-        return 5
-    else:                   # Initiate tier
-        return 3
-
 
 class ThemeSelectView(discord.ui.View):
     """View for managing themes with select menu."""
-    
+
     def __init__(self, cog, user, current_themes):
-        super().__init__(timeout=300)  # 5 minute timeout
+        super().__init__(timeout=300)
         self.cog = cog
         self.user = user
         self.current_themes = current_themes.copy()
         self.original_themes = current_themes.copy()
-        self._is_finished = False  # Track if we've already handled a button press
-        
-        # Create select menu with all available themes
+        self._is_finished = False
+
+        # Build select options from available themes
         options = []
         for theme_name in sorted(self.cog.themes.keys()):
-            # Convert underscores to spaces and capitalize each word
-            display_name = theme_name.replace('_', ' ').title()
-            option = discord.SelectOption(
-                label=display_name,
-                value=theme_name,
-                default=theme_name in self.current_themes
+            display_name = theme_name.replace("_", " ").title()
+            options.append(
+                discord.SelectOption(
+                    label=display_name,
+                    value=theme_name,
+                    default=theme_name in self.current_themes,
+                )
             )
-            options.append(option)
-        
-        # Calculate max themes user can select based on their points
-        max_user_themes = get_max_themes_for_user(self.cog.bot, self.user)
-        
+
+        # Limit by user's points
+        user_points = get_points(self.cog.bot.config, self.user)
+        max_user_themes, tier_name, next_tier = get_theme_tier_info(user_points)
+
         select = discord.ui.Select(
             placeholder="Select modules to toggle on/off",
             options=options,
             min_values=0,
-            max_values=min(len(options), max_user_themes)
+            max_values=min(len(options), max_user_themes),
         )
         select.callback = self.theme_select_callback
         self.add_item(select)
-        
-        # Add save button
-        save_button = discord.ui.Button(label="Confirm Parameters", style=discord.ButtonStyle.primary)
+
+        save_button = discord.ui.Button(
+            label="Confirm Parameters", style=discord.ButtonStyle.primary
+        )
         save_button.callback = self.save_callback
         self.add_item(save_button)
-        
-        # Add cancel button
-        cancel_button = discord.ui.Button(label="Cancel", style=discord.ButtonStyle.secondary)
+
+        cancel_button = discord.ui.Button(
+            label="Cancel", style=discord.ButtonStyle.secondary
+        )
         cancel_button.callback = self.cancel_callback
         self.add_item(cancel_button)
-    
+
     async def theme_select_callback(self, interaction: discord.Interaction):
-        """Handle theme selection."""
         # Update current themes based on selection
-        self.current_themes = interaction.data["values"]
-        
-        # Use defer with ephemeral=True to match the original message
+        self.current_themes = interaction.data.get("values", [])
         await interaction.response.defer(ephemeral=True)
-    
+
     async def save_callback(self, interaction: discord.Interaction):
-        """Save theme changes."""
-        # Prevent double-processing
         if self._is_finished:
             return
         self._is_finished = True
-        
+
         if not self.current_themes:
             await interaction.response.send_message(
                 "You must have at least one conditioning module active!",
-                ephemeral=True
+                ephemeral=True,
             )
-            self._is_finished = False  # Reset since we didn't actually finish
+            self._is_finished = False
             return
-        
-        # Check theme limit based on user points
-        max_themes = get_max_themes_for_user(self.cog.bot, self.user)
+
+        user_points = get_points(self.cog.bot.config, self.user)
+        max_themes, tier_name, _next = get_theme_tier_info(user_points)
         if len(self.current_themes) > max_themes:
-            user_points = get_points(self.cog.bot, self.user)
-            
-            # Determine tier name for message
-            if user_points >= 3000:
-                tier_name = "Master"
-            elif user_points >= 1500:
-                tier_name = "Advanced"
-            elif user_points >= 500:
-                tier_name = "Intermediate"
-            else:
-                tier_name = "Initiate"
-            
-            await interaction.response.send_message(
-                f"**Theme limit exceeded!**\n"
-                f"Your current tier (**{tier_name}** - {user_points:,} points) allows maximum {max_themes} themes.\n"
-                f"You selected {len(self.current_themes)} themes.\n\n"
-                f"**Earn more points to unlock additional theme slots:**\n"
-                f"• 500+ points: 5 themes (Intermediate)\n"
-                f"• 1,500+ points: 7 themes (Advanced)\n"
-                f"• 3,000+ points: 10 themes (Master)",
-                ephemeral=True
-            )
-            self._is_finished = False  # Reset since we didn't actually finish
-            return
-        
+
+                await interaction.response.send_message(
+                    f"**Theme limit exceeded!**\n"
+                    f"Your current tier (**{tier_name}** - {user_points:,} points) allows maximum {max_themes} themes.\n"
+                    f"You selected {len(self.current_themes)} themes.\n\n"
+                    f"**Earn more points to unlock additional theme slots:**\n"
+                    f"• 500+ points: 5 themes (Intermediate)\n"
+                    f"• 1,500+ points: 7 themes (Advanced)\n"
+                    f"• 3,000+ points: 10 themes (Master)",
+                    ephemeral=True,
+                )
+                self._is_finished = False
+                return
+
         # Save changes
         config = get_user_mantra_config(self.cog.bot.config, self.user)
         config["themes"] = self.current_themes
         save_user_mantra_config(self.cog.bot.config, self.user, config)
-        
+
         embed = discord.Embed(
             title="✅ Parameters Adjusted",
             description=f"**Active conditioning modules:** {', '.join(self.current_themes)}",
-            color=discord.Color.green()
+            color=discord.Color.green(),
         )
-        
+
         # Disable all components first
         for item in self.children:
             item.disabled = True
-        
-        # Remove the view entirely
+
         await interaction.response.edit_message(embed=embed, view=None)
         self.stop()
-    
+
     async def cancel_callback(self, interaction: discord.Interaction):
-        """Cancel without saving."""
         embed = discord.Embed(
             title="❌ Cancelled",
             description="No changes were made to your conditioning parameters.",
-            color=discord.Color.red()
+            color=discord.Color.red(),
         )
-        
-        # Remove the view entirely
         await interaction.response.edit_message(embed=embed, view=None)
         self.stop()
 
@@ -204,7 +168,7 @@ class MantraSystem(commands.Cog):
         self.user_status_history = {}  
         
     async def cog_load(self):
-        """Load public channel configuration and calculate streaks when cog loads."""
+        """Load public channel configuration when cog loads."""
         # Load public channel from guild configs
         for guild in self.bot.guilds:
             public_channel = self.bot.config.get(guild, 'mantra_public_channel', None)
@@ -521,7 +485,7 @@ class MantraSystem(commands.Cog):
                 public_bonus = 0
             
             # Award points directly
-            add_points(self.bot, message.author, total_points)
+            add_points(self.bot.config, message.author, total_points)
             
             # Update user config
             config = get_user_mantra_config(self.bot.config, message.author)
@@ -562,7 +526,7 @@ class MantraSystem(commands.Cog):
             # Use the praise as the title
             title_text = f"◈ {praise}"
             
-            # Build description with points and streak
+            # Build description with points
             description_lines = [f"Integration successful: **{total_points} compliance points absorbed**"]
             
             embed = discord.Embed(
@@ -593,7 +557,7 @@ class MantraSystem(commands.Cog):
                     inline=False
                 )
             
-            current_points = get_points(self.bot, message.author)
+            current_points = get_points(self.bot.config, message.author)
             embed.set_footer(text=f"Total compliance points: {current_points:,}")
             
             # Send reward message publicly if response was public
@@ -724,21 +688,8 @@ class MantraSystem(commands.Cog):
             return
         
         # Get user's current tier info
-        user_points = get_points(self.bot, interaction.user)
-        max_themes = get_max_themes_for_user(self.bot, interaction.user)
-        
-        if user_points >= 3000:
-            tier_name = "Master"
-            next_tier = None
-        elif user_points >= 1500:
-            tier_name = "Advanced"
-            next_tier = f"Master (3,000 points) - 10 themes"
-        elif user_points >= 500:
-            tier_name = "Intermediate"
-            next_tier = f"Advanced (1,500 points) - 7 themes"
-        else:
-            tier_name = "Initiate"
-            next_tier = f"Intermediate (500 points) - 5 themes"
+        user_points = get_points(self.bot.config, interaction.user)
+        max_themes, tier_name, next_tier = get_theme_tier_info(user_points)
         
         # Create select menu
         view = ThemeSelectView(self, interaction.user, config["themes"])
@@ -784,18 +735,6 @@ class MantraSystem(commands.Cog):
         config["next_encounter"]["base_points"] = 5  # dont let people cheese points
         save_user_mantra_config(self.bot.config, ctx.author, config)
         await ctx.send("New mantra scheduled for immediate delivery.")
-    
-    @commands.command(hidden=True, aliases=['mstats'])
-    #@commands.check(is_admin)
-    async def mantrastats(self, ctx):
-        """Admin command to show detailed mantra statistics for all users."""
-        # Generate stats using utils (simple husk)
-        embeds = generate_mantra_stats(self.bot)
-        
-        # Send all embeds
-        for embed in embeds:
-            await ctx.send(embed=embed)
-    
     
     
     async def enroll_user(
@@ -923,7 +862,7 @@ class MantraSystem(commands.Cog):
             next_steps_value = "• Wait for programming sequences in DMs\n"
         
         next_steps_value += (
-            "• Process quickly for enhanced integration\n"
+            "• Respond promptly for better integration\n"
             "• Query `/mantra status` to monitor integration depth\n"
             "• Use `/mantra modules` to adjust programming modules"
         )
@@ -1026,7 +965,7 @@ class MantraSystem(commands.Cog):
         """Update user's mantra settings."""
         config = get_user_mantra_config(self.bot.config, interaction.user)
         
-        # Track what was updated
+    # Track changes
         updates = []
         
         if subject is not None:
@@ -1051,12 +990,12 @@ class MantraSystem(commands.Cog):
             )
             return
         
-        # Save the updated config
+    # Persist config changes
         save_user_mantra_config(self.bot.config, interaction.user, config)
         
         # Send confirmation
         embed = discord.Embed(
-            title="✅ Settings Updated",
+            title="✅ Settings saved",
             description="\n".join(updates),
             color=discord.Color.green()
         )

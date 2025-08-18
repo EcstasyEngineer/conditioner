@@ -5,7 +5,7 @@ from os import listdir
 import subprocess
 from datetime import datetime
 import sys
-from core.utils import is_superadmin
+from core.permissions import is_superadmin
 
 class Dev(commands.Cog):
     """This is a cog with owner-only commands.

@@ -1,0 +1,21 @@
+name: Forbidden comment keywords
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  check-forbidden-comments:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Run forbidden comment check
+        run: |
+          python scripts/forbidden_comment_check.py

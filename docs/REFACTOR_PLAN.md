@@ -21,14 +21,14 @@ The goal of this phase is to build the new structure and migrate the absolute co
 ### Day 5-7: Core Logic Migration
 - [ ] **Scheduler:** Move `schedule_next_encounter` and related time calculation logic from `utils/mantras.py` into `cogs/dynamic/mantras/core/scheduler.py`.
 - [ ] **Delivery Loop:** Move the `mantra_delivery` task loop from `cogs/dynamic/mantras.py` into `cogs/dynamic/mantras/core/delivery.py`.
-- [ ] **Response Handling:** Move the core logic for handling a user's mantra response into `core/delivery.py`. This includes checking the match, calculating points, and updating streaks.
+- [ ] **Response Handling:** Move the core logic for handling a user's mantra response into `core/delivery.py`. This includes checking the match and calculating points.
 - [ ] **Connect:** The new delivery loop should use the new scheduler and state manager.
 
 **Success Criteria for Phase 1:**
 - The bot runs without errors using the new structure.
 - Mantras are delivered on schedule.
 - User responses are processed correctly.
-- User state (streaks, timeouts) is persisted across restarts via the new `StateManager`.
+- User state (timeouts) is persisted across restarts via the new `StateManager`.
 - The old `cogs/dynamic/mantras.py` is smaller, delegating core work to the new `core` modules.
 
 ## Phase 2: Commands, Views, and Features (Week 2)

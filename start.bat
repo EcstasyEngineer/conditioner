@@ -1,6 +1,7 @@
 @echo off
+setlocal ENABLEDELAYEDEXPANSION
 
-REM Simple start script for Windows local development/testing
+REM Start script for Windows: ensure .venv exists, install deps, run bot
 echo 🚀 Starting ai-conditioner-discord bot locally...
 echo 📍 Working directory: %cd%
 
@@ -13,16 +14,37 @@ if not exist .env (
     exit /b 1
 )
 
-REM Check if dependencies are installed
-python -c "import discord" 2>nul
-if errorlevel 1 (
-    echo 📦 Installing dependencies...
-    pip install -r requirements.txt
+set "VENV_DIR=.venv"
+set "PYEXE=%VENV_DIR%\Scripts\python.exe"
+
+REM Create venv if missing
+if not exist "%PYEXE%" (
+    echo 🧪 Creating virtual environment in %VENV_DIR% ...
+    where py >nul 2>&1
+    if %ERRORLEVEL%==0 (
+        py -3 -m venv "%VENV_DIR%"
+    ) else (
+        python -m venv "%VENV_DIR%"
+    )
 )
 
-REM Run the bot
+if not exist "%PYEXE%" (
+    echo ❌ Failed to create virtual environment (missing %PYEXE%).
+    pause
+    exit /b 1
+)
+
+echo 📦 Upgrading pip and wheel...
+"%PYEXE%" -m pip install --upgrade pip wheel >nul
+
+if exist requirements.txt (
+    echo 📦 Installing dependencies from requirements.txt ...
+    "%PYEXE%" -m pip install -r requirements.txt
+)
+
 echo 🤖 Starting bot...
-python bot.py
+"%PYEXE%" bot.py
 
 echo 🛑 Bot stopped
 pause
+endlocal

@@ -4,7 +4,6 @@ Analyze user encounter patterns from JSONL files to understand engagement metric
 
 This script processes all user encounter logs to calculate:
 - Response time distributions
-- Streak patterns
 - Theme-specific behaviors
 - Power user identification
 - Candidates for advanced features
@@ -26,9 +25,6 @@ def analyze_encounters():
         'total': 0,
         'completed': 0,
         'response_times': [],
-        'streaks': [],
-        'max_streak': 0,
-        'current_streak': 0,
         'themes': defaultdict(int),
         'difficulties': defaultdict(int),
         'quick_responses': 0,  # Under 15 seconds
@@ -69,16 +65,13 @@ def analyze_encounters():
                     except:
                         pass
             
-            # Calculate streaks and stats
-            current_streak = 0
-            streaks = []
+            # Calculate stats
             
             for enc in sorted(user_encounters, key=lambda x: x.get('timestamp', '')):
                 user_stats[user_id]['total'] += 1
                 
                 if enc.get('completed', False):
                     user_stats[user_id]['completed'] += 1
-                    current_streak += 1
                     
                     # Response time analysis
                     response_time = enc.get('response_time', 0)
@@ -96,19 +89,8 @@ def analyze_encounters():
                     user_stats[user_id]['themes'][enc.get('theme', 'unknown')] += 1
                     user_stats[user_id]['difficulties'][enc.get('difficulty', 'unknown')] += 1
                 else:
-                    # Streak broken
-                    if current_streak > 0:
-                        streaks.append(current_streak)
-                        user_stats[user_id]['max_streak'] = max(user_stats[user_id]['max_streak'], current_streak)
-                    current_streak = 0
+                    pass
             
-            # Save final streak
-            if current_streak > 0:
-                streaks.append(current_streak)
-                user_stats[user_id]['max_streak'] = max(user_stats[user_id]['max_streak'], current_streak)
-                user_stats[user_id]['current_streak'] = current_streak
-            
-            user_stats[user_id]['streaks'] = streaks
             all_encounters.extend(user_encounters)
 
     return all_encounters, user_stats
@@ -171,29 +153,6 @@ def print_statistics(all_encounters, user_stats):
         print(f"Slow (61-120s): {slow} ({slow/len(all_response_times)*100:.1f}%)")
         print(f"Very Slow (>120s): {very_slow} ({very_slow/len(all_response_times)*100:.1f}%)")
 
-    # Streak analysis
-    all_streaks = []
-    for user_id, stats in user_stats.items():
-        all_streaks.extend(stats['streaks'])
-
-    if all_streaks:
-        print(f"\n=== STREAK ANALYSIS ===")
-        print(f"Total Streaks: {len(all_streaks)}")
-        print(f"Mean Streak: {statistics.mean(all_streaks):.1f}")
-        print(f"Median Streak: {statistics.median(all_streaks):.0f}")
-        print(f"Max Streak: {max(all_streaks)}")
-        
-        print(f"\nStreak Distribution:")
-        short_streaks = sum(1 for s in all_streaks if s < 3)
-        medium_streaks = sum(1 for s in all_streaks if 3 <= s < 10)
-        long_streaks = sum(1 for s in all_streaks if 10 <= s < 20)
-        ultra_streaks = sum(1 for s in all_streaks if s >= 20)
-        
-        print(f"Short (1-2): {short_streaks} ({short_streaks/len(all_streaks)*100:.1f}%)")
-        print(f"Medium (3-9): {medium_streaks} ({medium_streaks/len(all_streaks)*100:.1f}%)")
-        print(f"Long (10-19): {long_streaks} ({long_streaks/len(all_streaks)*100:.1f}%)")
-        print(f"Ultra (20+): {ultra_streaks} ({ultra_streaks/len(all_streaks)*100:.1f}%)")
-
     # Power user analysis
     print(f"\n=== POWER USER ANALYSIS ===")
     power_users = []
@@ -207,8 +166,6 @@ def print_statistics(all_encounters, user_stats):
                 'completed': stats['completed'],
                 'completion_rate': completion_rate,
                 'avg_response': avg_response,
-                'max_streak': stats['max_streak'],
-                'current_streak': stats['current_streak'],
                 'quick_ratio': stats['quick_responses'] / stats['completed'] * 100 if stats['completed'] > 0 else 0
             })
 
@@ -218,10 +175,10 @@ def print_statistics(all_encounters, user_stats):
     print(f"Power Users (10+ completions): {len(power_users)}")
     if power_users:
         print("\nTop 10 Most Active Users:")
-        print(f"{'User ID':>20} | {'Completed':>9} | {'Rate':>6} | {'Avg Time':>8} | {'Max Streak':>10} | {'Quick %':>7}")
+        print(f"{'User ID':>20} | {'Completed':>9} | {'Rate':>6} | {'Avg Time':>8} | {'Quick %':>7}")
         print("-" * 80)
         for user in power_users[:10]:
-            print(f"{user['user_id']:>20} | {user['completed']:>9} | {user['completion_rate']:>5.1f}% | {user['avg_response']:>7.1f}s | {user['max_streak']:>10} | {user['quick_ratio']:>6.1f}%")
+            print(f"{user['user_id']:>20} | {user['completed']:>9} | {user['completion_rate']:>5.1f}% | {user['avg_response']:>7.1f}s | {user['quick_ratio']:>6.1f}%")
 
     # Candidates for delay mode
     print(f"\n=== DELAY MODE CANDIDATES ===")
@@ -229,13 +186,12 @@ def print_statistics(all_encounters, user_stats):
     delay_candidates = []
     for user in power_users:
         if (user['quick_ratio'] > 50 or  # More than 50% ultra-fast responses
-            user['avg_response'] < 25 or  # Average under 25 seconds
-            user['max_streak'] >= 20):    # Has achieved ultra streaks
+            user['avg_response'] < 25):  # Average under 25 seconds
             delay_candidates.append(user)
 
     print(f"\nFound {len(delay_candidates)} candidates:")
     for user in delay_candidates[:10]:
-        print(f"User {user['user_id']}: {user['quick_ratio']:.1f}% quick responses, {user['avg_response']:.1f}s avg, streak {user['max_streak']}")
+        print(f"User {user['user_id']}: {user['quick_ratio']:.1f}% quick responses, {user['avg_response']:.1f}s avg")
 
     # Theme-specific response patterns
     print(f"\n=== THEME RESPONSE PATTERNS ===")

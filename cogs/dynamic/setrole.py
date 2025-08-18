@@ -1,4 +1,5 @@
 from discord.ext import commands
+from discord import app_commands
 import discord
 
 class SetRole(commands.Cog):
@@ -57,8 +58,8 @@ class SetRole(commands.Cog):
             await ctx.send(f"Role '{role}' added to the whitelist.")
             
     # Modified: App Command for setting up emoji role toggle; change message_id to string and convert to int.
-    @discord.app_commands.command(name="setemojiroletoggle", description="Configure a reaction role toggle (mod-only)")
-    @discord.app_commands.default_permissions(manage_messages=True)
+    @app_commands.command(name="setemojiroletoggle", description="Configure a reaction role toggle (mod-only)")
+    @app_commands.default_permissions(manage_messages=True)
     async def setemojiroletoggle(self, ctx: discord.Interaction, message_id: str, emoji: str, role: discord.Role):
         try:
             msg_id_int = int(message_id)
@@ -109,8 +110,8 @@ class SetRole(commands.Cog):
 
         await ctx.response.send_message("Emoji role toggle configured.", ephemeral=True)
 
-    @discord.app_commands.command(name="removeemojiroletoggle", description="Remove a reaction role toggle (mod-only)")
-    @discord.app_commands.default_permissions(manage_messages=True)
+    @app_commands.command(name="removeemojiroletoggle", description="Remove a reaction role toggle (mod-only)")
+    @app_commands.default_permissions(manage_messages=True)
     async def removeemojiroletoggle(self, interaction: discord.Interaction, message_id: str, emoji: str):
         try:
             msg_id_int = int(message_id)

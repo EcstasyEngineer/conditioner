@@ -161,6 +161,24 @@ class Config:
         """Set a global config value"""
         self.set(None, key, value, scope='global')
 
+    # Enumeration helpers
+    def list_user_ids(self):
+        """Return a list of all known user IDs present in the loaded configs.
+
+        Users are stored under config IDs with the prefix 'user_'. This method
+        inspects the in-memory configs (kept up to date by the reload timer)
+        and returns the integer IDs for those entries.
+        """
+        ids = []
+        for config_id in self._configs.keys():
+            if isinstance(config_id, str) and config_id.startswith('user_'):
+                try:
+                    ids.append(int(config_id[5:]))
+                except (ValueError, TypeError):
+                    # Skip malformed user IDs
+                    continue
+        return ids
+
     def _schedule_reload(self):
         """Schedule periodic check for external file changes"""
         with self._lock:

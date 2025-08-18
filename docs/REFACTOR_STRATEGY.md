@@ -13,7 +13,7 @@ The primary goals of this refactor are:
 ## 2. Core Problems to Solve
 
 - **Monolithic Cog**: `cogs/dynamic/mantras.py` is over 1000 lines and handles everything, leading to tight coupling.
-- **Implicit State**: User state is tracked in scattered dictionaries (`active_challenges`, `user_streaks`) and config files. This is fragile and cannot support features that require a clear sequence of states (e.g., `PENDING` -> `DELAYED` -> `AWAITING_RESPONSE`).
+- **Implicit State**: User state is tracked in scattered dictionaries (`active_challenges`) and config files. This is fragile and cannot support features that require a clear sequence of states (e.g., `PENDING` -> `DELAYED` -> `AWAITING_RESPONSE`).
 - **Mixed Concerns**: Utility files (`utils/mantras.py`, `utils/ui.py`) mix pure functions with stateful logic and UI code with business logic, causing circular dependencies and making code hard to test.
 
 ## 3. Target Architecture
@@ -106,14 +106,14 @@ class MantraResponseView(discord.ui.View):
 
 ### c. Pluggable Features
 
-Features like "Forced Delays" or "Streaks" will be implemented as self-contained modules. The core delivery loop will invoke them at specific hook points (e.g., `on_response_received`, `before_sending_mantra`).
+Features like "Forced Delays" can be implemented as self-contained modules. The core delivery loop will invoke them at specific hook points (e.g., `on_response_received`, `before_sending_mantra`).
 
 ```python
 # features/forced_delay.py
 class ForcedDelayFeature:
     def should_apply(self, user_state: UserState, response_time_seconds: int) -> bool:
         # ... logic to determine if a delay is needed
-        return user_state.streak > 10 and response_time_seconds < 15
+        return response_time_seconds < 15
 
     async def apply(self, state_manager: StateManager, user_id: int):
         # ... logic to transition the user to the IN_DELAY state

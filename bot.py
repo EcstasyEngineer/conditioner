@@ -140,7 +140,7 @@ async def on_command_error(ctx, error):
     # Send to Discord error channel
     command_name = ctx.command.name if ctx.command else "unknown"
     extra_info = f"User: {ctx.author} (ID: {ctx.author.id})\nChannel: {ctx.channel}"
-    await log_error_to_discord(bot, error, f"command_{command_name}", extra_info)
+    await log_error_to_discord(bot, error, f"command_{command_name}", extra_info, guild_id=ctx.guild.id if ctx.guild else None)
 
 @bot.event
 async def on_command(ctx):

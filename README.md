@@ -1,88 +1,114 @@
 # AI Conditioner Discord Bot
 
-A sophisticated Discord bot designed for hypnotic conditioning through gamified mantra delivery and community engagement mechanics.
+A modular Discord bot for programmable prompts, community mini‑games, and rich logging—designed to be fun, configurable, and safe for communities.
 
-## Features
+## What it does
 
-### 🌀 Hypnotic Mantra System
-- Personalized mantra delivery based on themes and difficulty levels
-- Adaptive frequency adjustment (responds to user engagement)
-- Point-based reward system with speed and streak bonuses
-- Public channel multipliers to encourage community participation
-- 6 active themes: acceptance, addiction, bimbo, brainwashing, obedience, suggestibility
+- 🧠 Prompt delivery system ("mantras")
+   - Theme‑based content with difficulty and points values
+   - Adaptive frequency tuned by engagement (faster when active; slows when missed)
+   - Online‑only gating with consecutive presence checks to avoid pinging offline folks
+   - Private DM delivery by default; optional public posts with bonus multipliers
+   - Per‑user stats, recent history, and configurable subjects/controllers
 
-### 🎮 Gamification Systems
-- **Points System**: Earn points through mantra completion and activities
-- **Gacha Rewards**: Spin for random media rewards using points
-- **Counter Game**: Simple counting game with hidden triggers
-- **Streak Tracking**: Consecutive completion bonuses
+- 🎮 Games and rewards
+   - Counting game across multiple channels per guild with registration controls
+   - Points currency plus a second “token” currency for consumables/unlocks
+   - Optional gacha/reward hooks for media drops
 
-### 🛡️ Server Management
-- Hierarchical admin system (superadmin + guild admins)
-- Per-guild configuration
-- Message logging capabilities
-- Custom role assignment
+- 📋 Logging and safety
+   - Per‑guild log channel setting: `!setlogchannel #log`, `!showlogchannel`
+   - Central error routing with rate limiting, per‑guild routing when context is known, and global fallback
+   - Admin gating: superadmins (global) + guild admins + configurable admin lists
 
-### 🎵 Additional Features
-- Music player for voice channels
-- Daily rotating bot avatars
-- Auto-save configuration system
+- 🔊 Audio pipeline (roadmap)
+   - Text‑to‑speech generation and caching for prompt playback in voice
+   - Lightweight voice session management; opt‑in, per‑guild controls
+
+## Architecture at a glance
+
+- core/ (infrastructure)
+   - config.py: JSON config (guild/user/global) with debounced writes and external reload
+   - error_handler.py: error embeds → channel with rate limiting; per‑guild/global routing
+   - permissions.py: shared admin checks for prefix and slash commands
+   - media_migration.py: migration helpers at startup
+
+- features/ (domain helpers)
+   - points.py: points + tokens currency APIs
+   - encounters.py: append‑only JSONL logs and stats for prompt interactions
+   - mantras.py: façade to existing mantra utilities while we migrate incrementally
+
+- cogs/
+   - dynamic/: user‑facing features (mantras, counter, logging, points, gacha, etc.)
+   - static/: admin utilities and global config helpers
 
 ## Setup
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/EcstasyEngineer/ai-conditioner-discord.git
-   cd ai-conditioner-discord
-   ```
+1) Create and configure the bot
+- Create a Discord application and bot, then invite it with the necessary scopes and permissions.
+- Put your token in a `.env` file as `DISCORD_TOKEN=...`.
 
-2. **Set up bot token**
-   ```bash
-   echo "DISCORD_TOKEN=your_bot_token_here" > .env
-   ```
+2) Install and run
+- Windows: run `start.bat`
+- Linux/Mac: run `./start.sh`
+- Or manually install with `pip install -r requirements.txt` and run `python bot.py`.
 
-3. **Run the bot**
-   ```bash
-   ./start.sh        # Linux/Mac (auto-installs dependencies)
-   # OR
-   start.bat         # Windows
-   # OR manually:
-   pip install -r requirements.txt
-   python bot.py
-   ```
+3) First‑time configuration
+- Set a global error channel (optional but recommended): `!seterrorlog #errors`
+- In each guild, set a log channel: `!setlogchannel #log` (admins only)
+- Use slash commands or prefix commands to configure features (see below).
 
-## Usage
+## Commands (high level)
 
-### For Users
-- `/mantra enroll` - Start receiving personalized mantras
-- `/mantra status` - Check your progress and statistics
-- `/mantra settings` - Update your preferences
-- `/mantra themes` - Manage your active themes
-- `/points balance` - Check your point balance
-- `/gacha spin` - Spend points on random rewards
+- Prompt delivery (mantras)
+   - Manage enrollment, themes, frequency, and see status via slash commands in the Mantra cog (varies per deployment).
+   - Admins can set a public posting channel for extra rewards or keep delivery in DMs.
 
-### For Admins
-- `!setadmin @user` - Grant admin privileges (superadmin only)
-- `!setchannel mantra_public #channel` - Set public mantra channel
-- Check `!help` for all admin commands
+- Counting game
+   - Register/unregister channels (admins): `/counting_register #channel`, `/counting_unregister #channel`, `/counting_list`
+   - Game runs per‑channel with last‑value tracking and simple validation.
 
-## Contributing
+- Points and tokens
+   - Check and award with bot‑specific commands (e.g., `/points`, admin grant commands where applicable).
+   - Use tokens for consumables/unlocks once configured in your server’s flow.
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+- Logging
+   - `!setlogchannel #log`, `!showlogchannel`
+   - Global error channel (superadmins): `!seterrorlog #errors`
 
-### Reporting Issues
-When creating issues, please:
-1. Review our label system in `.github/LABELS.md`
-2. Apply appropriate labels for priority, effort, complexity, and affected components
-3. Provide clear reproduction steps for bugs
-4. Include relevant logs or error messages
+## Logging behavior
 
-### Submitting Pull Requests
-1. Link your PR to the relevant issue
-2. Copy labels from the linked issue to your PR
-3. Update labels if the scope changes during development
-4. Follow existing code patterns and conventions
+- Error routing tries, in order: explicit channel_id (if provided by the caller) → the guild’s configured log channel (or a channel named `#log`) → global error channel.
+- Duplicate errors are rate‑limited (default 5 minutes per unique error signature).
+- A test command exists (`!throw`, superadmin) to generate an intentional error for validation.
+
+## Development notes
+
+- Keep infrastructure in `core/`; feature logic in `features/`; user‑facing commands live in `cogs/`.
+- The config service batches writes and hot‑reloads when files are edited externally.
+- We maintain a gradual migration path—`features/mantras.py` re‑exports existing utilities to avoid large refactors in one step.
+
+## Roadmap
+
+- Prompt delivery modes
+   - online_only | scheduled windows | always, with quiet hours and no‑timeout modes
+   - per‑user windows and per‑guild defaults
+
+- Content management
+   - Unified prompt catalog with tags, difficulty, points, import/migration helpers
+   - User submissions with approval flow and points gating
+
+- Progression and roles
+   - Points‑gated unlocks and optional role grants
+   - “Dominant/Controller” assignment with audit log
+
+- Audio delivery
+   - Cache‑on‑demand TTS, small voice controller, per‑guild rate limiting
+
+- Ops & reliability
+   - Per‑guild error routing (complete for command errors), smarter guessing for events/tasks
+   - Challenge registry for in‑flight prompts to survive restarts
 
 ## License
 
-This project is licensed under a CC0-compatible [License](LICENSE.md).
+This project is released under a CC0‑compatible [License](LICENSE.md).
