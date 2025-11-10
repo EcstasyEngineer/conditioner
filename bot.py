@@ -173,7 +173,7 @@ statuslist = cycle([
     ])
 
 
-@tasks.loop(seconds=16)
+@tasks.loop(seconds=300)
 async def change_status():
     """This is a background task that loops every 16 seconds.
     The coroutine looped with this task will change status over time.

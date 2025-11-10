@@ -66,6 +66,11 @@ A sophisticated Discord bot designed for hypnotic conditioning through gamified 
 - `!setchannel mantra_public #channel` - Set public mantra channel
 - Check `!help` for all admin commands
 
+### Administrative Commands (standardized)
+- `!restart` (aliases: `kys`, `shutdown`) - Restart the bot process
+- `!sync` - Sync application commands (canonical)
+- `!list_cogs` - List dynamic cogs
+
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.

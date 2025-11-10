@@ -172,7 +172,7 @@ class Dev(commands.Cog):
             self.logger.error("Exception during update", exc_info=True)
             await message.edit(content=f'An error has occurred: {exc}', delete_after=20)
 
-    @commands.command(name='list_cogs', aliases=['listcogs'], hidden=True)
+    @commands.command(name='list_cogs', hidden=True)
     @commands.check(is_superadmin)
     async def list_cogs(self, ctx):
         """This command lists all the cogs in the `cogs/dynamic` directory.
@@ -189,10 +189,10 @@ class Dev(commands.Cog):
             self.logger.error("Error listing cogs", exc_info=True)
             await ctx.send(f'An error has occurred: {exc}', delete_after=20)
             
-    @commands.command(name='shutdown', aliases=['restart'], hidden=True)
+    @commands.command(name='restart', aliases=['kys', 'shutdown'], hidden=True)
     @commands.check(is_superadmin)
-    async def shutdown(self, ctx):
-        """This command shuts down the bot (expects systemctl auto-restart).
+    async def restart(self, ctx):
+        """This command restarts the bot (expects systemctl auto-restart).
         
         Note:
             This command can be used by superadmins only.
@@ -212,45 +212,18 @@ class Dev(commands.Cog):
             self.logger.error("Error during shutdown", exc_info=True)
             await message.edit(content=f'An error has occurred: {exc}', delete_after=20)
             
-    @commands.command(name='sync_dev', aliases=['syncdev'], hidden=True)
+    # Canonical sync command for consistency with literallybot
+    @commands.command(name='sync', hidden=True)
     @commands.check(is_superadmin)
-    async def sync_dev(self, ctx):
-        """Fast guild sync for immediate testing (creates temporary overrides).
-        
-        Note:
-            This command can be used only from the bot owner.
-            This command is hidden from the help menu.
-            Use sync_clean to remove guild overrides after testing.
-        """
-        self.logger.info(f"{ctx.author} invoked sync_dev for guild {ctx.guild.id}")
-        message = await ctx.send('Fast syncing for testing...')
+    async def sync(self, ctx):
+        """Sync application commands with Discord (canonical)."""
+        self.logger.info(f"{ctx.author} invoked sync for guild {getattr(ctx.guild, 'id', 'N/A')}")
         try:
-            self.bot.tree.copy_global_to(guild=ctx.guild)
-            await self.bot.tree.sync(guild=ctx.guild)
-            await message.edit(content='✅ Dev commands synced (guild override active)\n💡 Remember to run !sync_clean when done testing', delete_after=20)
+            await self.bot.tree.sync()
+            await ctx.send('Application commands synced.', delete_after=20)
         except Exception as exc:
-            self.logger.error("Error syncing dev commands", exc_info=True)
-            await message.edit(content=f'An error has occurred: {exc}', delete_after=20)
-    
-    @commands.command(name='sync_clean', aliases=['syncclean'], hidden=True)
-    @commands.check(is_superadmin)
-    async def sync_clean(self, ctx):
-        """Remove guild command overrides, return to global commands only.
-        
-        Note:
-            This command can be used only from the bot owner.
-            This command is hidden from the help menu.
-            Clears guild-specific commands to prevent duplicates.
-        """
-        self.logger.info(f"{ctx.author} invoked sync_clean for guild {ctx.guild.id}")
-        message = await ctx.send('Cleaning guild overrides...')
-        try:
-            self.bot.tree.clear_commands(guild=ctx.guild)
-            await self.bot.tree.sync(guild=ctx.guild)
-            await message.edit(content='✅ Guild overrides cleared (global commands active)', delete_after=20)
-        except Exception as exc:
-            self.logger.error("Error cleaning guild commands", exc_info=True)
-            await message.edit(content=f'An error has occurred: {exc}', delete_after=20)
+            self.logger.error("Error during sync", exc_info=True)
+            await ctx.send(f'An error has occurred: {exc}', delete_after=20)
 
 async def setup(bot):
     """Every cog needs a setup function like this."""

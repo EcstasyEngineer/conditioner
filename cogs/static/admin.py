@@ -1,5 +1,5 @@
 from discord.ext import commands
-from core.utils import is_superadmin, is_admin
+from core.utils import is_superadmin, is_admin, get_superadmins
 import discord
 
 class Admin(commands.Cog):
@@ -9,9 +9,8 @@ class Admin(commands.Cog):
 
     @commands.command(name="claimsuper", aliases=["claimsuperadmin"])
     async def claimsuper(self, ctx):
-        """Claim the first superadmin spot (owner only)."""
-        # use global config for superadmins
-        superadmins = self.bot.config.get_global("superadmins", [])
+        """Claim superadmin privileges (first come, first served)."""
+        superadmins = get_superadmins(self.bot.config)
         if ctx.author.id not in superadmins:
             superadmins.append(ctx.author.id)
             self.bot.config.set_global("superadmins", superadmins)
@@ -22,7 +21,7 @@ class Admin(commands.Cog):
             await ctx.send("You are already a bot superadmin.")
 
     @commands.command(name="addsuperadmin")
-    @commands.check(is_superadmin)
+    @commands.check(lambda ctx: is_superadmin(ctx.bot.config, ctx.author.id))
     async def addsuperadmin(self, ctx, member: discord.Member = None):
         """Add a user as a bot superadmin (owner only)."""
         if not member:
@@ -30,7 +29,7 @@ class Admin(commands.Cog):
             self.logger.warning(f"addsuperadmin called without member by {ctx.author} (ID: {ctx.author.id})")
             return
         
-        superadmins = self.bot.config.get_global("superadmins", [])
+        superadmins = get_superadmins(self.bot.config)
         if member.id in superadmins:
             self.logger.info(f"{member} (ID: {member.id}) already superadmin")
             await ctx.send(f"{member} is already a bot superadmin.")
