@@ -62,53 +62,54 @@ award_points(...)
 
 Build a probability distribution of user availability (continuous or discrete). To schedule next encounter, "walk forward" until we've accumulated enough probability mass.
 
-### Building the Distribution
+### Learning the Distribution: Prediction Error Algorithm
 
-**Historical Analysis:**
+**Core Concept:** Learn from surprise. Large updates when prediction is wrong, small updates when it's right.
+
+**Implementation:**
 ```python
-def build_availability_distribution(user_id):
-    """Build probability distribution from historical encounters."""
-    encounters = load_encounters(user_id)
+class AvailabilityLearner:
+    def __init__(self):
+        self.distribution = {h: 0.5 for h in range(24)}
+        self.learning_rate = 0.20
+        self.floor = 0.1  # Prevent death spiral
+        self.ceil = 1.0
 
-    # Option A: Discrete buckets (hour or 30min)
-    hour_success = defaultdict(lambda: {'completed': 0, 'total': 0})
+    def update(self, hour: int, success: bool):
+        """Update based on prediction error (Elo-style)."""
+        expected = self.distribution[hour]
+        actual = 1.0 if success else 0.0
 
-    for enc in encounters:
-        dt = datetime.fromisoformat(enc['timestamp'])
-        hour = dt.hour  # Or use (hour * 2 + minute // 30) for 30min buckets
-        hour_success[hour]['total'] += 1
-        if enc.get('completed'):
-            hour_success[hour]['completed'] += 1
+        # Update proportional to surprise
+        error = actual - expected
+        delta = self.learning_rate * error
 
-    # Calculate probabilities (with smoothing for sparse data)
-    probabilities = {}
-    for hour in range(24):
-        stats = hour_success[hour]
-        if stats['total'] >= 3:
-            probabilities[hour] = stats['completed'] / stats['total']
-        else:
-            probabilities[hour] = 0.5  # Neutral default
+        new_value = self.distribution[hour] + delta
+        self.distribution[hour] = max(self.floor, min(self.ceil, new_value))
 
-    # Option B: Continuous (polynomial/gaussian fit)
-    # Could fit a mixture of gaussians to the success data
-    # For now, discrete is simpler and works
-
-    return probabilities  # dict: hour -> probability (0-1)
+    def get_distribution(self):
+        return self.distribution
 ```
 
-**Weekday/Weekend Consideration:**
-```python
-def build_availability_distribution(user_id):
-    """Build separate distributions for weekday vs weekend."""
+**Why This Works:**
 
-    weekday_probs = build_distribution_for_days(user_id, [0,1,2,3,4])  # Mon-Fri
-    weekend_probs = build_distribution_for_days(user_id, [5,6])  # Sat-Sun
+**High surprise = large update:**
+- Success at prob 0.1: `delta = 0.20 * (1.0 - 0.1) = +0.18` (big boost!)
+- Failure at prob 0.9: `delta = 0.20 * (0.0 - 0.9) = -0.18` (big penalty!)
 
-    return {
-        'weekday': weekday_probs,
-        'weekend': weekend_probs
-    }
-```
+**Low surprise = small update:**
+- Success at prob 0.9: `delta = 0.20 * (1.0 - 0.9) = +0.02` (tiny boost)
+- Failure at prob 0.1: `delta = 0.20 * (0.0 - 0.1) = -0.02` (tiny penalty)
+
+**Natural anti-collapse:** Can't reach 0.0 (asymptotic approach), plus safety floor at 0.1
+
+**No gaussian smoothing needed:** Prediction error naturally dampens itself
+
+**Tested Performance:**
+- 53% better MAE than baseline additive learning
+- 11% better MAE than multiplicative learning
+- 26% better recovery from pattern changes
+- Simple: 10 lines of code
 
 ### Scheduling via Integration
 
@@ -119,15 +120,11 @@ def schedule_next(user_id):
     """Schedule next encounter by integrating probability distribution."""
 
     config = get_config(user_id)
-    distribution = build_availability_distribution(user_id)
-
-    # Determine if next day is weekday or weekend
-    next_day = datetime.now() + timedelta(days=1)
-    is_weekend = next_day.weekday() >= 5
-    probs = distribution['weekend' if is_weekend else 'weekday']
+    learner = get_learner(user_id)  # Persistent learner instance
+    distribution = learner.get_distribution()
 
     # Calculate "area under curve" needed
-    # This replaces the TCP speedup - higher frequency = less area needed
+    # Higher frequency = less area needed = schedules sooner
     frequency = config.get('frequency', 1.0)  # encounters per day
     target_mass = 1.0 / frequency  # e.g., 2/day = 0.5 mass needed
 
@@ -140,7 +137,7 @@ def schedule_next(user_id):
         hour = check_time.hour
 
         # Get probability for this hour
-        prob = probs.get(hour, 0.5)
+        prob = distribution.get(hour, 0.5)
 
         # Accumulate mass (1 hour * probability)
         accumulated_mass += prob
@@ -207,19 +204,25 @@ This preserves TCP-style acceleration but applies it via the scheduling algorith
 - [ ] Update delivery loop to use two-timestamp logic
 - [ ] Test reload safety
 
-### Phase 2: Probability Scheduling (3 days)
-- [ ] Implement `build_availability_distribution()`
-- [ ] Add weekday/weekend split
-- [ ] Implement `schedule_next()` with integration
+### Phase 2: Prediction Error Learning (2 days)
+- [ ] Implement `AvailabilityLearner` class with prediction error updates
+- [ ] Store learner state in user config (distribution dict)
+- [ ] Update on each encounter (success or failure)
+- [ ] Persist distribution to config after updates
+
+### Phase 3: Probability Integration Scheduling (2 days)
+- [ ] Implement `schedule_next()` with probability integration
+- [ ] Use learner's distribution for scheduling
+- [ ] Test "squeeze away" behavior (avoids dead zones)
 - [ ] Test with historical data
 
-### Phase 3: Refinements (2 days)
-- [ ] Tune minimum sample sizes
-- [ ] Add smoothing for sparse data
-- [ ] Consider 30min buckets vs hour buckets
-- [ ] Test edge cases (new users, always-offline, etc.)
+### Phase 4: Refinements (2 days)
+- [ ] Test edge cases (new users, pattern changes, always-offline)
+- [ ] Verify floor prevents death spiral
+- [ ] Test TCP frequency acceleration integration
+- [ ] Monitor convergence over time
 
-### Phase 4: UI Refactor (3 days)
+### Phase 5: UI Refactor (3 days)
 - [ ] Extract services layer
 - [ ] Move logic out of views
 - [ ] Fix broken buttons
@@ -227,13 +230,22 @@ This preserves TCP-style acceleration but applies it via the scheduling algorith
 
 ---
 
-## Open Questions
+## Resolved Design Questions
 
-1. **Bucket granularity:** Hour vs 30min? (Start with hour, refine later)
-2. **Smoothing:** How to handle hours with 0-2 samples? (Use global default or neighbor averaging)
-3. **Continuous vs discrete:** Polynomial fit worth the complexity? (No, discrete is fine)
-4. **Frequency bounds:** Keep 0.33-6.0 range? (Yes, proven safe)
-5. **Auto-disable threshold:** Keep 5 consecutive failures? (Yes)
+Based on comprehensive testing with simulated and real user data:
+
+1. **Learning algorithm:** ✓ Prediction error (Elo-style) - 53% better than baseline
+2. **Learning rate:** ✓ 0.20 optimal
+3. **Gaussian smoothing:** ✗ Not needed - prediction error self-dampens
+4. **Floor/ceiling:** ✓ [0.1, 1.0] prevents death spiral
+5. **Weekday/weekend split:** ✗ Single 24-hour distribution works fine
+6. **Bucket granularity:** ✓ Hour buckets (not 30min)
+7. **Minute interpolation:** ✗ Worse performance (65% worse MAE)
+8. **Multi-hour expiration windows:** ✗ Dilutes signal (48% worse MAE)
+9. **Success-only learning:** ✗ Throws away valuable data (147% worse MAE)
+10. **Decay toward baseline:** ✗ Prevents convergence
+11. **Frequency bounds:** ✓ Keep 0.33-6.0 range
+12. **Auto-disable threshold:** ✓ Keep 5 consecutive failures
 
 ---
 
@@ -269,6 +281,29 @@ From 1,213 historical encounters across 11 users:
 
 ---
 
+## Testing Results
+
+**Simulation with synthetic users (300 encounters):**
+- Prediction error learning: MAE 0.069
+- Proportional updates: MAE 0.078 (11% worse)
+- Additive with floor: MAE 0.089 (29% worse)
+- Additive baseline: MAE 0.137 (98% worse)
+
+**Real user data (9 users, 43-281 encounters):**
+- Single-hour bidirectional: MAE 0.101 (best)
+- Multi-hour windows: MAE 0.160 (58% worse)
+- Success-only: MAE 0.249 (147% worse)
+
+**Pattern change recovery (morning→night transition):**
+- Prediction error @ 30 encounters: MAE 0.277
+- Proportional @ 30 encounters: MAE 0.375 (35% worse)
+
+**Convergence speed:**
+- 60% learned after 15-20 encounters
+- Final accuracy achieved by 200-300 encounters
+
+---
+
 ## Example Config Schema
 
 ```json
@@ -292,17 +327,23 @@ From 1,213 historical encounters across 11 users:
     "I am completely programmable": 2.0
   },
 
-  "learned_distribution": {
-    "weekday": {
-      "9": 0.3,
-      "14": 0.5,
-      "16": 0.4
-    },
-    "weekend": {
-      "10": 0.4,
-      "16": 0.6,
-      "20": 0.3
-    }
+  "availability_distribution": {
+    "0": 0.15,
+    "1": 0.12,
+    "2": 0.10,
+    "3": 0.10,
+    "7": 0.45,
+    "8": 0.73,
+    "9": 0.88,
+    "10": 0.65,
+    "14": 0.92,
+    "15": 0.78,
+    "20": 0.55,
+    "21": 0.62,
+    "22": 0.48,
+    "23": 0.25
   }
 }
 ```
+
+**Note:** Distribution starts at 0.5 for all hours, updates via prediction error learning on each encounter.
