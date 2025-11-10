@@ -12,9 +12,18 @@ if [ ! -f .env ]; then
     exit 1
 fi
 
-# Check if dependencies are installed
+# Create venv if it doesn't exist
+if [ ! -d "venv" ]; then
+    echo "📦 Creating virtual environment..."
+    python3 -m venv venv
+fi
+
+# Activate venv
+source venv/bin/activate
+
+# Check if dependencies are installed in venv
 if ! python3 -c "import discord" 2>/dev/null; then
-    echo "📦 Installing dependencies..."
+    echo "📦 Installing dependencies in venv..."
     pip install -r requirements.txt
 fi
 

@@ -5,7 +5,7 @@ from os import listdir
 import subprocess
 from datetime import datetime
 import sys
-from core.utils import is_superadmin
+from core.utils import is_superadmin, safe_delete
 
 class Dev(commands.Cog):
     """This is a cog with owner-only commands.
@@ -56,6 +56,7 @@ class Dev(commands.Cog):
         """
         self.logger.info(f"{ctx.author} (ID: {ctx.author.id}) invoked load on {cog}")
         message = await ctx.send('Loading...')
+        await safe_delete(ctx, self.logger)
         try:
             await self.bot.load_extension(self.check_cog(cog))
         except Exception as exc:
@@ -80,6 +81,7 @@ class Dev(commands.Cog):
 		
         self.logger.info(f"{ctx.author} (ID: {ctx.author.id}) invoked unload on {cog}")
         message = await ctx.send('Unloading...')
+        await safe_delete(ctx, self.logger)
         try:
             await self.bot.unload_extension(self.check_cog(cog))
         except Exception as exc:
@@ -100,7 +102,8 @@ class Dev(commands.Cog):
             This command deletes its messages after 20 seconds."""
 
         self.logger.info(f"{ctx.author} (ID: {ctx.author.id}) invoked reload on {cog or 'all dynamic'}")
-        
+        await safe_delete(ctx, self.logger)
+
         if cog is None:
             cogs_to_unload = [c for c in self.bot.extensions if c.startswith("cogs.dynamic.")]
             cogs_to_load = [f'cogs.dynamic.{filename[:-3]}' for filename in listdir('./cogs/dynamic') if filename.endswith('.py')]
@@ -138,39 +141,89 @@ class Dev(commands.Cog):
     @commands.command(name='update', hidden=True)
     @commands.check(is_superadmin)
     async def update(self, ctx):
-        """Force update to upstream (discard local changes), then report the latest commit."""
+        """This command executes a git pull command in the current environment to update the code.
+
+        Note:
+            This command can be used only from the bot owner.
+            This command is hidden from the help menu.
+        """
         self.logger.info(f"{ctx.author} invoked update command")
-        message = await ctx.send('Updating code...')
-
+        message = await ctx.send('Attempting to update code via git pull...')
         try:
-            # 1) fetch latest refs
-            fetch = subprocess.run(['git', 'fetch', '--all', '--prune'], capture_output=True, text=True)
-            if fetch.returncode != 0:
-                self.logger.error(f"git fetch error: {fetch.stderr.strip()}")
-                await message.edit(content=f'Error updating code:\n{fetch.stderr}', delete_after=20)
-                return
+            # Delete the command message if possible, but don't fail if it's already gone or permissions are an issue
+            try:
+                await ctx.message.delete()
+            except discord.HTTPException:
+                self.logger.warning("Could not delete update command message, it might have been already deleted or permissions are missing.")
 
-            # 2) hard reset to the branch's upstream (discard local changes & unpushed commits)
-            force = subprocess.run(['git', 'reset', '--hard', '@{u}'], capture_output=True, text=True)
-            if force.returncode != 0:
-                self.logger.error(f"git reset --hard @{{u}} error: {force.stderr.strip() or force.stdout.strip()}")
-                await message.edit(content=f'Error updating code:\n{force.stderr or force.stdout}', delete_after=20)
-                return
+            # Execute git pull
+            result = subprocess.run(['git', 'pull'], capture_output=True, text=True, check=False)
 
-            # 3) show latest commit info (unchanged from your version)
-            commit_info = subprocess.run(['git', 'log', '-1', '--format="%H %ct"'], capture_output=True, text=True)
-            commit_hash, commit_timestamp = commit_info.stdout.replace("\"","").strip().split()
-            human_time = datetime.fromtimestamp(int(commit_timestamp)).strftime("%Y-%m-%d %H:%M")
+            stdout_output = result.stdout.strip() if result.stdout else ""
+            stderr_output = result.stderr.strip() if result.stderr else ""
 
-            await message.edit(
-                content=f'Code updated successfully:\nCommit Hash: {commit_hash}\nTimestamp: {human_time}',
-                delete_after=20
-            )
-            self.logger.info(f"Git reset success: {commit_hash} @ {human_time}")
-        
+            if result.returncode == 0:
+                self.logger.info(f"Git pull successful. Output: {stdout_output if stdout_output else 'No output.'}")
+
+                commit_hash = "N/A"
+                human_time = "N/A"
+                try:
+                    commit_info_result = subprocess.run(
+                        ['git', 'log', '-1', '--format="%H %ct"'],
+                        capture_output=True, text=True, check=False
+                    )
+                    if commit_info_result.returncode == 0 and commit_info_result.stdout:
+                        parsed_commit_hash, commit_timestamp_str = commit_info_result.stdout.replace("\"", "").strip().split()
+                        commit_timestamp = int(commit_timestamp_str)
+                        commit_hash = parsed_commit_hash
+                        human_time = datetime.fromtimestamp(commit_timestamp).strftime("%Y-%m-%d %H:%M")
+                    else:
+                        self.logger.warning(f"Failed to get commit info after successful pull. Git log stderr: {commit_info_result.stderr.strip() if commit_info_result.stderr else 'None'}")
+                except Exception as e_commit:
+                    self.logger.warning(f"Error processing commit info after successful pull: {e_commit}")
+
+                response_content = (
+                    f'Code update pull completed successfully!\n'
+                    f'Current Commit Hash: {commit_hash}\n'
+                    f'Commit Timestamp: {human_time}\n\n'
+                )
+                if stdout_output:
+                    response_content += f'Git Pull Output:\n```\n{stdout_output}\n```'
+                else:
+                    response_content += 'No specific output from git pull.'
+
+                await message.edit(content=response_content, delete_after=60)
+
+            else: # result.returncode != 0, git pull encountered issues
+                log_message_parts = [f"Git pull command finished with return code {result.returncode}."]
+                if stdout_output: log_message_parts.append(f"Stdout: {stdout_output}")
+                if stderr_output: log_message_parts.append(f"Stderr: {stderr_output}")
+                full_log_message = "\n".join(log_message_parts)
+
+                user_message_content = f"Git pull finished with return code {result.returncode}.\n"
+                if stdout_output:
+                    user_message_content += f"Output:\n```\n{stdout_output}\n```\n"
+                if stderr_output:
+                    user_message_content += f"Errors:\n```\n{stderr_output}\n```\n"
+
+                if "Permission denied" in stderr_output or "unable to unlink" in stderr_output or "failed to unlink" in stderr_output:
+                    self.logger.warning(f"Git pull encountered permission issues. {full_log_message}")
+                    user_message_content += ("\n**Some files may not have been updated due to permission issues** (e.g., unable to delete old files). "
+                                             "The bot continues to run. You might need to resolve permissions manually. "
+                                             "Consider reloading cogs if applicable after resolving.")
+                else:
+                    self.logger.error(f"Git pull failed. {full_log_message}")
+                    user_message_content += ("\n**The code update may have failed or is incomplete.** "
+                                             "The bot continues to run. Check the output above and bot logs for details.")
+
+                await message.edit(content=user_message_content, delete_after=180) # Keep message much longer for review
+
         except Exception as exc:
-            self.logger.error("Exception during update", exc_info=True)
-            await message.edit(content=f'An error has occurred: {exc}', delete_after=20)
+            self.logger.error("Exception during update command execution", exc_info=True)
+            try:
+                await message.edit(content=f'An unexpected error occurred during the update command: {exc}\nThe bot continues to run.', delete_after=60)
+            except discord.HTTPException: # If message itself is gone
+                self.logger.error(f"Failed to send update error to Discord, message gone. Error: {exc}")
 
     @commands.command(name='list_cogs', hidden=True)
     @commands.check(is_superadmin)
@@ -182,28 +235,36 @@ class Dev(commands.Cog):
             This command is hidden from the help menu.
         """
         self.logger.info(f"{ctx.author} invoked list_cogs")
+        message = await ctx.send('Listing all cogs...')
+        await safe_delete(ctx, self.logger)
         try:
             cogs = [cog[:-3] for cog in listdir('./cogs/dynamic') if cog.endswith('.py')]
-            await ctx.send(f'Available cogs: {", ".join(cogs)}', delete_after=20)
+            await message.edit(content=f'Available cogs: {", ".join(cogs)}', delete_after=20)
         except Exception as exc:
             self.logger.error("Error listing cogs", exc_info=True)
-            await ctx.send(f'An error has occurred: {exc}', delete_after=20)
+            await message.edit(content=f'An error has occurred: {exc}', delete_after=20)
             
     @commands.command(name='restart', aliases=['kys', 'shutdown'], hidden=True)
     @commands.check(is_superadmin)
     async def restart(self, ctx):
         """This command restarts the bot (expects systemctl auto-restart).
-        
+
         Note:
             This command can be used by superadmins only.
             This command is hidden from the help menu.
             Use 'restart' alias for cleaner command.
         """
         self.logger.info(f"{ctx.author} invoked shutdown")
-        
+
+        # Use different message based on the command used
+        if ctx.invoked_with == 'kys':
+            restart_message = 'I am sudoku...'
+        else:
+            restart_message = 'Restarting...'
+
         # Send message first
-        message = await ctx.send('Restarting...')
-        
+        message = await ctx.send(restart_message)
+
         # Actually shut down
         try:
             await self.bot.close()
@@ -211,19 +272,21 @@ class Dev(commands.Cog):
         except Exception as exc:
             self.logger.error("Error during shutdown", exc_info=True)
             await message.edit(content=f'An error has occurred: {exc}', delete_after=20)
-            
-    # Canonical sync command for consistency with literallybot
+
     @commands.command(name='sync', hidden=True)
     @commands.check(is_superadmin)
     async def sync(self, ctx):
         """Sync application commands with Discord (canonical)."""
         self.logger.info(f"{ctx.author} invoked sync for guild {getattr(ctx.guild, 'id', 'N/A')}")
+        message = await ctx.send('Syncing commands...')
+        await safe_delete(ctx, self.logger)
         try:
-            await self.bot.tree.sync()
-            await ctx.send('Application commands synced.', delete_after=20)
+            self.bot.tree.copy_global_to(guild=ctx.guild)
+            await self.bot.tree.sync(guild=ctx.guild)
+            await message.edit(content='Application commands synced.', delete_after=20)
         except Exception as exc:
             self.logger.error("Error during sync", exc_info=True)
-            await ctx.send(f'An error has occurred: {exc}', delete_after=20)
+            await message.edit(content=f'An error has occurred: {exc}', delete_after=20)
 
 async def setup(bot):
     """Every cog needs a setup function like this."""

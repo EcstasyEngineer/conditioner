@@ -89,12 +89,12 @@ class Admin(commands.Cog):
             return
         if member.id in admins:
             self.logger.info(f"{member} (ID: {member.id}) already admin in guild {ctx.guild.id}")
-            await ctx.send(f"{member} is already an bot admin.")
+            await ctx.send(f"{member} is already a bot admin.")
         else:
             admins.append(member.id)
             self.bot.config.set(ctx, "admins", admins)
             self.logger.info(f"{member} (ID: {member.id}) added as admin by {ctx.author} (ID: {ctx.author.id}) in guild {ctx.guild.id}")
-            await ctx.send(f"{member} has been added as an bot admin.")    
+            await ctx.send(f"{member} has been added as a bot admin.")    
 
 
 async def setup(bot):

@@ -1,10 +1,32 @@
+# Python
 *.pyc
-/venv/
-__pycache__
+__pycache__/
+*.py[cod]
+
+# Virtual Environment
+venv/
+.venv/
+
+# Environment & Secrets
 .env
-.env.dev
+.env.*
+
+# Bot Data
 configs/
-*config*backup*/
+logs/
+*logs/
+
+# Backups
+backups/
+*backup*/
+media-backup/
+
+# Development Tools
+.claude/
+.vscode/
+.pytest_cache/
+
+# Bot-Specific: conditioner tiered gacha media
 /media/common/*
 !/media/common/sample.*
 /media/uncommon/*
@@ -13,7 +35,3 @@ configs/
 !/media/rare/sample.*
 /media/epic/*
 !/media/epic/sample.*
-/logs/
-.claude/*.env
-media-backup/
-.claude/

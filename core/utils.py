@@ -9,6 +9,7 @@ Normalization goals:
   - is_admin(ctx)
 """
 from typing import List, Union, Any
+import discord
 
 
 def _normalize_superadmins_list(config) -> List[int]:
@@ -29,40 +30,85 @@ def _normalize_superadmins_list(config) -> List[int]:
 
 
 def get_superadmins(config) -> List[int]:
+    """Return the list of global superadmins (normalized to list[int])."""
     return _normalize_superadmins_list(config)
 
 
 def is_superadmin(config_or_ctx: Any, user_id: Union[int, None] = None) -> bool:
+    """Check global superadmin membership.
+
+    Supports both call styles:
+    - is_superadmin(config, user_id)
+    - is_superadmin(ctx)
+    """
     if user_id is None:
+        # Treat first arg as ctx
         ctx = config_or_ctx
-        config = getattr(getattr(ctx, "bot", None), "config", None)
+        config = getattr(ctx, "bot", None)
+        if config is None:
+            return False
+        config = getattr(ctx.bot, "config", None)
         if config is None:
             return False
         return ctx.author.id in get_superadmins(config)
     else:
+        # First arg is config, second is user id
         config = config_or_ctx
         return int(user_id) in get_superadmins(config)
 
 
 def is_admin(config_or_ctx: Any, maybe_ctx: Any = None) -> bool:
+    """Determine if invoking context has bot admin privileges.
+
+    Supports both call styles:
+    - is_admin(config, ctx)
+    - is_admin(ctx)
+    """
     if maybe_ctx is None:
         ctx = config_or_ctx
-        config = getattr(getattr(ctx, "bot", None), "config", None)
+        config = getattr(ctx, "bot", None)
+        if config is None:
+            return False
+        config = getattr(ctx.bot, "config", None)
         if config is None:
             return False
     else:
         config = config_or_ctx
         ctx = maybe_ctx
-
     if is_superadmin(config, ctx.author.id):
         return True
+
     if ctx.guild is None:
         return False
+
     admins = config.get(ctx, "admins", [])
     if ctx.author.id in (admins or []):
         return True
+
     if getattr(ctx.author.guild_permissions, "administrator", False):
         return True
+
     if ctx.author == getattr(ctx.guild, "owner", None):
         return True
+
     return False
+
+
+async def safe_delete(ctx, logger=None):
+    """Safely attempt to delete a command message without raising exceptions.
+
+    Args:
+        ctx: Discord command context
+        logger: Optional logger instance for warnings
+
+    Returns:
+        bool: True if deletion succeeded, False otherwise
+    """
+    try:
+        await ctx.message.delete()
+        return True
+    except (discord.Forbidden, discord.HTTPException) as exc:
+        if logger:
+            channel_name = getattr(ctx.channel, "name", ctx.channel.id)
+            logger.warning(f"Unable to delete command message in {channel_name}: {exc}")
+        return False
