@@ -255,7 +255,7 @@ cogs/dynamic/mantras.py       # Discord UI
 ├── /mantra settings
 ├── /mantra stats
 ├── /mantra mode
-└── Delivery loop (background task, 5min interval)
+└── Delivery loop (background task, 30sec interval)
 ```
 
 ---
@@ -308,7 +308,7 @@ cogs/dynamic/mantras.py       # Discord UI
 - **CPU:** Negligible (simple arithmetic)
 
 ### System Performance
-- **Delivery loop:** 5-minute interval
+- **Delivery loop:** 30-second interval
 - **Config writes:** 5-second buffer (batched)
 - **Config reads:** Auto-reload every 2 seconds
 - **Encounter logs:** Append-only (fast writes)

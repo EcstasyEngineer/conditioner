@@ -30,6 +30,8 @@ from utils.mantra_service import (
     check_for_timeout,
     deliver_mantra,
     handle_mantra_response,
+    CONSECUTIVE_FAILURES_THRESHOLD,
+    DISABLE_OFFER_THRESHOLD,
 )
 from utils.mantra_scheduler import (
     DELIVERY_MODE_ADAPTIVE,
@@ -709,35 +711,15 @@ class MantraSystem(commands.Cog):
                         }
                         log_encounter(user_id, encounter)
 
-                    # Edit the original message to show timeout
+                    # Delete the original message (cleaner UX than editing to show timeout)
                     delivered_mantra = config.get("delivered_mantra")
                     if delivered_mantra and "message_id" in delivered_mantra:
                         try:
                             dm_channel = await user.create_dm()
                             message = await dm_channel.fetch_message(delivered_mantra["message_id"])
-
-                            # Create minimal timeout embed
-                            embed = discord.Embed(
-                                description="❌ Conditioning Session Expired",
-                                color=discord.Color.dark_gray()
-                            )
-
-                            # Add disable button if 3+ consecutive failures
-                            consecutive_failures = config.get("consecutive_failures", 0)
-                            if consecutive_failures >= 3:
-                                embed.add_field(
-                                    name="⚠️ Multiple Failures",
-                                    value=f"You've failed {consecutive_failures} times in a row.",
-                                    inline=False
-                                )
-
-                                view = discord.ui.View()
-                                view.add_item(DisableButton(self, user))
-                                await message.edit(embed=embed, view=view)
-                            else:
-                                await message.edit(embed=embed)
+                            await message.delete()
                         except:
-                            pass  # Message might be deleted or DMs disabled
+                            pass  # Message might be deleted already or DMs disabled
 
                     # Save updated config
                     self.bot.config.set_user(user, 'mantra_system', config)
@@ -747,10 +729,23 @@ class MantraSystem(commands.Cog):
                         try:
                             embed = discord.Embed(
                                 title="🔴 Conditioning Paused",
-                                description="You've been automatically unenrolled due to 5 consecutive timeouts.\n\nUse `/mantra enroll` to re-enroll when ready.",
+                                description=f"You've been automatically unenrolled due to {CONSECUTIVE_FAILURES_THRESHOLD} consecutive timeouts.\n\nUse `/mantra enroll` to re-enroll when ready.",
                                 color=discord.Color.red()
                             )
                             await user.send(embed=embed)
+                        except:
+                            pass  # DMs disabled
+                    # If 3+ consecutive failures, offer disable button
+                    elif config.get("consecutive_failures", 0) >= DISABLE_OFFER_THRESHOLD:
+                        try:
+                            embed = discord.Embed(
+                                title="⚠️ Multiple Missed Mantras",
+                                description=f"You've missed {config['consecutive_failures']} mantras in a row.\n\nIf you'd like to pause conditioning, use the button below.",
+                                color=discord.Color.orange()
+                            )
+                            view = discord.ui.View()
+                            view.add_item(DisableButton(self, user))
+                            await user.send(embed=embed, view=view)
                         except:
                             pass  # DMs disabled
 
