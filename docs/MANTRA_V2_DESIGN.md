@@ -70,22 +70,36 @@ Build a probability distribution of user availability (continuous or discrete). 
 ```python
 class AvailabilityLearner:
     def __init__(self):
-        self.distribution = {h: 0.5 for h in range(24)}
+        # Hour buckets (24 per day)
+        self.distribution = [0.5 for _ in range(24)]
         self.learning_rate = 0.20
         self.floor = 0.1  # Prevent death spiral
         self.ceil = 1.0
 
-    def update(self, hour: int, success: bool):
-        """Update based on prediction error (Elo-style)."""
-        expected = self.distribution[hour]
-        actual = 1.0 if success else 0.0
+    def hour_of_day(self, dt: datetime) -> int:
+        """Get hour bucket (0-23) from datetime."""
+        return dt.hour
 
-        # Update proportional to surprise
+    def update(self, dt: datetime, success: bool):
+        """Update based on prediction error (Elo-style)."""
+        hour = self.hour_of_day(dt)
+        actual = 1.0 if success else 0.0
+        expected = self.distribution[hour]
+
+        # Prediction error
         error = actual - expected
         delta = self.learning_rate * error
 
         new_value = self.distribution[hour] + delta
-        self.distribution[hour] = max(self.floor, min(self.ceil, new_value))
+        clamped_value = max(self.floor, min(self.ceil, new_value))
+
+        # Round to 3 decimals to keep config files clean
+        self.distribution[hour] = round(clamped_value, 3)
+
+    def get_prob(self, dt: datetime) -> float:
+        """Get probability for a given datetime."""
+        hour = self.hour_of_day(dt)
+        return self.distribution[hour]
 
     def get_distribution(self):
         return self.distribution
@@ -103,13 +117,20 @@ class AvailabilityLearner:
 
 **Natural anti-collapse:** Can't reach 0.0 (asymptotic approach), plus safety floor at 0.1
 
-**No gaussian smoothing needed:** Prediction error naturally dampens itself
+**Why no gaussian smoothing:**
+- Prediction error algorithm's self-dampening is sufficient for 24 buckets
+- Adding gaussian neighbors dilutes the learning signal
+- Simpler implementation (just 10 lines of core logic)
 
-**Tested Performance:**
-- 53% better MAE than baseline additive learning
-- 11% better MAE than multiplicative learning
+**Tested Performance (960 total test runs):**
+- **1hr buckets, lr=0.20, no gaussian**: MAE 0.0878 (WINNER)
+  - Most stable: σ=0.0186
+  - Best across all 4 test archetypes
+- **15min buckets + gaussian**: MAE 0.0968 (10% worse, too sparse)
+- **30min buckets + gaussian**: MAE 0.1100 (20% worse)
+- 53% better than baseline additive learning
+- 11% better than multiplicative learning
 - 26% better recovery from pattern changes
-- Simple: 10 lines of code
 
 ### Scheduling via Integration
 
@@ -235,11 +256,11 @@ This preserves TCP-style acceleration but applies it via the scheduling algorith
 Based on comprehensive testing with simulated and real user data:
 
 1. **Learning algorithm:** ✓ Prediction error (Elo-style) - 53% better than baseline
-2. **Learning rate:** ✓ 0.20 optimal
-3. **Gaussian smoothing:** ✗ Not needed - prediction error self-dampens
+2. **Learning rate:** ✓ 0.20 optimal (tested 0.10-0.30 across 720 runs)
+3. **Gaussian smoothing:** ✗ Not needed - dilutes signal, prediction error self-dampens
 4. **Floor/ceiling:** ✓ [0.1, 1.0] prevents death spiral
 5. **Weekday/weekend split:** ✗ Single 24-hour distribution works fine
-6. **Bucket granularity:** ✓ Hour buckets (not 30min)
+6. **Bucket granularity:** ✓ Hour buckets (24 per day) - best stability and final accuracy
 7. **Minute interpolation:** ✗ Worse performance (65% worse MAE)
 8. **Multi-hour expiration windows:** ✗ Dilutes signal (48% worse MAE)
 9. **Success-only learning:** ✗ Throws away valuable data (147% worse MAE)
@@ -302,6 +323,31 @@ From 1,213 historical encounters across 11 users:
 - 60% learned after 15-20 encounters
 - Final accuracy achieved by 200-300 encounters
 
+**Comprehensive bucket size + learning rate sweep (960 total runs):**
+
+*Multi-seed stability test (20 seeds × 4 archetypes × 3 configs = 240 runs):*
+- **1hr lr=0.20 no-gauss: MAE 0.0878** ✓ WINNER
+  - Std dev: 0.0186 (most stable)
+  - Range: [0.0474, 0.1306]
+  - Best on all 4 archetypes
+- 15min lr=0.25 gauss-w4: MAE 0.0968 (10% worse, too sparse)
+- 30min lr=0.30 gauss-w3: MAE 0.1100 (20% worse)
+
+*Learning rate sweep for 1hr no-gaussian (20 seeds × 4 archetypes × 9 LRs = 720 runs):*
+- lr=0.20: MAE 0.0878 ✓ OPTIMAL
+- lr=0.17: MAE 0.0885 (0.8% worse)
+- lr=0.22: MAE 0.0888 (1.1% worse)
+- lr=0.15: MAE 0.0913 (4.0% worse)
+- lr=0.25: MAE 0.0915 (4.2% worse)
+- lr=0.10: MAE 0.1170 (25% worse, too slow)
+- lr=0.30: MAE 0.0973 (10% worse, too aggressive)
+
+**Key insights:**
+- Hour buckets best for long-term accuracy (200+ encounters)
+- Smaller buckets (15min, 30min) learn faster early but worse final accuracy
+- Gaussian smoothing dilutes learning signal for 24 buckets
+- Sweet spot for lr is 0.17-0.22, with 0.20 at peak
+
 ---
 
 ## Example Config Schema
@@ -327,23 +373,11 @@ From 1,213 historical encounters across 11 users:
     "I am completely programmable": 2.0
   },
 
-  "availability_distribution": {
-    "0": 0.15,
-    "1": 0.12,
-    "2": 0.10,
-    "3": 0.10,
-    "7": 0.45,
-    "8": 0.73,
-    "9": 0.88,
-    "10": 0.65,
-    "14": 0.92,
-    "15": 0.78,
-    "20": 0.55,
-    "21": 0.62,
-    "22": 0.48,
-    "23": 0.25
-  }
+  "availability_distribution": [
+    0.15, 0.12, 0.10, 0.10, 0.10, 0.10, 0.10, 0.45, 0.73, 0.88, 0.65, 0.42,
+    0.35, 0.32, 0.92, 0.78, 0.65, 0.58, 0.82, 0.71, 0.62, 0.55, 0.48, 0.25
+  ]
 }
 ```
 
-**Note:** Distribution starts at 0.5 for all hours, updates via prediction error learning on each encounter.
+**Note:** Distribution is an array of 24 floats (index 0 = midnight-1am, 1 = 1am-2am, etc.). Starts at 0.5 for all hours, updates via prediction error learning on each encounter. Values are automatically rounded to 3 decimals to keep config files clean (e.g., 0.732 instead of 0.73234567).

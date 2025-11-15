@@ -59,11 +59,24 @@ def format_mantra_text(mantra_text: str, subject: str, controller: str) -> str:
     return formatted
 
 # Helper function used by schedule_next_encounter to select the next random mantra
-def select_mantra_from_themes(themes: List[str], available_themes: Dict[str, Dict]) -> Optional[Dict]:
-    """Select a mantra with balanced theme weighting, avoiding repeats."""
+def select_mantra_from_themes(themes: List[str], available_themes: Dict[str, Dict], favorites: List[str] = None) -> Optional[Dict]:
+    """
+    Select a mantra with balanced theme weighting and favorite weighting.
+
+    Args:
+        themes: List of theme names to select from
+        available_themes: Dict of available theme data
+        favorites: List of favorited mantra texts (raw templates with {controller}/{subject})
+
+    Returns:
+        Dict with selected mantra data, or None if no mantras available
+    """
     if not themes:
         return None
-    
+
+    if favorites is None:
+        favorites = []
+
     # Collect all possible mantras from all themes
     all_mantras = []
     for theme in themes:
@@ -74,12 +87,18 @@ def select_mantra_from_themes(themes: List[str], available_themes: Dict[str, Dic
                     **mantra,
                     "theme": theme
                 })
-    
+
     if not all_mantras:
         return None
-    
-    # Select randomly from available mantras
-    return random.choice(all_mantras)
+
+    # Build weighted pool - 2x weight for favorites
+    weighted_mantras = []
+    for mantra in all_mantras:
+        weight = 2 if mantra["text"] in favorites else 1
+        weighted_mantras.extend([mantra] * weight)
+
+    # Select randomly from weighted pool
+    return random.choice(weighted_mantras)
 
 
 def schedule_next_encounter(config: Dict, available_themes: Dict, first_enrollment: bool = False):

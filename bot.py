@@ -22,15 +22,15 @@ The example files are organized in this directory structure:
 from itertools import cycle
 from discord.ext import commands, tasks
 import discord
+from discord import app_commands
 from os import listdir
 from dotenv import load_dotenv
 import os
 from core.config import Config
-from core.media_migration import run_migration
-import random
-from datetime import datetime, timedelta
-import sys
-from core.error_handler import log_error_to_discord
+from core.error_handler import (
+    log_error_to_discord, ErrorCategory, ErrorSeverity,
+    handle_command_error, handle_app_command_error, handle_event_error
+)
 # Logging setup
 import logging
 from logging.handlers import RotatingFileHandler
@@ -71,13 +71,12 @@ def get_prefix(bot, message):
 bot = commands.Bot(command_prefix=get_prefix, intents=discord.Intents.all())
 # Attach central logger to bot for use in cogs
 bot.logger = logger
-bot.start_time = datetime.now()
 bot.config = Config()
 
-# Error logging is handled by simple utility functions
-
-# Function to load all cogs in the './cogs_static' and './cogs_dynamic' directories
+# Function to load all cogs from ./cogs/{static,dynamic}
 async def load_cogs():
+    failed_cogs = []  # Track failed cogs for reporting
+
     for group in ("static", "dynamic"):
         dir_path = f"./cogs/{group}"
         if not os.path.isdir(dir_path):
@@ -95,6 +94,15 @@ async def load_cogs():
                 logger.info(f"Successfully loaded {cog_name}")
             except Exception as e:
                 logger.error(f"Failed to load {cog_name}: {e}", exc_info=True)
+                # Store failed cog info for Discord reporting
+                failed_cogs.append({
+                    'name': cog_name,
+                    'error': str(e),
+                    'type': type(e).__name__
+                })
+
+    # Store failed cogs on bot for later reporting
+    bot.failed_cogs = failed_cogs if failed_cogs else []
 
 @bot.event
 #This is the decorator for events (outside of cogs).
@@ -106,14 +114,6 @@ async def on_ready():
     Documentation:
     https://discordpy.readthedocs.io/en/latest/api.html#discord.on_ready
     """
-
-    # Run media file migration before loading cogs
-    try:
-        renamed_count = run_migration()
-        if renamed_count > 0:
-            logger.info(f'Media migration: renamed {renamed_count} files')
-    except Exception as e:
-        logger.error(f'Media migration failed: {e}', exc_info=True)
 
     await load_cogs()
     
@@ -127,6 +127,34 @@ async def on_ready():
     await bot.tree.sync()
     # Sync application commands with Discord
 
+    # Report any failed cog loads to Discord now that we're connected
+    if hasattr(bot, 'failed_cogs') and bot.failed_cogs:
+        try:
+            from core.error_handler import log_error_to_discord, ErrorCategory, ErrorSeverity
+
+            # Create a custom exception for cog loading failures
+            error_msg = f"Failed to load {len(bot.failed_cogs)} cog(s) during startup:\n\n"
+            for cog_info in bot.failed_cogs:
+                error_msg += f"• **{cog_info['name']}**: {cog_info['type']} - {cog_info['error']}\n"
+
+            class CogLoadError(Exception):
+                pass
+
+            error = CogLoadError(error_msg)
+
+            # Send to Discord with high severity
+            await log_error_to_discord(
+                bot,
+                error,
+                "startup_cog_load",
+                category=ErrorCategory.OTHER,
+                severity=ErrorSeverity.CRITICAL,
+                extra_info=f"Total cogs failed: {len(bot.failed_cogs)}"
+            )
+            logger.info(f"Reported {len(bot.failed_cogs)} cog loading failures to Discord")
+        except Exception as report_error:
+            logger.error(f"Failed to report cog loading errors to Discord: {report_error}")
+
 @bot.event
 async def on_message(message):
     if message.author == bot.user:
@@ -137,11 +165,8 @@ async def on_message(message):
 
 @bot.event
 async def on_command_error(ctx, error):
-    logger.error(f'Error in command {ctx.command}: {error}', exc_info=True)
-    # Send to Discord error channel
-    command_name = ctx.command.name if ctx.command else "unknown"
-    extra_info = f"User: {ctx.author} (ID: {ctx.author.id})\nChannel: {ctx.channel}"
-    await log_error_to_discord(bot, error, f"command_{command_name}", extra_info)
+    """Handle errors in text commands with enhanced logging."""
+    await handle_command_error(bot, ctx, error)
 
 @bot.event
 async def on_command(ctx):
@@ -151,28 +176,35 @@ async def on_command(ctx):
 async def on_command_completion(ctx):
     logger.info(f'Command {ctx.command} completed by {ctx.author} in {ctx.channel}')
 
+@bot.tree.error
+async def on_app_command_error(interaction: discord.Interaction, error: Exception):
+    """Handle errors in slash commands with enhanced logging."""
+    await handle_app_command_error(bot, interaction, error)
+
 @bot.event
 async def on_error(event, *args, **kwargs):
-    logger.exception(f'Unhandled exception in event {event}', exc_info=True)
-    # Send to Discord error channel
-    error = sys.exc_info()[1]
-    if error:
-        extra_info = f"Event: {event}\nArgs: {str(args)[:500]}"
-        await log_error_to_discord(bot, error, f"event_{event}", extra_info)
+    """Handle errors in events with enhanced logging."""
+    await handle_event_error(bot, event, *args, **kwargs)
 
-# Teasy Hypnotic Statuses  
-statuslist = cycle([
-        "Obey",
-        "Submit",
-        "Surrender",
-        "Go Deeper",
-        "Give In",
-        "Drop",
-        "Sleep",
-        "Relax",
-        "Let Go",
-    ])
+def load_status_messages():
+    """Load status messages from config file, falling back to defaults if file not found."""
+    status_file = "config/status_messages.txt"
+    default_statuses = ["01010101", "01110111", "01010101", "01111110"]
 
+    try:
+        if os.path.exists(status_file):
+            with open(status_file, 'r') as f:
+                messages = [line.strip() for line in f if line.strip()]
+                if messages:
+                    logger.info(f"Loaded {len(messages)} status messages from {status_file}")
+                    return cycle(messages)
+        logger.info(f"Status file not found, using defaults")
+        return cycle(default_statuses)
+    except Exception as e:
+        logger.error(f"Error loading status messages: {e}, using defaults")
+        return cycle(default_statuses)
+
+statuslist = load_status_messages()
 
 @tasks.loop(seconds=300)
 async def change_status():
@@ -190,14 +222,20 @@ async def change_status():
 async def change_status_error(error):
     """Handle errors in the change_status task loop."""
     logger.error(f"Error in change_status task: {error}", exc_info=True)
-    await log_error_to_discord(bot, error, "task_change_status")
+    try:
+        import asyncio as _asyncio
+        _asyncio.create_task(log_error_to_discord(
+            bot, error, 'task_change_status',
+            category=ErrorCategory.TASK_ERROR,
+            severity=ErrorSeverity.WARNING
+        ))
+    except Exception as log_error:
+        logger.error(f"Failed to log error to Discord: {log_error}", exc_info=True)
 
 
 if __name__ == "__main__":
-    # Load environment configuration
+    #Grab token from the token.txt file
     load_dotenv()
-    logger.info("Loaded environment from .env")
-    
     TOKEN = os.getenv('DISCORD_TOKEN')
 
     try:
@@ -205,6 +243,7 @@ if __name__ == "__main__":
     except Exception:
         logger.critical('Bot terminated unexpectedly', exc_info=True)
     finally:
-        # Clean shutdown - flush all pending config writes
+        # Properly shutdown config system
         bot.config.shutdown()
+        logger.info('Config system shutdown complete')
     #Runs the bot with its token. Don't put code below this command.

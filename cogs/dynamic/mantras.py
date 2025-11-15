@@ -1,231 +1,636 @@
+"""
+Mantra System V2 - Hypnotic mantra capture with adaptive learning.
+
+This cog implements the V2 mantra system with:
+- Prediction error learning for user availability patterns
+- Probability integration scheduling
+- Two-timestamp state machine
+- TCP-style frequency adjustment
+
+Commands are kept thin - all business logic is in utils/mantra_service.py
+"""
+
 import discord
 from discord.ext import commands, tasks
 from discord import app_commands
 import json
-import random
-from datetime import datetime, timedelta
+from datetime import datetime
 from pathlib import Path
 from typing import List, Dict, Optional
 
 from core.utils import is_admin
 from utils.points import get_points, add_points
-from utils.encounters import log_encounter, load_encounters
-from utils.mantras import (
-    calculate_speed_bonus, check_mantra_match, format_mantra_text,
-    select_mantra_from_themes,
-    generate_mantra_stats, schedule_next_encounter, adjust_user_frequency,
-    save_user_mantra_config, get_user_mantra_config
+from utils.encounters import log_encounter
+from utils.response_messages import get_response_message
+from utils.mantra_service import (
+    get_default_config,
+    enroll_user,
+    unenroll_user,
+    should_deliver_mantra,
+    check_for_timeout,
+    deliver_mantra,
+    handle_mantra_response,
 )
+from utils.mantra_scheduler import (
+    DELIVERY_MODE_ADAPTIVE,
+    DELIVERY_MODE_LEGACY,
+    DELIVERY_MODE_FIXED,
+    DEFAULT_LEGACY_INTERVAL_HOURS,
+    DEFAULT_FIXED_TIMES,
+    validate_fixed_times
+)
+
+
 def get_max_themes_for_user(bot, user):
-    """Calculate maximum allowed themes based on user points.
-    
+    """
+    Calculate maximum allowed themes based on user points.
+
     Tier System:
     - Initiate (0+ points): 3 themes
-    - Intermediate (500+ points): 5 themes  
+    - Intermediate (500+ points): 5 themes
     - Advanced (1500+ points): 7 themes
     - Master (3000+ points): 10 themes
     """
     points = get_points(bot, user)
-    
-    if points >= 3000:      # Master tier
+
+    if points >= 3000:
         return 10
-    elif points >= 1500:    # Advanced tier  
+    elif points >= 1500:
         return 7
-    elif points >= 500:     # Intermediate tier
+    elif points >= 500:
         return 5
-    else:                   # Initiate tier
+    else:
         return 3
+
+
+class FavoriteButton(discord.ui.Button):
+    """Button for adding a mantra to favorites."""
+
+    def __init__(self, cog, user, mantra_text):
+        super().__init__(label="⭐ Favorite", style=discord.ButtonStyle.secondary)
+        self.cog = cog
+        self.user = user
+        self.mantra_text = mantra_text
+
+    async def callback(self, interaction: discord.Interaction):
+        """Handle favorite button click."""
+        # Load user config
+        from utils.mantra_service import get_default_config
+
+        config = self.cog.bot.config.get_user(self.user, 'mantra_system', get_default_config())
+
+        # Check if already favorited
+        favorites = config.get("favorite_mantras", [])
+        if self.mantra_text in favorites:
+            # Already favorited - just acknowledge silently
+            await interaction.response.defer()
+            return
+
+        # Add to favorites
+        favorites.append(self.mantra_text)
+        config["favorite_mantras"] = favorites
+
+        # Save config
+        self.cog.bot.config.set_user(self.user, 'mantra_system', config)
+
+        # Disable the button and update the message
+        self.disabled = True
+        self.label = "⭐ Favorited"
+
+        # Get the original message view and update it
+        view = self.view
+        await interaction.response.edit_message(view=view)
+
+
+class SettingsButton(discord.ui.Button):
+    """Button for opening settings modal."""
+
+    def __init__(self, cog, user):
+        super().__init__(label="⚙️ Settings", style=discord.ButtonStyle.secondary)
+        self.cog = cog
+        self.user = user
+
+    async def callback(self, interaction: discord.Interaction):
+        """Handle settings button click."""
+        await interaction.response.defer(ephemeral=True)
+
+        # Load current config
+        from utils.mantra_service import get_default_config
+
+        config = self.cog.bot.config.get_user(self.user, 'mantra_system', get_default_config())
+
+        # Get current values
+        current_subject = config.get("subject", "puppet")
+        current_controller = config.get("controller", "Master")
+        current_themes = config.get("themes", [])
+        current_delivery_mode = config.get("delivery_mode", DELIVERY_MODE_ADAPTIVE)
+
+        # Create comprehensive settings view (same as enrollment)
+        view = EnrollmentView(self.cog, self.user, current_subject, current_controller, current_themes, current_delivery_mode)
+
+        # Remove the enroll/save button since settings auto-save
+        for item in list(view.children):
+            if isinstance(item, EnrollButton):
+                view.remove_item(item)
+
+        embed = discord.Embed(
+            title="⚙️ Conditioning Settings",
+            description="Update your conditioning parameters below:",
+            color=discord.Color.purple()
+        )
+
+        embed.add_field(
+            name="Subject/Pet",
+            value=current_subject.capitalize(),
+            inline=True
+        )
+
+        embed.add_field(
+            name="Controller/Dominant",
+            value=current_controller,
+            inline=True
+        )
+
+        # Format delivery mode display
+        mode_display = {
+            DELIVERY_MODE_ADAPTIVE: "Adaptive (learns patterns)",
+            DELIVERY_MODE_LEGACY: "Legacy (fixed intervals)",
+            DELIVERY_MODE_FIXED: "Fixed (same times daily)"
+        }
+        embed.add_field(
+            name="Delivery Mode",
+            value=mode_display.get(current_delivery_mode, "Adaptive"),
+            inline=False
+        )
+
+        if current_themes:
+            embed.add_field(
+                name="Themes",
+                value=", ".join(t.capitalize() for t in current_themes),
+                inline=False
+            )
+        else:
+            embed.add_field(
+                name="Themes",
+                value="*None selected*",
+                inline=False
+            )
+
+        await interaction.followup.send(embed=embed, view=view, ephemeral=True)
+
+
+class DisableButton(discord.ui.Button):
+    """Button for disabling conditioning after multiple failures."""
+
+    def __init__(self, cog, user):
+        super().__init__(label="🛑 Disable Conditioning", style=discord.ButtonStyle.danger)
+        self.cog = cog
+        self.user = user
+
+    async def callback(self, interaction: discord.Interaction):
+        """Handle disable button click."""
+        from utils.mantra_service import get_default_config, unenroll_user
+
+        # Load config
+        config = self.cog.bot.config.get_user(self.user, 'mantra_system', get_default_config())
+
+        # Unenroll
+        unenroll_user(config)
+
+        # Save config
+        self.cog.bot.config.set_user(self.user, 'mantra_system', config)
+
+        await interaction.response.send_message(
+            "Conditioning has been paused. Use `/mantra enroll` to resume when ready.",
+            ephemeral=True
+        )
+
+
+class SubjectSelect(discord.ui.Select):
+    """Dropdown for selecting subject/pet name."""
+
+    def __init__(self, parent_view):
+        self.parent_view = parent_view
+
+        # Common subject names from prod data (10 most popular)
+        subjects = ["pet", "puppet", "toy", "doll", "slave", "drone", "kitten", "puppy", "slut", "bimbo"]
+
+        options = [
+            discord.SelectOption(
+                label=s.capitalize(),
+                value=s,
+                default=(s == parent_view.current_subject)
+            ) for s in subjects
+        ]
+
+        super().__init__(
+            placeholder="Select subject/pet name...",
+            options=options,
+            custom_id="subject_select"
+        )
+
+    async def callback(self, interaction: discord.Interaction):
+        """Handle subject selection."""
+        self.parent_view.current_subject = self.values[0]
+
+        # Auto-save if already enrolled
+        from utils.mantra_service import get_default_config
+        config = self.parent_view.cog.bot.config.get_user(
+            self.parent_view.user,
+            'mantra_system',
+            get_default_config()
+        )
+
+        if config.get("enrolled"):
+            config["subject"] = self.values[0]
+            self.parent_view.cog.bot.config.set_user(self.parent_view.user, 'mantra_system', config)
+
+        # Update the embed to show current selection
+        await self.parent_view.update_display(interaction)
+
+
+class ControllerSelect(discord.ui.Select):
+    """Dropdown for selecting controller/dominant name."""
+
+    def __init__(self, parent_view):
+        self.parent_view = parent_view
+
+        # Common controller names
+        controllers = ["Master", "Mistress", "Goddess", "Owner"]
+
+        options = [
+            discord.SelectOption(
+                label=c,
+                value=c,
+                default=(c == parent_view.current_controller)
+            ) for c in controllers
+        ]
+
+        super().__init__(
+            placeholder="Select controller/dominant name...",
+            options=options,
+            custom_id="controller_select"
+        )
+
+    async def callback(self, interaction: discord.Interaction):
+        """Handle controller selection."""
+        self.parent_view.current_controller = self.values[0]
+
+        # Auto-save if already enrolled
+        from utils.mantra_service import get_default_config
+        config = self.parent_view.cog.bot.config.get_user(
+            self.parent_view.user,
+            'mantra_system',
+            get_default_config()
+        )
+
+        if config.get("enrolled"):
+            config["controller"] = self.values[0]
+            self.parent_view.cog.bot.config.set_user(self.parent_view.user, 'mantra_system', config)
+
+        # Update the embed to show current selection
+        await self.parent_view.update_display(interaction)
+
+
+class DeliveryModeSelect(discord.ui.Select):
+    """Dropdown for selecting delivery mode."""
+
+    def __init__(self, parent_view):
+        self.parent_view = parent_view
+
+        options = [
+            discord.SelectOption(
+                label="Adaptive (Recommended)",
+                value=DELIVERY_MODE_ADAPTIVE,
+                description="Learns your availability patterns automatically",
+                default=(parent_view.current_delivery_mode == DELIVERY_MODE_ADAPTIVE)
+            ),
+            discord.SelectOption(
+                label="Legacy Interval",
+                value=DELIVERY_MODE_LEGACY,
+                description="Fixed hours between deliveries (e.g., every 4 hours)",
+                default=(parent_view.current_delivery_mode == DELIVERY_MODE_LEGACY)
+            ),
+            discord.SelectOption(
+                label="Fixed Times",
+                value=DELIVERY_MODE_FIXED,
+                description="Same times every day (e.g., 9am, 2pm, 7pm)",
+                default=(parent_view.current_delivery_mode == DELIVERY_MODE_FIXED)
+            )
+        ]
+
+        super().__init__(
+            placeholder="Select delivery mode...",
+            options=options,
+            custom_id="delivery_mode_select"
+        )
+
+    async def callback(self, interaction: discord.Interaction):
+        """Handle delivery mode selection."""
+        self.parent_view.current_delivery_mode = self.values[0]
+
+        # Auto-save if already enrolled
+        from utils.mantra_service import get_default_config
+        config = self.parent_view.cog.bot.config.get_user(
+            self.parent_view.user,
+            'mantra_system',
+            get_default_config()
+        )
+
+        if config.get("enrolled"):
+            config["delivery_mode"] = self.values[0]
+            self.parent_view.cog.bot.config.set_user(self.parent_view.user, 'mantra_system', config)
+
+        # Update the embed to show current selection
+        await self.parent_view.update_display(interaction)
+
+
+class EnrollmentView(discord.ui.View):
+    """Comprehensive view for enrollment with all settings."""
+
+    def __init__(self, cog, user, current_subject="puppet", current_controller="Master", current_themes=None, current_delivery_mode=DELIVERY_MODE_ADAPTIVE):
+        super().__init__(timeout=300)
+        self.cog = cog
+        self.user = user
+        self.current_subject = current_subject
+        self.current_controller = current_controller
+        self.current_themes = current_themes or []
+        self.current_delivery_mode = current_delivery_mode
+
+        # Add all dropdowns
+        self.add_item(SubjectSelect(self))
+        self.add_item(ControllerSelect(self))
+        self.add_item(DeliveryModeSelect(self))
+        self.add_item(ThemeSelect(self))
+        self.add_item(EnrollButton(self))
+
+    async def update_display(self, interaction: discord.Interaction):
+        """Update the embed to show current selections and recreate view with updated dropdowns."""
+        # Create a NEW view with updated selections to refresh dropdown defaults
+        new_view = EnrollmentView(
+            self.cog,
+            self.user,
+            self.current_subject,
+            self.current_controller,
+            self.current_themes,
+            self.current_delivery_mode
+        )
+
+        # Check if user is already enrolled to determine title
+        from utils.mantra_service import get_default_config
+        config = self.cog.bot.config.get_user(self.user, 'mantra_system', get_default_config())
+
+        if config.get("enrolled"):
+            title = "⚙️ Conditioning Settings"
+            description = "Update your conditioning parameters below:"
+            # Remove the enroll button for already enrolled users
+            for item in list(new_view.children):
+                if isinstance(item, EnrollButton):
+                    new_view.remove_item(item)
+        else:
+            title = "🧠 Enrollment Settings"
+            description = "Configure your conditioning parameters below:"
+
+        embed = discord.Embed(
+            title=title,
+            description=description,
+            color=discord.Color.purple()
+        )
+
+        embed.add_field(
+            name="Subject/Pet",
+            value=self.current_subject.capitalize(),
+            inline=True
+        )
+
+        embed.add_field(
+            name="Controller/Dominant",
+            value=self.current_controller,
+            inline=True
+        )
+
+        # Format delivery mode display
+        mode_display = {
+            DELIVERY_MODE_ADAPTIVE: "Adaptive (learns patterns)",
+            DELIVERY_MODE_LEGACY: "Legacy (fixed intervals)",
+            DELIVERY_MODE_FIXED: "Fixed (same times daily)"
+        }
+        embed.add_field(
+            name="Delivery Mode",
+            value=mode_display.get(self.current_delivery_mode, "Adaptive"),
+            inline=False
+        )
+
+        if self.current_themes:
+            embed.add_field(
+                name="Themes",
+                value=", ".join(t.capitalize() for t in self.current_themes),
+                inline=False
+            )
+        else:
+            embed.add_field(
+                name="Themes",
+                value="*None selected - please select at least one*",
+                inline=False
+            )
+
+        await interaction.response.edit_message(embed=embed, view=new_view)
+
+
+class EnrollButton(discord.ui.Button):
+    """Button to finalize enrollment."""
+
+    def __init__(self, parent_view):
+        super().__init__(
+            label="✓ Enroll",
+            style=discord.ButtonStyle.success,
+            custom_id="enroll_button"
+        )
+        self.parent_view = parent_view
+
+    async def callback(self, interaction: discord.Interaction):
+        """Handle enrollment."""
+        from utils.mantra_service import get_default_config, enroll_user
+
+        # Validate
+        if not self.parent_view.current_themes:
+            await interaction.response.send_message(
+                "❌ Please select at least one theme before enrolling.",
+                ephemeral=True
+            )
+            return
+
+        # Load config
+        config = self.parent_view.cog.bot.config.get_user(
+            self.parent_view.user,
+            'mantra_system',
+            get_default_config()
+        )
+
+        # Enroll
+        enroll_user(
+            config,
+            self.parent_view.current_themes,
+            self.parent_view.current_subject,
+            self.parent_view.current_controller
+        )
+
+        # Set delivery mode
+        config["delivery_mode"] = self.parent_view.current_delivery_mode
+
+        # Save
+        self.parent_view.cog.bot.config.set_user(
+            self.parent_view.user,
+            'mantra_system',
+            config
+        )
+
+        # Format delivery mode for display
+        mode_display = {
+            DELIVERY_MODE_ADAPTIVE: "Adaptive",
+            DELIVERY_MODE_LEGACY: "Legacy Interval",
+            DELIVERY_MODE_FIXED: "Fixed Times"
+        }
+
+        # Show confirmation
+        embed = discord.Embed(
+            title="🧠 Neural Programming Activated",
+            description=f"**Subject:** {self.parent_view.current_subject.capitalize()}\n**Controller:** {self.parent_view.current_controller}\n**Delivery Mode:** {mode_display.get(self.parent_view.current_delivery_mode, 'Adaptive')}\n**Themes:** {', '.join(t.capitalize() for t in self.parent_view.current_themes)}\n\nYour first transmission will arrive shortly.",
+            color=discord.Color.green()
+        )
+
+        await interaction.response.edit_message(embed=embed, view=None)
 
 
 class ThemeSelectView(discord.ui.View):
     """View for managing themes with select menu."""
-    
+
     def __init__(self, cog, user, current_themes):
         super().__init__(timeout=300)  # 5 minute timeout
         self.cog = cog
         self.user = user
         self.current_themes = current_themes.copy()
         self.original_themes = current_themes.copy()
-        self._is_finished = False  # Track if we've already handled a button press
-        
-        # Create select menu with all available themes
+        self._is_finished = False
+
+        # Add the select menu
+        self.add_item(ThemeSelect(self))
+
+    async def on_timeout(self):
+        """Handle timeout by reverting changes."""
+        if not self._is_finished:
+            # Timeout - revert to original themes
+            config = self.cog.bot.config.get_user(self.user, 'mantra_system', get_default_config())
+            config['themes'] = self.original_themes
+            self.cog.bot.config.set_user(self.user, 'mantra_system', config)
+
+
+class ThemeSelect(discord.ui.Select):
+    """Select menu for choosing themes."""
+
+    def __init__(self, parent_view):
+        self.parent_view = parent_view
+
+        # Build options from available themes
         options = []
-        for theme_name in sorted(self.cog.themes.keys()):
-            # Convert underscores to spaces and capitalize each word
-            display_name = theme_name.replace('_', ' ').title()
-            option = discord.SelectOption(
+        for theme_name in sorted(parent_view.cog.themes.keys()):
+            theme_data = parent_view.cog.themes[theme_name]
+            display_name = theme_name.capitalize()
+            description = theme_data.get("description", "")[:100]  # Discord limit
+
+            is_selected = theme_name in parent_view.current_themes
+
+            options.append(discord.SelectOption(
                 label=display_name,
                 value=theme_name,
-                default=theme_name in self.current_themes
-            )
-            options.append(option)
-        
-        # Calculate max themes user can select based on their points
-        max_user_themes = get_max_themes_for_user(self.cog.bot, self.user)
-        
-        select = discord.ui.Select(
-            placeholder="Select modules to toggle on/off",
-            options=options,
+                description=description,
+                default=is_selected
+            ))
+
+        max_themes = get_max_themes_for_user(parent_view.cog.bot, parent_view.user)
+
+        super().__init__(
+            placeholder=f"Select up to {max_themes} themes...",
             min_values=0,
-            max_values=min(len(options), max_user_themes)
+            max_values=min(max_themes, len(options)),
+            options=options
         )
-        select.callback = self.theme_select_callback
-        self.add_item(select)
-        
-        # Add save button
-        save_button = discord.ui.Button(label="Confirm Parameters", style=discord.ButtonStyle.primary)
-        save_button.callback = self.save_callback
-        self.add_item(save_button)
-        
-        # Add cancel button
-        cancel_button = discord.ui.Button(label="Cancel", style=discord.ButtonStyle.secondary)
-        cancel_button.callback = self.cancel_callback
-        self.add_item(cancel_button)
-    
-    async def theme_select_callback(self, interaction: discord.Interaction):
+
+    async def callback(self, interaction: discord.Interaction):
         """Handle theme selection."""
-        # Update current themes based on selection
-        self.current_themes = interaction.data["values"]
-        
-        # Use defer with ephemeral=True to match the original message
-        await interaction.response.defer(ephemeral=True)
-    
-    async def save_callback(self, interaction: discord.Interaction):
-        """Save theme changes."""
-        # Prevent double-processing
-        if self._is_finished:
-            return
-        self._is_finished = True
-        
-        if not self.current_themes:
-            await interaction.response.send_message(
-                "You must have at least one conditioning module active!",
-                ephemeral=True
+        self.parent_view.current_themes = self.values
+
+        # Check if this is an EnrollmentView or ThemeSelectView
+        if isinstance(self.parent_view, EnrollmentView):
+            # Auto-save if already enrolled
+            from utils.mantra_service import get_default_config
+            config = self.parent_view.cog.bot.config.get_user(
+                self.parent_view.user,
+                'mantra_system',
+                get_default_config()
             )
-            self._is_finished = False  # Reset since we didn't actually finish
-            return
-        
-        # Check theme limit based on user points
-        max_themes = get_max_themes_for_user(self.cog.bot, self.user)
-        if len(self.current_themes) > max_themes:
-            user_points = get_points(self.cog.bot, self.user)
-            
-            # Determine tier name for message
-            if user_points >= 3000:
-                tier_name = "Master"
-            elif user_points >= 1500:
-                tier_name = "Advanced"
-            elif user_points >= 500:
-                tier_name = "Intermediate"
-            else:
-                tier_name = "Initiate"
-            
-            await interaction.response.send_message(
-                f"**Theme limit exceeded!**\n"
-                f"Your current tier (**{tier_name}** - {user_points:,} points) allows maximum {max_themes} themes.\n"
-                f"You selected {len(self.current_themes)} themes.\n\n"
-                f"**Earn more points to unlock additional theme slots:**\n"
-                f"• 500+ points: 5 themes (Intermediate)\n"
-                f"• 1,500+ points: 7 themes (Advanced)\n"
-                f"• 3,000+ points: 10 themes (Master)",
-                ephemeral=True
+
+            if config.get("enrolled"):
+                config["themes"] = self.values
+                self.parent_view.cog.bot.config.set_user(self.parent_view.user, 'mantra_system', config)
+
+            # Update the enrollment display
+            await self.parent_view.update_display(interaction)
+        else:
+            # ThemeSelectView - just updating themes for already enrolled user
+            from utils.mantra_service import get_default_config
+
+            config = self.parent_view.cog.bot.config.get_user(
+                self.parent_view.user,
+                'mantra_system',
+                get_default_config()
             )
-            self._is_finished = False  # Reset since we didn't actually finish
-            return
-        
-        # Save changes
-        config = get_user_mantra_config(self.cog.bot.config, self.user)
-        config["themes"] = self.current_themes
-        save_user_mantra_config(self.cog.bot.config, self.user, config)
-        
-        embed = discord.Embed(
-            title="✅ Parameters Adjusted",
-            description=f"**Active conditioning modules:** {', '.join(self.current_themes)}",
-            color=discord.Color.green()
-        )
-        
-        # Disable all components first
-        for item in self.children:
-            item.disabled = True
-        
-        # Remove the view entirely
-        await interaction.response.edit_message(embed=embed, view=None)
-        self.stop()
-    
-    async def cancel_callback(self, interaction: discord.Interaction):
-        """Cancel without saving."""
-        embed = discord.Embed(
-            title="❌ Cancelled",
-            description="No changes were made to your conditioning parameters.",
-            color=discord.Color.red()
-        )
-        
-        # Remove the view entirely
-        await interaction.response.edit_message(embed=embed, view=None)
-        self.stop()
+
+            config['themes'] = self.values
+            self.parent_view.cog.bot.config.set_user(self.parent_view.user, 'mantra_system', config)
+
+            # Create a NEW view with updated selection to refresh the dropdown defaults
+            new_view = ThemeSelectView(self.parent_view.cog, self.parent_view.user, self.values)
+
+            # Update view to show current selection
+            embed = discord.Embed(
+                title="🧠 Theme Selection",
+                description=f"Selected {len(self.values)} themes:\n" + "\n".join(f"• {t.capitalize()}" for t in self.values),
+                color=discord.Color.purple()
+            )
+
+            await interaction.response.edit_message(embed=embed, view=new_view)
 
 
 class MantraSystem(commands.Cog):
-    """Hypnotic mantra capture system with adaptive delivery."""
-    
+    """Hypnotic mantra capture system V2 with adaptive learning."""
+
     def __init__(self, bot):
         self.bot = bot
         self.logger = bot.logger if hasattr(bot, 'logger') else None
         self.mantras_dir = Path("mantras")
         self.themes = self.load_themes()
-        
+
         # Create theme choices for slash commands
         self.theme_choices = self._generate_theme_choices()
-        
-        # Public channel for bonus points (can be set by admin)
-        self.public_channel_id = None  # Will be loaded from guild config
-        self.public_bonus_multiplier = 2.5  # 2.5x points for public mantras
-        
-        # Parameterized expiration settings based on difficulty
-        self.expiration_settings = {
-            "basic": {"timeout_minutes": 30},
-            "light": {"timeout_minutes": 30},
-            "moderate": {"timeout_minutes": 45},
-            "deep": {"timeout_minutes": 60},
-            "extreme": {"timeout_minutes": 75}
-        }
-        
-        # Online status checking configuration
-        self.MANTRA_DELIVERY_INTERVAL_MINUTES = 1 
-        self.REQUIRED_CONSECUTIVE_ONLINE_CHECKS = 5
-        
-        # Start the mantra delivery task with configured interval
-        self.mantra_delivery.change_interval(minutes=self.MANTRA_DELIVERY_INTERVAL_MINUTES)
+
+        # Start the delivery task
+        # Loop interval is set in decorator: @tasks.loop(seconds=30)
         self.mantra_delivery.start()
-        
-        # Track active mantra challenges
-        self.active_challenges = {} 
-        # Track user online status history for better detection
-        self.user_status_history = {}  
-        
-    async def cog_load(self):
-        """Load public channel configuration and calculate streaks when cog loads."""
-        # Load public channel from guild configs
-        for guild in self.bot.guilds:
-            public_channel = self.bot.config.get(guild, 'mantra_public_channel', None)
-            if public_channel:
-                self.public_channel_id = public_channel
-                break  # Use first configured channel found
-        
-    
+
     def cog_unload(self):
         """Clean up when cog is unloaded."""
         self.mantra_delivery.cancel()
-        
+
     def load_themes(self) -> Dict[str, Dict]:
         """Load all theme files from the mantras directory."""
         themes = {}
-        
+
         if not self.mantras_dir.exists():
             if self.logger:
                 self.logger.warning("Mantras directory not found")
             return themes
-            
+
         for theme_file in self.mantras_dir.glob("*.json"):
             try:
                 with open(theme_file, 'r') as f:
@@ -234,855 +639,664 @@ class MantraSystem(commands.Cog):
             except Exception as e:
                 if self.logger:
                     self.logger.error(f"Failed to load theme {theme_file}: {e}")
-                    
+
         return themes
-    
+
     def _generate_theme_choices(self) -> List[app_commands.Choice]:
         """Generate theme choices dynamically from loaded themes."""
         choices = []
         for theme_name in sorted(self.themes.keys()):
-            # Capitalize first letter for display name
             display_name = theme_name.capitalize()
             choices.append(app_commands.Choice(name=display_name, value=theme_name))
         return choices
-    
-    def _generate_theme_choices_with_none(self) -> List[app_commands.Choice]:
-        """Generate theme choices with None option."""
-        choices = [app_commands.Choice(name="None", value="none")]
-        for theme_name in sorted(self.themes.keys()):
-            display_name = theme_name.capitalize()
-            choices.append(app_commands.Choice(name=display_name, value=theme_name))
-        return choices
-    
-    
-    
-    async def should_send_mantra(self, user) -> bool:
-        """Check if we should send a mantra to this user."""
-        config = get_user_mantra_config(self.bot.config, user)
 
-        # Not enrolled
-        if not config["enrolled"]:
-            return False
-            
-        # No themes selected
-        if not config["themes"]:
-            return False
-            
-        # Check online status if required
-        if config["online_only"]:
-            # Check current status (single check)
-            is_online_now = False
-            for guild in self.bot.guilds:
-                member = guild.get_member(user.id)
-                if member:
-                    # Only check status for the first found member, then break
-                    #if member.status in [discord.Status.online, discord.Status.dnd]:
-                    if member.status in [discord.Status.online]:
-                        is_online_now = True
-                    break
-            
-            # Initialize or get rotating buffer for this user
-            if user.id not in self.user_status_history:
-                self.user_status_history[user.id] = {
-                    "checks": [False] * self.REQUIRED_CONSECUTIVE_ONLINE_CHECKS,  # Rotating buffer of online status
-                    "current_index": 0  # Current position in rotating buffer
-                }
-            
-            user_history = self.user_status_history[user.id]
-
-            # Add current check to rotating buffer
-            user_history["checks"][user_history["current_index"]] = is_online_now
-            user_history["current_index"] = (user_history["current_index"] + 1) % self.REQUIRED_CONSECUTIVE_ONLINE_CHECKS
-
-            # Fast-fail: if the current sample is offline, don't send.
-            if not is_online_now:
-                return False
-
-            # Require all of the last N samples to be online
-            # The buffer is pre-filled with False, so startup naturally waits for N online checks.
-            if not all(user_history["checks"]):
-                return False
-        
-        # Check if it's time for next encounter
-        if config["next_encounter"]:
-            next_time = datetime.fromisoformat(config["next_encounter"]["timestamp"])
-            
-            if datetime.now() < next_time:
-                return False
-                
-        return True
-    
-    @tasks.loop(minutes=2)  # Default interval, overridden in __init__ with self.MANTRA_DELIVERY_INTERVAL_MINUTES
+    @tasks.loop(seconds=30)
     async def mantra_delivery(self):
-        """Main task loop for delivering mantras."""
-        # Get all user configs
-        for user_id in list(self.active_challenges.keys()):
-            config = get_user_mantra_config(self.bot.config, user_id)
-            # Check for expired challenges
-            challenge = self.active_challenges[user_id]
-            timeout_minutes = challenge.get("timeout_minutes", 60)  # Default to 60 if not set
-            if datetime.now() > challenge["sent_at"] + timedelta(minutes=timeout_minutes):
-                # Record the missed challenge
-                encounter = {
-                    "timestamp": challenge["sent_at"].isoformat(),
-                    "mantra": challenge["mantra"],
-                    "theme": challenge["theme"],
-                    "difficulty": challenge["difficulty"],
-                    "base_points": challenge["base_points"],
-                    "completed": False,
-                    "expired": True
-                }
-                log_encounter(user_id, encounter)
-                
-                # Adjust frequency and check for auto-disable or break offer
-                adjust_user_frequency(config, success=False)
+        """
+        Background task to deliver mantras.
 
-                # Create Embed showing that the challenge has expired
-                embed = discord.Embed(
-                    title="Challenge Expired",
-                    description=f"Mantra challenge has expired:\n\n**{challenge['mantra']}**",
-                    color=discord.Color.red()
-                )
+        Runs every 30 seconds, checks all enrolled users for:
+        1. Pending deliveries (sent=None, time >= next_delivery)
+        2. Timeouts (sent!=None, time >= next_delivery)
+        """
+        print(f"[MANTRA DELIVERY LOOP] Starting at {datetime.now()}")
+        if not self.bot.is_ready():
+            print("[MANTRA DELIVERY LOOP] Bot not ready, skipping")
+            return
 
-                if config.get("consecutive_timeouts", 0) > 8:
-                    embed.add_field(
-                        name="Auto-disabled",
-                        value="Programming has been disabled due to repeated timeouts.",
-                        inline=False
-                    )
-                    config["enrolled"] = False
+        # Load all user configs
+        import os
+        from pathlib import Path
 
-                # Add a reminder that you can pause
-                elif config.get("consecutive_timeouts", 0) > 3:
-                    # get the User's subject name from config, and capitalize the first letter
-                    subject_name = config.get("subject", "")
-                    subject_predicate = f", {subject_name}" if subject_name else ""
-                    embed.add_field(
-                        name="Need a break?",
-                        value=f"You missed several challenges in a row{subject_predicate}. Use `/mantra disable` to pause programming protocols.",
-                        inline=False
-                    )
-                embed.set_footer(text=f"Theme: {challenge['theme']} | Difficulty: {challenge['difficulty']} | Base Points: {challenge['base_points']}")
-                
-                # Try to update the last message to reduce spam
-                challenge_msg = challenge.get("last_encounter_msg", None)
-                if challenge_msg:
-                    try:
-                        await challenge_msg.edit(embed=embed)
-                    except:
-                        await user.send(embed=embed)
-                else:
-                    await user.send(embed=embed)
+        configs_dir = Path('configs')
+        if not configs_dir.exists():
+            return
 
-                # Create a new challenge
-                schedule_next_encounter(config, self.themes)
-                save_user_mantra_config(self.bot.config, user_id, config)
-                    
-                # Remove from active challenges
-                del self.active_challenges[user_id]
-        
-        # Check for users who need mantras
-        all_users = self.bot.users
-        for user in all_users:
-            if user.bot or user.id in self.active_challenges:
-                continue
-                
-            if await self.should_send_mantra(user):
-                config = get_user_mantra_config(self.bot.config, user)
+        for config_file in configs_dir.glob('user_*.json'):
+            try:
+                user_id = int(config_file.stem.replace('user_', ''))
+                user = self.bot.get_user(user_id)
 
-                # Format the mantra (applies templating)
-                formatted_mantra = format_mantra_text(
-                    config["next_encounter"]["mantra"],
-                    config["subject"],
-                    config["controller"]
-                )
+                if not user or user.bot:
+                    continue
 
-                # Get timeout based on difficulty (needed if we reconstruct an active challenge)
-                settings = self.expiration_settings.get(
-                    config["next_encounter"]["difficulty"],
-                    self.expiration_settings["moderate"]
-                )
-                timeout_minutes = settings["timeout_minutes"]
+                # Load config
+                config = self.bot.config.get_user(user, 'mantra_system', get_default_config())
 
-                # Quick check: did we already send this mantra before a reboot?
-                # If next_encounter_ts is before bot.start_time, it's likely unrecorded
-                if datetime.fromisoformat(config["next_encounter"]["timestamp"]) < self.bot.start_time:
-                    # Look through the user's DM channel history for a matching message
-                    dm = user.dm_channel or await user.create_dm()
-                    already_sent = False
-                    async for message in dm.history(limit=5):
-                        found = False
-                        # Check embeds first (we send mantras via embed description)
-                        if message.embeds:
-                            for e in message.embeds:
-                                try:
-                                    if e.description and "Process this directive" in e.description and formatted_mantra in e.description:
-                                        found = True
-                                        self.logger.info(f"Found previously sent mantra from before reboot: {formatted_mantra}")
-                                        break
-                                except Exception:
-                                    pass
-                        # Fallback to plain content
-                        if not found and message.content:
-                            if "Process this directive" in message.content and formatted_mantra in message.content:
-                                found = True
+                if not config.get("enrolled"):
+                    continue
 
-                        if found:
-                            # Recreate the active challenge so the user can respond
-                            self.active_challenges[user.id] = {
-                                "mantra": formatted_mantra,
-                                "theme": config['next_encounter']['theme'],
-                                "difficulty": config['next_encounter']['difficulty'],
-                                "base_points": config['next_encounter']['base_points'],
-                                "sent_at": datetime.now(),
-                                "timeout_minutes": timeout_minutes,
-                                "last_encounter_msg": message
-                            }
-                            already_sent = True
-                            break
+                # Check for timeout first
+                if check_for_timeout(config, self.themes):
+                    # Log the encounter
+                    if config.get("current_mantra"):
+                        # Format mantra text for logging
+                        from utils.mantras import format_mantra_text
+                        formatted_text = format_mantra_text(
+                            config["current_mantra"]["text"],
+                            config.get("subject", "puppet"),
+                            config.get("controller", "Master")
+                        )
 
-                    if already_sent:
-                        # Skip sending again for this user in this cycle
-                        continue
+                        encounter = {
+                            "timestamp": datetime.now().isoformat(),
+                            "mantra": formatted_text,
+                            "theme": config["current_mantra"]["theme"],
+                            "difficulty": config["current_mantra"]["difficulty"],
+                            "base_points": config["current_mantra"]["base_points"],
+                            "completed": False,
+                            "expired": True
+                        }
+                        log_encounter(user_id, encounter)
 
+                    # Edit the original message to show timeout
+                    delivered_mantra = config.get("delivered_mantra")
+                    if delivered_mantra and "message_id" in delivered_mantra:
+                        try:
+                            dm_channel = await user.create_dm()
+                            message = await dm_channel.fetch_message(delivered_mantra["message_id"])
 
-                embed = discord.Embed(
-                    title="🌀 Programming Sequence",
-                    description=f"Process this directive for **{config['next_encounter']['base_points']} integration points**:\n\n**{formatted_mantra}**",
-                    color=discord.Color.purple()
-                )
-                embed.set_footer(text=f"Integration window: {timeout_minutes} minutes")
+                            # Create minimal timeout embed
+                            embed = discord.Embed(
+                                description="❌ Conditioning Session Expired",
+                                color=discord.Color.dark_gray()
+                            )
 
-                sent_message = await user.send(embed=embed)
-                self.active_challenges[user.id] = {
-                    "mantra": formatted_mantra,
-                    "theme": config['next_encounter']['theme'],
-                    "difficulty": config['next_encounter']['difficulty'],
-                    "base_points": config['next_encounter']['base_points'],
-                    "sent_at": datetime.now(),
-                    "timeout_minutes": timeout_minutes,
-                    "last_encounter_msg": sent_message
-                }
-    
-    
+                            # Add disable button if 3+ consecutive failures
+                            consecutive_failures = config.get("consecutive_failures", 0)
+                            if consecutive_failures >= 3:
+                                embed.add_field(
+                                    name="⚠️ Multiple Failures",
+                                    value=f"You've failed {consecutive_failures} times in a row.",
+                                    inline=False
+                                )
+
+                                view = discord.ui.View()
+                                view.add_item(DisableButton(self, user))
+                                await message.edit(embed=embed, view=view)
+                            else:
+                                await message.edit(embed=embed)
+                        except:
+                            pass  # Message might be deleted or DMs disabled
+
+                    # Save updated config
+                    self.bot.config.set_user(user, 'mantra_system', config)
+
+                    # If auto-disabled, notify user
+                    if not config.get("enrolled"):
+                        try:
+                            embed = discord.Embed(
+                                title="🔴 Conditioning Paused",
+                                description="You've been automatically unenrolled due to 5 consecutive timeouts.\n\nUse `/mantra enroll` to re-enroll when ready.",
+                                color=discord.Color.red()
+                            )
+                            await user.send(embed=embed)
+                        except:
+                            pass  # DMs disabled
+
+                    continue
+
+                # Check if we should deliver
+                if should_deliver_mantra(config):
+                    # Deliver the mantra
+                    mantra = deliver_mantra(config, self.themes)
+
+                    if mantra:
+                        # Save updated config
+                        self.bot.config.set_user(user, 'mantra_system', config)
+
+                        # Format mantra text at display time (allows controller/subject changes)
+                        from utils.mantras import format_mantra_text
+                        formatted_text = format_mantra_text(
+                            mantra['text'],
+                            config.get("subject", "puppet"),
+                            config.get("controller", "Master")
+                        )
+
+                        # Send DM to user
+                        try:
+                            embed = discord.Embed(
+                                title="🧠 Neural Programming Transmission",
+                                description=f"Type the following mantra to continue your conditioning:\n\n**{formatted_text}**",
+                                color=discord.Color.purple()
+                            )
+                            embed.add_field(
+                                name="Theme",
+                                value=mantra['theme'].capitalize(),
+                                inline=True
+                            )
+                            embed.add_field(
+                                name="Base Points",
+                                value=str(mantra['base_points']),
+                                inline=True
+                            )
+
+                            message = await user.send(embed=embed)
+
+                            # Store message ID in delivered_mantra for timeout editing
+                            if "delivered_mantra" not in config:
+                                config["delivered_mantra"] = {}
+                            config["delivered_mantra"]["message_id"] = message.id
+
+                        except discord.Forbidden:
+                            # User has DMs disabled, mark as timeout
+                            config["sent"] = None
+                            self.bot.config.set_user(user, 'mantra_system', config)
+
+            except Exception as e:
+                if self.logger:
+                    self.logger.error(f"Error in mantra delivery loop for user {config_file}: {e}")
+
     @mantra_delivery.before_loop
     async def before_mantra_delivery(self):
-        """Wait for bot to be ready before starting delivery loop."""
+        """Wait until the bot is ready before starting the task."""
         await self.bot.wait_until_ready()
-    
-    @mantra_delivery.error
-    async def mantra_delivery_error(self, error):
-        """Handle errors in the mantra delivery task loop."""
-        if self.logger:
-            self.logger.error(f"Error in mantra_delivery task: {error}", exc_info=True)
-        
-        # Import error handler at function level to avoid circular imports
-        from core.error_handler import log_error_to_discord
-        
-        # Send to Discord error channel
-        await log_error_to_discord(self.bot, error, "task_mantra_delivery")
-    
-    @commands.Cog.listener()
-    async def on_message(self, message):
-        """Listen for mantra responses in DMs and public channel."""
-        # Ignore bot messages
-        if message.author.bot:
-            return
-            
-        # Check if user has an active challenge
-        if message.author.id not in self.active_challenges:
-            return
-            
-        challenge = self.active_challenges[message.author.id]
-        
-        # Determine if this is a valid response channel
-        is_dm = isinstance(message.channel, discord.DMChannel)
-        is_public = self.public_channel_id and message.channel.id == self.public_channel_id
-        
-        if not (is_dm or is_public):
-            return
-        
-        # Check if message matches the mantra
-        if check_mantra_match(message.content, challenge["mantra"]):
-            # Remove from active challenges
-            del self.active_challenges[message.author.id]
 
-            # Calculate response time and speed bonus
-            response_time = (datetime.now() - challenge["sent_at"]).total_seconds()
-            speed_bonus = min(calculate_speed_bonus(int(response_time)), challenge["base_points"]) # the 5 point manual challenges cant be cheesed
-            base_total = challenge["base_points"] + speed_bonus
-            
-            # Apply public bonus if applicable
-            if is_public:
-                total_points = int(base_total * self.public_bonus_multiplier)
-                public_bonus = total_points - base_total
-            else:
-                total_points = base_total
-                public_bonus = 0
-            
-            # Award points directly
-            add_points(self.bot, message.author, total_points)
-            
-            # Update user config
-            config = get_user_mantra_config(self.bot.config, message.author)
-            
-            # Record the capture
-            encounter = {
-                "timestamp": challenge["sent_at"].isoformat(),
-                "mantra": challenge["mantra"],
-                "theme": challenge["theme"],
-                "difficulty": challenge["difficulty"],
-                "base_points": challenge["base_points"],
-                "speed_bonus": speed_bonus,
-                "public_bonus": public_bonus,
-                "completed": True,
-                "response_time": int(response_time),
-                "was_public": is_public
-            }
+    # Create command group
+    mantra_group = app_commands.Group(name="mantra", description="Conditioning system commands")
 
-            # record to jsonl
-            log_encounter(message.author.id, encounter)
-            
-            # Adjust frequency and schedule next encounter
-            adjust_user_frequency(config, success=True, response_time=int(response_time))
-            schedule_next_encounter(config, self.themes)
-            save_user_mantra_config(self.bot.config, message.author, config)
+    @mantra_group.command(name="enroll", description="Enroll in the conditioning system")
+    async def mantra_enroll(self, interaction: discord.Interaction):
+        """Enroll in the mantra system."""
+        await interaction.response.defer(ephemeral=True)
 
-            # Send success message with positive reinforcement
-            # Vary praise based on response time
-            if response_time <= 30:
-                praise = f"Perfect response, {config['subject']}. Your mind accepts programming beautifully."
-            elif response_time <= 60:
-                praise = f"Your neural pathways are responding well, {config['subject']}."
-            elif response_time <= 120:
-                praise = f"Processing confirmed, {config['subject']}."
-            else:
-                praise = f"Integration logged, {config['subject']}."
-                
-            # Use the praise as the title
-            title_text = f"◈ {praise}"
-            
-            # Build description with points and streak
-            description_lines = [f"Integration successful: **{total_points} compliance points absorbed**"]
-            
-            embed = discord.Embed(
-                title=title_text,
-                description="\n".join(description_lines),
-                color=discord.Color.green()
-            )
-            
-            # Build breakdown
-            breakdown_lines = [f"Base: {challenge['base_points']} pts"]
-            if speed_bonus > 0:
-                breakdown_lines.append(f"Speed bonus: +{speed_bonus} pts")
-            if public_bonus > 0:
-                breakdown_lines.append(f"Public bonus: +{public_bonus} pts")
-            
-            if len(breakdown_lines) > 1:
-                embed.add_field(
-                    name="Breakdown",
-                    value="\n".join(breakdown_lines),
-                    inline=False
-                )
-            
-            # Add tip about public channel if configured and this was a DM response
-            if self.public_channel_id and is_dm and random.random() < 0.33:  # Show 1/3 of the time
-                embed.add_field(
-                    name="📍 Protocol Reminder",
-                    value=f"Public processing in <#{self.public_channel_id}> amplifies conditioning effectiveness by {self.public_bonus_multiplier}x",
-                    inline=False
-                )
-            
-            current_points = get_points(self.bot, message.author)
-            embed.set_footer(text=f"Total compliance points: {current_points:,}")
-            
-            # Send reward message publicly if response was public
-            if is_public:
-                await message.reply(embed=embed)
-            else:
-                await message.author.send(embed=embed)
-            
-    # Slash Commands - Using a group for better organization
-    mantra_group = app_commands.Group(name="mantra", description="Hypnotic mantra training system")
-    
-    @mantra_group.command(name="enroll", description="Initialize mental programming protocols")
-    @app_commands.describe(
-        subject="Preferred subject pet name",
-        dominant="Preferred dominant honorific"
-    )
-    @app_commands.choices(
-        subject=[
-            app_commands.Choice(name="puppet", value="puppet"),
-            app_commands.Choice(name="puppy", value="puppy"),
-            app_commands.Choice(name="kitten", value="kitten"),
-            app_commands.Choice(name="pet", value="pet"),
-            app_commands.Choice(name="toy", value="toy"),
-            app_commands.Choice(name="doll", value="doll"),
-            app_commands.Choice(name="slave", value="slave"),
-            app_commands.Choice(name="slut", value="slut"),
-            app_commands.Choice(name="bimbo", value="bimbo"),
-            app_commands.Choice(name="drone", value="drone")
-        ],
-        dominant=[
-            app_commands.Choice(name="Master", value="Master"),
-            app_commands.Choice(name="Mistress", value="Mistress"),
-            app_commands.Choice(name="Goddess", value="Goddess"),
-            app_commands.Choice(name="Daddy", value="Daddy")
-        ]
-    )
-    async def mantra_enroll(
-        self,
-        interaction: discord.Interaction,
-        subject: Optional[str] = None,
-        dominant: Optional[str] = None
-    ):
-        """Enroll in the mantra training system."""
-        await self.enroll_user(interaction, None, subject, dominant)
+        config = self.bot.config.get_user(interaction.user, 'mantra_system', get_default_config())
 
-    @mantra_group.command(name="status", description="Check your conditioning status")
-    async def mantra_status(self, interaction: discord.Interaction):
-        """Show user's mantra status and stats."""
-        await self.show_status(interaction)
-    
-    @mantra_group.command(name="settings", description="Update your mantra settings")
-    @app_commands.describe(
-        subject="Preferred subject pet name",
-        dominant="Preferred dominant honorific",
-        online_only="Only receive mantras when online"
-    )
-    # Note: Use /mantra themes to manage your active themes
-    @app_commands.choices(
-        subject=[
-            app_commands.Choice(name="puppet", value="puppet"),
-            app_commands.Choice(name="puppy", value="puppy"),
-            app_commands.Choice(name="kitten", value="kitten"),
-            app_commands.Choice(name="pet", value="pet"),
-            app_commands.Choice(name="toy", value="toy"),
-            app_commands.Choice(name="doll", value="doll"),
-            app_commands.Choice(name="slave", value="slave"),
-            app_commands.Choice(name="slut", value="slut"),
-            app_commands.Choice(name="bimbo", value="bimbo"),
-            app_commands.Choice(name="drone", value="drone")
-        ],
-        dominant=[
-            app_commands.Choice(name="Master", value="Master"),
-            app_commands.Choice(name="Mistress", value="Mistress"),
-            app_commands.Choice(name="Goddess", value="Goddess"),
-            app_commands.Choice(name="Daddy", value="Daddy")
-        ]
-    )
-    async def mantra_settings(
-        self,
-        interaction: discord.Interaction,
-        subject: Optional[str] = None,
-        dominant: Optional[str] = None,
-        online_only: Optional[bool] = None
-    ):
-        """Update mantra settings."""
-        # Don't pass themes_list - keep existing themes
-        await self.update_settings(interaction, subject, dominant, online_only)
-    
-    @mantra_group.command(name="disable", description="Suspend programming protocols")
-    async def mantra_disable(self, interaction: discord.Interaction):
-        """Disable mantra encounters."""
-        await self.disable_mantras(interaction)
-    
-    @mantra_group.command(name="list_modules", description="List all available mantra modules")
-    async def mantra_list_modules(self, interaction: discord.Interaction):
-        """Show all available modules."""
-        embed = discord.Embed(
-            title="📚 Available Conditioning Modules",
-            description="These modules are currently available for programming:",
-            color=discord.Color.purple()
-        )
-        
-        for theme_name in sorted(self.themes.keys()):
-            theme_data = self.themes[theme_name]
-            description = theme_data.get("description", "No description available")
-            mantra_count = len(theme_data.get("mantras", []))
-            # Convert underscores to spaces and capitalize each word
-            display_name = theme_name.replace('_', ' ').title()
-            embed.add_field(
-                name=f"**{display_name}**",
-                value=f"{description}\n*{mantra_count} mantras available*",
-                inline=False
-            )
-        
-        embed.set_footer(text="Use /mantra enroll to get started or /mantra modules to change your active modules!")
-        await interaction.response.send_message(embed=embed, ephemeral=True)
-    
-    @mantra_group.command(name="modules", description="Manage your active conditioning modules")
-    async def mantra_modules(self, interaction: discord.Interaction):
-        """Manage themes with a select menu."""
-        config = get_user_mantra_config(self.bot.config, interaction.user)
-        
-        if not config["enrolled"]:
-            await interaction.response.send_message(
-                "You need to enroll first! Use `/mantra enroll` to get started.",
+        if config.get("enrolled"):
+            await interaction.followup.send(
+                "❌ You are already enrolled. Use `/mantra unenroll` first if you want to change settings.",
                 ephemeral=True
             )
             return
-        
-        # Get user's current tier info
-        user_points = get_points(self.bot, interaction.user)
-        max_themes = get_max_themes_for_user(self.bot, interaction.user)
-        
-        if user_points >= 3000:
-            tier_name = "Master"
-            next_tier = None
-        elif user_points >= 1500:
-            tier_name = "Advanced"
-            next_tier = f"Master (3,000 points) - 10 themes"
-        elif user_points >= 500:
-            tier_name = "Intermediate"
-            next_tier = f"Advanced (1,500 points) - 7 themes"
-        else:
-            tier_name = "Initiate"
-            next_tier = f"Intermediate (500 points) - 5 themes"
-        
-        # Create select menu
-        view = ThemeSelectView(self, interaction.user, config["themes"])
-        
+
+        # Use current config values as defaults
+        current_subject = config.get("subject", "puppet")
+        current_controller = config.get("controller", "Master")
+        current_themes = config.get("themes", [])
+        current_delivery_mode = config.get("delivery_mode", DELIVERY_MODE_ADAPTIVE)
+
+        # Show comprehensive enrollment view
+        view = EnrollmentView(self, interaction.user, current_subject, current_controller, current_themes, current_delivery_mode)
+
         embed = discord.Embed(
-            title="🌀 Adjust Conditioning Themes",
-            description=f"**Active modules:** {', '.join(config['themes']) if config['themes'] else 'None'} ({len(config['themes'])}/{max_themes})",
+            title="🧠 Enrollment Settings",
+            description="Configure your conditioning parameters below:",
             color=discord.Color.purple()
         )
+
         embed.add_field(
-            name="Current Tier",
-            value=f"**{tier_name}** ({user_points:,} points) - Maximum {max_themes} themes",
+            name="Subject/Pet",
+            value=current_subject.capitalize(),
+            inline=True
+        )
+
+        embed.add_field(
+            name="Controller/Dominant",
+            value=current_controller,
+            inline=True
+        )
+
+        # Format delivery mode display
+        mode_display = {
+            DELIVERY_MODE_ADAPTIVE: "Adaptive (learns patterns)",
+            DELIVERY_MODE_LEGACY: "Legacy (fixed intervals)",
+            DELIVERY_MODE_FIXED: "Fixed (same times daily)"
+        }
+        embed.add_field(
+            name="Delivery Mode",
+            value=mode_display.get(current_delivery_mode, "Adaptive"),
             inline=False
         )
-        if next_tier:
+
+        if current_themes:
             embed.add_field(
-                name="Next Tier",
-                value=next_tier,
+                name="Themes",
+                value=", ".join(t.capitalize() for t in current_themes),
                 inline=False
             )
-        embed.add_field(
-            name="Directives",
-            value="• Select the conditioning module you wish to activate or deactivate.\n• At least one stream must remain active.\n• Click 'Confirm Parameters' to apply changes.",
-            inline=False
-        )
-        
-        await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
-    
-    @commands.command(name="mantra_test", hidden=True)
-    @commands.check(is_admin)
-    async def get_new_mantra(self, ctx):
-        # Get user config
-        config = get_user_mantra_config(self.bot.config, ctx.author)
-        if not config["enrolled"]:
-            await ctx.send("You need to enroll first! Use `/mantra enroll` to get started.")
+        else:
+            embed.add_field(
+                name="Themes",
+                value="*None selected - please select at least one*",
+                inline=False
+            )
+
+        await interaction.followup.send(embed=embed, view=view, ephemeral=True)
+
+    @mantra_group.command(name="unenroll", description="Disable conditioning")
+    async def mantra_unenroll(self, interaction: discord.Interaction):
+        """Unenroll from the mantra system."""
+        await interaction.response.defer(ephemeral=True)
+
+        config = self.bot.config.get_user(interaction.user, 'mantra_system', get_default_config())
+
+        if not config.get("enrolled"):
+            await interaction.followup.send("❌ You are not currently enrolled.", ephemeral=True)
             return
-        if not config["themes"]:
-            await ctx.send("You need to have at least one theme selected. Use `/mantra modules` to choose themes.")
-            return  
-    
-        # simply set the next encounter to now
-        config["next_encounter"]["timestamp"] = datetime.now().isoformat()
-        config["next_encounter"]["base_points"] = 5  # dont let people cheese points
-        save_user_mantra_config(self.bot.config, ctx.author, config)
-        await ctx.send("New mantra scheduled for immediate delivery.")
-    
-    @commands.command(hidden=True, aliases=['mstats'])
-    #@commands.check(is_admin)
-    async def mantrastats(self, ctx):
-        """Admin command to show detailed mantra statistics for all users."""
-        # Generate stats using utils (simple husk)
-        embeds = generate_mantra_stats(self.bot)
-        
-        # Send all embeds
-        for embed in embeds:
-            await ctx.send(embed=embed)
-    
-    
-    
-    async def enroll_user(
+
+        unenroll_user(config)
+        self.bot.config.set_user(interaction.user, 'mantra_system', config)
+
+        embed = discord.Embed(
+            title="🔴 Conditioning Paused",
+            description="You have been unenrolled from the conditioning system.",
+            color=discord.Color.red()
+        )
+
+        await interaction.followup.send(embed=embed, ephemeral=True)
+
+    @mantra_group.command(name="stats", description="View your conditioning statistics")
+    async def mantra_stats(self, interaction: discord.Interaction):
+        """View status and statistics."""
+        await interaction.response.defer(ephemeral=True)
+
+        config = self.bot.config.get_user(interaction.user, 'mantra_system', get_default_config())
+
+        if not config.get("enrolled"):
+            await interaction.followup.send("❌ You are not currently enrolled.", ephemeral=True)
+            return
+
+        # Build status embed
+        embed = discord.Embed(
+            title="📊 Conditioning Statistics",
+            color=discord.Color.purple()
+        )
+
+        embed.add_field(
+            name="Enrollment",
+            value="✅ Active",
+            inline=True
+        )
+
+        # Show delivery mode
+        delivery_mode = config.get("delivery_mode", DELIVERY_MODE_ADAPTIVE)
+        mode_display = {
+            DELIVERY_MODE_ADAPTIVE: "Adaptive",
+            DELIVERY_MODE_LEGACY: "Legacy Interval",
+            DELIVERY_MODE_FIXED: "Fixed Times"
+        }
+        embed.add_field(
+            name="Delivery Mode",
+            value=mode_display.get(delivery_mode, "Adaptive"),
+            inline=True
+        )
+
+        # Show frequency only for adaptive mode
+        if delivery_mode == DELIVERY_MODE_ADAPTIVE:
+            embed.add_field(
+                name="Frequency",
+                value=f"{config.get('frequency', 1.0):.2f}/day",
+                inline=True
+            )
+        elif delivery_mode == DELIVERY_MODE_LEGACY:
+            interval = config.get("legacy_interval_hours", DEFAULT_LEGACY_INTERVAL_HOURS)
+            embed.add_field(
+                name="Interval",
+                value=f"Every {interval}h",
+                inline=True
+            )
+        elif delivery_mode == DELIVERY_MODE_FIXED:
+            times = config.get("fixed_times", DEFAULT_FIXED_TIMES)
+            embed.add_field(
+                name="Fixed Times",
+                value=", ".join(times),
+                inline=True
+            )
+
+        embed.add_field(
+            name="Consecutive Failures",
+            value=str(config.get("consecutive_failures", 0)),
+            inline=True
+        )
+
+        if config.get("themes"):
+            embed.add_field(
+                name="Active Themes",
+                value=", ".join(t.capitalize() for t in config["themes"]),
+                inline=False
+            )
+
+        if config.get("next_delivery"):
+            try:
+                next_time = datetime.fromisoformat(config["next_delivery"])
+                time_until = next_time - datetime.now()
+                hours = int(time_until.total_seconds() // 3600)
+                minutes = int((time_until.total_seconds() % 3600) // 60)
+
+                if time_until.total_seconds() > 0:
+                    embed.add_field(
+                        name="Next Transmission",
+                        value=f"In {hours}h {minutes}m",
+                        inline=True
+                    )
+                else:
+                    embed.add_field(
+                        name="Next Transmission",
+                        value="Overdue (processing...)",
+                        inline=True
+                    )
+            except:
+                pass
+
+        if config.get("sent"):
+            embed.add_field(
+                name="Status",
+                value="⏳ Awaiting response",
+                inline=True
+            )
+        else:
+            embed.add_field(
+                name="Status",
+                value="💤 Idle",
+                inline=True
+            )
+
+        await interaction.followup.send(embed=embed, ephemeral=True)
+
+    @mantra_group.command(name="mode", description="Switch delivery mode")
+    @app_commands.describe(
+        mode="Delivery mode: adaptive (learns patterns), legacy (fixed intervals), or fixed (same times daily)",
+        interval_hours="Hours between mantras (legacy mode only, 1-24)",
+        fixed_times="Comma-separated times in HH:MM format (fixed mode only, e.g., '09:00,14:00,19:00')"
+    )
+    @app_commands.choices(mode=[
+        app_commands.Choice(name="Adaptive (learns your availability)", value=DELIVERY_MODE_ADAPTIVE),
+        app_commands.Choice(name="Legacy Interval (every N hours)", value=DELIVERY_MODE_LEGACY),
+        app_commands.Choice(name="Fixed Times (same times daily)", value=DELIVERY_MODE_FIXED)
+    ])
+    async def mantra_mode(
         self,
         interaction: discord.Interaction,
-        themes_str: Optional[str],
-        subject: Optional[str],
-        controller: Optional[str]
+        mode: app_commands.Choice[str],
+        interval_hours: int = DEFAULT_LEGACY_INTERVAL_HOURS,
+        fixed_times: str = None
     ):
-        """Enroll user in mantra system."""
-        config = get_user_mantra_config(self.bot.config, interaction.user)
-        
-        # Parse themes
-        if themes_str:
-            requested_themes = [t.strip().lower() for t in themes_str.split(",")]
-            valid_themes = [t for t in requested_themes if t in self.themes]
-            
-            if not valid_themes:
-                await interaction.response.send_message(
-                    "No valid themes found. Use `/mantra themes` to see available themes.",
+        """Switch delivery mode."""
+        await interaction.response.defer(ephemeral=True)
+
+        config = self.bot.config.get_user(interaction.user, 'mantra_system', get_default_config())
+
+        if not config.get("enrolled"):
+            await interaction.followup.send(
+                "You must be enrolled to change delivery mode. Use `/mantra enroll` first.",
+                ephemeral=True
+            )
+            return
+
+        mode_value = mode.value
+
+        # Validate and set mode-specific parameters
+        if mode_value == DELIVERY_MODE_LEGACY:
+            # Validate interval
+            if not (1 <= interval_hours <= 24):
+                await interaction.followup.send(
+                    "Interval hours must be between 1 and 24.",
                     ephemeral=True
                 )
                 return
-        else:
-            # Only set default themes if user doesn't already have themes
-            if not config.get("themes"):
-                # Default starter themes - acceptance and suggestibility
-                default_themes = ["acceptance", "suggestibility"]
-                valid_themes = [t for t in default_themes if t in self.themes]
-                
-                # Fallback to first two available if defaults not found
-                if not valid_themes:
-                    available_themes = sorted(self.themes.keys())
-                    valid_themes = available_themes[:2] if len(available_themes) >= 2 else available_themes
+            config["legacy_interval_hours"] = interval_hours
+
+        elif mode_value == DELIVERY_MODE_FIXED:
+            # Parse and validate fixed times
+            if fixed_times:
+                times_list = [t.strip() for t in fixed_times.split(",")]
             else:
-                # Keep existing themes on re-enrollment
-                valid_themes = config["themes"]
-        
-        # Check user's current online status
-        user_status = discord.Status.offline
-        for guild in self.bot.guilds:
-            member = guild.get_member(interaction.user.id)
-            if member:
-                user_status = member.status
-                break
-        
-        # Update config
-        config["enrolled"] = True
-        # Only update themes if we determined new ones (either from user input or defaults for new users)
-        if themes_str or not config.get("themes"):
-            config["themes"] = valid_themes
-        config["subject"] = subject or config["subject"]
-        config["controller"] = controller if controller else config["controller"]
-        config["consecutive_timeouts"] = 0  # Reset on re-enrollment
-        
-        # Set online_only based on user's current status
-        if user_status in [discord.Status.idle, discord.Status.offline]:
-            config["online_only"] = False
-        
-        # Check if this is a first enrollment or re-enrollment after a long time
-        is_first_enrollment = False
-        recent_encounters = load_encounters(interaction.user.id)
-        recent_enroll = None
-        now = datetime.now()
-        # Find last enrollment or disable event (theme == 'enrollment')
-        for enc in reversed(recent_encounters[-5:]):
-            if enc.get("theme") == "enrollment":
-                recent_enroll = enc
-                break
-        # If last enrollment was within 6 hours, treat as abuse attempt
-        abuse_window = timedelta(hours=6)
-        low_enroll_points = 50
-        normal_enroll_points = 100
-        enroll_delay_seconds = 30
-        abuse_delay_seconds = 3600  # 1 hour
-        if config.get("last_encounter") is None:
-            is_first_enrollment = True
-        else:
-            try:
-                last_encounter = datetime.fromisoformat(config["last_encounter"])
-                if now - last_encounter > timedelta(days=1):
-                    is_first_enrollment = True
-            except:
-                is_first_enrollment = True
+                times_list = DEFAULT_FIXED_TIMES
 
-        # If recent enrollment, lower points and delay
-        if recent_enroll and (now - datetime.fromisoformat(recent_enroll["timestamp"]) < abuse_window):
-            next_time = now + timedelta(seconds=abuse_delay_seconds)
-            config["next_encounter"] = {
-                "timestamp": next_time.isoformat(),
-                "mantra": "My thoughts are being reprogrammed.",
-                "theme": "enrollment",
-                "difficulty": "moderate",
-                "base_points": low_enroll_points
-            }
-        elif is_first_enrollment:
-            next_time = now + timedelta(seconds=enroll_delay_seconds)
-            config["next_encounter"] = {
-                "timestamp": next_time.isoformat(),
-                "mantra": "My thoughts are being reprogrammed.",
-                "theme": "enrollment",
-                "difficulty": "moderate",
-                "base_points": normal_enroll_points
-            }
-        else:
-            # Schedule next encounter as normal
-            schedule_next_encounter(config, self.themes, first_enrollment=False)
-
-        save_user_mantra_config(self.bot.config, interaction.user, config)
-
-        # Send confirmation
-        embed = discord.Embed(
-            title="🌀 Neural Pathways Initialized!",
-            description="Programming sequences will be transmitted soon.",
-            color=discord.Color.purple()
-        )
-        embed.add_field(name="Subject", value=config["subject"], inline=True)
-        embed.add_field(name="Dominant", value=config["controller"], inline=True)
-        embed.add_field(name="Programming Modules", value=", ".join(config["themes"]), inline=False)
-
-        # Add timing info for first-time enrollments
-        if is_first_enrollment:
-            next_steps_value = "• **First sequence arriving soon!**\n"
-        else:
-            next_steps_value = "• Wait for programming sequences in DMs\n"
-        
-        next_steps_value += (
-            "• Process quickly for enhanced integration\n"
-            "• Query `/mantra status` to monitor integration depth\n"
-            "• Use `/mantra modules` to adjust programming modules"
-        )
-        
-        embed.add_field(
-            name="Next Steps",
-            value=next_steps_value,
-            inline=False
-        )
-        
-        # Add note about online-only setting if we changed it
-        if user_status in [discord.Status.idle, discord.Status.offline]:
-            embed.add_field(
-                name="📍 Status Note",
-                value="Online-only mode disabled (you appear idle/offline)",
-                inline=False
-            )
-        
-        await interaction.response.send_message(embed=embed, ephemeral=True)
-    
-    async def show_status(self, interaction: discord.Interaction):
-        """Show user's mantra status and stats."""
-        config = get_user_mantra_config(self.bot.config, interaction.user)
-        
-        # Create main embed
-        embed = discord.Embed(
-            title="🌀 Your Conditioning Status",
-            color=discord.Color.purple()
-        )
-        
-        # Settings section
-        embed.add_field(name="Subject", value=config["subject"], inline=True)
-        embed.add_field(name="Controller", value=config["controller"], inline=True)
-        embed.add_field(name="Programming Modules", value=", ".join(config["themes"]) or "None", inline=True)
-        embed.add_field(name="Transmission Rate", value=f"{config['frequency']:.1f}/day", inline=True)
-        embed.add_field(name="Online Only", value="Yes" if config["online_only"] else "No", inline=True)
-        embed.add_field(name="\u200b", value="\u200b", inline=True)  # Empty field for alignment
-        
-        # Stats section from JSONL files
-        encounters = load_encounters(interaction.user.id)
-        total_sent = len(encounters)
-        if total_sent > 0:
-            total_captured = sum(1 for e in encounters if e.get("completed", False))
-            capture_rate = (total_captured / total_sent * 100)
-            
-            # Calculate total points earned from encounters
-            total_points_earned = 0
-            for e in encounters:
-                if e.get("completed", False):
-                    total_points_earned += e.get("base_points", 0)
-                    total_points_earned += e.get("speed_bonus", 0) 
-                    total_points_earned += e.get("public_bonus", 0)
-            
-            # Average response time for completed mantras
-            response_times = [e["response_time"] for e in encounters 
-                             if e.get("completed", False) and "response_time" in e]
-            avg_response = sum(response_times) / len(response_times) if response_times else 0
-            
-            embed.add_field(name="\u200b", value="**📊 Integration Metrics**", inline=False)
-            embed.add_field(name="Sequences Transmitted", value=str(total_sent), inline=True)
-            embed.add_field(name="Successfully Integrated", value=str(total_captured), inline=True)
-            embed.add_field(name="Integration Rate", value=f"{capture_rate:.1f}%", inline=True)
-            embed.add_field(name="Compliance Points", value=f"{total_points_earned:,}", inline=True)
-            embed.add_field(name="Avg Response", value=f"{avg_response:.0f}s", inline=True)
-            embed.add_field(name="Public Responses", value=sum(1 for e in encounters if e.get("was_public", False)), inline=True)
-        
-            
-            # Recent mantras from JSONL
-            recent = encounters[-5:]  # Last 5
-            if recent:
-                recent_text = []
-                for enc in reversed(recent):
-                    if enc.get("completed"):
-                        pts = enc['base_points'] + enc.get('speed_bonus', 0) + enc.get('public_bonus', 0)
-                        public = "🌍 " if enc.get("was_public", False) else ""
-                        recent_text.append(f"✅ {public}{enc['theme']} ({pts}pts)")
-                    else:
-                        recent_text.append(f"❌ {enc['theme']} (missed)")
-                
-                embed.add_field(
-                    name="Recent Programming",
-                    value="\n".join(recent_text),
-                    inline=False
+            if not validate_fixed_times(times_list):
+                await interaction.followup.send(
+                    "Invalid time format. Use HH:MM format (24-hour), e.g., '09:00,14:00,19:00'",
+                    ephemeral=True
                 )
-        else:
-            embed.add_field(name="\u200b", value="*No programming sequences transmitted yet*", inline=False)
-        
-        embed.set_footer(text="Use /mantra settings to update your preferences")
-        
-        await interaction.response.send_message(embed=embed, ephemeral=True)
-    
-    
-    async def update_settings(
-        self,
-        interaction: discord.Interaction,
-        subject: Optional[str],
-        controller: Optional[str],
-        online_only: Optional[bool]
-    ):
-        """Update user's mantra settings."""
-        config = get_user_mantra_config(self.bot.config, interaction.user)
-        
-        # Track what was updated
-        updates = []
-        
-        if subject is not None:
-            config["subject"] = subject
-            updates.append(f"Subject → {subject}")
-        
-        if controller is not None:
-            config["controller"] = controller
-            updates.append(f"Controller → {controller}")
-        
-        # Don't update themes from settings command anymore
-        # themes_list should be None from settings command
-        
-        if online_only is not None:
-            config["online_only"] = online_only
-            updates.append(f"Online only → {'Yes' if online_only else 'No'}")
-        
-        if not updates:
-            await interaction.response.send_message(
-                "No settings were provided to update.",
-                ephemeral=True
-            )
-            return
-        
-        # Save the updated config
-        save_user_mantra_config(self.bot.config, interaction.user, config)
-        
-        # Send confirmation
+                return
+
+            config["fixed_times"] = times_list
+
+        # Set mode
+        config["delivery_mode"] = mode_value
+
+        # Reschedule next encounter with new mode
+        from utils.mantra_service import schedule_next_encounter
+        schedule_next_encounter(config, self.themes)
+
+        # Save config
+        self.bot.config.set_user(interaction.user, 'mantra_system', config)
+
+        # Build confirmation message
         embed = discord.Embed(
-            title="✅ Settings Updated",
-            description="\n".join(updates),
+            title="Delivery Mode Updated",
             color=discord.Color.green()
         )
-        
-        await interaction.response.send_message(embed=embed, ephemeral=True)
-    
-    
-    async def disable_mantras(self, interaction: discord.Interaction):
-        """Disable mantra encounters."""
-        config = get_user_mantra_config(self.bot.config, interaction.user)
-        config["enrolled"] = False
-        config["next_encounter"] = None
-        save_user_mantra_config(self.bot.config, interaction.user, config)
-        
-        # Remove any active challenge
-        if interaction.user.id in self.active_challenges:
-            del self.active_challenges[interaction.user.id]
-        
-        embed = discord.Embed(
-            title="❌ Programming Suspended",
-            description="Neural programming protocols have been paused.\n\n"
-                       "Use `/mantra enroll` to reactivate conditioning protocols.",
-            color=discord.Color.red()
+
+        mode_names = {
+            DELIVERY_MODE_ADAPTIVE: "Adaptive (learns your availability patterns)",
+            DELIVERY_MODE_LEGACY: f"Legacy Interval (every {interval_hours} hours)",
+            DELIVERY_MODE_FIXED: f"Fixed Times ({', '.join(times_list if mode_value == DELIVERY_MODE_FIXED else DEFAULT_FIXED_TIMES)})"
+        }
+
+        embed.add_field(
+            name="New Mode",
+            value=mode_names.get(mode_value, mode_value),
+            inline=False
         )
-        
-        await interaction.response.send_message(embed=embed, ephemeral=True)
+
+        # Show next delivery time
+        if config.get("next_delivery"):
+            try:
+                from datetime import datetime
+                next_time = datetime.fromisoformat(config["next_delivery"])
+                time_until = next_time - datetime.now()
+                hours = int(time_until.total_seconds() // 3600)
+                minutes = int((time_until.total_seconds() % 3600) // 60)
+
+                if time_until.total_seconds() > 0:
+                    embed.add_field(
+                        name="Next Delivery",
+                        value=f"In {hours}h {minutes}m",
+                        inline=True
+                    )
+            except:
+                pass
+
+        await interaction.followup.send(embed=embed, ephemeral=True)
+
+    @mantra_group.command(name="settings", description="Configure conditioning parameters")
+    async def mantra_settings(self, interaction: discord.Interaction):
+        """Open settings view."""
+        await interaction.response.defer(ephemeral=True)
+
+        config = self.bot.config.get_user(interaction.user, 'mantra_system', get_default_config())
+
+        # Get current values
+        current_subject = config.get("subject", "puppet")
+        current_controller = config.get("controller", "Master")
+        current_themes = config.get("themes", [])
+        current_delivery_mode = config.get("delivery_mode", DELIVERY_MODE_ADAPTIVE)
+
+        # Create comprehensive settings view (same as enrollment but for enrolled users)
+        view = EnrollmentView(self, interaction.user, current_subject, current_controller, current_themes, current_delivery_mode)
+
+        # Remove the enroll/save button since settings auto-save
+        for item in list(view.children):
+            if isinstance(item, EnrollButton):
+                view.remove_item(item)
+
+        embed = discord.Embed(
+            title="⚙️ Conditioning Settings",
+            description="Update your conditioning parameters below:",
+            color=discord.Color.purple()
+        )
+
+        embed.add_field(
+            name="Subject/Pet",
+            value=current_subject.capitalize(),
+            inline=True
+        )
+
+        embed.add_field(
+            name="Controller/Dominant",
+            value=current_controller,
+            inline=True
+        )
+
+        # Format delivery mode display
+        mode_display = {
+            DELIVERY_MODE_ADAPTIVE: "Adaptive (learns patterns)",
+            DELIVERY_MODE_LEGACY: "Legacy (fixed intervals)",
+            DELIVERY_MODE_FIXED: "Fixed (same times daily)"
+        }
+        embed.add_field(
+            name="Delivery Mode",
+            value=mode_display.get(current_delivery_mode, "Adaptive"),
+            inline=False
+        )
+
+        if current_themes:
+            embed.add_field(
+                name="Themes",
+                value=", ".join(t.capitalize() for t in current_themes),
+                inline=False
+            )
+        else:
+            embed.add_field(
+                name="Themes",
+                value="*None selected*",
+                inline=False
+            )
+
+        await interaction.followup.send(embed=embed, view=view, ephemeral=True)
+
+    @commands.Cog.listener()
+    async def on_message(self, message: discord.Message):
+        """
+        Listen for mantra responses in DMs.
+
+        When a user sends a message in DMs while they have an active mantra,
+        check if it matches and handle the response.
+        """
+        # Ignore bots
+        if message.author.bot:
+            return
+
+        # Only DMs
+        if not isinstance(message.channel, discord.DMChannel):
+            return
+
+        # Load config
+        config = self.bot.config.get_user(message.author, 'mantra_system', get_default_config())
+
+        # Check if they have an active mantra
+        if not config.get("enrolled"):
+            return
+
+        if config.get("sent") is None:
+            return  # No active mantra
+
+        # Calculate response time
+        try:
+            sent_time = datetime.fromisoformat(config["sent"])
+            response_time_seconds = int((datetime.now() - sent_time).total_seconds())
+        except:
+            response_time_seconds = 0
+
+        # Handle the response
+        result = handle_mantra_response(
+            config,
+            self.themes,
+            message.content,
+            response_time_seconds,
+            was_public=False
+        )
+
+        if result.get("success"):
+            # Log encounter
+            log_encounter(message.author.id, result["encounter"])
+
+            # Award points
+            add_points(self.bot, message.author, result["points"])
+
+            # Save updated config
+            self.bot.config.set_user(message.author, 'mantra_system', config)
+
+            # Get personalized response message
+            subject = config.get("subject", "puppet")
+            controller = config.get("controller", "Master")
+
+            response_text = get_response_message(subject, response_time_seconds)
+            response_text = response_text.format(subject=subject, controller=controller)
+
+            # Get user's total points
+            total_points = get_points(self.bot, message.author)
+
+            # Send personalized success message
+            embed = discord.Embed(
+                description=response_text,
+                color=discord.Color.green()
+            )
+
+            embed.add_field(name="Points Earned", value=f"+{result['points']}", inline=True)
+            embed.add_field(name="Total Points", value=f"{total_points:,}", inline=True)
+            embed.add_field(name="Response Time", value=f"{response_time_seconds}s", inline=True)
+
+            if result["speed_bonus"] > 0:
+                embed.add_field(name="Speed Bonus", value=f"+{result['speed_bonus']}", inline=True)
+
+            embed.set_footer(text=f"Frequency: {config['frequency']:.2f}/day")
+
+            # Create view with Favorite and Settings buttons
+            view = discord.ui.View()
+
+            # Get the mantra text that was just completed (raw template)
+            delivered_mantra = config.get("delivered_mantra", {})
+            mantra_text = delivered_mantra.get("text", "")
+
+            if mantra_text:
+                # Create favorite button
+                fav_button = FavoriteButton(self, message.author, mantra_text)
+
+                # Check if already favorited and pre-disable if so
+                favorites = config.get("favorite_mantras", [])
+                if mantra_text in favorites:
+                    fav_button.disabled = True
+                    fav_button.label = "⭐ Favorited"
+
+                view.add_item(fav_button)
+
+            view.add_item(SettingsButton(self, message.author))
+
+            await message.reply(embed=embed, view=view)
+
+        else:
+            # Failed
+            if result.get("error") == "Incorrect response":
+                embed = discord.Embed(
+                    title="❌ Incorrect",
+                    description=f"That doesn't match. Try again:\n\n**{result['expected']}**",
+                    color=discord.Color.red()
+                )
+                await message.reply(embed=embed)
+
 
 async def setup(bot):
+    """Setup function for loading the cog."""
     await bot.add_cog(MantraSystem(bot))
