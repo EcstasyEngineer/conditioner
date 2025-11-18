@@ -1357,39 +1357,41 @@ class MantraSystem(commands.Cog):
             await ctx.send("No enrolled users found.")
             return
 
-        # Build multi-row display (up to 20 users per message for readability)
+        # Build monospace table with multi-row per user
         lines = []
+        lines.append("📊 Active Mantra Users ({})".format(len(enrolled_users)))
+        lines.append("")
+        lines.append("User             Stats  Next     Freq   Identity")
+        lines.append("─" * 70)
+
         for user_data in enrolled_users[:20]:
             # Try to get username
             try:
                 user = await self.bot.fetch_user(user_data['user_id'])
-                username = user.name
+                username = user.name[:15]  # Limit to 15 chars
             except:
                 username = "Unknown"
 
-            # Get full theme names (first 3)
+            # Get ALL theme names
             themes = user_data['themes']
-            theme_list = ', '.join(themes[:3])
-            if len(themes) > 3:
-                theme_list += f" (+{len(themes) - 3} more)"
+            theme_list = ', '.join(themes)
 
-            # Build 3-row format per user
+            # Build multi-row format per user with column alignment
             total_encounters = user_data['successes'] + user_data['failures']
-            lines.append(f"**{username}**")
-            lines.append(f"  Stats: {user_data['successes']}/{total_encounters}  •  Next: {user_data['next']}  •  Freq: {user_data['freq']:.1f}x")
-            lines.append(f"  Themes: {theme_list}")
-            lines.append(f"  Identity: {user_data['subject']} → {user_data['controller']}")
+            stats = f"{user_data['successes']}/{total_encounters}"
+            identity = f"{user_data['subject']} → {user_data['controller']}"
+
+            # Main row with aligned columns
+            lines.append(f"{username:<15}  {stats:<5}  {user_data['next']:<7}  {user_data['freq']:.1f}x   {identity}")
+            # Themes row indented below
+            lines.append(f"  └─ Themes: {theme_list}")
             lines.append("")  # Blank line between users
 
-        # Create embed
-        embed = discord.Embed(
-            title=f"📊 Active Mantra Users ({len(enrolled_users)})",
-            description="\n".join(lines),
-            color=discord.Color.blue()
-        )
-        embed.set_footer(text="Stats = Successes/Total (last 10) • Next = Time until next delivery")
+        lines.append("")
+        lines.append("Stats = Successes/Total (last 10) • Next = Time until next delivery")
 
-        await ctx.send(embed=embed)
+        # Send as code block for monospace alignment
+        await ctx.send("```\n{}\n```".format("\n".join(lines)))
 
 
 async def setup(bot):
