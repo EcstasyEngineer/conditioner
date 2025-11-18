@@ -1328,9 +1328,8 @@ class MantraSystem(commands.Cog):
             else:
                 next_str = "?"
 
-            # Get theme abbreviations (first 3 letters of first 3 themes)
+            # Get themes (store full list for display)
             themes = config.get('themes', [])
-            theme_abbr = '/'.join(t[:3] for t in themes[:3])
 
             # Get subject/controller
             subject = config.get('subject', '?')
@@ -1346,7 +1345,7 @@ class MantraSystem(commands.Cog):
                 'next': next_str,
                 'next_delivery': next_delivery if next_delivery_str else datetime.max,
                 'freq': freq,
-                'themes': theme_abbr,
+                'themes': themes,
                 'subject': subject,
                 'controller': controller
             })
@@ -1358,27 +1357,37 @@ class MantraSystem(commands.Cog):
             await ctx.send("No enrolled users found.")
             return
 
-        # Build compact display (up to 30 users per message)
+        # Build multi-row display (up to 20 users per message for readability)
         lines = []
-        for user_data in enrolled_users[:30]:
+        for user_data in enrolled_users[:20]:
             # Try to get username
             try:
                 user = await self.bot.fetch_user(user_data['user_id'])
-                username = f"{user.name[:12]:<12}"
+                username = user.name
             except:
-                username = f"{'Unknown':<12}"
+                username = "Unknown"
 
-            # Format: username | S/F | Next | Freq | Themes | Sub→Ctrl
-            line = f"{username} {user_data['successes']:2}/{user_data['failures']:<2} {user_data['next']:>6} {user_data['freq']:4.1f}x {user_data['themes']:<11} {user_data['subject'][:8]}→{user_data['controller'][:8]}"
-            lines.append(line)
+            # Get full theme names (first 3)
+            themes = user_data['themes']
+            theme_list = ', '.join(themes[:3])
+            if len(themes) > 3:
+                theme_list += f" (+{len(themes) - 3} more)"
 
-        # Create embed with monospace code block
+            # Build 3-row format per user
+            total_encounters = user_data['successes'] + user_data['failures']
+            lines.append(f"**{username}**")
+            lines.append(f"  Stats: {user_data['successes']}/{total_encounters}  •  Next: {user_data['next']}  •  Freq: {user_data['freq']:.1f}x")
+            lines.append(f"  Themes: {theme_list}")
+            lines.append(f"  Identity: {user_data['subject']} → {user_data['controller']}")
+            lines.append("")  # Blank line between users
+
+        # Create embed
         embed = discord.Embed(
             title=f"📊 Active Mantra Users ({len(enrolled_users)})",
-            description=f"```\n" + "\n".join(lines) + "\n```",
+            description="\n".join(lines),
             color=discord.Color.blue()
         )
-        embed.set_footer(text="S/F = Successes/Failures (last 10) • Next = Time until next delivery")
+        embed.set_footer(text="Stats = Successes/Total (last 10) • Next = Time until next delivery")
 
         await ctx.send(embed=embed)
 
