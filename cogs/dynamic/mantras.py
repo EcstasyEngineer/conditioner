@@ -18,9 +18,9 @@ from datetime import datetime
 from pathlib import Path
 from typing import List, Dict, Optional
 
-from core.utils import is_admin
+from core.utils import is_admin, is_superadmin
 from utils.points import get_points, add_points
-from utils.encounters import log_encounter
+from utils.encounters import load_recent_encounters, log_encounter
 from utils.response_messages import get_response_message
 from utils.mantra_service import (
     get_default_config,
@@ -735,12 +735,12 @@ class MantraSystem(commands.Cog):
                             await user.send(embed=embed)
                         except:
                             pass  # DMs disabled
-                    # If 3+ consecutive failures, offer disable button
-                    elif config.get("consecutive_failures", 0) >= DISABLE_OFFER_THRESHOLD:
+                    # If exactly 3 consecutive failures, offer disable button (only once)
+                    elif config.get("consecutive_failures", 0) == DISABLE_OFFER_THRESHOLD:
                         try:
                             embed = discord.Embed(
                                 title="⚠️ Multiple Missed Mantras",
-                                description=f"You've missed {config['consecutive_failures']} mantras in a row.\n\nIf you'd like to pause conditioning, use the button below.",
+                                description=f"You've missed {config['consecutive_failures']} mantras in a row.\n\nIf you'd like to pause conditioning, use the button below or use `/mantra unenroll`.",
                                 color=discord.Color.orange()
                             )
                             view = discord.ui.View()
@@ -1290,6 +1290,97 @@ class MantraSystem(commands.Cog):
                     color=discord.Color.red()
                 )
                 await message.reply(embed=embed)
+
+    @commands.command(name="mstats", hidden=True)
+    @commands.check(is_superadmin)
+    async def mstats(self, ctx):
+        """Show enrolled user statistics (superadmin only)."""
+        # Collect enrolled users from configs
+        enrolled_users = []
+
+        for config_file in Path('configs').glob('user_*.json'):
+            user_id = int(config_file.stem.replace('user_', ''))
+            config = self.bot.config.get_user(user_id, 'mantra_system')
+
+            if not config or not config.get('enrolled'):
+                continue
+
+            # Get recent encounters for success/failure stats
+            recent = load_recent_encounters(user_id, limit=10)
+            successes = sum(1 for e in recent if e.get('completed'))
+            failures = len(recent) - successes
+
+            # Calculate time until next delivery
+            next_delivery_str = config.get('next_delivery')
+            if next_delivery_str:
+                try:
+                    next_delivery = datetime.fromisoformat(next_delivery_str)
+                    delta = next_delivery - datetime.now()
+                    hours = int(delta.total_seconds() / 3600)
+                    if hours < 0:
+                        next_str = "overdue"
+                    elif hours == 0:
+                        next_str = "<1h"
+                    else:
+                        next_str = f"{hours}h"
+                except:
+                    next_str = "?"
+            else:
+                next_str = "?"
+
+            # Get theme abbreviations (first 3 letters of first 3 themes)
+            themes = config.get('themes', [])
+            theme_abbr = '/'.join(t[:3] for t in themes[:3])
+
+            # Get subject/controller
+            subject = config.get('subject', '?')
+            controller = config.get('controller', '?')
+
+            # Get frequency
+            freq = config.get('frequency', 1.0)
+
+            enrolled_users.append({
+                'user_id': user_id,
+                'successes': successes,
+                'failures': failures,
+                'next': next_str,
+                'next_delivery': next_delivery if next_delivery_str else datetime.max,
+                'freq': freq,
+                'themes': theme_abbr,
+                'subject': subject,
+                'controller': controller
+            })
+
+        # Sort by next delivery time
+        enrolled_users.sort(key=lambda u: u['next_delivery'])
+
+        if not enrolled_users:
+            await ctx.send("No enrolled users found.")
+            return
+
+        # Build compact display (up to 30 users per message)
+        lines = []
+        for user_data in enrolled_users[:30]:
+            # Try to get username
+            try:
+                user = await self.bot.fetch_user(user_data['user_id'])
+                username = f"{user.name[:12]:<12}"
+            except:
+                username = f"{'Unknown':<12}"
+
+            # Format: username | S/F | Next | Freq | Themes | Sub→Ctrl
+            line = f"{username} {user_data['successes']:2}/{user_data['failures']:<2} {user_data['next']:>6} {user_data['freq']:4.1f}x {user_data['themes']:<11} {user_data['subject'][:8]}→{user_data['controller'][:8]}"
+            lines.append(line)
+
+        # Create embed with monospace code block
+        embed = discord.Embed(
+            title=f"📊 Active Mantra Users ({len(enrolled_users)})",
+            description=f"```\n" + "\n".join(lines) + "\n```",
+            color=discord.Color.blue()
+        )
+        embed.set_footer(text="S/F = Successes/Failures (last 10) • Next = Time until next delivery")
+
+        await ctx.send(embed=embed)
 
 
 async def setup(bot):

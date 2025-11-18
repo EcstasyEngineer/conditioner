@@ -7,7 +7,7 @@ class Admin(commands.Cog):
         self.bot = bot
         self.logger = bot.logger
 
-    @commands.command(name="claimsuper", aliases=["claimsuperadmin"])
+    @commands.command(name="claimsuper", aliases=["claimsuperadmin"], hidden=True)
     async def claimsuper(self, ctx):
         """Claim superadmin privileges (first come, first served)."""
         superadmins = get_superadmins(self.bot.config)
@@ -20,8 +20,8 @@ class Admin(commands.Cog):
             self.logger.warning(f"Failed superadmin claim by {ctx.author} (ID: {ctx.author.id}); already superadmin")
             await ctx.send("You are already a bot superadmin.")
 
-    @commands.command(name="addsuperadmin")
-    @commands.check(lambda ctx: is_superadmin(ctx.bot.config, ctx.author.id))
+    @commands.command(name="addsuperadmin", hidden=True)
+    @commands.check(is_superadmin)
     async def addsuperadmin(self, ctx, member: discord.Member = None):
         """Add a user as a bot superadmin (owner only)."""
         if not member:
@@ -39,7 +39,7 @@ class Admin(commands.Cog):
             self.logger.info(f"{member} (ID: {member.id}) added as superadmin by {ctx.author} (ID: {ctx.author.id})")
             await ctx.send(f"{member} has been added as a bot superadmin.")
 
-    @commands.command(name="claimadmin")
+    @commands.command(name="claimadmin", hidden=True)
     async def claimadmin(self, ctx):
         """Claim admin status if you have Administrator permissions."""
         if ctx.guild is None:
@@ -66,7 +66,7 @@ class Admin(commands.Cog):
             self.logger.info(f"{ctx.author} (ID: {ctx.author.id}) granted admin in guild {ctx.guild.id}")
             await ctx.send("You are now a bot admin.")
 
-    @commands.command(name="addadmin")
+    @commands.command(name="addadmin", hidden=True)
     @commands.check(is_admin)
     async def addadmin(self, ctx, member: discord.Member = None):
         """Add a user as a server admin (if you're superadmin or already admin)."""

@@ -90,7 +90,7 @@ class Points(commands.Cog):
     # ADMIN COMMANDS
     # ===================
     
-    @commands.command(name='add_points', aliases=['addpoints'])
+    @commands.command(name='add_points', aliases=['addpoints'], hidden=True)
     @commands.check(is_admin)
     async def admin_add_points(self, ctx, member: discord.Member, amount: int = 10):
         """Add points to a user (Admin only). Amount can be negative to subtract."""
@@ -101,7 +101,7 @@ class Points(commands.Cog):
         else:
             await ctx.send(f"✅ Removed {abs(amount):,} points from {member.mention}. New balance: {new_total:,}")
 
-    @commands.command(name='set_points', aliases=['setpoints'])
+    @commands.command(name='set_points', aliases=['setpoints'], hidden=True)
     async def admin_set_points(self, ctx, member: discord.Member, amount: int):
         """Set a user's points to a specific amount (Admin only)."""
         if amount < 0:

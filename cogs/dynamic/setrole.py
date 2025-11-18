@@ -42,7 +42,7 @@ class SetRole(commands.Cog):
         else:
             await ctx.send(f"Could not find role: {rolename}")
 
-    @commands.command(name='whitelistrole')
+    @commands.command(name='whitelistrole', hidden=True)
     async def whitelistrole(self, ctx, *, role: str):
         """Adds a role to the whitelist roles."""
         if not ctx.author.guild_permissions.manage_roles:

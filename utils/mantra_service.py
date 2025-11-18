@@ -225,9 +225,18 @@ def handle_timeout(config: Dict, available_themes: Dict) -> None:
     """
     # Log failed encounter
     if config.get("current_mantra"):
+        # Format the mantra for display
+        formatted_text = format_mantra_text(
+            config["current_mantra"]["text"],
+            config.get("subject", "puppet"),
+            config.get("controller", "Master")
+        )
         encounter = {
             "timestamp": datetime.fromisoformat(config["sent"]).isoformat(),
-            "mantra": config["current_mantra"]["text"],
+            "mantra": formatted_text,
+            "mantra_template": config["current_mantra"]["text"],
+            "subject": config.get("subject", "puppet"),
+            "controller": config.get("controller", "Master"),
             "theme": config["current_mantra"]["theme"],
             "difficulty": config["current_mantra"]["difficulty"],
             "base_points": config["current_mantra"]["base_points"],
@@ -460,6 +469,9 @@ def handle_mantra_response(
     encounter = {
         "timestamp": datetime.fromisoformat(config["sent"]).isoformat(),
         "mantra": expected_text,
+        "mantra_template": delivered_mantra["text"],
+        "subject": config.get("subject", "puppet"),
+        "controller": config.get("controller", "Master"),
         "theme": delivered_mantra["theme"],
         "difficulty": delivered_mantra["difficulty"],
         "base_points": base_points,
