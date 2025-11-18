@@ -1305,10 +1305,18 @@ class MantraSystem(commands.Cog):
             if not config or not config.get('enrolled'):
                 continue
 
-            # Get recent encounters for success/failure stats
-            recent = load_recent_encounters(user_id, limit=10)
-            successes = sum(1 for e in recent if e.get('completed'))
-            failures = len(recent) - successes
+            # Get recent encounters for success/failure stats with visual indicators
+            # Check if there's a mantra currently in delivery
+            has_pending = config.get('sent') is not None
+
+            if has_pending:
+                # Show last 9 from history + ? for pending
+                recent = load_recent_encounters(user_id, limit=9)
+                recent_pattern = ''.join(['●' if e.get('completed') else 'X' for e in recent]) + '?'
+            else:
+                # Show last 10 from history
+                recent = load_recent_encounters(user_id, limit=10)
+                recent_pattern = ''.join(['●' if e.get('completed') else 'X' for e in recent])
 
             # Calculate time until next delivery
             next_delivery_str = config.get('next_delivery')
@@ -1316,11 +1324,14 @@ class MantraSystem(commands.Cog):
                 try:
                     next_delivery = datetime.fromisoformat(next_delivery_str)
                     delta = next_delivery - datetime.now()
-                    hours = int(delta.total_seconds() / 3600)
+                    total_seconds = delta.total_seconds()
+                    hours = int(total_seconds / 3600)
+                    minutes = int((total_seconds % 3600) / 60)
+
                     if hours < 0:
                         next_str = "overdue"
                     elif hours == 0:
-                        next_str = "<1h"
+                        next_str = f"{minutes}m"
                     else:
                         next_str = f"{hours}h"
                 except:
@@ -1340,8 +1351,7 @@ class MantraSystem(commands.Cog):
 
             enrolled_users.append({
                 'user_id': user_id,
-                'successes': successes,
-                'failures': failures,
+                'recent_pattern': recent_pattern,
                 'next': next_str,
                 'next_delivery': next_delivery if next_delivery_str else datetime.max,
                 'freq': freq,
@@ -1361,8 +1371,8 @@ class MantraSystem(commands.Cog):
         lines = []
         lines.append("📊 Active Mantra Users ({})".format(len(enrolled_users)))
         lines.append("")
-        lines.append("User             Stats  Next     Freq   Identity")
-        lines.append("─" * 70)
+        lines.append("User             Stats (Last 10)       Next     Freq   Identity")
+        lines.append("─" * 75)
 
         for user_data in enrolled_users[:20]:
             # Try to get username
@@ -1372,23 +1382,25 @@ class MantraSystem(commands.Cog):
             except:
                 username = "Unknown"
 
-            # Get ALL theme names
+            # Get ALL theme names (abbreviate if > 5 themes)
             themes = user_data['themes']
-            theme_list = ', '.join(themes)
+            if len(themes) > 5:
+                theme_list = ', '.join([t[:6] for t in themes])
+            else:
+                theme_list = ', '.join(themes)
 
             # Build multi-row format per user with column alignment
-            total_encounters = user_data['successes'] + user_data['failures']
-            stats = f"{user_data['successes']}/{total_encounters}"
+            stats_pattern = user_data['recent_pattern']
             identity = f"{user_data['subject']} → {user_data['controller']}"
 
-            # Main row with aligned columns
-            lines.append(f"{username:<15}  {stats:<5}  {user_data['next']:<7}  {user_data['freq']:.1f}x   {identity}")
+            # Main row with aligned columns (stats pattern needs more space)
+            lines.append(f"{username:<15}  {stats_pattern:<20}  {user_data['next']:<7}  {user_data['freq']:.1f}x   {identity}")
             # Themes row indented below
             lines.append(f"  └─ Themes: {theme_list}")
             lines.append("")  # Blank line between users
 
         lines.append("")
-        lines.append("Stats = Successes/Total (last 10) • Next = Time until next delivery")
+        lines.append("● = Success  X = Failure  ? = Pending  •  Next = Time until next delivery")
 
         # Send as code block for monospace alignment
         await ctx.send("```\n{}\n```".format("\n".join(lines)))
