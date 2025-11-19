@@ -1313,6 +1313,20 @@ class MantraSystem(commands.Cog):
                 # Show last 9 from history + ? for pending
                 recent = load_recent_encounters(user_id, limit=9)
                 recent_pattern = ''.join(['●' if e.get('completed') else 'X' for e in recent]) + '?'
+
+                # Calculate time since sent
+                try:
+                    sent_time = datetime.fromisoformat(config['sent'])
+                    pending_duration = datetime.now() - sent_time
+                    pending_hours = int(pending_duration.total_seconds() / 3600)
+                    pending_minutes = int((pending_duration.total_seconds() % 3600) / 60)
+
+                    if pending_hours == 0:
+                        recent_pattern += f" {pending_minutes}m"
+                    else:
+                        recent_pattern += f" {pending_hours}h"
+                except:
+                    pass
             else:
                 # Show last 10 from history
                 recent = load_recent_encounters(user_id, limit=10)
@@ -1375,12 +1389,13 @@ class MantraSystem(commands.Cog):
         lines.append("─" * 75)
 
         for user_data in enrolled_users[:20]:
-            # Try to get username
-            try:
-                user = await self.bot.fetch_user(user_data['user_id'])
+            # Use cached user lookup instead of API fetch
+            user = self.bot.get_user(user_data['user_id'])
+            if user:
                 username = user.name[:15]  # Limit to 15 chars
-            except:
-                username = "Unknown"
+            else:
+                # Fallback: just show user ID
+                username = f"User{user_data['user_id']}"[:15]
 
             # Get ALL theme names (abbreviate if > 5 themes)
             themes = user_data['themes']
