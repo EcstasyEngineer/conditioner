@@ -35,3 +35,11 @@ media-backup/
 !/media/rare/sample.*
 /media/epic/*
 !/media/epic/sample.*
+
+# Ambient audio files
+/media/*.mp3
+/media/*.opus
+/media/*.ogg
+/media/*.wav
+/media/*.m4a
+/media/*.flac

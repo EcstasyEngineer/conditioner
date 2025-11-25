@@ -661,9 +661,9 @@ class MantraSystem(commands.Cog):
         1. Pending deliveries (sent=None, time >= next_delivery)
         2. Timeouts (sent!=None, time >= next_delivery)
         """
-        print(f"[MANTRA DELIVERY LOOP] Starting at {datetime.now()}")
+        self.logger.debug(f"[MANTRA DELIVERY LOOP] Starting at {datetime.now()}")
         if not self.bot.is_ready():
-            print("[MANTRA DELIVERY LOOP] Bot not ready, skipping")
+            self.logger.debug("[MANTRA DELIVERY LOOP] Bot not ready, skipping")
             return
 
         # Load all user configs
@@ -719,7 +719,8 @@ class MantraSystem(commands.Cog):
                             message = await dm_channel.fetch_message(delivered_mantra["message_id"])
                             await message.delete()
                         except:
-                            pass  # Message might be deleted already or DMs disabled
+                            # Intentionally silent - DM failures are non-actionable (DMs disabled, user left, message deleted, etc.)
+                            pass
 
                     # Save updated config
                     self.bot.config.set_user(user, 'mantra_system', config)
@@ -734,7 +735,8 @@ class MantraSystem(commands.Cog):
                             )
                             await user.send(embed=embed)
                         except:
-                            pass  # DMs disabled
+                            # Intentionally silent - DM failures are non-actionable (DMs disabled, user left, etc.)
+                            pass
                     # If exactly 3 consecutive failures, offer disable button (only once)
                     elif config.get("consecutive_failures", 0) == DISABLE_OFFER_THRESHOLD:
                         try:
@@ -747,7 +749,8 @@ class MantraSystem(commands.Cog):
                             view.add_item(DisableButton(self, user))
                             await user.send(embed=embed, view=view)
                         except:
-                            pass  # DMs disabled
+                            # Intentionally silent - DM failures are non-actionable (DMs disabled, user left, etc.)
+                            pass
 
                     continue
 

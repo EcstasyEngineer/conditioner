@@ -31,7 +31,7 @@ That's it! Your bot is now running.
 - **🎲 Counter Game** - Community counting game with hidden conditioning triggers
 - **⚙️ Smart Configuration** - Per-server, per-user, and global settings with automatic persistence
 - **🛡️ Admin System** - Hierarchical permissions (superadmin + guild admins)
-- **🎵 Music Player** - Voice channel music playback
+- **🎵 Ambient Audio** - Looping audio in voice channels with auto-pause when empty
 - **🛠️ Developer Friendly** - Hot-reload cogs, built-in REPL, comprehensive logging
 
 ## 📋 Available Commands
@@ -51,10 +51,30 @@ That's it! Your bot is now running.
 - `!setadmin @user` - Grant admin privileges (superadmin only)
 - `!setchannel mantra_public #channel` - Set public mantra channel
 
-**Music Player:**
-- `!play <song>` - Play from YouTube/Spotify
-- `!queue` - Show music queue
-- `!skip` / `!pause` / `!resume`
+**Ambient Audio:**
+- `!loop channel #voice-channel` - Set voice channel for ambient audio
+- `!loop file <filename|url>` - Set audio file from media/ directory or download from URL
+- `!loop enable` / `!loop disable` - Toggle ambient audio
+- `!loop optimize` - Convert current file to opus for lower CPU usage
+- `!loop status` - Show current configuration
+
+## 💰 Points Economy
+
+Points are earned through various activities and can be spent on gacha rewards.
+
+| Activity | Points | Notes |
+|----------|--------|-------|
+| Counting | 1 per number | In #counting channel |
+| Ambient listening | 5 per minute | ~70 pts per 14-min loop |
+| Mantra (basic) | 10-15 | + speed bonus up to 30 |
+| Mantra (light) | 20-30 | + speed bonus |
+| Mantra (moderate) | 35-45 | + speed bonus |
+| Mantra (deep) | 60-80 | + speed bonus |
+| Mantra (extreme) | 100-120 | + speed bonus |
+
+**Speed bonuses:** ≤15s: +30, ≤30s: +20, ≤60s: +15, ≤2min: +10, ≤5min: +5
+
+Mantra frequency adapts from 0.33-6 per day (once per 3 days to 6x daily) based on your response patterns.
 
 ## 🏗️ Development & Extension
 
