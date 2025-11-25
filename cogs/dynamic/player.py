@@ -26,7 +26,7 @@ class AmbientPlayer(commands.Cog):
                 await self._join_ambient_channel(guild)
 
     def cog_unload(self):
-        """Called when the cog is unloaded - stop the reward loop."""
+        """Called when the cog is unloaded - stop the loops."""
         self.listening_reward_loop.cancel()
 
     @tasks.loop(minutes=1)
@@ -399,20 +399,63 @@ class AmbientPlayer(commands.Cog):
             channel_name = channel.name if channel else f"Unknown ({channel_id})"
 
         voice_client = ctx.guild.voice_client
-        status = "Not connected"
-        if voice_client and voice_client.is_connected():
-            if voice_client.is_playing():
-                status = f"Playing in {voice_client.channel.name}"
+
+        # Detailed voice client state for debugging
+        if voice_client is None:
+            status = "No voice client"
+            vc_debug = "None"
+        else:
+            is_connected = voice_client.is_connected()
+            is_playing = voice_client.is_playing() if is_connected else False
+
+            # Get internal connection state if available
+            try:
+                conn_state = voice_client._connection.state.name if hasattr(voice_client, '_connection') else "unknown"
+            except Exception:
+                conn_state = "error"
+
+            vc_debug = f"connected={is_connected}, playing={is_playing}, state={conn_state}"
+
+            if is_connected:
+                if is_playing:
+                    status = f"Playing in {voice_client.channel.name}"
+                else:
+                    status = f"Connected to {voice_client.channel.name} (paused - channel empty)"
             else:
-                status = f"Connected to {voice_client.channel.name} (paused - channel empty)"
+                status = f"Zombie voice client (state={conn_state})"
 
         embed = discord.Embed(title="Ambient Audio Status", color=discord.Color.blue())
         embed.add_field(name="Enabled", value="Yes" if enabled else "No", inline=True)
         embed.add_field(name="Channel", value=channel_name, inline=True)
         embed.add_field(name="File", value=filename or "Not set", inline=True)
         embed.add_field(name="Status", value=status, inline=False)
+        embed.add_field(name="Debug", value=f"`{vc_debug}`", inline=False)
 
         await ctx.send(embed=embed)
+
+    @loop.command(name="nuke_vc")
+    @commands.check(is_admin)
+    async def loop_nuke_vc(self, ctx):
+        """Debug: Force remove voice client from discord.py internal tracking."""
+        voice_client = ctx.guild.voice_client
+
+        if voice_client is None:
+            await ctx.send("No voice client to nuke.")
+            return
+
+        # Try disconnect first
+        try:
+            await voice_client.disconnect(force=True)
+            await ctx.send("Called disconnect(force=True)")
+        except Exception as e:
+            await ctx.send(f"disconnect() failed: {e}")
+
+        # Force remove from internal tracking
+        try:
+            self.bot._connection._remove_voice_client(ctx.guild.id)
+            await ctx.send("Removed from internal tracking. Run `!loop status` to verify, then `!loop enable` to reconnect.")
+        except Exception as e:
+            await ctx.send(f"Failed to remove from tracking: {e}")
 
 
 async def setup(bot):
