@@ -17,6 +17,7 @@ The 45s cooldown only applies to mid-operation zombie recovery, not startup.
 """
 
 import asyncio
+import random
 from pathlib import Path
 
 import discord
@@ -29,8 +30,11 @@ from utils.points import add_points
 POINTS_PER_MINUTE = 5
 VOICE_RECONNECT_COOLDOWN = 45.0  # Discord needs ~30-60s to clean up old sessions
 HEALTH_CHECK_INTERVAL = 30  # Seconds between zombie checks
-KEEPALIVE_INTERVAL = 15  # Seconds between silence packets
-KEEPALIVE_ENABLED = False  # Enable after confirming zombie recovery works
+KEEPALIVE_INTERVAL = 60  # Seconds between silence packets
+KEEPALIVE_ENABLED = True
+
+# Opus-encoded silence frame - prevents Discord from considering connection idle
+OPUS_SILENCE = b'\xf8\xff\xfe'
 
 
 class AmbientPlayer(commands.Cog):
@@ -47,6 +51,8 @@ class AmbientPlayer(commands.Cog):
     async def cog_load(self):
         self.listening_reward_loop.start()
         self.voice_health_check_loop.start()
+        if KEEPALIVE_ENABLED:
+            self.keepalive_loop.start()
         if self.bot.is_ready():
             for guild in self.bot.guilds:
                 await self._connect(guild)
@@ -54,6 +60,8 @@ class AmbientPlayer(commands.Cog):
     async def cog_unload(self):
         self.listening_reward_loop.cancel()
         self.voice_health_check_loop.cancel()
+        if KEEPALIVE_ENABLED:
+            self.keepalive_loop.cancel()
         for guild in self.bot.guilds:
             await self._disconnect(guild)
 
@@ -218,10 +226,29 @@ class AmbientPlayer(commands.Cog):
                 channel_id = self.bot.config.get(guild.id, "ambient_channel_id")
                 if channel_id and guild.get_channel(channel_id):
                     self.logger.info(f"[AMBIENT] Reconnecting missing voice in {guild.name}")
+                    await asyncio.sleep(2.0 + random.random() * 3.0)  # 2-5s jittered delay
                     await self._connect(guild)
 
     @voice_health_check_loop.before_loop
     async def before_voice_health_check_loop(self):
+        await self.bot.wait_until_ready()
+        await asyncio.sleep(10)  # Let initial connections settle
+
+    @tasks.loop(seconds=KEEPALIVE_INTERVAL)
+    async def keepalive_loop(self):
+        """Send silence packets to idle connections to prevent Discord timeout."""
+        for guild in self.bot.guilds:
+            vc = guild.voice_client
+            # Only send keepalive when connected but not playing
+            if vc and vc.is_connected() and not vc.is_playing():
+                try:
+                    self.logger.debug(f"[AMBIENT] Sending keepalive to {guild.name}")
+                    vc.send_audio_packet(OPUS_SILENCE, encode=False)
+                except Exception as e:
+                    self.logger.debug(f"[AMBIENT] Keepalive failed for {guild.name}: {e}")
+
+    @keepalive_loop.before_loop
+    async def before_keepalive_loop(self):
         await self.bot.wait_until_ready()
         await asyncio.sleep(10)  # Let initial connections settle
 
