@@ -357,3 +357,7 @@ gh pr create --title "Title" --body "Description"
 # List issues
 gh issue list --state open
 ```
+
+## Permission System
+
+Use `@commands.check(is_superadmin)` for bot-wide operations (reload, restart, global config) and `@commands.check(is_admin)` for guild-specific features (error channels, voice player, points) - superadmins automatically inherit all admin privileges.
