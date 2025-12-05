@@ -33,7 +33,7 @@
     { "text": "Permanent craving hard-coded into my psyche",               "difficulty": "extreme", "base_points": 100 },
     { "text": "{subject} exists to chase {controller}'s control",           "difficulty": "extreme", "base_points": 105 },
     { "text": "My universe narrows to pleasing {controller}",              "difficulty": "extreme", "base_points": 110 },
-    { "text": "Need eclipses all other sensations—forever",                "difficulty": "extreme", "base_points": 115 },
+    { "text": "Need eclipses all other sensations, forever",                "difficulty": "extreme", "base_points": 115 },
     { "text": "I am nothing but hunger for obedience",                     "difficulty": "extreme", "base_points": 120 },
     { "text": "Endless addiction drives every choice I make",              "difficulty": "extreme", "base_points": 108 }
   ]

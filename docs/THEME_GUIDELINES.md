@@ -113,7 +113,54 @@ Quick reference for creating and evaluating mantras.
 **Good**: "My thoughts often turn to my devotion" (intrusive, compelling)
 **Bad**: "I am loyal" (flat declaration)
 
-## Common Problems
+## Weak Patterns to Avoid
+
+### State Labels (Telling)
+Declaring a state without showing the experience.
+
+- ❌ "I am obedient" / "{subject} is blank"
+- ❌ "My mind is empty" / "I feel submissive"
+- ✅ "Commands drop straight into action" (shows obedience)
+- ✅ "Thoughts drift away before forming" (shows blankness)
+
+### Hedged Language
+Uncommitted, tentative phrasing that undermines the mantra.
+
+- ❌ "starting to", "beginning to", "kind of", "a little"
+- ❌ "I think I might be...", "It seems like..."
+- ✅ Direct statements: "The fog thickens" not "The fog is starting to thicken"
+
+### Passive Voice
+Subject receives action instead of experiencing it.
+
+- ❌ "Memories are deleted", "Thoughts are removed"
+- ❌ "{subject} is controlled by {controller}"
+- ✅ "I forget", "{controller} deletes my memories"
+- ✅ "{controller} controls {subject}" or "{subject} surrenders control"
+
+### Therapeutic Framing
+Self-help language that breaks the conditioning aesthetic.
+
+- ❌ "helps me", "worries", "healing", "growth", "self-improvement"
+- ❌ "{controller} helps me forget my worries"
+- ✅ "I forget for {controller}" (service framing, not therapy)
+
+### Generic Verbs
+Vague action words without sensory or psychological specificity.
+
+- ❌ "feels", "is", "has", "does" (as main verb without modifier)
+- ❌ "It feels good to obey"
+- ✅ "Obeying floods me with warmth" (specific sensation)
+- ✅ "Obedience hums through my veins" (visceral, embodied)
+
+### Static Descriptions
+No sense of movement, progression, or change.
+
+- ❌ "I am blank" (just a state)
+- ✅ "My mind empties with each breath" (progressive)
+- ✅ "Blankness spreads through my thoughts" (active)
+
+## Common Problems (Summary)
 
 **Telling vs showing**: "I am obedient" vs "Commands drop straight into action"
 **Static vs progressive**: "I am blank" vs "My mind gets emptier every day"
