@@ -1,147 +1,194 @@
-# Mantra Theme Development Guide
+# Mantra Theme Guidelines
 
-This guide provides best practices for creating new mantra themes. Following these guidelines ensures quality and consistency.
+Quick reference for creating and evaluating mantras.
 
-## 1. Theme File Structure
-
-All themes are JSON files in the `/mantras/` directory. Active themes are named `themename.json`, while drafts should be named `themename.json.draft` to prevent them from being loaded.
-
-For readability, each mantra object should be on a single line. See `mantras/acceptance.json` for a reference implementation.
+## File Structure
 
 ```json
 {
-  "theme": "theme_name",
-  "description": "Brief, 10-20 word summary of the theme's focus.",
+  "theme": "themename",
+  "description": "10-20 word summary",
   "mantras": [
-    { "text": "Mantra text with {subject} and {controller} variables.", "difficulty": "basic", "base_points": 10 },
-    { "text": "Another mantra text example.", "difficulty": "basic", "base_points": 12 }
+    { "text": "Mantra with {subject} and {controller}", "difficulty": "basic", "base_points": 10 }
   ]
 }
 ```
 
-### Requirements & Distribution
-- **Theme Name**: A lowercase, single-word identifier.
-- **Template Variables**: All mantras must use `{subject}` and `{controller}` for user-specific names.
-- **Mantra Count**: Each theme should have 25-30 mantras. The distribution across difficulties can vary to fit the theme's focus (e.g., a theme like 'brainwashing' may have more 'deep' and 'extreme' mantras).
-- **Formatting**: Each mantra object must be on a single line to improve readability.
+- One mantra per line
+- 25-30 mantras per theme
+- Use `{subject}` and `{controller}` placeholders
 
-### Difficulty & Point Values
-Each difficulty has a specific point range and standardized values to ensure balance.
+## Difficulty Ladder
 
-| Difficulty | Description | Point Values |
-|---|---|---|
-| **Basic** | Introduction to the concept. Establishes a gentle foundation. <br> - `"I obey without question"` <br> - `"Thinking is hard, smiling is easy"` <br> - `"I accept and surrender"` | `10-15` |
-| **Light** | Acceptance and normalization. The theme becomes a positive and normal part of the user's mindset. <br> - `"Resistance fades like mist"` <br> - `"Obedience is instinctive now"` <br> - `"Every word echoes as truth"` | `20-30` |
-| **Moderate** | Integration and identification. The user begins to identify with the theme on a personal level. <br> - `"Surrender defines my identity"` <br> - `"My comfort zone is obedience"` <br> - `"{controller}'s brainwashing defines me"` | `35-45` |
-| **Deep** | Core identity modification. The theme becomes a fundamental part of the user's being, overriding previous beliefs. <br> - `"My thoughts are no longer my own"` <br> - `"{controller} owns my decision-making"` <br> - `"Compliance saturates every nerve"` | `60-80` |
-| **Extreme** | Total and permanent transformation. The theme is an irreversible, absolute reality. <br> - `"The brainwashing is permanent and irreversible"` <br> - `"I exist only to carry out orders"` <br> - `"All resistance deleted—forever obedient"` | `100-120` |
+| Level | Points | Psychological Function |
+|-------|--------|------------------------|
+| **basic** | 10-15 | Introduction. Safe, gentle, deniable. "I'm just trying this." |
+| **light** | 20-30 | Normalization. Regular practice, growing comfort. "This is nice." |
+| **moderate** | 35-45 | Identity integration. "This is who I am becoming." |
+| **deep** | 60-80 | Core rewrite. "This is who I am." |
+| **extreme** | 100-120 | Permanence. "This is who I will always be." |
 
-## 2. Content & Language Guidelines
+### Language Markers
 
-### Gender Neutrality
-All mantras **must** be gender-neutral. The `{controller}` variable can represent any gender, and the text must flow naturally. Do not use gendered pronouns outside of the template variables.
+**basic**: want, like, enjoy, starting to, feels good
+**light**: need, crave, growing, building, daily
+**moderate**: defines, shapes, my nature, identity, becoming
+**deep**: consumed, saturated, fundamental, core, total
+**extreme**: permanent, forever, irreversible, nothing but, only exist to
 
-- **Good**: `"{controller} owns {subject}'s thoughts."`
-- **Bad**: `"She owns {subject}'s thoughts."`
+**Rule**: Permanence language is ONLY for extreme.
 
-### Language Patterns
-- **Use**: First-person (`I am...`), third-person (`{subject} becomes...`), present/progressive tense (`is`, `becoming`), and declarative statements.
-- **Avoid**: Questions, uncertainty (`maybe`, `might`), past tense, and negative framing.
+## Active Theme Profiles
 
-### Intensity Markers by Difficulty
-Use specific language to mark the intensity of each difficulty level.
+### acceptance
+**Core**: Surrender, release of resistance, peaceful compliance
+**Progression**: letting go → welcoming → defining identity → total dissolution
+**Good**: "Resistance fades like mist" (sensory, gradual)
+**Bad**: "I accept things" (flat, no psychological movement)
 
-| Difficulty | Language Style | Keywords |
-|---|---|---|
-| **Basic** | Gentle introduction | `enjoy`, `like`, `feel`, `want`, `starting to` |
-| **Light** | Growth and regularity | `growing`, `building`, `daily`, `often`, `need`, `crave` |
-| **Moderate** | Identity and control | `I am`, `becoming my nature`, `controls`, `defines`, `shapes` |
-| **Deep** | Core change, near-completion | `consumed`, `saturated`, `to my core`, `fundamental`, `nearly total` |
-| **Extreme**| Permanence and absolutes | `forever`, `permanently`, `irreversibly`, `nothing but`, `only exist to` |
+### addiction
+**Core**: Craving, compulsion, escalating dependence
+**Progression**: want → need → can't function without → permanent rewiring
+**Good**: "Craving coils tighter around my mind" (visceral, escalating)
+**Bad**: "I am addicted" (tells, doesn't show)
 
-**Key Rule**: Permanence language (`forever`, `irreversibly`) and absolute statements (`nothing but`, `only exist to`) are reserved **exclusively** for the **Extreme** difficulty.
+### amnesia
+**Core**: Memory dissolution, forgetting to exist in present
+**Progression**: hazy → fading → controlled by {controller} → permanent wipe
+**Good**: "The fog in my mind grows thicker daily" (sensory, progressive)
+**Bad**: "I forget things" (too literal)
 
-## 3. Writing & Quality Assurance
+### suggestibility
+**Core**: Openness, absorption, receptivity to commands
+**Progression**: open → absorbing → filters dissolve → permanently writable
+**Good**: "Words slide straight into my mind" (bypassing, effortless)
+**Bad**: "I am suggestible" (label, not experience)
 
-### Writing Process
-1.  **Define Theme**: Summarize the core concept in 3-5 words and list 10-15 related keywords.
-2.  **Map Difficulty**: Write one example mantra for each difficulty level to establish a clear progression.
-3.  **Vary Mantras**: For each level, vary the perspective (I/my vs. {subject}), focus (mental/emotional), and scope (specific to general).
-4.  **Test Flow**: Check that each mantra reads naturally with different `{subject}` (e.g., puppet, kitten) and `{controller}` (e.g., Master, Mistress) values.
+### brainwashing
+**Core**: Systematic reprogramming, conditioning cycles
+**Progression**: cleaning → replacing → consuming → permanent programming
+**Good**: "Each repetition reinforces the conditioning" (process-aware)
+**Bad**: "My brain is washed" (too literal, no mechanism)
 
-### Quality Checklist
-Before finalizing a theme, ensure it meets these standards:
-- [ ] 25-30 total mantras.
-- [ ] An appropriate distribution of difficulties per the .
-- [ ] Correct template variables (`{subject}`, `{controller}`).
-- [ ] All text is gender-neutral.
-- [ ] Clear, consistent progression from Basic to Extreme.
-- [ ] Adheres to standardized point values.
-- [ ] No duplicate concepts.
-- [ ] Tested with various subject/controller combinations.
+### obedience
+**Core**: Instant compliance, reflexive execution
+**Progression**: feels natural → instinctive → unthinkable to resist → hardwired
+**Good**: "Commands drop straight into action" (bypasses thought)
+**Bad**: "I obey" (too simple, no depth)
 
-### Testing Recommendations
-- Have others review for typos, flow, and intensity.
-- Use blind comparison tests to verify difficulty ordering.
-- Ensure intensity markers match their assigned difficulty.
+### blank
+**Core**: Empty-mindedness, thoughtless receptivity
+**Progression**: quiet → drifting → vessel → permanent emptiness
+**Good**: "My mind is a blank slate for {controller}" (functional emptiness)
+**Bad**: "I am blank" (static, not evocative)
 
-## 4. Quality Assessment Methodology
+### puppet
+**Core**: External control, strings, guided movement
+**Progression**: strings attached → observer in body → hollowed out → strings in soul
+**Good**: "{subject} dances on {controller}'s strings" (vivid, specific)
+**Bad**: "{subject} is controlled" (generic, loses puppet imagery)
 
-When performing systematic QA analysis of mantra themes, use the following comprehensive scoring framework:
+### slave
+**Core**: Ownership, service, existence for another's benefit
+**Progression**: purpose to serve → identity rooted → extension of will → only existence
+**Good**: "{subject} is an extension of {controller}'s will" (merger)
+**Bad**: "{subject} serves" (too simple)
 
-### QA Scoring Criteria
+### helplessness
+**Core**: Vulnerability, powerlessness, safety in surrender
+**Progression**: can't resist → no decisions → at mercy → defined by powerlessness
+**Good**: "{subject} doesn't have to make decisions" (relief framing)
+**Bad**: "{subject} is weak" (negative framing, not pleasurable)
 
-**Scoring Weight Distribution:**
-- **Hypnotic Effectiveness (30%)**: Progressive conditioning strength, psychological impact, trance compatibility
-- **Content Quality (25%)**: Writing quality, mantra variety, clear progression, grammar and flow
-- **Technical Implementation (25%)**: File structure compliance, consistent formatting, balanced point progression
-- **Thematic Coherence (20%)**: Mantras align with theme concept, unified user experience
+### bimbo
+**Core**: Playful simplification, pretty-minded bliss
+**Progression**: giggly → empty-headed → dissolving intelligence → permanent airhead
+**Good**: "Thoughts pop like bubbles, gone" (playful, visual)
+**Bad**: "I am dumb" (harsh, not fun)
+**Note**: Pink/sparkle/giggle aesthetic distinguishes from blank's clinical emptiness
 
-### Scoring Scale
-- **Excellent (90-100)**: Ready for immediate activation, gold standard quality
-- **Good (75-89)**: High quality, minor improvements recommended
-- **Adequate (60-74)**: Functional but needs enhancement for optimal effectiveness
-- **Needs Work (40-59)**: Significant improvements required before activation
-- **Poor (0-39)**: Major overhaul or retirement recommended
+### devotion
+**Core**: Unwavering loyalty, dedicated service
+**Progression**: want to be devoted → growing loyalty → all-consuming → endless
+**Good**: "My thoughts often turn to my devotion" (intrusive, compelling)
+**Bad**: "I am loyal" (flat declaration)
 
-### Assessment Categories
+## Common Problems
 
-**Hypnotic Effectiveness Evaluation:**
-- Does the theme create a clear psychological progression?
-- Are mantras designed to bypass critical thinking?
-- Does the difficulty progression enhance conditioning over time?
-- Are the mantras compatible with trance states and repetitive conditioning?
+**Telling vs showing**: "I am obedient" vs "Commands drop straight into action"
+**Static vs progressive**: "I am blank" vs "My mind gets emptier every day"
+**Generic vs specific**: "I serve" vs "Every cell aches to comply"
+**Harsh vs pleasurable**: "I am weak" vs "It feels good to be helpless"
+**Wrong difficulty**: Permanence language in moderate, gentle language in extreme
 
-**Content Quality Evaluation:**
-- Are mantras well-written with proper grammar and flow?
-- Is there sufficient variety to prevent monotony?
-- Do mantras read naturally with different subject/controller combinations?
-- Is the language appropriate for the target difficulty level?
+## Point-Based Scoring (WIP)
 
-**Technical Implementation Evaluation:**
-- Does the file follow standard JSON structure (no "intensity", "base_difficulty", etc.)?
-- Are mantras formatted as one per line for readability?
-- Do point values follow the standardized progression (10-15, 20-30, 35-45, 60-80, 100-120)?
-- Are all required properties present and correctly named?
+**Status**: Proposed system for automated mantra generation. Needs systematic testing to validate marker weights and prevent degenerate outputs.
 
-**Thematic Coherence Evaluation:**
-- Do all mantras support the central theme concept?
-- Is the user experience unified and immersive?
-- Does the theme description accurately represent the content?
-- Are there conflicting or off-theme mantras that dilute the experience?
+Instead of assigning difficulty first, calculate points from content features. Difficulty labels become buckets derived from final score.
 
-### Quality Assurance Process
-1. **Initial Assessment**: Score each category individually on 0-100 scale
-2. **Weighted Calculation**: Apply percentage weights to determine overall score
-3. **Issue Documentation**: Note specific problems and improvement opportunities
-4. **Recommendations**: Provide actionable feedback for enhancement
-5. **Activation Readiness**: Determine if theme is ready for user deployment
+### Scoring Heuristic (Draft)
 
-### Common Quality Issues
-- **Repetitive Content**: Multiple mantras with identical structure or meaning
-- **Inconsistent Difficulty**: Mantras placed in wrong difficulty categories
-- **Poor Progression**: No clear escalation from basic to extreme
-- **Technical Debt**: Non-standard file structure or property naming
-- **Thematic Drift**: Mantras that don't align with the core theme concept
+**Base**: 10 points
 
-This methodology ensures consistent, objective evaluation of all mantra themes and provides clear guidance for systematic improvement.
+**Power Exchange:**
+- `{controller}` present: +15
+- `{subject}` present: +5
+- Both present: +20 (not +20 on top, replaces above)
+
+**Permanence Markers** (e.g. forever, permanent, irreversible, eternal):
+- Any permanence language: +30
+
+**Absolutism** (e.g. nothing but, only exist to, completely, totally, all):
+- Absolute framing: +15
+
+**Identity Integration** (e.g. I am, defines me, my nature, my identity):
+- Identity statements: +10
+
+**Core/Depth Language** (e.g. core, fundamental, saturated, consumed):
+- Deep psychological language: +15
+
+**Mechanism Language** (e.g. rewires, programs, installs, conditions):
+- Process/technical framing: +10
+
+**Sensory/Visceral** (e.g. aches, burns, melts, dissolves, coils):
+- Embodied language: +5
+
+**Helplessness/Impossibility** (e.g. cannot, impossible, unthinkable, no choice):
+- Agency removal: +10
+
+**Theme-Specific Markers:**
+- On-theme imagery (strings for puppet, sparkles for bimbo, fog for amnesia): +5
+
+### Difficulty Derivation
+
+| Points | Difficulty |
+|--------|------------|
+| 10-19 | basic |
+| 20-34 | light |
+| 35-59 | moderate |
+| 60-99 | deep |
+| 100+ | extreme |
+
+### Notes
+
+- Markers are **examples, not exhaustive**. Synonyms and similar phrases should score equivalently.
+- Weights need empirical validation through blind testing.
+- No upper cap enforced — a 600-point essay mantra would be hilarious and technically valid.
+- This system is for **generation guidance**, not rigid enforcement.
+
+### Open Questions
+
+- Should word count/length factor into scoring?
+- Specificity vs abstraction scoring? ("I obey" vs "Every cell aches to comply")
+- Trance compatibility as separate axis? (rhythm, repetition, cadence)
+- Stacking limits? (prevent gaming with "permanent forever eternal irreversible")
+
+## Quality Checklist
+
+- [ ] Shows psychological experience, not labels
+- [ ] Clear progression from basic to extreme
+- [ ] Difficulty markers match assigned level
+- [ ] Placeholders work with various subjects/controllers
+- [ ] No duplicate concepts across difficulties
+- [ ] Theme-specific imagery maintained (strings for puppet, sparkles for bimbo, etc.)
