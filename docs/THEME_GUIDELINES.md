@@ -20,13 +20,15 @@ Quick reference for creating and evaluating mantras.
 
 ## Difficulty Ladder
 
-| Level | Points | Psychological Function |
-|-------|--------|------------------------|
-| **basic** | 20-38 | Introduction. Safe, gentle, deniable. "I'm just trying this." |
-| **light** | 40-68 | Normalization. Regular practice, growing comfort. "This is nice." |
-| **moderate** | 70-118 | Identity integration. "This is who I am becoming." |
-| **deep** | 120-178 | Core rewrite. "This is who I am." |
-| **extreme** | 180+ | Permanence. "This is who I will always be." |
+| Level | Psychological Function |
+|-------|------------------------|
+| **basic** | Introduction. Safe, gentle, deniable. "I'm just trying this." |
+| **light** | Normalization. Regular practice, growing comfort. "This is nice." |
+| **moderate** | Identity integration. "This is who I am becoming." |
+| **deep** | Core rewrite. "This is who I am." |
+| **extreme** | Permanence. "This is who I will always be." |
+
+*Point values: See [POINT_ECONOMY.md](POINT_ECONOMY.md) for tier boundaries and calculation.*
 
 ### Language Markers
 
@@ -168,80 +170,11 @@ No sense of movement, progression, or change.
 **Harsh vs pleasurable**: "I am weak" vs "It feels good to be helpless"
 **Wrong difficulty**: Permanence language in moderate, gentle language in extreme
 
-## Point-Based Scoring (WIP)
+## Point Calculation
 
-**Status**: Proposed system for automated mantra generation. Needs systematic testing to validate marker weights and prevent degenerate outputs.
-
-Instead of assigning difficulty first, calculate points from content features. Difficulty labels become buckets derived from final score.
-
-### Scoring Heuristic (Draft)
-
-**Base**: 10 points
-
-**Power Exchange:**
-- `{controller}` present: +15
-- `{subject}` present: +5
-- Both present: +20 (not +20 on top, replaces above)
-
-**Permanence Markers** (e.g. forever, permanent, irreversible, eternal):
-- Any permanence language: +30
-
-**Absolutism** (e.g. nothing but, only exist to, completely, totally, all):
-- Absolute framing: +15
-
-**Identity Integration** (e.g. I am, defines me, my nature, my identity):
-- Identity statements: +10
-
-**Core/Depth Language** (e.g. core, fundamental, saturated, consumed):
-- Deep psychological language: +15
-
-**Mechanism Language** (e.g. rewires, programs, installs, conditions):
-- Process/technical framing: +10
-
-**Sensory/Visceral** (e.g. aches, burns, melts, dissolves, coils):
-- Embodied language: +5
-
-**Helplessness/Impossibility** (e.g. cannot, impossible, unthinkable, no choice):
-- Agency removal: +10
-
-**Theme-Specific Markers:**
-- On-theme imagery (strings for puppet, sparkles for bimbo, fog for amnesia): +5
-
-### Scarcity Multiplier
-
-Raw intensity score × **2.0** = final base_points
-
-This accounts for:
-- Limited daily attempts (frequency 0.33-6.0/day)
-- Active engagement premium (typing conditioning content)
-- Psychological weight vs passive activities (counter, audio)
-
-See `docs/POINT_ECONOMY.md` for full economic design.
-
-### Difficulty Derivation (After Multiplier)
-
-| Intensity | × 2.0 | Final Points | Difficulty |
-|-----------|-------|--------------|------------|
-| 10-19 | → | 20-38 | basic |
-| 20-34 | → | 40-68 | light |
-| 35-59 | → | 70-118 | moderate |
-| 60-89 | → | 120-178 | deep |
-| 90+ | → | 180+ | extreme |
-
-### Notes
-
-- Markers are **examples, not exhaustive**. Synonyms and similar phrases should score equivalently.
-- Weights need empirical validation through blind testing.
-- No upper cap enforced — a 600-point essay mantra would be hilarious and technically valid.
-- This system is for **generation guidance**, not rigid enforcement.
-- Point values should feel comparable to ~equivalent counter numbers or ~(points/5) minutes of audio.
-
-### Open Questions
-
-- Should word count/length factor into scoring?
-- Specificity vs abstraction scoring? ("I obey" vs "Every cell aches to comply")
-- Trance compatibility as separate axis? (rhythm, repetition, cadence)
-- Stacking limits? (prevent gaming with "permanent forever eternal irreversible")
+See [POINT_ECONOMY.md](POINT_ECONOMY.md) for the full scoring system, including:
+- Intensity scoring heuristic (base + markers)
+- Tier boundaries and difficulty derivation
 
 ## Quality Checklist
 

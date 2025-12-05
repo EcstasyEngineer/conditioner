@@ -94,39 +94,59 @@ Higher engagement activities should award more points per interaction, even if t
 
 ## Mantra Point Calculation
 
-### Intensity Scoring (Content-Based)
+### The Core Question
 
-Base: 10 points
+**Would typing this feel like a leap?**
 
-**Additive markers:**
-- `{controller}` present: +15
-- `{subject}` present: +5 (or +20 if both)
-- Permanence language: +30
-- Absolutism: +15
-- Identity statements: +10
-- Core/depth language: +15
-- Mechanism language: +10
-- Sensory/visceral: +5
-- Agency removal: +10
+A mantra that's easy to say = low points. A mantra that makes you pause, that feels like a confession or commitment = high points. The markers below are guidelines to help quantify this, but your judgment matters more than the math.
 
-### Scarcity Multiplier
+### Intensity Scoring
 
-Raw intensity score × **2.0** = final point value
+Base: 20 points
 
-This accounts for:
-- Limited daily attempts
-- Active engagement premium
-- Psychological weight of typing conditioning content
+| Category | Examples | Points |
+|----------|----------|--------|
+| **Placeholders** | `{controller}` alone | +20 |
+| | `{subject}` alone | +10 |
+| | Both present | +30 |
+| **Permanence** | forever, permanent, irreversible, eternal, will ever | +60 |
+| **Ownership** | belongs to, owns, property, is {controller}'s | +30 |
+| **Identity erasure** | who I was, everything I was, past erased, no longer me | +30 |
+| **Vulnerability** | opens wide, exposes, lets in, defenseless | +30 |
+| **Absolutism** | nothing but, only, completely, totally, every | +20 |
+| **Mechanism** | rewires, programs, overwrites, erases, deleted, neurons | +20 |
+| **Depth language** | core, saturated, consumed, soul, fundamental | +20 |
+| **Agency removal** | cannot, impossible, unthinkable, no choice | +20 |
+| **Comfort (negative)** | peaceful, gentle, soft, warm, safe | -15 |
 
-### Tier Boundaries (After Multiplier)
+These markers are examples, not exhaustive lists. Use judgment for synonyms and similar language.
 
-| Tier | Intensity Score | Final Points | Difficulty Label |
-|------|-----------------|--------------|------------------|
-| 1 | 10-19 | 20-38 | basic |
-| 2 | 20-34 | 40-68 | light |
-| 3 | 35-59 | 70-118 | moderate |
-| 4 | 60-89 | 120-178 | deep |
-| 5 | 90+ | 180+ | extreme |
+### Calibration Examples
+
+| Mantra | Why | Points |
+|--------|-----|--------|
+| "Commands drop straight into action" | Simple, no commitment | 20 |
+| "I breathe in control, exhale resistance" | Meditative framing, feels like yoga | 20 |
+| "{subject} softens into surrender" | Gentle, low stakes | 30 |
+| "{controller}'s words bypass my thoughts entirely" | Controller + absolutism, but abstract | 60 |
+| "My reflexes belong to {controller}" | Ownership is a real claim | 70 |
+| "My subconscious opens wide for {controller}" | Vulnerability, intimate access | 70 |
+| "{subject} is eternally receptive to {controller}" | Permanence changes everything | 110 |
+| "Orders from {controller} overwrite every impulse permanently" | Stacked: mechanism + absolutism + permanence | 140 |
+
+### Tier Boundaries
+
+| Points | Tier | The Leap |
+|--------|------|----------|
+| 20-40 | basic | Easy to say. No real commitment. |
+| 40-70 | light | Some weight. Getting comfortable. |
+| 70-120 | moderate | Real claim. "This is becoming me." |
+| 120-180 | deep | Hard to take back. Core change. |
+| 180+ | extreme | Point of no return language. |
+
+### When Math and Instinct Disagree
+
+Trust instinct. If a mantra calculates to 60 but feels like 100 to type, it's 100. If it calculates to 120 but feels gentle, it's probably lower. The markers capture common patterns, not universal truth.
 
 ## Balancing Principles
 
@@ -145,4 +165,3 @@ This accounts for:
 ## Changelog
 
 - 2025-12-05: Initial economy design document
-- 2025-12-05: Established 2.0x scarcity multiplier for mantras

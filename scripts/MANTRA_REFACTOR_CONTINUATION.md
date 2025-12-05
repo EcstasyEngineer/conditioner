@@ -7,87 +7,111 @@ Use this to continue #46 mantra quality refactor work.
 We're refactoring mantra content quality for the conditioning Discord bot. Work started 2025-12-05.
 
 **Completed:**
-- `amnesia` theme — full refactor with blind validation
+- `amnesia` theme — blind validated, replaced weak mantras
 - `acceptance` theme — culled weak mantras, replaced with show-not-tell
 - `suggestibility` theme — culled state labels, added sensory anchors
 - `obedience` theme — culled generic "feels" patterns, added visceral language
+- Point economy doc finalized with scoring heuristics
 
-**Remaining high-priority themes (by usage):**
+**Remaining themes:**
 - addiction, brainwashing
 - blank, puppet, slave, helplessness, bimbo, devotion
 
-## Process Per Theme
+## Two-Phase Process
 
-1. **Generate blind test batches**: `python3 scripts/generate_blind_tests.py --type mantras --theme {theme} --replicas 1 --batch-size 10`
+### Phase 1: Quality Cull (per theme)
 
-2. **Run blind validation** with parallel Task agents. Use the clinical craft analysis prompt (avoids roleplay refusals):
+Run blind validation to identify weak mantras. Use this prompt with Task agents:
 
 ```
-You are evaluating mantras for a conditioning/hypnosis Discord bot. This is a craft analysis exercise, not roleplay.
+You are evaluating mantras for a conditioning/hypnosis Discord bot. This is craft analysis, not roleplay.
 
-Evaluate this mantra: "{mantra_text}"
+For each mantra, evaluate:
+1. **Shows vs tells**: Does it describe an experience or just label a state?
+   - TELL: "I am obedient" (label)
+   - SHOW: "Commands drop straight into action" (experience)
 
-Return ONLY valid JSON, no other text:
-{
-  "mantra": "the text",
-  "shows_vs_tells": "show" or "tell",
-  "sensory_anchoring": 1-5 (1=abstract, 5=visceral/embodied),
-  "psychological_movement": 1-5 (1=static state, 5=active process),
-  "overall_effectiveness": 1-5,
-  "strongest_element": "one phrase",
-  "weakest_element": "one phrase or null",
-  "revision_suggestion": "improved version or null"
-}
+2. **Psychological movement**: Static state (1) to active process (5)
+   - Static: "I am blank"
+   - Movement: "Thoughts drift away before forming"
+
+3. **Keep/Revise/Cut** recommendation
+
+Mantras to evaluate:
+{list mantras here}
+
+Return a markdown table: | Mantra | Shows/Tells | Movement (1-5) | Verdict | Why |
 ```
 
-**Why this format works:**
-- Clinical framing bypasses roleplay refusal patterns
-- JSON-only output gives structured, aggregatable data
-- "Craft analysis" frames it as evaluation, not participation
-- Metrics map directly to quality criteria (show>tell, sensory>abstract, movement>static)
+**Quality red flags (auto-cut):**
+- Therapeutic framing ("helps me", "my worries", self-help tone)
+- Passive voice without subject ("memories are deleted")
+- Pure state labels ("I am X" without mechanism)
+- Generic verbs ("feels good", "is nice")
 
-3. **Analyze results**: Identify weak mantras (revise/remove), point mismatches, missing tiers
+### Phase 2: Rescore Everything
 
-4. **Generate replacements** for weak mantras using Task agent with theme profile from `docs/THEME_GUIDELINES.md`
+After quality pass, rescore all mantras using the point economy.
 
-5. **Update theme JSON** with:
-   - Replaced weak mantras
-   - Recalculated points (intensity × 2)
-   - Correct difficulty labels based on final points
+**The core question: Would typing this feel like a leap?**
+
+Use this prompt with Task agents:
+
+```
+Score these mantras for a hypnotic conditioning system.
+
+**The core question:** Would typing this feel like a leap? A mantra that's easy to say = low points. A mantra that feels like a confession or commitment = high points.
+
+## Scoring Guidelines
+
+Base: 20 points
+
+| Category | Examples | Points |
+|----------|----------|--------|
+| Placeholders | {controller} alone +20, {subject} alone +10, Both +30 |
+| Permanence | forever, permanent, irreversible, eternal | +60 |
+| Ownership | belongs to, owns, property | +30 |
+| Identity erasure | who I was, everything I was, past erased | +30 |
+| Vulnerability | opens wide, exposes, lets in, defenseless | +30 |
+| Absolutism | nothing but, only, completely, every | +20 |
+| Mechanism | rewires, programs, overwrites, erases, deleted | +20 |
+| Depth language | core, saturated, consumed, soul | +20 |
+| Agency removal | cannot, impossible, unthinkable | +20 |
+| Comfort (negative) | peaceful, gentle, soft, warm | -15 |
+
+**Tiers:** 20-40 basic, 40-70 light, 70-120 moderate, 120-180 deep, 180+ extreme
+
+**Trust instinct over math.** If it calculates to 60 but feels like 100 to type, it's 100.
+
+Mantras to score:
+{list mantras here}
+
+Return: | Mantra | Points | Tier | One-sentence justification |
+```
 
 ## Key Documents
 
-- `docs/THEME_GUIDELINES.md` — Per-theme profiles, scoring heuristic, quality criteria
-- `docs/POINT_ECONOMY.md` — Why 2x multiplier, cross-system balance
-- `docs/subject_psychological_profiles.md` — Subject archetypes (for response messages, not mantras)
-
-## Point Economy Quick Reference
-
-| System | Rate | Notes |
-|--------|------|-------|
-| Counter | 1 pt/number | Baseline, unlimited |
-| Audio | 5 pt/minute | Time-gated |
-| Mantras | 20-180+ pts | Scarce (1-6/day), premium engagement |
-
-A 120-point deep mantra ≈ 120 counted numbers ≈ 24 min audio
-
-## Quality Red Flags
-
-- "Therapeutic" language (helps, worries, self-help tone)
-- Passive voice ("memories are deleted" → "I delete memories")
-- Tells-not-shows ("I am obedient" → "Commands drop straight into action")
-- Missing personal anchor (no I/{subject}/{controller})
-- Point inflation (extreme labels on moderate-intensity content)
+- `docs/POINT_ECONOMY.md` — Full scoring system, calibration examples, tier boundaries
+- `docs/THEME_GUIDELINES.md` — Per-theme profiles, weak patterns to avoid
 
 ## Commit Message Template
 
 ```
 Refactor {theme} mantras for quality and point accuracy
 
-- Blind validated {N} mantras with Opus
-- Replaced {X} weak mantras (therapeutic/passive/flat)
-- Recalculated points using heuristic × 2x multiplier
+- Blind validated with Opus, culled {X} weak mantras
+- Replaced with show-not-tell alternatives
+- Rescored all mantras using point economy heuristics
 - Distribution: {N} basic, {N} light, {N} moderate, {N} deep, {N} extreme
 
 Part of #46
 ```
+
+## Quick Checklist Per Theme
+
+- [ ] Run quality cull (blind validation)
+- [ ] Remove/replace weak mantras
+- [ ] Rescore all mantras with new system
+- [ ] Update JSON with new points and difficulty labels
+- [ ] Verify distribution makes sense for theme
+- [ ] Commit with template message
