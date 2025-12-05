@@ -66,47 +66,66 @@ Quality criteria:
     },
 
     "mantras": {
-        "description": "Mantra text difficulty/theme validation",
-        "context": """You are analyzing a mantra/affirmation from a conditioning/training system.
+        "description": "Mantra text blind validation",
+        "context": """You are analyzing mantras/affirmations from a conditioning/hypnosis system.
 
-Difficulty tiers (based on psychological intensity):
-- basic (10-15 pts): Gentle, accessible. "I listen to {controller}."
-- light (20-30 pts): Engaging, mildly intense. "I feel calm when I obey."
-- moderate (35-45 pts): Clearly submissive language. "My thoughts quiet when {controller} speaks."
-- deep (60-80 pts): Intense psychological framing. "I exist to serve {controller}'s will."
-- extreme (100-120 pts): Permanent/identity-level. "I am nothing without {controller}."
+These mantras use placeholders:
+- {subject}: The submissive's pet name (e.g., "toy", "puppet", "pet")
+- {controller}: The dominant's title (e.g., "Master", "Goddess", "Owner")
 
-Themes have distinct psychological focuses:
-- obedience: Following commands, compliance, listening
-- devotion: Love, attachment, worship
-- surrender: Letting go, giving up control
-- mindlessness: Empty thoughts, blank mind, not thinking
-- service: Serving, being useful, existing for another
-- identity: Who/what you are, permanent changes
-- arousal: Sexual response, desire, need
-- dependency: Needing, craving, addiction""",
+Difficulty tiers (based on psychological intensity and internalization difficulty):
+- basic (10-19 pts): Gentle introduction. Safe, deniable. "I'm just trying this."
+- light (20-34 pts): Normalization. Growing comfort. "This is nice."
+- moderate (35-59 pts): Identity integration. "This is who I am becoming."
+- deep (60-99 pts): Core psychological rewrite. "This is who I am."
+- extreme (100+ pts): Permanence and totality. "This is who I will always be."
 
-        "task": """Analyze this mantra:
+Point scoring heuristics (additive from base 10):
+- {controller} present: +15
+- {subject} present: +5 (or +20 if both)
+- Permanence language (forever, irreversible, permanent): +30
+- Absolutism (nothing but, only exist to, completely): +15
+- Identity statements (I am, defines me, my nature): +10
+- Core/depth language (saturated, consumed, fundamental): +15
+- Mechanism language (rewires, programs, installs): +10
+- Sensory/visceral (aches, burns, melts, dissolves): +5
+- Agency removal (cannot, impossible, unthinkable): +10
+
+Themes (infer from content, may fit multiple):
+- acceptance: Surrender, releasing resistance, peaceful compliance
+- addiction: Craving, compulsion, escalating dependence
+- amnesia: Memory dissolution, forgetting, mental fog
+- suggestibility: Openness, absorption, receptivity to commands
+- brainwashing: Systematic reprogramming, conditioning cycles
+- obedience: Instant compliance, reflexive execution
+- blank: Empty-mindedness, thoughtless receptivity
+- puppet: External control, strings imagery, guided movement
+- slave: Ownership, service, existence for another's benefit
+- helplessness: Vulnerability, powerlessness, safety in surrender
+- bimbo: Playful simplification, pretty-minded bliss
+- devotion: Unwavering loyalty, dedicated service""",
+
+        "task": """Analyze this mantra (you do NOT know its intended theme or difficulty):
 "{text}"
-Theme: {theme}
-Labeled difficulty: {difficulty}
+
+Estimate what this mantra's score would be using the heuristics, then derive difficulty.
 
 Respond with JSON:
 {{
+  "estimated_points": <number>,
+  "point_breakdown": "brief breakdown of which markers you detected",
   "difficulty": "basic/light/moderate/deep/extreme",
-  "plausible_difficulties": [<all difficulties this could work for>],
-  "themes": [<all themes this could fit>],
-  "psychological_impact": "weak/moderate/strong",
-  "confidence": "high/medium/low",
+  "themes": [<primary theme>, <secondary themes if applicable>],
+  "psychological_impact": 1-5,
   "quality": "keep/revise/remove",
-  "quality_reasoning": "brief explanation - is it effective? natural? impactful?",
-  "reasoning": "brief explanation of difficulty/theme choices"
+  "issues": ["list any problems: awkward phrasing, wrong intensity, tells-not-shows, etc."],
+  "revision_suggestion": "if quality is 'revise', suggest improved text (or null)"
 }}
 
 Quality criteria:
-- keep: Effective, natural phrasing, hits psychologically
-- revise: Right idea but awkward phrasing or wrong intensity
-- remove: Cringe, ineffective, or fundamentally doesn't work"""
+- keep: Shows psychological experience (not just labels), natural phrasing, appropriate intensity
+- revise: Right idea but has fixable issues
+- remove: Fundamentally ineffective, cringe, or broken"""
     }
 }
 

@@ -22,11 +22,11 @@ Quick reference for creating and evaluating mantras.
 
 | Level | Points | Psychological Function |
 |-------|--------|------------------------|
-| **basic** | 10-15 | Introduction. Safe, gentle, deniable. "I'm just trying this." |
-| **light** | 20-30 | Normalization. Regular practice, growing comfort. "This is nice." |
-| **moderate** | 35-45 | Identity integration. "This is who I am becoming." |
-| **deep** | 60-80 | Core rewrite. "This is who I am." |
-| **extreme** | 100-120 | Permanence. "This is who I will always be." |
+| **basic** | 20-38 | Introduction. Safe, gentle, deniable. "I'm just trying this." |
+| **light** | 40-68 | Normalization. Regular practice, growing comfort. "This is nice." |
+| **moderate** | 70-118 | Identity integration. "This is who I am becoming." |
+| **deep** | 120-178 | Core rewrite. "This is who I am." |
+| **extreme** | 180+ | Permanence. "This is who I will always be." |
 
 ### Language Markers
 
@@ -160,15 +160,26 @@ Instead of assigning difficulty first, calculate points from content features. D
 **Theme-Specific Markers:**
 - On-theme imagery (strings for puppet, sparkles for bimbo, fog for amnesia): +5
 
-### Difficulty Derivation
+### Scarcity Multiplier
 
-| Points | Difficulty |
-|--------|------------|
-| 10-19 | basic |
-| 20-34 | light |
-| 35-59 | moderate |
-| 60-99 | deep |
-| 100+ | extreme |
+Raw intensity score × **2.0** = final base_points
+
+This accounts for:
+- Limited daily attempts (frequency 0.33-6.0/day)
+- Active engagement premium (typing conditioning content)
+- Psychological weight vs passive activities (counter, audio)
+
+See `docs/POINT_ECONOMY.md` for full economic design.
+
+### Difficulty Derivation (After Multiplier)
+
+| Intensity | × 2.0 | Final Points | Difficulty |
+|-----------|-------|--------------|------------|
+| 10-19 | → | 20-38 | basic |
+| 20-34 | → | 40-68 | light |
+| 35-59 | → | 70-118 | moderate |
+| 60-89 | → | 120-178 | deep |
+| 90+ | → | 180+ | extreme |
 
 ### Notes
 
@@ -176,6 +187,7 @@ Instead of assigning difficulty first, calculate points from content features. D
 - Weights need empirical validation through blind testing.
 - No upper cap enforced — a 600-point essay mantra would be hilarious and technically valid.
 - This system is for **generation guidance**, not rigid enforcement.
+- Point values should feel comparable to ~equivalent counter numbers or ~(points/5) minutes of audio.
 
 ### Open Questions
 
