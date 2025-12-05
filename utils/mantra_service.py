@@ -39,6 +39,7 @@ CONSECUTIVE_FAILURES_THRESHOLD = 8  # Auto-disable after this many consecutive f
 DISABLE_OFFER_THRESHOLD = 3  # Offer disable button after this many failures
 INITIAL_ENROLLMENT_DELAY_SECONDS = 30  # Delay before first mantra
 MISSED_PENALTY_RATE = 0.10  # Penalty rate for hours before response (weighted by probability)
+CONSECUTIVE_MISS_HOURS_ADDITIVE = 4  # Hours added to interval per consecutive miss
 
 
 def get_default_config() -> Dict:
@@ -89,6 +90,50 @@ def save_learner(config: Dict, learner: AvailabilityLearner) -> None:
         learner: AvailabilityLearner to save
     """
     config["availability_distribution"] = learner.get_distribution()
+
+
+def get_effective_frequency(base_frequency: float, consecutive_failures: int) -> float:
+    """
+    Calculate effective frequency with consecutive miss additive penalty.
+
+    Each consecutive miss adds a fixed number of hours to the delivery interval.
+    This creates consistent absolute delays regardless of base frequency.
+
+    Formula: hours_until_next = (24 / base_freq) + (C × failures)
+             effective_freq = 24 / hours_until_next
+
+    Examples (with C=4 hours per miss):
+        Base freq 6/day (4hr intervals):
+            0 misses: 4hr  → 6.0/day
+            3 misses: 16hr → 1.5/day
+            5 misses: 24hr → 1.0/day (hits 24hr floor)
+            7 misses: 32hr → 0.75/day
+
+        Base freq 2/day (12hr intervals):
+            0 misses: 12hr → 2.0/day
+            3 misses: 24hr → 1.0/day (hits 24hr floor)
+            5 misses: 32hr → 0.75/day
+            7 misses: 40hr → 0.6/day
+
+    Args:
+        base_frequency: Base encounters per day (from bucket adjustments)
+        consecutive_failures: Number of consecutive misses
+
+    Returns:
+        Effective frequency with additive penalty applied
+    """
+    if consecutive_failures <= 0:
+        return base_frequency
+
+    # Calculate base interval
+    base_interval_hours = 24 / base_frequency
+
+    # Add penalty hours
+    penalty_hours = CONSECUTIVE_MISS_HOURS_ADDITIVE * consecutive_failures
+    total_interval_hours = base_interval_hours + penalty_hours
+
+    # Convert back to frequency
+    return 24 / total_interval_hours
 
 
 def enroll_user(config: Dict, themes: List[str], subject: str, controller: str) -> None:
@@ -365,6 +410,8 @@ def schedule_next_encounter(
     - legacy: Fixed interval scheduling
     - fixed: Same times every day
 
+    Applies consecutive miss snowball penalty to scheduling (not base frequency).
+
     Pre-selects the mantra to be delivered.
 
     Args:
@@ -374,20 +421,28 @@ def schedule_next_encounter(
     """
     delivery_mode = config.get("delivery_mode", DEFAULT_DELIVERY_MODE)
 
+    # Apply consecutive miss snowball to get effective frequency
+    base_frequency = config["frequency"]
+    consecutive_failures = config.get("consecutive_failures", 0)
+    effective_frequency = get_effective_frequency(base_frequency, consecutive_failures)
+
     # Calculate next delivery time based on mode
     if delivery_mode == DELIVERY_MODE_ADAPTIVE:
         # Use prediction error learning and probability integration
         if learner is None:
             learner = get_learner(config)
-        next_time = schedule_next_delivery(learner, config["frequency"])
+        next_time = schedule_next_delivery(learner, effective_frequency)
 
     elif delivery_mode == DELIVERY_MODE_LEGACY:
-        # Use fixed interval
-        interval_hours = config.get("legacy_interval_hours", DEFAULT_LEGACY_INTERVAL_HOURS)
-        next_time = schedule_next_delivery_legacy(interval_hours)
+        # Use fixed interval (adjust by additive penalty)
+        base_interval_hours = config.get("legacy_interval_hours", DEFAULT_LEGACY_INTERVAL_HOURS)
+        # Add penalty hours directly
+        penalty_hours = CONSECUTIVE_MISS_HOURS_ADDITIVE * consecutive_failures
+        adjusted_interval = base_interval_hours + penalty_hours
+        next_time = schedule_next_delivery_legacy(int(adjusted_interval))
 
     elif delivery_mode == DELIVERY_MODE_FIXED:
-        # Use fixed times of day
+        # Use fixed times of day (snowball doesn't apply to fixed times)
         fixed_times = config.get("fixed_times", DEFAULT_FIXED_TIMES)
         try:
             next_time = schedule_next_delivery_fixed(fixed_times)
@@ -401,7 +456,7 @@ def schedule_next_encounter(
         config["delivery_mode"] = DEFAULT_DELIVERY_MODE
         if learner is None:
             learner = get_learner(config)
-        next_time = schedule_next_delivery(learner, config["frequency"])
+        next_time = schedule_next_delivery(learner, effective_frequency)
 
     config["next_delivery"] = next_time.isoformat()
 

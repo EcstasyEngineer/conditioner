@@ -17,10 +17,19 @@ CEIL = 1.0   # Maximum probability
 DEFAULT_FREQUENCY = 1.0  # Encounters per day
 MIN_FREQUENCY = 0.33  # Minimum: 1 encounter per 3 days
 MAX_FREQUENCY = 6.0   # Maximum: 6 encounters per day
-FREQUENCY_INCREASE_FAST = 1.1  # Multiplier for fast responses (<2min)
-FREQUENCY_INCREASE_NORMAL = 1.05  # Multiplier for normal responses
-FREQUENCY_DECREASE = 0.9  # Multiplier for timeouts
 MAX_LOOKAHEAD_HOURS = 168  # Check up to 7 days ahead
+
+# Response time thresholds (seconds)
+EAGER_THRESHOLD = 30        # <30s: Top 40% eagerness
+QUICK_THRESHOLD = 120       # <2min: Active engagement
+NORMAL_THRESHOLD = 1800     # <30min: Regular checking
+
+# Frequency multipliers by response time bucket
+FREQUENCY_MULT_EAGER = 1.20     # +20% - genuine eagerness (2x baseline boost)
+FREQUENCY_MULT_QUICK = 1.15     # +15% - active engagement (1.5x baseline boost)
+FREQUENCY_MULT_NORMAL = 1.10    # +10% - regular checking (baseline boost)
+FREQUENCY_MULT_NEUTRAL = 1.00   # 0% - neutral zone (30min+, no penalty)
+FREQUENCY_MULT_TIMEOUT = 0.85   # -15% - missed delivery (no response)
 
 # Delivery mode constants
 DELIVERY_MODE_ADAPTIVE = "adaptive"
@@ -176,13 +185,16 @@ def adjust_frequency(
     response_time_seconds: Optional[int] = None
 ) -> float:
     """
-    Adjust encounter frequency based on user engagement (TCP-style).
+    Adjust encounter frequency based on user engagement with response time buckets.
 
-    On success:
-        - Fast response (<120s): Increase by 10%
-        - Normal response: Increase by 5%
+    Response time buckets (for successful responses):
+        - Eager (<30s): +20% - Genuine eagerness
+        - Quick (30s-2min): +15% - Active engagement
+        - Normal (2min-30min): +10% - Regular checking
+        - Neutral (30min+): 0% - No penalty for slow responses
+
     On timeout:
-        - Decrease by 10%
+        - -15% - Missed delivery penalty
 
     Args:
         current_frequency: Current encounters per day
@@ -193,14 +205,23 @@ def adjust_frequency(
         New frequency, clamped to valid range [MIN_FREQUENCY, MAX_FREQUENCY]
     """
     if success:
-        # Increase frequency
-        if response_time_seconds is not None and response_time_seconds < 120:
-            new_frequency = current_frequency * FREQUENCY_INCREASE_FAST
+        if response_time_seconds is None:
+            # Fallback: treat as normal if no time provided
+            multiplier = FREQUENCY_MULT_NORMAL
+        elif response_time_seconds < EAGER_THRESHOLD:
+            multiplier = FREQUENCY_MULT_EAGER
+        elif response_time_seconds < QUICK_THRESHOLD:
+            multiplier = FREQUENCY_MULT_QUICK
+        elif response_time_seconds < NORMAL_THRESHOLD:
+            multiplier = FREQUENCY_MULT_NORMAL
         else:
-            new_frequency = current_frequency * FREQUENCY_INCREASE_NORMAL
+            # Neutral zone - no penalty
+            multiplier = FREQUENCY_MULT_NEUTRAL
+
+        new_frequency = current_frequency * multiplier
     else:
-        # Decrease frequency on timeout
-        new_frequency = current_frequency * FREQUENCY_DECREASE
+        # Timeout penalty
+        new_frequency = current_frequency * FREQUENCY_MULT_TIMEOUT
 
     # Clamp to valid range
     return max(MIN_FREQUENCY, min(MAX_FREQUENCY, new_frequency))

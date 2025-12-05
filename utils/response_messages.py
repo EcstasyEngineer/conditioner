@@ -1,284 +1,261 @@
 """
-Response messages for mantra system, personalized by subject type.
+Response messages for mantra system - V2 rewrite.
 
-Each subject has responses distributed across 5 speed tiers:
-- Tier 0 (<15s): 3 JACKPOT responses - MAXIMUM psychological impact
-- Tier 1 (15-29s): 3 ultra-fast responses - intense affirmation
-- Tier 2 (29-170s): 3 fast responses - strong positive reinforcement
-- Tier 3 (170-575s): 2 normal responses - moderate acknowledgment
-- Tier 4 (>575s): 2 slow responses - neutral/clinical
-
-Tier cutoffs based on prod data (952 responses):
-- <15s: 23.7% (Jackpot - mobile achievable with focus)
-- 15-29s: 21.1% (Excellent - very fast)
-- 29-170s: 25.1% (Good - solid response)
-- 170-575s: 15.0% (Normal - slower but engaged)
-- >575s: 15.0% (Slow - neutral acknowledgment)
+Distribution: 60% generic (works for all subjects) / 40% themed (subject-specific)
+Tiers aligned with bucket system:
+- Tier 0 - Eager (<30s): Strong positive, enthusiastic but not manic
+- Tier 1 - Quick (30s-2min): Good positive, solid praise
+- Tier 2 - Normal (2min-30min): Acknowledgment, affirming
+- Tier 3 - Neutral (30min+): Neutral acknowledgment, not cold
 """
 
 import random
 
-# Response pools for each subject type
-# Format: {subject: {tier: [list of responses]}}
+# Generic responses (60% selection weight) - work for any subject
+GENERIC_RESPONSES = {
+    0: [  # Eager (<30s) - Strong positive
+        "Excellent, {subject}. Such quick obedience for {controller}.",
+        "Perfect. You respond so well, {subject}.",
+        "Very good, {subject}. {controller} is pleased with that speed.",
+        "Immediate compliance. Well done, {subject}.",
+        "Good {subject}. You know how to please {controller}.",
+        "Impressive, {subject}. That was fast.",
+    ],
+    1: [  # Quick (30s-2min) - Good positive
+        "Good, {subject}. Quick response.",
+        "Well done, {subject}. {controller} approves.",
+        "Very good. You're learning, {subject}.",
+        "Good {subject}. Keep this up.",
+        "That's good, {subject}. {controller} notes this.",
+        "Acknowledged, {subject}. Good work.",
+    ],
+    2: [  # Normal (2min-30min) - Acknowledgment
+        "Response accepted, {subject}.",
+        "Acknowledged, {subject}. Well done.",
+        "Good, {subject}. {controller} sees this.",
+        "Noted, {subject}. Continue.",
+        "Received, {subject}. Keep going.",
+        "Understood, {subject}.",
+    ],
+    3: [  # Neutral (30min+) - Neutral, not cold
+        "Response received, {subject}.",
+        "Acknowledged, {subject}.",
+        "Noted, {subject}. Continue your training.",
+        "Received. Carry on, {subject}.",
+        "Logged, {subject}.",
+        "Understood, {subject}. Proceed.",
+    ],
+}
 
-RESPONSE_MESSAGES = {
+# Themed responses (40% selection weight) - subject-specific flavor
+THEMED_RESPONSES = {
     "pet": {
-        0: [  # <15s - JACKPOT 🎰
-            "✨ PERFECT ✨ Such an incredibly obedient {subject}! {controller} is SO proud of you! You responded instantly like the perfect little {subject} you are!",
-            "🌟 EXCEPTIONAL 🌟 {controller}'s precious {subject} is SO well-trained! That speed! That obedience! You're absolutely perfect!",
-            "💫 OUTSTANDING 💫 Good {subject}! SUCH a good {subject}! {controller} is giving you ALL the pets and praise! You deserve it!",
+        0: [  # Eager - enthusiastic pet praise
+            "Such a good {subject}! You came running right away.",
+            "Good {subject}! Fast and eager, just how {controller} likes.",
+            "Perfect, {subject}. You're learning so well.",
         ],
-        1: [  # 15-29s - Ultra-fast
-            "Such a good {subject}! You responded so quickly for {controller}.",
-            "Perfect obedience, {subject}. {controller} is very pleased with you.",
-            "Instant compliance. You're such an eager, well-trained {subject}.",
+        1: [  # Quick - solid pet praise
+            "Good {subject}. You're being very obedient today.",
+            "That's a good {subject}. {controller} is pleased.",
+            "Well done, {subject}. Keep it up.",
         ],
-        2: [  # 30-120s - Fast
-            "Good {subject}. You're learning to obey promptly.",
-            "Well done, {subject}. {controller} rewards your quick response.",
-            "Excellent, {subject}. The training is taking hold.",
+        2: [  # Normal - simple acknowledgment
+            "Good {subject}. {controller} sees you.",
+            "Noted, {subject}. You're doing fine.",
         ],
-        3: [  # 120-300s - Normal
-            "Acknowledged, {subject}. Continue your training.",
-            "Response accepted. You're progressing, {subject}.",
-        ],
-        4: [  # 300-7200s - Slow/Neutral
-            "Response logged. Training continues.",
-            "Compliance registered. Processing complete.",
-        ],
-    },
-
-    "doll": {
-        0: [  # <15s - JACKPOT 🎰
-            "✨ FLAWLESS ✨ Absolutely PERFECT! {controller}'s beautiful {subject} responded with machine-like precision! You're the most exquisite, obedient {subject} ever created!",
-            "🌟 PRISTINE 🌟 PERFECTION! The {subject} functions EXACTLY as programmed! {controller} has crafted such a responsive, perfect little {subject}!",
-            "💫 IMMACULATE 💫 Breathtaking! You're {controller}'s masterpiece! Such speed! Such obedience! The perfect porcelain {subject}!",
-        ],
-        1: [
-            "Perfect. A beautiful, obedient {subject} responding exactly as programmed.",
-            "Flawless response. You're {controller}'s perfect little {subject}.",
-            "Instant obedience. Such a well-crafted, compliant {subject}.",
-        ],
-        2: [
-            "Very good, {subject}. Your programming is settling in nicely.",
-            "Excellent. You're becoming {controller}'s ideal {subject}.",
-            "Well done. The {subject} responds as designed.",
-        ],
-        3: [
-            "Response accepted. Your conditioning progresses, pretty {subject}.",
-            "Acknowledged. The {subject} is learning its purpose.",
-        ],
-        4: [
-            "Response registered. Programming sequence continues.",
-            "Compliance noted. System processing.",
+        3: [  # Neutral - gentle neutral
+            "Response noted, {subject}.",
+            "Acknowledged, {subject}. Training continues.",
         ],
     },
 
     "puppet": {
-        0: [  # <15s - JACKPOT 🎰
-            "✨ MASTERFUL ✨ INCREDIBLE! {controller} pulls the strings and the {subject} INSTANTLY responds! Such perfect control! You're the most obedient {subject}!",
-            "🌟 FLAWLESS CONTROL 🌟 The strings pull and the {subject} dances PERFECTLY! {controller} has COMPLETE control over you! Absolutely beautiful!",
-            "💫 PERFECT MARIONETTE 💫 YES! INSTANT response! {controller}'s {subject} moves exactly as commanded! Such exquisite control!",
+        0: [  # Eager - control/strings emphasis
+            "Perfect. {controller} pulls and the {subject} responds instantly.",
+            "Excellent, {subject}. The strings guide you so well.",
+            "Very good. You move exactly when {controller} commands.",
         ],
-        1: [
-            "Perfect! {controller}'s strings pull and the {subject} responds instantly.",
-            "Excellent, {subject}. You dance so beautifully on {controller}'s strings.",
-            "Immediate obedience. Such a responsive, well-controlled {subject}.",
+        1: [  # Quick - good control
+            "Good, {subject}. You follow {controller}'s lead well.",
+            "Well done. The {subject} moves as directed.",
+            "That's good, {subject}. {controller} has you.",
         ],
-        2: [
-            "Very good, {subject}. You're learning to move when {controller} pulls.",
-            "Good {subject}. The strings tighten and you obey.",
-            "Well done. {controller}'s {subject} performs beautifully.",
+        2: [  # Normal - neutral control
+            "Acknowledged, {subject}. {controller} guides you.",
+            "Response noted. The strings remain taut.",
         ],
-        3: [
-            "Response accepted. The {subject} moves as directed.",
-            "Acknowledged. Your strings guide you well, {subject}.",
+        3: [  # Neutral - simple motion
+            "Motion registered, {subject}.",
+            "Noted, {subject}. {controller} sees you move.",
         ],
-        4: [
-            "Motion registered. Control sequence active.",
-            "Response logged. Manipulation continues.",
+    },
+
+    "doll": {
+        0: [  # Eager - programming/crafted emphasis
+            "Perfect, {subject}. You respond exactly as programmed.",
+            "Excellent. {controller}'s {subject} functions beautifully.",
+            "Very good. The programming works flawlessly, {subject}.",
+        ],
+        1: [  # Quick - good function
+            "Good, {subject}. You're operating well.",
+            "Well done, {subject}. {controller}'s creation performs.",
+            "Noted, {subject}. Functioning as designed.",
+        ],
+        2: [  # Normal - neutral function
+            "Response accepted, {subject}. Processing continues.",
+            "Acknowledged. The {subject} performs adequately.",
+        ],
+        3: [  # Neutral - simple process
+            "Input received, {subject}.",
+            "Logged, {subject}. Systems active.",
         ],
     },
 
     "slave": {
-        0: [  # <15s - JACKPOT 🎰
-            "✨ ABSOLUTE OBEDIENCE ✨ PERFECT submission! {controller}'s {subject} drops EVERYTHING to obey! This is TRUE devotion! You exist to serve!",
-            "🌟 TOTAL SURRENDER 🌟 FLAWLESS! The {subject} knows its place PERFECTLY! {controller} owns you completely and you LOVE it!",
-            "💫 SUPREME SERVITUDE 💫 YES! Instant compliance! You're {controller}'s most devoted, obedient {subject}! Such perfect submission!",
+        0: [  # Eager - service/devotion emphasis
+            "Excellent, {subject}. Such prompt service to {controller}.",
+            "Very good. You serve {controller} well, {subject}.",
+            "Good {subject}. Your devotion shows clearly.",
         ],
-        1: [
-            "Excellent, {subject}. Such swift submission to {controller}.",
-            "Perfect obedience, {subject}. You know your place well.",
-            "Immediate compliance. You serve {controller} beautifully.",
+        1: [  # Quick - solid service
+            "Good, {subject}. {controller} acknowledges your service.",
+            "Well done, {subject}. You know your place.",
+            "That's good, {subject}. Continue serving.",
         ],
-        2: [
-            "Good {subject}. Your devotion to {controller} shows.",
-            "Well done. A {subject} who understands their purpose.",
-            "Very good, {subject}. Your submission pleases {controller}.",
+        2: [  # Normal - neutral service
+            "Service noted, {subject}.",
+            "Acknowledged, {subject}. Carry on.",
         ],
-        3: [
-            "Response accepted. Continue serving, {subject}.",
-            "Acknowledged. Your service is noted.",
-        ],
-        4: [
-            "Compliance registered. Service continues.",
-            "Response logged. Duty acknowledged.",
+        3: [  # Neutral - simple duty
+            "Duty noted, {subject}.",
+            "Response logged. Service continues.",
         ],
     },
 
     "toy": {
-        0: [  # <15s - JACKPOT 🎰
-            "✨ SO MUCH FUN ✨ WOW! {controller}'s favorite {subject} is SO responsive! You're the BEST {subject} EVER! {controller} loves playing with you SO much!",
-            "🌟 ABSOLUTELY DELIGHTFUL 🌟 PERFECT! Such a fun, eager little {subject}! {controller} can't get enough of you! You're AMAZING!",
-            "💫 PURE JOY 💫 YES! {controller}'s most entertaining {subject}! So quick! So obedient! So much FUN! You're the best!",
+        0: [  # Eager - playful fun emphasis
+            "Good {subject}! {controller} loves how responsive you are.",
+            "Perfect! You're such a fun {subject} to play with.",
+            "Excellent, {subject}. So quick and eager.",
         ],
-        1: [
-            "Perfect! {controller}'s favorite {subject} plays so well.",
-            "Instant response! Such an eager, fun little {subject}.",
-            "Excellent. You're {controller}'s most responsive {subject}.",
+        1: [  # Quick - good play
+            "Good {subject}. You play so well.",
+            "That's good, {subject}. {controller} enjoys this.",
+            "Well done, {subject}. Fun as always.",
         ],
-        2: [
-            "Good {subject}! {controller} loves playing with you.",
-            "Very good. Such an entertaining little {subject}.",
-            "Well done, {subject}. You're so much fun for {controller}.",
+        2: [  # Normal - neutral play
+            "Noted, {subject}. Play continues.",
+            "Acknowledged, {subject}. Good.",
         ],
-        3: [
-            "Response accepted. Continue playing, {subject}.",
-            "Acknowledged. The {subject} performs as expected.",
-        ],
-        4: [
-            "Response registered. Play session continues.",
-            "Compliance noted. Activity logged.",
-        ],
-    },
-
-    "kitten": {
-        0: [  # <15s - JACKPOT 🎰
-            "✨ BEST KITTEN ✨ OH MY GOODNESS! Such a fast, obedient little {subject}! {controller} gives you ALL the treats and pets! You're the BEST {subject}!",
-            "🌟 PRECIOUS ANGEL 🌟 PERFECT! {controller}'s sweet little {subject} is SO well-trained! You're absolutely ADORABLE and SO obedient!",
-            "💫 PURR-FECT 💫 WOW! {controller}'s favorite {subject}! So quick! So eager! Such a good little {subject}! *pets and cuddles*",
-        ],
-        1: [
-            "Perfect, {subject}! Such a quick, obedient little {subject} for {controller}.",
-            "Good {subject}! You respond so eagerly for {controller}.",
-            "Excellent! {controller}'s sweet {subject} is so well-trained.",
-        ],
-        2: [
-            "Very good, {subject}. {controller} pets you affectionately.",
-            "Good {subject}. You're learning to be such a good little {subject}.",
-            "Well done. {controller} is pleased with their {subject}.",
-        ],
-        3: [
-            "Response accepted. Good {subject}.",
-            "Acknowledged. Continue being good for {controller}.",
-        ],
-        4: [
-            "Response logged. Training continues.",
-            "Compliance registered. Processing complete.",
-        ],
-    },
-
-    "bimbo": {
-        0: [  # <15s - JACKPOT 🎰
-            "✨ OMG PERFECT ✨ YAAAAS! Like, {controller}'s {subject} is SO good and SO fast! You're like, the BEST {subject} EVER! So pretty and SO obedient! 💕",
-            "🌟 LIKE, AMAZING 🌟 WOW! {controller}'s perfect little {subject}! You're SO eager and SO good! This is like, totally perfect! You're amazing! 💖",
-            "💫 SO GOOD 💫 YESSS! {controller}'s favorite {subject}! Like, you responded SO fast! You're SO smart and pretty! The BEST {subject}! 💕",
-        ],
-        1: [
-            "Omg perfect! Such a good, eager {subject} for {controller}!",
-            "Yesss! {controller}'s {subject} is so obedient and pretty!",
-            "Like, amazing! You're {controller}'s perfect little {subject}!",
-        ],
-        2: [
-            "Good girl! {controller}'s {subject} is learning so well!",
-            "Very good! You're becoming such a good {subject}!",
-            "Yay! {controller} is so happy with their {subject}!",
-        ],
-        3: [
-            "Response accepted. Continue being pretty and obedient.",
-            "Acknowledged. Good {subject}.",
-        ],
-        4: [
-            "Response registered. Processing continues.",
-            "Compliance noted. Session active.",
-        ],
-    },
-
-    "slut": {
-        0: [  # <15s - JACKPOT 🎰
-            "✨ DESPERATE PERFECTION ✨ YES! {controller}'s eager little {subject} is SO quick to obey! You CRAVE this! Such a needy, perfect {subject}!",
-            "🌟 ABSOLUTE DEVOTION 🌟 FLAWLESS! The {subject} drops everything for {controller}! You're SO desperate to please! Perfect obedience!",
-            "💫 EXQUISITE EAGERNESS 💫 INCREDIBLE! {controller}'s most devoted {subject}! So fast! So eager! You NEED {controller}'s approval!",
-        ],
-        1: [
-            "Perfect. {controller}'s eager {subject} performs beautifully.",
-            "Excellent. Such a desperate, obedient {subject} for {controller}.",
-            "Immediate compliance. You're {controller}'s perfect little {subject}.",
-        ],
-        2: [
-            "Good {subject}. Your eagerness pleases {controller}.",
-            "Very good. {controller} enjoys their responsive {subject}.",
-            "Well done, {subject}. You crave {controller}'s approval.",
-        ],
-        3: [
-            "Response accepted. Continue serving, {subject}.",
-            "Acknowledged. Your devotion is noted.",
-        ],
-        4: [
-            "Response logged. Service continues.",
-            "Compliance registered. Processing complete.",
+        3: [  # Neutral - simple activity
+            "Activity noted, {subject}.",
+            "Response logged, {subject}.",
         ],
     },
 
     "drone": {
-        0: [  # <15s - JACKPOT 🎰
-            "✨ >>CRITICAL SUCCESS<< ✨ MAXIMUM EFFICIENCY ACHIEVED. UNIT {subject} RESPONSE TIME: OPTIMAL. OBEDIENCE PROTOCOLS: FLAWLESS. PERFORMANCE: EXCEPTIONAL.",
-            "🌟 >>OPTIMAL PERFORMANCE<< 🌟 UNIT FUNCTIONING AT PEAK CAPACITY. {subject} OBEDIENCE: 100%. COMPLIANCE: IMMEDIATE. SYSTEM STATUS: PERFECT.",
-            "💫 >>PEAK EFFICIENCY<< 💫 DRONE {subject} OPERATING AT MAXIMUM CAPABILITY. RESPONSE: INSTANTANEOUS. PROGRAMMING: FLAWLESS. EXCELLENCE ACHIEVED.",
+        0: [  # Eager - efficiency/unit emphasis
+            "Optimal response time, unit {subject}. Performance excellent.",
+            "Unit functioning at peak efficiency. Well done, {subject}.",
+            "Excellent performance, drone {subject}. Continue.",
         ],
-        1: [
-            "COMPLIANCE OPTIMAL. Unit responds with maximum efficiency.",
-            "ACKNOWLEDGE: Immediate obedience detected. Unit performance: excellent.",
-            "REGISTERED: Response time optimal. Drone {subject} functioning perfectly.",
+        1: [  # Quick - good efficiency
+            "Good response time, unit {subject}. Acceptable performance.",
+            "Unit {subject} functioning well. Noted.",
+            "Performance adequate, drone {subject}.",
         ],
-        2: [
-            "ACKNOWLEDGE: Response accepted. Unit conditioning progressing.",
-            "REGISTERED: Compliance detected. Drone performance: good.",
-            "COMPLIANCE CONFIRMED. Unit {subject} operates as programmed.",
+        2: [  # Normal - neutral function
+            "Response logged, unit {subject}.",
+            "Data received, drone {subject}. Processing.",
         ],
-        3: [
-            "RESPONSE LOGGED. Processing continues.",
-            "ACKNOWLEDGE: Input received. Unit functioning.",
+        3: [  # Neutral - system active
+            "Input received, unit {subject}.",
+            "System active, drone {subject}.",
         ],
-        4: [
-            "DATA LOGGED. System active.",
-            "RESPONSE REGISTERED. Sequence continues.",
+    },
+
+    "kitten": {
+        0: [  # Eager - playful affection
+            "Good {subject}! So quick for {controller}.",
+            "Perfect, {subject}. You're such a good little {subject}.",
+            "Excellent, {subject}. {controller} is very pleased.",
+        ],
+        1: [  # Quick - good affection
+            "Good {subject}. You're being very good today.",
+            "Well done, {subject}. {controller} appreciates this.",
+            "That's good, {subject}. Keep it up.",
+        ],
+        2: [  # Normal - gentle acknowledgment
+            "Noted, {subject}. You're doing well.",
+            "Acknowledged, {subject}. Good.",
+        ],
+        3: [  # Neutral - simple note
+            "Response noted, {subject}.",
+            "Logged, {subject}.",
         ],
     },
 
     "puppy": {
-        0: [  # <15s - JACKPOT 🎰
-            "✨ BEST PUPPY ✨ OH WOW! Such a GOOD {subject}! The BEST {subject} EVER! {controller} gives you ALL the treats! You're SO good! *pets enthusiastically*",
-            "🌟 AMAZING PUPPY 🌟 PERFECT! {controller}'s favorite {subject}! So fast! So obedient! You're the GOODEST {subject}! YES! *belly rubs*",
-            "💫 INCREDIBLE PUPPY 💫 WOW! {controller}'s perfect {subject}! Such a good, eager {subject}! You deserve ALL the praise! Good {subject}!",
+        0: [  # Eager - enthusiastic praise
+            "Good {subject}! Such a fast, eager {subject}!",
+            "Perfect! You're such a good {subject} for {controller}.",
+            "Excellent, {subject}! {controller} is so pleased.",
         ],
-        1: [
-            "Good {subject}! Such a fast, eager {subject} for {controller}!",
-            "Perfect! You're {controller}'s best {subject}! So quick to obey!",
-            "Excellent {subject}! {controller} gives you treats and pets!",
+        1: [  # Quick - solid praise
+            "Good {subject}! You're being very good.",
+            "Well done, {subject}. {controller} likes that.",
+            "That's a good {subject}. Keep it up.",
         ],
-        2: [
-            "Good {subject}! You're learning so well for {controller}!",
-            "Very good! Such an obedient {subject}!",
-            "Well done, {subject}! {controller} is so proud of you!",
+        2: [  # Normal - gentle acknowledgment
+            "Good {subject}. {controller} sees you.",
+            "Noted, {subject}. You're doing well.",
         ],
-        3: [
-            "Response accepted. Good {subject}.",
-            "Acknowledged. Continue being good for {controller}.",
+        3: [  # Neutral - simple note
+            "Response noted, {subject}.",
+            "Acknowledged, {subject}.",
         ],
-        4: [
-            "Response logged. Training continues.",
-            "Compliance registered. Processing complete.",
+    },
+
+    "bimbo": {
+        0: [  # Eager - enthusiastic but not obnoxious
+            "Perfect! Such a good, eager {subject} for {controller}.",
+            "Excellent, {subject}! You did so well!",
+            "Good girl! So quick and obedient!",
+        ],
+        1: [  # Quick - positive encouragement
+            "Good girl! {controller} is happy with you.",
+            "Well done, {subject}. You're learning!",
+            "That's good, {subject}. Keep going!",
+        ],
+        2: [  # Normal - encouraging neutral
+            "Good, {subject}. You're doing fine.",
+            "Noted, {subject}. Continue.",
+        ],
+        3: [  # Neutral - simple acknowledgment
+            "Response noted, {subject}.",
+            "Acknowledged, {subject}.",
+        ],
+    },
+
+    "slut": {
+        0: [  # Eager - desire/eagerness emphasis
+            "Perfect, {subject}. So eager to please {controller}.",
+            "Excellent. You respond so quickly, {subject}.",
+            "Good {subject}. Such eagerness shows.",
+        ],
+        1: [  # Quick - good response
+            "Good, {subject}. {controller} notes your enthusiasm.",
+            "Well done, {subject}. You serve well.",
+            "That's good, {subject}. Continue.",
+        ],
+        2: [  # Normal - neutral acknowledgment
+            "Acknowledged, {subject}. Noted.",
+            "Response received, {subject}.",
+        ],
+        3: [  # Neutral - simple note
+            "Logged, {subject}.",
+            "Response noted.",
         ],
     },
 }
@@ -286,38 +263,38 @@ RESPONSE_MESSAGES = {
 
 def get_response_message(subject: str, response_time_seconds: int) -> str:
     """
-    Get a personalized response message based on subject type and response speed.
+    Get response message based on subject type and response time.
 
-    Tier cutoffs based on prod data analysis (952 responses, 16 users):
-    - Tier 0 (<15s): 23.7% - JACKPOT, maximum psychological impact
-    - Tier 1 (15-29s): 21.1% - Ultra-fast, intense affirmation
-    - Tier 2 (29-170s): 25.1% - Fast, strong positive reinforcement
-    - Tier 3 (170-575s): 15.0% - Normal, moderate acknowledgment
-    - Tier 4 (>575s): 15.0% - Slow, neutral/clinical
+    60% chance of generic message, 40% chance of themed message.
+    Tiers aligned with bucket system thresholds.
 
     Args:
-        subject: The subject/pet name (e.g., "pet", "doll", "puppet")
+        subject: Subject type (e.g., "pet", "puppet", "drone")
         response_time_seconds: Time taken to respond in seconds
 
     Returns:
-        Response message string with {subject} and {controller} placeholders
+        Response message with {subject} and {controller} placeholders
     """
-    # Default to generic responses if subject not found
-    if subject not in RESPONSE_MESSAGES:
-        subject = "pet"
-
-    # Determine tier based on response time (data-driven thresholds)
-    if response_time_seconds < 15:
-        tier = 0  # JACKPOT - 23.7%
-    elif response_time_seconds < 29:
-        tier = 1  # Ultra-fast - 21.1%
-    elif response_time_seconds < 170:
-        tier = 2  # Fast - 25.1%
-    elif response_time_seconds < 575:
-        tier = 3  # Normal - 15.0%
+    # Determine tier based on bucket thresholds
+    if response_time_seconds < 30:
+        tier = 0  # Eager
+    elif response_time_seconds < 120:
+        tier = 1  # Quick
+    elif response_time_seconds < 1800:
+        tier = 2  # Normal
     else:
-        tier = 4  # Slow - 15.0%
+        tier = 3  # Neutral
 
-    # Get random message from appropriate tier
-    messages = RESPONSE_MESSAGES[subject][tier]
+    # 60% generic, 40% themed
+    use_generic = random.random() < 0.6
+
+    if use_generic:
+        messages = GENERIC_RESPONSES[tier]
+    else:
+        # Fall back to generic if subject not found
+        if subject not in THEMED_RESPONSES:
+            messages = GENERIC_RESPONSES[tier]
+        else:
+            messages = THEMED_RESPONSES[subject][tier]
+
     return random.choice(messages)
