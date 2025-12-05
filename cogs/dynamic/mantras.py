@@ -65,6 +65,31 @@ def get_max_themes_for_user(bot, user):
         return 3
 
 
+def frequency_to_attunement(frequency: float) -> str:
+    """
+    Convert frequency (0.3-6.0) to filled circles display.
+
+    Maps the frequency range to 5 levels:
+    - 0.3-1.0: ●○○○○ (1/5)
+    - 1.0-2.0: ●●○○○ (2/5)
+    - 2.0-3.5: ●●●○○ (3/5)
+    - 3.5-5.0: ●●●●○ (4/5)
+    - 5.0-6.0: ●●●●● (5/5)
+    """
+    if frequency >= 5.0:
+        filled = 5
+    elif frequency >= 3.5:
+        filled = 4
+    elif frequency >= 2.0:
+        filled = 3
+    elif frequency >= 1.0:
+        filled = 2
+    else:
+        filled = 1
+
+    return "●" * filled + "○" * (5 - filled)
+
+
 class FavoriteButton(discord.ui.Button):
     """Button for adding a mantra to favorites."""
 
@@ -774,7 +799,7 @@ class MantraSystem(commands.Cog):
                         # Send DM to user
                         try:
                             embed = discord.Embed(
-                                title="🧠 Neural Programming Transmission",
+                                title="Neural Programming Transmission",
                                 description=f"Type the following mantra to continue your conditioning:\n\n**{formatted_text}**",
                                 color=discord.Color.purple()
                             )
@@ -939,11 +964,12 @@ class MantraSystem(commands.Cog):
             inline=True
         )
 
-        # Show frequency only for adaptive mode
+        # Show attunement only for adaptive mode
         if delivery_mode == DELIVERY_MODE_ADAPTIVE:
+            frequency = config.get('frequency', 1.0)
             embed.add_field(
-                name="Frequency",
-                value=f"{config.get('frequency', 1.0):.2f}/day",
+                name="Attunement",
+                value=frequency_to_attunement(frequency),
                 inline=True
             )
         elif delivery_mode == DELIVERY_MODE_LEGACY:
@@ -962,7 +988,7 @@ class MantraSystem(commands.Cog):
             )
 
         embed.add_field(
-            name="Consecutive Failures",
+            name="Consecutive Misses",
             value=str(config.get("consecutive_failures", 0)),
             inline=True
         )
@@ -1248,18 +1274,19 @@ class MantraSystem(commands.Cog):
 
             # Send personalized success message
             embed = discord.Embed(
-                description=response_text,
+                title=response_text,
                 color=discord.Color.green()
             )
 
-            embed.add_field(name="Points Earned", value=f"+{result['points']}", inline=True)
+            # Format points with speed bonus in parentheses if applicable
+            if result["speed_bonus"] > 0:
+                points_display = f"+{result['points']} (+{result['speed_bonus']})"
+            else:
+                points_display = f"+{result['points']}"
+
+            embed.add_field(name="Points Earned", value=points_display, inline=True)
             embed.add_field(name="Total Points", value=f"{total_points:,}", inline=True)
             embed.add_field(name="Response Time", value=f"{response_time_seconds}s", inline=True)
-
-            if result["speed_bonus"] > 0:
-                embed.add_field(name="Speed Bonus", value=f"+{result['speed_bonus']}", inline=True)
-
-            embed.set_footer(text=f"Frequency: {config['frequency']:.2f}/day")
 
             # Create view with Favorite and Settings buttons
             view = discord.ui.View()
