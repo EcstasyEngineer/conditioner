@@ -122,21 +122,52 @@ Overused AI writing patterns that sound fake:
 - ❌ Purple prose: "The gossamer threads of consciousness dissolve into the ethereal void"
 - ✅ Simple, direct, visceral: "My thoughts stop." / "I go quiet inside."
 
-## Placeholder Rules
+## Placeholders
 
 - `{subject}` - The user's chosen name/role (puppet, drone, pet, etc.)
 - `{controller}` - The authority figure (Master, Mistress, Owner, etc.)
-
-**Usage patterns:**
-- First person ("I", "my") for direct identification
-- `{subject}` for slight dissociation or third-person framing
-- `{controller}` creates relationship, adds +20 to intensity
-- Both placeholders together adds +30 to intensity
-- Use "it/its" for dehumanizing themes (drone, toy, puppet, object)
-  - ✅ "{subject} exists. It obeys." / "{subject}'s mind is not its own"
-  - Works when the theme explicitly frames subject as thing, not person
+- `{controller}` adds +20 to intensity; both together adds +30
 
 **Don't overuse**: Not every mantra needs placeholders. Some hit harder as universal statements.
+
+## Voice Frames
+
+Mantras use one of four voice frames, from most intimate to most detached:
+
+| Frame | Pattern | Effect | Best For |
+|-------|---------|--------|----------|
+| **First Person** | "My mind...", "I crave..." | Direct ownership, confession | Identity claims, desires, commitments |
+| **Named Self** | "{subject} obeys..." | Dissociation, role reinforcement | Actions, behaviors, observations |
+| **Named Possessive** | "{subject}'s mind..." | Partial dissociation | Things being transformed/acted upon |
+| **Process** | "The brainwashing..." | Maximum detachment, inevitability | Mechanisms, impersonal forces |
+
+### Voice Frame Rules
+
+**1. Don't mix frames** in the same mantra. Pick one and commit.
+- ❌ "My mind drifts as {subject} surrenders"
+- ✅ "My mind drifts" OR "{subject}'s mind drifts"
+
+**2. First Person vs Named Self** (the key choice):
+- **First person** = direct ownership, unmediated confession
+  - "My purpose is to serve {controller}"
+  - "I am nothing without {controller}"
+- **Named Self** = dissociated, compartmentalized (the role speaks)
+  - "{subject} obeys without hesitation" (observing behavior)
+  - "{subject} is a slave" (identity claim, but the role says it)
+
+Both can make identity claims. The difference: first person has no escape hatch, named self lets the pet name "be" the one confessing.
+
+**3. Pronoun continuation** (when you need a pronoun after {subject}):
+- **"their"** = gender-neutral, still human (default)
+  - "{subject} feels the strings moving their body"
+- **"its"** = dehumanizing, object/machine framing
+  - "{subject} enjoys the buzzing in its head"
+  - Use ONLY for **drone** theme
+
+**4. Process frame** is rare:
+- Best for drone's mechanical feel ("The programming updates")
+- Good for inevitable forces ("The brainwashing deepens")
+- Most mantras should have a subject
 
 ## Quality Checklist
 
