@@ -58,11 +58,11 @@ Not all mantras describe an experience - some work because **typing them is the 
 
 | Tier | Points | Function | The Leap |
 |------|--------|----------|----------|
-| basic | 20-40 | Introduction. Safe, deniable. | "I'm just trying this." |
-| light | 40-70 | Normalization. Growing comfort. | "This is nice." |
-| moderate | 70-120 | Identity integration. | "This is who I'm becoming." |
-| deep | 120-180 | Core rewrite. | "This is who I am." |
-| extreme | 180+ | Permanence. Point of no return. | "This is who I will always be." |
+| basic | 20-45 | Introduction. Safe, deniable. | "I'm just trying this." |
+| light | 45-75 | Normalization. Growing comfort. | "This is nice." |
+| moderate | 75-110 | Identity integration. | "This is who I'm becoming." |
+| deep | 110-150 | Core rewrite. | "This is who I am." |
+| extreme | 150+ | Permanence. Point of no return. | "This is who I will always be." |
 
 ### Language Markers by Tier
 

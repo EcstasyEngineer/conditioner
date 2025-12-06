@@ -4,29 +4,15 @@ Theme Statistics Analyzer
 
 Analyzes a mantra theme JSON file and outputs distribution statistics.
 Useful for comparing scoring across themes and identifying imbalances.
-
-TODO(#48): Update tier names to low/mid/high/max after full rescore.
 """
 
 import json
 import sys
 from pathlib import Path
 
-
-def get_tier(points: int) -> str:
-    """Return tier name for a given point value.
-
-    Tier boundaries from docs/POINT_ECONOMY.md:
-    20-40 basic, 40-70 light, 70-120 moderate, 120-180 deep, 180+ extreme
-    """
-    if points >= 120:
-        return "extreme" if points >= 180 else "deep"
-    elif points >= 70:
-        return "moderate"
-    elif points >= 40:
-        return "light"
-    else:
-        return "basic"
+# Add project root to path for imports
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from utils.scoring import get_tier
 
 
 def analyze_theme(filepath: Path) -> dict:

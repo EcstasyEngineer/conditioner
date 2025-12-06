@@ -15,40 +15,7 @@ from pathlib import Path
 from typing import List, Dict, Optional, Tuple
 
 from .encounters import load_encounters, load_recent_encounters
-
-
-def get_tier(points: int) -> str:
-    """Return tier name for a given point value.
-
-    Tier boundaries from docs/POINT_ECONOMY.md:
-    20-40 basic, 40-70 light, 70-120 moderate, 120-180 deep, 180+ extreme
-
-    TODO(#48): Consolidate to 4 tiers (low/mid/high/max) after full rescore.
-    """
-    if points >= 120:
-        return "extreme" if points >= 180 else "deep"
-    elif points >= 70:
-        return "moderate"
-    elif points >= 40:
-        return "light"
-    else:
-        return "basic"
-
-
-def calculate_speed_bonus(response_time_seconds: int) -> int:
-    """Calculate speed bonus based on response time."""
-    if response_time_seconds <= 15:
-        return 30  # Ultra fast bonus
-    elif response_time_seconds <= 30:
-        return 20
-    elif response_time_seconds <= 60:
-        return 15
-    elif response_time_seconds <= 120:
-        return 10
-    elif response_time_seconds <= 300:
-        return 5
-    else:
-        return 0
+from .scoring import get_tier, calculate_speed_bonus
 
 def check_mantra_match(user_response: str, expected_mantra: str) -> bool:
     """Check if user response matches mantra with typo tolerance."""

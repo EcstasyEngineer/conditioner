@@ -21,6 +21,18 @@
   },
   "mantras": [
     {
+      "text": "Thankfulness warms me",
+      "base_points": 20
+    },
+    {
+      "text": "Appreciation flows through me",
+      "base_points": 30
+    },
+    {
+      "text": "Gratitude grows when I obey",
+      "base_points": 35
+    },
+    {
       "text": "I am grateful for {controller}'s guidance",
       "base_points": 50
     },

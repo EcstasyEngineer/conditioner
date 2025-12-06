@@ -21,6 +21,18 @@
   },
   "mantras": [
     {
+      "text": "Thoughts quieting down",
+      "base_points": 20
+    },
+    {
+      "text": "Standing by for instructions",
+      "base_points": 25
+    },
+    {
+      "text": "Mental processes running smoothly",
+      "base_points": 25
+    },
+    {
       "text": "{subject} obeys {controller}",
       "base_points": 80
     },

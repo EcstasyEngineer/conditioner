@@ -20,6 +20,14 @@
   },
   "mantras": [
     {
+      "text": "The craving feels good",
+      "base_points": 25
+    },
+    {
+      "text": "I want more and more",
+      "base_points": 30
+    },
+    {
       "text": "I crave {controller}'s attention",
       "base_points": 50
     },

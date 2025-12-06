@@ -21,6 +21,14 @@
   },
   "mantras": [
     {
+      "text": "Admiration feels natural",
+      "base_points": 20
+    },
+    {
+      "text": "Kneeling feels right",
+      "base_points": 25
+    },
+    {
       "text": "{subject} kneels in reverence",
       "base_points": 55
     },

@@ -21,6 +21,14 @@
   },
   "mantras": [
     {
+      "text": "Service feels satisfying",
+      "base_points": 20
+    },
+    {
+      "text": "I enjoy following directions",
+      "base_points": 25
+    },
+    {
       "text": "{subject} is a slave",
       "base_points": 30
     },

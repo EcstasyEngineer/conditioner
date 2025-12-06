@@ -69,11 +69,11 @@ Higher engagement activities should award more points per interaction, even if t
 |--------|--------|---------------|
 | Count 1 number | 1 pt | Baseline unit |
 | 1 min audio | 5 pts | 5 counted numbers |
-| Basic mantra | 20-40 pts | 20-40 numbers, 4-8 min audio |
-| Light mantra | 40-70 pts | 40-70 numbers, 8-14 min audio |
-| Moderate mantra | 70-120 pts | 70-120 numbers, 14-24 min audio |
-| Deep mantra | 120-180 pts | 120-180 numbers, 24-36 min audio |
-| Extreme mantra | 180-250 pts | 180-250 numbers, 36-50 min audio |
+| Basic mantra | 20-45 pts | 20-45 numbers, 4-9 min audio |
+| Light mantra | 45-75 pts | 45-75 numbers, 9-15 min audio |
+| Moderate mantra | 75-110 pts | 75-110 numbers, 15-22 min audio |
+| Deep mantra | 110-150 pts | 110-150 numbers, 22-30 min audio |
+| Extreme mantra | 150+ pts | 150+ numbers, 30+ min audio |
 
 ### Daily Earning Benchmarks
 
@@ -138,11 +138,11 @@ These markers are examples, not exhaustive lists. Use judgment for synonyms and 
 
 | Points | Tier | The Leap |
 |--------|------|----------|
-| 20-40 | basic | Easy to say. No real commitment. |
-| 40-70 | light | Some weight. Getting comfortable. |
-| 70-120 | moderate | Real claim. "This is becoming me." |
-| 120-180 | deep | Hard to take back. Core change. |
-| 180+ | extreme | Point of no return language. |
+| 20-45 | basic | Easy to say. No real commitment. |
+| 45-75 | light | Some weight. Getting comfortable. |
+| 75-110 | moderate | Real claim. "This is becoming me." |
+| 110-150 | deep | Hard to take back. Core change. |
+| 150+ | extreme | Point of no return language. |
 
 ### When Math and Instinct Disagree
 

@@ -20,6 +20,18 @@
   },
   "mantras": [
     {
+      "text": "Repetition feels good",
+      "base_points": 20
+    },
+    {
+      "text": "My mind is open to change",
+      "base_points": 25
+    },
+    {
+      "text": "I enjoy being conditioned",
+      "base_points": 30
+    },
+    {
       "text": "My thoughts are being cleaned",
       "base_points": 45
     },
