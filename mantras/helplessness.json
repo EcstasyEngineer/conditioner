@@ -1,31 +1,35 @@
 {
   "theme": "helplessness",
-  "description": "Strength drains away, leaving only soft, vulnerable stillness",
+  "description": "No control, no agency, complete powerlessness under another's will",
   "generation": {
-    "core": "Vulnerability, powerlessness, safety in surrender",
+    "core": "Agency removal, powerlessness, resistance is impossible",
     "progression": [
       "can't resist",
-      "no decisions",
+      "no control",
       "at mercy",
-      "defined by powerlessness"
+      "powerlessness is identity"
     ],
     "good": [
-      "{subject} doesn't have to make decisions",
-      "relief framing"
+      "{subject} cannot move without {controller}'s permission",
+      "agency removal, controller-anchored"
     ],
     "bad": [
-      "{subject} is weak",
-      "negative framing, not pleasurable"
+      "{subject} is safe in their helplessness",
+      "comfort framing undermines powerlessness"
     ],
-    "notes": "Avoid soft comfort language (safe, cherished, cared for). Focus on agency removal and vulnerability to controller."
+    "notes": "Focus on inability to resist, lack of agency, being at controller's mercy. Not about feeling safe or comforted - about genuinely having no power. Distinct from vulnerability (openness/exposure) - this is about control being taken."
   },
   "mantras": [
     {
-      "text": "{subject} is helpless and calm",
-      "base_points": 30
+      "text": "{subject} can't resist",
+      "base_points": 40
     },
     {
-      "text": "{subject} can't resist",
+      "text": "{subject} has no control",
+      "base_points": 35
+    },
+    {
+      "text": "Resistance is impossible for {subject}",
       "base_points": 50
     },
     {
@@ -33,60 +37,92 @@
       "base_points": 50
     },
     {
-      "text": "{subject} is completely vulnerable to {controller}",
-      "base_points": 100
-    },
-    {
-      "text": "{subject}'s body is heavy and still",
-      "base_points": 30
-    },
-    {
-      "text": "{subject} trusts {controller} completely",
-      "base_points": 70
-    },
-    {
       "text": "{subject} is powerless to disobey",
-      "base_points": 50
+      "base_points": 55
     },
     {
-      "text": "{subject}'s will is not their own",
-      "base_points": 50
-    },
-    {
-      "text": "Every choice is made for {subject}",
-      "base_points": 30
-    },
-    {
-      "text": "{subject} is completely at {controller}'s mercy",
-      "base_points": 80
-    },
-    {
-      "text": "{subject}'s only purpose is to be helpless for {controller}",
-      "base_points": 100
-    },
-    {
-      "text": "{subject} has no power, and it is perfect",
-      "base_points": 70
-    },
-    {
-      "text": "{subject} is a still, quiet thing for {controller}",
+      "text": "The will is not there anymore",
       "base_points": 60
     },
     {
+      "text": "Every choice is made for {subject}",
+      "base_points": 45
+    },
+    {
+      "text": "{subject} doesn't have to make decisions",
+      "base_points": 40
+    },
+    {
+      "text": "{subject} is completely at {controller}'s mercy",
+      "base_points": 85
+    },
+    {
+      "text": "{controller} has complete power over {subject}",
+      "base_points": 90
+    },
+    {
       "text": "{subject} cannot move, speak, or think without {controller}'s permission",
-      "base_points": 100
+      "base_points": 110
     },
     {
       "text": "{subject} is utterly and completely helpless",
-      "base_points": 50
+      "base_points": 55
     },
     {
-      "text": "{subject}'s existence is defined by their powerlessness",
-      "base_points": 70
+      "text": "Existence is defined by powerlessness",
+      "base_points": 75
     },
     {
       "text": "{subject} belongs to {controller} in their helplessness",
+      "base_points": 85
+    },
+    {
+      "text": "There is no fighting back for {subject}",
+      "base_points": 60
+    },
+    {
+      "text": "{subject} gave up control and can't take it back",
+      "base_points": 95
+    },
+    {
+      "text": "All agency belongs to {controller} now",
+      "base_points": 100
+    },
+    {
+      "text": "{subject} is powerless and {controller} is not",
+      "base_points": 70
+    },
+    {
+      "text": "Struggling only reminds {subject} how helpless they are",
       "base_points": 80
+    },
+    {
+      "text": "{subject} has no power, and that's exactly how it should be",
+      "base_points": 75
+    },
+    {
+      "text": "{controller} took control and won't give it back",
+      "base_points": 120
+    },
+    {
+      "text": "The helplessness is permanent",
+      "base_points": 130
+    },
+    {
+      "text": "{subject} stopped fighting",
+      "base_points": 35
+    },
+    {
+      "text": "{controller} decides what {subject} does",
+      "base_points": 65
+    },
+    {
+      "text": "Resistance was taken away",
+      "base_points": 70
+    },
+    {
+      "text": "{subject} couldn't fight back even if they wanted to",
+      "base_points": 95
     }
   ]
 }

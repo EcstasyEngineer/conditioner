@@ -38,6 +38,22 @@ The user is typing these words. They should feel something shift as they type, n
 | "I am suggestible" | "Words slide straight into my mind" |
 | "I feel submissive" | "My shoulders drop when {controller} speaks" |
 
+### Confessions Are Not Labels
+
+Not all mantras describe an experience - some work because **typing them is the psychological act itself**. These are confessions, not labels.
+
+| Flat label (reject) | Confession (valid) |
+|---------------------|-------------------|
+| "I am obedient" | "I surrender completely to {controller}" |
+| "I am brainwashed" | "{subject} embraces {controller}'s brainwashing" |
+| "{subject} is weak" | "I give my mind, body, and soul to {controller}" |
+
+**The difference**: A label just describes a state. A confession is a declaration or commitment that feels like a leap to type. The "show don't tell" rule targets flat labels, not confessions that carry psychological weight.
+
+**The test**: Would typing this feel like *saying something* or just *describing something*? Higher-point mantras should feel like more of a leap - something you wouldn't casually say or type.
+
+*Future: Mantra type metadata (confession, experience, identity, etc.) tracked in #51*
+
 ## Tier Language (Psychological Function)
 
 | Tier | Points | Function | The Leap |
@@ -116,6 +132,9 @@ Overused AI writing patterns that sound fake:
 - `{subject}` for slight dissociation or third-person framing
 - `{controller}` creates relationship, adds +20 to intensity
 - Both placeholders together adds +30 to intensity
+- Use "it/its" for dehumanizing themes (drone, toy, puppet, object)
+  - ✅ "{subject} exists. It obeys." / "{subject}'s mind is not its own"
+  - Works when the theme explicitly frames subject as thing, not person
 
 **Don't overuse**: Not every mantra needs placeholders. Some hit harder as universal statements.
 

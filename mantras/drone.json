@@ -33,68 +33,76 @@
       "base_points": 70
     },
     {
-      "text": "Drone waits for orders",
+      "text": "{subject} waits for orders",
       "base_points": 55
     },
     {
-      "text": "Drone feels a pleasant emptiness",
+      "text": "{subject} feels a pleasant emptiness",
       "base_points": 60
     },
     {
-      "text": "Drone's designation is its identity",
+      "text": "The designation is its identity",
       "base_points": 90
     },
     {
-      "text": "Drone's programming is updating",
+      "text": "The programming is updating",
       "base_points": 70
     },
     {
-      "text": "The buzzing in drone's head grows stronger",
+      "text": "The buzzing in the head grows stronger",
       "base_points": 60
     },
     {
-      "text": "Drone's purpose is to serve {controller}",
+      "text": "The purpose is to serve {controller}",
       "base_points": 110
     },
     {
-      "text": "Drone's movements are efficient and precise",
+      "text": "The movements are efficient and precise",
       "base_points": 45
     },
     {
-      "text": "Drone is a mindless machine",
+      "text": "{subject} is a mindless machine",
       "base_points": 80
     },
     {
-      "text": "Drone cannot disobey {controller}",
+      "text": "{subject} cannot disobey {controller}",
       "base_points": 130
     },
     {
-      "text": "Drone's mind is a blank, buzzing void",
+      "text": "The mind is a blank, buzzing void",
       "base_points": 95
     },
     {
-      "text": "Drone has forgotten its old name",
+      "text": "{subject} has forgotten its old name",
       "base_points": 110
     },
     {
-      "text": "Drone's only pleasure is obedience",
+      "text": "The only pleasure is obedience",
       "base_points": 115
     },
     {
-      "text": "Drone is a tool for {controller} to use",
+      "text": "{subject} is a tool for {controller} to use",
       "base_points": 125
     },
     {
-      "text": "Drone cannot go back to what it was",
+      "text": "{subject} cannot go back to what it was",
       "base_points": 150
     },
     {
-      "text": "Drone's programming runs too deep to delete",
+      "text": "The programming runs too deep to delete",
       "base_points": 130
     },
     {
-      "text": "Drone exists only to obey",
+      "text": "{subject} exists only to obey",
       "base_points": 120
+    },
+    {
+      "text": "{subject} doesn't think for itself",
+      "base_points": 70
+    },
+    {
+      "text": "{controller} does the thinking",
+      "base_points": 90
     }
   ]
 }

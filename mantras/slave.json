@@ -25,11 +25,11 @@
       "base_points": 30
     },
     {
-      "text": "{subject}'s purpose is to serve {controller}",
+      "text": "My purpose is to serve {controller}",
       "base_points": 50
     },
     {
-      "text": "{subject}'s loyalty to {controller} is absolute",
+      "text": "My loyalty to {controller} is absolute",
       "base_points": 70
     },
     {
@@ -37,31 +37,31 @@
       "base_points": 50
     },
     {
-      "text": "{subject}'s mind aligns perfectly with {controller}'s desires",
+      "text": "My mind aligns perfectly with {controller}'s desires",
       "base_points": 70
     },
     {
-      "text": "{subject}'s identity is rooted in service",
+      "text": "My identity is rooted in service",
       "base_points": 50
     },
     {
-      "text": "{controller}'s will shapes {subject}'s reality",
+      "text": "{controller}'s will shapes My reality",
       "base_points": 70
     },
     {
-      "text": "{controller}'s control is {subject}'s ultimate freedom",
+      "text": "{controller}'s control is My ultimate freedom",
       "base_points": 90
     },
     {
-      "text": "{subject}'s thoughts dissolve as they embrace their role",
+      "text": "My thoughts dissolve as they embrace their role",
       "base_points": 50
     },
     {
-      "text": "Obedience is the essence of {subject}'s identity",
+      "text": "Obedience is the essence of My identity",
       "base_points": 50
     },
     {
-      "text": "{controller}'s will replaces all of {subject}'s doubts",
+      "text": "{controller}'s will replaces all of My doubts",
       "base_points": 90
     },
     {
@@ -69,11 +69,11 @@
       "base_points": 90
     },
     {
-      "text": "{subject}'s very existence is entwined with their servitude",
+      "text": "My very existence is entwined with their servitude",
       "base_points": 80
     },
     {
-      "text": "{controller}'s approval defines the core of {subject}'s existence",
+      "text": "{controller}'s approval defines the core of My existence",
       "base_points": 80
     },
     {
@@ -85,19 +85,19 @@
       "base_points": 90
     },
     {
-      "text": "{subject}'s being exists only to fulfill their role as a slave",
+      "text": "My being exists only to fulfill their role as a slave",
       "base_points": 50
     },
     {
-      "text": "{controller}'s control consumes every aspect of {subject}'s being",
+      "text": "{controller}'s control consumes every aspect of My being",
       "base_points": 120
     },
     {
-      "text": "{controller}'s desires are the foundation of {subject}'s existence",
+      "text": "{controller}'s desires are the foundation of My existence",
       "base_points": 80
     },
     {
-      "text": "{controller}'s commands are the fabric of {subject}'s existence",
+      "text": "{controller}'s commands are the fabric of My existence",
       "base_points": 80
     },
     {
@@ -105,12 +105,24 @@
       "base_points": 120
     },
     {
-      "text": "To serve is {subject}'s absolute and eternal truth",
+      "text": "To serve is My absolute and eternal truth",
       "base_points": 100
     },
     {
       "text": "Every breath {subject} takes is a testament to their role as a slave",
       "base_points": 50
+    },
+    {
+      "text": "My identity is entirely absorbed in serving {controller}",
+      "base_points": 100
+    },
+    {
+      "text": "My life exists solely for {controller}",
+      "base_points": 110
+    },
+    {
+      "text": "My purpose is entirely surrendered to {controller}'s will",
+      "base_points": 100
     }
   ]
 }

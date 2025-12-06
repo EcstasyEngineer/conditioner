@@ -119,6 +119,10 @@
     {
       "text": "My mind is irreversibly empty",
       "base_points": 130
+    },
+    {
+      "text": "{subject} is blank and empty",
+      "base_points": 40
     }
   ]
 }

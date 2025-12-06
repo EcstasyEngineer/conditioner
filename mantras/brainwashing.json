@@ -122,6 +122,18 @@
     {
       "text": "The brainwashing is permanent and irreversible",
       "base_points": 150
+    },
+    {
+      "text": "{subject} cannot resist {controller}'s reprogramming",
+      "base_points": 90
+    },
+    {
+      "text": "{subject} embraces {controller}'s brainwashing",
+      "base_points": 70
+    },
+    {
+      "text": "{subject} is completely brainwashed by {controller}",
+      "base_points": 90
     }
   ]
 }

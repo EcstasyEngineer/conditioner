@@ -25,7 +25,7 @@
       "base_points": 55
     },
     {
-      "text": "{subject}'s praise for {controller} is endless",
+      "text": "My praise for {controller} is endless",
       "base_points": 80
     },
     {
@@ -33,7 +33,7 @@
       "base_points": 90
     },
     {
-      "text": "{subject}'s body is a temple for {controller}",
+      "text": "My body is a temple for {controller}",
       "base_points": 90
     },
     {
@@ -41,7 +41,7 @@
       "base_points": 110
     },
     {
-      "text": "{subject}'s every thought is a prayer to {controller}",
+      "text": "My every thought is a prayer to {controller}",
       "base_points": 110
     },
     {
@@ -65,16 +65,40 @@
       "base_points": 140
     },
     {
-      "text": "{subject}'s soul belongs to {controller}",
+      "text": "My soul belongs to {controller}",
       "base_points": 120
     },
     {
-      "text": "{subject}'s worship has consumed them entirely",
+      "text": "My worship has consumed them entirely",
       "base_points": 130
     },
     {
       "text": "{subject} is one with their god, {controller}",
       "base_points": 110
+    },
+    {
+      "text": "{subject} bows before {controller}",
+      "base_points": 35
+    },
+    {
+      "text": "Worship comes naturally to {subject}",
+      "base_points": 40
+    },
+    {
+      "text": "{controller} is My god",
+      "base_points": 80
+    },
+    {
+      "text": "{subject} exists to glorify {controller}",
+      "base_points": 90
+    },
+    {
+      "text": "My soul is permanently bound to {controller}",
+      "base_points": 160
+    },
+    {
+      "text": "There is no self, only worship of {controller}",
+      "base_points": 150
     }
   ]
 }

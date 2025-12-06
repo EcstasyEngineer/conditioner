@@ -17,84 +17,104 @@
       "{subject} can be used",
       "passive, no eagerness"
     ],
-    "notes": "Explicit/crude language is fine for this theme. Focus on ownership removal and purpose reduction."
+    "notes": "Explicit/crude language is fine for this theme. Focus on ownership removal and purpose reduction. Don't underscore due to explicit content."
   },
   "mantras": [
     {
       "text": "My purpose is to provide pleasure",
-      "base_points": 20
+      "base_points": 30
     },
     {
-      "text": "I exist to be used",
-      "base_points": 40
+      "text": "{subject} craves to be used",
+      "base_points": 45
     },
     {
-      "text": "My body is not my own",
+      "text": "{subject} exists to be used",
       "base_points": 50
     },
     {
-      "text": "{controller} can use my body at any time",
+      "text": "My body is not their own",
       "base_points": 60
     },
     {
-      "text": "I am a public utility for pleasure",
-      "base_points": 40
-    },
-    {
-      "text": "My holes are always ready for use",
-      "base_points": 40
-    },
-    {
-      "text": "My body is a playground for others",
-      "base_points": 20
-    },
-    {
-      "text": "My only value is in my use",
-      "base_points": 40
-    },
-    {
-      "text": "{subject}'s body is a free-use object",
-      "base_points": 50
-    },
-    {
-      "text": "I am a mindless vessel for others' pleasure",
-      "base_points": 40
-    },
-    {
-      "text": "My mind is empty, my body is open",
-      "base_points": 60
-    },
-    {
-      "text": "I am a public toilet for cum",
-      "base_points": 60
-    },
-    {
-      "text": "I have no say in how my body is used",
-      "base_points": 40
-    },
-    {
-      "text": "My only purpose is to be filled and used",
-      "base_points": 40
-    },
-    {
-      "text": "My body is permanently and irrevocably free-use",
-      "base_points": 100
-    },
-    {
-      "text": "I am nothing more than a set of holes to be used",
+      "text": "{controller} can use My body at any time",
       "base_points": 80
     },
     {
-      "text": "{subject}'s only identity is as a free-use slave",
-      "base_points": 90
+      "text": "{subject} is a public utility for pleasure",
+      "base_points": 55
     },
     {
-      "text": "My mind has been erased, leaving only the need to be used",
+      "text": "My holes are always ready for use",
+      "base_points": 65
+    },
+    {
+      "text": "My body is a playground for others",
+      "base_points": 40
+    },
+    {
+      "text": "My only value is in their use",
+      "base_points": 70
+    },
+    {
+      "text": "My body is a free-use object",
+      "base_points": 65
+    },
+    {
+      "text": "{subject} is a mindless vessel for others' pleasure",
+      "base_points": 75
+    },
+    {
+      "text": "My mind is empty, My body is open",
+      "base_points": 70
+    },
+    {
+      "text": "{subject} is a public toilet for cum",
+      "base_points": 120
+    },
+    {
+      "text": "{subject} has no say in how their body is used",
+      "base_points": 70
+    },
+    {
+      "text": "My only purpose is to be filled and used",
+      "base_points": 75
+    },
+    {
+      "text": "My body is permanently and irrevocably free-use",
+      "base_points": 150
+    },
+    {
+      "text": "{subject} is nothing more than a set of holes to be used",
       "base_points": 110
     },
     {
-      "text": "I am a public degradation object, and I love it",
-      "base_points": 60
+      "text": "My only identity is as a free-use slave",
+      "base_points": 120
+    },
+    {
+      "text": "My mind has been erased, leaving only the need to be used",
+      "base_points": 130
+    },
+    {
+      "text": "{subject} is a public degradation object, and {subject} loves it",
+      "base_points": 95
+    },
+    {
+      "text": "Anyone can use {subject} whenever they want",
+      "base_points": 85
+    },
+    {
+      "text": "{subject} is permanently available for {controller}'s use",
+      "base_points": 140
+    },
+    {
+      "text": "My holes belong to whoever wants them",
+      "base_points": 100
+    },
+    {
+      "text": "{subject} was made to be used and nothing else",
+      "base_points": 90
     }
   ]
 }
