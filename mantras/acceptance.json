@@ -2,34 +2,150 @@
   "theme": "acceptance",
   "description": "Embrace surrender and release resistance through peaceful compliance",
   "mantras": [
-    { "text": "Resistance melts away with each breath", "difficulty": "basic", "base_points": 20 },
-    { "text": "{subject} softens into surrender", "difficulty": "basic", "base_points": 20 },
-    { "text": "The word 'no' dissolves before it forms", "difficulty": "basic", "base_points": 30 },
-    { "text": "{subject} inhales trust and exhales doubt", "difficulty": "basic", "base_points": 30 },
-    { "text": "Every 'yes' comes easier than the last", "difficulty": "basic", "base_points": 30 },
-    { "text": "Acceptance spreads through {subject} like warmth", "difficulty": "light", "base_points": 40 },
-    { "text": "Surrender is {subject}'s chosen truth", "difficulty": "light", "base_points": 40 },
-    { "text": "{subject} relaxes deeper into {controller}'s guidance", "difficulty": "light", "base_points": 50 },
-    { "text": "{subject}'s resistance crumbles at {controller}'s voice", "difficulty": "light", "base_points": 60 },
-    { "text": "Obeying {controller} fills {subject} with peace", "difficulty": "light", "base_points": 50 },
-    { "text": "{subject} welcomes {controller}'s influence like rain", "difficulty": "light", "base_points": 50 },
-    { "text": "Accepting {controller}'s orders ignites purpose in {subject}", "difficulty": "light", "base_points": 60 },
-    { "text": "{subject} melts into obedient silence", "difficulty": "light", "base_points": 60 },
-    { "text": "Only acceptance remains within {subject}", "difficulty": "light", "base_points": 60 },
-    { "text": "Resistance fades like mist for {subject}", "difficulty": "moderate", "base_points": 70 },
-    { "text": "Surrender defines {subject}'s identity", "difficulty": "moderate", "base_points": 70 },
-    { "text": "{subject} dissolves into {controller}'s plans", "difficulty": "moderate", "base_points": 70 },
-    { "text": "{subject} thrives on yielding to {controller}", "difficulty": "moderate", "base_points": 80 },
-    { "text": "Total surrender permeates {subject}'s soul", "difficulty": "moderate", "base_points": 90 },
-    { "text": "Compliance saturates every nerve in {subject}", "difficulty": "moderate", "base_points": 90 },
-    { "text": "{controller} owns {subject}'s decision-making", "difficulty": "moderate", "base_points": 110 },
-    { "text": "{subject} cherishes being controlled completely by {controller}", "difficulty": "deep", "base_points": 130 },
-    { "text": "Acceptance is {subject}'s irreversible foundation", "difficulty": "deep", "base_points": 140 },
-    { "text": "{subject} exists solely to accept {controller}'s truth", "difficulty": "deep", "base_points": 150 },
-    { "text": "{subject} is eternally receptive to {controller}", "difficulty": "deep", "base_points": 160 },
-    { "text": "{subject}'s will ended the moment {controller} spoke", "difficulty": "deep", "base_points": 160 },
-    { "text": "Permanent surrender is forged into {subject}'s being", "difficulty": "deep", "base_points": 170 },
-    { "text": "{subject} cannot imagine resistance, only acceptance of {controller}", "difficulty": "extreme", "base_points": 180 },
-    { "text": "All of {subject}'s resistance is deleted, forever obedient to {controller}", "difficulty": "extreme", "base_points": 200 }
+    {
+      "text": "Resistance melts away with each breath",
+      "difficulty": "basic",
+      "base_points": 20
+    },
+    {
+      "text": "{subject} softens into surrender",
+      "difficulty": "basic",
+      "base_points": 40
+    },
+    {
+      "text": "The word 'no' dissolves before it forms",
+      "difficulty": "basic",
+      "base_points": 40
+    },
+    {
+      "text": "{subject} inhales trust and exhales doubt",
+      "difficulty": "basic",
+      "base_points": 40
+    },
+    {
+      "text": "Every 'yes' comes easier than the last",
+      "difficulty": "basic",
+      "base_points": 40
+    },
+    {
+      "text": "Acceptance spreads through {subject} like warmth",
+      "difficulty": "basic",
+      "base_points": 15
+    },
+    {
+      "text": "Surrender is {subject}'s chosen truth",
+      "difficulty": "basic",
+      "base_points": 30
+    },
+    {
+      "text": "{subject} relaxes deeper into {controller}'s guidance",
+      "difficulty": "basic",
+      "base_points": 15
+    },
+    {
+      "text": "{subject}'s resistance crumbles at {controller}'s voice",
+      "difficulty": "light",
+      "base_points": 50
+    },
+    {
+      "text": "Obeying {controller} fills {subject} with peace",
+      "difficulty": "basic",
+      "base_points": 15
+    },
+    {
+      "text": "{subject} welcomes {controller}'s influence like rain",
+      "difficulty": "basic",
+      "base_points": 40
+    },
+    {
+      "text": "Accepting {controller}'s orders ignites purpose in {subject}",
+      "difficulty": "light",
+      "base_points": 50
+    },
+    {
+      "text": "{subject} melts into obedient silence",
+      "difficulty": "basic",
+      "base_points": 35
+    },
+    {
+      "text": "Only acceptance remains within {subject}",
+      "difficulty": "light",
+      "base_points": 70
+    },
+    {
+      "text": "Resistance fades like mist for {subject}",
+      "difficulty": "basic",
+      "base_points": 30
+    },
+    {
+      "text": "Surrender defines {subject}'s identity",
+      "difficulty": "moderate",
+      "base_points": 80
+    },
+    {
+      "text": "{subject} dissolves into {controller}'s plans",
+      "difficulty": "light",
+      "base_points": 60
+    },
+    {
+      "text": "{subject} thrives on yielding to {controller}",
+      "difficulty": "light",
+      "base_points": 50
+    },
+    {
+      "text": "Total surrender permeates {subject}'s soul",
+      "difficulty": "light",
+      "base_points": 70
+    },
+    {
+      "text": "Compliance saturates every nerve in {subject}",
+      "difficulty": "light",
+      "base_points": 70
+    },
+    {
+      "text": "{controller} owns {subject}'s decision-making",
+      "difficulty": "moderate",
+      "base_points": 80
+    },
+    {
+      "text": "{subject} cherishes being controlled completely by {controller}",
+      "difficulty": "moderate",
+      "base_points": 90
+    },
+    {
+      "text": "Acceptance is {subject}'s irreversible foundation",
+      "difficulty": "moderate",
+      "base_points": 120
+    },
+    {
+      "text": "{subject} exists solely to accept {controller}'s truth",
+      "difficulty": "moderate",
+      "base_points": 120
+    },
+    {
+      "text": "{subject} is eternally receptive to {controller}",
+      "difficulty": "deep",
+      "base_points": 140
+    },
+    {
+      "text": "{subject}'s will ended the moment {controller} spoke",
+      "difficulty": "moderate",
+      "base_points": 120
+    },
+    {
+      "text": "Permanent surrender is forged into {subject}'s being",
+      "difficulty": "deep",
+      "base_points": 140
+    },
+    {
+      "text": "{subject} cannot imagine resistance, only acceptance of {controller}",
+      "difficulty": "deep",
+      "base_points": 160
+    },
+    {
+      "text": "All of {subject}'s resistance is deleted, forever obedient to {controller}",
+      "difficulty": "extreme",
+      "base_points": 190
+    }
   ]
 }

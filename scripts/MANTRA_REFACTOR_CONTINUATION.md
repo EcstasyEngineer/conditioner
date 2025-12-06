@@ -43,11 +43,16 @@ Mantras to evaluate:
 Return a markdown table: | Mantra | Shows/Tells | Movement (1-5) | Verdict | Why |
 ```
 
-**Quality red flags (auto-cut):**
-- Therapeutic framing ("helps me", "my worries", self-help tone)
-- Passive voice without subject ("memories are deleted")
-- Pure state labels ("I am X" without mechanism)
-- Generic verbs ("feels good", "is nice")
+**Quality red flags (likely cut):**
+- Clinical self-help language ("worries", "anxiety", "healing", "growth", "self-improvement")
+- Passive voice without clear agent ("memories are deleted" → "{controller} deletes my memories")
+- Generic trait labels without theme anchor ("I am obedient" is weak, "I am {controller}'s maid" is fine)
+
+**NOT red flags (sometimes miscategorized):**
+- Dependence framing ("{controller} helps me think clearly" creates parasocial dependence - good)
+- Simple language ("feels natural and good" is direct and valid)
+- Theme-specific identity claims ("I am X" is fine when X is the theme's identity)
+- Comfort/pleasure descriptions (the experience CAN be therapeutic without therapy language)
 
 ### Phase 2: Rescore Everything
 
