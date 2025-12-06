@@ -17,6 +17,24 @@ from typing import List, Dict, Optional, Tuple
 from .encounters import load_encounters, load_recent_encounters
 
 
+def get_tier(points: int) -> str:
+    """Return tier name for a given point value.
+
+    Tier boundaries from docs/POINT_ECONOMY.md:
+    20-40 basic, 40-70 light, 70-120 moderate, 120-180 deep, 180+ extreme
+
+    TODO(#48): Consolidate to 4 tiers (low/mid/high/max) after full rescore.
+    """
+    if points >= 120:
+        return "extreme" if points >= 180 else "deep"
+    elif points >= 70:
+        return "moderate"
+    elif points >= 40:
+        return "light"
+    else:
+        return "basic"
+
+
 def calculate_speed_bonus(response_time_seconds: int) -> int:
     """Calculate speed bonus based on response time."""
     if response_time_seconds <= 15:
@@ -110,12 +128,13 @@ def schedule_next_encounter(config: Dict, available_themes: Dict, first_enrollme
     # Handle first enrollment with special pre-canned message
     if first_enrollment:
         next_time = datetime.now() + timedelta(seconds=30)
+        base_points = 100
         config["next_encounter"] = {
             "timestamp": next_time.isoformat(),
             "mantra": "My thoughts are being reprogrammed.",
             "theme": "enrollment",
-            "difficulty": "moderate",
-            "base_points": 100
+            "difficulty": get_tier(base_points),
+            "base_points": base_points
         }
         return
     
@@ -140,7 +159,7 @@ def schedule_next_encounter(config: Dict, available_themes: Dict, first_enrollme
             "timestamp": next_time.isoformat(),
             "mantra": mantra_data["text"],  # Keep templated format
             "theme": mantra_data["theme"],
-            "difficulty": mantra_data["difficulty"],
+            "difficulty": get_tier(mantra_data["base_points"]),
             "base_points": mantra_data["base_points"]
         }
         

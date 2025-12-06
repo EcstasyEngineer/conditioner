@@ -2,39 +2,142 @@
   "theme": "addiction",
   "description": "Craving, compulsion, and escalating dependence on control",
   "mantras": [
-    { "text": "I crave {controller}'s attention",          "difficulty": "basic", "base_points": 10 },
-    { "text": "Need blossoms inside me",                   "difficulty": "basic", "base_points": 11 },
-    { "text": "{subject} hungers for guidance",            "difficulty": "basic", "base_points": 12 },
-    { "text": "Serving feels necessary",                   "difficulty": "basic", "base_points": 13 },
-    { "text": "Want becomes need, need becomes life",      "difficulty": "basic", "base_points": 14 },
-    { "text": "My craving sparks each breath",             "difficulty": "basic", "base_points": 15 },
-
-    { "text": "Every dose of control amplifies desire",                   "difficulty": "light", "base_points": 20 },
-    { "text": "{subject} returns for another fix",                        "difficulty": "light", "base_points": 22 },
-    { "text": "Obedience tastes sweeter each time",                        "difficulty": "light", "base_points": 24 },
-    { "text": "Need intensifies faster than I can sate it",                "difficulty": "light", "base_points": 26 },
-    { "text": "I'm hooked on {controller}'s dominance",                   "difficulty": "light", "base_points": 28 },
-    { "text": "Craving coils tighter around my mind",                      "difficulty": "light", "base_points": 30 },
-
-    { "text": "Addiction anchors my identity",                             "difficulty": "moderate", "base_points": 35 },
-    { "text": "{subject} inhales submission like oxygen",                  "difficulty": "moderate", "base_points": 38 },
-    { "text": "Every command feeds the habit",                             "difficulty": "moderate", "base_points": 40 },
-    { "text": "I cannot imagine life without control",                     "difficulty": "moderate", "base_points": 42 },
-    { "text": "The more I get, the more I need",                           "difficulty": "moderate", "base_points": 45 },
-    { "text": "Dependency rewires my reward circuits",                     "difficulty": "moderate", "base_points": 42 },
-
-    { "text": "Craving burns hot, unquenchable",                           "difficulty": "deep", "base_points": 60 },
-    { "text": "{controller}'s touch rewrites my dopamine",                 "difficulty": "deep", "base_points": 65 },
-    { "text": "Withdrawal feels like emptiness itself",                    "difficulty": "deep", "base_points": 70 },
-    { "text": "Addiction defines {subject} at every level",                "difficulty": "deep", "base_points": 75 },
-    { "text": "My brain loops on submission endlessly",                    "difficulty": "deep", "base_points": 70 },
-    { "text": "I cannot function without my next command",                 "difficulty": "deep", "base_points": 80 },
-
-    { "text": "Permanent craving hard-coded into my psyche",               "difficulty": "extreme", "base_points": 100 },
-    { "text": "{subject} exists to chase {controller}'s control",           "difficulty": "extreme", "base_points": 105 },
-    { "text": "My universe narrows to pleasing {controller}",              "difficulty": "extreme", "base_points": 110 },
-    { "text": "Need eclipses all other sensations, forever",                "difficulty": "extreme", "base_points": 115 },
-    { "text": "I am nothing but hunger for obedience",                     "difficulty": "extreme", "base_points": 120 },
-    { "text": "Endless addiction drives every choice I make",              "difficulty": "extreme", "base_points": 108 }
-  ]
+    {
+      "text": "I crave {controller}'s attention",
+      "base_points": 10
+    },
+    {
+      "text": "Need blossoms inside me",
+      "base_points": 11
+    },
+    {
+      "text": "{subject} hungers for guidance",
+      "base_points": 12
+    },
+    {
+      "text": "Serving feels necessary",
+      "base_points": 13
+    },
+    {
+      "text": "Want becomes need, need becomes life",
+      "base_points": 14
+    },
+    {
+      "text": "My craving sparks each breath",
+      "base_points": 15
+    },
+    {
+      "text": "Every dose of control amplifies desire",
+      "base_points": 20
+    },
+    {
+      "text": "{subject} returns for another fix",
+      "base_points": 22
+    },
+    {
+      "text": "Obedience tastes sweeter each time",
+      "base_points": 24
+    },
+    {
+      "text": "Need intensifies faster than I can sate it",
+      "base_points": 26
+    },
+    {
+      "text": "I'm hooked on {controller}'s dominance",
+      "base_points": 28
+    },
+    {
+      "text": "Craving coils tighter around my mind",
+      "base_points": 30
+    },
+    {
+      "text": "Addiction anchors my identity",
+      "base_points": 35
+    },
+    {
+      "text": "{subject} inhales submission like oxygen",
+      "base_points": 38
+    },
+    {
+      "text": "Every command feeds the habit",
+      "base_points": 40
+    },
+    {
+      "text": "I cannot imagine life without control",
+      "base_points": 42
+    },
+    {
+      "text": "The more I get, the more I need",
+      "base_points": 45
+    },
+    {
+      "text": "Dependency rewires my reward circuits",
+      "base_points": 42
+    },
+    {
+      "text": "Craving burns hot, unquenchable",
+      "base_points": 60
+    },
+    {
+      "text": "{controller}'s touch rewrites my dopamine",
+      "base_points": 65
+    },
+    {
+      "text": "Withdrawal feels like emptiness itself",
+      "base_points": 70
+    },
+    {
+      "text": "Addiction defines {subject} at every level",
+      "base_points": 75
+    },
+    {
+      "text": "My brain loops on submission endlessly",
+      "base_points": 70
+    },
+    {
+      "text": "I cannot function without my next command",
+      "base_points": 80
+    },
+    {
+      "text": "Permanent craving hard-coded into my psyche",
+      "base_points": 100
+    },
+    {
+      "text": "{subject} exists to chase {controller}'s control",
+      "base_points": 105
+    },
+    {
+      "text": "My universe narrows to pleasing {controller}",
+      "base_points": 110
+    },
+    {
+      "text": "Need eclipses all other sensations, forever",
+      "base_points": 115
+    },
+    {
+      "text": "I am nothing but hunger for obedience",
+      "base_points": 120
+    },
+    {
+      "text": "Endless addiction drives every choice I make",
+      "base_points": 108
+    }
+  ],
+  "generation": {
+    "core": "Craving, compulsion, escalating dependence",
+    "progression": [
+      "want",
+      "need",
+      "can't function without",
+      "permanent rewiring"
+    ],
+    "good": [
+      "Craving coils tighter around my mind",
+      "visceral, escalating"
+    ],
+    "bad": [
+      "I am addicted",
+      "tells, doesn't show"
+    ]
+  }
 }

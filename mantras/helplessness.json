@@ -1,31 +1,123 @@
 {
   "theme": "helplessness",
-  "description": "Complete vulnerability and powerlessness under total control",
+  "description": "Strength drains away, leaving only soft, vulnerable stillness",
   "mantras": [
-    {"text": "{subject} is helpless and calm.", "base_points": 10, "difficulty": "basic"},
-    {"text": "{subject} can't resist.", "base_points": 11, "difficulty": "basic"},
-    {"text": "{subject} lets go of control.", "base_points": 12, "difficulty": "basic"},
-    {"text": "{controller} is in control of {subject}.", "base_points": 13, "difficulty": "basic"},
-    {"text": "It feels good for {subject} to be helpless.", "base_points": 14, "difficulty": "basic"},
-    {"text": "{subject} is completely vulnerable to {controller}.", "base_points": 20, "difficulty": "light"},
-    {"text": "{subject}'s body is heavy and still.", "base_points": 22, "difficulty": "light"},
-    {"text": "{subject} doesn't have to make decisions.", "base_points": 24, "difficulty": "light"},
-    {"text": "{subject} is safe in their helplessness.", "base_points": 25, "difficulty": "light"},
-    {"text": "{subject} trusts {controller} completely.", "base_points": 26, "difficulty": "light"},
-    {"text": "{subject} is powerless to disobey.", "base_points": 30, "difficulty": "moderate"},
-    {"text": "{subject}'s will is not their own.", "base_points": 33, "difficulty": "moderate"},
-    {"text": "{subject} floats in serene acceptance.", "base_points": 35, "difficulty": "moderate"},
-    {"text": "Every choice is made for {subject}.", "base_points": 37, "difficulty": "moderate"},
-    {"text": "{subject} cherishes being cared for by {controller}.", "base_points": 38, "difficulty": "moderate"},
-    {"text": "{subject}'s mind is unburdened by thought.", "base_points": 40, "difficulty": "heavy"},
-    {"text": "{subject} is completely at {controller}'s mercy.", "base_points": 42, "difficulty": "heavy"},
-    {"text": "{subject}'s only purpose is to be helpless for {controller}.", "base_points": 44, "difficulty": "heavy"},
-    {"text": "{subject} has no power, and it is perfect.", "base_points": 46, "difficulty": "heavy"},
-    {"text": "{subject} is a still, quiet thing for {controller}.", "base_points": 48, "difficulty": "heavy"},
-    {"text": "{subject}'s helplessness is their bliss.", "base_points": 50, "difficulty": "extreme"},
-    {"text": "{subject} cannot move, speak, or think without {controller}'s permission.", "base_points": 54, "difficulty": "extreme"},
-    {"text": "{subject} is utterly and completely helpless.", "base_points": 56, "difficulty": "extreme"},
-    {"text": "{subject}'s existence is defined by their powerlessness.", "base_points": 58, "difficulty": "extreme"},
-    {"text": "{subject} belongs to {controller} in their helplessness.", "base_points": 60, "difficulty": "extreme"}
-  ]
+    {
+      "text": "{subject} is helpless and calm.",
+      "base_points": 10
+    },
+    {
+      "text": "{subject} can't resist.",
+      "base_points": 11
+    },
+    {
+      "text": "{subject} lets go of control.",
+      "base_points": 12
+    },
+    {
+      "text": "{controller} is in control of {subject}.",
+      "base_points": 13
+    },
+    {
+      "text": "It feels good for {subject} to be helpless.",
+      "base_points": 14
+    },
+    {
+      "text": "{subject} is completely vulnerable to {controller}.",
+      "base_points": 20
+    },
+    {
+      "text": "{subject}'s body is heavy and still.",
+      "base_points": 22
+    },
+    {
+      "text": "{subject} doesn't have to make decisions.",
+      "base_points": 24
+    },
+    {
+      "text": "{subject} is safe in their helplessness.",
+      "base_points": 25
+    },
+    {
+      "text": "{subject} trusts {controller} completely.",
+      "base_points": 26
+    },
+    {
+      "text": "{subject} is powerless to disobey.",
+      "base_points": 30
+    },
+    {
+      "text": "{subject}'s will is not their own.",
+      "base_points": 33
+    },
+    {
+      "text": "{subject} floats in serene acceptance.",
+      "base_points": 35
+    },
+    {
+      "text": "Every choice is made for {subject}.",
+      "base_points": 37
+    },
+    {
+      "text": "{subject} cherishes being cared for by {controller}.",
+      "base_points": 38
+    },
+    {
+      "text": "{subject}'s mind is unburdened by thought.",
+      "base_points": 40
+    },
+    {
+      "text": "{subject} is completely at {controller}'s mercy.",
+      "base_points": 42
+    },
+    {
+      "text": "{subject}'s only purpose is to be helpless for {controller}.",
+      "base_points": 44
+    },
+    {
+      "text": "{subject} has no power, and it is perfect.",
+      "base_points": 46
+    },
+    {
+      "text": "{subject} is a still, quiet thing for {controller}.",
+      "base_points": 48
+    },
+    {
+      "text": "{subject}'s helplessness is their bliss.",
+      "base_points": 50
+    },
+    {
+      "text": "{subject} cannot move, speak, or think without {controller}'s permission.",
+      "base_points": 54
+    },
+    {
+      "text": "{subject} is utterly and completely helpless.",
+      "base_points": 56
+    },
+    {
+      "text": "{subject}'s existence is defined by their powerlessness.",
+      "base_points": 58
+    },
+    {
+      "text": "{subject} belongs to {controller} in their helplessness.",
+      "base_points": 60
+    }
+  ],
+  "generation": {
+    "core": "Vulnerability, powerlessness, safety in surrender",
+    "progression": [
+      "can't resist",
+      "no decisions",
+      "at mercy",
+      "defined by powerlessness"
+    ],
+    "good": [
+      "{subject} doesn't have to make decisions",
+      "relief framing"
+    ],
+    "bad": [
+      "{subject} is weak",
+      "negative framing, not pleasurable"
+    ]
+  }
 }

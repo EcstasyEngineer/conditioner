@@ -1,159 +1,94 @@
 # Mantra Theme Guidelines
 
-Quick reference for creating and evaluating mantras.
+Universal rules for creating and evaluating mantras. Theme-specific profiles live in each `mantras/*.json` file under the `generation` key.
 
 ## File Structure
 
 ```json
 {
   "theme": "themename",
-  "description": "10-20 word summary",
+  "description": "Short display text for Discord UI (~60 chars)",
+  "generation": {
+    "core": "What this theme is about",
+    "progression": ["basic state", "light state", "moderate state", "deep/extreme state"],
+    "good": ["Example mantra", "why it works"],
+    "bad": ["Example mantra", "why it fails"],
+    "notes": "Optional theme-specific guidance"
+  },
   "mantras": [
-    { "text": "Mantra with {subject} and {controller}", "difficulty": "basic", "base_points": 10 }
+    { "text": "Mantra with {subject} and {controller}", "base_points": 50 }
   ]
 }
 ```
 
-- One mantra per line
-- 25-30 mantras per theme
+- One mantra per entry, 25-30 mantras per theme
 - Use `{subject}` and `{controller}` placeholders
+- Points determine tier automatically (see POINT_ECONOMY.md)
 
-## Difficulty Ladder
+## The Prime Directive
 
-| Level | Psychological Function |
-|-------|------------------------|
-| **basic** | Introduction. Safe, gentle, deniable. "I'm just trying this." |
-| **light** | Normalization. Regular practice, growing comfort. "This is nice." |
-| **moderate** | Identity integration. "This is who I am becoming." |
-| **deep** | Core rewrite. "This is who I am." |
-| **extreme** | Permanence. "This is who I will always be." |
+**Show the experience. Never label the state.**
 
-*Point values: See [POINT_ECONOMY.md](POINT_ECONOMY.md) for tier boundaries and calculation.*
+The user is typing these words. They should feel something shift as they type, not recite a clinical diagnosis.
 
-### Language Markers
+| Don't write | Write instead |
+|-------------|---------------|
+| "I am obedient" | "Commands drop straight into action" |
+| "I am blank" | "Thoughts drift away before forming" |
+| "I am suggestible" | "Words slide straight into my mind" |
+| "I feel submissive" | "My shoulders drop when {controller} speaks" |
 
-**basic**: want, like, enjoy, starting to, feels good
-**light**: need, crave, growing, building, daily
-**moderate**: defines, shapes, my nature, identity, becoming
-**deep**: consumed, saturated, fundamental, core, total
+## Tier Language (Psychological Function)
+
+| Tier | Points | Function | The Leap |
+|------|--------|----------|----------|
+| basic | 20-40 | Introduction. Safe, deniable. | "I'm just trying this." |
+| light | 40-70 | Normalization. Growing comfort. | "This is nice." |
+| moderate | 70-120 | Identity integration. | "This is who I'm becoming." |
+| deep | 120-180 | Core rewrite. | "This is who I am." |
+| extreme | 180+ | Permanence. Point of no return. | "This is who I will always be." |
+
+### Language Markers by Tier
+
+**basic**: want, like, enjoy, feels good, starting to notice
+**light**: need, crave, growing, building, daily, harder to resist
+**moderate**: defines, shapes, my nature, becoming, part of me
+**deep**: consumed, saturated, fundamental, core, total, cannot
 **extreme**: permanent, forever, irreversible, nothing but, only exist to
 
-**Rule**: Permanence language is ONLY for extreme.
+**Hard rule**: Permanence language ("forever", "permanent", "irreversible") is ONLY for extreme tier.
 
-## Active Theme Profiles
-
-### acceptance
-**Core**: Surrender, release of resistance, peaceful compliance
-**Progression**: letting go → welcoming → defining identity → total dissolution
-**Good**: "Resistance fades like mist" (sensory, gradual)
-**Bad**: "I accept things" (flat, no psychological movement)
-
-### addiction
-**Core**: Craving, compulsion, escalating dependence
-**Progression**: want → need → can't function without → permanent rewiring
-**Good**: "Craving coils tighter around my mind" (visceral, escalating)
-**Bad**: "I am addicted" (tells, doesn't show)
-
-### amnesia
-**Core**: Memory dissolution, forgetting to exist in present
-**Progression**: hazy → fading → controlled by {controller} → permanent wipe
-**Good**: "The fog in my mind grows thicker daily" (sensory, progressive)
-**Bad**: "I forget things" (too literal)
-
-### suggestibility
-**Core**: Openness, absorption, receptivity to commands
-**Progression**: open → absorbing → filters dissolve → permanently writable
-**Good**: "Words slide straight into my mind" (bypassing, effortless)
-**Bad**: "I am suggestible" (label, not experience)
-
-### brainwashing
-**Core**: Systematic reprogramming, conditioning cycles
-**Progression**: cleaning → replacing → consuming → permanent programming
-**Good**: "Each repetition reinforces the conditioning" (process-aware)
-**Bad**: "My brain is washed" (too literal, no mechanism)
-
-### obedience
-**Core**: Instant compliance, reflexive execution
-**Progression**: feels natural → instinctive → unthinkable to resist → hardwired
-**Good**: "Commands drop straight into action" (bypasses thought)
-**Bad**: "I obey" (too simple, no depth)
-
-### blank
-**Core**: Empty-mindedness, thoughtless receptivity
-**Progression**: quiet → drifting → vessel → permanent emptiness
-**Good**: "My mind is a blank slate for {controller}" (functional emptiness)
-**Bad**: "I am blank" (static, not evocative)
-
-### puppet
-**Core**: External control, strings, guided movement
-**Progression**: strings attached → observer in body → hollowed out → strings in soul
-**Good**: "{subject} dances on {controller}'s strings" (vivid, specific)
-**Bad**: "{subject} is controlled" (generic, loses puppet imagery)
-
-### slave
-**Core**: Ownership, service, existence for another's benefit
-**Progression**: purpose to serve → identity rooted → extension of will → only existence
-**Good**: "{subject} is an extension of {controller}'s will" (merger)
-**Bad**: "{subject} serves" (too simple)
-
-### helplessness
-**Core**: Vulnerability, powerlessness, safety in surrender
-**Progression**: can't resist → no decisions → at mercy → defined by powerlessness
-**Good**: "{subject} doesn't have to make decisions" (relief framing)
-**Bad**: "{subject} is weak" (negative framing, not pleasurable)
-
-### bimbo
-**Core**: Playful simplification, pretty-minded bliss
-**Progression**: giggly → empty-headed → dissolving intelligence → permanent airhead
-**Good**: "Thoughts pop like bubbles, gone" (playful, visual)
-**Bad**: "I am dumb" (harsh, not fun)
-**Note**: Pink/sparkle/giggle aesthetic distinguishes from blank's clinical emptiness
-
-### devotion
-**Core**: Unwavering loyalty, dedicated service
-**Progression**: want to be devoted → growing loyalty → all-consuming → endless
-**Good**: "My thoughts often turn to my devotion" (intrusive, compelling)
-**Bad**: "I am loyal" (flat declaration)
-
-## Weak Patterns to Avoid
+## Weak Patterns to Reject
 
 ### State Labels (Telling)
 Declaring a state without showing the experience.
 
-- ❌ "I am obedient" / "{subject} is blank"
-- ❌ "My mind is empty" / "I feel submissive"
-- ✅ "Commands drop straight into action" (shows obedience)
-- ✅ "Thoughts drift away before forming" (shows blankness)
+- ❌ "I am obedient" / "{subject} is blank" / "I feel submissive"
+- ✅ "Commands drop straight into action" / "Thoughts drift away"
 
 ### Hedged Language
-Uncommitted, tentative phrasing that undermines the mantra.
+Uncommitted, tentative phrasing that undermines conviction.
 
-- ❌ "starting to", "beginning to", "kind of", "a little"
-- ❌ "I think I might be...", "It seems like..."
-- ✅ Direct statements: "The fog thickens" not "The fog is starting to thicken"
+- ❌ "starting to", "beginning to", "kind of", "a little", "I think I might"
+- ✅ Direct: "The fog thickens" not "The fog is starting to thicken"
 
-### Passive Voice
-Subject receives action instead of experiencing it.
+### Passive Voice Without Agent
+Subject receives action from nowhere.
 
-- ❌ "Memories are deleted", "Thoughts are removed"
-- ❌ "{subject} is controlled by {controller}"
-- ✅ "I forget", "{controller} deletes my memories"
-- ✅ "{controller} controls {subject}" or "{subject} surrenders control"
+- ❌ "Memories are deleted" / "Thoughts are removed"
+- ✅ "{controller} deletes my memories" / "I let thoughts go"
 
 ### Therapeutic Framing
-Self-help language that breaks the conditioning aesthetic.
+Self-help language breaks the conditioning aesthetic.
 
-- ❌ "helps me", "worries", "healing", "growth", "self-improvement"
-- ❌ "{controller} helps me forget my worries"
+- ❌ "helps me", "healing", "growth", "self-improvement", "worries", "anxiety"
 - ✅ "I forget for {controller}" (service framing, not therapy)
 
 ### Generic Verbs
 Vague action words without sensory or psychological specificity.
 
-- ❌ "feels", "is", "has", "does" (as main verb without modifier)
-- ❌ "It feels good to obey"
-- ✅ "Obeying floods me with warmth" (specific sensation)
-- ✅ "Obedience hums through my veins" (visceral, embodied)
+- ❌ "It feels good to obey" / "Submission is nice"
+- ✅ "Obeying floods me with warmth" / "Obedience hums through my veins"
 
 ### Static Descriptions
 No sense of movement, progression, or change.
@@ -162,25 +97,51 @@ No sense of movement, progression, or change.
 - ✅ "My mind empties with each breath" (progressive)
 - ✅ "Blankness spreads through my thoughts" (active)
 
-## Common Problems (Summary)
+### GPT-isms to Avoid
+Overused AI writing patterns that sound fake:
 
-**Telling vs showing**: "I am obedient" vs "Commands drop straight into action"
-**Static vs progressive**: "I am blank" vs "My mind gets emptier every day"
-**Generic vs specific**: "I serve" vs "Every cell aches to comply"
-**Harsh vs pleasurable**: "I am weak" vs "It feels good to be helpless"
-**Wrong difficulty**: Permanence language in moderate, gentle language in extreme
+- ❌ "delve", "tapestry", "symphony of", "dance of", "embrace the"
+- ❌ "journey", "beacon", "vessel of", "testament to"
+- ❌ Unnecessary adjective stacking: "soft, gentle, warm, peaceful surrender"
+- ❌ Purple prose: "The gossamer threads of consciousness dissolve into the ethereal void"
+- ✅ Simple, direct, visceral: "My thoughts stop." / "I go quiet inside."
 
-## Point Calculation
+## Placeholder Rules
 
-See [POINT_ECONOMY.md](POINT_ECONOMY.md) for the full scoring system, including:
-- Intensity scoring heuristic (base + markers)
-- Tier boundaries and difficulty derivation
+- `{subject}` - The user's chosen name/role (puppet, drone, pet, etc.)
+- `{controller}` - The authority figure (Master, Mistress, Owner, etc.)
+
+**Usage patterns:**
+- First person ("I", "my") for direct identification
+- `{subject}` for slight dissociation or third-person framing
+- `{controller}` creates relationship, adds +20 to intensity
+- Both placeholders together adds +30 to intensity
+
+**Don't overuse**: Not every mantra needs placeholders. Some hit harder as universal statements.
 
 ## Quality Checklist
 
-- [ ] Shows psychological experience, not labels
-- [ ] Clear progression from basic to extreme
-- [ ] Difficulty markers match assigned level
-- [ ] Placeholders work with various subjects/controllers
-- [ ] No duplicate concepts across difficulties
-- [ ] Theme-specific imagery maintained (strings for puppet, sparkles for bimbo, etc.)
+Before adding a mantra:
+
+- [ ] Does it SHOW an experience rather than LABEL a state?
+- [ ] Does the language match the point value's tier?
+- [ ] Is there psychological movement (not static)?
+- [ ] Does it avoid therapeutic/self-help framing?
+- [ ] Is it free of GPT-isms and purple prose?
+- [ ] Do placeholders work with various subject/controller names?
+- [ ] Does it fit the theme's specific imagery? (strings for puppet, unit for drone, etc.)
+
+## Point Calculation
+
+See [POINT_ECONOMY.md](POINT_ECONOMY.md) for:
+- Full scoring heuristic (base + intensity markers)
+- Tier boundaries
+- Calibration examples
+
+## Adding a New Theme
+
+1. Create `mantras/newtheme.json` with structure above
+2. Write `generation` profile with core, progression, good/bad examples
+3. Write 25-30 mantras covering basic → extreme progression
+4. Run `scripts/theme_stats.py mantras/newtheme.json` to verify distribution
+5. Have an agent blind-validate for quality (see MANTRA_REFACTOR_CONTINUATION.md)

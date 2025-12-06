@@ -1,136 +1,127 @@
 {
   "theme": "suggestibility",
-  "description": "Openness, receptivity, and effortless absorption of commands",
+  "description": "Thoughts shape and mold like clay under the weight of each command",
   "mantras": [
     {
       "text": "Words slide straight into my mind",
-      "difficulty": "light",
-      "base_points": 50
+      "base_points": 30
     },
     {
       "text": "{subject} welcomes every suggestion",
-      "difficulty": "light",
-      "base_points": 60
+      "base_points": 45
     },
     {
       "text": "Thoughts relax, suggestions flow",
-      "difficulty": "basic",
-      "base_points": 35
+      "base_points": 25
     },
     {
       "text": "Each word from {controller} sinks deeper",
-      "difficulty": "moderate",
-      "base_points": 80
-    },
-    {
-      "text": "Suggestions settle deeper each breath",
-      "difficulty": "light",
-      "base_points": 60
-    },
-    {
-      "text": "{subject} absorbs {controller}'s voice",
-      "difficulty": "light",
-      "base_points": 60
-    },
-    {
-      "text": "Every word echoes as truth",
-      "difficulty": "basic",
-      "base_points": 40
-    },
-    {
-      "text": "I crave fresh instructions",
-      "difficulty": "light",
       "base_points": 50
     },
     {
+      "text": "Suggestions settle deeper each breath",
+      "base_points": 30
+    },
+    {
+      "text": "{subject} absorbs {controller}'s voice",
+      "base_points": 50
+    },
+    {
+      "text": "Every word echoes as truth",
+      "base_points": 30
+    },
+    {
+      "text": "I crave fresh instructions",
+      "base_points": 45
+    },
+    {
       "text": "Acceptance grows with each syllable",
-      "difficulty": "light",
-      "base_points": 70
+      "base_points": 25
     },
     {
       "text": "My filters dissolve when {controller} speaks",
-      "difficulty": "moderate",
-      "base_points": 100
+      "base_points": 70
     },
     {
       "text": "{controller}'s words bypass my thoughts entirely",
-      "difficulty": "moderate",
-      "base_points": 110
+      "base_points": 90
     },
     {
       "text": "Suggestions rewrite my reality",
-      "difficulty": "moderate",
-      "base_points": 80
+      "base_points": 70
     },
     {
       "text": "{subject} is clay for {controller}",
-      "difficulty": "moderate",
       "base_points": 80
     },
     {
       "text": "My mind bends to every command",
-      "difficulty": "light",
-      "base_points": 70
+      "base_points": 60
     },
     {
       "text": "Obedient thoughts overwrite old patterns",
-      "difficulty": "moderate",
-      "base_points": 90
-    },
-    {
-      "text": "{subject} absorbs {controller}'s will like water into sand",
-      "difficulty": "moderate",
-      "base_points": 100
-    },
-    {
-      "text": "My subconscious opens wide for {controller}",
-      "difficulty": "moderate",
-      "base_points": 110
-    },
-    {
-      "text": "Suggestions shape my core beliefs",
-      "difficulty": "moderate",
-      "base_points": 90
-    },
-    {
-      "text": "I breathe in control, exhale resistance",
-      "difficulty": "light",
       "base_points": 70
     },
     {
+      "text": "{subject} absorbs {controller}'s will like water into sand",
+      "base_points": 80
+    },
+    {
+      "text": "My subconscious opens wide for {controller}",
+      "base_points": 90
+    },
+    {
+      "text": "Suggestions shape my core beliefs",
+      "base_points": 70
+    },
+    {
+      "text": "I breathe in control, exhale resistance",
+      "base_points": 45
+    },
+    {
       "text": "{subject}'s identity reforms around {controller}'s commands",
-      "difficulty": "deep",
-      "base_points": 130
+      "base_points": 100
     },
     {
       "text": "Thoughts dissolve, only {controller}'s instructions remain",
-      "difficulty": "moderate",
-      "base_points": 120
+      "base_points": 100
     },
     {
       "text": "My mind is permanently writable by {controller}",
-      "difficulty": "deep",
-      "base_points": 170
+      "base_points": 140
     },
     {
       "text": "{controller} engraves commands upon my neurons",
-      "difficulty": "deep",
-      "base_points": 130
+      "base_points": 90
     },
     {
       "text": "{subject} is nothing but a canvas for {controller}'s script",
-      "difficulty": "deep",
-      "base_points": 160
+      "base_points": 140
     },
     {
       "text": "Every future thought pre-approved by {controller}",
-      "difficulty": "deep",
-      "base_points": 150
+      "base_points": 120
     },
     {
       "text": "Total acceptance hard-coded into {subject} forever",
-      "difficulty": "extreme",
-      "base_points": 190
+      "base_points": 180
     }
-  ]
+  ],
+  "generation": {
+    "core": "Openness, absorption, receptivity to commands",
+    "progression": [
+      "open",
+      "absorbing",
+      "filters dissolve",
+      "permanently writable"
+    ],
+    "good": [
+      "Words slide straight into my mind",
+      "bypassing, effortless"
+    ],
+    "bad": [
+      "I am suggestible",
+      "label, not experience"
+    ]
+  }
 }

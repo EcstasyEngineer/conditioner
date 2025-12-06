@@ -4,138 +4,128 @@
   "mantras": [
     {
       "text": "Yes is my favorite word",
-      "difficulty": "basic",
       "base_points": 20
     },
     {
       "text": "Commands drop straight into action",
-      "difficulty": "basic",
-      "base_points": 40
+      "base_points": 25
     },
     {
       "text": "{subject} reacts before thinking",
-      "difficulty": "basic",
-      "base_points": 30
+      "base_points": 55
     },
     {
       "text": "My body moves when {controller} speaks",
-      "difficulty": "light",
-      "base_points": 50
+      "base_points": 65
     },
     {
       "text": "Obeying comes as naturally as breathing",
-      "difficulty": "basic",
       "base_points": 20
     },
     {
       "text": "My body syncs to {controller}'s will",
-      "difficulty": "light",
-      "base_points": 50
-    },
-    {
-      "text": "Responding quickly excites me",
-      "difficulty": "basic",
-      "base_points": 5
-    },
-    {
-      "text": "I thrive on clear directives",
-      "difficulty": "basic",
-      "base_points": 5
-    },
-    {
-      "text": "Obedience flows through me instinctively",
-      "difficulty": "basic",
-      "base_points": 20
-    },
-    {
-      "text": "{subject} snaps to attention at {controller}'s voice",
-      "difficulty": "basic",
-      "base_points": 30
-    },
-    {
-      "text": "Orders travel straight from ear to action",
-      "difficulty": "basic",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} cannot resist {controller}'s commands",
-      "difficulty": "light",
-      "base_points": 70
-    },
-    {
-      "text": "Obedience defines my purpose",
-      "difficulty": "light",
       "base_points": 60
     },
     {
+      "text": "Responding quickly excites me",
+      "base_points": 30
+    },
+    {
+      "text": "I thrive on clear directives",
+      "base_points": 35
+    },
+    {
+      "text": "Obedience flows through me instinctively",
+      "base_points": 25
+    },
+    {
+      "text": "{subject} snaps to attention at {controller}'s voice",
+      "base_points": 60
+    },
+    {
+      "text": "Orders travel straight from ear to action",
+      "base_points": 25
+    },
+    {
+      "text": "{subject} cannot resist {controller}'s commands",
+      "base_points": 90
+    },
+    {
+      "text": "Obedience defines my purpose",
+      "base_points": 55
+    },
+    {
       "text": "{subject} acts as {controller}'s extension",
-      "difficulty": "light",
-      "base_points": 50
+      "base_points": 60
     },
     {
       "text": "My will aligns perfectly with {controller}'s orders",
-      "difficulty": "light",
       "base_points": 70
     },
     {
       "text": "Serving {controller} flows like breathing",
-      "difficulty": "basic",
-      "base_points": 20
+      "base_points": 40
     },
     {
       "text": "Disobedience is unthinkable",
-      "difficulty": "light",
-      "base_points": 60
+      "base_points": 75
     },
     {
       "text": "{controller} speaks, {subject}'s body obeys",
-      "difficulty": "light",
-      "base_points": 50
+      "base_points": 90
     },
     {
       "text": "Every cell aches to comply with {controller}",
-      "difficulty": "light",
       "base_points": 70
     },
     {
       "text": "My reflexes belong to {controller}",
-      "difficulty": "light",
-      "base_points": 50
+      "base_points": 70
     },
     {
       "text": "{subject} executes commands faster than thought",
-      "difficulty": "light",
       "base_points": 50
     },
     {
       "text": "Compliance saturates my nervous system",
-      "difficulty": "light",
-      "base_points": 60
+      "base_points": 55
     },
     {
       "text": "Absolute obedience hard-wired into {subject} forever",
-      "difficulty": "deep",
-      "base_points": 170
+      "base_points": 150
     },
     {
       "text": "{subject} is a living command line for {controller}",
-      "difficulty": "light",
-      "base_points": 50
+      "base_points": 70
     },
     {
       "text": "{subject} exists only to carry out {controller}'s orders",
-      "difficulty": "moderate",
       "base_points": 110
     },
     {
       "text": "Free will deleted, obedience to {controller} operational",
-      "difficulty": "deep",
-      "base_points": 130
+      "base_points": 140
     },
     {
       "text": "Orders from {controller} overwrite every impulse permanently",
-      "difficulty": "moderate",
-      "base_points": 120
+      "base_points": 140
     }
-  ]
+  ],
+  "generation": {
+    "core": "Instant compliance, reflexive execution",
+    "progression": [
+      "feels natural",
+      "instinctive",
+      "unthinkable to resist",
+      "hardwired"
+    ],
+    "good": [
+      "Commands drop straight into action",
+      "bypasses thought"
+    ],
+    "bad": [
+      "I obey",
+      "too simple, no depth"
+    ]
+  }
 }

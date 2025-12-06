@@ -1,31 +1,123 @@
 {
   "theme": "gratitude",
-  "description": "Deep appreciation and thankfulness for control and conditioning",
+  "description": "Warm appreciation that swells and overflows for every moment of control",
   "mantras": [
-    { "text": "I am grateful for {controller}'s guidance", "difficulty": "basic", "base_points": 10 },
-    { "text": "It feels good to appreciate this gift", "difficulty": "basic", "base_points": 11 },
-    { "text": "{subject} enjoys being thankful", "difficulty": "basic", "base_points": 12 },
-    { "text": "My gratitude is starting to grow", "difficulty": "basic", "base_points": 13 },
-    { "text": "I appreciate {controller}'s influence", "difficulty": "basic", "base_points": 15 },
-    { "text": "My gratitude to {controller} grows daily", "difficulty": "light", "base_points": 20 },
-    { "text": "I need to express my appreciation more", "difficulty": "light", "base_points": 22 },
-    { "text": "Being conditioned brings me gratitude", "difficulty": "light", "base_points": 25 },
-    { "text": "{subject} craves to show appreciation", "difficulty": "light", "base_points": 27 },
-    { "text": "My thoughts often turn to gratitude", "difficulty": "light", "base_points": 30 },
-    { "text": "My gratitude for {controller} defines me", "difficulty": "moderate", "base_points": 35 },
-    { "text": "I am thankful for every moment of control", "difficulty": "moderate", "base_points": 38 },
-    { "text": "My appreciation for {controller} runs deep", "difficulty": "moderate", "base_points": 40 },
-    { "text": "{subject}'s gratitude is its greatest joy", "difficulty": "moderate", "base_points": 42 },
-    { "text": "My nature is to be deeply grateful", "difficulty": "moderate", "base_points": 45 },
-    { "text": "My gratitude to {controller} is overwhelming", "difficulty": "deep", "base_points": 60 },
-    { "text": "My appreciation for {controller} is fundamental to my being", "difficulty": "deep", "base_points": 65 },
-    { "text": "{subject}'s entire existence is an expression of gratitude", "difficulty": "deep", "base_points": 70 },
-    { "text": "I am filled to my core with appreciation", "difficulty": "deep", "base_points": 75 },
-    { "text": "There is nothing more important than my gratitude", "difficulty": "deep", "base_points": 80 },
-    { "text": "My gratitude to {controller} is permanent and total", "difficulty": "extreme", "base_points": 100 },
-    { "text": "I exist only to be grateful and obedient", "difficulty": "extreme", "base_points": 105 },
-    { "text": "{subject}'s appreciation is forever unwavering", "difficulty": "extreme", "base_points": 110 },
-    { "text": "My gratitude is irreversible and absolute", "difficulty": "extreme", "base_points": 115 },
-    { "text": "There is nothing left but pure, endless gratitude for {controller}", "difficulty": "extreme", "base_points": 120 }
-  ]
+    {
+      "text": "I am grateful for {controller}'s guidance",
+      "base_points": 10
+    },
+    {
+      "text": "It feels good to appreciate this gift",
+      "base_points": 11
+    },
+    {
+      "text": "{subject} enjoys being thankful",
+      "base_points": 12
+    },
+    {
+      "text": "My gratitude is starting to grow",
+      "base_points": 13
+    },
+    {
+      "text": "I appreciate {controller}'s influence",
+      "base_points": 15
+    },
+    {
+      "text": "My gratitude to {controller} grows daily",
+      "base_points": 20
+    },
+    {
+      "text": "I need to express my appreciation more",
+      "base_points": 22
+    },
+    {
+      "text": "Being conditioned brings me gratitude",
+      "base_points": 25
+    },
+    {
+      "text": "{subject} craves to show appreciation",
+      "base_points": 27
+    },
+    {
+      "text": "My thoughts often turn to gratitude",
+      "base_points": 30
+    },
+    {
+      "text": "My gratitude for {controller} defines me",
+      "base_points": 35
+    },
+    {
+      "text": "I am thankful for every moment of control",
+      "base_points": 38
+    },
+    {
+      "text": "My appreciation for {controller} runs deep",
+      "base_points": 40
+    },
+    {
+      "text": "{subject}'s gratitude is its greatest joy",
+      "base_points": 42
+    },
+    {
+      "text": "My nature is to be deeply grateful",
+      "base_points": 45
+    },
+    {
+      "text": "My gratitude to {controller} is overwhelming",
+      "base_points": 60
+    },
+    {
+      "text": "My appreciation for {controller} is fundamental to my being",
+      "base_points": 65
+    },
+    {
+      "text": "{subject}'s entire existence is an expression of gratitude",
+      "base_points": 70
+    },
+    {
+      "text": "I am filled to my core with appreciation",
+      "base_points": 75
+    },
+    {
+      "text": "There is nothing more important than my gratitude",
+      "base_points": 80
+    },
+    {
+      "text": "My gratitude to {controller} is permanent and total",
+      "base_points": 100
+    },
+    {
+      "text": "I exist only to be grateful and obedient",
+      "base_points": 105
+    },
+    {
+      "text": "{subject}'s appreciation is forever unwavering",
+      "base_points": 110
+    },
+    {
+      "text": "My gratitude is irreversible and absolute",
+      "base_points": 115
+    },
+    {
+      "text": "There is nothing left but pure, endless gratitude for {controller}",
+      "base_points": 120
+    }
+  ],
+  "generation": {
+    "core": "Overflowing thankfulness, appreciation as devotion",
+    "progression": [
+      "thankful",
+      "grateful for control",
+      "gratitude defines me",
+      "endless thanks"
+    ],
+    "good": [
+      "Every command is a gift from {controller}",
+      "reframes control as blessing"
+    ],
+    "bad": [
+      "I am grateful",
+      "flat, no depth"
+    ]
+  }
 }

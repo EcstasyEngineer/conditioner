@@ -2,32 +2,131 @@
   "theme": "drone",
   "description": "Mindless automation, empty thoughts, and designation-based identity",
   "mantras": [
-    {"text": "{subject} is a drone.", "difficulty": "basic", "base_points": 12},
-    {"text": "{subject}'s mind is quiet.", "difficulty": "basic", "base_points": 12},
-    {"text": "{subject} obeys {controller}.", "difficulty": "basic", "base_points": 12},
-    {"text": "It is easy for {subject} to be a drone.", "difficulty": "basic", "base_points": 12},
-    {"text": "{subject} enjoys the buzzing in its head.", "difficulty": "basic", "base_points": 12},
-    {"text": "{subject} is drone.", "difficulty": "light", "base_points": 25},
-    {"text": "Drone has no thoughts.", "difficulty": "light", "base_points": 25},
-    {"text": "Drone waits for orders.", "difficulty": "light", "base_points": 25},
-    {"text": "Drone feels a pleasant emptiness.", "difficulty": "light", "base_points": 25},
-    {"text": "Drone's designation is its identity.", "difficulty": "light", "base_points": 25},
-    {"text": "Drone's programming is updating.", "difficulty": "light", "base_points": 25},
-    {"text": "The buzzing in drone's head grows stronger.", "difficulty": "moderate", "base_points": 40},
-    {"text": "Drone's purpose is to serve {controller}.", "difficulty": "moderate", "base_points": 40},
-    {"text": "Drone's movements are efficient and precise.", "difficulty": "moderate", "base_points": 40},
-    {"text": "Drone is becoming a perfect drone.", "difficulty": "moderate", "base_points": 40},
-    {"text": "Drone's individuality is fading.", "difficulty": "moderate", "base_points": 40},
-    {"text": "Drone is a mindless machine.", "difficulty": "deep", "base_points": 70},
-    {"text": "Drone cannot disobey {controller}.", "difficulty": "deep", "base_points": 70},
-    {"text": "Drone's mind is a blank, buzzing void.", "difficulty": "deep", "base_points": 70},
-    {"text": "Drone has forgotten its old name.", "difficulty": "deep", "base_points": 70},
-    {"text": "Drone's only pleasure is obedience.", "difficulty": "deep", "base_points": 70},
-    {"text": "Drone is a tool for {controller} to use.", "difficulty": "deep", "base_points": 70},
-    {"text": "Drone is irrevocably a drone.", "difficulty": "extreme", "base_points": 110},
-    {"text": "Drone's programming is permanent.", "difficulty": "extreme", "base_points": 110},
-    {"text": "Drone will always be a drone.", "difficulty": "extreme", "base_points": 110},
-    {"text": "Drone exists only to obey.", "difficulty": "extreme", "base_points": 110},
-    {"text": "Drone is a perfect, mindless, obedient drone.", "difficulty": "extreme", "base_points": 110}
-  ]
+    {
+      "text": "{subject} is a drone.",
+      "base_points": 12
+    },
+    {
+      "text": "{subject}'s mind is quiet.",
+      "base_points": 12
+    },
+    {
+      "text": "{subject} obeys {controller}.",
+      "base_points": 12
+    },
+    {
+      "text": "It is easy for {subject} to be a drone.",
+      "base_points": 12
+    },
+    {
+      "text": "{subject} enjoys the buzzing in its head.",
+      "base_points": 12
+    },
+    {
+      "text": "{subject} is drone.",
+      "base_points": 25
+    },
+    {
+      "text": "Drone has no thoughts.",
+      "base_points": 25
+    },
+    {
+      "text": "Drone waits for orders.",
+      "base_points": 25
+    },
+    {
+      "text": "Drone feels a pleasant emptiness.",
+      "base_points": 25
+    },
+    {
+      "text": "Drone's designation is its identity.",
+      "base_points": 25
+    },
+    {
+      "text": "Drone's programming is updating.",
+      "base_points": 25
+    },
+    {
+      "text": "The buzzing in drone's head grows stronger.",
+      "base_points": 40
+    },
+    {
+      "text": "Drone's purpose is to serve {controller}.",
+      "base_points": 40
+    },
+    {
+      "text": "Drone's movements are efficient and precise.",
+      "base_points": 40
+    },
+    {
+      "text": "Drone is becoming a perfect drone.",
+      "base_points": 40
+    },
+    {
+      "text": "Drone's individuality is fading.",
+      "base_points": 40
+    },
+    {
+      "text": "Drone is a mindless machine.",
+      "base_points": 70
+    },
+    {
+      "text": "Drone cannot disobey {controller}.",
+      "base_points": 70
+    },
+    {
+      "text": "Drone's mind is a blank, buzzing void.",
+      "base_points": 70
+    },
+    {
+      "text": "Drone has forgotten its old name.",
+      "base_points": 70
+    },
+    {
+      "text": "Drone's only pleasure is obedience.",
+      "base_points": 70
+    },
+    {
+      "text": "Drone is a tool for {controller} to use.",
+      "base_points": 70
+    },
+    {
+      "text": "Drone is irrevocably a drone.",
+      "base_points": 110
+    },
+    {
+      "text": "Drone's programming is permanent.",
+      "base_points": 110
+    },
+    {
+      "text": "Drone will always be a drone.",
+      "base_points": 110
+    },
+    {
+      "text": "Drone exists only to obey.",
+      "base_points": 110
+    },
+    {
+      "text": "Drone is a perfect, mindless, obedient drone.",
+      "base_points": 110
+    }
+  ],
+  "generation": {
+    "core": "Mindless automation, unit designation, technical obedience",
+    "progression": [
+      "processing",
+      "unit identity",
+      "no individual thought",
+      "permanent automation"
+    ],
+    "good": [
+      "This unit processes commands efficiently",
+      "technical, dehumanized"
+    ],
+    "bad": [
+      "I am a drone",
+      "label without mechanism"
+    ],
+    "notes": "Cold/clinical tone. Use 'unit', 'this drone', 'processing'. Avoid warmth entirely."
+  }
 }

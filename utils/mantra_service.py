@@ -29,7 +29,8 @@ from .mantras import (
     select_mantra_from_themes,
     format_mantra_text,
     check_mantra_match,
-    calculate_speed_bonus
+    calculate_speed_bonus,
+    get_tier
 )
 from .encounters import log_encounter
 
@@ -161,11 +162,12 @@ def enroll_user(config: Dict, themes: List[str], subject: str, controller: str) 
     config["next_delivery"] = first_delivery.isoformat()
 
     # Pre-select first mantra (special enrollment message)
+    base_points = 100
     config["current_mantra"] = {
         "text": "My thoughts are being reprogrammed.",
         "theme": "enrollment",
-        "difficulty": "moderate",
-        "base_points": 100
+        "difficulty": get_tier(base_points),
+        "base_points": base_points
     }
 
 
@@ -356,7 +358,7 @@ def prepare_mantra_for_delivery(config: Dict, available_themes: Dict) -> Optiona
     return {
         "text": mantra_data["text"],  # Keep as template
         "theme": mantra_data["theme"],
-        "difficulty": mantra_data["difficulty"],
+        "difficulty": get_tier(mantra_data["base_points"]),
         "base_points": mantra_data["base_points"]
     }
 

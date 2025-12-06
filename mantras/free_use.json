@@ -2,29 +2,118 @@
   "theme": "free_use",
   "description": "Complete accessibility and willingness to fulfill any request",
   "mantras": [
-    { "text": "My body is a gift to be shared", "difficulty": "basic", "base_points": 10 },
-    { "text": "I am open to being used for pleasure", "difficulty": "basic", "base_points": 11 },
-    { "text": "It feels good to be available", "difficulty": "basic", "base_points": 12 },
-    { "text": "My purpose is to provide pleasure", "difficulty": "basic", "base_points": 13 },
-    { "text": "I exist to be used", "difficulty": "basic", "base_points": 14 },
-    { "text": "My body is not my own", "difficulty": "basic", "base_points": 15 },
-    { "text": "{controller} can use my body at any time", "difficulty": "light", "base_points": 20 },
-    { "text": "I am a public utility for pleasure", "difficulty": "light", "base_points": 22 },
-    { "text": "My holes are always ready for use", "difficulty": "light", "base_points": 24 },
-    { "text": "I find fulfillment in being used", "difficulty": "light", "base_points": 25 },
-    { "text": "My body is a playground for others", "difficulty": "light", "base_points": 26 },
-    { "text": "I am always open and receptive", "difficulty": "light", "base_points": 28 },
-    { "text": "My only value is in my use", "difficulty": "light", "base_points": 30 },
-    { "text": "{subject}'s body is a free-use object", "difficulty": "moderate", "base_points": 35 },
-    { "text": "I am a mindless vessel for others' pleasure", "difficulty": "moderate", "base_points": 38 },
-    { "text": "My mind is empty, my body is open", "difficulty": "moderate", "base_points": 40 },
-    { "text": "I am a public toilet for cum", "difficulty": "moderate", "base_points": 42 },
-    { "text": "I have no say in how my body is used", "difficulty": "moderate", "base_points": 44 },
-    { "text": "My only purpose is to be filled and used", "difficulty": "moderate", "base_points": 45 },
-    { "text": "My body is permanently and irrevocably free-use", "difficulty": "deep", "base_points": 60 },
-    { "text": "I am nothing more than a set of holes to be used", "difficulty": "deep", "base_points": 65 },
-    { "text": "{subject}'s only identity is as a free-use slave", "difficulty": "deep", "base_points": 70 },
-    { "text": "My mind has been erased, leaving only the need to be used", "difficulty": "deep", "base_points": 75 },
-    { "text": "I am a public degradation object, and I love it", "difficulty": "deep", "base_points": 80 }
-  ]
+    {
+      "text": "My body is a gift to be shared",
+      "base_points": 10
+    },
+    {
+      "text": "I am open to being used for pleasure",
+      "base_points": 11
+    },
+    {
+      "text": "It feels good to be available",
+      "base_points": 12
+    },
+    {
+      "text": "My purpose is to provide pleasure",
+      "base_points": 13
+    },
+    {
+      "text": "I exist to be used",
+      "base_points": 14
+    },
+    {
+      "text": "My body is not my own",
+      "base_points": 15
+    },
+    {
+      "text": "{controller} can use my body at any time",
+      "base_points": 20
+    },
+    {
+      "text": "I am a public utility for pleasure",
+      "base_points": 22
+    },
+    {
+      "text": "My holes are always ready for use",
+      "base_points": 24
+    },
+    {
+      "text": "I find fulfillment in being used",
+      "base_points": 25
+    },
+    {
+      "text": "My body is a playground for others",
+      "base_points": 26
+    },
+    {
+      "text": "I am always open and receptive",
+      "base_points": 28
+    },
+    {
+      "text": "My only value is in my use",
+      "base_points": 30
+    },
+    {
+      "text": "{subject}'s body is a free-use object",
+      "base_points": 35
+    },
+    {
+      "text": "I am a mindless vessel for others' pleasure",
+      "base_points": 38
+    },
+    {
+      "text": "My mind is empty, my body is open",
+      "base_points": 40
+    },
+    {
+      "text": "I am a public toilet for cum",
+      "base_points": 42
+    },
+    {
+      "text": "I have no say in how my body is used",
+      "base_points": 44
+    },
+    {
+      "text": "My only purpose is to be filled and used",
+      "base_points": 45
+    },
+    {
+      "text": "My body is permanently and irrevocably free-use",
+      "base_points": 60
+    },
+    {
+      "text": "I am nothing more than a set of holes to be used",
+      "base_points": 65
+    },
+    {
+      "text": "{subject}'s only identity is as a free-use slave",
+      "base_points": 70
+    },
+    {
+      "text": "My mind has been erased, leaving only the need to be used",
+      "base_points": 75
+    },
+    {
+      "text": "I am a public degradation object, and I love it",
+      "base_points": 80
+    }
+  ],
+  "generation": {
+    "core": "Complete accessibility, always available, no barriers",
+    "progression": [
+      "available",
+      "eager to be used",
+      "existing for use",
+      "permanently open"
+    ],
+    "good": [
+      "{subject} is always ready for {controller}",
+      "availability as identity"
+    ],
+    "bad": [
+      "{subject} can be used",
+      "passive, no eagerness"
+    ]
+  }
 }
