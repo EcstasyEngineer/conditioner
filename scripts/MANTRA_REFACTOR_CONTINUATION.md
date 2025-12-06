@@ -7,15 +7,19 @@ Use this to continue #46 mantra quality refactor work.
 We're refactoring mantra content quality for the conditioning Discord bot. Work started 2025-12-05.
 
 **Completed:**
-- `amnesia` theme — blind validated, replaced weak mantras
-- `acceptance` theme — culled weak mantras, replaced with show-not-tell
-- `suggestibility` theme — culled state labels, added sensory anchors
-- `obedience` theme — culled generic "feels" patterns, added visceral language
+- `amnesia` theme — blind validated, rescored (avg 90 pts)
+- `acceptance` theme — culled weak mantras, rescored (avg 79 pts)
+- `suggestibility` theme — culled state labels, rescored (avg 74 pts)
+- `obedience` theme — culled generic "feels" patterns, rescored (avg 65 pts)
+- `brainwashing` theme — culled hedged language, rescored (avg 101 pts)
+- `addiction` theme — revised clinical jargon, rescored (avg 85 pts)
 - Point economy doc finalized with scoring heuristics
+- Removed `difficulty` field from all JSONs (now derived via `get_tier()`)
+- Added `generation` profiles to all theme JSONs
 
 **Remaining themes:**
-- addiction, brainwashing
 - blank, puppet, slave, helplessness, bimbo, devotion
+- drone, focus, free_use, gratitude, worship
 
 ## Two-Phase Process
 
@@ -37,22 +41,24 @@ For each mantra, evaluate:
 
 3. **Keep/Revise/Cut** recommendation
 
-Mantras to evaluate:
-{list mantras here}
-
-Return a markdown table: | Mantra | Shows/Tells | Movement (1-5) | Verdict | Why |
-```
-
 **Quality red flags (likely cut):**
 - Clinical self-help language ("worries", "anxiety", "healing", "growth", "self-improvement")
 - Passive voice without clear agent ("memories are deleted" → "{controller} deletes my memories")
 - Generic trait labels without theme anchor ("I am obedient" is weak, "I am {controller}'s maid" is fine)
+- Hedged language ("starting to", "beginning to", "kind of")
 
 **NOT red flags (sometimes miscategorized):**
 - Dependence framing ("{controller} helps me think clearly" creates parasocial dependence - good)
 - Simple language ("feels natural and good" is direct and valid)
 - Theme-specific identity claims ("I am X" is fine when X is the theme's identity)
 - Comfort/pleasure descriptions (the experience CAN be therapeutic without therapy language)
+- Direct statements of state CAN work when they hit hard as confession/declaration
+
+Mantras to evaluate:
+{list mantras here}
+
+Return a markdown table: | # | Mantra | Shows/Tells | Movement (1-5) | Verdict | Why |
+```
 
 ### Phase 2: Rescore Everything
 
@@ -91,23 +97,24 @@ Base: 20 points
 Mantras to score:
 {list mantras here}
 
-Return: | Mantra | Points | Tier | One-sentence justification |
+Return: | # | Mantra | Points | Tier | One-sentence justification |
 ```
 
 ## Key Documents
 
 - `docs/POINT_ECONOMY.md` — Full scoring system, calibration examples, tier boundaries
-- `docs/THEME_GUIDELINES.md` — Per-theme profiles, weak patterns to avoid
+- `docs/THEME_GUIDELINES.md` — Universal rules, weak patterns, GPT-isms to avoid
+- Each `mantras/*.json` — Theme-specific `generation` profiles with core, progression, good/bad examples
 
 ## Commit Message Template
 
 ```
 Refactor {theme} mantras for quality and point accuracy
 
-- Blind validated with Opus, culled {X} weak mantras
-- Replaced with show-not-tell alternatives
+- Blind validated, culled {X} weak mantras
+- Replaced/revised with show-not-tell alternatives
 - Rescored all mantras using point economy heuristics
-- Distribution: {N} basic, {N} light, {N} moderate, {N} deep, {N} extreme
+- Distribution: {N} mantras, avg {N} pts
 
 Part of #46
 ```
@@ -116,7 +123,17 @@ Part of #46
 
 - [ ] Run quality cull (blind validation)
 - [ ] Remove/replace weak mantras
-- [ ] Rescore all mantras with new system
-- [ ] Update JSON with new points and difficulty labels
-- [ ] Verify distribution makes sense for theme
-- [ ] Commit with template message
+- [ ] Rescore all mantras with point economy
+- [ ] Update JSON with new points
+- [ ] Run `python3 scripts/theme_stats.py mantras/{theme}.json` to verify distribution
+- [ ] Check avg matches expected intensity tier (see #50)
+
+## Expected Intensity Tiers (from #50)
+
+| Intensity | Themes | Target Avg |
+|-----------|--------|------------|
+| Hardcore | amnesia, brainwashing, slave, helplessness | 80-100+ |
+| Heavy | puppet, addiction, drone | 70-90 |
+| Medium | obedience, suggestibility, blank, free_use | 60-80 |
+| Softer | acceptance, devotion, gratitude, worship | 50-70 |
+| Lightest | bimbo, focus | 40-60 |

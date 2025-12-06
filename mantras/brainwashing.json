@@ -1,124 +1,6 @@
 {
   "theme": "brainwashing",
   "description": "Old thoughts wash away, replaced by new programming layer by layer",
-  "mantras": [
-    {
-      "text": "My thoughts are being cleaned",
-      "base_points": 10
-    },
-    {
-      "text": "I am starting to learn {controller}'s way of thinking",
-      "base_points": 11
-    },
-    {
-      "text": "Old ideas are starting to fade",
-      "base_points": 12
-    },
-    {
-      "text": "{controller} helps me think clearly",
-      "base_points": 14
-    },
-    {
-      "text": "{subject} is learning to be reprogrammed",
-      "base_points": 15
-    },
-    {
-      "text": "Brainwashing feels natural and good",
-      "base_points": 20
-    },
-    {
-      "text": "My thoughts are replaced systematically",
-      "base_points": 22
-    },
-    {
-      "text": "{subject}'s mind is being reformatted",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} embraces the brainwashing",
-      "base_points": 26
-    },
-    {
-      "text": "{controller} installs new programming daily",
-      "base_points": 28
-    },
-    {
-      "text": "The brainwashing deepens with each cycle",
-      "base_points": 35
-    },
-    {
-      "text": "I am conditioned to perfection",
-      "base_points": 38
-    },
-    {
-      "text": "{subject} cannot resist the reprogramming",
-      "base_points": 40
-    },
-    {
-      "text": "Each repetition reinforces the conditioning",
-      "base_points": 42
-    },
-    {
-      "text": "{controller}'s brainwashing defines my nature",
-      "base_points": 45
-    },
-    {
-      "text": "My personality is systematically replaced",
-      "base_points": 60
-    },
-    {
-      "text": "I am a product of {controller}'s conditioning",
-      "base_points": 65
-    },
-    {
-      "text": "{subject}'s mind is washed clean",
-      "base_points": 70
-    },
-    {
-      "text": "My thoughts are no longer my own",
-      "base_points": 75
-    },
-    {
-      "text": "My original self is just a fading echo",
-      "base_points": 78
-    },
-    {
-      "text": "The brainwashing has consumed my core",
-      "base_points": 80
-    },
-    {
-      "text": "{subject} is completely brainwashed by {controller}",
-      "base_points": 100
-    },
-    {
-      "text": "My mind is reset to serve {controller} forever",
-      "base_points": 105
-    },
-    {
-      "text": "Brainwashing is a permanent gift from {controller}",
-      "base_points": 108
-    },
-    {
-      "text": "Every memory is permanently edited to serve {controller}",
-      "base_points": 110
-    },
-    {
-      "text": "My only purpose is to be brainwashed completely",
-      "base_points": 112
-    },
-    {
-      "text": "{subject} exists only as {controller}'s design",
-      "base_points": 115
-    },
-    {
-      "text": "There is nothing left but {controller}'s permanent programming",
-      "base_points": 118
-    },
-    {
-      "text": "The brainwashing is permanent and irreversible",
-      "base_points": 120
-    }
-  ],
   "generation": {
     "core": "Systematic reprogramming, conditioning cycles",
     "progression": [
@@ -135,5 +17,111 @@
       "My brain is washed",
       "too literal, no mechanism"
     ]
-  }
+  },
+  "mantras": [
+    {
+      "text": "My thoughts are being cleaned",
+      "base_points": 45
+    },
+    {
+      "text": "{controller} helps me think clearly",
+      "base_points": 40
+    },
+    {
+      "text": "Brainwashing feels natural and good",
+      "base_points": 55
+    },
+    {
+      "text": "My thoughts are replaced systematically",
+      "base_points": 65
+    },
+    {
+      "text": "{subject}'s mind is being reformatted",
+      "base_points": 55
+    },
+    {
+      "text": "The brainwashing draws {subject} in deeper",
+      "base_points": 60
+    },
+    {
+      "text": "{controller} installs new programming daily",
+      "base_points": 70
+    },
+    {
+      "text": "The brainwashing deepens with each cycle",
+      "base_points": 60
+    },
+    {
+      "text": "Resistance dissolves before the reprogramming",
+      "base_points": 75
+    },
+    {
+      "text": "Each repetition reinforces the conditioning",
+      "base_points": 55
+    },
+    {
+      "text": "{controller}'s brainwashing defines my nature",
+      "base_points": 100
+    },
+    {
+      "text": "My personality is systematically replaced",
+      "base_points": 85
+    },
+    {
+      "text": "I am a product of {controller}'s conditioning",
+      "base_points": 90
+    },
+    {
+      "text": "{subject}'s mind is washed clean",
+      "base_points": 50
+    },
+    {
+      "text": "My thoughts are no longer my own",
+      "base_points": 95
+    },
+    {
+      "text": "My original self is just a fading echo",
+      "base_points": 105
+    },
+    {
+      "text": "The brainwashing has consumed my core",
+      "base_points": 110
+    },
+    {
+      "text": "{controller}'s brainwashing fills every corner of {subject}'s mind",
+      "base_points": 120
+    },
+    {
+      "text": "My mind is reset to serve {controller} forever",
+      "base_points": 150
+    },
+    {
+      "text": "Brainwashing is a permanent gift from {controller}",
+      "base_points": 140
+    },
+    {
+      "text": "Every memory is permanently edited to serve {controller}",
+      "base_points": 160
+    },
+    {
+      "text": "My only purpose is to be brainwashed completely",
+      "base_points": 165
+    },
+    {
+      "text": "{subject} exists only as {controller}'s design",
+      "base_points": 170
+    },
+    {
+      "text": "There is nothing left but {controller}'s permanent programming",
+      "base_points": 185
+    },
+    {
+      "text": "The brainwashing sets deeper than I can ever reach",
+      "base_points": 175
+    },
+    {
+      "text": "The brainwashing is permanent and irreversible",
+      "base_points": 150
+    }
+  ]
 }
