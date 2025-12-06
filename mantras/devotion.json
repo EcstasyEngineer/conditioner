@@ -1,108 +1,6 @@
 {
   "theme": "devotion",
   "description": "Unwavering loyalty that defines purpose through faithful service",
-  "mantras": [
-    {
-      "text": "I want to be devoted to {controller}",
-      "base_points": 10
-    },
-    {
-      "text": "It feels good to have a purpose",
-      "base_points": 11
-    },
-    {
-      "text": "{subject} enjoys feeling loyal and true",
-      "base_points": 12
-    },
-    {
-      "text": "My devotion is starting to grow",
-      "base_points": 13
-    },
-    {
-      "text": "My purpose is to please {controller}",
-      "base_points": 15
-    },
-    {
-      "text": "My loyalty to {controller} grows daily",
-      "base_points": 20
-    },
-    {
-      "text": "I need to show my devotion more and more",
-      "base_points": 22
-    },
-    {
-      "text": "Serving {controller} brings me contentment",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} craves to be useful and devoted",
-      "base_points": 27
-    },
-    {
-      "text": "My thoughts often turn to my devotion",
-      "base_points": 30
-    },
-    {
-      "text": "My devotion to {controller} defines me",
-      "base_points": 35
-    },
-    {
-      "text": "I am an instrument of {controller}'s will",
-      "base_points": 38
-    },
-    {
-      "text": "My purpose is to serve {controller} faithfully",
-      "base_points": 40
-    },
-    {
-      "text": "{subject}'s loyalty is its greatest strength",
-      "base_points": 42
-    },
-    {
-      "text": "My nature is to be completely devoted",
-      "base_points": 45
-    },
-    {
-      "text": "My devotion to {controller} is all-consuming",
-      "base_points": 60
-    },
-    {
-      "text": "My commitment to {controller} is fundamental to my being",
-      "base_points": 65
-    },
-    {
-      "text": "{subject}'s entire existence is an act of devotion",
-      "base_points": 70
-    },
-    {
-      "text": "I am saturated to my core with loyalty",
-      "base_points": 75
-    },
-    {
-      "text": "There is nothing more important than my devotion",
-      "base_points": 80
-    },
-    {
-      "text": "My devotion to {controller} is permanent and total",
-      "base_points": 100
-    },
-    {
-      "text": "I exist only to serve and be devoted",
-      "base_points": 105
-    },
-    {
-      "text": "{subject}'s loyalty is forever unwavering",
-      "base_points": 110
-    },
-    {
-      "text": "My devotion is irreversible and absolute",
-      "base_points": 115
-    },
-    {
-      "text": "There is nothing left but pure, endless devotion to {controller}",
-      "base_points": 120
-    }
-  ],
   "generation": {
     "core": "Unwavering loyalty, dedicated service",
     "progression": [
@@ -118,6 +16,97 @@
     "bad": [
       "I am loyal",
       "flat declaration"
-    ]
-  }
+    ],
+    "notes": "Consumption and saturation metaphors elevate devotion beyond simple loyalty claims"
+  },
+  "mantras": [
+    {
+      "text": "It feels good to have a purpose",
+      "base_points": 20
+    },
+    {
+      "text": "{subject} enjoys feeling loyal and true",
+      "base_points": 35
+    },
+    {
+      "text": "My purpose is to please {controller}",
+      "base_points": 70
+    },
+    {
+      "text": "My loyalty to {controller} grows daily",
+      "base_points": 60
+    },
+    {
+      "text": "I need to show my devotion more and more",
+      "base_points": 55
+    },
+    {
+      "text": "Serving {controller} brings me contentment",
+      "base_points": 45
+    },
+    {
+      "text": "{subject} craves to be useful and devoted",
+      "base_points": 50
+    },
+    {
+      "text": "My thoughts often turn to my devotion",
+      "base_points": 45
+    },
+    {
+      "text": "My devotion to {controller} defines me",
+      "base_points": 90
+    },
+    {
+      "text": "I am an instrument of {controller}'s will",
+      "base_points": 100
+    },
+    {
+      "text": "My purpose is to serve {controller} faithfully",
+      "base_points": 80
+    },
+    {
+      "text": "My nature is to be completely devoted",
+      "base_points": 90
+    },
+    {
+      "text": "My devotion to {controller} is all-consuming",
+      "base_points": 120
+    },
+    {
+      "text": "My commitment to {controller} is fundamental to my being",
+      "base_points": 130
+    },
+    {
+      "text": "{subject}'s entire existence is an act of devotion",
+      "base_points": 110
+    },
+    {
+      "text": "I am saturated to my core with loyalty",
+      "base_points": 110
+    },
+    {
+      "text": "There is nothing more important than my devotion",
+      "base_points": 100
+    },
+    {
+      "text": "My devotion to {controller} is permanent and total",
+      "base_points": 160
+    },
+    {
+      "text": "I exist only to serve and be devoted",
+      "base_points": 140
+    },
+    {
+      "text": "{subject}'s loyalty is forever unwavering",
+      "base_points": 120
+    },
+    {
+      "text": "My devotion is irreversible and absolute",
+      "base_points": 160
+    },
+    {
+      "text": "There is nothing left but pure, endless devotion to {controller}",
+      "base_points": 200
+    }
+  ]
 }

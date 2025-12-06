@@ -13,13 +13,20 @@ We're refactoring mantra content quality for the conditioning Discord bot. Work 
 - `obedience` theme — culled generic "feels" patterns, rescored (avg 65 pts)
 - `brainwashing` theme — culled hedged language, rescored (avg 101 pts)
 - `addiction` theme — revised clinical jargon, rescored (avg 85 pts)
+- `bimbo` theme — culled 1, revised "worries"→"thoughts", rescored (avg 70 pts)
+- `focus` theme — culled 7 meditation-app labels, rescored (avg 63 pts)
+- `devotion` theme — culled 3 hedged/self-help, rescored (avg 95 pts)
+- `gratitude` theme — culled 7 therapy-speak, rescored (avg 89 pts)
+- `worship` theme — culled 11 bare labels, rescored (avg 96 pts)
 - Point economy doc finalized with scoring heuristics
 - Removed `difficulty` field from all JSONs (now derived via `get_tier()`)
 - Added `generation` profiles to all theme JSONs
 
 **Remaining themes:**
-- blank, puppet, slave, helplessness, bimbo, devotion
-- drone, focus, free_use, gratitude, worship
+- blank, puppet, slave, helplessness
+- drone, free_use
+
+**Calibration note:** Devotion/gratitude/worship themes scored much higher (89-96) than the "softer" 50-70 target. These themes inherently use ownership/soul/permanence language that carries heavy psychological weight. Consider revising #50 intensity tiers or adding more basic-tier mantras to lower averages.
 
 ## Two-Phase Process
 

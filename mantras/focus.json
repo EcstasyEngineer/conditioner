@@ -1,108 +1,6 @@
 {
   "theme": "focus",
   "description": "Attention narrows to a single point, sharp and unwavering",
-  "mantras": [
-    {
-      "text": "{subject}'s mind is clear and focused.",
-      "base_points": 10
-    },
-    {
-      "text": "{subject} focuses on {controller}'s words.",
-      "base_points": 11
-    },
-    {
-      "text": "{subject}'s thoughts are quiet and still.",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} is centered and calm.",
-      "base_points": 13
-    },
-    {
-      "text": "{subject}'s focus is a sharp point.",
-      "base_points": 14
-    },
-    {
-      "text": "Distractions fade away into nothing for {subject}.",
-      "base_points": 20
-    },
-    {
-      "text": "{subject}'s world is only {controller}'s voice.",
-      "base_points": 22
-    },
-    {
-      "text": "{subject} is completely absorbed in this moment.",
-      "base_points": 24
-    },
-    {
-      "text": "{subject}'s attention is a laser beam.",
-      "base_points": 25
-    },
-    {
-      "text": "{subject} follows {controller}'s guidance effortlessly.",
-      "base_points": 26
-    },
-    {
-      "text": "{subject}'s mind zooms in, sharp and clear.",
-      "base_points": 30
-    },
-    {
-      "text": "Time slips away unnoticed for {subject}.",
-      "base_points": 32
-    },
-    {
-      "text": "{subject} is in a state of perfect flow.",
-      "base_points": 34
-    },
-    {
-      "text": "Every word from {controller} is {subject}'s reality.",
-      "base_points": 36
-    },
-    {
-      "text": "{subject}'s focus is absolute and unwavering.",
-      "base_points": 38
-    },
-    {
-      "text": "{subject}'s awareness is a single, perfect point of light.",
-      "base_points": 40
-    },
-    {
-      "text": "{subject} only perceives what {controller} allows.",
-      "base_points": 42
-    },
-    {
-      "text": "{subject}'s thoughts are {controller}'s thoughts.",
-      "base_points": 44
-    },
-    {
-      "text": "{subject} is lost in the sound of {controller}'s voice.",
-      "base_points": 46
-    },
-    {
-      "text": "There is nothing but this moment, this focus for {subject}.",
-      "base_points": 48
-    },
-    {
-      "text": "{subject}'s mind is a lens, and {controller} directs the view.",
-      "base_points": 50
-    },
-    {
-      "text": "{subject} has no thoughts of their own, only focus.",
-      "base_points": 53
-    },
-    {
-      "text": "{subject}'s entire being is focused on {controller}.",
-      "base_points": 56
-    },
-    {
-      "text": "{subject} is focus itself.",
-      "base_points": 58
-    },
-    {
-      "text": "{subject}'s reality is defined by their point of focus.",
-      "base_points": 60
-    }
-  ],
   "generation": {
     "core": "Concentrated attention, singular mental clarity",
     "progression": [
@@ -118,6 +16,81 @@
     "bad": [
       "I focus well",
       "too casual, no intensity"
-    ]
-  }
+    ],
+    "notes": "Controller-dependent reality framing elevates basic focus into submission territory"
+  },
+  "mantras": [
+    {
+      "text": "{subject}'s thoughts are quiet and still",
+      "base_points": 20
+    },
+    {
+      "text": "{subject}'s focus is a sharp point",
+      "base_points": 30
+    },
+    {
+      "text": "Distractions fade away into nothing for {subject}",
+      "base_points": 30
+    },
+    {
+      "text": "{subject}'s world is only {controller}'s voice",
+      "base_points": 80
+    },
+    {
+      "text": "{subject}'s attention is a laser beam",
+      "base_points": 30
+    },
+    {
+      "text": "{subject} follows {controller}'s guidance effortlessly",
+      "base_points": 70
+    },
+    {
+      "text": "{subject}'s mind zooms in, sharp and clear",
+      "base_points": 30
+    },
+    {
+      "text": "Time slips away unnoticed for {subject}",
+      "base_points": 30
+    },
+    {
+      "text": "Every word from {controller} is {subject}'s reality",
+      "base_points": 100
+    },
+    {
+      "text": "{subject}'s awareness is a single, perfect point of light",
+      "base_points": 40
+    },
+    {
+      "text": "{subject} only perceives what {controller} allows",
+      "base_points": 110
+    },
+    {
+      "text": "{subject}'s thoughts are {controller}'s thoughts",
+      "base_points": 120
+    },
+    {
+      "text": "{subject} is lost in the sound of {controller}'s voice",
+      "base_points": 70
+    },
+    {
+      "text": "There is nothing but this moment, this focus for {subject}",
+      "base_points": 50
+    },
+    {
+      "text": "{subject}'s mind is a lens, and {controller} directs the view",
+      "base_points": 90
+    },
+    {
+      "text": "{subject} has no thoughts of their own, only focus",
+      "base_points": 90
+    },
+    {
+      "text": "{subject}'s entire being is focused on {controller}",
+      "base_points": 80
+    },
+    {
+      "text": "{subject}'s reality is defined by their point of focus",
+      "base_points": 60
+    }
+  ]
 }

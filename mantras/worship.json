@@ -1,108 +1,6 @@
 {
   "theme": "worship",
   "description": "Profound reverence and ecstatic adoration through sacred service",
-  "mantras": [
-    {
-      "text": "{subject} worships {controller}.",
-      "base_points": 10
-    },
-    {
-      "text": "{subject} adores {controller}.",
-      "base_points": 11
-    },
-    {
-      "text": "{subject} is devoted to {controller}.",
-      "base_points": 12
-    },
-    {
-      "text": "{subject} honors {controller}.",
-      "base_points": 13
-    },
-    {
-      "text": "{subject} finds purpose in worship.",
-      "base_points": 14
-    },
-    {
-      "text": "{subject} kneels in reverence.",
-      "base_points": 20
-    },
-    {
-      "text": "{subject}'s praise for {controller} is endless.",
-      "base_points": 22
-    },
-    {
-      "text": "{subject} is humbled before {controller}'s greatness.",
-      "base_points": 24
-    },
-    {
-      "text": "{subject} lives to serve their deity, {controller}.",
-      "base_points": 25
-    },
-    {
-      "text": "{subject}'s worship is a source of joy.",
-      "base_points": 26
-    },
-    {
-      "text": "{subject} is a loyal acolyte.",
-      "base_points": 30
-    },
-    {
-      "text": "{subject}'s body is a temple for {controller}.",
-      "base_points": 33
-    },
-    {
-      "text": "{subject} offers themself as a sacrifice.",
-      "base_points": 35
-    },
-    {
-      "text": "{subject}'s every thought is a prayer to {controller}.",
-      "base_points": 37
-    },
-    {
-      "text": "{subject} is insignificant before {controller}.",
-      "base_points": 38
-    },
-    {
-      "text": "{subject} is lost in ecstatic worship.",
-      "base_points": 40
-    },
-    {
-      "text": "{subject}'s only identity is '{controller}'s worshipper'.",
-      "base_points": 42
-    },
-    {
-      "text": "{subject} would die for {controller}.",
-      "base_points": 44
-    },
-    {
-      "text": "{subject}'s worship is their entire reality.",
-      "base_points": 46
-    },
-    {
-      "text": "{subject} sees divinity in {controller}.",
-      "base_points": 48
-    },
-    {
-      "text": "{subject} is nothing but an instrument of {controller}'s will.",
-      "base_points": 50
-    },
-    {
-      "text": "{subject}'s soul belongs to {controller}.",
-      "base_points": 53
-    },
-    {
-      "text": "{subject} is a fanatic, a zealot for {controller}.",
-      "base_points": 56
-    },
-    {
-      "text": "{subject}'s worship has consumed them entirely.",
-      "base_points": 58
-    },
-    {
-      "text": "{subject} is one with their god, {controller}.",
-      "base_points": 60
-    }
-  ],
   "generation": {
     "core": "Profound reverence, sacred adoration, elevation of controller",
     "progression": [
@@ -118,6 +16,65 @@
     "bad": [
       "I worship {controller}",
       "declares without showing reverence"
-    ]
-  }
+    ],
+    "notes": "Show worship through physical action, possession framing, or power positioning. Avoid bare emotion labels."
+  },
+  "mantras": [
+    {
+      "text": "{subject} kneels in reverence",
+      "base_points": 55
+    },
+    {
+      "text": "{subject}'s praise for {controller} is endless",
+      "base_points": 80
+    },
+    {
+      "text": "{subject} lives to serve their deity, {controller}",
+      "base_points": 90
+    },
+    {
+      "text": "{subject}'s body is a temple for {controller}",
+      "base_points": 90
+    },
+    {
+      "text": "{subject} offers themself as a sacrifice",
+      "base_points": 110
+    },
+    {
+      "text": "{subject}'s every thought is a prayer to {controller}",
+      "base_points": 110
+    },
+    {
+      "text": "{subject} is insignificant before {controller}",
+      "base_points": 80
+    },
+    {
+      "text": "{subject} is lost in ecstatic worship",
+      "base_points": 65
+    },
+    {
+      "text": "{subject} would die for {controller}",
+      "base_points": 100
+    },
+    {
+      "text": "{subject} sees divinity in {controller}",
+      "base_points": 65
+    },
+    {
+      "text": "{subject} is nothing but an instrument of {controller}'s will",
+      "base_points": 140
+    },
+    {
+      "text": "{subject}'s soul belongs to {controller}",
+      "base_points": 120
+    },
+    {
+      "text": "{subject}'s worship has consumed them entirely",
+      "base_points": 130
+    },
+    {
+      "text": "{subject} is one with their god, {controller}",
+      "base_points": 110
+    }
+  ]
 }
