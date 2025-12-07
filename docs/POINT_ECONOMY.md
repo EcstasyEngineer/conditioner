@@ -65,15 +65,11 @@ Higher engagement activities should award more points per interaction, even if t
 
 ### Per-Action Reference
 
-| Action | Points | Equivalent To |
-|--------|--------|---------------|
+| Action | Points | Notes |
+|--------|--------|-------|
 | Count 1 number | 1 pt | Baseline unit |
-| 1 min audio | 5 pts | 5 counted numbers |
-| Basic mantra | 20-45 pts | 20-45 numbers, 4-9 min audio |
-| Light mantra | 45-75 pts | 45-75 numbers, 9-15 min audio |
-| Moderate mantra | 75-110 pts | 75-110 numbers, 15-22 min audio |
-| Deep mantra | 110-150 pts | 110-150 numbers, 22-30 min audio |
-| Extreme mantra | 150+ pts | 150+ numbers, 30+ min audio |
+| 1 min audio | 5 pts | Equivalent to 5 counted numbers |
+| Mantra | 20-200 pts | Based on tier (see [Tier Boundaries](#tier-boundaries)) |
 
 ### Daily Earning Benchmarks
 

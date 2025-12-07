@@ -52,17 +52,17 @@ Not all mantras describe an experience - some work because **typing them is the 
 
 **The test**: Would typing this feel like *saying something* or just *describing something*? Higher-point mantras should feel like more of a leap - something you wouldn't casually say or type.
 
-*Future: Mantra type metadata (confession, experience, identity, etc.) tracked in #51*
-
 ## Tier Language (Psychological Function)
 
-| Tier | Points | Function | The Leap |
-|------|--------|----------|----------|
-| basic | 20-45 | Introduction. Safe, deniable. | "I'm just trying this." |
-| light | 45-75 | Normalization. Growing comfort. | "This is nice." |
-| moderate | 75-110 | Identity integration. | "This is who I'm becoming." |
-| deep | 110-150 | Core rewrite. | "This is who I am." |
-| extreme | 150+ | Permanence. Point of no return. | "This is who I will always be." |
+Point boundaries are defined in [POINT_ECONOMY.md](POINT_ECONOMY.md#tier-boundaries). Here's what each tier represents psychologically:
+
+| Tier | Function | The Leap |
+|------|----------|----------|
+| basic | Introduction. Safe, deniable. | "I'm just trying this." |
+| light | Normalization. Growing comfort. | "This is nice." |
+| moderate | Identity integration. | "This is who I'm becoming." |
+| deep | Core rewrite. | "This is who I am." |
+| extreme | Permanence. Point of no return. | "This is who I will always be." |
 
 ### Language Markers by Tier
 
@@ -194,4 +194,4 @@ See [POINT_ECONOMY.md](POINT_ECONOMY.md) for:
 2. Write `generation` profile with core, progression, good/bad examples
 3. Write 25-30 mantras covering basic → extreme progression
 4. Run `scripts/theme_stats.py mantras/newtheme.json` to verify distribution
-5. Have an agent blind-validate for quality (see MANTRA_REFACTOR_CONTINUATION.md)
+5. Have an agent blind-validate for quality using the checklist above

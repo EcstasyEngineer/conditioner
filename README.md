@@ -7,8 +7,8 @@ A sophisticated Discord bot designed for hypnotic conditioning through gamified 
 **Copy-paste these commands** (replace `your_bot_token_here` with your actual Discord bot token):
 
 ```bash
-git clone https://github.com/EcstasyEngineer/ai-conditioner-discord.git
-cd ai-conditioner-discord
+git clone https://github.com/EcstasyEngineer/conditioner.git
+cd conditioner
 echo "DISCORD_TOKEN=your_bot_token_here" > .env
 ./start.sh
 ```
@@ -26,7 +26,7 @@ That's it! Your bot is now running.
 
 ## ✨ Key Features
 
-- **🌀 Hypnotic Mantra System** - Personalized mantras with adaptive frequency and 6 active themes
+- **🌀 Hypnotic Mantra System** - Personalized mantras with adaptive frequency across 17 themes
 - **🎮 Points & Rewards** - Point system with gacha spins and streak bonuses
 - **🎲 Counter Game** - Community counting game with hidden conditioning triggers
 - **⚙️ Smart Configuration** - Per-server, per-user, and global settings with automatic persistence
@@ -62,19 +62,15 @@ That's it! Your bot is now running.
 
 Points are earned through various activities and can be spent on gacha rewards.
 
-| Activity | Points | Notes |
-|----------|--------|-------|
-| Counting | 1 per number | In #counting channel |
-| Ambient listening | 5 per minute | ~70 pts per 14-min loop |
-| Mantra (basic) | 10-15 | + speed bonus up to 30 |
-| Mantra (light) | 20-30 | + speed bonus |
-| Mantra (moderate) | 35-45 | + speed bonus |
-| Mantra (deep) | 60-80 | + speed bonus |
-| Mantra (extreme) | 100-120 | + speed bonus |
+| Activity | Points |
+|----------|--------|
+| Counting | 1 per number |
+| Ambient listening | 5 per minute |
+| Mantras | 20-200 (varies by tier) |
 
-**Speed bonuses:** ≤15s: +30, ≤30s: +20, ≤60s: +15, ≤2min: +10, ≤5min: +5
+Mantra points scale with psychological intensity, plus speed bonuses for fast responses. Mantra frequency adapts from 0.33-6 per day based on your response patterns.
 
-Mantra frequency adapts from 0.33-6 per day (once per 3 days to 6x daily) based on your response patterns.
+For full details, see [docs/POINT_ECONOMY.md](docs/POINT_ECONOMY.md).
 
 ## 🏗️ Development & Extension
 
@@ -136,6 +132,14 @@ For detailed documentation, see `configs/README.md` for config usage patterns.
 
 Notes:
 - Errors are rate-limited to avoid spam. Per-guild logging and broader coverage are planned in the upgrade issue.
+
+## 📚 Documentation
+
+| Document | Purpose |
+|----------|---------|
+| [POINT_ECONOMY.md](docs/POINT_ECONOMY.md) | Point values, tier boundaries, scoring system |
+| [THEME_GUIDELINES.md](docs/THEME_GUIDELINES.md) | Mantra writing rules, quality standards |
+| [configs/README.md](configs/README.md) | Config system usage patterns |
 
 ## Contributing
 
