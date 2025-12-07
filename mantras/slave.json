@@ -114,7 +114,7 @@
     },
     {
       "text": "To serve is my absolute and eternal truth",
-      "base_points": 100
+      "base_points": 155
     },
     {
       "text": "Every breath {subject} takes is a testament to their role as a slave",
@@ -131,6 +131,14 @@
     {
       "text": "My purpose is entirely surrendered to {controller}'s will",
       "base_points": 100
+    },
+    {
+      "text": "{subject} is {controller}'s property, permanently and completely",
+      "base_points": 175
+    },
+    {
+      "text": "There is no self left, only {controller}'s slave",
+      "base_points": 160
     }
   ]
 }

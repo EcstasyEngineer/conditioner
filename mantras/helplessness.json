@@ -105,8 +105,8 @@
       "base_points": 120
     },
     {
-      "text": "The helplessness is permanent",
-      "base_points": 130
+      "text": "My ability to resist {controller} has been permanently washed away",
+      "base_points": 165
     },
     {
       "text": "{subject} stopped fighting",
@@ -123,6 +123,10 @@
     {
       "text": "{subject} couldn't fight back even if they wanted to",
       "base_points": 95
+    },
+    {
+      "text": "{subject} will never have control again",
+      "base_points": 165
     }
   ]
 }

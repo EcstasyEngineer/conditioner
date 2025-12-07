@@ -130,7 +130,11 @@
     },
     {
       "text": "{subject} is {controller}'s puppet, now and forever",
-      "base_points": 140
+      "base_points": 160
+    },
+    {
+      "text": "The strings are permanent, woven into {subject}'s soul",
+      "base_points": 170
     }
   ]
 }

@@ -91,6 +91,10 @@
     {
       "text": "{subject}'s reality is defined by their point of focus",
       "base_points": 60
+    },
+    {
+      "text": "{subject}'s mind is permanently locked onto {controller}, nothing else will ever exist",
+      "base_points": 170
     }
   ]
 }

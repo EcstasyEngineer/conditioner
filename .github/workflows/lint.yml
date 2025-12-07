@@ -1,0 +1,25 @@
+name: Lint
+
+on:
+  push:
+    paths:
+      - 'mantras/**'
+      - 'scripts/lint_mantras.py'
+  pull_request:
+    paths:
+      - 'mantras/**'
+      - 'scripts/lint_mantras.py'
+
+jobs:
+  lint-mantras:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Lint mantra files
+        run: python3 scripts/lint_mantras.py
