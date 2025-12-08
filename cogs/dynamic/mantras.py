@@ -558,6 +558,11 @@ class ThemeSelect(discord.ui.Select):
     def __init__(self, parent_view):
         self.parent_view = parent_view
 
+        max_themes = get_max_themes_for_user(parent_view.cog.bot, parent_view.user)
+
+        # Limit current_themes to max allowed (Discord requires defaults <= max_values)
+        selected_themes = set(parent_view.current_themes[:max_themes])
+
         # Build options from available themes
         options = []
         for theme_name in sorted(parent_view.cog.themes.keys()):
@@ -565,7 +570,7 @@ class ThemeSelect(discord.ui.Select):
             display_name = theme_name.capitalize()
             description = theme_data.get("description", "")[:100]  # Discord limit
 
-            is_selected = theme_name in parent_view.current_themes
+            is_selected = theme_name in selected_themes
 
             options.append(discord.SelectOption(
                 label=display_name,
@@ -573,8 +578,6 @@ class ThemeSelect(discord.ui.Select):
                 description=description,
                 default=is_selected
             ))
-
-        max_themes = get_max_themes_for_user(parent_view.cog.bot, parent_view.user)
 
         super().__init__(
             placeholder=f"Select up to {max_themes} themes...",
