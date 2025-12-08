@@ -2,13 +2,6 @@
   "theme": "addiction",
   "description": "Craving, compulsion, and escalating dependence on control",
   "generation": {
-    "core": "Craving, compulsion, escalating dependence",
-    "progression": [
-      "want",
-      "need",
-      "can't function without",
-      "permanent rewiring"
-    ],
     "good": [
       "Craving coils tighter around my mind",
       "visceral, escalating"
@@ -16,7 +9,8 @@
     "bad": [
       "I am addicted",
       "tells, doesn't show"
-    ]
+    ],
+    "notes": "Headspace is craving, escalation, need that grows stronger with each fix. Key imagery: hunger, ache, withdrawal emptiness, desperate need, rewired pleasure. Distinguishes from devotion (addiction is compulsive need, devotion is willing loyalty)."
   },
   "mantras": [
     {
@@ -146,6 +140,18 @@
     {
       "text": "Endless addiction drives every choice I make",
       "base_points": 150
+    },
+    {
+      "text": "{subject}'s need is a black hole only {controller} can fill",
+      "base_points": 135
+    },
+    {
+      "text": "{subject} would shatter without {controller}",
+      "base_points": 140
+    },
+    {
+      "text": "{subject}'s entire being screams for {controller}",
+      "base_points": 115
     }
   ]
 }

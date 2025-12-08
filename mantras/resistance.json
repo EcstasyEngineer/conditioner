@@ -1,14 +1,7 @@
 {
-  "theme": "helplessness",
-  "description": "No control, no agency, complete powerlessness under another's will",
+  "theme": "resistance",
+  "description": "Every struggle proves how completely you've already lost",
   "generation": {
-    "core": "Agency removal, powerlessness, resistance is impossible",
-    "progression": [
-      "can't resist",
-      "no control",
-      "at mercy",
-      "powerlessness is identity"
-    ],
     "good": [
       "{subject} cannot move without {controller}'s permission",
       "agency removal, controller-anchored"
@@ -17,7 +10,7 @@
       "{subject} is safe in their helplessness",
       "comfort framing undermines powerlessness"
     ],
-    "notes": "Focus on inability to resist, lack of agency, being at controller's mercy. Not about feeling safe or comforted - about genuinely having no power. Distinct from vulnerability (openness/exposure) - this is about control being taken."
+    "notes": "Headspace is powerless, unable to resist even if you wanted to. Key imagery: struggling and losing, defeat, being overwhelmed, no escape. The arc of resistance and defeat matters - the struggle makes the surrender sweeter. NOT about feeling safe or comforted - about genuinely having no power. Distinguishes from acceptance (resistance is inability to fight back, acceptance is willing release)."
   },
   "mantras": [
     {
@@ -127,6 +120,18 @@
     {
       "text": "{subject} will never have control again",
       "base_points": 165
+    },
+    {
+      "text": "{subject} pretends to have a choice",
+      "base_points": 55
+    },
+    {
+      "text": "{subject} is losing control whether they want to or not",
+      "base_points": 60
+    },
+    {
+      "text": "{subject}'s defeat is total and absolute",
+      "base_points": 105
     }
   ]
 }

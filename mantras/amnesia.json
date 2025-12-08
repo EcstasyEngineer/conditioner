@@ -124,13 +124,6 @@
     }
   ],
   "generation": {
-    "core": "Memory dissolution, forgetting to exist in present",
-    "progression": [
-      "hazy",
-      "fading",
-      "controlled by {controller}",
-      "permanent wipe"
-    ],
     "good": [
       "The fog in my mind grows thicker daily",
       "sensory, progressive"
@@ -138,6 +131,7 @@
     "bad": [
       "I forget things",
       "too literal"
-    ]
+    ],
+    "notes": "Headspace is fog, drift, peaceful dissolution of the past. Key imagery: fog, mist, water slipping through fingers, reaching and grasping nothing. Distinguishes from blank (amnesia loses the past, blank is present-moment emptiness)."
   }
 }

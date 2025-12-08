@@ -1,14 +1,7 @@
 {
-  "theme": "slave",
-  "description": "Existence defined entirely by duty, hierarchy, and serving another",
+  "theme": "submission",
+  "description": "Existence defined entirely by service, duty, and belonging to another",
   "generation": {
-    "core": "Ownership, service, existence for another's benefit",
-    "progression": [
-      "purpose to serve",
-      "identity rooted",
-      "extension of will",
-      "only existence"
-    ],
     "good": [
       "{subject} is an extension of {controller}'s will",
       "merger"
@@ -17,7 +10,7 @@
       "{subject} serves",
       "too simple"
     ],
-    "notes": "Avoid self-help language (empowered, fulfillment, growth). Focus on ownership, consumption, and existential purpose."
+    "notes": "Headspace is owned, purpose entirely defined by service to another. Key imagery: ownership, property, chains (metaphorical), existence reduced to function. Avoid self-help language (empowered, fulfillment, growth). Distinguishes from obedience (submission is identity/existence, obedience is mechanism) and devotion (submission emphasizes role/duty, devotion emphasizes feeling)."
   },
   "mantras": [
     {

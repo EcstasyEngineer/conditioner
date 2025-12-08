@@ -2,13 +2,6 @@
   "theme": "worship",
   "description": "Profound reverence and ecstatic adoration through sacred service",
   "generation": {
-    "core": "Profound reverence, sacred adoration, elevation of controller",
-    "progression": [
-      "admiration",
-      "reverence",
-      "sacred devotion",
-      "divine submission"
-    ],
     "good": [
       "{controller}'s word is scripture to {subject}",
       "religious intensity"
@@ -17,7 +10,7 @@
       "I worship {controller}",
       "declares without showing reverence"
     ],
-    "notes": "Show worship through physical action, possession framing, or power positioning. Avoid bare emotion labels."
+    "notes": "Headspace is religious awe, ecstatic reverence, the controller elevated to divine status. Key imagery: kneeling, prayer, temples, sacrifice, divinity. Show worship through physical action, possession framing, or power positioning. Avoid bare emotion labels. Distinguishes from devotion (worship is reverence/elevation, devotion is loyalty/service)."
   },
   "mantras": [
     {

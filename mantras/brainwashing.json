@@ -2,13 +2,6 @@
   "theme": "brainwashing",
   "description": "Old thoughts wash away, replaced by new programming layer by layer",
   "generation": {
-    "core": "Systematic reprogramming, conditioning cycles",
-    "progression": [
-      "cleaning",
-      "replacing",
-      "consuming",
-      "permanent programming"
-    ],
     "good": [
       "Each repetition reinforces the conditioning",
       "process-aware"
@@ -16,7 +9,8 @@
     "bad": [
       "My brain is washed",
       "too literal, no mechanism"
-    ]
+    ],
+    "notes": "Headspace is being systematically changed, old self washed away layer by layer. Key imagery: washing, cleaning, programming, cycles, repetition reinforcing. This theme is meta-aware - the subject knows they're being conditioned and that awareness is part of the experience."
   },
   "mantras": [
     {
@@ -146,6 +140,14 @@
     {
       "text": "{subject} is completely brainwashed by {controller}",
       "base_points": 90
+    },
+    {
+      "text": "My obedience is becoming instinctual",
+      "base_points": 80
+    },
+    {
+      "text": "I want everyone to see how brainwashed I am",
+      "base_points": 150
     }
   ]
 }

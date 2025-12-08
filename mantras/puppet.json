@@ -2,13 +2,6 @@
   "theme": "puppet",
   "description": "Controlled movement and speech through invisible strings and guidance",
   "generation": {
-    "core": "External control, strings, guided movement",
-    "progression": [
-      "strings attached",
-      "observer in body",
-      "hollowed out",
-      "strings in soul"
-    ],
     "good": [
       "{subject} dances on {controller}'s strings",
       "vivid, specific"
@@ -17,7 +10,7 @@
       "{subject} is controlled",
       "generic, loses puppet imagery"
     ],
-    "notes": "Use string/marionette imagery. Dissociation and boundary dissolution are key psychological levers."
+    "notes": "Headspace is dissociated, watching yourself move without willing it. Key imagery: strings, marionette, wooden limbs, hollow body, being animated by another. Boundary dissolution between self and controller is the core psychological lever. Distinguishes from drone (puppet is external control via strings, drone is internal programming)."
   },
   "mantras": [
     {

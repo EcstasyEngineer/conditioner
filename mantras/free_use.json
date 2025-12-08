@@ -2,13 +2,6 @@
   "theme": "free_use",
   "description": "Complete accessibility and willingness to fulfill any request",
   "generation": {
-    "core": "Complete accessibility, always available, no barriers",
-    "progression": [
-      "available",
-      "eager to be used",
-      "existing for use",
-      "permanently open"
-    ],
     "good": [
       "{subject} is always ready for {controller}",
       "availability as identity"
@@ -17,7 +10,7 @@
       "{subject} can be used",
       "passive, no eagerness"
     ],
-    "notes": "Explicit/crude language is fine for this theme. Focus on ownership removal and purpose reduction. Don't underscore due to explicit content."
+    "notes": "Headspace is open, available, existing purely for use by others. Key imagery: holes, access, public availability, object status. Explicit/crude language is appropriate. Focus on ownership removal and purpose reduction to being used. Distinguishes from sluttiness (free_use is availability/access, sluttiness is desire/eagerness)."
   },
   "mantras": [
     {

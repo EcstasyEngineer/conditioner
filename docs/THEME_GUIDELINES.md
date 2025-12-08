@@ -9,17 +9,28 @@ Universal rules for creating and evaluating mantras. Theme-specific profiles liv
   "theme": "themename",
   "description": "Short display text for Discord UI (~60 chars)",
   "generation": {
-    "core": "What this theme is about",
-    "progression": ["basic state", "light state", "moderate state", "deep/extreme state"],
     "good": ["Example mantra", "why it works"],
     "bad": ["Example mantra", "why it fails"],
-    "notes": "Optional theme-specific guidance"
+    "notes": "Generation guidance (see below)"
   },
   "mantras": [
     { "text": "Mantra with {subject} and {controller}", "base_points": 50 }
   ]
 }
 ```
+
+### Generation Notes
+
+The `notes` field guides LLM generation with theme-specific context. Include:
+
+- **Headspace**: What psychological state does this theme evoke? What's the subjective experience?
+- **Key imagery**: Specific metaphors or sensory language that define the theme
+- **Distinguishing features**: What separates this from similar themes?
+- **Voice rules**: Pronoun choices, tone, grammar quirks (e.g., drone's "its" and broken grammar)
+- **What to avoid**: Language or framing that breaks the theme's feel
+- **Content notes**: Intensity level, explicit content flags, gendered language
+
+Not every theme needs all of these. Focus on what an LLM would need to generate mantras that *feel* right for this theme specifically.
 
 - One mantra per entry, 25-30 mantras per theme
 - Use `{subject}` and `{controller}` placeholders
@@ -158,14 +169,11 @@ Mantras use one of four voice frames, from most intimate to most detached:
 Both can make identity claims. The difference: first person has no escape hatch, named self lets the pet name "be" the one confessing.
 
 **3. Pronoun continuation** (when you need a pronoun after {subject}):
-- **"their"** = gender-neutral, still human (default)
+- **"their"** = gender-neutral, default for all themes
   - "{subject} feels the strings moving their body"
-- **"its"** = dehumanizing, object/machine framing
-  - "{subject} enjoys the buzzing in its head"
-  - Use ONLY for **drone** theme
+- Theme-specific pronoun rules live in each theme's `generation.notes`
 
 **4. Process frame** is rare:
-- Best for drone's mechanical feel ("The programming updates")
 - Good for inevitable forces ("The brainwashing deepens")
 - Most mantras should have a subject
 
@@ -191,7 +199,7 @@ See [POINT_ECONOMY.md](POINT_ECONOMY.md) for:
 ## Adding a New Theme
 
 1. Create `mantras/newtheme.json` with structure above
-2. Write `generation` profile with core, progression, good/bad examples
-3. Write 25-30 mantras covering basic → extreme progression
+2. Write `generation` block with good/bad examples and any theme-specific notes
+3. Write 25-30 mantras covering basic → extreme tiers
 4. Run `scripts/theme_stats.py mantras/newtheme.json` to verify distribution
 5. Have an agent blind-validate for quality using the checklist above

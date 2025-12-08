@@ -2,13 +2,6 @@
   "theme": "drone",
   "description": "Mindless automation, empty thoughts, and designation-based identity",
   "generation": {
-    "core": "Mindless automation, unit designation, technical obedience",
-    "progression": [
-      "processing",
-      "unit identity",
-      "no individual thought",
-      "permanent automation"
-    ],
     "good": [
       "This unit processes commands efficiently",
       "technical, dehumanized"
@@ -17,7 +10,7 @@
       "I am a drone",
       "label without mechanism"
     ],
-    "notes": "Cold/clinical tone. Use 'unit', 'this drone', 'processing'. Broken grammar ('is drone' not 'is a drone') heightens dehumanization. Avoid warmth entirely."
+    "notes": "Headspace is mechanical, automated, human identity replaced by unit designation. Key imagery: processing, buzzing, programming, designation numbers. Voice: cold/clinical tone, use 'unit', 'this drone', 'it/its' pronouns. Broken grammar ('is drone' not 'is a drone') heightens dehumanization. Avoid warmth entirely. Distinguishes from puppet (drone is internal programming, puppet is external strings) and blank (drone is machine, blank is emptiness)."
   },
   "mantras": [
     {
@@ -115,6 +108,18 @@
     {
       "text": "{controller} does the thinking",
       "base_points": 90
+    },
+    {
+      "text": "{subject} is furniture for {controller} to use",
+      "base_points": 100
+    },
+    {
+      "text": "{subject} does not think, it only is",
+      "base_points": 135
+    },
+    {
+      "text": "{subject} is just a collection of parts for {controller}",
+      "base_points": 125
     }
   ]
 }

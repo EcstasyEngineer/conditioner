@@ -2,13 +2,6 @@
   "theme": "blank",
   "description": "Thoughts drift away into beautiful, peaceful emptiness",
   "generation": {
-    "core": "Empty-mindedness, thoughtless receptivity",
-    "progression": [
-      "quiet",
-      "drifting",
-      "vessel",
-      "permanent emptiness"
-    ],
     "good": [
       "My mind is a blank slate for {controller}",
       "functional emptiness"
@@ -17,7 +10,7 @@
       "I am blank",
       "static, not evocative"
     ],
-    "notes": "Show process of emptying or controller-anchored receptivity. Avoid clinical meditation language."
+    "notes": "Headspace is peaceful emptiness, thoughts dissolving into quiet void. Key imagery: drifting, floating, empty vessels, quiet stillness. Show the process of emptying, not just the state. Avoid clinical meditation language. Distinguishes from suggestibility (blank is emptiness, suggestibility is active absorption) and amnesia (blank is present emptiness, amnesia is losing the past)."
   },
   "mantras": [
     {
@@ -123,6 +116,14 @@
     {
       "text": "{subject} is blank and empty",
       "base_points": 40
+    },
+    {
+      "text": "I am becoming part of {controller}'s consciousness",
+      "base_points": 110
+    },
+    {
+      "text": "There is no 'me', only the will of {controller}",
+      "base_points": 155
     }
   ]
 }

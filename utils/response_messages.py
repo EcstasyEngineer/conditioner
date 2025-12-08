@@ -54,9 +54,9 @@ MESSAGE_POOL = [
     {"text": "Mmm, perfect! This {subject} works so well!", "tier": 0, "subjects": ["pet", "toy", "doll", "puppy", "kitten"]},
     {"text": "Excellent, {subject}! Always ready when {controller} wants to play!", "tier": 0, "subjects": ["toy", "pet", "puppy", "kitten", "doll"]},
 
-    # Bimbo/slut (good girl praise, enthusiastic)
-    {"text": "Good girl! You did so well!", "tier": 0, "subjects": ["pet", "kitten", "puppy", "slave", "bimbo", "slut"]},
-    {"text": "Perfect! Such a good girl for {controller}!", "tier": 0, "subjects": ["pet", "kitten", "puppy", "slave", "bimbo", "slut"]},
+    # Bimbo-specific (good girl praise - gendered language restricted to bimbo)
+    {"text": "Good girl! You did so well!", "tier": 0, "subjects": ["bimbo"]},
+    {"text": "Perfect! Such a good girl for {controller}!", "tier": 0, "subjects": ["bimbo"]},
 
     # Bimbo-specific (dumbed down/eager to please/empty-headed)
     {"text": "Good girl! You're being such a good, obedient {subject}!", "tier": 0, "subjects": ["bimbo"]},
@@ -107,12 +107,12 @@ MESSAGE_POOL = [
     {"text": "Good {subject}! {controller} enjoys this!", "tier": 1, "subjects": ["pet", "toy", "doll", "puppy", "kitten"]},
 
     # Bimbo/slut
-    {"text": "Good girl! {controller} is happy with you!", "tier": 1, "subjects": ["pet", "kitten", "puppy", "slave", "bimbo", "slut"]},
+    {"text": "Good girl! {controller} is happy with you!", "tier": 1, "subjects": ["bimbo"]},
     {"text": "That's good, {subject}! You're learning!", "tier": 1, "subjects": ["pet", "kitten", "puppy", "doll", "toy", "puppet", "slave", "bimbo", "slut"]},
     {"text": "Well done! Keep going!", "tier": 1, "subjects": ["ALL"]},
 
     # Bimbo-specific (trying hard to please)
-    {"text": "Good girl! So obedient for {controller}!", "tier": 1, "subjects": ["bimbo", "slut"]},
+    {"text": "Good girl! So obedient for {controller}!", "tier": 1, "subjects": ["bimbo"]},
     {"text": "That's it! Pretty and obedient for {controller}!", "tier": 1, "subjects": ["bimbo", "slut"]},
     {"text": "Good! {controller}'s {subject} is learning to respond!", "tier": 1, "subjects": ["bimbo", "slut", "doll"]},
     {"text": "Well done, {subject}! Such a good, blank little thing!", "tier": 1, "subjects": ["bimbo", "doll"]},

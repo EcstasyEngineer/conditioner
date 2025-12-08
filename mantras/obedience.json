@@ -112,13 +112,6 @@
     }
   ],
   "generation": {
-    "core": "Instant compliance, reflexive execution",
-    "progression": [
-      "feels natural",
-      "instinctive",
-      "unthinkable to resist",
-      "hardwired"
-    ],
     "good": [
       "Commands drop straight into action",
       "bypasses thought"
@@ -126,6 +119,7 @@
     "bad": [
       "I obey",
       "too simple, no depth"
-    ]
+    ],
+    "notes": "Headspace is automatic, reflexive - no gap between command and action. Body responds before mind catches up. Distinguishes from suggestibility (absorption) and submission (identity/purpose) by focusing on the mechanism of instant compliance."
   }
 }
