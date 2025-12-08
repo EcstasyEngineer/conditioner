@@ -273,10 +273,10 @@ class Dev(commands.Cog):
             self.logger.error("Error during shutdown", exc_info=True)
             await message.edit(content=f'An error has occurred: {exc}', delete_after=20)
 
-    @commands.command(name='sync', hidden=True)
+    @commands.group(name='sync', hidden=True, invoke_without_command=True)
     @commands.check(is_superadmin)
     async def sync(self, ctx):
-        """Sync application commands with Discord (canonical)."""
+        """Copy global commands to guild and sync."""
         self.logger.info(f"{ctx.author} invoked sync for guild {getattr(ctx.guild, 'id', 'N/A')}")
         message = await ctx.send('Syncing commands...')
         await safe_delete(ctx, self.logger)
@@ -286,6 +286,35 @@ class Dev(commands.Cog):
             await message.edit(content='Application commands synced.', delete_after=20)
         except Exception as exc:
             self.logger.error("Error during sync", exc_info=True)
+            await message.edit(content=f'An error has occurred: {exc}', delete_after=20)
+
+    @sync.command(name='clean')
+    @commands.check(is_superadmin)
+    async def sync_clean(self, ctx):
+        """Clear guild commands (removes duplicates)."""
+        self.logger.info(f"{ctx.author} invoked sync clean for guild {getattr(ctx.guild, 'id', 'N/A')}")
+        message = await ctx.send('Clearing guild commands...')
+        await safe_delete(ctx, self.logger)
+        try:
+            self.bot.tree.clear_commands(guild=ctx.guild)
+            await self.bot.tree.sync(guild=ctx.guild)
+            await message.edit(content='Guild commands cleared.', delete_after=20)
+        except Exception as exc:
+            self.logger.error("Error during sync clean", exc_info=True)
+            await message.edit(content=f'An error has occurred: {exc}', delete_after=20)
+
+    @sync.command(name='global')
+    @commands.check(is_superadmin)
+    async def sync_global(self, ctx):
+        """Sync global commands only."""
+        self.logger.info(f"{ctx.author} invoked sync global")
+        message = await ctx.send('Syncing global commands...')
+        await safe_delete(ctx, self.logger)
+        try:
+            await self.bot.tree.sync()
+            await message.edit(content='Global commands synced.', delete_after=20)
+        except Exception as exc:
+            self.logger.error("Error during sync global", exc_info=True)
             await message.edit(content=f'An error has occurred: {exc}', delete_after=20)
 
 async def setup(bot):
