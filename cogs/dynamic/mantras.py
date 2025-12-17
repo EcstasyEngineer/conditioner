@@ -792,18 +792,35 @@ class MantraSystem(commands.Cog):
                         self.bot.config.set_user(user, 'mantra_system', config)
 
                         # Format mantra text at display time (allows controller/subject changes)
-                        from utils.mantras import format_mantra_text
-                        formatted_text = format_mantra_text(
-                            mantra['text'],
-                            config.get("subject", "puppet"),
-                            config.get("controller", "Master")
-                        )
+                        from utils.mantras import format_mantra_text, inject_paste_detection
+                        from utils.delivery_messages import get_delivery_message
+
+                        subject = config.get("subject", "puppet")
+                        controller = config.get("controller", "Master")
+                        theme = mantra['theme']
+                        tier = mantra['difficulty']
+
+                        formatted_text = format_mantra_text(mantra['text'], subject, controller)
+
+                        # Inject invisible char for copy-paste detection
+                        formatted_text = inject_paste_detection(formatted_text)
+
+                        # Get dynamic delivery message
+                        if theme == "enrollment":
+                            delivery_msg = f"Welcome, {subject}. Type the message below to begin"
+                        else:
+                            delivery_msg = get_delivery_message(subject, tier, theme)
+                            delivery_msg = delivery_msg.format(
+                                subject=subject,
+                                controller=controller,
+                                theme=theme.capitalize()
+                            )
 
                         # Send DM to user
                         try:
                             embed = discord.Embed(
-                                title="Neural Programming Transmission",
-                                description=f"Type the following mantra to continue your conditioning:\n\n**{formatted_text}**",
+                                title=delivery_msg,
+                                description=f"\n\n**{formatted_text}**",
                                 color=discord.Color.purple()
                             )
                             embed.add_field(
@@ -1232,6 +1249,7 @@ class MantraSystem(commands.Cog):
         # Load config
         config = self.bot.config.get_user(message.author, 'mantra_system', get_default_config())
 
+
         # Check if they have an active mantra
         if not config.get("enrolled"):
             return
@@ -1256,6 +1274,11 @@ class MantraSystem(commands.Cog):
         )
 
         if result.get("success"):
+            # Detect copy-paste (only add to encounter if detected)
+            from utils.mantras import detect_paste
+            if detect_paste(message.content):
+                result["encounter"]["pasted"] = True
+
             # Log encounter
             log_encounter(message.author.id, result["encounter"])
 

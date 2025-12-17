@@ -17,6 +17,23 @@ from typing import List, Dict, Optional, Tuple
 from .encounters import load_encounters, load_recent_encounters
 from .scoring import get_tier, calculate_speed_bonus
 
+# Zero-width space for copy-paste detection
+ZWSP = '\u200b'
+
+
+def inject_paste_detection(text: str) -> str:
+    """Inject invisible ZWSP after first word for copy-paste detection."""
+    if ' ' not in text:
+        return text
+    first_space = text.index(' ')
+    return text[:first_space] + ZWSP + text[first_space:]
+
+
+def detect_paste(response: str) -> bool:
+    """Check if response contains ZWSP (indicates copy-paste)."""
+    return ZWSP in response
+
+
 def check_mantra_match(user_response: str, expected_mantra: str) -> bool:
     """Check if user response matches mantra with typo tolerance."""
     # Exact match (case insensitive)
