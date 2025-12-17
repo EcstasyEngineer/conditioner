@@ -1414,14 +1414,14 @@ class MantraSystem(commands.Cog):
             await ctx.send("No enrolled users found.")
             return
 
-        # Build monospace table with multi-row per user
-        lines = []
-        lines.append("📊 Active Mantra Users ({})".format(len(enrolled_users)))
-        lines.append("")
-        lines.append("User             Stats (Last 10)       Next     Freq   Identity")
-        lines.append("─" * 75)
+        # Build user entries first, then split into messages
+        header = f"📊 Active Mantra Users ({len(enrolled_users)})\n"
+        header += "\n"
+        header += "User             Stats (Last 10)       Next     Freq   Identity\n"
+        header += "─" * 75
 
-        for user_data in enrolled_users[:20]:
+        user_blocks = []
+        for user_data in enrolled_users:
             # Use cached user lookup instead of API fetch
             user = self.bot.get_user(user_data['user_id'])
             if user:
@@ -1442,16 +1442,34 @@ class MantraSystem(commands.Cog):
             identity = f"{user_data['subject']} → {user_data['controller']}"
 
             # Main row with aligned columns (stats pattern needs more space)
-            lines.append(f"{username:<15}  {stats_pattern:<20}  {user_data['next']:<7}  {user_data['freq']:.1f}x   {identity}")
+            block = f"{username:<15}  {stats_pattern:<20}  {user_data['next']:<7}  {user_data['freq']:.1f}x   {identity}\n"
             # Themes row indented below
-            lines.append(f"  └─ Themes: {theme_list}")
-            lines.append("")  # Blank line between users
+            block += f"  └─ Themes: {theme_list}\n"
+            user_blocks.append(block)
 
-        lines.append("")
-        lines.append("● = Success  X = Failure  ? = Pending  •  Next = Time until next delivery")
+        # Split into messages that fit within Discord's 2000 char limit
+        # Reserve space for code block markers (```\n and \n```) = 8 chars
+        max_content_len = 2000 - 8
 
-        # Send as code block for monospace alignment
-        await ctx.send("```\n{}\n```".format("\n".join(lines)))
+        messages = []
+        current_lines = header
+
+        for block in user_blocks:
+            # Check if adding this block would exceed limit
+            if len(current_lines) + len(block) + 1 > max_content_len:
+                # Send current message and start new one
+                messages.append(current_lines)
+                current_lines = block
+            else:
+                current_lines += "\n" + block
+
+        # Add final message
+        if current_lines:
+            messages.append(current_lines)
+
+        # Send all messages
+        for msg in messages:
+            await ctx.send(f"```\n{msg}\n```")
 
 
 async def setup(bot):
