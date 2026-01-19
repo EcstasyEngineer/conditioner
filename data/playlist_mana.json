@@ -34,12 +34,6 @@
       "max": 100,
       "decay_per_minute": 1.5
     },
-    "safety": {
-      "description": "Perceived safety, this feels okay",
-      "baseline": 0,
-      "max": 100,
-      "decay_per_minute": 0.2
-    },
     "obedient": {
       "description": "Readiness to follow commands",
       "baseline": 0,
@@ -58,8 +52,8 @@
       "max": 100,
       "decay_per_minute": 0.2
     },
-    "craving": {
-      "description": "Wanting more, dependency activated",
+    "anticipation": {
+      "description": "Wanting more, pull toward continuation",
       "baseline": 0,
       "max": 100,
       "decay_per_minute": 0.8
@@ -87,7 +81,7 @@
     "incompatible_pairs": {
       "_comment": "Producing stat A depletes stat B. Format: 'A': ['B', ratio]",
       "aroused": ["empty", 0.4],
-      "craving": ["empty", 0.3]
+      "anticipation": ["empty", 0.3]
     },
 
     "max_incompatibility_consumption": 20,
@@ -102,8 +96,7 @@
       "produces": {
         "absorption": 30,
         "receptive": 50,
-        "suggestible": 20,
-        "safety": 40
+        "suggestible": 20
       },
       "description": "Session opener. Establishes consent, begins relaxation."
     },
@@ -113,8 +106,7 @@
       "requires": {},
       "produces": {
         "absorption": 20,
-        "receptive": 40,
-        "safety": 30
+        "receptive": 40
       },
       "description": "Minimal opener. Quick welcome and settle."
     },
@@ -145,7 +137,7 @@
       },
       "transforms": [
         {
-          "consume": "craving",
+          "consume": "anticipation",
           "produce": "empty",
           "ratio": 0.15,
           "reason": "Letting go of wants enables emptiness"
@@ -176,7 +168,7 @@
         "suggestible": 20
       },
       "produces": {
-        "craving": 70,
+        "anticipation": 70,
         "devoted": 30,
         "absorption": 20
       },
@@ -311,7 +303,7 @@
         "obedient": 20
       },
       "produces": {
-        "craving": 60,
+        "anticipation": 60,
         "aroused": 40,
         "obedient": 30,
         "absorption": 25

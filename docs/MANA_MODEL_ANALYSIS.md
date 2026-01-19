@@ -100,7 +100,7 @@ For each stat, what does it mean to produce it, consume it, and max it out?
 
 **Consuming empty** (-):
 - Filling that empty space with content
-- Arousal/craving consume empty because they're "loud" mental states
+- Arousal/anticipation consume empty because they're "loud" mental states
 - Programming works best on empty canvas, but fills it
 
 **Maxed out (100)**:
@@ -145,37 +145,6 @@ For each stat, what does it mean to produce it, consume it, and max it out?
 - Time perception intact
 
 **Note**: Dissociated is the *outcome* of deep identity work. Empty (quiet mind) is the prerequisite; dissociated (gone) is what modules like bimbo/dumbdown/bambi_blackout produce. This is *not* pathological dissociation - it's the deliberately sought altered state.
-
----
-
-### safety
-
-**Description**: Perceived safety, "this feels okay"
-
-**Producing safety** (+):
-- Feeling secure in the experience
-- Trust that boundaries will be respected
-- "I'm in good hands" sensation
-- Consent feeling honored
-
-**Consuming safety** (-):
-- Boundary violations
-- Jarring content transitions
-- Anything that breaks trust
-
-**Maxed out (100)**:
-- Complete felt safety
-- Deep trust in the experience
-- Can surrender fully because safe
-- Prerequisite for deep work
-
-**At zero (0)**:
-- On guard, defensive
-- "Something feels off"
-- Can't go deep because unsafe
-- May need to stop
-
-**Note**: Safety is puncture-prone. It decays slowly (0.2/min) but can collapse instantly if something feels wrong. Openers produce safety; violations destroy it. Safety is a prerequisite for everything deep - without it, other states can't build properly.
 
 ---
 
@@ -259,31 +228,30 @@ For each stat, what does it mean to produce it, consume it, and max it out?
 
 ---
 
-### craving
+### anticipation
 
-**Description**: Wanting more, dependency activated
+**Description**: Wanting more, pull toward continuation
 
-**Producing craving** (+):
+**Producing anticipation** (+):
 - Building the want
 - "I need more" feeling growing
-- Addiction patterns activating
+- Desire for what comes next
 
-**Consuming craving** (-):
-- Satisfying the craving temporarily
-- Or: blank consumes craving because wanting is incompatible with emptiness
+**Consuming anticipation** (-):
+- Satisfying the wanting temporarily
+- Or: blank consumes anticipation because wanting is incompatible with emptiness
 
 **Maxed out (100)**:
-- Desperate need for the content
-- "I can't stop listening"
-- Physical/emotional dependency
-- Will prioritize sessions over other activities
+- Strong pull toward continuation
+- "Don't stop" energy
+- Fully hooked on the session arc
 
 **At zero (0)**:
 - Take it or leave it
-- Content is enjoyable but not needed
+- Content is enjoyable but no pull
 - Easy to walk away
 
-**Note**: Craving has fast decay (0.8/min) because desire fades without reinforcement.
+**Note**: Anticipation has fast decay (0.8/min) because desire fades without reinforcement.
 
 ---
 
@@ -343,6 +311,56 @@ For each stat, what does it mean to produce it, consume it, and max it out?
 
 ---
 
+## Part 1b: State Interactions
+
+How states relate to each other - dependencies, conflicts, and natural pairings.
+
+### Prerequisites (Natural Dependencies)
+
+| State | Typically Requires | Rationale |
+|-------|-------------------|-----------|
+| suggestible | receptive | Can't accept suggestions if guarded |
+| dissociated | absorption | Can't be "gone" without being absorbed first |
+| identity_flux | suggestible, empty | Identity work needs acceptance + quiet mind |
+| obedient | receptive | Command-following needs openness |
+| devoted | submissive | Emotional attachment builds on power acceptance |
+
+### Conflicts (Incompatible States)
+
+| State A | Conflicts With | Rationale |
+|---------|---------------|-----------|
+| aroused | empty | Sexual activation is "loud" - disrupts mental quiet |
+| anticipation | empty | Wanting is incompatible with emptiness |
+| dissociated | aroused | Void states and arousal don't coexist well |
+
+### Reinforcing Pairs (Build Together)
+
+| Pair | Effect |
+|------|--------|
+| submissive + obedient | Hierarchy makes commands meaningful; commands reinforce hierarchy |
+| devoted + anticipation | Attachment + wanting = "sticky" engagement loop |
+| absorption + suggestible | Depth enables acceptance; acceptance enables depth |
+| empty + dissociated | Quiet mind is the path to ego dissolution |
+
+### Common Progressions
+
+**Trance path:** receptive → absorption → suggestible → empty → dissociated
+
+**D/s path:** receptive → submissive → obedient → devoted
+
+**Identity path:** empty + suggestible → identity_flux → dissociated
+
+**Arousal path:** receptive → aroused → anticipation → obedient (compliance through desire)
+
+### Notes for Orchestration
+
+- `dissociated` at very high levels may reduce retention - the listener won't remember what was "installed"
+- `devoted` + `anticipation` combo creates strongest session-to-session pull
+- `aroused` can spike `obedient` temporarily ("do it to get more") but it's brittle
+- Most relational states (obedient, submissive, devoted) don't truly "consume" - they experience compliance fatigue or strain from overuse
+
+---
+
 ## Part 2: Decay Rate Analysis
 
 Current decay rates per minute:
@@ -353,14 +371,13 @@ Current decay rates per minute:
 | absorption | 1.5 | Fast | Attention is metabolically expensive |
 | dissociated | 1.5 | Fast | Ego dissolution is fragile, easily grounded |
 | empty | 1.0 | Fast | Thoughts naturally return |
-| craving | 0.8 | Medium-Fast | Desire fades without reinforcement |
+| anticipation | 0.8 | Medium-Fast | Desire fades without reinforcement |
 | suggestible | 0.5 | Medium | Belief acceptance fades to normal |
 | identity_flux | 0.4 | Medium | Self-concept re-stabilizes |
 | receptive | 0.3 | Slow | Openness persists somewhat |
 | obedient | 0.3 | Slow | Compliance patterns persist |
 | submissive | 0.3 | Slow | Power dynamic persists |
 | devoted | 0.2 | Slowest | Emotional bonds are sticky |
-| safety | 0.2 | Slowest | Trust persists (but puncture-prone) |
 
 ### Decay Hierarchy
 
@@ -372,7 +389,7 @@ METABOLICALLY EXPENSIVE (fastest decay, 1.5/min)
 └── empty (1.0) - thoughts naturally return
 
 PSYCHOLOGICAL STATES (medium decay)
-├── craving (0.8) - desire needs feeding
+├── anticipation (0.8) - desire needs feeding
 ├── suggestible (0.5) - critical faculty returns
 └── identity_flux (0.4) - self re-stabilizes
 
@@ -381,9 +398,8 @@ RELATIONAL STATES (slow decay, 0.3/min)
 ├── obedient - compliance patterns persist
 └── submissive - power dynamic persists
 
-EMOTIONAL BONDS / FOUNDATION (slowest decay, 0.2/min)
-├── devoted - love/attachment is sticky
-└── safety - trust persists (but puncture-prone)
+EMOTIONAL BONDS (slowest decay, 0.2/min)
+└── devoted - love/attachment is sticky
 ```
 
 **Key insight**: Absorption was moved from medium (0.5) to fast (1.5) decay because:
@@ -516,7 +532,7 @@ Maybe some stats CAN go higher:
 | empty | 100 | Can't be more than completely empty |
 | aroused | 100 | Physiological ceiling |
 | devoted | 150? | Love is boundless? |
-| craving | 150? | Addiction can spiral? |
+| anticipation | 150? | Desire can spiral? |
 | suggestible | 100 | Binary: either accepting or not |
 
 **Danger**: This complicates balance significantly.
@@ -679,3 +695,118 @@ Next steps:
 - Test with real audio files
 - Consider log scaling after gathering real data
 - Potentially add "reinforcement" mechanic where overflow strengthens resistance to decay
+
+---
+
+## Part 7: Module Tagging Guide
+
+Use this section as a reference when tagging new audio files with mana metadata.
+
+### Required Fields
+
+```json
+{
+  "tier": "opener|universal|core|specialization|utility|closer",
+  "duration_s": 300,
+  "requires": { "state": minimum_value },
+  "produces": { "state": amount },
+  "description": "Brief description of what the module does"
+}
+```
+
+### Optional Fields
+
+```json
+{
+  "transforms": [
+    {
+      "consume": "state_consumed",
+      "produce": "state_produced",
+      "ratio": 0.3,
+      "reason": "Why this transformation happens"
+    }
+  ],
+  "explicit_consumption": { "state": amount }
+}
+```
+
+### Tagging Heuristics
+
+**What does this module DO to the listener?**
+
+| If the module... | It likely produces... |
+|------------------|----------------------|
+| Deepens trance, focuses attention | absorption |
+| Lowers defenses, builds rapport | receptive |
+| Makes suggestions feel true | suggestible |
+| Quiets the mind, stops thoughts | empty |
+| Creates ego dissolution, "gone" feeling | dissociated |
+| Builds command-following reflexes | obedient |
+| Establishes power differential | submissive |
+| Creates emotional attachment | devoted |
+| Builds wanting, "more please" | anticipation |
+| Sexually activates | aroused |
+| Loosens identity, "who am I?" | identity_flux |
+
+**What does this module REQUIRE to land?**
+
+| If the module... | It likely requires... |
+|------------------|----------------------|
+| Uses direct suggestions | suggestible >= 20-30 |
+| Assumes trance depth | absorption >= 25 |
+| Needs mental quiet for identity work | empty >= 20-30 |
+| Assumes power dynamic established | submissive >= 25 |
+| Needs existing compliance patterns | obedient >= 20-25 |
+| Builds on arousal | aroused >= 20 |
+| Assumes emotional connection | devoted >= 20 |
+
+### Tier Guidelines
+
+| Tier | Requirements | Purpose |
+|------|--------------|---------|
+| opener | None | Start session, build foundation |
+| universal | Low (receptive 10-20) | Amplifiers, deepeners |
+| core | Medium (receptive + suggestible) | Main content themes |
+| specialization | Higher (theme-specific) | Advanced/niche content |
+| utility | Varies | Bridges, consent gates, transitions |
+| closer | None | End session, return to baseline |
+
+### Example Tagging
+
+Given a script that:
+- Requires the listener to already be somewhat suggestible
+- Deepens trance while building obedience
+- Uses commands and compliance training
+
+```json
+{
+  "tier": "core",
+  "duration_s": 470,
+  "requires": {
+    "receptive": 30,
+    "suggestible": 20
+  },
+  "produces": {
+    "obedient": 60,
+    "submissive": 30,
+    "absorption": 25
+  },
+  "description": "Command following. Builds compliance patterns."
+}
+```
+
+### States Quick Reference
+
+| State | Decay | What it measures |
+|-------|-------|------------------|
+| absorption | 1.5 | Trance depth, attentional capture |
+| dissociated | 1.5 | Ego dissolution, "gone" state |
+| aroused | 1.5 | Sexual activation |
+| empty | 1.0 | Mental quietness |
+| anticipation | 0.8 | Wanting more |
+| suggestible | 0.5 | Accepting suggestions as true |
+| identity_flux | 0.4 | Self-concept malleability |
+| receptive | 0.3 | Openness, barriers lowered |
+| obedient | 0.3 | Command-following readiness |
+| submissive | 0.3 | Power differential accepted |
+| devoted | 0.2 | Emotional attachment |

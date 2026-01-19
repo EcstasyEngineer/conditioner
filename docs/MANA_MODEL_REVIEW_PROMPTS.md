@@ -156,25 +156,20 @@ Context: This is for erotic hypnosis audio sequencing. The model gates advanced 
 
 **PSYCHOLOGICAL (medium decay, 0.4-0.8/min)**
 - `suggestible` (0.5): Accepting suggestions as true
-- `craving` (0.8): Wanting more, dependency activated
+- `anticipation` (0.8): Wanting more, pull toward continuation
 - `identity_flux` (0.4): Self-concept becoming malleable
 
-**RELATIONAL (slow decay, 0.3/min)**
+**RELATIONAL (slow decay, 0.2-0.3/min)**
 - `receptive`: Barriers lowered, open to input
 - `obedient`: Readiness to follow commands
 - `submissive`: Power differential accepted
-
-**FOUNDATION (slowest decay, 0.2/min)**
 - `devoted`: Emotional attachment to authority
-- `safety`: Perceived safety, "this feels okay" (puncture-prone)
 
 ## Key Design Decisions to Validate
 
 1. **empty vs dissociated split**: `empty` is "quiet mind, still present" (prerequisite). `dissociated` is "gone, ego dissolution" (outcome). Modules like `blank` produce `empty`; modules like `bambi_blackout`/`bimbo`/`dumbdown` produce `dissociated`.
 
-2. **safety as foundation**: Slow decay but can collapse instantly on violation. Openers produce it. Without safety, deep work can't happen.
-
-3. **craving kept as-is**: Despite "craving implies compulsion" feedback, this is intentional for erotic hypnosis - users seek the dependency fantasy.
+2. **anticipation renamed from craving**: Less pathological framing while keeping the "wanting more" energy.
 
 4. **D/s states kept**: `obedient`/`submissive`/`devoted` are intentional, not collapsed into "trust+agency" because users want the explicit power exchange framing.
 
