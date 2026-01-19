@@ -1,0 +1,401 @@
+{
+  "_comment": "Mana v2: Stats accumulate during session. Consumption is derived from rules, not manually specified.",
+
+  "stats": {
+    "_comment": "Core stats that accumulate during a session.",
+
+    "absorption": {
+      "description": "How deeply they're taking in content",
+      "baseline": 0,
+      "max": 100,
+      "decay_per_minute": 1.5
+    },
+    "receptive": {
+      "description": "Openness to suggestion, barriers lowered",
+      "baseline": 0,
+      "max": 100,
+      "decay_per_minute": 0.3
+    },
+    "suggestible": {
+      "description": "Actively accepting suggestions as true",
+      "baseline": 0,
+      "max": 100,
+      "decay_per_minute": 0.5
+    },
+    "empty": {
+      "description": "Mental quietness, thoughts cleared",
+      "baseline": 0,
+      "max": 100,
+      "decay_per_minute": 1.0
+    },
+    "obedient": {
+      "description": "Readiness to follow commands",
+      "baseline": 0,
+      "max": 100,
+      "decay_per_minute": 0.3
+    },
+    "submissive": {
+      "description": "Power differential accepted",
+      "baseline": 0,
+      "max": 100,
+      "decay_per_minute": 0.3
+    },
+    "devoted": {
+      "description": "Emotional attachment to authority",
+      "baseline": 0,
+      "max": 100,
+      "decay_per_minute": 0.2
+    },
+    "craving": {
+      "description": "Wanting more, dependency activated",
+      "baseline": 0,
+      "max": 100,
+      "decay_per_minute": 0.8
+    },
+    "aroused": {
+      "description": "Sexual activation",
+      "baseline": 0,
+      "max": 100,
+      "decay_per_minute": 1.5
+    },
+    "identity_flux": {
+      "description": "Sense of self is malleable",
+      "baseline": 0,
+      "max": 100,
+      "decay_per_minute": 0.4
+    }
+  },
+
+  "consumption_rules": {
+    "_comment": "Global rules for calculating consumption. Engine applies these automatically.",
+
+    "requirement_cost_ratio": 0.3,
+    "_comment_req": "Consume 30% of what you require. Using foundation depletes it slightly.",
+
+    "incompatible_pairs": {
+      "_comment": "Producing stat A depletes stat B. Format: 'A': ['B', ratio]",
+      "aroused": ["empty", 0.4],
+      "craving": ["empty", 0.3]
+    },
+
+    "max_incompatibility_consumption": 20,
+    "_comment_max": "Cap total incompatibility consumption to prevent overcounting"
+  },
+
+  "modules": {
+    "intro": {
+      "tier": "opener",
+      "duration_s": 300,
+      "requires": {},
+      "produces": {
+        "absorption": 30,
+        "receptive": 50,
+        "suggestible": 20
+      },
+      "description": "Session opener. Establishes consent, begins relaxation."
+    },
+    "welcome": {
+      "tier": "opener",
+      "duration_s": 180,
+      "requires": {},
+      "produces": {
+        "absorption": 20,
+        "receptive": 40
+      },
+      "description": "Minimal opener. Quick welcome and settle."
+    },
+    "suggestibility": {
+      "tier": "universal",
+      "duration_s": 440,
+      "requires": {
+        "receptive": 20
+      },
+      "produces": {
+        "absorption": 25,
+        "receptive": 30,
+        "suggestible": 60
+      },
+      "description": "Amplifier. Makes mind writable for subsequent content."
+    },
+    "blank": {
+      "tier": "universal",
+      "duration_s": 570,
+      "requires": {
+        "receptive": 20
+      },
+      "produces": {
+        "absorption": 30,
+        "empty": 70,
+        "receptive": 20,
+        "suggestible": 30
+      },
+      "transforms": [
+        {
+          "consume": "craving",
+          "produce": "empty",
+          "ratio": 0.15,
+          "reason": "Letting go of wants enables emptiness"
+        }
+      ],
+      "description": "Mental clearing. Thoughts emptied, clean slate."
+    },
+    "brainwashing": {
+      "tier": "core",
+      "duration_s": 545,
+      "requires": {
+        "receptive": 30,
+        "suggestible": 25
+      },
+      "produces": {
+        "absorption": 35,
+        "suggestible": 40,
+        "obedient": 30,
+        "devoted": 20
+      },
+      "description": "Reprogramming fantasy. New patterns installed."
+    },
+    "addiction": {
+      "tier": "core",
+      "duration_s": 445,
+      "requires": {
+        "receptive": 25,
+        "suggestible": 20
+      },
+      "produces": {
+        "craving": 70,
+        "devoted": 30,
+        "absorption": 20
+      },
+      "description": "Dependency building. Creates wanting and need."
+    },
+    "obedience": {
+      "tier": "core",
+      "duration_s": 470,
+      "requires": {
+        "receptive": 30,
+        "suggestible": 20
+      },
+      "produces": {
+        "obedient": 60,
+        "submissive": 30,
+        "absorption": 25
+      },
+      "description": "Command following. Builds compliance patterns."
+    },
+    "acceptance": {
+      "tier": "core",
+      "duration_s": 590,
+      "requires": {
+        "receptive": 10
+      },
+      "produces": {
+        "receptive": 40,
+        "submissive": 25,
+        "absorption": 20
+      },
+      "description": "Gentle opening. Resistance softening."
+    },
+    "submission": {
+      "tier": "core",
+      "duration_s": 485,
+      "requires": {
+        "receptive": 25
+      },
+      "produces": {
+        "submissive": 60,
+        "obedient": 25,
+        "absorption": 25
+      },
+      "description": "Power exchange. Accepting lower position."
+    },
+    "bimbo": {
+      "tier": "specialization",
+      "duration_s": 520,
+      "requires": {
+        "suggestible": 35,
+        "empty": 20
+      },
+      "produces": {
+        "identity_flux": 50,
+        "empty": 30,
+        "aroused": 25,
+        "absorption": 20
+      },
+      "transforms": [
+        {
+          "consume": "suggestible",
+          "produce": "identity_flux",
+          "ratio": 0.3,
+          "reason": "Uses suggestibility to accept new identity"
+        }
+      ],
+      "description": "Identity transformation. Giggly, simple, pretty."
+    },
+    "feminine": {
+      "tier": "specialization",
+      "duration_s": 480,
+      "requires": {
+        "receptive": 30,
+        "suggestible": 25
+      },
+      "produces": {
+        "identity_flux": 40,
+        "submissive": 20,
+        "absorption": 20
+      },
+      "description": "Gender play. Softness, grace, femininity."
+    },
+    "slave": {
+      "tier": "specialization",
+      "duration_s": 455,
+      "requires": {
+        "submissive": 30,
+        "obedient": 25
+      },
+      "produces": {
+        "devoted": 50,
+        "obedient": 30,
+        "submissive": 20,
+        "absorption": 25
+      },
+      "description": "Ownership fantasy. Property, belonging."
+    },
+    "harem": {
+      "tier": "specialization",
+      "duration_s": 455,
+      "requires": {
+        "submissive": 25,
+        "devoted": 20
+      },
+      "produces": {
+        "devoted": 40,
+        "aroused": 40,
+        "submissive": 20,
+        "absorption": 20
+      },
+      "description": "Collective ownership. One of many, serving."
+    },
+    "free_use": {
+      "tier": "specialization",
+      "duration_s": 460,
+      "requires": {
+        "obedient": 30,
+        "submissive": 25
+      },
+      "produces": {
+        "aroused": 50,
+        "obedient": 20,
+        "absorption": 20
+      },
+      "description": "Availability conditioning. Always accessible."
+    },
+    "tease_denial": {
+      "tier": "specialization",
+      "duration_s": 580,
+      "requires": {
+        "aroused": 20,
+        "obedient": 20
+      },
+      "produces": {
+        "craving": 60,
+        "aroused": 40,
+        "obedient": 30,
+        "absorption": 25
+      },
+      "description": "Denial as control. Desperation fuels compliance."
+    },
+    "dumbdown": {
+      "tier": "specialization",
+      "duration_s": 600,
+      "requires": {
+        "empty": 30,
+        "suggestible": 30
+      },
+      "produces": {
+        "empty": 50,
+        "identity_flux": 40,
+        "submissive": 30,
+        "absorption": 25
+      },
+      "transforms": [
+        {
+          "consume": "suggestible",
+          "produce": "identity_flux",
+          "ratio": 0.5,
+          "reason": "Heavy use of suggestibility for identity reduction"
+        }
+      ],
+      "description": "Intelligence reduction play. Too dumb to resist."
+    },
+    "fractionation_bridge": {
+      "tier": "utility",
+      "duration_s": 180,
+      "requires": {
+        "receptive": 20
+      },
+      "produces": {
+        "absorption": 40,
+        "receptive": 20,
+        "suggestible": 15
+      },
+      "description": "Trance deepener. Brief up-then-down for depth."
+    },
+    "bambi_intermission": {
+      "tier": "utility",
+      "duration_s": 770,
+      "requires": {},
+      "produces": {
+        "receptive": 30,
+        "suggestible": 20,
+        "absorption": 15
+      },
+      "description": "Between-session consent gate. 'Still here? Good.'"
+    },
+    "bambi_blackout": {
+      "tier": "utility",
+      "duration_s": 365,
+      "requires": {
+        "suggestible": 25
+      },
+      "produces": {
+        "empty": 60,
+        "absorption": 35
+      },
+      "transforms": [
+        {
+          "consume": "aroused",
+          "produce": "empty",
+          "ratio": 0.3,
+          "reason": "Arousal disrupts the void state"
+        }
+      ],
+      "description": "Memory gap induction. Time skip feeling."
+    },
+    "wakener": {
+      "tier": "closer",
+      "duration_s": 300,
+      "requires": {},
+      "produces": {},
+      "explicit_consumption": {
+        "absorption": 80,
+        "suggestible": 50,
+        "empty": 60,
+        "receptive": 40
+      },
+      "_comment": "Wakener explicitly resets trance states. Not derived from rules.",
+      "description": "Session closer. Safe return to awareness."
+    }
+  },
+
+  "rules": {
+    "required_opener": ["intro", "welcome"],
+    "required_closer": ["wakener"],
+    "intermission_module": "bambi_intermission",
+    "target_duration_minutes": 30,
+    "min_tracks": 3,
+    "max_tracks": 6,
+
+    "compatibility_threshold": 0.5,
+    "_comment_threshold": "Module is 'compatible' if all requires are met at >= 50% of their value"
+  }
+}
