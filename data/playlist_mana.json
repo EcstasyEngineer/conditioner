@@ -28,6 +28,18 @@
       "max": 100,
       "decay_per_minute": 1.0
     },
+    "dissociated": {
+      "description": "Ego dissolution, gone state",
+      "baseline": 0,
+      "max": 100,
+      "decay_per_minute": 1.5
+    },
+    "safety": {
+      "description": "Perceived safety, this feels okay",
+      "baseline": 0,
+      "max": 100,
+      "decay_per_minute": 0.2
+    },
     "obedient": {
       "description": "Readiness to follow commands",
       "baseline": 0,
@@ -90,7 +102,8 @@
       "produces": {
         "absorption": 30,
         "receptive": 50,
-        "suggestible": 20
+        "suggestible": 20,
+        "safety": 40
       },
       "description": "Session opener. Establishes consent, begins relaxation."
     },
@@ -100,7 +113,8 @@
       "requires": {},
       "produces": {
         "absorption": 20,
-        "receptive": 40
+        "receptive": 40,
+        "safety": 30
       },
       "description": "Minimal opener. Quick welcome and settle."
     },
@@ -217,7 +231,7 @@
       },
       "produces": {
         "identity_flux": 50,
-        "empty": 30,
+        "dissociated": 30,
         "aroused": 25,
         "absorption": 20
       },
@@ -312,7 +326,7 @@
         "suggestible": 30
       },
       "produces": {
-        "empty": 50,
+        "dissociated": 50,
         "identity_flux": 40,
         "submissive": 30,
         "absorption": 25
@@ -358,13 +372,13 @@
         "suggestible": 25
       },
       "produces": {
-        "empty": 60,
+        "dissociated": 60,
         "absorption": 35
       },
       "transforms": [
         {
           "consume": "aroused",
-          "produce": "empty",
+          "produce": "dissociated",
           "ratio": 0.3,
           "reason": "Arousal disrupts the void state"
         }
@@ -380,6 +394,7 @@
         "absorption": 80,
         "suggestible": 50,
         "empty": 60,
+        "dissociated": 80,
         "receptive": 40
       },
       "_comment": "Wakener explicitly resets trance states. Not derived from rules.",

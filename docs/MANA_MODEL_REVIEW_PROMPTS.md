@@ -125,3 +125,83 @@ Looking for feedback on psychological validity and whether this model would prod
    - Better decay rate suggestions based on psychology literature
    - Alternative models (flow states, therapeutic protocols, etc.)
    - Blind spots in the consumption/requirements logic
+
+---
+
+## Prompt C: Full Semantics Review (After A+B Pass)
+
+Use this after Prompts A and B have been accepted. This prompt includes the full JSON schema and asks for detailed semantic analysis of each state.
+
+```
+Thanks for the feedback on the mana model. I've incorporated suggestions and want a full semantic review of each state variable.
+
+Below is my updated JSON schema and markdown documentation. For each state, I need you to validate or critique:
+
+1. **What it means to PRODUCE this state** - What is happening to the listener when this increases?
+2. **What it means to CONSUME this state** - What depletes it? Is consumption even the right model?
+3. **What maxed out (100) feels like** - The phenomenology of peak state
+4. **What zero (0) feels like** - The baseline/absence
+5. **What modules should produce this** - Does my current mapping make sense?
+6. **Interactions with other states** - Dependencies, conflicts, prerequisites
+
+Context: This is for erotic hypnosis audio sequencing. The model gates advanced content behind foundation states and ensures sessions flow properly (openers → deepening → content → wakener).
+
+## Current State Taxonomy (v2.5)
+
+**METABOLICALLY EXPENSIVE (fast decay, 1.0-1.5/min)**
+- `absorption` (1.5): Depth of engagement, trance depth
+- `dissociated` (1.5): Ego dissolution, "gone" state, blackout
+- `empty` (1.0): Mental quietness, blank slate
+- `aroused` (1.5): Sexual activation
+
+**PSYCHOLOGICAL (medium decay, 0.4-0.8/min)**
+- `suggestible` (0.5): Accepting suggestions as true
+- `craving` (0.8): Wanting more, dependency activated
+- `identity_flux` (0.4): Self-concept becoming malleable
+
+**RELATIONAL (slow decay, 0.3/min)**
+- `receptive`: Barriers lowered, open to input
+- `obedient`: Readiness to follow commands
+- `submissive`: Power differential accepted
+
+**FOUNDATION (slowest decay, 0.2/min)**
+- `devoted`: Emotional attachment to authority
+- `safety`: Perceived safety, "this feels okay" (puncture-prone)
+
+## Key Design Decisions to Validate
+
+1. **empty vs dissociated split**: `empty` is "quiet mind, still present" (prerequisite). `dissociated` is "gone, ego dissolution" (outcome). Modules like `blank` produce `empty`; modules like `bambi_blackout`/`bimbo`/`dumbdown` produce `dissociated`.
+
+2. **safety as foundation**: Slow decay but can collapse instantly on violation. Openers produce it. Without safety, deep work can't happen.
+
+3. **craving kept as-is**: Despite "craving implies compulsion" feedback, this is intentional for erotic hypnosis - users seek the dependency fantasy.
+
+4. **D/s states kept**: `obedient`/`submissive`/`devoted` are intentional, not collapsed into "trust+agency" because users want the explicit power exchange framing.
+
+## Questions
+
+1. For each state: Is my semantic definition correct? What am I missing about the phenomenology?
+
+2. Are there states I should add? (Previous feedback suggested `reactance` as inverse state, `tension` as somatic state)
+
+3. Are any states redundant? (e.g., is `receptive` vs `suggestible` a meaningful distinction in practice?)
+
+4. Does the decay hierarchy make sense? Fast-decay states need constant reinforcement; slow-decay states accumulate over time.
+
+5. For identity work (`bimbo`, `dumbdown`): Is "requires empty, produces dissociated + identity_flux" the right model?
+
+---
+
+[PASTE playlist_mana.json HERE]
+
+---
+
+[PASTE MANA_MODEL_ANALYSIS.md "Part 1: State Semantics" section HERE]
+```
+
+### Usage Notes for Prompt C
+
+1. Replace the bracketed sections with actual file contents
+2. This is a long prompt - GPT Pro handles it fine, but expect a detailed response
+3. The goal is getting full prescriptive semantics for each state so the model is self-documenting
+4. May trigger some hedging on bimbo/identity content - focus on the structural feedback

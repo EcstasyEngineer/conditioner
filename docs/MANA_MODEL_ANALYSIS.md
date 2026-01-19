@@ -114,7 +114,68 @@ For each stat, what does it mean to produce it, consume it, and max it out?
 - Thoughts competing with audio
 - "I keep thinking about..."
 
-**Note**: Empty is special - it's required for identity transformation because you can't install a new self over an active old self.
+**Note**: Empty is special - it's the prerequisite for identity transformation. You can't install a new self over an active old self. Empty is "quiet mind, still present" - the deeper "gone" state is `dissociated`.
+
+---
+
+### dissociated
+
+**Description**: Ego dissolution, the "gone" state
+
+**Producing dissociated** (+):
+- Sense of self fading
+- Time distortion, memory gaps forming
+- "Where did I go?" feeling
+- The blackout reward state
+
+**Consuming dissociated** (-):
+- Grounding, returning to self
+- Wakener does this intentionally
+- Any stimulus that pulls you back
+
+**Maxed out (100)**:
+- Complete ego dissolution
+- No sense of self or time
+- Memory gaps likely
+- The "I was completely gone" experience
+
+**At zero (0)**:
+- Normal self-awareness
+- Clear sense of identity
+- Time perception intact
+
+**Note**: Dissociated is the *outcome* of deep identity work. Empty (quiet mind) is the prerequisite; dissociated (gone) is what modules like bimbo/dumbdown/bambi_blackout produce. This is *not* pathological dissociation - it's the deliberately sought altered state.
+
+---
+
+### safety
+
+**Description**: Perceived safety, "this feels okay"
+
+**Producing safety** (+):
+- Feeling secure in the experience
+- Trust that boundaries will be respected
+- "I'm in good hands" sensation
+- Consent feeling honored
+
+**Consuming safety** (-):
+- Boundary violations
+- Jarring content transitions
+- Anything that breaks trust
+
+**Maxed out (100)**:
+- Complete felt safety
+- Deep trust in the experience
+- Can surrender fully because safe
+- Prerequisite for deep work
+
+**At zero (0)**:
+- On guard, defensive
+- "Something feels off"
+- Can't go deep because unsafe
+- May need to stop
+
+**Note**: Safety is puncture-prone. It decays slowly (0.2/min) but can collapse instantly if something feels wrong. Openers produce safety; violations destroy it. Safety is a prerequisite for everything deep - without it, other states can't build properly.
 
 ---
 
@@ -290,6 +351,7 @@ Current decay rates per minute:
 |------|-------|----------|-----------|
 | aroused | 1.5 | Fast | Physiological - body can't maintain indefinitely |
 | absorption | 1.5 | Fast | Attention is metabolically expensive |
+| dissociated | 1.5 | Fast | Ego dissolution is fragile, easily grounded |
 | empty | 1.0 | Fast | Thoughts naturally return |
 | craving | 0.8 | Medium-Fast | Desire fades without reinforcement |
 | suggestible | 0.5 | Medium | Belief acceptance fades to normal |
@@ -298,6 +360,7 @@ Current decay rates per minute:
 | obedient | 0.3 | Slow | Compliance patterns persist |
 | submissive | 0.3 | Slow | Power dynamic persists |
 | devoted | 0.2 | Slowest | Emotional bonds are sticky |
+| safety | 0.2 | Slowest | Trust persists (but puncture-prone) |
 
 ### Decay Hierarchy
 
@@ -305,6 +368,7 @@ Current decay rates per minute:
 METABOLICALLY EXPENSIVE (fastest decay, 1.5/min)
 ├── aroused (1.5) - body can't maintain arousal indefinitely
 ├── absorption (1.5) - attention requires constant effort
+├── dissociated (1.5) - ego dissolution is fragile
 └── empty (1.0) - thoughts naturally return
 
 PSYCHOLOGICAL STATES (medium decay)
@@ -317,8 +381,9 @@ RELATIONAL STATES (slow decay, 0.3/min)
 ├── obedient - compliance patterns persist
 └── submissive - power dynamic persists
 
-EMOTIONAL BONDS (slowest decay, 0.2/min)
-└── devoted - love/attachment is sticky
+EMOTIONAL BONDS / FOUNDATION (slowest decay, 0.2/min)
+├── devoted - love/attachment is sticky
+└── safety - trust persists (but puncture-prone)
 ```
 
 **Key insight**: Absorption was moved from medium (0.5) to fast (1.5) decay because:
