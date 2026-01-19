@@ -391,6 +391,9 @@ def deliver_mantra(config: Dict, available_themes: Dict) -> Optional[Dict]:
     # current_mantra will be overwritten when we schedule next encounter
     config["delivered_mantra"] = mantra.copy()
 
+    # Copy voice boost flag to delivered mantra (cleared from config)
+    config["delivered_mantra"]["voice_boosted"] = config.pop("voice_boost_requested", False)
+
     # Schedule next encounter (immediately, so deadline is set)
     learner = get_learner(config)
     schedule_next_encounter(config, available_themes, learner)
@@ -517,9 +520,19 @@ def handle_mantra_response(
         }
 
     # Response is correct!
+    # Check if this was a voice-boosted mantra (reduced points, skip learning)
+    voice_boosted = delivered_mantra.get("voice_boosted", False)
+
     base_points = delivered_mantra["base_points"]
     speed_bonus = calculate_speed_bonus(response_time_seconds)
     public_bonus = 50 if was_public else 0
+
+    # Apply 25% multiplier for voice-boosted mantras
+    if voice_boosted:
+        base_points = int(base_points * 0.25)
+        speed_bonus = int(speed_bonus * 0.25)
+        public_bonus = int(public_bonus * 0.25)
+
     total_points = base_points + speed_bonus + public_bonus
 
     # Log successful encounter
@@ -536,55 +549,61 @@ def handle_mantra_response(
         "public_bonus": public_bonus,
         "completed": True,
         "response_time": response_time_seconds,
-        "was_public": was_public
+        "was_public": was_public,
+        "voice_boosted": voice_boosted
     }
     # Note: user_id will be added by caller
 
-    # Update learner (success)
-    # Use response time, not send time, to learn when user is actually available
-    learner = get_learner(config)
-    response_time = datetime.now()
-    sent_time = datetime.fromisoformat(config["sent"])
+    # Skip learning updates for voice-boosted mantras
+    # (prevents artificial session from polluting availability distribution)
+    if voice_boosted:
+        learner = get_learner(config)
+    else:
+        # Update learner (success)
+        # Use response time, not send time, to learn when user is actually available
+        learner = get_learner(config)
+        response_time = datetime.now()
+        sent_time = datetime.fromisoformat(config["sent"])
 
-    # Positive update for response hour
-    learner.update(response_time, success=True)
+        # Positive update for response hour
+        learner.update(response_time, success=True)
 
-    # Penalize all missed hours between sent and response
-    # This is the key improvement: we learn from ALL the hours where user didn't respond
-    current_hour = sent_time.replace(minute=0, second=0, microsecond=0)
-    response_hour_rounded = response_time.replace(minute=0, second=0, microsecond=0)
+        # Penalize all missed hours between sent and response
+        # This is the key improvement: we learn from ALL the hours where user didn't respond
+        current_hour = sent_time.replace(minute=0, second=0, microsecond=0)
+        response_hour_rounded = response_time.replace(minute=0, second=0, microsecond=0)
 
-    while current_hour < response_hour_rounded:
-        hour_to_penalize = current_hour.hour
+        while current_hour < response_hour_rounded:
+            hour_to_penalize = current_hour.hour
 
-        # Don't double-penalize the response hour
-        if hour_to_penalize != response_time.hour:
-            # Get current probability for this hour
-            expected = learner.distribution[hour_to_penalize]
+            # Don't double-penalize the response hour
+            if hour_to_penalize != response_time.hour:
+                # Get current probability for this hour
+                expected = learner.distribution[hour_to_penalize]
 
-            # Weighted penalty (proportional to current probability)
-            # Higher probability hours get bigger penalty (they were "wrong")
-            weight = expected
-            actual = 0.0  # They didn't respond during this hour
-            error = actual - expected
-            delta = MISSED_PENALTY_RATE * error * weight
+                # Weighted penalty (proportional to current probability)
+                # Higher probability hours get bigger penalty (they were "wrong")
+                weight = expected
+                actual = 0.0  # They didn't respond during this hour
+                error = actual - expected
+                delta = MISSED_PENALTY_RATE * error * weight
 
-            new_value = learner.distribution[hour_to_penalize] + delta
-            learner.distribution[hour_to_penalize] = max(
-                learner.floor,
-                min(learner.ceil, new_value)
-            )
+                new_value = learner.distribution[hour_to_penalize] + delta
+                learner.distribution[hour_to_penalize] = max(
+                    learner.floor,
+                    min(learner.ceil, new_value)
+                )
 
-        current_hour += timedelta(hours=1)
+            current_hour += timedelta(hours=1)
 
-    save_learner(config, learner)
+        save_learner(config, learner)
 
-    # Adjust frequency (increase)
-    config["frequency"] = adjust_frequency(
-        config["frequency"],
-        success=True,
-        response_time_seconds=response_time_seconds
-    )
+        # Adjust frequency (increase)
+        config["frequency"] = adjust_frequency(
+            config["frequency"],
+            success=True,
+            response_time_seconds=response_time_seconds
+        )
 
     # Reset consecutive failures
     config["consecutive_failures"] = 0
@@ -601,5 +620,6 @@ def handle_mantra_response(
         "base_points": base_points,
         "speed_bonus": speed_bonus,
         "public_bonus": public_bonus,
-        "encounter": encounter
+        "encounter": encounter,
+        "voice_boosted": voice_boosted
     }
