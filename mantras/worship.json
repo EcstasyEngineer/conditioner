@@ -90,6 +90,10 @@
       "base_points": 80
     },
     {
+      "text": "{controller} knows what's best",
+      "base_points": 80
+    },
+    {
       "text": "{subject} exists to glorify {controller}",
       "base_points": 90
     },

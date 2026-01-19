@@ -133,13 +133,43 @@ Overused AI writing patterns that sound fake:
 - ❌ Purple prose: "The gossamer threads of consciousness dissolve into the ethereal void"
 - ✅ Simple, direct, visceral: "My thoughts stop." / "I go quiet inside."
 
-## Placeholders
+## Placeholders and Scoring
 
 - `{subject}` - The user's chosen name/role (puppet, drone, pet, etc.)
 - `{controller}` - The authority figure (Master, Mistress, Owner, etc.)
-- `{controller}` adds +20 to intensity; both together adds +30
 
-**Don't overuse**: Not every mantra needs placeholders. Some hit harder as universal statements.
+### Point Modifiers
+
+| Element | Modifier | Rationale |
+|---------|----------|-----------|
+| First person only ("My", "I") | base | Direct ownership, minimal dissociation |
+| Named self (`{subject}`) | +15 | Dissociation, role reinforcement |
+| Controller reference (`{controller}`) | +20 | External authority, power dynamic |
+| Both placeholders | +30 | Full dissociation + authority (not additive) |
+
+### The Dual Voice Rule
+
+**Write both versions** when a mantra concept works in both first person and named self:
+
+| First Person (base) | Named Self (+15) |
+|---------------------|------------------|
+| "My mind is empty" | "{subject}'s mind is empty" |
+| "I crave obedience" | "{subject} craves obedience" |
+| "My thoughts belong to {controller}" | "{subject}'s thoughts belong to {controller}" |
+
+This approach:
+- Eliminates ambiguity about which voice to use
+- Gives users variety (future: preference toggle)
+- Provides clear scoring differentiation
+
+**Exception - Drone theme**: Drone uses "it/its" pronouns and fragmented grammar as a core identity marker. Drone mantras should NOT have first-person variants.
+
+### When NOT to duplicate
+
+Some mantras only work in one voice:
+- Pure confessions ("I surrender completely") - first person only
+- Process descriptions ("The brainwashing deepens") - impersonal only
+- Drone's mechanical voice ("{subject} awaits input") - named self only
 
 ## Voice Frames
 

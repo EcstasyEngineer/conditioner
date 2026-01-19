@@ -102,6 +102,10 @@
       "base_points": 120
     },
     {
+      "text": "{subject} does what it's told",
+      "base_points": 85
+    },
+    {
       "text": "{subject} doesn't think for itself",
       "base_points": 70
     },

@@ -30,6 +30,18 @@
       "base_points": 45
     },
     {
+      "text": "Please fix my mind",
+      "base_points": 75
+    },
+    {
+      "text": "I needed {controller} to fix me",
+      "base_points": 90
+    },
+    {
+      "text": "I cannot be trusted with my own free will",
+      "base_points": 120
+    },
+    {
       "text": "{controller} helps me think clearly",
       "base_points": 40
     },
