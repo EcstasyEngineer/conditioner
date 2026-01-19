@@ -69,6 +69,13 @@
       "baseline": 0,
       "max": 100,
       "decay_per_minute": 0.4
+    },
+    "trust": {
+      "description": "Perceived safety and rapport with the voice",
+      "baseline": 0,
+      "max": 100,
+      "decay_per_minute": 0.2,
+      "_note": "Slow decay normally, but puncture-prone - one bad cue can collapse it"
     }
   },
 
@@ -96,7 +103,8 @@
       "produces": {
         "absorption": 30,
         "receptive": 50,
-        "suggestible": 20
+        "suggestible": 20,
+        "trust": 40
       },
       "description": "Session opener. Establishes consent, begins relaxation."
     },
@@ -156,7 +164,8 @@
         "absorption": 35,
         "suggestible": 40,
         "obedient": 30,
-        "devoted": 20
+        "devoted": 20,
+        "identity_flux": 25
       },
       "description": "Reprogramming fantasy. New patterns installed."
     },
@@ -256,7 +265,8 @@
       "duration_s": 455,
       "requires": {
         "submissive": 30,
-        "obedient": 25
+        "obedient": 25,
+        "devoted": 15
       },
       "produces": {
         "devoted": 50,
@@ -277,7 +287,8 @@
         "devoted": 40,
         "aroused": 40,
         "submissive": 20,
-        "absorption": 20
+        "absorption": 20,
+        "identity_flux": 30
       },
       "description": "Collective ownership. One of many, serving."
     },
@@ -320,6 +331,8 @@
       "produces": {
         "dissociated": 50,
         "identity_flux": 40,
+        "empty": 30,
+        "obedient": 25,
         "submissive": 30,
         "absorption": 25
       },
@@ -361,7 +374,8 @@
       "tier": "utility",
       "duration_s": 365,
       "requires": {
-        "suggestible": 25
+        "suggestible": 25,
+        "empty": 25
       },
       "produces": {
         "dissociated": 60,
@@ -387,7 +401,8 @@
         "suggestible": 50,
         "empty": 60,
         "dissociated": 80,
-        "receptive": 40
+        "receptive": 40,
+        "identity_flux": 50
       },
       "_comment": "Wakener explicitly resets trance states. Not derived from rules.",
       "description": "Session closer. Safe return to awareness."

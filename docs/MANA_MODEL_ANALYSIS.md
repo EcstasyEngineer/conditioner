@@ -146,6 +146,13 @@ For each stat, what does it mean to produce it, consume it, and max it out?
 
 **Note**: Dissociated is the *outcome* of deep identity work. Empty (quiet mind) is the prerequisite; dissociated (gone) is what modules like bimbo/dumbdown/bambi_blackout produce. This is *not* pathological dissociation - it's the deliberately sought altered state.
 
+**Implementation Note - Wakener Variants**: Sessions producing high dissociation (60+) may need different wakener handling than light sessions. Consider:
+- **Light wakener**: For sessions ending with dissociated < 30 (standard return)
+- **Full wakener**: For sessions ending with dissociated 30-60 (extended grounding)
+- **Deep wakener**: For sessions ending with dissociated > 60 (heavy grounding, longer count-up, explicit reality checks)
+
+The playlist generator could select wakener variant based on predicted end-state dissociation level, or wakener duration could scale dynamically with accumulated dissociation.
+
 ---
 
 ### obedient
@@ -283,6 +290,37 @@ For each stat, what does it mean to produce it, consume it, and max it out?
 
 ---
 
+### trust
+
+**Description**: Perceived safety and rapport with the voice
+
+**Producing trust** (+):
+- Feeling safe with the content
+- Voice rapport building
+- "This is okay, I'm in good hands"
+- Consent acknowledgment landing
+
+**Consuming trust** (-):
+- Pushing boundaries uses up trust
+- Intense content "spends" safety margin
+- Each escalation costs some trust
+
+**Maxed out (100)**:
+- Complete safety
+- Will follow anywhere
+- No hesitation about content
+- Foundation for all deep work
+
+**At zero (0)**:
+- Guarded, unsafe feeling
+- Content won't land
+- May exit session
+- Deep work is blocked
+
+**Note**: Trust is puncture-prone - it decays slowly normally (0.2/min) but can collapse instantly on a bad cue, tone mismatch, or boundary violation. One wrong note can destroy an hour of trust-building.
+
+---
+
 ### identity_flux
 
 **Description**: Sense of self is malleable
@@ -308,6 +346,16 @@ For each stat, what does it mean to produce it, consume it, and max it out?
 - Identity work won't land
 
 **Note**: This is the output of bimbo/dumbdown/feminine - they transform suggestibility into identity change.
+
+**Identity Flux as Session Cap**: High identity_flux represents accumulated identity work that needs to "settle." Consider using identity_flux as a soft cap on how much more identity transformation can happen in one session - diminishing returns as the mind saturates.
+
+**What Resets identity_flux**:
+- **Wakener** (explicit_consumption: 50) - grounding back to "you are you"
+- **Decay** (0.4/min) - self-concept naturally re-stabilizes
+- **Time between sessions** - most effective reset
+- **Potentially intro** could reduce it if we add "re-establishing baseline self" as an effect
+
+**Marathon Session Concern**: A 2-hour session could accumulate identity_flux to very high levels. The wakener only consumes 50, so someone could leave with 40+ identity_flux remaining. This might be intentional (persistent effects) or might warrant a heavier consumption rule for extended sessions.
 
 ---
 
@@ -378,6 +426,7 @@ Current decay rates per minute:
 | obedient | 0.3 | Slow | Compliance patterns persist |
 | submissive | 0.3 | Slow | Power dynamic persists |
 | devoted | 0.2 | Slowest | Emotional bonds are sticky |
+| trust | 0.2 | Slowest | Safety persists (but puncture-prone) |
 
 ### Decay Hierarchy
 
@@ -399,7 +448,8 @@ RELATIONAL STATES (slow decay, 0.3/min)
 └── submissive - power dynamic persists
 
 EMOTIONAL BONDS (slowest decay, 0.2/min)
-└── devoted - love/attachment is sticky
+├── devoted - love/attachment is sticky
+└── trust - safety/rapport persists (but puncture-prone)
 ```
 
 **Key insight**: Absorption was moved from medium (0.5) to fast (1.5) decay because:
@@ -810,3 +860,4 @@ Given a script that:
 | obedient | 0.3 | Command-following readiness |
 | submissive | 0.3 | Power differential accepted |
 | devoted | 0.2 | Emotional attachment |
+| trust | 0.2 | Perceived safety and rapport |
