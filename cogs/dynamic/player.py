@@ -18,7 +18,6 @@ The 45s cooldown only applies to mid-operation zombie recovery, not startup.
 
 import asyncio
 import random
-from datetime import datetime, timedelta
 from pathlib import Path
 
 import discord
@@ -34,11 +33,6 @@ HEALTH_CHECK_INTERVAL = 30  # Seconds between zombie checks
 KEEPALIVE_INTERVAL = 60  # Seconds between silence packets
 KEEPALIVE_ENABLED = True
 
-# Voice boost configuration
-VOICE_BOOST_MIN_DELAY = 30       # Minimum seconds before boosted mantra fires
-VOICE_BOOST_MAX_DELAY = 240      # Maximum seconds (4 min) - also the guard threshold
-VOICE_BOOST_THRESHOLD = 300      # Seconds in channel before boosting starts (5 min)
-
 # Opus-encoded silence frame - prevents Discord from considering connection idle
 OPUS_SILENCE = b'\xf8\xff\xfe'
 
@@ -51,7 +45,6 @@ class AmbientPlayer(commands.Cog):
         self.logger = bot.logger
         self.media_dir = Path("media")
         self._recovering: set[int] = set()  # Guild IDs currently in recovery
-        self._voice_join_times: dict[int, datetime] = {}  # user_id -> join time
 
     # === Lifecycle ===
 
@@ -188,49 +181,6 @@ class AmbientPlayer(commands.Cog):
 
         vc.play(source, after=after)
 
-    # === Voice Boost ===
-
-    def _try_voice_boost(self, member: discord.Member) -> None:
-        """
-        Try to boost mantra delivery for a user in the ambient channel.
-        Sets next_delivery to soon if conditions are met.
-        """
-        # Get mantra config
-        config = self.bot.config.get_user(member, 'mantra_system', {})
-
-        # Skip if not enrolled
-        if not config.get("enrolled"):
-            return
-
-        # Skip if mantra already pending (sent is not None)
-        if config.get("sent") is not None:
-            return
-
-        # Skip if next_delivery already within max delay window
-        next_delivery_str = config.get("next_delivery")
-        if next_delivery_str:
-            try:
-                next_delivery = datetime.fromisoformat(next_delivery_str)
-                if next_delivery <= datetime.now() + timedelta(seconds=VOICE_BOOST_MAX_DELAY):
-                    return
-            except (ValueError, TypeError):
-                pass
-
-        # Check join duration (need threshold time in channel)
-        join_time = self._voice_join_times.get(member.id)
-        if join_time is None:
-            return
-        if (datetime.now() - join_time).total_seconds() < VOICE_BOOST_THRESHOLD:
-            return
-
-        # All checks passed - boost the delivery
-        delay_seconds = random.randint(VOICE_BOOST_MIN_DELAY, VOICE_BOOST_MAX_DELAY)
-        config["next_delivery"] = (datetime.now() + timedelta(seconds=delay_seconds)).isoformat()
-        config["voice_boost_requested"] = True
-        self.bot.config.set_user(member, 'mantra_system', config)
-
-        self.logger.info(f"[VOICE BOOST] Triggered for {member.name}, delivery in {delay_seconds}s")
-
     # === Background Tasks ===
 
     @tasks.loop(minutes=1)
@@ -246,9 +196,6 @@ class AmbientPlayer(commands.Cog):
                 if member.voice and (member.voice.deaf or member.voice.self_deaf):
                     continue
                 add_points(self.bot, member, POINTS_PER_MINUTE)
-
-                # Voice boost: accelerate mantra delivery for users in trance
-                self._try_voice_boost(member)
 
     @listening_reward_loop.before_loop
     async def before_listening_reward_loop(self):
@@ -326,23 +273,13 @@ class AmbientPlayer(commands.Cog):
         if vc.channel.id != ambient_id:
             return
 
-        # Someone joined ambient channel
+        # Someone joined - start playing
         if after.channel and after.channel.id == ambient_id:
-            if not member.bot:
-                # Track join time for voice boost
-                if not before.channel or before.channel.id != ambient_id:
-                    self._voice_join_times[member.id] = datetime.now()
-                # Start playing if not already
-                if not vc.is_playing():
-                    self._play(guild)
+            if not member.bot and not vc.is_playing():
+                self._play(guild)
 
-        # Someone left ambient channel
+        # Someone left - stop if empty
         if before.channel and before.channel.id == ambient_id:
-            if not member.bot:
-                # Clear join time tracking
-                if not after.channel or after.channel.id != ambient_id:
-                    self._voice_join_times.pop(member.id, None)
-            # Stop if empty
             if not self._is_occupied(vc.channel) and vc.is_playing():
                 vc.stop()
 
