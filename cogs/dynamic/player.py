@@ -1,32 +1,19 @@
 """
-Ambient audio player - plays playlists in a voice channel with listening rewards.
-
-Playlist System:
-----------------
-Plays a sequence of audio modules based on a transition compatibility matrix.
-When playlist completes and users are still present, plays an intermission
-file then restarts.
+Ambient audio player - plays shuffled playlist in a voice channel with listening rewards.
 
 State Machine:
-    IDLE → user joins → PLAYING
-    PLAYING → track ends → next track or INTERMISSION
-    INTERMISSION → ends → PLAYING (restart playlist)
+    IDLE → user joins → WELCOME (if configured) or PLAYING
+    WELCOME → track ends → PLAYING (random track)
+    PLAYING → track ends → PLAYING (next random track)
     Any state → channel empty → IDLE
 
-Zombie Recovery Strategy:
--------------------------
-Discord can drop idle voice connections after 3-5 hours (1006 close code), leaving
-discord.py in a "zombie" state where voice_client exists but isn't connected.
-
-We handle this with:
-1. On any connect attempt: check for zombie first, clean it up immediately
-2. Health check loop: detects zombies and triggers recovery with 45s cooldown
-3. Keepalive packets: when enabled, sends silence to prevent Discord from
-   considering the connection idle
+Zombie Recovery:
+    Discord drops idle connections after 3-5 hours (1006 close code).
+    Health check loop detects zombies and recovers with 45s cooldown.
+    Keepalive packets prevent Discord from considering connection idle.
 """
 
 import asyncio
-import json
 import random
 from enum import Enum, auto
 from pathlib import Path
@@ -47,15 +34,13 @@ KEEPALIVE_ENABLED = True
 
 OPUS_SILENCE = b'\xf8\xff\xfe'
 
-# Default files
-DEFAULT_INTERMISSION = "bambi_intermission.mp3"
 
 
 class PlayerState(Enum):
     """State machine states for the playlist player."""
     IDLE = auto()
+    WELCOME = auto()
     PLAYING = auto()
-    INTERMISSION = auto()
 
 
 class GuildPlayer:
@@ -64,31 +49,20 @@ class GuildPlayer:
     def __init__(self):
         self.state: PlayerState = PlayerState.IDLE
         self.playlist: list[str] = []
-        self.current_index: int = 0
-        self.loop_count: int = 0
+        self.current_track: Optional[str] = None
 
     def reset(self):
         """Reset to idle state."""
         self.state = PlayerState.IDLE
         self.playlist = []
-        self.current_index = 0
-        self.loop_count = 0
+        self.current_track = None
 
-    def current_track(self) -> Optional[str]:
-        """Get current track filename, or None if playlist empty/exhausted."""
-        if not self.playlist or self.current_index >= len(self.playlist):
+    def pick_random(self) -> Optional[str]:
+        """Pick a random track from playlist."""
+        if not self.playlist:
             return None
-        return self.playlist[self.current_index]
-
-    def advance(self) -> bool:
-        """Advance to next track. Returns True if more tracks remain."""
-        self.current_index += 1
-        return self.current_index < len(self.playlist)
-
-    def restart(self):
-        """Restart playlist from beginning."""
-        self.current_index = 0
-        self.loop_count += 1
+        self.current_track = random.choice(self.playlist)
+        return self.current_track
 
 
 class AmbientPlayer(commands.Cog):
@@ -98,48 +72,14 @@ class AmbientPlayer(commands.Cog):
         self.bot = bot
         self.logger = bot.logger
         self.media_dir = Path("media")
-        self.data_dir = Path("data")
         self._recovering: set[int] = set()
         self._players: dict[int, GuildPlayer] = {}  # guild_id -> GuildPlayer
-        self._transitions: dict = {}
-        self._load_transitions()
 
     def _get_player(self, guild_id: int) -> GuildPlayer:
         """Get or create player state for a guild."""
         if guild_id not in self._players:
             self._players[guild_id] = GuildPlayer()
         return self._players[guild_id]
-
-    def _load_transitions(self):
-        """Load transition matrix from JSON."""
-        path = self.data_dir / "playlist_transitions.json"
-        if path.exists():
-            try:
-                with open(path) as f:
-                    self._transitions = json.load(f)
-                self.logger.info("[PLAYER] Loaded transition matrix")
-            except Exception as e:
-                self.logger.error(f"[PLAYER] Failed to load transitions: {e}")
-                self._transitions = {}
-        else:
-            self.logger.warning("[PLAYER] No transition matrix found")
-            self._transitions = {}
-
-    def _get_transition_weight(self, from_track: str, to_track: str) -> float:
-        """Get transition weight between two tracks."""
-        # Strip extension for lookup
-        from_name = Path(from_track).stem.lower()
-        to_name = Path(to_track).stem.lower()
-
-        transitions = self._transitions.get("transitions", {})
-        from_data = transitions.get(from_name, {})
-
-        # Check explicit weight first
-        if to_name in from_data:
-            return from_data[to_name]
-
-        # Fall back to default
-        return from_data.get("_default", 0.5)
 
     # === Lifecycle ===
 
@@ -160,38 +100,6 @@ class AmbientPlayer(commands.Cog):
         for guild in self.bot.guilds:
             await self._disconnect(guild)
 
-    # === Logging Helpers ===
-
-    async def _get_log_channel(self, guild: discord.Guild) -> Optional[discord.TextChannel]:
-        """Get channel for sending warnings. Tries log channel, then voice channel's text."""
-        # Try configured/named log channel
-        log_channel = discord.utils.get(guild.text_channels, name="log")
-        if log_channel and log_channel.permissions_for(guild.me).send_messages:
-            return log_channel
-
-        # Try text channel associated with voice channel
-        channel_id = self.bot.config.get(guild.id, "ambient_channel_id")
-        if channel_id:
-            voice_channel = guild.get_channel(channel_id)
-            if voice_channel and hasattr(voice_channel, 'guild'):
-                # Look for text channel with same name or matching voice channel
-                for tc in guild.text_channels:
-                    if tc.name.lower() == voice_channel.name.lower():
-                        if tc.permissions_for(guild.me).send_messages:
-                            return tc
-
-        return None
-
-    async def _warn_not_configured(self, guild: discord.Guild):
-        """Send warning that playlist is not configured."""
-        channel = await self._get_log_channel(guild)
-        if channel:
-            await channel.send(
-                "**Ambient player not configured.** "
-                "Use `!loop setup` to configure the playlist system."
-            )
-        else:
-            self.logger.warning(f"[PLAYER] {guild.name}: Not configured, no channel to warn")
 
     # === Voice Connection Management ===
 
@@ -211,7 +119,6 @@ class AmbientPlayer(commands.Cog):
         # Check if playlist is configured
         playlist = self.bot.config.get(guild.id, "ambient_playlist", [])
         if not playlist:
-            await self._warn_not_configured(guild)
             return False
 
         # Clean up zombie if present
@@ -279,7 +186,7 @@ class AmbientPlayer(commands.Cog):
 
     # === Playlist Management ===
 
-    def _get_available_modules(self) -> list[str]:
+    def _get_available_files(self) -> list[str]:
         """Get list of available audio files."""
         audio_extensions = {".mp3", ".wav", ".ogg", ".m4a", ".flac", ".opus"}
         files = []
@@ -288,51 +195,83 @@ class AmbientPlayer(commands.Cog):
                 files.append(f.name)
         return files
 
-    def _generate_playlist(self, guild_id: int) -> list[str]:
-        """Generate a playlist based on available modules and transition weights."""
+    def _match_file(self, name: str) -> Optional[str]:
+        """Match a filename with or without extension. Returns matched filename or None."""
+        for available in self._get_available_files():
+            if available.lower() == name.lower() or available.lower().startswith(name.lower() + "."):
+                return available
+        return None
+
+    def _validate_file_list(self, files: tuple[str, ...]) -> tuple[list[str], list[str]]:
+        """Validate a list of filenames. Returns (valid_files, missing_files)."""
+        valid = []
+        missing = []
+        for f in files:
+            matched = self._match_file(f)
+            if matched:
+                valid.append(matched)
+            else:
+                missing.append(f)
+        return valid, missing
+
+    def _create_audio_source(self, filepath: Path) -> discord.AudioSource:
+        """Create appropriate audio source for file type."""
+        if filepath.suffix.lower() in {".opus", ".ogg"}:
+            return discord.FFmpegOpusAudio(str(filepath), codec="copy")
+        return discord.FFmpegPCMAudio(str(filepath))
+
+    def _get_validated_playlist(self, guild_id: int) -> list[str]:
+        """Get playlist with validated file paths."""
         configured = self.bot.config.get(guild_id, "ambient_playlist", [])
+        if not configured:
+            return []
 
-        # If explicit playlist configured, validate and use it
-        if configured:
-            valid = []
-            for f in configured:
-                if (self.media_dir / f).exists():
-                    valid.append(f)
-                else:
-                    self.logger.warning(f"[PLAYER] Configured file not found: {f}")
-            return valid
-
-        # Otherwise return empty (not configured)
-        return []
+        valid = []
+        for f in configured:
+            if (self.media_dir / f).exists():
+                valid.append(f)
+            else:
+                self.logger.warning(f"[PLAYER] Configured file not found: {f}")
+        return valid
 
     async def _start_playlist(self, guild: discord.Guild):
-        """Start playing the playlist from the beginning."""
+        """Start playing - welcome track first if configured, then random shuffle."""
         player = self._get_player(guild.id)
 
-        playlist = self._generate_playlist(guild.id)
+        playlist = self._get_validated_playlist(guild.id)
         if not playlist:
-            await self._warn_not_configured(guild)
             player.reset()
             return
 
-        player.playlist = playlist
-        player.current_index = 0
-        player.state = PlayerState.PLAYING
+        # Set IDLE before stopping so after_callback does nothing
+        vc = guild.voice_client
+        if vc and vc.is_playing():
+            player.state = PlayerState.IDLE
+            vc.stop()
 
-        self.logger.info(f"[PLAYER] Starting playlist in {guild.name}: {playlist}")
+        player.playlist = playlist
+
+        # Check for welcome track
+        welcome = self.bot.config.get(guild.id, "ambient_welcome")
+        if welcome and (self.media_dir / welcome).exists():
+            player.state = PlayerState.WELCOME
+            player.current_track = welcome
+            self.logger.info(f"[PLAYER] Playing welcome in {guild.name}: {welcome}")
+        else:
+            player.state = PlayerState.PLAYING
+            player.pick_random()
+            self.logger.info(f"[PLAYER] Starting shuffle in {guild.name}: {playlist}")
+
         self._play_current(guild)
 
     def _play_current(self, guild: discord.Guild):
-        """Play the current track in the playlist."""
+        """Play the current track."""
         vc = guild.voice_client
         if not vc or not vc.is_connected():
             return
 
-        if vc.is_playing():
-            vc.stop()
-
         player = self._get_player(guild.id)
-        track = player.current_track()
+        track = player.current_track
 
         if not track:
             self.logger.warning(f"[PLAYER] No current track in {guild.name}")
@@ -341,36 +280,27 @@ class AmbientPlayer(commands.Cog):
         filepath = self.media_dir / track
         if not filepath.exists():
             self.logger.error(f"[PLAYER] Track not found: {track}")
-            # Try to advance to next track
-            if player.advance():
+            # Pick another random track
+            if player.pick_random():
                 self._play_current(guild)
             return
 
         def after_callback(error):
             if error:
                 self.logger.error(f"[PLAYER] Playback error in {guild.name}: {error}")
-            # Schedule the callback on the event loop
-            asyncio.run_coroutine_threadsafe(
-                self._on_track_complete(guild),
-                self.bot.loop
-            )
+            asyncio.run_coroutine_threadsafe(self._on_track_complete(guild), self.bot.loop)
 
-        if filepath.suffix.lower() in {".opus", ".ogg"}:
-            source = discord.FFmpegOpusAudio(str(filepath), codec="copy")
-        else:
-            source = discord.FFmpegPCMAudio(str(filepath))
-
+        source = self._create_audio_source(filepath)
         vc.play(source, after=after_callback)
         self.logger.info(f"[PLAYER] Now playing in {guild.name}: {track}")
 
     async def _on_track_complete(self, guild: discord.Guild):
-        """Handle track completion."""
+        """Handle track completion - pick next random track."""
         vc = guild.voice_client
         if not vc or not vc.is_connected():
             return
 
         if not self._is_occupied(vc.channel):
-            # Channel empty, stop
             player = self._get_player(guild.id)
             player.reset()
             self.logger.info(f"[PLAYER] Channel empty, stopping in {guild.name}")
@@ -378,56 +308,13 @@ class AmbientPlayer(commands.Cog):
 
         player = self._get_player(guild.id)
 
-        if player.state == PlayerState.PLAYING:
-            # Try to advance to next track
-            if player.advance():
-                self._play_current(guild)
-            else:
-                # Playlist complete, play intermission
-                await self._play_intermission(guild)
-
-        elif player.state == PlayerState.INTERMISSION:
-            # Intermission complete, restart playlist
-            player.restart()
-            player.state = PlayerState.PLAYING
-            self.logger.info(f"[PLAYER] Restarting playlist (loop {player.loop_count}) in {guild.name}")
-            self._play_current(guild)
-
-    async def _play_intermission(self, guild: discord.Guild):
-        """Play the intermission file between playlist loops."""
-        player = self._get_player(guild.id)
-        player.state = PlayerState.INTERMISSION
-
-        intermission = self.bot.config.get(guild.id, "ambient_intermission", DEFAULT_INTERMISSION)
-        filepath = self.media_dir / intermission
-
-        if not filepath.exists():
-            self.logger.warning(f"[PLAYER] Intermission file not found: {intermission}")
-            # Skip intermission, restart immediately
-            player.restart()
-            player.state = PlayerState.PLAYING
-            self._play_current(guild)
+        if player.state == PlayerState.IDLE:
             return
 
-        vc = guild.voice_client
-        if not vc or not vc.is_connected():
-            return
-
-        def after_callback(error):
-            if error:
-                self.logger.error(f"[PLAYER] Intermission error in {guild.name}: {error}")
-            asyncio.run_coroutine_threadsafe(
-                self._on_track_complete(guild),
-                self.bot.loop
-            )
-
-        if filepath.suffix.lower() in {".opus", ".ogg"}:
-            source = discord.FFmpegOpusAudio(str(filepath), codec="copy")
-        else:
-            source = discord.FFmpegPCMAudio(str(filepath))
-
-        vc.play(source, after=after_callback)
-        self.logger.info(f"[PLAYER] Playing intermission in {guild.name}: {intermission}")
+        # After welcome or any track, continue with random shuffle
+        player.state = PlayerState.PLAYING
+        player.pick_random()
+        self._play_current(guild)
 
     def _is_occupied(self, channel: discord.VoiceChannel) -> bool:
         """Check if channel has non-bot members."""
@@ -476,7 +363,8 @@ class AmbientPlayer(commands.Cog):
 
             elif vc is None:
                 channel_id = self.bot.config.get(guild.id, "ambient_channel_id")
-                if channel_id and guild.get_channel(channel_id):
+                playlist = self.bot.config.get(guild.id, "ambient_playlist", [])
+                if channel_id and guild.get_channel(channel_id) and playlist:
                     self.logger.info(f"[PLAYER] Reconnecting missing voice in {guild.name}")
                     await asyncio.sleep(2.0 + random.random() * 3.0)
                     await self._connect(guild)
@@ -504,11 +392,6 @@ class AmbientPlayer(commands.Cog):
         await asyncio.sleep(10)
 
     # === Event Handlers ===
-
-    @commands.Cog.listener()
-    async def on_ready(self):
-        for guild in self.bot.guilds:
-            await self._connect(guild)
 
     @commands.Cog.listener()
     async def on_voice_state_update(self, member: discord.Member, before: discord.VoiceState, after: discord.VoiceState):
@@ -560,8 +443,7 @@ class AmbientPlayer(commands.Cog):
         Usage: !loop setup #voice-channel file1.opus file2.mp3 ...
         """
         if not files:
-            # List available files
-            available = self._get_available_modules()
+            available = self._get_available_files()
             if available:
                 file_list = "\n".join(f"  {f}" for f in sorted(available))
                 await ctx.send(f"**Available audio files:**\n{file_list}\n\nUsage: `!loop setup #channel file1 file2 ...`")
@@ -569,22 +451,7 @@ class AmbientPlayer(commands.Cog):
                 await ctx.send("No audio files in `media/` directory.")
             return
 
-        # Validate files exist
-        valid_files = []
-        missing = []
-        for f in files:
-            # Try to match with or without extension
-            matched = None
-            for available in self._get_available_modules():
-                if available.lower() == f.lower() or available.lower().startswith(f.lower() + "."):
-                    matched = available
-                    break
-
-            if matched:
-                valid_files.append(matched)
-            else:
-                missing.append(f)
-
+        valid_files, missing = self._validate_file_list(files)
         if missing:
             await ctx.send(f"Files not found: {', '.join(missing)}\n\nUse `!loop setup` to see available files.")
             return
@@ -625,19 +492,7 @@ class AmbientPlayer(commands.Cog):
             return
 
         # Set new playlist
-        valid_files = []
-        missing = []
-        for f in files:
-            matched = None
-            for available in self._get_available_modules():
-                if available.lower() == f.lower() or available.lower().startswith(f.lower() + "."):
-                    matched = available
-                    break
-            if matched:
-                valid_files.append(matched)
-            else:
-                missing.append(f)
-
+        valid_files, missing = self._validate_file_list(files)
         if missing:
             await ctx.send(f"Files not found: {', '.join(missing)}")
             return
@@ -651,33 +506,36 @@ class AmbientPlayer(commands.Cog):
 
         await ctx.send(f"Playlist updated: {' → '.join(valid_files)}")
 
-    @loop.command(name="intermission")
+    @loop.command(name="welcome")
     @commands.check(is_admin)
-    async def loop_intermission(self, ctx, filename: str = None):
-        """View or set the intermission file.
+    async def loop_welcome(self, ctx, filename: str = None):
+        """View, set, or clear the welcome track (plays once when someone joins).
 
         Usage:
-          !loop intermission              - Show current
-          !loop intermission filename.mp3 - Set new
+          !loop welcome              - Show current
+          !loop welcome filename.opus - Set welcome track
+          !loop welcome none         - Disable welcome track
         """
         if not filename:
-            current = self.bot.config.get(ctx, "ambient_intermission", DEFAULT_INTERMISSION)
-            await ctx.send(f"Intermission file: `{current}`")
+            current = self.bot.config.get(ctx, "ambient_welcome")
+            if current:
+                await ctx.send(f"Welcome track: `{current}`")
+            else:
+                await ctx.send("No welcome track configured.")
             return
 
-        # Validate file exists
-        matched = None
-        for available in self._get_available_modules():
-            if available.lower() == filename.lower() or available.lower().startswith(filename.lower() + "."):
-                matched = available
-                break
+        if filename.lower() == "none":
+            self.bot.config.set(ctx, "ambient_welcome", None)
+            await ctx.send("Welcome track disabled.")
+            return
 
+        matched = self._match_file(filename)
         if not matched:
             await ctx.send(f"File not found: `{filename}`")
             return
 
-        self.bot.config.set(ctx, "ambient_intermission", matched)
-        await ctx.send(f"Intermission set to `{matched}`")
+        self.bot.config.set(ctx, "ambient_welcome", matched)
+        await ctx.send(f"Welcome track set to `{matched}`")
 
     @loop.command(name="skip")
     @commands.check(is_admin)
@@ -756,7 +614,7 @@ class AmbientPlayer(commands.Cog):
         enabled = self.bot.config.get(ctx, "ambient_enabled", False)
         channel_id = self.bot.config.get(ctx, "ambient_channel_id")
         playlist = self.bot.config.get(ctx, "ambient_playlist", [])
-        intermission = self.bot.config.get(ctx, "ambient_intermission", DEFAULT_INTERMISSION)
+        welcome = self.bot.config.get(ctx, "ambient_welcome")
 
         channel_name = "Not set"
         if channel_id:
@@ -776,19 +634,16 @@ class AmbientPlayer(commands.Cog):
             else:
                 voice_status = "ZOMBIE"
 
-        # Current track info
-        current = player.current_track()
-        track_info = f"{current} ({player.current_index + 1}/{len(player.playlist)})" if current else "None"
+        track_info = player.current_track or "None"
 
         embed = discord.Embed(title="Ambient Player Status", color=discord.Color.blue())
         embed.add_field(name="Enabled", value="Yes" if enabled else "No", inline=True)
         embed.add_field(name="State", value=player.state.name, inline=True)
-        embed.add_field(name="Loop Count", value=str(player.loop_count), inline=True)
         embed.add_field(name="Channel", value=channel_name, inline=True)
         embed.add_field(name="Voice", value=voice_status, inline=True)
         embed.add_field(name="Current Track", value=track_info, inline=True)
+        embed.add_field(name="Welcome", value=welcome or "None", inline=True)
         embed.add_field(name="Playlist", value=", ".join(playlist) if playlist else "Not configured", inline=False)
-        embed.add_field(name="Intermission", value=intermission, inline=True)
 
         await ctx.send(embed=embed)
 
@@ -809,7 +664,7 @@ class AmbientPlayer(commands.Cog):
     @commands.check(is_admin)
     async def loop_files(self, ctx):
         """List available audio files."""
-        available = self._get_available_modules()
+        available = self._get_available_files()
         if available:
             file_list = "\n".join(f"  {f}" for f in sorted(available))
             await ctx.send(f"**Available audio files:**\n{file_list}")
