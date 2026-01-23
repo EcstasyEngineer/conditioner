@@ -10,6 +10,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **Framework**: discord.py
 - **Architecture**: Modular cog system with service layer separation
 - **Data Storage**: File-based JSON configuration with intelligent buffering
+- **Timestamps**: All timestamps stored as naive local time (server timezone). Discord API returns UTC-aware times - convert with `.astimezone().replace(tzinfo=None)` before comparing to stored timestamps.
 
 ## Common Development Commands
 

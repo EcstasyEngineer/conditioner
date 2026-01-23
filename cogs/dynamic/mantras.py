@@ -648,6 +648,12 @@ class MantraSystem(commands.Cog):
         # Loop interval is set in decorator: @tasks.loop(seconds=30)
         self.mantra_delivery.start()
 
+    async def cog_load(self):
+        """Called when cog is loaded. Recover any missed responses."""
+        # Wait for bot to be ready before checking DMs
+        await self.bot.wait_until_ready()
+        await self._recover_missed_responses()
+
     def cog_unload(self):
         """Clean up when cog is unloaded."""
         self.mantra_delivery.cancel()
@@ -1257,10 +1263,12 @@ class MantraSystem(commands.Cog):
         if config.get("sent") is None:
             return  # No active mantra
 
-        # Calculate response time
+        # Calculate response time (use message timestamp for accurate timing on recovery)
         try:
             sent_time = datetime.fromisoformat(config["sent"])
-            response_time_seconds = int((datetime.now() - sent_time).total_seconds())
+            # message.created_at is timezone-aware (UTC), convert to naive local for comparison
+            message_time = message.created_at.astimezone().replace(tzinfo=None)
+            response_time_seconds = int((message_time - sent_time).total_seconds())
         except:
             response_time_seconds = 0
 
@@ -1346,6 +1354,70 @@ class MantraSystem(commands.Cog):
                     color=discord.Color.red()
                 )
                 await message.reply(embed=embed)
+
+    async def _recover_missed_responses(self):
+        """Check for and process any DM responses received while bot was offline."""
+        self.logger.info("[MRECOVER] Scanning for missed responses...")
+
+        found = []
+
+        for config_file in Path('configs').glob('user_*.json'):
+            user_id = int(config_file.stem.replace('user_', ''))
+            config = self.bot.config.get_user(user_id, 'mantra_system')
+
+            if not config or not config.get('enrolled'):
+                continue
+
+            # Only check users with pending mantras (sent != null)
+            if config.get('sent') is None:
+                continue
+
+            delivered = config.get('delivered_mantra', {})
+            message_id = delivered.get('message_id')
+            if not message_id:
+                continue
+
+            try:
+                user = self.bot.get_user(user_id) or await self.bot.fetch_user(user_id)
+                dm_channel = await user.create_dm()
+
+                # Fetch messages after our sent message
+                missed_responses = []
+                async for msg in dm_channel.history(limit=20, after=discord.Object(id=message_id)):
+                    if msg.author.id == user_id:  # From the user, not the bot
+                        missed_responses.append(msg)
+
+                if missed_responses:
+                    # Sort by timestamp, oldest first
+                    missed_responses.sort(key=lambda m: m.created_at)
+                    first_response = missed_responses[0]
+                    found.append({
+                        'user': user,
+                        'user_id': user_id,
+                        'message': first_response,
+                    })
+
+            except Exception as e:
+                self.logger.warning(f"[MRECOVER] Error checking {user_id}: {e}")
+                continue
+
+        if not found:
+            self.logger.info("[MRECOVER] No missed responses found.")
+            return
+
+        self.logger.info(f"[MRECOVER] Found {len(found)} missed responses, processing...")
+
+        # Process by dispatching through on_message (uses same code path)
+        processed = 0
+        for item in found:
+            try:
+                await self.on_message(item['message'])
+                processed += 1
+                self.logger.info(f"[MRECOVER] Processed response from {item['user'].name}")
+            except Exception as e:
+                self.logger.error(f"[MRECOVER] Error processing {item['user_id']}: {e}")
+
+        self.logger.info(f"[MRECOVER] Done. Processed {processed}/{len(found)} responses.")
 
     @commands.command(name="mstats", hidden=True)
     @commands.check(is_superadmin)
